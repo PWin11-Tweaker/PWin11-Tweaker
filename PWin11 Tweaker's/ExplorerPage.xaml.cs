@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using PWin11Tweaker;
 
 namespace PWin11_Tweaker_s
 {
@@ -25,9 +26,44 @@ namespace PWin11_Tweaker_s
                 // Создаём содержимое .reg файла
                 string regContent = "Windows Registry Editor Version 5.00\n\n";
 
-                // 1. Показывать расширения файлов
+                // 1. Показывать расширения файлов (через прямое изменение реестра)
                 bool showFileExtensions = ShowFileExtensions.IsChecked == true;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n\"HideFileExt\"=dword:{(showFileExtensions ? "0" : "1")}\n\n";
+                int hideFileExtValue = showFileExtensions ? 0 : 1; // 0 = показывать, 1 = скрывать
+                System.Diagnostics.Debug.WriteLine($"Устанавливаем HideFileExt: {hideFileExtValue} (Показывать расширения: {showFileExtensions})");
+
+                try
+                {
+                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", writable: true))
+                    {
+                        if (key != null)
+                        {
+                            // Проверяем текущее значение
+                            int? currentValue = (int?)key.GetValue("HideFileExt");
+                            System.Diagnostics.Debug.WriteLine($"Текущее значение HideFileExt: {currentValue ?? -1}");
+
+                            // Устанавливаем новое значение
+                            key.SetValue("HideFileExt", hideFileExtValue, RegistryValueKind.DWord);
+                            System.Diagnostics.Debug.WriteLine("HideFileExt успешно установлен в реестре.");
+
+                            // Проверяем, что значение действительно изменилось
+                            int? newValue = (int?)key.GetValue("HideFileExt");
+                            System.Diagnostics.Debug.WriteLine($"Новое значение HideFileExt: {newValue ?? -1}");
+
+                            if (newValue != hideFileExtValue)
+                            {
+                                System.Diagnostics.Debug.WriteLine("Ошибка: значение HideFileExt не изменилось в реестре!");
+                            }
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("Не удалось открыть ключ реестра для записи: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Ошибка при установке HideFileExt в реестре: {ex.Message}");
+                }
 
                 // 2. Показывать скрытые файлы
                 bool showHiddenFiles = ShowHiddenFiles.IsChecked == true;
@@ -103,6 +139,23 @@ namespace PWin11_Tweaker_s
                 File.WriteAllText(tempBatPath, batContent);
                 System.Diagnostics.Debug.WriteLine($"Создан .bat файл: {tempBatPath}");
 
+                // Создаём бэкап .bat файла в папке "Документы"
+                try
+                {
+                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    string backupFolderPath = Path.Combine(documentsPath, "PWin11TweakerBackups");
+                    Directory.CreateDirectory(backupFolderPath); // Создаём папку, если её нет
+
+                    string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                    string backupBatPath = Path.Combine(backupFolderPath, $"PWin11TweakerApply_{timestamp}.bat");
+                    File.Copy(tempBatPath, backupBatPath, true);
+                    System.Diagnostics.Debug.WriteLine($"Создан бэкап .bat файла: {backupBatPath}");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Ошибка при создании бэкапа .bat файла: {ex.Message}");
+                }
+
                 #region Запускаем .bat с правами администратора
                 ProcessStartInfo batProcess = new ProcessStartInfo
                 {
@@ -113,7 +166,6 @@ namespace PWin11_Tweaker_s
                     CreateNoWindow = true,
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
-                
 
                 bool success = false;
                 using (Process process = Process.Start(batProcess))
@@ -160,7 +212,6 @@ namespace PWin11_Tweaker_s
                 #endregion
 
                 #region Перезапускаем проводник
-
                 if (success)
                 {
                     try
@@ -194,15 +245,17 @@ namespace PWin11_Tweaker_s
                 {
                     System.Diagnostics.Debug.WriteLine("Не удалось применить настройки. Проверьте лог: " + tempLogPath);
                 }
+                #endregion
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Ошибка в коде: {ex.Message}");
             }
+            var rebootWindow = new RebootWindow();
+            rebootWindow.Activate();
         }
-        #endregion
 
-                #region Открытья OldNewExplorer
+        #region Открытья OldNewExplorer
         private void OpenOldNewExplorer_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -229,7 +282,7 @@ namespace PWin11_Tweaker_s
         }
         #endregion
 
-                #region Загрузка конкретных настроек 
+        #region Загрузка конкретных настроек 
         private void LoadCurrentSettings()
         {
             try
@@ -267,5 +320,8 @@ namespace PWin11_Tweaker_s
             }
         }
         #endregion
+
+
+
     }
 }

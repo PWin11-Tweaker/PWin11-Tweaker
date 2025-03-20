@@ -12,8 +12,7 @@
     <PackageIdentityPublisher>CN=Admin</PackageIdentityPublisher>
     <IntermediateOutputPath>D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
-    <PackageRegistrationPath>
-    </PackageRegistrationPath>
+    <PackageRegistrationPath>C:\Users\Admin\Documents\PWin11</PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
@@ -29,25 +28,25 @@
     <AppXManifest Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-03-19T16:15:42.141</Modified>
+      <Modified>2025-03-19T18:11:50.245</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2025-03-19T15:33:11.523</Modified>
+      <Modified>2025-03-19T18:11:50.045</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.runtimeconfig.json">
       <PackagePath>PWin11 Tweaker%27s.runtimeconfig.json</PackagePath>
-      <Modified>2025-03-18T16:13:37.547</Modified>
+      <Modified>2025-03-19T18:07:14.195</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.dll">
       <PackagePath>PWin11 Tweaker%27s.dll</PackagePath>
-      <Modified>2025-03-19T16:15:41.128</Modified>
+      <Modified>2025-03-19T18:11:49.921</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>PWin11 Tweaker%27s.exe</PackagePath>
-      <Modified>2025-03-19T16:15:41.213</Modified>
+      <Modified>2025-03-19T18:11:49.924</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
@@ -871,7 +870,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.deps.json">
       <PackagePath>PWin11 Tweaker%27s.deps.json</PackagePath>
-      <Modified>2025-03-19T15:33:11.116</Modified>
+      <Modified>2025-03-19T18:11:50.005</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>

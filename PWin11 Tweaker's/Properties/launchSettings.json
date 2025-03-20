@@ -3,8 +3,9 @@
     "PWin11 Tweaker's (Package)": {
       "commandName": "MsixPackage"
     },
-    "PWin11 Tweaker's (Unpackaged)": {
-      "commandName": "Project"
+    "MSIX Bundle": {
+      "commandName": "MsixPackage",
+      "alwaysReinstallApp": true
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h4C2vuizsDQ=",
+  "dgSpecHash": "2bWmrfORQB4=",
   "success": true,
-  "projectFilePath": "D:\\.project-new-git\\PWin11 Tweaker's\\PWin11 Tweaker's\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
+  "projectFilePath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.web.webview2\\1.0.2651.64\\microsoft.web.webview2.1.0.2651.64.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.26100.1742\\microsoft.windows.sdk.buildtools.10.0.26100.1742.nupkg.sha512",

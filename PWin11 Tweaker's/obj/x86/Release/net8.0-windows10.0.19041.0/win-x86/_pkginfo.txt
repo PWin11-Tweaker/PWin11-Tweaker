@@ -1,0 +1,1 @@
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\x86\Release\net8.0-windows10.0.19041.0\win-x86\AppPackages\PWin11 Tweaker's_1.0.0.0_x86_Test\PWin11 Tweaker's_1.0.0.0_x86.msix
