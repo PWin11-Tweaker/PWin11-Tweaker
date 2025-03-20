@@ -10,31 +10,31 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>7329444e-578c-4927-b577-7be33393bef3</PackageIdentityName>
     <PackageIdentityPublisher>CN=Admin</PackageIdentityPublisher>
-    <IntermediateOutputPath>D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
-    <PackageRegistrationPath></PackageRegistrationPath>
+    <PackageRegistrationPath>C:\Users\Admin\Documents\PWin11</PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
+    <LayoutDir>D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\Msix</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
+    <AppXManifest Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.runtimeconfig.json">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.runtimeconfig.json">
       <PackagePath>PWin11 Tweaker%27s.runtimeconfig.json</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.dll">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.dll">
       <PackagePath>PWin11 Tweaker%27s.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>PWin11 Tweaker%27s.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
@@ -652,40 +652,40 @@
     <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.web.webview2\1.0.2651.64\lib_manual\net6.0-windows10.0.17763.0\Microsoft.Web.WebView2.Core.Projection.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.deps.json">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\PWin11 Tweaker%27s.deps.json">
       <PackagePath>PWin11 Tweaker%27s.deps.json</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\logo.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\logo.png">
       <PackagePath>Assets\logo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\OldNewExplorer\OldNewExplorer.exe">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\OldNewExplorer\OldNewExplorer.exe">
       <PackagePath>Assets\OldNewExplorer\OldNewExplorer.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\OldNewExplorer\OldNewExplorer32.dll">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\OldNewExplorer\OldNewExplorer32.dll">
       <PackagePath>Assets\OldNewExplorer\OldNewExplorer32.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\OldNewExplorer\OldNewExplorer64.dll">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\OldNewExplorer\OldNewExplorer64.dll">
       <PackagePath>Assets\OldNewExplorer\OldNewExplorer64.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11 Tweaker%27s\PWin11 Tweaker%27s\PWin11 Tweaker%27s\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

@@ -1,0 +1,50 @@
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\PWin11 Tweaker's.exe
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\runtimes\win-x64\native\WebView2Loader.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\PWin11 Tweaker's.runtimeconfig.json
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.DiaSymReader.Native.amd64.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.IO.Compression.Native.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\clretwrc.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\clrgc.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\clrjit.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\coreclr.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\createdump.exe
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\hostfxr.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\hostpolicy.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\mscordaccore.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\mscordaccore_amd64_amd64_8.0.1425.11118.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\mscordbi.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\mscorrc.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\msquic.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\WebView2Loader.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.WindowsAppRuntime.Bootstrap.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.Web.WebView2.Core.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\resources.pri
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Collections.NonGeneric.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.ComponentModel.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\PWin11 Tweaker's.pdb
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.InteractiveExperiences.Projection.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.WinUI.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.Web.WebView2.Core.Projection.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\PWin11 Tweaker's.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.Win32.Registry.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Collections.Concurrent.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Collections.Immutable.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Collections.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.ComponentModel.Primitives.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.ComponentModel.TypeConverter.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Diagnostics.Process.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Diagnostics.StackTrace.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.IO.Compression.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.IO.MemoryMappedFiles.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Linq.Expressions.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Linq.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.ObjectModel.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Private.CoreLib.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Private.Uri.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Reflection.Metadata.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Runtime.InteropServices.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\System.Security.Cryptography.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\Microsoft.Windows.SDK.NET.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\WinRT.Runtime.dll
+D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\Release\net8.0-windows10.0.19041.0\win-x64\publish\PWin11 Tweaker's.deps.json

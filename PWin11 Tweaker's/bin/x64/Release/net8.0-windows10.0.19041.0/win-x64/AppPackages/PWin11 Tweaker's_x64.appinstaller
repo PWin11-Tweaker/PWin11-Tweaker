@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppInstaller
+	Uri="file:///C:/Users/Admin/Documents/PWin11/PWin11 Tweaker's_x64.appinstaller"
+	Version="1.0.0.0" xmlns="http://schemas.microsoft.com/appx/appinstaller/2017/2">
+	<MainPackage
+		Name="7329444e-578c-4927-b577-7be33393bef3"
+		Version="1.0.0.0"
+		Publisher="CN=Admin"
+		Uri="file:///C:/Users/Admin/Documents/PWin11/PWin11 Tweaker's_1.0.0.0_x64_Test/PWin11 Tweaker's_1.0.0.0_x64.msix"
+		ProcessorArchitecture="x64" />
+	<Dependencies>
+		<Package
+			Name="Microsoft.WindowsAppRuntime.1.6"
+			Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+			ProcessorArchitecture="x64"
+			Uri="file:///C:/Users/Admin/Documents/PWin11/PWin11 Tweaker's_1.0.0.0_x64_Test/Dependencies/x64/Microsoft.WindowsAppRuntime.1.6.msix"
+			Version="6000.424.1611.0" />
+	</Dependencies>
+	<UpdateSettings>
+		<OnLaunch
+			HoursBetweenUpdateChecks="0" />
+	</UpdateSettings>
+</AppInstaller>
