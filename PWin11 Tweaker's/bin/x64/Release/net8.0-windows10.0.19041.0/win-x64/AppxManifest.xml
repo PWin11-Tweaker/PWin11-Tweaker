@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="7329444e-578c-4927-b577-7be33393bef3" Publisher="CN=Admin" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="7329444e-578c-4927-b577-7be33393bef3" Publisher="CN=Admin" Version="1.0.1.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="7329444e-578c-4927-b577-7be33393bef3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>PWin11 Tweaker's</DisplayName>

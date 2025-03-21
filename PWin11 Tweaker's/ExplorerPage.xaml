@@ -2,36 +2,20 @@
     x:Class="PWin11_Tweaker_s.ExplorerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PWin11_Tweaker_s"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Padding="20">
-        <StackPanel Spacing="10">
-            <TextBlock Text="Настройки Проводника" FontSize="24" FontWeight="Bold" />
-            <CheckBox x:Name="ShowFileExtensions" Content="Показывать расширения файлов" />
-            <CheckBox x:Name="ShowHiddenFiles" Content="Показывать скрытые файлы и папки" />
-            <CheckBox x:Name="ShowFullPath" Content="Показывать полный путь в заголовке" />
+    <StackPanel Padding="20" Spacing="10">
+        <!-- Твик: Показывать скрытые файлы -->
+        <CheckBox x:Name="ShowHiddenFiles" Content="Показывать скрытые файлы" />
 
-            <!--1. Удаление Рекомендуемых и Недавних файлов -->
-            <CheckBox x:Name="HideRecommendedAndRecent" Content="Скрыть 'Рекомендуемые' и 'Недавние файлы' в Домашней странице"/>
+        <!-- Твик: Показывать полный путь в заголовке -->
+        <CheckBox x:Name="UseSmallCaptions" Content="Уменьшить кнопки: Закрыть, Развернуть, Свернуть" />
 
-            <CheckBox x:Name="UseClassicContextMenu" Content="Использовать классическое контекстное меню"/>
-
-            <CheckBox x:Name="CustomizeThisPC" Content="Скрыть папки из 'Этот компьютер'" ToolTipService.ToolTip="Удаляет папки (Документы, Музыка и т.д) из 'Этот компьютер'"/>
-
-            <CheckBox x:Name="HideQuickAccessIcons" Content="Скрыть значки быстрого доступа"/>
-
-            <CheckBox x:Name="DisableAnimations" Content="Отключить анимации в Проводнике"/>
-
-            <CheckBox x:Name="DisableThumbnails" Content="Отключить отображение миниатурюр"/>
-
-            <TextBlock Text="Для допольнительных настроек используйте OldNewExplorer (открыть программу)" Margin="0,10,0,0"/>
-            <Button x:Name="OpenOldNewExplorer" Content="Открыть OldNewExplorer" Click="OpenOldNewExplorer_Click" />
-
-
-
-            <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Margin="0,10,0,0" />
-        </StackPanel>
-    </Grid>
+        <!-- Кнопка применения -->
+        <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" />
+    </StackPanel>
 </Page>
