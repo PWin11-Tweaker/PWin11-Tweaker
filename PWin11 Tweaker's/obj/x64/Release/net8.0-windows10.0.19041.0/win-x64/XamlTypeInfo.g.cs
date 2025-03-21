@@ -265,7 +265,7 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             _typeNameTable[35] = "Microsoft.UI.Xaml.Window";
             _typeNameTable[36] = "PWin11_Tweaker_s.PerformancePage";
             _typeNameTable[37] = "PWin11_Tweaker_s.PrivacyPage";
-            _typeNameTable[38] = "PWin11_Tweaker_s.RebootWindow";
+            _typeNameTable[38] = "PWin11Tweaker.RebootWindow";
             _typeNameTable[39] = "Microsoft.UI.Xaml.Controls.ProgressRing";
             _typeNameTable[40] = "Microsoft.UI.Xaml.Controls.ProgressRingTemplateSettings";
             _typeNameTable[41] = "PWin11_Tweaker_s.SplashScreen";
@@ -313,7 +313,7 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             _typeTable[35] = typeof(global::Microsoft.UI.Xaml.Window);
             _typeTable[36] = typeof(global::PWin11_Tweaker_s.PerformancePage);
             _typeTable[37] = typeof(global::PWin11_Tweaker_s.PrivacyPage);
-            _typeTable[38] = typeof(global::PWin11_Tweaker_s.RebootWindow);
+            _typeTable[38] = typeof(global::PWin11Tweaker.RebootWindow);
             _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressRing);
             _typeTable[40] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressRingTemplateSettings);
             _typeTable[41] = typeof(global::PWin11_Tweaker_s.SplashScreen);
@@ -365,7 +365,7 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
         private object Activate_34_MainWindow() { return new global::PWin11_Tweaker_s.MainWindow(); }
         private object Activate_36_PerformancePage() { return new global::PWin11_Tweaker_s.PerformancePage(); }
         private object Activate_37_PrivacyPage() { return new global::PWin11_Tweaker_s.PrivacyPage(); }
-        private object Activate_38_RebootWindow() { return new global::PWin11_Tweaker_s.RebootWindow(); }
+        private object Activate_38_RebootWindow() { return new global::PWin11Tweaker.RebootWindow(); }
         private object Activate_39_ProgressRing() { return new global::Microsoft.UI.Xaml.Controls.ProgressRing(); }
         private object Activate_41_SplashScreen() { return new global::PWin11_Tweaker_s.SplashScreen(); }
         private object Activate_42_SystemPage() { return new global::PWin11_Tweaker_s.SystemPage(); }
@@ -390,7 +390,7 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
         private void StaticInitializer_34_MainWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.MainWindow).TypeHandle);
         private void StaticInitializer_36_PerformancePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.PerformancePage).TypeHandle);
         private void StaticInitializer_37_PrivacyPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.PrivacyPage).TypeHandle);
-        private void StaticInitializer_38_RebootWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.RebootWindow).TypeHandle);
+        private void StaticInitializer_38_RebootWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11Tweaker.RebootWindow).TypeHandle);
         private void StaticInitializer_39_ProgressRing() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressRing).TypeHandle);
         private void StaticInitializer_40_ProgressRingTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressRingTemplateSettings).TypeHandle);
         private void StaticInitializer_41_SplashScreen() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SplashScreen).TypeHandle);
@@ -703,7 +703,7 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 38:   //  PWin11_Tweaker_s.RebootWindow
+            case 38:   //  PWin11Tweaker.RebootWindow
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
                 userType.Activator = Activate_38_RebootWindow;
                 userType.StaticInitializer = StaticInitializer_38_RebootWindow;

@@ -5,7 +5,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using PWin11Tweaker;
 
 namespace PWin11_Tweaker_s
 {
@@ -13,11 +12,21 @@ namespace PWin11_Tweaker_s
     {
         public ExplorerPage()
         {
-            this.InitializeComponent();
-            LoadCurrentSettings();
+            try
+            {
+                System.Diagnostics.Debug.WriteLine("Инициализация ExplorerPage...");
+                this.InitializeComponent();
+                LoadCurrentSettings();
+                System.Diagnostics.Debug.WriteLine("ExplorerPage успешно инициализирован.");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при инициализации ExplorerPage: {ex.Message}");
+                throw; // Для отладки, чтобы увидеть ошибку
+            }
         }
 
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -26,103 +35,24 @@ namespace PWin11_Tweaker_s
                 // Создаём содержимое .reg файла
                 string regContent = "Windows Registry Editor Version 5.00\n\n";
 
-                // 1. Показывать расширения файлов (через прямое изменение реестра)
-                bool showFileExtensions = ShowFileExtensions.IsChecked == true;
-                int hideFileExtValue = showFileExtensions ? 0 : 1; // 0 = показывать, 1 = скрывать
-                System.Diagnostics.Debug.WriteLine($"Устанавливаем HideFileExt: {hideFileExtValue} (Показывать расширения: {showFileExtensions})");
-
-                try
-                {
-                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", writable: true))
-                    {
-                        if (key != null)
-                        {
-                            // Проверяем текущее значение
-                            int? currentValue = (int?)key.GetValue("HideFileExt");
-                            System.Diagnostics.Debug.WriteLine($"Текущее значение HideFileExt: {currentValue ?? -1}");
-
-                            // Устанавливаем новое значение
-                            key.SetValue("HideFileExt", hideFileExtValue, RegistryValueKind.DWord);
-                            System.Diagnostics.Debug.WriteLine("HideFileExt успешно установлен в реестре.");
-
-                            // Проверяем, что значение действительно изменилось
-                            int? newValue = (int?)key.GetValue("HideFileExt");
-                            System.Diagnostics.Debug.WriteLine($"Новое значение HideFileExt: {newValue ?? -1}");
-
-                            if (newValue != hideFileExtValue)
-                            {
-                                System.Diagnostics.Debug.WriteLine("Ошибка: значение HideFileExt не изменилось в реестре!");
-                            }
-                        }
-                        else
-                        {
-                            System.Diagnostics.Debug.WriteLine("Не удалось открыть ключ реестра для записи: HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Ошибка при установке HideFileExt в реестре: {ex.Message}");
-                }
-
-                // 2. Показывать скрытые файлы
+                // Твик: Показывать скрытые файлы
                 bool showHiddenFiles = ShowHiddenFiles.IsChecked == true;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n\"Hidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n\"ShowSuperHidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n\n";
+                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n" +
+                              $"\"Hidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n" +
+                              $"\"ShowSuperHidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n\n";
 
-                // 3. Показывать полный путь в заголовке
-                bool showFullPath = ShowFullPath.IsChecked == true;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CabinetState]\n\"FullPath\"=dword:{(showFullPath ? "00000001" : "00000000")}\n\n";
-
-                // 4. Скрыть "Рекомендуемые" и "Недавние файлы"
-                bool hideRecommendedAndRecent = HideRecommendedAndRecent.IsChecked == true;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer]\n\"ShowRecent\"=dword:{(hideRecommendedAndRecent ? "00000000" : "00000001")}\n\"ShowFrequent\"=dword:{(hideRecommendedAndRecent ? "00000000" : "00000001")}\n\n";
-
-                // 5. Использовать классическое контекстное меню
-                if (UseClassicContextMenu.IsChecked == true)
-                {
-                    regContent += "[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32]\n@=\"\"\n\n";
-                }
-                else
-                {
-                    regContent += "[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}]\n\n";
-                }
-
-                // 6. Скрыть папки из "Этот компьютер"
-                if (CustomizeThisPC.IsChecked == true)
-                {
-                    string[] thisPCFolders = {
-                        "{088e3905-0323-4b02-9826-5d99428e115f}", // 3D Objects
-                        "{1CF1260C-4DD0-4ebb-811F-33C572699FDE}", // Music
-                        "{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}", // Pictures
-                        "{24ad3ad4-a569-4530-98e1-ab02f9417aa8}", // Videos
-                        "{d3162b92-9360-467a-956b-92703aca08af}", // Documents
-                        "{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}"  // Downloads
-                    };
-                    foreach (var folder in thisPCFolders)
-                    {
-                        regContent += $"[-HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\MyComputer\\NameSpace\\{folder}]\n";
-                    }
-                    regContent += "\n";
-                }
-
-                // 7. Скрыть значки быстрого доступа
-                bool hideQuickAccessIcons = HideQuickAccessIcons.IsChecked == true;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer]\n\"HubMode\"=dword:{(hideQuickAccessIcons ? "00000001" : "00000000")}\n\n";
-
-                // 8. Отключить анимации в проводнике
-                bool disableAnimations = DisableAnimations.IsChecked == true;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n\"ListviewAlphaSelect\"=dword:{(disableAnimations ? "00000000" : "00000001")}\n\n";
-
-                // 9. Отключить миниатюры
-                bool disableThumbnails = DisableThumbnails.IsChecked == true;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n\"IconsOnly\"=dword:{(disableThumbnails ? "00000001" : "00000000")}\n\n";
+                // Твик: Уменьшение кнопок Закрыть/Свернуть/Развернуть
+                bool useSmallCaptions = UseSmallCaptions.IsChecked == true;
+                string captionHeightValue = useSmallCaptions ? "-180" : "-330"; // -180 для маленьких заголовков, -330 для стандартных
+                regContent += $"[HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics]\n" +
+                              $"\"CaptionHeight\"=\"{captionHeightValue}\"\n\n";
 
                 // Сохраняем .reg файл с кодировкой UTF-16 LE
                 string tempRegPath = Path.Combine(Path.GetTempPath(), "PWin11Tweaker.reg");
                 File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
                 System.Diagnostics.Debug.WriteLine($"Создан .reg файл: {tempRegPath}");
 
-                // Создаём .bat файл (без gpupdate, так как он не нужен для HKEY_CURRENT_USER)
+                // Создаём .bat файл для применения настроек
                 string tempBatPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerApply.bat");
                 string tempLogPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerLog.txt");
                 string batContent = "@echo off\n" +
@@ -139,30 +69,12 @@ namespace PWin11_Tweaker_s
                 File.WriteAllText(tempBatPath, batContent);
                 System.Diagnostics.Debug.WriteLine($"Создан .bat файл: {tempBatPath}");
 
-                // Создаём бэкап .bat файла в папке "Документы"
-                try
-                {
-                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    string backupFolderPath = Path.Combine(documentsPath, "PWin11TweakerBackups");
-                    Directory.CreateDirectory(backupFolderPath); // Создаём папку, если её нет
-
-                    string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                    string backupBatPath = Path.Combine(backupFolderPath, $"PWin11TweakerApply_{timestamp}.bat");
-                    File.Copy(tempBatPath, backupBatPath, true);
-                    System.Diagnostics.Debug.WriteLine($"Создан бэкап .bat файла: {backupBatPath}");
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Ошибка при создании бэкапа .bat файла: {ex.Message}");
-                }
-
-                #region Запускаем .bat с правами администратора
+                // Запускаем .bat файл
                 ProcessStartInfo batProcess = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
                     Arguments = $"/C \"{tempBatPath}\"",
                     UseShellExecute = true,
-                    Verb = "runas", // Запуск от имени администратора
                     CreateNoWindow = true,
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
@@ -196,9 +108,8 @@ namespace PWin11_Tweaker_s
                         }
                     }
                 }
-                #endregion
 
-                #region Очищаем временные файлы
+                // Очищаем временные файлы
                 try
                 {
                     if (File.Exists(tempRegPath)) File.Delete(tempRegPath);
@@ -209,119 +120,125 @@ namespace PWin11_Tweaker_s
                 {
                     System.Diagnostics.Debug.WriteLine($"Ошибка при удалении временных файлов: {ex.Message}");
                 }
-                #endregion
 
-                #region Перезапускаем проводник
+                // Перезапускаем Проводник автоматически
                 if (success)
                 {
                     try
                     {
-                        System.Diagnostics.Debug.WriteLine("Перезапускаем проводник...");
-                        Process.Start(new ProcessStartInfo
+                        System.Diagnostics.Debug.WriteLine("Перезапускаем Проводник...");
+                        ProcessStartInfo taskKillInfo = new()
                         {
                             FileName = "taskkill",
                             Arguments = "/f /im explorer.exe",
                             UseShellExecute = true,
                             CreateNoWindow = true,
                             WindowStyle = ProcessWindowStyle.Hidden
-                        }).WaitForExit(2000);
+                        };
+                        Process? taskKillProcess = Process.Start(taskKillInfo);
+                        if (taskKillProcess != null)
+                        {
+                            taskKillProcess.WaitForExit(2000);
+                            System.Diagnostics.Debug.WriteLine("Процесс explorer.exe успешно завершён.");
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("Ошибка: Не удалось запустить taskkill для завершения explorer.exe.");
+                        }
 
-                        Process.Start(new ProcessStartInfo
+                        ProcessStartInfo explorerInfo = new()
                         {
                             FileName = "explorer.exe",
                             UseShellExecute = true,
                             CreateNoWindow = true,
                             WindowStyle = ProcessWindowStyle.Hidden
-                        });
-
-                        System.Diagnostics.Debug.WriteLine("Проводник перезапущен!");
+                        };
+                        Process? explorerProcess = Process.Start(explorerInfo);
+                        if (explorerProcess != null)
+                        {
+                            System.Diagnostics.Debug.WriteLine("Проводник успешно запущен заново.");
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("Ошибка: Не удалось запустить explorer.exe.");
+                        }
                     }
                     catch (Exception ex)
                     {
-                        System.Diagnostics.Debug.WriteLine($"Ошибка при перезапуске проводника: {ex.Message}");
+                        System.Diagnostics.Debug.WriteLine($"Ошибка при перезапуске Проводника: {ex.Message}");
                     }
+
+                    // Показываем уведомление об успехе с предупреждением о необходимости перезапуска
+                    ContentDialog successDialog = new()
+                    {
+                        Title = "Успех",
+                        Content = "Настройки успешно применены! Проводник перезапущен.\nДля применения уменьшения кнопок управления окном может потребоваться перезапуск системы.",
+                        CloseButtonText = "OK",
+                        XamlRoot = this.XamlRoot
+                    };
+                    await successDialog.ShowAsync();
                 }
                 else
                 {
                     System.Diagnostics.Debug.WriteLine("Не удалось применить настройки. Проверьте лог: " + tempLogPath);
-                }
-                #endregion
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Ошибка в коде: {ex.Message}");
-            }
-            var rebootWindow = new RebootWindow();
-            rebootWindow.Activate();
-        }
-
-        #region Открытья OldNewExplorer
-        private void OpenOldNewExplorer_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string appPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "OldNewExplorer", "OldNewExplorer.exe");
-                if (File.Exists(appPath))
-                {
-                    Process.Start(new ProcessStartInfo
+                    ContentDialog errorDialog = new()
                     {
-                        FileName = appPath,
-                        UseShellExecute = true
-                    });
-                    System.Diagnostics.Debug.WriteLine("OldNewExplorer запущен!");
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("Файл OldNewExplorer.exe не найден!");
+                        Title = "Ошибка",
+                        Content = "Не удалось применить настройки. Проверьте лог: " + tempLogPath,
+                        CloseButtonText = "OK",
+                        XamlRoot = this.XamlRoot
+                    };
+                    await errorDialog.ShowAsync();
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Ошибка запуска OldNewExplorer: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Общая ошибка в ApplyButton_Click: {ex.Message}");
+                ContentDialog errorDialog = new()
+                {
+                    Title = "Ошибка",
+                    Content = $"Произошла ошибка: {ex.Message}",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                await errorDialog.ShowAsync();
             }
         }
-        #endregion
 
-        #region Загрузка конкретных настроек 
         private void LoadCurrentSettings()
         {
             try
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+                System.Diagnostics.Debug.WriteLine("Загрузка текущих настроек...");
+                // Загрузка для ShowHiddenFiles
+                using RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced");
+                if (key != null)
                 {
-                    if (key != null)
+                    ShowHiddenFiles.IsChecked = (int?)key.GetValue("Hidden", 0) == 1;
+                }
+
+                // Загрузка для UseSmallCaptions
+                using RegistryKey? windowMetricsKey = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop\WindowMetrics");
+                if (windowMetricsKey != null)
+                {
+                    string? captionHeight = (string?)windowMetricsKey.GetValue("CaptionHeight", "-330");
+                    // Если значение меньше -330 (например, -180), считаем, что твик включён
+                    if (int.TryParse(captionHeight, out int height) && height > -330)
                     {
-                        ShowFileExtensions.IsChecked = (int?)key.GetValue("HideFileExt", 1) == 0;
-                        ShowHiddenFiles.IsChecked = (int?)key.GetValue("Hidden", 0) == 1;
-                        DisableAnimations.IsChecked = (int?)key.GetValue("ListviewAlphaSelect", 1) == 0;
-                        DisableThumbnails.IsChecked = (int?)key.GetValue("IconsOnly", 0) == 1;
+                        UseSmallCaptions.IsChecked = true;
+                    }
+                    else
+                    {
+                        UseSmallCaptions.IsChecked = false;
                     }
                 }
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState"))
-                {
-                    if (key != null)
-                    {
-                        ShowFullPath.IsChecked = (int?)key.GetValue("FullPath", 0) == 1;
-                    }
-                }
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer"))
-                {
-                    if (key != null)
-                    {
-                        HideRecommendedAndRecent.IsChecked = (int?)key.GetValue("ShowRecent", 1) == 0 && (int?)key.GetValue("ShowFrequent", 1) == 0;
-                        HideQuickAccessIcons.IsChecked = (int?)key.GetValue("HubMode", 0) == 1;
-                    }
-                }
-                UseClassicContextMenu.IsChecked = Registry.CurrentUser.OpenSubKey(@"Software\Classes\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}") != null;
+
+                System.Diagnostics.Debug.WriteLine("Текущие настройки успешно загружены.");
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Ошибка загрузки настроек: {ex.Message}");
             }
         }
-        #endregion
-
-
-
     }
 }
