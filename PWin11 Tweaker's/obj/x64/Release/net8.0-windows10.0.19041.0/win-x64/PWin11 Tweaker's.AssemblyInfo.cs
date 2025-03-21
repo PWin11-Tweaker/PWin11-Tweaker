@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PWin11 Tweaker\'s")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab2d89824c757bbb0ed2b4cc069e276339a352db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d44dbeabcebc2c120821da023510240b079c803b")]
 [assembly: System.Reflection.AssemblyProductAttribute("PWin11 Tweaker\'s")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PWin11 Tweaker\'s")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

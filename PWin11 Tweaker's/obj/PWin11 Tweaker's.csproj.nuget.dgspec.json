@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows10.0.19041.0"
+          "net8.0-windows10.0.26100.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows10.0.19041": {
-            "targetAlias": "net8.0-windows10.0.19041.0",
+          "net8.0-windows10.0.26100": {
+            "targetAlias": "net8.0-windows10.0.26100.0",
             "projectReferences": {}
           }
         },
@@ -47,14 +47,18 @@
         "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
-        "net8.0-windows10.0.19041": {
-          "targetAlias": "net8.0-windows10.0.19041.0",
+        "net8.0-windows10.0.26100": {
+          "targetAlias": "net8.0-windows10.0.26100.0",
           "dependencies": {
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.14, )",
               "autoReferenced": true
+            },
+            "Microsoft.Web.WebView2": {
+              "target": "Package",
+              "version": "[1.0.2651.64, )"
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
@@ -63,6 +67,22 @@
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
               "version": "[1.6.250228001, )"
+            },
+            "System.Diagnostics.Debug": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
+            "runtime.native.System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
@@ -107,7 +127,7 @@
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.19041.57, 10.0.19041.57]"
+              "version": "[10.0.26100.57, 10.0.26100.57]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
