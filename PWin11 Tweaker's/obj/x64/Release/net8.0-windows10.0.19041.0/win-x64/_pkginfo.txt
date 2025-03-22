@@ -1,1 +1,1 @@
-D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\AppPackages\PWin11 Tweaker's_1.0.0.0_x64_Test\PWin11 Tweaker's_1.0.0.0_x64.msix
+C:\Users\yttut\Music\PWin11_Build\1.0.7\PWin11 Tweaker's_1.0.7.0_Test\PWin11 Tweaker's_1.0.7.0_x64.msix

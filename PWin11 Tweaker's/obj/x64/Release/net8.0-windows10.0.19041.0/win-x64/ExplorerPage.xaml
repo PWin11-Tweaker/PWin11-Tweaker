@@ -12,11 +12,20 @@
         <!-- Твик: Показывать скрытые файлы -->
         <CheckBox x:ConnectionId='2' x:Name="ShowHiddenFiles" Content="Показывать скрытые файлы" />
 
-        <!-- Твик: Показывать полный путь в заголовке -->
-        <CheckBox x:ConnectionId='3' x:Name="UseSmallCaptions" Content="Уменьшить кнопки: Закрыть, Развернуть, Свернуть" />
+        <!-- Твик: Уменьшение кнопок Закрыть/Свернуть/Развернуть -->
+        <CheckBox x:ConnectionId='3' x:Name="UseSmallCaptions" Content="Уменьшить кнопки Закрыть/Свернуть/Развернуть" />
+
+        <!-- Твик: Установка/Удаление StartAllBack (заменено на кнопку) -->
+        <Button x:ConnectionId='4' x:Name="InstallStartAllBackButton" Content="Установить StartAllBack" Margin="0,0,0,10"                                        />
 
         <!-- Кнопка применения -->
-        <Button x:ConnectionId='4' x:Name="ApplyButton" Content="Применить"                           />
+        <Button x:ConnectionId='5' x:Name="ApplyButton" Content="Применить"                           />
+
+        <!-- Прогресс-бар и статус -->
+        <StackPanel x:ConnectionId='6' x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
+            <TextBlock x:ConnectionId='7' x:Name="StatusText" Text="Выполняется..." />
+            <ProgressBar x:ConnectionId='8' x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" />
+        </StackPanel>
     </StackPanel>
 </Page>
 

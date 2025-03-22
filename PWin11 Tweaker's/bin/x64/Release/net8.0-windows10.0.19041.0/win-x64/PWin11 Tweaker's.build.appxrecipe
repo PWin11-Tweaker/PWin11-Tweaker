@@ -8,8 +8,8 @@
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
     <SolutionConfiguration>Release|x64</SolutionConfiguration>
     <PackageArchitecture>x64</PackageArchitecture>
-    <PackageIdentityName>7329444e-578c-4927-b577-7be33393bef3</PackageIdentityName>
-    <PackageIdentityPublisher>CN=Admin</PackageIdentityPublisher>
+    <PackageIdentityName>PWin11</PackageIdentityName>
+    <PackageIdentityPublisher>CN=ph1ncyn</PackageIdentityPublisher>
     <IntermediateOutputPath>D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath>C:\Users\Admin\Documents\PWin11</PackageRegistrationPath>
@@ -88,9 +88,6 @@
     <AppxPackagedFile Include="C:\Users\yttut\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native_uap\Microsoft.Web.WebView2.Core.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Collections.NonGeneric.dll">
-      <PackagePath>System.Collections.NonGeneric.dll</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.ComponentModel.dll">
       <PackagePath>System.ComponentModel.dll</PackagePath>
     </AppxPackagedFile>
@@ -118,6 +115,9 @@
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.Immutable.dll">
       <PackagePath>System.Collections.Immutable.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.NonGeneric.dll">
+      <PackagePath>System.Collections.NonGeneric.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.dll">
       <PackagePath>System.Collections.dll</PackagePath>
     </AppxPackagedFile>
@@ -127,11 +127,17 @@
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.TypeConverter.dll">
       <PackagePath>System.ComponentModel.TypeConverter.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.DiagnosticSource.dll">
+      <PackagePath>System.Diagnostics.DiagnosticSource.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.Process.dll">
       <PackagePath>System.Diagnostics.Process.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.StackTrace.dll">
       <PackagePath>System.Diagnostics.StackTrace.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Formats.Asn1.dll">
+      <PackagePath>System.Formats.Asn1.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.Compression.dll">
       <PackagePath>System.IO.Compression.dll</PackagePath>
@@ -144,6 +150,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Linq.dll">
       <PackagePath>System.Linq.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Http.dll">
+      <PackagePath>System.Net.Http.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.NameResolution.dll">
+      <PackagePath>System.Net.NameResolution.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.NetworkInformation.dll">
+      <PackagePath>System.Net.NetworkInformation.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Primitives.dll">
+      <PackagePath>System.Net.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Quic.dll">
+      <PackagePath>System.Net.Quic.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Security.dll">
+      <PackagePath>System.Net.Security.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Sockets.dll">
+      <PackagePath>System.Net.Sockets.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ObjectModel.dll">
       <PackagePath>System.ObjectModel.dll</PackagePath>
@@ -160,8 +187,20 @@
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.InteropServices.dll">
       <PackagePath>System.Runtime.InteropServices.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.Numerics.dll">
+      <PackagePath>System.Runtime.Numerics.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Claims.dll">
+      <PackagePath>System.Security.Claims.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Cryptography.dll">
       <PackagePath>System.Security.Cryptography.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Principal.Windows.dll">
+      <PackagePath>System.Security.Principal.Windows.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Threading.Channels.dll">
+      <PackagePath>System.Threading.Channels.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
@@ -174,6 +213,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\logo.ico">
+      <PackagePath>Assets\logo.ico</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Assets\logo.png">
       <PackagePath>Assets\logo.png</PackagePath>
