@@ -1,40 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
-
-
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Dispatching;
+using System;
+using Windows.UI.Popups; // Для MessageDialog
+using System.Threading.Tasks;
 
 namespace PWin11_Tweaker_s
 {
-
     public partial class App : Application
     {
-
         public App()
         {
-            this.InitializeComponent();
+            try
+            {
+                this.InitializeComponent();
+                System.Diagnostics.Debug.WriteLine("App: Инициализация завершена.");
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.WriteAllText("app_init_error.log",
+                    $"Ошибка в App: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                throw;
+            }
         }
 
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        // Указываем, что sender может быть null
+        private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
         {
-            m_window = new SplashScreen();
-            m_window.Activate();
+            // Логируем асинхронные ошибки
+            System.Diagnostics.Debug.WriteLine($"Асинхронная ошибка: {e.Exception.Message}\nСтек: {e.Exception.StackTrace}");
+            e.SetObserved(); // Помечаем как обработанное
         }
 
-        private Window? m_window;
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            // Твой код запуска окна
+            Window window = new MainWindow();
+            window.Activate();
+        }
     }
 }
