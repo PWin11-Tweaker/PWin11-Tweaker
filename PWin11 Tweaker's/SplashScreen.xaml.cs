@@ -1,9 +1,9 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using System;
 using System.Threading.Tasks;
 using WinRT.Interop;
@@ -12,7 +12,7 @@ namespace PWin11_Tweaker_s
 {
     public sealed partial class SplashScreen : Window
     {
-        private readonly AppWindow _appWindow;
+        private readonly AppWindow? _appWindow; // Допускаем null
 
         public SplashScreen()
         {
@@ -27,10 +27,17 @@ namespace PWin11_Tweaker_s
                 _appWindow = AppWindow.GetFromWindowId(windowId);
 
                 // Устанавливаем размер окна
-                _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 400));
+                if (_appWindow != null)
+                {
+                    _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 400));
 
-                // Центрируем окно
-                CenterWindow();
+                    // Центрируем окно
+                    CenterWindow();
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Не удалось инициализировать AppWindow.");
+                }
 
                 // Запуск анимации
                 StartSplashAnimation();
@@ -49,8 +56,20 @@ namespace PWin11_Tweaker_s
         {
             try
             {
+                if (_appWindow == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("AppWindow не инициализирован.");
+                    return;
+                }
+
                 // Получаем размеры экрана
                 var displayArea = DisplayArea.GetFromWindowId(_appWindow.Id, DisplayAreaFallback.Nearest);
+                if (displayArea == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("Не удалось получить DisplayArea.");
+                    return;
+                }
+
                 int screenWidth = displayArea.WorkArea.Width;
                 int screenHeight = displayArea.WorkArea.Height;
 
@@ -76,8 +95,7 @@ namespace PWin11_Tweaker_s
                 if (this.Content is Grid rootGrid)
                 {
                     // Находим Image по имени
-                    var splashImage = rootGrid.FindName("SplashImage") as Image;
-                    if (splashImage != null)
+                    if (rootGrid.FindName("SplashImage") is Image splashImage)
                     {
                         // Создаем Storyboard
                         Storyboard storyboard = new Storyboard();
@@ -87,7 +105,8 @@ namespace PWin11_Tweaker_s
                         {
                             From = 0,
                             To = 1,
-                            Duration = new Duration(TimeSpan.FromSeconds(1.5))
+                            Duration = new Duration(TimeSpan.FromSeconds(1.5)),
+                            EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
                         };
                         Storyboard.SetTarget(opacityAnimation, splashImage);
                         Storyboard.SetTargetProperty(opacityAnimation, "Opacity");
@@ -98,7 +117,8 @@ namespace PWin11_Tweaker_s
                         {
                             From = 0.8,
                             To = 1,
-                            Duration = new Duration(TimeSpan.FromSeconds(1.5))
+                            Duration = new Duration(TimeSpan.FromSeconds(1.5)),
+                            EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
                         };
                         Storyboard.SetTarget(scaleXAnimation, splashImage);
                         Storyboard.SetTargetProperty(scaleXAnimation, "(UIElement.RenderTransform).(ScaleTransform.ScaleX)");
@@ -109,7 +129,8 @@ namespace PWin11_Tweaker_s
                         {
                             From = 0.8,
                             To = 1,
-                            Duration = new Duration(TimeSpan.FromSeconds(1.5))
+                            Duration = new Duration(TimeSpan.FromSeconds(1.5)),
+                            EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
                         };
                         Storyboard.SetTarget(scaleYAnimation, splashImage);
                         Storyboard.SetTargetProperty(scaleYAnimation, "(UIElement.RenderTransform).(ScaleTransform.ScaleY)");
@@ -138,9 +159,14 @@ namespace PWin11_Tweaker_s
         {
             try
             {
+                // Ждём завершения анимации (1.5 секунды) + дополнительное время
                 await Task.Delay(3000);
+
+                // Открываем MainWindow
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Activate();
+
+                // Закрываем SplashScreen
                 this.Close();
             }
             catch (Exception ex)

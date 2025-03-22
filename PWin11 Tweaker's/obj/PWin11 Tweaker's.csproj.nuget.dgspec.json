@@ -50,15 +50,13 @@
         "net8.0-windows10.0.26100": {
           "targetAlias": "net8.0-windows10.0.26100.0",
           "dependencies": {
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
+            "Microsoft.NETCore.Platforms": {
               "target": "Package",
-              "version": "[8.0.14, )",
-              "autoReferenced": true
+              "version": "[7.0.4, )"
             },
             "Microsoft.Web.WebView2": {
               "target": "Package",
-              "version": "[1.0.2651.64, )"
+              "version": "[1.0.3124.44, )"
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
@@ -66,7 +64,7 @@
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
-              "version": "[1.6.250228001, )"
+              "version": "[1.7.250310001, )"
             },
             "System.Diagnostics.Debug": {
               "target": "Package",
@@ -82,7 +80,7 @@
             },
             "runtime.native.System.Net.Http": {
               "target": "Package",
-              "version": "[4.3.0, )"
+              "version": "[4.3.1, )"
             }
           },
           "imports": [
@@ -107,10 +105,6 @@
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[8.0.14, 8.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
               "version": "[8.0.14, 8.0.14]"
             },
             {

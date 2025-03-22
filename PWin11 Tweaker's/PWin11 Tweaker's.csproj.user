@@ -10,7 +10,7 @@
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x64</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
-    <_LastSelectedProfileId>D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Properties\PublishProfiles\win-x64.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker%27s\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

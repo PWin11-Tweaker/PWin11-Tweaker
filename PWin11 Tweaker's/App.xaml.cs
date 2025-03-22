@@ -1,40 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
-
-
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Dispatching;
+using System;
+using Windows.UI.Popups; // Для MessageDialog
+using System.Threading.Tasks;
 
 namespace PWin11_Tweaker_s
 {
-
     public partial class App : Application
     {
-
         public App()
         {
             this.InitializeComponent();
+
+            // Подписываемся на необработанные исключения для WinUI
+            this.UnhandledException += App_UnhandledException;
+
+            // Подписываемся на необработанные исключения в задачах
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
         }
 
-        protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+        private async void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
         {
-            m_window = new SplashScreen();
-            m_window.Activate();
+            // Предотвращаем завершение приложения сразу
+            e.Handled = true;
+
+            // Логируем исключение
+            System.Diagnostics.Debug.WriteLine($"Необработанное исключение: {e.Exception.Message}\nСтек: {e.Exception.StackTrace}");
+
+            // Показываем сообщение пользователю (асинхронно)
+            await ShowErrorDialog(e.Exception.Message);
         }
 
-        private Window? m_window;
+        // Указываем, что sender может быть null
+        private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
+        {
+            // Логируем асинхронные ошибки
+            System.Diagnostics.Debug.WriteLine($"Асинхронная ошибка: {e.Exception.Message}\nСтек: {e.Exception.StackTrace}");
+            e.SetObserved(); // Помечаем как обработанное
+        }
+
+        private async Task ShowErrorDialog(string message)
+        {
+            // Используем MessageDialog из Windows.UI.Popups
+            var dialog = new MessageDialog($"Произошла ошибка: {message}", "Ошибка");
+            dialog.Commands.Add(new UICommand("ОК"));
+            await dialog.ShowAsync();
+        }
+
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            // Твой код запуска окна
+            Window window = new SplashScreen();
+            window.Activate();
+        }
     }
 }
