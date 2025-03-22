@@ -10,25 +10,17 @@ namespace PWin11_Tweaker_s
     {
         public App()
         {
-            this.InitializeComponent();
-
-            // Подписываемся на необработанные исключения для WinUI
-            this.UnhandledException += App_UnhandledException;
-
-            // Подписываемся на необработанные исключения в задачах
-            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
-        }
-
-        private async void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
-        {
-            // Предотвращаем завершение приложения сразу
-            e.Handled = true;
-
-            // Логируем исключение
-            System.Diagnostics.Debug.WriteLine($"Необработанное исключение: {e.Exception.Message}\nСтек: {e.Exception.StackTrace}");
-
-            // Показываем сообщение пользователю (асинхронно)
-            await ShowErrorDialog(e.Exception.Message);
+            try
+            {
+                this.InitializeComponent();
+                System.Diagnostics.Debug.WriteLine("App: Инициализация завершена.");
+            }
+            catch (Exception ex)
+            {
+                System.IO.File.WriteAllText("app_init_error.log",
+                    $"Ошибка в App: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                throw;
+            }
         }
 
         // Указываем, что sender может быть null
@@ -39,18 +31,10 @@ namespace PWin11_Tweaker_s
             e.SetObserved(); // Помечаем как обработанное
         }
 
-        private async Task ShowErrorDialog(string message)
-        {
-            // Используем MessageDialog из Windows.UI.Popups
-            var dialog = new MessageDialog($"Произошла ошибка: {message}", "Ошибка");
-            dialog.Commands.Add(new UICommand("ОК"));
-            await dialog.ShowAsync();
-        }
-
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             // Твой код запуска окна
-            Window window = new SplashScreen();
+            Window window = new MainWindow();
             window.Activate();
         }
     }

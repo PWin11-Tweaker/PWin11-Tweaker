@@ -13,6 +13,16 @@
     <SourceRoot Include="C:\Users\yttut\.nuget\packages\" />
     <SourceRoot Include="D:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)system.diagnostics.diagnosticsource\9.0.3\contentFiles\any\net8.0\ILLink\ILLink.Descriptors.LibraryBuild.xml" Condition="Exists('$(NuGetPackageRoot)system.diagnostics.diagnosticsource\9.0.3\contentFiles\any\net8.0\ILLink\ILLink.Descriptors.LibraryBuild.xml')">
+      <NuGetPackageId>System.Diagnostics.DiagnosticSource</NuGetPackageId>
+      <NuGetPackageVersion>9.0.3</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>ILLink\ILLink.Descriptors.LibraryBuild.xml</Link>
+    </Content>
+  </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="D:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\microsoft.windows.sdk.buildtools\10.0.26100.1742\buildTransitive\Microsoft.Windows.SDK.BuildTools.props" Condition="Exists('D:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\microsoft.windows.sdk.buildtools\10.0.26100.1742\buildTransitive\Microsoft.Windows.SDK.BuildTools.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windowsappsdk\1.7.250310001\buildTransitive\Microsoft.WindowsAppSDK.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windowsappsdk\1.7.250310001\buildTransitive\Microsoft.WindowsAppSDK.props')" />

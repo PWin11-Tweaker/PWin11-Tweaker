@@ -4,7 +4,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>PWin11 Tweaker's (Package)</ActiveDebugProfile>
+    <ActiveDebugProfile>PWin11 Tweaker's (Unpackage)</ActiveDebugProfile>
     <PackageRegistrationPath>C:\Users\Admin\Documents\PWin11</PackageRegistrationPath>
     <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
     <AppxShowAllApps>False</AppxShowAllApps>

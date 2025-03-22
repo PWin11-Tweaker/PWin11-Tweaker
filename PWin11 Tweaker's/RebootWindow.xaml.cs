@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml;
 using System;
 using WinRT.Interop;
 
-namespace PWin11Tweaker
+namespace PWin11_Tweaker_s
 {
     public sealed partial class RebootWindow : Window
     {

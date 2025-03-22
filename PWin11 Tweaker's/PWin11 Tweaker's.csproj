@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
@@ -48,13 +48,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+    <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3124.44" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250310001" />
+    <PackageReference Include="runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl" Version="4.3.3" />
+    <PackageReference Include="runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl" Version="4.3.3" />
+    <PackageReference Include="runtime.native.System" Version="4.3.1" />
     <PackageReference Include="runtime.native.System.Net.Http" Version="4.3.1" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />
     <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="9.0.3" />
     <PackageReference Include="System.IO" Version="4.3.0" />
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="SplashScreen.xaml">
@@ -143,6 +152,7 @@
     <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
     <Authors>ph1ncyn</Authors>
     <NeutralLanguage>ru</NeutralLanguage>
+    <WindowsPackageType>None</WindowsPackageType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LayoutDir>D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\x64\Debug\Msix</LayoutDir>
