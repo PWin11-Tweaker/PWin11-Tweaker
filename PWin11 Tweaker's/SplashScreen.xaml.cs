@@ -12,7 +12,7 @@ namespace PWin11_Tweaker_s
 {
     public sealed partial class SplashScreen : Window
     {
-        private readonly AppWindow? _appWindow; // Допускаем null
+        private readonly AppWindow? _appWindow;
 
         public SplashScreen()
         {
@@ -26,10 +26,16 @@ namespace PWin11_Tweaker_s
                 WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
                 _appWindow = AppWindow.GetFromWindowId(windowId);
 
-                // Устанавливаем размер окна
                 if (_appWindow != null)
                 {
+                    // Устанавливаем размер окна
                     _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 400));
+
+                    // Убираем рамку и заголовок
+                    if (_appWindow.Presenter is OverlappedPresenter presenter)
+                    {
+                        presenter.SetBorderAndTitleBar(false, false);
+                    }
 
                     // Центрируем окно
                     CenterWindow();
@@ -37,6 +43,16 @@ namespace PWin11_Tweaker_s
                 else
                 {
                     System.Diagnostics.Debug.WriteLine("Не удалось инициализировать AppWindow.");
+                }
+
+                // Проверяем поддержку Mica и применяем запасной фон, если нужно
+                if (!IsMicaSupported())
+                {
+                    System.Diagnostics.Debug.WriteLine("Mica не поддерживается, применяем запасной фон.");
+                    if (this.Content is Grid rootGrid)
+                    {
+                        rootGrid.Background = new SolidColorBrush(Colors.DarkSlateGray);
+                    }
                 }
 
                 // Запуск анимации
@@ -50,6 +66,12 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"Ошибка в SplashScreen: {ex.Message}");
                 this.Close();
             }
+        }
+
+        private bool IsMicaSupported()
+        {
+            // Mica поддерживается только на Windows 11 (сборка 22000 и выше)
+            return Environment.OSVersion.Version.Build >= 22000;
         }
 
         private void CenterWindow()

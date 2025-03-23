@@ -34,7 +34,7 @@ namespace PWin11_Tweaker_s
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             // Твой код запуска окна
-            Window window = new MainWindow();
+            Window window = new SplashScreen();
             window.Activate();
         }
     }

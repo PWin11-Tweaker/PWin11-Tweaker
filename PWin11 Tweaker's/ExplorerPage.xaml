@@ -17,6 +17,10 @@
         <!-- Твик: Установка/Удаление StartAllBack (заменено на кнопку) -->
         <Button x:Name="InstallStartAllBackButton" Content="Установить StartAllBack" Margin="0,0,0,10" Click="InstallStartAllBackButton_Click"/>
 
+        <!-- Переключение кл. контекс.меню -->
+        <CheckBox x:Name="ClassicContextMenuToggle" Content="Использовать классическое контекстное меню"/>
+
+
         <!-- Кнопка применения -->
         <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" />
 
