@@ -16,6 +16,7 @@ namespace PWin11_Tweaker_s
         private const string StartAllBackExePath = @"C:\Program Files\StartAllBack\StartAllBackCfg.exe";
         private bool isStartAllBackInstalled;
 
+
         public ExplorerPage()
         {
             try
@@ -33,7 +34,7 @@ namespace PWin11_Tweaker_s
                 throw;
             }
         }
-
+        // Кнопка установки StartAllBack
         private async void InstallStartAllBackButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -82,6 +83,7 @@ namespace PWin11_Tweaker_s
             }
         }
 
+
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -107,6 +109,23 @@ namespace PWin11_Tweaker_s
                 string captionHeightValue = useSmallCaptions ? "-180" : "-330";
                 regContent += $"[HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics]\n" +
                               $"\"CaptionHeight\"=\"{captionHeightValue}\"\n\n";
+
+                // Твик: Использовать классическое контекстное меню
+                bool applyClassicContextMenu = ClassicContextMenuToggle.IsChecked ?? false;
+                if (applyClassicContextMenu)
+                {
+                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\\InprocServer32]\n" +
+                          $"@=\"\"\n\n";
+                }
+                else
+                {
+                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}]\n\n";
+                }
+
+
+
+
+
 
                 StatusText.Text = "Сохранение изменений в реестре...";
                 ProgressBar.Value = 90;

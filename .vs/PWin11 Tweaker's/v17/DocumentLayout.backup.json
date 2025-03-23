@@ -3,67 +3,32 @@
   "WorkspaceRootPath": "D:\\.project-new-git\\PWin11-Tweaker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\splashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\splashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yttut\\.nuget\\packages\\microsoft.ui.xaml\\2.8.7\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\obj\\x64\\Debug\\net9.0-windows10.0.26100.0\\win-x64\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PWin11 Tweaker\u0027s\\obj\\x64\\Debug\\net9.0-windows10.0.26100.0\\win-x64\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\rebootwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\rebootwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\systempage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\systempage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\privacypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\privacypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\systempage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\systempage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\rebootwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\rebootwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\performancepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\performancepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\splashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\splashscreen.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\splashscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\splashscreen.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\interfacepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\interfacepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\systempage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\systempage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\explorerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\explorerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\explorerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\explorerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\pwin11 tweaker\u0027s.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\pwin11 tweaker\u0027s.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -73,44 +38,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 282,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "readme.txt",
-              "DocumentMoniker": "C:\\Users\\yttut\\.nuget\\packages\\microsoft.ui.xaml\\2.8.7\\readme.txt",
-              "ToolTip": "C:\\Users\\yttut\\.nuget\\packages\\microsoft.ui.xaml\\2.8.7\\readme.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-22T12:27:13.176Z",
+              "DocumentIndex": 0,
+              "Title": "app.manifest",
+              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\app.manifest",
+              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\app.manifest",
+              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\app.manifest",
+              "RelativeToolTip": "PWin11 Tweaker\u0027s\\app.manifest",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
+              "WhenOpened": "2025-03-23T16:12:37.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "App.g.i.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\obj\\x64\\Debug\\net9.0-windows10.0.26100.0\\win-x64\\App.g.i.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\obj\\x64\\Debug\\net9.0-windows10.0.26100.0\\win-x64\\App.g.i.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\obj\\x64\\Debug\\net9.0-windows10.0.26100.0\\win-x64\\App.g.i.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\obj\\x64\\Debug\\net9.0-windows10.0.26100.0\\win-x64\\App.g.i.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAADgvxkAAAAMAAAAAAAAAA==",
+              "Title": "SplashScreen.xaml.cs",
+              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
+              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
+              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
+              "RelativeToolTip": "PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
+              "ViewState": "AgIAALQAAAAAAAAAAAAQwMgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T12:19:40.958Z",
+              "WhenOpened": "2025-03-23T16:05:56.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\App.xaml.cs",
+              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\App.xaml.cs",
+              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\App.xaml.cs",
+              "RelativeToolTip": "PWin11 Tweaker\u0027s\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T16:02:52.691Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "RebootWindow.xaml",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\RebootWindow.xaml",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\RebootWindow.xaml",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\RebootWindow.xaml",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\RebootWindow.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAApAAAAAAAAAA==",
+              "Title": "SplashScreen.xaml",
+              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SplashScreen.xaml",
+              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\SplashScreen.xaml",
+              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SplashScreen.xaml",
+              "RelativeToolTip": "PWin11 Tweaker\u0027s\\SplashScreen.xaml",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAuwCgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T12:17:38.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T16:02:46.324Z"
             },
             {
               "$type": "Document",
@@ -122,164 +100,31 @@
               "RelativeToolTip": "PWin11 Tweaker\u0027s\\SystemPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T12:17:22.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SplashScreen.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\SplashScreen.xaml.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAD4vyUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:15:11.514Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SystemPage.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SystemPage.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\SystemPage.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\SystemPage.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\SystemPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:15:09.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PrivacyPage.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PrivacyPage.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\PrivacyPage.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PrivacyPage.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\PrivacyPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:15:07.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PerformancePage.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PerformancePage.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\PerformancePage.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PerformancePage.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\PerformancePage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:15:05.067Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T16:02:45.327Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\MainWindow.xaml",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\MainWindow.xaml",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\MainWindow.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAANAAAAAAAAAA==",
+              "Title": "ExplorerPage.xaml",
+              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\ExplorerPage.xaml",
+              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\ExplorerPage.xaml",
+              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\ExplorerPage.xaml",
+              "RelativeToolTip": "PWin11 Tweaker\u0027s\\ExplorerPage.xaml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAhwBgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T07:15:01.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-23T15:24:29.804Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\MainWindow.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:14:56.719Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "InterfacePage.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\InterfacePage.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\InterfacePage.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\InterfacePage.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\InterfacePage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:14:51.318Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 6,
               "Title": "ExplorerPage.xaml.cs",
               "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\ExplorerPage.xaml.cs",
               "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\ExplorerPage.xaml.cs",
               "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\ExplorerPage.xaml.cs",
               "RelativeToolTip": "PWin11 Tweaker\u0027s\\ExplorerPage.xaml.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAvwH8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:14:45.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "PWin11 Tweaker\u0027s.csproj",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj*",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-22T07:06:12.449Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\App.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\App.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\App.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\App.xaml.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwBwAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:15:38.998Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\App.xaml",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\App.xaml",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\App.xaml",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-22T06:15:33.835Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RebootWindow.xaml.cs",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\RebootWindow.xaml.cs",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\RebootWindow.xaml.cs",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\RebootWindow.xaml.cs",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\RebootWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:00:50.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T07:14:45.456Z"
             }
           ]
         }
