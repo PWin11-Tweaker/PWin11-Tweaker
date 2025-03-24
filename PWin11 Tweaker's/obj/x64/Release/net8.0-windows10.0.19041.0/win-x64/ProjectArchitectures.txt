@@ -1,1 +1,1 @@
-D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's.csproj;x64
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\PWin11 Tweaker's.csproj;x64

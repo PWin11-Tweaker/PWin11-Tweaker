@@ -1,11 +1,17 @@
 {
   "profiles": {
     "PWin11 Tweaker's (Package)": {
-      "commandName": "MsixPackage"
+      "commandName": "MsixPackage",
+      "alwaysReinstallApp": true
     },
     "MSIX Bundle": {
       "commandName": "MsixPackage",
       "alwaysReinstallApp": true
+    },
+    "PWin11 Tweaker's (Unpackage)": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\yttut\\OneDrive\\Документы\\PW",
+      "authenticationMode": "Universal"
     }
   }
 }
