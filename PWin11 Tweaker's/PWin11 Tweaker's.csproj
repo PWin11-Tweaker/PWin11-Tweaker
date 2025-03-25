@@ -70,36 +70,6 @@
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="SplashScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="PrivacyPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="PerformancePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="InterfacePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="SystemPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="ExplorerPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Assets\OldNewExplorer\" />
     <Folder Include="asset\" />
   </ItemGroup>
@@ -118,8 +88,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="RebootWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Update="Window\SplashScreen.xaml">
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 

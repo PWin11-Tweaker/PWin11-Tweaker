@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "+jhgqCqz2dM=",
+  "dgSpecHash": "NUZbHSsOmMA=",
   "success": true,
   "projectFilePath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.14\\microsoft.net.illink.tasks.8.0.14.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.platforms\\7.0.4\\microsoft.netcore.platforms.7.0.4.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.targets\\5.0.0\\microsoft.netcore.targets.5.0.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\microsoft.web.webview2\\1.0.3124.44\\microsoft.web.webview2.1.0.3124.44.nupkg.sha512",
@@ -57,17 +56,16 @@
     "C:\\Users\\yttut\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\8.0.14\\microsoft.netcore.app.runtime.win-x86.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\8.0.14\\microsoft.netcore.app.crossgen2.win-x64.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.26100.57\\microsoft.windows.sdk.net.ref.10.0.26100.57.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\8.0.14\\microsoft.aspnetcore.app.runtime.win-x86.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.app.runtime.win-arm64\\8.0.14\\microsoft.netcore.app.runtime.win-arm64.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.14\\microsoft.aspnetcore.app.runtime.win-x64.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-arm64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-arm64.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-arm64\\8.0.14\\microsoft.aspnetcore.app.runtime.win-arm64.8.0.14.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.14\\microsoft.netcore.app.runtime.win-x64.8.0.14.nupkg.sha512",
-    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.14.nupkg.sha512"
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\8.0.14\\microsoft.netcore.app.runtime.win-x86.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.netcore.app.runtime.win-arm64\\8.0.14\\microsoft.netcore.app.runtime.win-arm64.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-arm64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-arm64.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.14\\microsoft.aspnetcore.app.runtime.win-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\8.0.14\\microsoft.aspnetcore.app.runtime.win-x86.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-arm64\\8.0.14\\microsoft.aspnetcore.app.runtime.win-arm64.8.0.14.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.26100.57\\microsoft.windows.sdk.net.ref.10.0.26100.57.nupkg.sha512"
   ],
   "logs": []
 }
