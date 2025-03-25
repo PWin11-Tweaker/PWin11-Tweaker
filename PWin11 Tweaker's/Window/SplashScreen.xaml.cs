@@ -7,6 +7,8 @@ using Microsoft.UI.Xaml.Media.Animation;
 using System;
 using System.Threading.Tasks;
 using WinRT.Interop;
+using Microsoft.Win32;
+using System.IO; // Добавляем для File.Exists
 
 namespace PWin11_Tweaker_s
 {
@@ -58,7 +60,7 @@ namespace PWin11_Tweaker_s
                 // Запуск анимации
                 StartSplashAnimation();
 
-                // Запуск основной логики приложения
+                // Запуск проверки твиков и основной логики приложения
                 StartApp();
             }
             catch (Exception ex)
@@ -181,8 +183,11 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Ждём завершения анимации (1.5 секунды) + дополнительное время
-                await Task.Delay(3000);
+                // Ждём завершения анимации (1.5 секунды)
+                await Task.Delay(1500);
+
+                // Проверяем состояние твиков
+                await CheckTweaksStatus();
 
                 // Открываем MainWindow
                 MainWindow mainWindow = new MainWindow();
@@ -195,6 +200,137 @@ namespace PWin11_Tweaker_s
             {
                 System.Diagnostics.Debug.WriteLine($"Ошибка при запуске MainWindow: {ex.Message}");
                 this.Close();
+            }
+        }
+
+        private async Task CheckTweaksStatus()
+        {
+            try
+            {
+                // Список твиков для проверки
+                var tweaks = new[]
+                {
+                    new { Name = "Проверка классического контекстного меню...", CheckFunc = new Func<bool>(() => CheckClassicContextMenu()) },
+                    new { Name = "Проверка скрытности файлов...", CheckFunc = new Func<bool>(() => CheckShowHiddenFiles()) },
+                    new { Name = "Проверка уменьшения кнопок управления окном...", CheckFunc = new Func<bool>(() => CheckSmallCaptions()) },
+                    new { Name = "Проверка установки StartAllBack...", CheckFunc = new Func<bool>(() => CheckStartAllBack()) }
+                };
+
+                int totalTweaks = tweaks.Length;
+                int completedTweaks = 0;
+
+                foreach (var tweak in tweaks)
+                {
+                    // Обновляем текст статуса
+                    if (this.Content is Grid rootGrid)
+                    {
+                        if (rootGrid.FindName("StatusText") is TextBlock statusText)
+                        {
+                            statusText.Text = tweak.Name;
+                        }
+
+                        if (rootGrid.FindName("ProgressBar") is ProgressBar progressBar)
+                        {
+                            completedTweaks++;
+                            progressBar.Value = (double)completedTweaks / totalTweaks * 100;
+                        }
+                    }
+
+                    // Выполняем проверку
+                    bool result = tweak.CheckFunc();
+                    System.Diagnostics.Debug.WriteLine($"{tweak.Name} Результат: {(result ? "Включён" : "Выключен")}");
+
+                    // Задержка для имитации проверки
+                    await Task.Delay(500);
+                }
+
+                // Финальный статус
+                if (this.Content is Grid rootGridFinal)
+                {
+                    if (rootGridFinal.FindName("StatusText") is TextBlock finalStatusText)
+                    {
+                        finalStatusText.Text = "Проверка завершена!";
+                    }
+
+                    if (rootGridFinal.FindName("ProgressBar") is ProgressBar finalProgressBar)
+                    {
+                        finalProgressBar.Value = 100;
+                    }
+                }
+
+                // Дополнительная задержка перед открытием MainWindow
+                await Task.Delay(500);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке твиков: {ex.Message}");
+            }
+        }
+
+        private bool CheckClassicContextMenu()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}");
+                return key != null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке классического контекстного меню: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckShowHiddenFiles()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced");
+                if (key != null)
+                {
+                    return (int?)key.GetValue("Hidden", 0) == 1;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке отображения скрытых файлов: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckSmallCaptions()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop\WindowMetrics");
+                if (key != null)
+                {
+                    string? captionHeight = key.GetValue("CaptionHeight", "-330") as string;
+                    if (int.TryParse(captionHeight, out int height))
+                    {
+                        return height > -330;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке уменьшения кнопок управления окном: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckStartAllBack()
+        {
+            try
+            {
+                return File.Exists(@"C:\Program Files\StartAllBack\StartAllBackCfg.exe");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке StartAllBack: {ex.Message}");
+                return false;
             }
         }
     }

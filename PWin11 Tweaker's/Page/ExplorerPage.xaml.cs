@@ -14,8 +14,7 @@ namespace PWin11_Tweaker_s
     {
         private const string StartAllBackUrl = "https://www.startallback.com/download.php";
         private const string StartAllBackExePath = @"C:\Program Files\StartAllBack\StartAllBackCfg.exe";
-        private bool isStartAllBackInstalled;
-
+        private bool isStartAllBackInstalled; // Проверка, установлен ли StartAllBack
 
         public ExplorerPage()
         {
@@ -34,6 +33,7 @@ namespace PWin11_Tweaker_s
                 throw;
             }
         }
+
         // Кнопка установки StartAllBack
         private async void InstallStartAllBackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -62,6 +62,7 @@ namespace PWin11_Tweaker_s
                     InstallStartAllBackButton.Content = "Удалить StartAllBack";
                 }
                 System.Diagnostics.Debug.WriteLine("InstallStartAllBackButton_Click: Завершено успешно.");
+                CheckStartAllBackInstallation();
             }
             catch (Exception ex)
             {
@@ -82,7 +83,6 @@ namespace PWin11_Tweaker_s
                 InstallStartAllBackButton.IsEnabled = true;
             }
         }
-
 
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -121,11 +121,6 @@ namespace PWin11_Tweaker_s
                 {
                     regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}]\n\n";
                 }
-
-
-
-
-
 
                 StatusText.Text = "Сохранение изменений в реестре...";
                 ProgressBar.Value = 90;
@@ -298,6 +293,25 @@ namespace PWin11_Tweaker_s
                 ProgressPanel.Visibility = Visibility.Collapsed;
                 ApplyButton.IsEnabled = true;
                 InstallStartAllBackButton.IsEnabled = true;
+            }
+        }
+
+        private void CheckStartAllBackInstallation()
+        {
+            try
+            {
+                isStartAllBackInstalled = File.Exists(@"C:\Program Files\StartAllBack\StartAllBackCfg.exe");
+
+                if (InstallStartAllBackButton != null)
+                {
+                    InstallStartAllBackButton.Content = isStartAllBackInstalled ? "Удалить StartAllBack" : "Установить StartAllBack";
+                }
+
+                System.Diagnostics.Debug.WriteLine($"StartAllBack установлен: {isStartAllBackInstalled}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке установки StartAllBack: {ex.Message}");
             }
         }
 

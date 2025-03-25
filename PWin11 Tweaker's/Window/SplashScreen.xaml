@@ -29,7 +29,14 @@
                        Foreground="Black"
                        HorizontalAlignment="Center"
                        Margin="0,20,0,10"/>
-
+            
+            <TextBlock x:Name="StatusText"
+                       Text="Проверка настроек..."
+                       FontSize="9"
+                       Foreground="Blackку "
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,5"/>
+            
             <ProgressBar x:Name="ProgressBar"
                          Width="200"
                          Height="50"
