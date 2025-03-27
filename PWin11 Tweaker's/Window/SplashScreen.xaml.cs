@@ -8,7 +8,8 @@ using System;
 using System.Threading.Tasks;
 using WinRT.Interop;
 using Microsoft.Win32;
-using System.IO; // Добавляем для File.Exists
+using System.IO;
+using PWin11_Tweaker_s.Script; // Добавляем для File.Exists
 
 namespace PWin11_Tweaker_s
 {
@@ -240,6 +241,22 @@ namespace PWin11_Tweaker_s
                     bool result = tweak.CheckFunc();
                     System.Diagnostics.Debug.WriteLine($"{tweak.Name} Результат: {(result ? "Включён" : "Выключен")}");
 
+                    if (tweak.Name.Contains("классического контекстного меню"))
+                    {
+                        TweakStatus.IsClassicContextMenuEnabled = result;
+                    }
+                    else if (tweak.Name.Contains("отображения скрытых файлов"))
+                    {
+                        TweakStatus.IsShowHiddenFilesEnabled = result;
+                    }
+                    else if (tweak.Name.Contains("уменьшения кнопок управления окном"))
+                    {
+                        TweakStatus.IsSmallCaptionsEnabled = result;
+                    }
+                    else if (tweak.Name.Contains("установки StartAllBack"))
+                    {
+                        TweakStatus.IsStartAllBackInstalled = result;
+                    }
                     // Задержка для имитации проверки
                     await Task.Delay(500);
                 }

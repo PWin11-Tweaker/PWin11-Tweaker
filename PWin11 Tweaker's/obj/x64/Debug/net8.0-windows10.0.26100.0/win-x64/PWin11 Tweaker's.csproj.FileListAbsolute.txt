@@ -301,3 +301,13 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Window\RebootWindow.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Window\SplashScreen.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Assets\logo-black.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Page\HomePage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Page\HomePage.g.i.cs
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Page\HomePage.g.cs
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.g.i.cs
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.g.cs
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Page\HomePage.xaml
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xaml
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Page\HomePage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xbf

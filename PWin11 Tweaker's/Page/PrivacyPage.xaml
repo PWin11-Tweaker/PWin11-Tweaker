@@ -11,6 +11,17 @@
 
     <StackPanel Margin="20">
         <TextBlock Text="Настройки Приватности" FontSize="24" />
-        <TextBlock Text="Здесь будут твики для Приватности" Margin="0,10,0,0" />
+        <CheckBox x:Name="DisableInputDataCollection" Content="Отключить отправку данных о вводе" Margin="0,5, 0,0"/>
+        
+        <CheckBox x:Name="DisableTelemetry" Content="Отключить слежку через реестр" Margin="0,5,0,0" />
+        
+        <!-- Кнопка применения действий и твиков -->
+        <Button x:Name="ApplyButton" Content="Применить" Margin="0,20,0,0"/>
+        
+        <!-- Прогресс бар выполнения задач -->
+        <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Margin="0,20,0,0">
+            <TextBlock x:Name="StatusText" Text="Применение настроек..."/>
+            <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Maximum="100" Value="0" Margin="0,10,0,0"/>
+        </StackPanel>
     </StackPanel>
 </Page>

@@ -1,9 +1,11 @@
 App.xbf
 MainWindow.xbf
 Page\ExplorerPage.xbf
+Page\HomePage.xbf
 Page\InterfacePage.xbf
 Page\PerformancePage.xbf
 Page\PrivacyPage.xbf
 Page\SystemPage.xbf
+Settings\SettingsPage.xbf
 Window\RebootWindow.xbf
 Window\SplashScreen.xbf

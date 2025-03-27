@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using System;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 
@@ -7,43 +8,73 @@ namespace PWin11_Tweaker_s
     public sealed partial class MainWindow : Window
     {
         private MicaBackdrop micaBackdrop;
+
         public MainWindow()
         {
             this.InitializeComponent(); // Инициализация XAML-элементов
             micaBackdrop = new MicaBackdrop();
             this.SystemBackdrop = micaBackdrop;
 
+            // Устанавливаем начальную страницу
+            ContentFrame.Navigate(typeof(HomePage));
+            NavView.SelectedItem = NavView.MenuItems[0];
         }
 
-        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            if (args.SelectedItem is NavigationViewItem item)
+            if (args.IsSettingsInvoked)
             {
-                switch (item.Tag.ToString())
-                {
-                    case "Explorer":
-                        ContentFrame.Navigate(typeof(ExplorerPage));
-                        break;
-                    case "System":
-                        ContentFrame.Navigate(typeof(SystemPage));
-                        break;
-                    case "Interface":
-                        ContentFrame.Navigate(typeof(InterfacePage));
-                        break;
-                    case "Performance":
-                        ContentFrame.Navigate(typeof(PerformancePage));
-                        break;
-                    case "Privacy":
-                        ContentFrame.Navigate(typeof(PrivacyPage));
-                        break;
-                }
+                // Если включён встроенный пункт "Settings" в NavigationView
+                ContentFrame.Navigate(typeof(SettingsPage));
+                return;
+            }
+
+            var invokedItem = args.InvokedItemContainer as NavigationViewItem;
+            if (invokedItem == null) return;
+
+            string? tag = invokedItem.Tag?.ToString();
+            if (tag == null) return;
+
+            Type? pageType = null;
+            switch (tag)
+            {
+                case "HomePage":
+                    pageType = typeof(HomePage);
+                    break;
+                case "ExplorerPage":
+                    pageType = typeof(ExplorerPage);
+                    break;
+                case "SystemPage":
+                    pageType = typeof(SystemPage);
+                    break;
+                case "InterfacePage":
+                    pageType = typeof(InterfacePage);
+                    break;
+                case "PerformancePage":
+                    pageType = typeof(PerformancePage);
+                    break;
+                case "PrivacyPage":
+                    pageType = typeof(PrivacyPage);
+                    break;
+                case "SettingsPage":
+                    pageType = typeof(SettingsPage);
+                    break;
+                case "ToggleTheme":
+                    ToggleTheme();
+                    return;
+            }
+
+            if (pageType != null && ContentFrame.CurrentSourcePageType != pageType)
+            {
+                ContentFrame.Navigate(pageType);
             }
         }
 
-        private void ToggleThemeButton_Click(object sender, RoutedEventArgs e)
+        private void ToggleTheme()
         {
+            // Логика переключения темы
             var currentTheme = ((FrameworkElement)this.Content).RequestedTheme;
-            ((FrameworkElement)this.Content).RequestedTheme = currentTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark; 
+            ((FrameworkElement)this.Content).RequestedTheme = currentTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
         }
     }
 }

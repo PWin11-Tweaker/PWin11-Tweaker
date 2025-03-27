@@ -12,15 +12,17 @@
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
                         Header="PWin11 Tweaker's"
-                        SelectionChanged="NavView_SelectionChanged">
+                        ItemInvoked="NavView_ItemInvoked">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Проводник" Tag="Explorer" />
-                <NavigationViewItem Content="Система" Tag="System" />
-                <NavigationViewItem Content="Интерфейс" Tag="Interface" />
-                <NavigationViewItem Content="Производительность" Tag="Performance" />
-                <NavigationViewItem Content="Конфиденциальность" Tag="Privacy" />
-
-                <Button Content="Переключить тему" Click="ToggleThemeButton_Click"/>
+                <NavigationViewItem Content="Главная" Tag="HomePage"/>
+                <NavigationViewItem Content="Проводник" Tag="ExplorerPage"/>
+                <NavigationViewItem Content="Система" Tag="SystemPage"/>
+                <NavigationViewItem Content="Интерфейс" Tag="InterfacePage"/>
+                <NavigationViewItem Content="Производительность" Tag="PerformancePage" />
+                <NavigationViewItem Content="Конфиденциальность" Tag="PrivacyPage"/>
+                <NavigationViewItemSeparator/>
+                <NavigationViewItem Content="Переключить тему" Tag="ToggleTheme"/>
+                <NavigationViewItem Content="Параметры" Tag="SettingsPage"/>
             </NavigationView.MenuItems>
             <Frame x:Name="ContentFrame" Margin="20" />
         </NavigationView>
