@@ -6,9 +6,9 @@
     <RootNamespace>PWin11_Tweaker_s</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- Укажи версию здесь -->
-    <Version>1.0.9.5</Version>
-    <AssemblyVersion>1.0.9.5</AssemblyVersion>
-    <FileVersion>1.0.9.5</FileVersion>
+    <Version>1.0.9.7</Version>
+    <AssemblyVersion>1.0.9.7</AssemblyVersion>
+    <FileVersion>1.0.9.7</FileVersion>
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
@@ -17,6 +17,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="icons\home.png" />
+    <Content Include="icons\explorer.png" />
+    <Content Include="icons\system.png" />
+    <Content Include="icons\interface.png" />
+    <Content Include="icons\performance.png" />
+    <Content Include="icons\privacy.png" />
+    <Content Include="icons\theme.png" />
+    <Content Include="icons\settings.png" />
     <None Remove="Assets\logo.ico" />
     <None Remove="Assets\logo.png" />
     <None Remove="ExplorerPage.xaml" />
@@ -72,6 +80,7 @@
   <ItemGroup>
     <Folder Include="Assets\OldNewExplorer\" />
     <Folder Include="asset\" />
+    <Folder Include="icons\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\logo.ico" />

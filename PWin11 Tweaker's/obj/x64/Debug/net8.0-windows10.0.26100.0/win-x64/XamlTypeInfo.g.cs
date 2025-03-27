@@ -640,9 +640,9 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase"));
                 userType.Activator = Activate_25_NavigationViewItem;
                 userType.StaticInitializer = StaticInitializer_25_NavigationViewItem;
+                userType.AddMemberName("Icon");
                 userType.AddMemberName("CompactPaneLength");
                 userType.AddMemberName("HasUnrealizedChildren");
-                userType.AddMemberName("Icon");
                 userType.AddMemberName("InfoBadge");
                 userType.AddMemberName("IsChildSelected");
                 userType.AddMemberName("IsExpanded");
@@ -1255,30 +1255,30 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.TemplateSettings;
         }
-        private object get_38_NavigationViewItem_CompactPaneLength(object instance)
-        {
-            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
-            return that.CompactPaneLength;
-        }
-        private object get_39_NavigationViewItem_HasUnrealizedChildren(object instance)
-        {
-            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
-            return that.HasUnrealizedChildren;
-        }
-        private void set_39_NavigationViewItem_HasUnrealizedChildren(object instance, object Value)
-        {
-            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
-            that.HasUnrealizedChildren = (global::System.Boolean)Value;
-        }
-        private object get_40_NavigationViewItem_Icon(object instance)
+        private object get_38_NavigationViewItem_Icon(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
             return that.Icon;
         }
-        private void set_40_NavigationViewItem_Icon(object instance, object Value)
+        private void set_38_NavigationViewItem_Icon(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
             that.Icon = (global::Microsoft.UI.Xaml.Controls.IconElement)Value;
+        }
+        private object get_39_NavigationViewItem_CompactPaneLength(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.CompactPaneLength;
+        }
+        private object get_40_NavigationViewItem_HasUnrealizedChildren(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            return that.HasUnrealizedChildren;
+        }
+        private void set_40_NavigationViewItem_HasUnrealizedChildren(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationViewItem)instance;
+            that.HasUnrealizedChildren = (global::System.Boolean)Value;
         }
         private object get_41_NavigationViewItem_InfoBadge(object instance)
         {
@@ -1714,26 +1714,26 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlMember.Getter = get_37_NavigationView_TemplateSettings;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.Icon":
+                userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
+                xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Icon", "Microsoft.UI.Xaml.Controls.IconElement");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_38_NavigationViewItem_Icon;
+                xamlMember.Setter = set_38_NavigationViewItem_Icon;
+                break;
             case "Microsoft.UI.Xaml.Controls.NavigationViewItem.CompactPaneLength":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "CompactPaneLength", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_38_NavigationViewItem_CompactPaneLength;
+                xamlMember.Getter = get_39_NavigationViewItem_CompactPaneLength;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationViewItem.HasUnrealizedChildren":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_39_NavigationViewItem_HasUnrealizedChildren;
-                xamlMember.Setter = set_39_NavigationViewItem_HasUnrealizedChildren;
-                break;
-            case "Microsoft.UI.Xaml.Controls.NavigationViewItem.Icon":
-                userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");
-                xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Icon", "Microsoft.UI.Xaml.Controls.IconElement");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_40_NavigationViewItem_Icon;
-                xamlMember.Setter = set_40_NavigationViewItem_Icon;
+                xamlMember.Getter = get_40_NavigationViewItem_HasUnrealizedChildren;
+                xamlMember.Setter = set_40_NavigationViewItem_HasUnrealizedChildren;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationViewItem.InfoBadge":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItem");

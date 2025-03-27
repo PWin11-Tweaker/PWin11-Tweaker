@@ -13,16 +13,46 @@
                         IsSettingsVisible="True"
                         Header="PWin11 Tweaker's"
                                                          >
+            <NavigationView.Resources>
+                <!-- Стиль для FontIcon -->
+                <Style TargetType="FontIcon">
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimary}"/>
+                </Style>
+            </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Главная" Tag="HomePage"/>
-                <NavigationViewItem Content="Проводник" Tag="ExplorerPage"/>
-                <NavigationViewItem Content="Система" Tag="SystemPage"/>
-                <NavigationViewItem Content="Интерфейс" Tag="InterfacePage"/>
-                <NavigationViewItem Content="Производительность" Tag="PerformancePage" />
-                <NavigationViewItem Content="Конфиденциальность" Tag="PrivacyPage"/>
+                <NavigationViewItem Content="Главная" Tag="HomePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Home -->
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Проводник" Tag="ExplorerPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Folder -->
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Система" Tag="SystemPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- System -->
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Интерфейс" Tag="InterfacePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Layout -->
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Производительность" Tag="PerformancePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Speedometer -->
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Конфиденциальность" Tag="PrivacyPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Permissions -->
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItemSeparator/>
-                <NavigationViewItem Content="Переключить тему" Tag="ToggleTheme"/>
-                <NavigationViewItem Content="Параметры" Tag="SettingsPage"/>
+                <!-- Удалён пункт "Переключить тему" -->
             </NavigationView.MenuItems>
             <Frame x:ConnectionId='3' x:Name="ContentFrame" Margin="20" />
         </NavigationView>

@@ -311,3 +311,11 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xaml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Page\HomePage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\home.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\explorer.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\system.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\interface.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\performance.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\privacy.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\theme.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\settings.png
