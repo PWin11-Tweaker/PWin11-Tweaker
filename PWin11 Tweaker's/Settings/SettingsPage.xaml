@@ -10,19 +10,17 @@
 
     <StackPanel Margin="20">
         <TextBlock Text="Параметры" FontSize="24" />
-        <TextBlock Text="Здесь будут настройки приложения." Margin="0,10,0,0" />
         
-        <Button x:Name="ToggleThemeButton" 
-                Content="Переключить тему"
-                Click="ToggleThemeButton_Click">
-            <Button.ContentTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="" Margin="0,0,5,0"/> <!-- Иконка Color -->
-                        <TextBlock Text="{Binding}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </Button.ContentTemplate>
-        </Button>
+        <Border Grid.Row="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumBrush}" BorderThickness="1" Margin="20,10,20,20" MaxHeight="150">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <ItemsControl ItemsSource="{x:Bind DebugMessages, Mode=OneWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" FontFamily="Consolas" FontSize="12" Margin="5,2" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>    
     </StackPanel>
 </Page>

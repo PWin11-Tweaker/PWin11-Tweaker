@@ -3,6 +3,7 @@ using Microsoft.UI.Dispatching;
 using System;
 using Windows.UI.Popups; // Для MessageDialog
 using System.Threading.Tasks;
+using PWin11_Tweaker_s.Script;
 
 namespace PWin11_Tweaker_s
 {
@@ -17,6 +18,8 @@ namespace PWin11_Tweaker_s
             {
                 this.InitializeComponent();
                 System.Diagnostics.Debug.WriteLine("App: Инициализация завершена.");
+                
+                DebugLogger.Initialize();
             }
             catch (Exception ex)
             {

@@ -226,7 +226,7 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
         
         private void InitTypeTables()
         {
-            _typeNameTable = new string[53];
+            _typeNameTable = new string[55];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -272,16 +272,18 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             _typeNameTable[42] = "PWin11_Tweaker_s.PrivacyPage";
             _typeNameTable[43] = "PWin11_Tweaker_s.SystemPage";
             _typeNameTable[44] = "PWin11_Tweaker_s.SettingsPage";
-            _typeNameTable[45] = "PWin11_Tweaker_s.RebootWindow";
-            _typeNameTable[46] = "Microsoft.UI.Xaml.Media.MicaBackdrop";
-            _typeNameTable[47] = "Microsoft.UI.Xaml.Media.SystemBackdrop";
-            _typeNameTable[48] = "Microsoft.UI.Composition.SystemBackdrops.MicaKind";
-            _typeNameTable[49] = "PWin11_Tweaker_s.SplashScreen";
-            _typeNameTable[50] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[51] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[52] = "Int32";
+            _typeNameTable[45] = "System.Collections.ObjectModel.ObservableCollection`1<String>";
+            _typeNameTable[46] = "System.Collections.ObjectModel.Collection`1<String>";
+            _typeNameTable[47] = "PWin11_Tweaker_s.RebootWindow";
+            _typeNameTable[48] = "Microsoft.UI.Xaml.Media.MicaBackdrop";
+            _typeNameTable[49] = "Microsoft.UI.Xaml.Media.SystemBackdrop";
+            _typeNameTable[50] = "Microsoft.UI.Composition.SystemBackdrops.MicaKind";
+            _typeNameTable[51] = "PWin11_Tweaker_s.SplashScreen";
+            _typeNameTable[52] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[53] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[54] = "Int32";
 
-            _typeTable = new global::System.Type[53];
+            _typeTable = new global::System.Type[55];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -327,14 +329,16 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             _typeTable[42] = typeof(global::PWin11_Tweaker_s.PrivacyPage);
             _typeTable[43] = typeof(global::PWin11_Tweaker_s.SystemPage);
             _typeTable[44] = typeof(global::PWin11_Tweaker_s.SettingsPage);
-            _typeTable[45] = typeof(global::PWin11_Tweaker_s.RebootWindow);
-            _typeTable[46] = typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop);
-            _typeTable[47] = typeof(global::Microsoft.UI.Xaml.Media.SystemBackdrop);
-            _typeTable[48] = typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind);
-            _typeTable[49] = typeof(global::PWin11_Tweaker_s.SplashScreen);
-            _typeTable[50] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[51] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[52] = typeof(global::System.Int32);
+            _typeTable[45] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.String>);
+            _typeTable[46] = typeof(global::System.Collections.ObjectModel.Collection<global::System.String>);
+            _typeTable[47] = typeof(global::PWin11_Tweaker_s.RebootWindow);
+            _typeTable[48] = typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop);
+            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.Media.SystemBackdrop);
+            _typeTable[50] = typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind);
+            _typeTable[51] = typeof(global::PWin11_Tweaker_s.SplashScreen);
+            _typeTable[52] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[53] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[54] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -384,10 +388,12 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
         private object Activate_42_PrivacyPage() { return new global::PWin11_Tweaker_s.PrivacyPage(); }
         private object Activate_43_SystemPage() { return new global::PWin11_Tweaker_s.SystemPage(); }
         private object Activate_44_SettingsPage() { return new global::PWin11_Tweaker_s.SettingsPage(); }
-        private object Activate_45_RebootWindow() { return new global::PWin11_Tweaker_s.RebootWindow(); }
-        private object Activate_46_MicaBackdrop() { return new global::Microsoft.UI.Xaml.Media.MicaBackdrop(); }
-        private object Activate_49_SplashScreen() { return new global::PWin11_Tweaker_s.SplashScreen(); }
-        private object Activate_50_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_45_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::System.String>(); }
+        private object Activate_46_Collection() { return new global::System.Collections.ObjectModel.Collection<global::System.String>(); }
+        private object Activate_47_RebootWindow() { return new global::PWin11_Tweaker_s.RebootWindow(); }
+        private object Activate_48_MicaBackdrop() { return new global::Microsoft.UI.Xaml.Media.MicaBackdrop(); }
+        private object Activate_51_SplashScreen() { return new global::PWin11_Tweaker_s.SplashScreen(); }
+        private object Activate_52_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void StaticInitializer_0_XamlControlsResources() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources).TypeHandle);
         private void StaticInitializer_4_NavigationView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationView).TypeHandle);
         private void StaticInitializer_6_NavigationViewPaneDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode).TypeHandle);
@@ -414,12 +420,14 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
         private void StaticInitializer_42_PrivacyPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.PrivacyPage).TypeHandle);
         private void StaticInitializer_43_SystemPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SystemPage).TypeHandle);
         private void StaticInitializer_44_SettingsPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SettingsPage).TypeHandle);
-        private void StaticInitializer_45_RebootWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.RebootWindow).TypeHandle);
-        private void StaticInitializer_46_MicaBackdrop() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop).TypeHandle);
-        private void StaticInitializer_48_MicaKind() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind).TypeHandle);
-        private void StaticInitializer_49_SplashScreen() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SplashScreen).TypeHandle);
-        private void StaticInitializer_50_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
-        private void StaticInitializer_51_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
+        private void StaticInitializer_45_ObservableCollection() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.String>).TypeHandle);
+        private void StaticInitializer_46_Collection() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.ObjectModel.Collection<global::System.String>).TypeHandle);
+        private void StaticInitializer_47_RebootWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.RebootWindow).TypeHandle);
+        private void StaticInitializer_48_MicaBackdrop() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop).TypeHandle);
+        private void StaticInitializer_50_MicaKind() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind).TypeHandle);
+        private void StaticInitializer_51_SplashScreen() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SplashScreen).TypeHandle);
+        private void StaticInitializer_52_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
+        private void StaticInitializer_53_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -433,7 +441,19 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_51_IList(object instance, object item)
+        private void VectorAdd_45_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::System.String>)instance;
+            var newItem = (global::System.String)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_46_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::System.String>)instance;
+            var newItem = (global::System.String)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_53_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -775,50 +795,67 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_44_SettingsPage;
                 userType.StaticInitializer = StaticInitializer_44_SettingsPage;
+                userType.AddMemberName("DebugMessages");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 45:   //  PWin11_Tweaker_s.RebootWindow
+            case 45:   //  System.Collections.ObjectModel.ObservableCollection`1<String>
+                userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<String>"));
+                userType.StaticInitializer = StaticInitializer_45_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_45_ObservableCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 46:   //  System.Collections.ObjectModel.Collection`1<String>
+                userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_46_Collection;
+                userType.StaticInitializer = StaticInitializer_46_Collection;
+                userType.CollectionAdd = VectorAdd_46_Collection;
+                xamlType = userType;
+                break;
+
+            case 47:   //  PWin11_Tweaker_s.RebootWindow
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_45_RebootWindow;
-                userType.StaticInitializer = StaticInitializer_45_RebootWindow;
+                userType.Activator = Activate_47_RebootWindow;
+                userType.StaticInitializer = StaticInitializer_47_RebootWindow;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 46:   //  Microsoft.UI.Xaml.Media.MicaBackdrop
+            case 48:   //  Microsoft.UI.Xaml.Media.MicaBackdrop
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Media.SystemBackdrop"));
-                userType.Activator = Activate_46_MicaBackdrop;
-                userType.StaticInitializer = StaticInitializer_46_MicaBackdrop;
+                userType.Activator = Activate_48_MicaBackdrop;
+                userType.StaticInitializer = StaticInitializer_48_MicaBackdrop;
                 userType.AddMemberName("Kind");
                 xamlType = userType;
                 break;
 
-            case 47:   //  Microsoft.UI.Xaml.Media.SystemBackdrop
+            case 49:   //  Microsoft.UI.Xaml.Media.SystemBackdrop
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 48:   //  Microsoft.UI.Composition.SystemBackdrops.MicaKind
+            case 50:   //  Microsoft.UI.Composition.SystemBackdrops.MicaKind
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_48_MicaKind;
+                userType.StaticInitializer = StaticInitializer_50_MicaKind;
                 userType.AddEnumValue("Base", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
                 userType.AddEnumValue("BaseAlt", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
                 xamlType = userType;
                 break;
 
-            case 49:   //  PWin11_Tweaker_s.SplashScreen
+            case 51:   //  PWin11_Tweaker_s.SplashScreen
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_49_SplashScreen;
-                userType.StaticInitializer = StaticInitializer_49_SplashScreen;
+                userType.Activator = Activate_51_SplashScreen;
+                userType.StaticInitializer = StaticInitializer_51_SplashScreen;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 50:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 52:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_50_TreeViewNode;
-                userType.StaticInitializer = StaticInitializer_50_TreeViewNode;
+                userType.Activator = Activate_52_TreeViewNode;
+                userType.StaticInitializer = StaticInitializer_52_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -830,15 +867,15 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 51:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 53:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_51_IList;
-                userType.CollectionAdd = VectorAdd_51_IList;
+                userType.StaticInitializer = StaticInitializer_53_IList;
+                userType.CollectionAdd = VectorAdd_53_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 52:   //  Int32
+            case 54:   //  Int32
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -1380,62 +1417,67 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.ProgressBar)instance;
             return that.TemplateSettings;
         }
-        private object get_52_MicaBackdrop_Kind(object instance)
+        private object get_52_SettingsPage_DebugMessages(object instance)
+        {
+            var that = (global::PWin11_Tweaker_s.SettingsPage)instance;
+            return that.DebugMessages;
+        }
+        private object get_53_MicaBackdrop_Kind(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Media.MicaBackdrop)instance;
             return that.Kind;
         }
-        private void set_52_MicaBackdrop_Kind(object instance, object Value)
+        private void set_53_MicaBackdrop_Kind(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Media.MicaBackdrop)instance;
             that.Kind = (global::Microsoft.UI.Composition.SystemBackdrops.MicaKind)Value;
         }
-        private object get_53_TreeViewNode_Children(object instance)
+        private object get_54_TreeViewNode_Children(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Children;
         }
-        private object get_54_TreeViewNode_Content(object instance)
+        private object get_55_TreeViewNode_Content(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Content;
         }
-        private void set_54_TreeViewNode_Content(object instance, object Value)
+        private void set_55_TreeViewNode_Content(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.Content = (global::System.Object)Value;
         }
-        private object get_55_TreeViewNode_Depth(object instance)
+        private object get_56_TreeViewNode_Depth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Depth;
         }
-        private object get_56_TreeViewNode_HasChildren(object instance)
+        private object get_57_TreeViewNode_HasChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasChildren;
         }
-        private object get_57_TreeViewNode_HasUnrealizedChildren(object instance)
+        private object get_58_TreeViewNode_HasUnrealizedChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasUnrealizedChildren;
         }
-        private void set_57_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
+        private void set_58_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.HasUnrealizedChildren = (global::System.Boolean)Value;
         }
-        private object get_58_TreeViewNode_IsExpanded(object instance)
+        private object get_59_TreeViewNode_IsExpanded(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.IsExpanded;
         }
-        private void set_58_TreeViewNode_IsExpanded(object instance, object Value)
+        private void set_59_TreeViewNode_IsExpanded(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.IsExpanded = (global::System.Boolean)Value;
         }
-        private object get_59_TreeViewNode_Parent(object instance)
+        private object get_60_TreeViewNode_Parent(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Parent;
@@ -1811,57 +1853,63 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlMember.Getter = get_51_ProgressBar_TemplateSettings;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "PWin11_Tweaker_s.SettingsPage.DebugMessages":
+                userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("PWin11_Tweaker_s.SettingsPage");
+                xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "DebugMessages", "System.Collections.ObjectModel.ObservableCollection`1<String>");
+                xamlMember.Getter = get_52_SettingsPage_DebugMessages;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Microsoft.UI.Xaml.Media.MicaBackdrop.Kind":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.MicaBackdrop");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Kind", "Microsoft.UI.Composition.SystemBackdrops.MicaKind");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_52_MicaBackdrop_Kind;
-                xamlMember.Setter = set_52_MicaBackdrop_Kind;
+                xamlMember.Getter = get_53_MicaBackdrop_Kind;
+                xamlMember.Setter = set_53_MicaBackdrop_Kind;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Children":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Children", "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>");
-                xamlMember.Getter = get_53_TreeViewNode_Children;
+                xamlMember.Getter = get_54_TreeViewNode_Children;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Content":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Content", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_54_TreeViewNode_Content;
-                xamlMember.Setter = set_54_TreeViewNode_Content;
+                xamlMember.Getter = get_55_TreeViewNode_Content;
+                xamlMember.Setter = set_55_TreeViewNode_Content;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Depth":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Depth", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_55_TreeViewNode_Depth;
+                xamlMember.Getter = get_56_TreeViewNode_Depth;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasChildren":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "HasChildren", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_56_TreeViewNode_HasChildren;
+                xamlMember.Getter = get_57_TreeViewNode_HasChildren;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasUnrealizedChildren":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
-                xamlMember.Getter = get_57_TreeViewNode_HasUnrealizedChildren;
-                xamlMember.Setter = set_57_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Getter = get_58_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Setter = set_58_TreeViewNode_HasUnrealizedChildren;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.IsExpanded":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "IsExpanded", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_58_TreeViewNode_IsExpanded;
-                xamlMember.Setter = set_58_TreeViewNode_IsExpanded;
+                xamlMember.Getter = get_59_TreeViewNode_IsExpanded;
+                xamlMember.Setter = set_59_TreeViewNode_IsExpanded;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Parent":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Parent", "Microsoft.UI.Xaml.Controls.TreeViewNode");
-                xamlMember.Getter = get_59_TreeViewNode_Parent;
+                xamlMember.Getter = get_60_TreeViewNode_Parent;
                 xamlMember.SetIsReadOnly();
                 break;
             }
