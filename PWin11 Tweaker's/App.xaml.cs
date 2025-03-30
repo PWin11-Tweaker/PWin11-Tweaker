@@ -88,6 +88,7 @@ namespace PWin11_Tweaker_s
             {
                 System.Diagnostics.Debug.WriteLine($"App.InitializeMainWindow: Ошибка: {ex.Message}");
             }
+            
         }
     }
 }

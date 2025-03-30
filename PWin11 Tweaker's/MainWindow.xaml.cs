@@ -1,8 +1,11 @@
 ﻿using System;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing; // Для AppWindow
+using Windows.Storage;
 
 namespace PWin11_Tweaker_s
 {
@@ -10,9 +13,11 @@ namespace PWin11_Tweaker_s
     {
         private MicaBackdrop micaBackdrop;
         private const string ThemePreferenceKey = "ThemePreference";
-
         public MainWindow()
         {
+
+           
+
             try
             {
                 System.Diagnostics.Debug.WriteLine("MainWindow: Начало инициализации.");
@@ -22,7 +27,7 @@ namespace PWin11_Tweaker_s
                 micaBackdrop = new MicaBackdrop();
                 this.SystemBackdrop = micaBackdrop;
                 System.Diagnostics.Debug.WriteLine("MainWindow: MicaBackdrop установлен.");
-
+                SetCustomIcon();
                 // Откладываем навигацию на HomePage
                 DispatcherQueue.TryEnqueue(() =>
                 {
@@ -47,6 +52,28 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        private void SetCustomIcon()
+        {
+            try
+            {
+                // Получаем AppWindow из текущего окна
+                var windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(this);
+                var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
+                var appWindow = AppWindow.GetFromWindowId(windowId);
+
+                // Указываем путь к файлу иконки
+                string iconPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.ico");
+                appWindow.SetIcon(iconPath);
+
+                System.Diagnostics.Debug.WriteLine("MainWindow: Кастомная иконка установлена.");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"MainWindow.SetCustomIcon: Ошибка: {ex.Message}");
+            }
+        }
+        
+        
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             try

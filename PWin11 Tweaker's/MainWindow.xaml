@@ -7,6 +7,7 @@
     mc:Ignorable="d">
 
     <Grid>
+        
         <NavigationView x:Name="NavView"
                         PaneDisplayMode="Left"
                         IsBackButtonVisible="Collapsed"
