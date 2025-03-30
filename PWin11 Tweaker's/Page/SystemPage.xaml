@@ -9,8 +9,66 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Margin="20">
-        <TextBlock Text="Настройки Системы" FontSize="24" />
-        <TextBlock Text="Здесь будут твики для Системы" Margin="0,10,0,0" />
-    </StackPanel>
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="TweakerButtonStyle">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="MinWidth" Value="250"/>
+        </Style>
+        <Style TargetType="CheckBox" x:Key="TweakerCheckBoxStyle">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="SectionHeaderStyle">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,10,0,5"/>
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <StackPanel Padding="20" Spacing="10">
+            <TextBlock Text="Настройки системы" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,10"/>
+            <TextBlock Text="Оптимизация служб" 
+                       Style="{StaticResource SectionHeaderStyle}"/>
+            <Button x:Name="DisableServicesButton" 
+                    Content="Отключить ненужные службы"
+                    Style="{StaticResource TweakerButtonStyle}">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Отключает службы: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic."/>
+                </ToolTipService.ToolTip>
+            </Button>
+            <TextBlock Text="Безопасность" 
+                       Style="{StaticResource SectionHeaderStyle}"/>
+            <CheckBox x:Name="DisableUACCheckBox" 
+                      Content="Отключить контроль учётных записей (UAC)" 
+                      Style="{StaticResource TweakerCheckBoxStyle}">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Отключает запросы UAC для повышения удобства (может снизить безопасность)."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+            <TextBlock Text="Конфиденциальность" 
+                       Style="{StaticResource SectionHeaderStyle}"/>
+            <CheckBox x:Name="DisableClipboardCheckBox" 
+                      Content="Отключить историю буфера обмена" 
+                      Style="{StaticResource TweakerCheckBoxStyle}">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Запрещает Windows сохранять историю буфера обмена."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+            <TextBlock Text="Производительность" 
+                       Style="{StaticResource SectionHeaderStyle}"/>
+            <Button x:Name="SpeedUpWindowsButton" 
+                    Content="Ускорить работу Windows" 
+                    Style="{StaticResource TweakerButtonStyle}">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Отключает анимации и задержку меню Пуск для ускорения системы."/>
+                </ToolTipService.ToolTip>
+            </Button>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

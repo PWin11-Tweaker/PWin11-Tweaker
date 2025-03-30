@@ -19,27 +19,6 @@
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="RebootWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SplashScreen.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PrivacyPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="PerformancePage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="InterfacePage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SystemPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ExplorerPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <None Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </None>
