@@ -15,7 +15,7 @@ namespace PWin11_Tweaker_s
         private const string ThemePreferenceKey = "ThemePreference";
         public MainWindow()
         {
-
+            
            
 
             try

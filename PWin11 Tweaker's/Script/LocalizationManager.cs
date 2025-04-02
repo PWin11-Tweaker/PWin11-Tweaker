@@ -97,7 +97,9 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                _resourceLoader = ResourceLoader.GetForViewIndependentUse($"Strings/{_currentLanguage}/Resources");
+                // Исправляем путь: в WinUI 3 нужно указывать только базовое имя ресурса
+                // Файлы ресурсов должны быть в папке Strings, например, Strings/ru-RU/Resources.resw
+                _resourceLoader = ResourceLoader.GetForViewIndependentUse("Resources");
                 System.Diagnostics.Debug.WriteLine($"LocalizationManager: ResourceLoader обновлён для языка {_currentLanguage}.");
             }
             catch (Exception ex)
@@ -106,7 +108,7 @@ namespace PWin11_Tweaker_s
                 if (_currentLanguage != "ru-RU")
                 {
                     _currentLanguage = "ru-RU";
-                    _resourceLoader = ResourceLoader.GetForViewIndependentUse($"Strings/{_currentLanguage}/Resources");
+                    _resourceLoader = ResourceLoader.GetForViewIndependentUse("Resources");
                     System.Diagnostics.Debug.WriteLine("LocalizationManager: Установлен язык по умолчанию (ru-RU) после ошибки.");
                 }
             }
@@ -123,6 +125,10 @@ namespace PWin11_Tweaker_s
                 if (string.IsNullOrEmpty(result))
                 {
                     System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ресурс {resourceKey} не найден для языка {_currentLanguage}.");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ресурс {resourceKey} найден: {result}");
                 }
                 return result;
             }
