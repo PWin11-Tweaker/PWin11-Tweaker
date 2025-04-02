@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="PWin11_Tweaker_s.InterfacePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,8 +8,31 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Margin="20">
-        <TextBlock Text="Настройки Интерфейса" FontSize="24" />
-        <TextBlock Text="Здесь будут твики для Интерфейса" Margin="0,10,0,0" />
+    <StackPanel Margin="20" Spacing="10">
+        <TextBlock Text="Настройки интерфейса" FontSize="24" FontWeight="SemiBold"/>
+
+        <!-- Выравнивание панели задач -->
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="Выравнивание панели задач:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="TaskbarAlignmentCombo" SelectionChanged="TaskbarAlignmentCombo_SelectionChanged">
+                <ComboBoxItem Content="По центру" Tag="1"/>
+                <ComboBoxItem Content="Слева" Tag="0"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Прозрачность панели задач -->
+        <CheckBox x:Name="TaskbarTransparencyToggle" Content="Включить прозрачность панели задач"/>
+
+        <!-- Скрытие кнопки поиска -->
+        <CheckBox x:Name="HideSearchButtonToggle" Content="Скрыть кнопку поиска на панели задач"/>
+
+        <!-- Кнопка применения -->
+        <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Margin="0,10,0,0"/>
+
+        <!-- Прогресс и статус -->
+        <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
+            <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+            <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0"/>
+        </StackPanel>
     </StackPanel>
 </Page>

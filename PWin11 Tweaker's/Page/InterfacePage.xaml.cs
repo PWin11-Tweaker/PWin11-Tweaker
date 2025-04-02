@@ -1,5 +1,11 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-
+using Microsoft.Win32;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PWin11_Tweaker_s
 {
@@ -8,6 +14,141 @@ namespace PWin11_Tweaker_s
         public InterfacePage()
         {
             this.InitializeComponent();
+            LoadCurrentSettings();
+        }
+
+        private void LoadCurrentSettings()
+        {
+            try
+            {
+                // Выравнивание панели задач
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+                {
+                    int? alignment = key?.GetValue("TaskbarAl") as int?;
+                    TaskbarAlignmentCombo.SelectedIndex = alignment == 0 ? 1 : 0; // 0 = слева, 1 = по центру
+                }
+
+                // Прозрачность панели задач
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+                {
+                    int? transparency = key?.GetValue("UseOLEDTaskbarTransparency") as int?;
+                    TaskbarTransparencyToggle.IsChecked = transparency == 1;
+                }
+
+                // Скрытие кнопки поиска
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Search"))
+                {
+                    int? searchboxTaskbarMode = key?.GetValue("SearchboxTaskbarMode") as int?;
+                    HideSearchButtonToggle.IsChecked = searchboxTaskbarMode == 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message}");
+            }
+        }
+
+        private void TaskbarAlignmentCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Можно сразу применять изменения при выборе, но оставим для кнопки "Применить"
+        }
+
+        private async void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ProgressPanel.Visibility = Visibility.Visible;
+                ApplyButton.IsEnabled = false;
+                StatusText.Text = "Подготовка...";
+                ProgressBar.Value = 0;
+                await Task.Delay(100);
+
+                string regContent = "Windows Registry Editor Version 5.00\n\n";
+
+                // Выравнивание панели задач
+                int alignment = TaskbarAlignmentCombo.SelectedItem is ComboBoxItem item ? int.Parse(item.Tag.ToString()) : 1;
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]" + "\n" +
+                              $"\"TaskbarAl\"=dword:0000000{alignment}\n\n";
+
+                // Прозрачность панели задач
+                bool transparency = TaskbarTransparencyToggle.IsChecked ?? false;
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]" + "\n" +
+                              $"\"UseOLEDTaskbarTransparency\"=dword:0000000{(transparency ? 1 : 0)}\n\n";
+
+                // Скрытие кнопки поиска
+                bool hideSearch = HideSearchButtonToggle.IsChecked ?? false;
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]" + "\n" +
+                              $"\"SearchboxTaskbarMode\"=dword:0000000{(hideSearch ? 0 : 1)}\n\n";
+
+                // Сохранение и применение изменений
+                StatusText.Text = "Сохранение изменений...";
+                ProgressBar.Value = 50;
+                await Task.Delay(100);
+
+                string tempRegPath = Path.Combine(Path.GetTempPath(), "InterfaceTweaks.reg");
+                File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
+
+                string tempBatPath = Path.Combine(Path.GetTempPath(), "InterfaceTweaks.bat");
+                string batContent = $"@echo off\nreg import \"{tempRegPath}\" >nul 2>&1\n" +
+                                   "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)\n" +
+                                   $"del \"{tempRegPath}\" >nul 2>&1\n" +
+                                   "taskkill /f /im explorer.exe >nul 2>&1\n" +
+                                   "start explorer.exe\n" +
+                                   "exit /b 0";
+                File.WriteAllText(tempBatPath, batContent);
+
+                StatusText.Text = "Применение изменений...";
+                ProgressBar.Value = 75;
+                await Task.Delay(100);
+
+                ProcessStartInfo processInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/C \"{tempBatPath}\"",
+                    UseShellExecute = true,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden
+                };
+
+                using (Process process = Process.Start(processInfo))
+                {
+                    process.WaitForExit(5000);
+                    if (process.ExitCode != 0)
+                    {
+                        throw new Exception($"Ошибка применения настроек, код: {process.ExitCode}");
+                    }
+                }
+
+                StatusText.Text = "Готово!";
+                ProgressBar.Value = 100;
+                await Task.Delay(500);
+
+                var dialog = new ContentDialog
+                {
+                    Title = "Успех",
+                    Content = "Настройки интерфейса успешно применены!",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                await dialog.ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
+                var dialog = new ContentDialog
+                {
+                    Title = "Ошибка",
+                    Content = $"Не удалось применить настройки: {ex.Message}",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                await dialog.ShowAsync();
+            }
+            finally
+            {
+                ProgressPanel.Visibility = Visibility.Collapsed;
+                ApplyButton.IsEnabled = true;
+            }
         }
     }
 }

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="PWin11_Tweaker_s.PerformancePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,8 +8,35 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Margin="20">
-        <TextBlock Text="Настройки Производительности" FontSize="24" />
-        <TextBlock Text="Здесь будут твики для Производительности" Margin="0,10,0,0" />
+    <StackPanel Margin="20" Spacing="10">
+        <TextBlock Text="Настройки производительности" FontSize="24" FontWeight="SemiBold"/>
+
+        <!-- Отключение визуальных эффектов -->
+        <CheckBox x:Name="DisableVisualEffectsToggle" Content="Отключить визуальные эффекты (анимации, тени и т.д.)"/>
+
+        <!-- Отключение Windows Search -->
+        <CheckBox x:Name="DisableWindowsSearchToggle" Content="Отключить службу Windows Search"/>
+
+        <!-- Отключение SysMain -->
+        <CheckBox x:Name="DisableSysMainToggle" Content="Отключить службу SysMain (Superfetch)"/>
+
+        <!-- План электропитания -->
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="План электропитания:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="PowerPlanCombo" SelectionChanged="PowerPlanCombo_SelectionChanged">
+                <ComboBoxItem Content="Максимальная производительность" Tag="HighPerformance"/>
+                <ComboBoxItem Content="Сбалансированный" Tag="Balanced"/>
+                <ComboBoxItem Content="Экономия энергии" Tag="PowerSaver"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Кнопка применения -->
+        <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Margin="0,10,0,0"/>
+
+        <!-- Прогресс и статус -->
+        <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
+            <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+            <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0"/>
+        </StackPanel>
     </StackPanel>
 </Page>
