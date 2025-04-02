@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ph1ncyn")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.9.8")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.9.8+66986643a2a20cff842507a4bea06c70f54f3cc5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.9.8+1b86f4176258c0e00512e7abfa28d82603c1bb78")]
 [assembly: System.Reflection.AssemblyProductAttribute("PWin11 Tweaker\'s")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PWin11 Tweaker\'s")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.9.8")]

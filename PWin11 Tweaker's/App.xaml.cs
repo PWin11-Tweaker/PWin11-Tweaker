@@ -18,6 +18,7 @@ namespace PWin11_Tweaker_s
             {
                 this.InitializeComponent();
                 System.Diagnostics.Debug.WriteLine("App: Инициализация завершена.");
+                LocalizationManager.Initialize();
                 
                 DebugLogger.Initialize();
             }

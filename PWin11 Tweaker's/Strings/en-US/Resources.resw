@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="0" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!-- Ресурсы для английского языка -->
+  <data name="SettingsPage.Title" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Title of the Settings page</comment>
+  </data>
+  <data name="ExplorerPage.Title" xml:space="preserve">
+    <value>Explorer Settings</value>
+    <comment>Title of the Explorer page</comment>
+  </data>
+  <data name="ShowHiddenFiles.Content" xml:space="preserve">
+    <value>Show hidden files and folders</value>
+    <comment>Text for CheckBox on ExplorerPage</comment>
+  </data>
+  <data name="ShowHiddenFiles.ToolTip" xml:space="preserve">
+    <value>Enables the display of hidden files, folders, and system files.</value>
+    <comment>Tooltip for ShowHiddenFiles CheckBox</comment>
+  </data>
+  <data name="UseSmallCaptions.Content" xml:space="preserve">
+    <value>Reduce window control buttons</value>
+    <comment>Text for CheckBox on ExplorerPage</comment>
+  </data>
+  <data name="UseSmallCaptions.ToolTip" xml:space="preserve">
+    <value>Reduces the size of the Close/Minimize/Maximize buttons.</value>
+    <comment>Tooltip for UseSmallCaptions CheckBox</comment>
+  </data>
+  <data name="ClassicContextMenuToggle.Content" xml:space="preserve">
+    <value>Use classic context menu</value>
+    <comment>Text for CheckBox on ExplorerPage</comment>
+  </data>
+  <data name="ClassicContextMenuToggle.ToolTip" xml:space="preserve">
+    <value>Restores the classic Windows 10 context menu.</value>
+    <comment>Tooltip for ClassicContextMenuToggle CheckBox</comment>
+  </data>
+  <data name="InstallStartAllBackButton.Content.Install" xml:space="preserve">
+    <value>Install StartAllBack</value>
+    <comment>Text for InstallStartAllBackButton (install state)</comment>
+  </data>
+  <data name="InstallStartAllBackButton.Content.Uninstall" xml:space="preserve">
+    <value>Uninstall StartAllBack</value>
+    <comment>Text for InstallStartAllBackButton (uninstall state)</comment>
+  </data>
+  <data name="ApplyButton.Content" xml:space="preserve">
+    <value>Apply</value>
+    <comment>Text for Apply button on ExplorerPage</comment>
+  </data>
+  <data name="LanguageLabel.Text" xml:space="preserve">
+    <value>Language:</value>
+    <comment>Label for language selection on SettingsPage</comment>
+  </data>
+  <data name="LanguageComboBox.Russian" xml:space="preserve">
+    <value>Russian</value>
+    <comment>Name of the Russian language in ComboBox on SettingsPage</comment>
+  </data>
+  <data name="LanguageComboBox.English" xml:space="preserve">
+    <value>English</value>
+    <comment>Name of the English language in ComboBox on SettingsPage</comment>
+  </data>
+  <data name="AdminRightsRequired" xml:space="preserve">
+    <value>To modify Explorer settings, run the application as an administrator.</value>
+    <comment>Error message when admin rights are required</comment>
+  </data>
+  <data name="SuccessDialog.Title" xml:space="preserve">
+    <value>Success</value>
+    <comment>Title of the success dialog</comment>
+  </data>
+  <data name="SuccessDialog.Content" xml:space="preserve">
+    <value>Settings applied successfully! Explorer has been restarted.\nSome changes may require a system reboot.</value>
+    <comment>Text of the success dialog after applying settings</comment>
+  </data>
+  <data name="ErrorDialog.Title" xml:space="preserve">
+    <value>Error</value>
+    <comment>Title of the error dialog</comment>
+  </data>
+  <data name="ErrorDialog.Content" xml:space="preserve">
+    <value>An error occurred:</value>
+    <comment>Start of the error dialog text (followed by specific error)</comment>
+  </data>
+  <data name="StartAllBackInstallSuccess" xml:space="preserve">
+    <value>StartAllBack installed successfully!</value>
+    <comment>Message for successful StartAllBack installation</comment>
+  </data>
+  <data name="StartAllBackUninstallSuccess" xml:space="preserve">
+    <value>StartAllBack uninstalled successfully!</value>
+    <comment>Message for successful StartAllBack uninstallation</comment>
+  </data>
+  <data name="StatusText.Preparing" xml:space="preserve">
+    <value>Preparing...</value>
+    <comment>Status text: preparing</comment>
+  </data>
+  <data name="StatusText.SavingChanges" xml:space="preserve">
+    <value>Saving changes...</value>
+    <comment>Status text: saving changes</comment>
+  </data>
+  <data name="StatusText.ApplyingChanges" xml:space="preserve">
+    <value>Applying changes...</value>
+    <comment>Status text: applying changes</comment>
+  </data>
+  <data name="StatusText.RestartingExplorer" xml:space="preserve">
+    <value>Restarting Explorer...</value>
+    <comment>Status text: restarting Explorer</comment>
+  </data>
+  <data name="StatusText.Completed" xml:space="preserve">
+    <value>Completed!</value>
+    <comment>Status text: completed</comment>
+  </data>
+  <data name="StatusText.DownloadingStartAllBack" xml:space="preserve">
+    <value>Downloading StartAllBack...</value>
+    <comment>Status text: downloading StartAllBack</comment>
+  </data>
+  <data name="StatusText.InstallingStartAllBack" xml:space="preserve">
+    <value>Installing StartAllBack...</value>
+    <comment>Status text: installing StartAllBack</comment>
+  </data>
+  <data name="StatusText.UninstallingStartAllBack" xml:space="preserve">
+    <value>Uninstalling StartAllBack...</value>
+    <comment>Status text: uninstalling StartAllBack</comment>
+  </data>
+  <data name="StatusText.CleaningFiles" xml:space="preserve">
+    <value>Cleaning temporary files...</value>
+    <comment>Status text: cleaning temporary files</comment>
+  </data>
+  <data name="StatusText.ApplyingStartAllBackSettings" xml:space="preserve">
+    <value>Applying StartAllBack settings...</value>
+    <comment>Status text: applying StartAllBack settings</comment>
+  </data>
+    <!-- Resources for PerformancePage -->
+    <data name="PerformancePage.Title" xml:space="preserve">
+      <value>Performance Settings</value>
+      <comment>Title of the PerformancePage</comment>
+    </data>
+    <data name="DisableVisualEffectsToggle.Content" xml:space="preserve">
+      <value>Disable visual effects (animations, shadows, etc.)</value>
+      <comment>Text for DisableVisualEffectsToggle CheckBox</comment>
+    </data>
+    <data name="DisableWindowsSearchToggle.Content" xml:space="preserve">
+      <value>Disable Windows Search service</value>
+      <comment>Text for DisableWindowsSearchToggle CheckBox</comment>
+    </data>
+    <data name="DisableSysMainToggle.Content" xml:space="preserve">
+      <value>Disable SysMain service (Superfetch)</value>
+      <comment>Text for DisableSysMainToggle CheckBox</comment>
+    </data>
+    <data name="PowerPlanLabel.Text" xml:space="preserve">
+      <value>Power plan:</value>
+      <comment>Label for power plan selection</comment>
+    </data>
+    <data name="PowerPlanCombo.HighPerformance" xml:space="preserve">
+      <value>High Performance</value>
+      <comment>ComboBox item: High Performance</comment>
+    </data>
+    <data name="PowerPlanCombo.Balanced" xml:space="preserve">
+      <value>Balanced</value>
+      <comment>ComboBox item: Balanced</comment>
+    </data>
+    <data name="PowerPlanCombo.PowerSaver" xml:space="preserve">
+      <value>Power Saver</value>
+      <comment>ComboBox item: Power Saver</comment>
+    </data>
+    <data name="PerformanceSuccessDialog.Content" xml:space="preserve">
+      <value>Performance settings applied successfully! Some changes may require a system reboot.</value>
+      <comment>Success dialog text for PerformancePage</comment>
+    </data>
+      <data name="PerformancePage.Title" xml:space="preserve">
+        <value>Performance Settings</value>
+        <comment>Title of the PerformancePage</comment>
+      </data>
+      <data name="DisableVisualEffectsToggle.Content" xml:space="preserve">
+        <value>Disable visual effects (animations, shadows, etc.)</value>
+        <comment>Text for DisableVisualEffectsToggle CheckBox</comment>
+      </data>
+      <data name="DisableWindowsSearchToggle.Content" xml:space="preserve">
+        <value>Disable Windows Search service</value>
+        <comment>Text for DisableWindowsSearchToggle CheckBox</comment>
+      </data>
+      <data name="DisableSysMainToggle.Content" xml:space="preserve">
+        <value>Disable SysMain service (Superfetch)</value>
+        <comment>Text for DisableSysMainToggle CheckBox</comment>
+      </data>
+      <data name="PowerPlanLabel.Text" xml:space="preserve">
+        <value>Power plan:</value>
+        <comment>Label for power plan selection</comment>
+      </data>
+      <data name="PowerPlanCombo.HighPerformance" xml:space="preserve">
+        <value>High Performance</value>
+        <comment>ComboBox item: High Performance</comment>
+      </data>
+      <data name="PowerPlanCombo.Balanced" xml:space="preserve">
+        <value>Balanced</value>
+        <comment>ComboBox item: Balanced</comment>
+      </data>
+      <data name="PowerPlanCombo.PowerSaver" xml:space="preserve">
+        <value>Power Saver</value>
+        <comment>ComboBox item: Power Saver</comment>
+      </data>
+      <data name="ApplyButton.Content" xml:space="preserve">
+        <value>Apply</value>
+        <comment>Text for Apply button on PerformancePage</comment>
+      </data>
+        <!-- Resources for SystemPage -->
+        <data name="SystemPage.Title" xml:space="preserve">
+          <value>System Settings</value>
+          <comment>Title of the SystemPage</comment>
+        </data>
+        <data name="SystemPage.ServicesSectionHeader" xml:space="preserve">
+          <value>Service Optimization</value>
+          <comment>Header for the "Service Optimization" section</comment>
+        </data>
+        <data name="DisableServicesButton.Content" xml:space="preserve">
+          <value>Disable unnecessary services</value>
+          <comment>Text for DisableServicesButton</comment>
+        </data>
+        <data name="DisableServicesButton.ToolTip" xml:space="preserve">
+          <value>Disables services: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic.</value>
+          <comment>Tooltip for DisableServicesButton</comment>
+        </data>
+        <data name="SystemPage.SecuritySectionHeader" xml:space="preserve">
+          <value>Security</value>
+          <comment>Header for the "Security" section</comment>
+        </data>
+        <data name="DisableUACCheckBox.Content" xml:space="preserve">
+          <value>Disable User Account Control (UAC)</value>
+          <comment>Text for DisableUACCheckBox</comment>
+        </data>
+        <data name="DisableUACCheckBox.ToolTip" xml:space="preserve">
+          <value>Disables UAC prompts for convenience (may reduce security).</value>
+          <comment>Tooltip for DisableUACCheckBox</comment>
+        </data>
+        <data name="SystemPage.PrivacySectionHeader" xml:space="preserve">
+          <value>Privacy</value>
+          <comment>Header for the "Privacy" section</comment>
+        </data>
+        <data name="DisableClipboardCheckBox.Content" xml:space="preserve">
+          <value>Disable clipboard history</value>
+          <comment>Text for DisableClipboardCheckBox</comment>
+        </data>
+        <data name="DisableClipboardCheckBox.ToolTip" xml:space="preserve">
+          <value>Prevents Windows from saving clipboard history.</value>
+          <comment>Tooltip for DisableClipboardCheckBox</comment>
+        </data>
+        <data name="SystemPage.PerformanceSectionHeader" xml:space="preserve">
+          <value>Performance</value>
+          <comment>Header for the "Performance" section</comment>
+        </data>
+        <data name="SpeedUpWindowsButton.Content" xml:space="preserve">
+          <value>Speed up Windows</value>
+          <comment>Text for SpeedUpWindowsButton</comment>
+        </data>
+        <data name="SpeedUpWindowsButton.ToolTip" xml:space="preserve">
+          <value>Disables animations and Start menu delay to speed up the system.</value>
+          <comment>Tooltip for SpeedUpWindowsButton</comment>
+        </data>
+        <data name="SystemSuccessDialog.Content" xml:space="preserve">
+          <value>System settings applied successfully! Some changes may require a system reboot.</value>
+          <comment>Success dialog text for SystemPage</comment>
+        </data>
+</root>

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="0" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!-- Ресурсы для русского языка -->
+  <data name="SettingsPage.Title" xml:space="preserve">
+    <value>Параметры</value>
+    <comment>Заголовок страницы настроек</comment>
+  </data>
+  <data name="ExplorerPage.Title" xml:space="preserve">
+    <value>Настройки Проводника</value>
+    <comment>Заголовок страницы Explorer</comment>
+  </data>
+  <data name="ShowHiddenFiles.Content" xml:space="preserve">
+    <value>Показывать скрытые файлы и папки</value>
+    <comment>Текст для CheckBox на ExplorerPage</comment>
+  </data>
+  <data name="ShowHiddenFiles.ToolTip" xml:space="preserve">
+    <value>Включает отображение скрытых файлов, папок и системных файлов.</value>
+    <comment>Подсказка для CheckBox ShowHiddenFiles</comment>
+  </data>
+  <data name="UseSmallCaptions.Content" xml:space="preserve">
+    <value>Уменьшить кнопки управления окном</value>
+    <comment>Текст для CheckBox на ExplorerPage</comment>
+  </data>
+  <data name="UseSmallCaptions.ToolTip" xml:space="preserve">
+    <value>Уменьшает размер кнопок Закрыть/Свернуть/Развернуть.</value>
+    <comment>Подсказка для CheckBox UseSmallCaptions</comment>
+  </data>
+  <data name="ClassicContextMenuToggle.Content" xml:space="preserve">
+    <value>Использовать классическое контекстное меню</value>
+    <comment>Текст для CheckBox на ExplorerPage</comment>
+  </data>
+  <data name="ClassicContextMenuToggle.ToolTip" xml:space="preserve">
+    <value>Возвращает классическое контекстное меню Windows 10.</value>
+    <comment>Подсказка для CheckBox ClassicContextMenuToggle</comment>
+  </data>
+  <data name="InstallStartAllBackButton.Content.Install" xml:space="preserve">
+    <value>Установить StartAllBack</value>
+    <comment>Текст кнопки InstallStartAllBackButton (состояние установки)</comment>
+  </data>
+  <data name="InstallStartAllBackButton.Content.Uninstall" xml:space="preserve">
+    <value>Удалить StartAllBack</value>
+    <comment>Текст кнопки InstallStartAllBackButton (состояние удаления)</comment>
+  </data>
+  <data name="ApplyButton.Content" xml:space="preserve">
+    <value>Применить</value>
+    <comment>Текст кнопки Применить на ExplorerPage</comment>
+  </data>
+  <data name="LanguageLabel.Text" xml:space="preserve">
+    <value>Язык:</value>
+    <comment>Метка для выбора языка на SettingsPage</comment>
+  </data>
+  <data name="LanguageComboBox.Russian" xml:space="preserve">
+    <value>Русский</value>
+    <comment>Название языка (русский) в ComboBox на SettingsPage</comment>
+  </data>
+  <data name="LanguageComboBox.English" xml:space="preserve">
+    <value>Английский</value>
+    <comment>Название языка (английский) в ComboBox на SettingsPage</comment>
+  </data>
+  <data name="AdminRightsRequired" xml:space="preserve">
+    <value>Для изменения настроек Проводника запустите приложение от имени администратора.</value>
+    <comment>Сообщение об ошибке, если нет прав администратора</comment>
+  </data>
+  <data name="SuccessDialog.Title" xml:space="preserve">
+    <value>Успех</value>
+    <comment>Заголовок диалога успеха</comment>
+  </data>
+  <data name="SuccessDialog.Content" xml:space="preserve">
+    <value>Настройки успешно применены! Проводник перезапущен.\nДля применения некоторых изменений может потребоваться перезагрузка.</value>
+    <comment>Текст диалога успеха после применения настроек</comment>
+  </data>
+  <data name="ErrorDialog.Title" xml:space="preserve">
+    <value>Ошибка</value>
+    <comment>Заголовок диалога ошибки</comment>
+  </data>
+  <data name="ErrorDialog.Content" xml:space="preserve">
+    <value>Произошла ошибка:</value>
+    <comment>Начало текста диалога ошибки (дополняется конкретной ошибкой)</comment>
+  </data>
+  <data name="StartAllBackInstallSuccess" xml:space="preserve">
+    <value>StartAllBack успешно установлен!</value>
+    <comment>Сообщение об успешной установке StartAllBack</comment>
+  </data>
+  <data name="StartAllBackUninstallSuccess" xml:space="preserve">
+    <value>StartAllBack успешно удалён!</value>
+    <comment>Сообщение об успешном удалении StartAllBack</comment>
+  </data>
+  <data name="StatusText.Preparing" xml:space="preserve">
+    <value>Подготовка...</value>
+    <comment>Текст статуса: подготовка</comment>
+  </data>
+  <data name="StatusText.SavingChanges" xml:space="preserve">
+    <value>Сохранение изменений...</value>
+    <comment>Текст статуса: сохранение изменений</comment>
+  </data>
+  <data name="StatusText.ApplyingChanges" xml:space="preserve">
+    <value>Применение изменений...</value>
+    <comment>Текст статуса: применение изменений</comment>
+  </data>
+  <data name="StatusText.RestartingExplorer" xml:space="preserve">
+    <value>Перезапуск Проводника...</value>
+    <comment>Текст статуса: перезапуск Проводника</comment>
+  </data>
+  <data name="StatusText.Completed" xml:space="preserve">
+    <value>Готово!</value>
+    <comment>Текст статуса: завершено</comment>
+  </data>
+  <data name="StatusText.DownloadingStartAllBack" xml:space="preserve">
+    <value>Скачивание StartAllBack...</value>
+    <comment>Текст статуса: скачивание StartAllBack</comment>
+  </data>
+  <data name="StatusText.InstallingStartAllBack" xml:space="preserve">
+    <value>Установка StartAllBack...</value>
+    <comment>Текст статуса: установка StartAllBack</comment>
+  </data>
+  <data name="StatusText.UninstallingStartAllBack" xml:space="preserve">
+    <value>Удаление StartAllBack...</value>
+    <comment>Текст статуса: удаление StartAllBack</comment>
+  </data>
+  <data name="StatusText.CleaningFiles" xml:space="preserve">
+    <value>Очистка временных файлов...</value>
+    <comment>Текст статуса: очистка временных файлов</comment>
+  </data>
+  <data name="StatusText.ApplyingStartAllBackSettings" xml:space="preserve">
+    <value>Применение настроек StartAllBack...</value>
+    <comment>Текст статуса: применение настроек StartAllBack</comment>
+  </data>
+    <!-- Ресурсы для PerformancePage -->
+    <data name="PerformancePage.Title" xml:space="preserve">
+      <value>Настройки производительности</value>
+      <comment>Заголовок страницы PerformancePage</comment>
+    </data>
+    <data name="DisableVisualEffectsToggle.Content" xml:space="preserve">
+      <value>Отключить визуальные эффекты (анимации, тени и т.д.)</value>
+      <comment>Текст для CheckBox DisableVisualEffectsToggle</comment>
+    </data>
+    <data name="DisableWindowsSearchToggle.Content" xml:space="preserve">
+      <value>Отключить службу Windows Search</value>
+      <comment>Текст для CheckBox DisableWindowsSearchToggle</comment>
+    </data>
+    <data name="DisableSysMainToggle.Content" xml:space="preserve">
+      <value>Отключить службу SysMain (Superfetch)</value>
+      <comment>Текст для CheckBox DisableSysMainToggle</comment>
+    </data>
+    <data name="PowerPlanLabel.Text" xml:space="preserve">
+      <value>План электропитания:</value>
+      <comment>Метка для выбора плана электропитания</comment>
+    </data>
+    <data name="PowerPlanCombo.HighPerformance" xml:space="preserve">
+      <value>Максимальная производительность</value>
+      <comment>Элемент ComboBox: Максимальная производительность</comment>
+    </data>
+    <data name="PowerPlanCombo.Balanced" xml:space="preserve">
+      <value>Сбалансированный</value>
+      <comment>Элемент ComboBox: Сбалансированный</comment>
+    </data>
+    <data name="PowerPlanCombo.PowerSaver" xml:space="preserve">
+      <value>Экономия энергии</value>
+      <comment>Элемент ComboBox: Экономия энергии</comment>
+    </data>
+    <data name="PerformanceSuccessDialog.Content" xml:space="preserve">
+      <value>Настройки производительности успешно применены! Для некоторых изменений может потребоваться перезагрузка.</value>
+      <comment>Текст диалога успеха для PerformancePage</comment>
+    </data>
+      <!-- Ресурсы для SystemPage -->
+      <data name="SystemPage.Title" xml:space="preserve">
+        <value>Настройки системы</value>
+        <comment>Заголовок страницы SystemPage</comment>
+      </data>
+      <data name="SystemPage.ServicesSectionHeader" xml:space="preserve">
+        <value>Оптимизация служб</value>
+        <comment>Заголовок секции "Оптимизация служб"</comment>
+      </data>
+      <data name="DisableServicesButton.Content" xml:space="preserve">
+        <value>Отключить ненужные службы</value>
+        <comment>Текст кнопки DisableServicesButton</comment>
+      </data>
+      <data name="DisableServicesButton.ToolTip" xml:space="preserve">
+        <value>Отключает службы: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic.</value>
+        <comment>Подсказка для кнопки DisableServicesButton</comment>
+      </data>
+      <data name="SystemPage.SecuritySectionHeader" xml:space="preserve">
+        <value>Безопасность</value>
+        <comment>Заголовок секции "Безопасность"</comment>
+      </data>
+      <data name="DisableUACCheckBox.Content" xml:space="preserve">
+        <value>Отключить контроль учётных записей (UAC)</value>
+        <comment>Текст для CheckBox DisableUACCheckBox</comment>
+      </data>
+      <data name="DisableUACCheckBox.ToolTip" xml:space="preserve">
+        <value>Отключает запросы UAC для повышения удобства (может снизить безопасность).</value>
+        <comment>Подсказка для CheckBox DisableUACCheckBox</comment>
+      </data>
+      <data name="SystemPage.PrivacySectionHeader" xml:space="preserve">
+        <value>Конфиденциальность</value>
+        <comment>Заголовок секции "Конфиденциальность"</comment>
+      </data>
+      <data name="DisableClipboardCheckBox.Content" xml:space="preserve">
+        <value>Отключить историю буфера обмена</value>
+        <comment>Текст для CheckBox DisableClipboardCheckBox</comment>
+      </data>
+      <data name="DisableClipboardCheckBox.ToolTip" xml:space="preserve">
+        <value>Запрещает Windows сохранять историю буфера обмена.</value>
+        <comment>Подсказка для CheckBox DisableClipboardCheckBox</comment>
+      </data>
+      <data name="SystemPage.PerformanceSectionHeader" xml:space="preserve">
+        <value>Производительность</value>
+        <comment>Заголовок секции "Производительность"</comment>
+      </data>
+      <data name="SpeedUpWindowsButton.Content" xml:space="preserve">
+        <value>Ускорить работу Windows</value>
+        <comment>Текст кнопки SpeedUpWindowsButton</comment>
+      </data>
+      <data name="SpeedUpWindowsButton.ToolTip" xml:space="preserve">
+        <value>Отключает анимации и задержку меню Пуск для ускорения системы.</value>
+        <comment>Подсказка для кнопки SpeedUpWindowsButton</comment>
+      </data>
+      <data name="SystemSuccessDialog.Content" xml:space="preserve">
+        <value>Настройки системы успешно применены! Для некоторых изменений может потребоваться перезагрузка.</value>
+        <comment>Текст диалога успеха для SystemPage</comment>
+      </data>
+</root>

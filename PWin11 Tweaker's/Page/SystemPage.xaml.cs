@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Principal;
 using PWin11_Tweaker_s.Script;
+using Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
@@ -15,29 +16,78 @@ namespace PWin11_Tweaker_s
     {
         private bool disableServicesRequested = false;
         private bool speedUpWindowsRequested = false;
+        private ResourceLoader _resourceLoader;
 
         public SystemPage()
         {
-            this.InitializeComponent();
-            LoadCurrentSettings();
-
-            if (!IsUserAdministrator())
+            try
             {
-                var dialog = new ContentDialog
-                {
-                    Title = "Требуются права администратора",
-                    Content = "Для изменения системных настроек запустите приложение от имени администратора.",
-                    CloseButtonText = "OK",
-                    XamlRoot = this.XamlRoot
-                };
-                _ = dialog.ShowAsync();
-                ApplyButton.IsEnabled = false;
-                DisableServicesButton.IsEnabled = false;
-                SpeedUpWindowsButton.IsEnabled = false;
-            }
+                this.InitializeComponent();
+                System.Diagnostics.Debug.WriteLine("SystemPage: InitializeComponent завершён.");
 
-            DisableServicesButton.Click += (s, e) => disableServicesRequested = true;
-            SpeedUpWindowsButton.Click += (s, e) => speedUpWindowsRequested = true;
+                // Инициализация ResourceLoader для текущего языка
+                _resourceLoader = ResourceLoader.GetForViewIndependentUse($"Strings/{LocalizationManager.CurrentLanguage}/Resources");
+
+                // Проверка прав администратора
+                if (!IsUserAdministrator())
+                {
+                    ShowErrorDialog(LocalizationManager.GetString("AdminRightsRequired"));
+                    ApplyButton.IsEnabled = false;
+                    DisableServicesButton.IsEnabled = false;
+                    SpeedUpWindowsButton.IsEnabled = false;
+                }
+
+                LoadCurrentSettings();
+                System.Diagnostics.Debug.WriteLine("SystemPage: LoadCurrentSettings завершён.");
+
+                // Подписываемся на событие смены языка
+                LocalizationManager.LanguageChanged += LocalizationManager_LanguageChanged;
+
+                // Инициализация текста элементов (для первого запуска)
+                UpdateUIText();
+
+                // Подписываемся на события кнопок
+                DisableServicesButton.Click += (s, e) => disableServicesRequested = true;
+                SpeedUpWindowsButton.Click += (s, e) => speedUpWindowsRequested = true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"SystemPage: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                ShowErrorDialog($"{LocalizationManager.GetString("ErrorDialog.Content")} {ex.Message}");
+            }
+        }
+
+        private void LocalizationManager_LanguageChanged(object sender, EventArgs e)
+        {
+            // Обновляем ResourceLoader для нового языка
+            _resourceLoader = ResourceLoader.GetForViewIndependentUse($"Strings/{LocalizationManager.CurrentLanguage}/Resources");
+
+            // Обновляем текст UI-элементов
+            UpdateUIText();
+
+            System.Diagnostics.Debug.WriteLine("SystemPage: UI обновлён после смены языка.");
+        }
+
+        private void UpdateUIText()
+        {
+            // Обновляем текст всех элементов вручную, используя ResourceLoader
+            // Заголовок страницы
+            TitleTextBlock.Text = _resourceLoader.GetString("SystemPage.Title");
+
+            // Заголовки секций
+            ServicesSectionHeader.Text = _resourceLoader.GetString("SystemPage.ServicesSectionHeader");
+            SecuritySectionHeader.Text = _resourceLoader.GetString("SystemPage.SecuritySectionHeader");
+            PrivacySectionHeader.Text = _resourceLoader.GetString("SystemPage.PrivacySectionHeader");
+            PerformanceSectionHeader.Text = _resourceLoader.GetString("SystemPage.PerformanceSectionHeader");
+
+            // Кнопки
+            DisableServicesButton.Content = _resourceLoader.GetString("DisableServicesButton.Content");
+            SpeedUpWindowsButton.Content = _resourceLoader.GetString("SpeedUpWindowsButton.Content");
+            ApplyButton.Content = _resourceLoader.GetString("ApplyButton.Content");
+
+            // CheckBox
+            DisableUACCheckBox.Content = _resourceLoader.GetString("DisableUACCheckBox.Content");
+            DisableClipboardCheckBox.Content = _resourceLoader.GetString("DisableClipboardCheckBox.Content");
         }
 
         private void LoadCurrentSettings()
@@ -72,7 +122,7 @@ namespace PWin11_Tweaker_s
                 ApplyButton.IsEnabled = false;
                 DisableServicesButton.IsEnabled = false;
                 SpeedUpWindowsButton.IsEnabled = false;
-                StatusText.Text = "Подготовка...";
+                StatusText.Text = LocalizationManager.GetString("StatusText.Preparing");
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
@@ -115,7 +165,7 @@ namespace PWin11_Tweaker_s
                 }
 
                 // Применение изменений
-                StatusText.Text = "Сохранение изменений...";
+                StatusText.Text = LocalizationManager.GetString("StatusText.SavingChanges");
                 ProgressBar.Value = 50;
                 await Task.Delay(100);
 
@@ -131,7 +181,7 @@ namespace PWin11_Tweaker_s
                               "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
 
-                StatusText.Text = "Применение изменений...";
+                StatusText.Text = LocalizationManager.GetString("StatusText.ApplyingChanges");
                 ProgressBar.Value = 75;
                 await Task.Delay(100);
 
@@ -149,18 +199,18 @@ namespace PWin11_Tweaker_s
                     process.WaitForExit(5000);
                     if (process.ExitCode != 0)
                     {
-                        throw new Exception($"Ошибка применения настроек, код: {process.ExitCode}");
+                        throw new Exception($"{LocalizationManager.GetString("ErrorDialog.Content")} {process.ExitCode}");
                     }
                 }
 
-                StatusText.Text = "Готово!";
+                StatusText.Text = LocalizationManager.GetString("StatusText.Completed");
                 ProgressBar.Value = 100;
                 await Task.Delay(500);
 
                 var dialog = new ContentDialog
                 {
-                    Title = "Успех",
-                    Content = "Настройки системы успешно применены! Для некоторых изменений может потребоваться перезагрузка.",
+                    Title = LocalizationManager.GetString("SuccessDialog.Title"),
+                    Content = LocalizationManager.GetString("SystemSuccessDialog.Content"),
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
@@ -175,8 +225,8 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
                 var dialog = new ContentDialog
                 {
-                    Title = "Ошибка",
-                    Content = $"Не удалось применить настройки: {ex.Message}",
+                    Title = LocalizationManager.GetString("ErrorDialog.Title"),
+                    Content = $"{LocalizationManager.GetString("ErrorDialog.Content")} {ex.Message}",
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
@@ -196,6 +246,18 @@ namespace PWin11_Tweaker_s
             var identity = WindowsIdentity.GetCurrent();
             var principal = new WindowsPrincipal(identity);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
+        private async void ShowErrorDialog(string message)
+        {
+            var dialog = new ContentDialog
+            {
+                Title = LocalizationManager.GetString("ErrorDialog.Title"),
+                Content = message,
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot
+            };
+            await dialog.ShowAsync();
         }
     }
 }

@@ -1,6 +1,7 @@
 ILLink\ILLink.Descriptors.LibraryBuild.xml
 Assets\LockScreenLogo.scale-200.png
 Assets\logo-black.png
+Assets\logo-png.png
 Assets\logo.ico
 Assets\logo.png
 Assets\OldNewExplorer\OldNewExplorer.exe
@@ -20,3 +21,5 @@ icons\privacy.png
 icons\settings.png
 icons\system.png
 icons\theme.png
+Strings\en-US\Resources.resw
+Strings\ru_RU\Resources.resw

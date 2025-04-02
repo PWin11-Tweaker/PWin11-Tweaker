@@ -319,3 +319,6 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\privacy.png
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\theme.png
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\icons\settings.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Assets\logo-png.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Strings\en-US\Resources.resw
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Debug\net8.0-windows10.0.26100.0\win-x64\Strings\ru_RU\Resources.resw

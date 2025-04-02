@@ -25,6 +25,8 @@
     <Content Include="icons\privacy.png" />
     <Content Include="icons\theme.png" />
     <Content Include="icons\settings.png" />
+    <Content Include="Strings\en-US\Resources.resw" />
+    <Content Include="Strings\ru_RU\Resources.resw" />
     <None Remove="Assets\logo.ico" />
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\logo-png.png" />
