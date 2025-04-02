@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="PWin11_Tweaker_s.SystemPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -29,46 +28,49 @@
 
     <ScrollViewer>
         <StackPanel Padding="20" Spacing="10">
-            <TextBlock Text="Настройки системы" 
-                       FontSize="24" 
-                       FontWeight="Bold" 
-                       Margin="0,0,0,10"/>
-            <TextBlock Text="Оптимизация служб" 
-                       Style="{StaticResource SectionHeaderStyle}"/>
-            <Button x:Name="DisableServicesButton" 
-                    Content="Отключить ненужные службы"
-                    Style="{StaticResource TweakerButtonStyle}">
+            <TextBlock Text="Настройки системы" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <!-- Оптимизация служб -->
+            <TextBlock Text="Оптимизация служб" Style="{StaticResource SectionHeaderStyle}"/>
+            <Button x:Name="DisableServicesButton" Content="Отключить ненужные службы" Style="{StaticResource TweakerButtonStyle}">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Отключает службы: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic."/>
                 </ToolTipService.ToolTip>
             </Button>
-            <TextBlock Text="Безопасность" 
-                       Style="{StaticResource SectionHeaderStyle}"/>
-            <CheckBox x:Name="DisableUACCheckBox" 
-                      Content="Отключить контроль учётных записей (UAC)" 
-                      Style="{StaticResource TweakerCheckBoxStyle}">
+
+            <!-- Безопасность -->
+            <TextBlock Text="Безопасность" Style="{StaticResource SectionHeaderStyle}"/>
+            <CheckBox x:Name="DisableUACCheckBox" Content="Отключить контроль учётных записей (UAC)" Style="{StaticResource TweakerCheckBoxStyle}">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Отключает запросы UAC для повышения удобства (может снизить безопасность)."/>
                 </ToolTipService.ToolTip>
             </CheckBox>
-            <TextBlock Text="Конфиденциальность" 
-                       Style="{StaticResource SectionHeaderStyle}"/>
-            <CheckBox x:Name="DisableClipboardCheckBox" 
-                      Content="Отключить историю буфера обмена" 
-                      Style="{StaticResource TweakerCheckBoxStyle}">
+
+            <!-- Конфиденциальность -->
+            <TextBlock Text="Конфиденциальность" Style="{StaticResource SectionHeaderStyle}"/>
+            <CheckBox x:Name="DisableClipboardCheckBox" Content="Отключить историю буфера обмена" Style="{StaticResource TweakerCheckBoxStyle}">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Запрещает Windows сохранять историю буфера обмена."/>
                 </ToolTipService.ToolTip>
             </CheckBox>
-            <TextBlock Text="Производительность" 
-                       Style="{StaticResource SectionHeaderStyle}"/>
-            <Button x:Name="SpeedUpWindowsButton" 
-                    Content="Ускорить работу Windows" 
-                    Style="{StaticResource TweakerButtonStyle}">
+
+            <!-- Производительность -->
+            <TextBlock Text="Производительность" Style="{StaticResource SectionHeaderStyle}"/>
+            <Button x:Name="SpeedUpWindowsButton" Content="Ускорить работу Windows" Style="{StaticResource TweakerButtonStyle}">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Отключает анимации и задержку меню Пуск для ускорения системы."/>
                 </ToolTipService.ToolTip>
             </Button>
+
+            <!-- Кнопка применения -->
+            <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
+
+            <!-- Прогресс и статус -->
+            <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
+                <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+                <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" 
+                             Foreground="{ThemeResource SystemAccentColor}" Background="{ThemeResource SubtleFillColorSecondary}"/>
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </Page>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="PWin11_Tweaker_s.PrivacyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,19 +8,64 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Margin="20">
-        <TextBlock Text="Настройки Приватности" FontSize="24" />
-        <CheckBox x:Name="DisableInputDataCollection" Content="Отключить отправку данных о вводе" Margin="0,5, 0,0"/>
-        
-        <CheckBox x:Name="DisableTelemetry" Content="Отключить слежку через реестр" Margin="0,5,0,0" />
-        
-        <!-- Кнопка применения действий и твиков -->
-        <Button x:Name="ApplyButton" Content="Применить" Margin="0,20,0,0"/>
-        
-        <!-- Прогресс бар выполнения задач -->
-        <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Margin="0,20,0,0">
-            <TextBlock x:Name="StatusText" Text="Применение настроек..."/>
-            <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Maximum="100" Value="0" Margin="0,10,0,0"/>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" Spacing="15">
+            <TextBlock Text="Настройки конфиденциальности" FontSize="24" FontWeight="SemiBold"/>
+
+            <!-- Отключение телеметрии -->
+            <CheckBox x:Name="DisableTelemetryToggle" Content="Отключить телеметрию и сбор данных">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Отключает отправку диагностических данных в Microsoft."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение рекламного ID -->
+            <CheckBox x:Name="DisableAdvertisingIdToggle" Content="Отключить рекламный идентификатор">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Предотвращает использование ID для персонализированной рекламы."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение отслеживания местоположения -->
+            <CheckBox x:Name="DisableLocationToggle" Content="Отключить отслеживание местоположения">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Запрещает приложениям и системе определять ваше местоположение."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение Cortana -->
+            <CheckBox x:Name="DisableCortanaToggle" Content="Отключить Cortana">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Отключает голосового помощника и связанные с ним службы."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение фоновых приложений -->
+            <CheckBox x:Name="DisableBackgroundAppsToggle" Content="Отключить фоновые приложения">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Запрещает приложениям работать в фоновом режиме."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение отправки данных в облако -->
+            <CheckBox x:Name="DisableCloudContentToggle" Content="Отключить отправку данных в облако (OneDrive, Suggestions)">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Предотвращает отправку данных для предложений и синхронизации."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Кнопки -->
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
+                <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+                <Button x:Name="ResetButton" Content="Сбросить" Click="ResetButton_Click"/>
+            </StackPanel>
+
+            <!-- Прогресс и статус -->
+            <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
+                <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+                <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" 
+                             Foreground="{ThemeResource SystemAccentColor}" Background="{ThemeResource SubtleFillColorSecondary}"/>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
 </Page>

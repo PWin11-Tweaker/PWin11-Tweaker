@@ -5,29 +5,46 @@
     xmlns:local="using:PWin11_Tweaker_s"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Padding="20" Spacing="10">
-        <!-- Твик: Показывать скрытые файлы -->
-        <CheckBox x:Name="ShowHiddenFiles" Content="Показывать скрытые файлы" />
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" Spacing="15">
+            <TextBlock Text="Настройки Проводника" FontSize="24" FontWeight="SemiBold"/>
 
-        <!-- Твик: Уменьшение кнопок Закрыть/Свернуть/Развернуть -->
-        <CheckBox x:Name="UseSmallCaptions" Content="Уменьшить кнопки Закрыть/Свернуть/Развернуть" />
+            <!-- Показ скрытых файлов -->
+            <CheckBox x:Name="ShowHiddenFiles" Content="Показывать скрытые файлы и папки">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Включает отображение скрытых файлов, папок и системных файлов."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
 
-        <!-- Твик: Установка/Удаление StartAllBack (заменено на кнопку) -->
-        <Button x:Name="InstallStartAllBackButton" Content="Установить StartAllBack" Margin="0,0,0,10" Click="InstallStartAllBackButton_Click"/>
+            <!-- Уменьшение кнопок -->
+            <CheckBox x:Name="UseSmallCaptions" Content="Уменьшить кнопки управления окном">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Уменьшает размер кнопок Закрыть/Свернуть/Развернуть."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
 
-        <!-- Переключение кл. контекс.меню -->
-        <CheckBox x:Name="ClassicContextMenuToggle" Content="Использовать классическое контекстное меню"/>
+            <!-- Классическое контекстное меню -->
+            <CheckBox x:Name="ClassicContextMenuToggle" Content="Использовать классическое контекстное меню">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Возвращает классическое контекстное меню Windows 10."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
 
+            <!-- Установка/удаление StartAllBack -->
+            <Button x:Name="InstallStartAllBackButton" Content="Установить StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
 
-        <!-- Кнопка применения -->
-        <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" />
+            <!-- Кнопка применения -->
+            <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
 
-        <!-- Прогресс-бар и статус -->
-        <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
-            <TextBlock x:Name="StatusText" Text="Выполняется..." />
-            <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" />
+            <!-- Прогресс и статус -->
+            <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
+                <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+                <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" 
+                             Foreground="{ThemeResource SystemAccentColor}" Background="{ThemeResource SubtleFillColorSecondary}"/>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
 </Page>

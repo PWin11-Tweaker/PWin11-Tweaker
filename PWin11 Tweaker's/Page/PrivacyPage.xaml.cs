@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using PWin11_Tweaker_s.Script;
 
 namespace PWin11_Tweaker_s
 {
@@ -14,19 +13,59 @@ namespace PWin11_Tweaker_s
     {
         public PrivacyPage()
         {
+            this.InitializeComponent();
+            LoadCurrentSettings();
+        }
+
+        private void LoadCurrentSettings()
+        {
             try
             {
-                System.Diagnostics.Debug.WriteLine("PrivacyPage: Начало инициализации...");
-                this.InitializeComponent();
-                System.Diagnostics.Debug.WriteLine("PrivacyPage: InitializeComponent завершён.");
-                LoadCurrentSettings();
-                System.Diagnostics.Debug.WriteLine("PrivacyPage: LoadCurrentSettings завершён.");
-                System.Diagnostics.Debug.WriteLine("PrivacyPage успешно инициализирован.");
+                // Телеметрия
+                using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection"))
+                {
+                    int? telemetry = key?.GetValue("AllowTelemetry") as int?;
+                    DisableTelemetryToggle.IsChecked = telemetry == 0;
+                }
+
+                // Рекламный ID
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo"))
+                {
+                    int? adId = key?.GetValue("Enabled") as int?;
+                    DisableAdvertisingIdToggle.IsChecked = adId == 0;
+                }
+
+                // Местоположение
+                using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors"))
+                {
+                    int? location = key?.GetValue("DisableLocation") as int?;
+                    DisableLocationToggle.IsChecked = location == 1;
+                }
+
+                // Cortana
+                using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Search"))
+                {
+                    int? cortana = key?.GetValue("AllowCortana") as int?;
+                    DisableCortanaToggle.IsChecked = cortana == 0;
+                }
+
+                // Фоновые приложения
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications"))
+                {
+                    int? backgroundApps = key?.GetValue("GlobalUserDisabled") as int?;
+                    DisableBackgroundAppsToggle.IsChecked = backgroundApps == 1;
+                }
+
+                // Облачный контент
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost"))
+                {
+                    int? cloudContent = key?.GetValue("DisableCloudOptimizedContent") as int?;
+                    DisableCloudContentToggle.IsChecked = cloudContent == 1;
+                }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"PrivacyPage: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                throw;
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message}");
             }
         }
 
@@ -34,67 +73,77 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Начало применения настроек...");
                 ProgressPanel.Visibility = Visibility.Visible;
                 ApplyButton.IsEnabled = false;
+                ResetButton.IsEnabled = false;
                 StatusText.Text = "Подготовка...";
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
                 string regContent = "Windows Registry Editor Version 5.00\n\n";
+                string batContent = "@echo off\n";
 
-                // Твик 1: Отключение отправки данных о вводе
-                bool disableInputDataCollection = DisableInputDataCollection.IsChecked ?? false;
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Состояние чекбокса DisableInputDataCollection: {disableInputDataCollection}");
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\InputPersonalization]\n" +
-                              $"\"RestrictImplicitTextCollection\"=dword:{(disableInputDataCollection ? "00000001" : "00000000")}\n" +
-                              $"\"RestrictImplicitInkCollection\"=dword:{(disableInputDataCollection ? "00000001" : "00000000")}\n" +
-                              $"\"EnableInkingWithTouch\"=dword:{(disableInputDataCollection ? "00000000" : "00000001")}\n\n";
-                TweakStatus.IsInputDataCollectionDisabled = disableInputDataCollection;
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Установлено TweakStatus.IsInputDataCollectionDisabled: {TweakStatus.IsInputDataCollectionDisabled}");
-
-                // Твик 2: Отключение слежки через реестр
-                bool disableTelemetry = DisableTelemetry.IsChecked ?? false;
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Состояние чекбокса DisableTelemetry: {disableTelemetry}");
+                // Телеметрия
+                bool disableTelemetry = DisableTelemetryToggle.IsChecked ?? false;
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]" + "\n" +
+                              $"\"AllowTelemetry\"=dword:0000000{(disableTelemetry ? 0 : 1)}\n\n";
                 if (disableTelemetry)
                 {
-                    regContent += $"[HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection]\n" +
-                                  $"\"AllowTelemetry\"=dword:00000000\n\n";
+                    regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]" + "\n" +
+                                  "\"Start\"=dword:00000004\n\n"; // Отключение службы Diagnostics Tracking
+                    batContent += "sc stop DiagTrack >nul 2>&1\n";
                 }
-                else
-                {
-                    regContent += $"[-HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection]\n\n";
-                }
-                TweakStatus.IsTelemetryDisabled = disableTelemetry;
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Установлено TweakStatus.IsTelemetryDisabled: {TweakStatus.IsTelemetryDisabled}");
 
-                StatusText.Text = "Сохранение изменений в реестре...";
-                ProgressBar.Value = 90;
+                // Рекламный ID
+                bool disableAdId = DisableAdvertisingIdToggle.IsChecked ?? false;
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]" + "\n" +
+                              $"\"Enabled\"=dword:0000000{(disableAdId ? 0 : 1)}\n\n";
+
+                // Местоположение
+                bool disableLocation = DisableLocationToggle.IsChecked ?? false;
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]" + "\n" +
+                              $"\"DisableLocation\"=dword:0000000{(disableLocation ? 1 : 0)}\n" +
+                              $"\"DisableLocationForAllUsers\"=dword:0000000{(disableLocation ? 1 : 0)}\n\n";
+
+                // Cortana
+                bool disableCortana = DisableCortanaToggle.IsChecked ?? false;
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "\n" +
+                              $"\"AllowCortana\"=dword:0000000{(disableCortana ? 0 : 1)}\n\n";
+
+                // Фоновые приложения
+                bool disableBackgroundApps = DisableBackgroundAppsToggle.IsChecked ?? false;
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]" + "\n" +
+                              $"\"GlobalUserDisabled\"=dword:0000000{(disableBackgroundApps ? 1 : 0)}\n\n";
+
+                // Облачный контент
+                bool disableCloudContent = DisableCloudContentToggle.IsChecked ?? false;
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost]" + "\n" +
+                              $"\"DisableCloudOptimizedContent\"=dword:0000000{(disableCloudContent ? 1 : 0)}\n" +
+                              @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]" + "\n" +
+                              $"\"SystemPaneSuggestionsEnabled\"=dword:0000000{(disableCloudContent ? 0 : 1)}\n\n";
+
+                // Применение изменений
+                StatusText.Text = "Сохранение изменений...";
+                ProgressBar.Value = 50;
                 await Task.Delay(100);
-                string tempRegPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerPrivacy.reg");
+
+                string tempRegPath = Path.Combine(Path.GetTempPath(), "PrivacyTweaks.reg");
                 File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Создан .reg файл: {tempRegPath}");
 
-                string tempBatPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerPrivacyApply.bat");
-                string tempLogPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerPrivacyLog.txt");
-                string batContent = "@echo off\n" +
-                                   $"echo Начало применения настроек > \"{tempLogPath}\"\n" +
-                                   $"echo Выполняется: reg import \"{tempRegPath}\" >> \"{tempLogPath}\"\n" +
-                                   $"reg import \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1\n" +
-                                   "if %ERRORLEVEL% NEQ 0 (\n" +
-                                   $"    echo Не удалось применить .reg файл, код ошибки: %ERRORLEVEL% >> \"{tempLogPath}\"\n" +
-                                   "    exit /b %ERRORLEVEL%\n" +
-                                   ")\n" +
-                                   $"echo .reg файл успешно применён >> \"{tempLogPath}\"\n" +
-                                   $"del \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1\n" +
-                                   "exit /b 0";
+                string tempBatPath = Path.Combine(Path.GetTempPath(), "PrivacyTweaks.bat");
+                batContent += $"reg import \"{tempRegPath}\" >nul 2>&1\n" +
+                              "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)\n" +
+                              $"del \"{tempRegPath}\" >nul 2>&1\n" +
+                              "taskkill /f /im explorer.exe >nul 2>&1\n" +
+                              "start explorer.exe\n" +
+                              "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Создан .bat файл: {tempBatPath}");
 
-                StatusText.Text = "Применение изменений в реестре...";
-                ProgressBar.Value = 95;
+                StatusText.Text = "Применение изменений...";
+                ProgressBar.Value = 75;
                 await Task.Delay(100);
-                ProcessStartInfo batProcess = new ProcessStartInfo
+
+                ProcessStartInfo processInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
                     Arguments = $"/C \"{tempBatPath}\"",
@@ -103,253 +152,80 @@ namespace PWin11_Tweaker_s
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
 
-                bool success = false;
-                using (Process? process = Process.Start(batProcess))
+                using (Process process = Process.Start(processInfo))
                 {
-                    if (process != null)
+                    process.WaitForExit(5000);
+                    if (process.ExitCode != 0)
                     {
-                        process.WaitForExit(5000);
-                        if (process.ExitCode == 0)
-                        {
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Настройки успешно применены!");
-                            success = true;
-
-                            // Проверяем значения в реестре после применения
-                            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\InputPersonalization"))
-                            {
-                                if (key != null)
-                                {
-                                    object? textCollectionValue = key.GetValue("RestrictImplicitTextCollection");
-                                    object? inkCollectionValue = key.GetValue("RestrictImplicitInkCollection");
-                                    object? enableInkingValue = key.GetValue("EnableInkingWithTouch");
-                                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: После применения RestrictImplicitTextCollection: {textCollectionValue}");
-                                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: После применения RestrictImplicitInkCollection: {inkCollectionValue}");
-                                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: После применения EnableInkingWithTouch: {enableInkingValue}");
-                                }
-                            }
-
-                            using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection"))
-                            {
-                                if (key != null)
-                                {
-                                    object? allowTelemetryValue = key.GetValue("AllowTelemetry");
-                                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: После применения AllowTelemetry: {allowTelemetryValue}");
-                                }
-                                else
-                                {
-                                    System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Ключ DataCollection не существует после применения (ожидаемо, если твик отключен).");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Произошла ошибка при выполнении .bat, код: {process.ExitCode}. Проверь лог: {tempLogPath}");
-                            success = false;
-                        }
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Не удалось запустить процесс .bat.");
-                        success = false;
-                    }
-
-                    if (File.Exists(tempLogPath))
-                    {
-                        try
-                        {
-                            string logContent = File.ReadAllText(tempLogPath);
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Лог выполнения:\n{logContent}");
-                        }
-                        catch (IOException ioEx)
-                        {
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Не удалось прочитать лог: {ioEx.Message}. Продолжаем...");
-                        }
+                        throw new Exception($"Ошибка применения настроек, код: {process.ExitCode}");
                     }
                 }
 
-                try
-                {
-                    if (File.Exists(tempRegPath)) File.Delete(tempRegPath);
-                    if (File.Exists(tempBatPath)) File.Delete(tempBatPath);
-                    if (File.Exists(tempLogPath)) File.Delete(tempLogPath);
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при удалении временных файлов: {ex.Message}");
-                }
+                StatusText.Text = "Готово!";
+                ProgressBar.Value = 100;
+                await Task.Delay(500);
 
-                // Проверяем, применились ли твики
-                bool inputDataCollectionApplied = VerifyInputDataCollectionTweak(disableInputDataCollection);
-                bool telemetryApplied = VerifyTelemetryTweak(disableTelemetry);
-                bool allTweaksApplied = inputDataCollectionApplied && telemetryApplied;
-
-                if (success && allTweaksApplied)
+                var dialog = new ContentDialog
                 {
-                    ContentDialog successDialog = new()
-                    {
-                        Title = "Успех",
-                        Content = "Все настройки приватности успешно применены!\nДля полного применения изменений может потребоваться перезапуск системы.",
-                        CloseButtonText = "OK",
-                        XamlRoot = this.XamlRoot
-                    };
-                    await successDialog.ShowAsync();
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Не удалось применить настройки. Проверьте лог: {tempLogPath}");
-                    ContentDialog errorDialog = new()
-                    {
-                        Title = "Ошибка",
-                        Content = "Не удалось применить настройки.\n" +
-                                  $"Отключение отправки данных о вводе: {(inputDataCollectionApplied ? "Применилось" : "Не применилось")}\n" +
-                                  $"Отключение слежки: {(telemetryApplied ? "Применилось" : "Не применилось")}\n" +
-                                  $"Проверьте лог: {tempLogPath}",
-                        CloseButtonText = "OK",
-                        XamlRoot = this.XamlRoot
-                    };
-                    await errorDialog.ShowAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                ContentDialog errorDialog = new()
-                {
-                    Title = "Ошибка",
-                    Content = $"Произошла ошибка: {ex.Message}",
+                    Title = "Успех",
+                    Content = "Настройки конфиденциальности успешно применены! Для некоторых изменений может потребоваться перезагрузка.",
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
-                await errorDialog.ShowAsync();
+                await dialog.ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
+                var dialog = new ContentDialog
+                {
+                    Title = "Ошибка",
+                    Content = $"Не удалось применить настройки: {ex.Message}",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                await dialog.ShowAsync();
             }
             finally
             {
                 ProgressPanel.Visibility = Visibility.Collapsed;
                 ApplyButton.IsEnabled = true;
+                ResetButton.IsEnabled = true;
             }
         }
 
-        private bool VerifyInputDataCollectionTweak(bool expectedState)
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\InputPersonalization"))
-                {
-                    if (key != null)
-                    {
-                        object? textCollectionValue = key.GetValue("RestrictImplicitTextCollection");
-                        object? inkCollectionValue = key.GetValue("RestrictImplicitInkCollection");
-                        object? enableInkingValue = key.GetValue("EnableInkingWithTouch");
-
-                        bool isTextCollectionRestricted = textCollectionValue != null && (int)textCollectionValue == (expectedState ? 1 : 0);
-                        bool isInkCollectionRestricted = inkCollectionValue != null && (int)inkCollectionValue == (expectedState ? 1 : 0);
-                        bool isInkingDisabled = enableInkingValue != null && (int)enableInkingValue == (expectedState ? 0 : 1);
-
-                        return isTextCollectionRestricted && isInkCollectionRestricted && isInkingDisabled;
-                    }
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"VerifyInputDataCollectionTweak: Ошибка: {ex.Message}");
-                return false;
-            }
+            DisableTelemetryToggle.IsChecked = false;
+            DisableAdvertisingIdToggle.IsChecked = false;
+            DisableLocationToggle.IsChecked = false;
+            DisableCortanaToggle.IsChecked = false;
+            DisableBackgroundAppsToggle.IsChecked = false;
+            DisableCloudContentToggle.IsChecked = false;
         }
 
-        private bool VerifyTelemetryTweak(bool expectedState)
+        private bool IsAdministrator()
         {
-            try
-            {
-                using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection"))
-                {
-                    if (expectedState)
-                    {
-                        // Если твик включён, проверяем, что AllowTelemetry равно 0
-                        if (key != null)
-                        {
-                            object? allowTelemetryValue = key.GetValue("AllowTelemetry");
-                            return allowTelemetryValue != null && (int)allowTelemetryValue == 0;
-                        }
-                        return false;
-                    }
-                    else
-                    {
-                        // Если твик выключен, проверяем, что ключ отсутствует
-                        return key == null;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"VerifyTelemetryTweak: Ошибка: {ex.Message}");
-                return false;
-            }
+            var identity = System.Security.Principal.WindowsIdentity.GetCurrent();
+            var principal = new System.Security.Principal.WindowsPrincipal(identity);
+            return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
         }
 
-        private void LoadCurrentSettings()
+        // Проверка прав администратора при инициализации
+        protected override void OnNavigatedTo(Microsoft.UI.Xaml.Navigation.NavigationEventArgs e)
         {
-            try
+            base.OnNavigatedTo(e);
+            if (!IsAdministrator())
             {
-                System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Начало загрузки настроек из реестра...");
-
-                // Твик 1: Отключение отправки данных о вводе
-                using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\InputPersonalization"))
+                var dialog = new ContentDialog
                 {
-                    if (key != null)
-                    {
-                        object? textCollectionValue = key.GetValue("RestrictImplicitTextCollection");
-                        object? inkCollectionValue = key.GetValue("RestrictImplicitInkCollection");
-                        object? enableInkingValue = key.GetValue("EnableInkingWithTouch");
-
-                        System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: RestrictImplicitTextCollection: {textCollectionValue}");
-                        System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: RestrictImplicitInkCollection: {inkCollectionValue}");
-                        System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: EnableInkingWithTouch: {enableInkingValue}");
-
-                        bool isTextCollectionRestricted = textCollectionValue != null && (int)textCollectionValue == 1;
-                        bool isInkCollectionRestricted = inkCollectionValue != null && (int)inkCollectionValue == 1;
-                        bool isInkingDisabled = enableInkingValue != null && (int)enableInkingValue == 0;
-
-                        bool isInputDataCollectionDisabled = isTextCollectionRestricted && isInkCollectionRestricted && isInkingDisabled;
-                        TweakStatus.IsInputDataCollectionDisabled = isInputDataCollectionDisabled;
-                        DisableInputDataCollection.IsChecked = isInputDataCollectionDisabled;
-                        System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Отключение отправки данных о вводе: {isInputDataCollectionDisabled}");
-                    }
-                    else
-                    {
-                        TweakStatus.IsInputDataCollectionDisabled = false;
-                        DisableInputDataCollection.IsChecked = false;
-                        System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Ключ InputPersonalization не найден, твик отключен.");
-                    }
-                }
-
-                // Твик 2: Отключение слежки через реестр
-                using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection"))
-                {
-                    if (key != null)
-                    {
-                        object? allowTelemetryValue = key.GetValue("AllowTelemetry");
-                        System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: AllowTelemetry: {allowTelemetryValue}");
-
-                        bool isTelemetryDisabled = allowTelemetryValue != null && (int)allowTelemetryValue == 0;
-                        TweakStatus.IsTelemetryDisabled = isTelemetryDisabled;
-                        DisableTelemetry.IsChecked = isTelemetryDisabled;
-                        System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Отключение слежки: {isTelemetryDisabled}");
-                    }
-                    else
-                    {
-                        TweakStatus.IsTelemetryDisabled = false;
-                        DisableTelemetry.IsChecked = false;
-                        System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Ключ DataCollection не найден, твик отключен.");
-                    }
-                }
-
-                System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Текущие настройки успешно загружены из реестра.");
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                throw;
+                    Title = "Требуются права администратора",
+                    Content = "Для изменения настроек конфиденциальности запустите приложение от имени администратора.",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+                _ = dialog.ShowAsync();
+                ApplyButton.IsEnabled = false;
             }
         }
     }

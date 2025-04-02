@@ -27,6 +27,7 @@
     <Content Include="icons\settings.png" />
     <None Remove="Assets\logo.ico" />
     <None Remove="Assets\logo.png" />
+    <None Remove="Assets\logo-png.png" />
     <None Remove="ExplorerPage.xaml" />
     <None Remove="InterfacePage.xaml" />
     <None Remove="PerformancePage.xaml" />
