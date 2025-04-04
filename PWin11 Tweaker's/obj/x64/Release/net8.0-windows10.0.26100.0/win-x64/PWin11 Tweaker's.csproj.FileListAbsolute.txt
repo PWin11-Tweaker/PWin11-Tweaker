@@ -1,13 +1,6 @@
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.exe
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\App.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\ExplorerPage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\InterfacePage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\MainWindow.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\PerformancePage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\PrivacyPage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\RebootWindow.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\SplashScreen.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\SystemPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.deps.json
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.runtimeconfig.json
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.dll
@@ -225,41 +218,13 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.csproj.AssemblyReference.cache
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\App.g.i.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\App.g.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\ExplorerPage.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\ExplorerPage.g.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\InterfacePage.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\InterfacePage.g.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\MainWindow.g.i.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\MainWindow.g.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PerformancePage.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PerformancePage.g.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PrivacyPage.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PrivacyPage.g.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\RebootWindow.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\RebootWindow.g.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SplashScreen.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SplashScreen.g.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SystemPage.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SystemPage.g.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\XamlTypeInfo.g.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\App.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\InterfacePage.xaml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\MainWindow.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PerformancePage.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PrivacyPage.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SplashScreen.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SystemPage.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\ExplorerPage.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\RebootWindow.xaml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\App.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\InterfacePage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\MainWindow.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PerformancePage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PrivacyPage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SplashScreen.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\SystemPage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\ExplorerPage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\RebootWindow.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\XamlSaveStateFile.xml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.GeneratedMSBuildEditorConfig.editorconfig
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.AssemblyInfoInputs.cache
@@ -336,3 +301,26 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\Window\RebootWindow.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net8.0-windows10.0.26100.0\win-x64\Window\SplashScreen.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Page\ExplorerPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Page\HomePage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Page\InterfacePage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Page\PerformancePage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Page\PrivacyPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Page\SystemPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Window\RebootWindow.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Window\SplashScreen.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Assets\logo-black.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Assets\logo-png.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\home.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\explorer.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\system.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\interface.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\performance.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\privacy.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\theme.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\icons\settings.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Strings\en-US\Resources.resw
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Strings\ru_RU\Resources.resw
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Extensions.Logging.Abstractions.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\WinUI3Localizer.dll

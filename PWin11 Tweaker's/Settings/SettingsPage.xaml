@@ -6,24 +6,14 @@
     xmlns:local="using:PWin11_Tweaker_s"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <StackPanel Margin="20" Spacing="15">
         <!-- Заголовок -->
-        <TextBlock x:Name="TitleTextBlock" Text="Test Title (Should Be Visible)" FontSize="24" Foreground="Red" />
-
-        <!-- Выбор языка -->
-        <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock x:Name="LanguageLabel" Text="Test Label: (Should Be Visible)" Foreground="Red" />
-            <ComboBox x:Name="LanguageComboBox" SelectionChanged="LanguageComboBox_SelectionChanged">
-                <ComboBoxItem x:Name="RussianItem" Tag="ru-RU" Content="Test Russian (Should Be Visible)" />
-                <ComboBoxItem x:Name="EnglishItem" Tag="en-US" Content="Test English (Should Be Visible)" />
-            </ComboBox>
-        </StackPanel>
+        <TextBlock x:Uid="Text_Settings" FontSize="24" />
 
         <!-- Лог сообщений -->
-        <Border BorderBrush="Gray" BorderThickness="1" Margin="0,10,0,0" MaxHeight="150">
+        <Border BorderThickness="1" Margin="0,10,0,0" MaxHeight="150">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <ItemsControl ItemsSource="{x:Bind DebugMessages, Mode=OneWay}">
                     <ItemsControl.ItemTemplate>

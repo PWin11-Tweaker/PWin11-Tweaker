@@ -22,32 +22,32 @@
                 </Style>
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Главная" Tag="HomePage">
+                <NavigationViewItem x:Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Home -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Проводник" Tag="ExplorerPage">
+                <NavigationViewItem x:Uid="Explorer" Tag="ExplorerPage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Folder -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Система" Tag="SystemPage">
+                <NavigationViewItem x:Uid="System" Tag="SystemPage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- System -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Интерфейс" Tag="InterfacePage">
+                <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Layout -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Производительность" Tag="PerformancePage">
+                <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Speedometer -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Конфиденциальность" Tag="PrivacyPage">
+                <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Permissions -->
                     </NavigationViewItem.Icon>

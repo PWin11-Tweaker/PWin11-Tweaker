@@ -4,6 +4,9 @@ using System;
 using Windows.UI.Popups; // Для MessageDialog
 using System.Threading.Tasks;
 using PWin11_Tweaker_s.Script;
+using Windows.Storage;
+using WinUI3Localizer;
+using System.IO;
 
 namespace PWin11_Tweaker_s
 {
@@ -54,9 +57,48 @@ namespace PWin11_Tweaker_s
             }
         }
 
+
+        private async Task InitializeLocalizer()
+        {
+            // Initialize a "Strings" folder in the executables folder.
+            string stringsFolderPath = Path.Combine(AppContext.BaseDirectory, "Strings");
+            StorageFolder stringsFolder = await StorageFolder.GetFolderFromPathAsync(stringsFolderPath);
+
+            ILocalizer localizer = await new LocalizerBuilder()
+                .AddStringResourcesFolderForLanguageDictionaries(stringsFolderPath)
+                .SetOptions(options =>
+                {
+                    options.DefaultLanguage = "en-US";
+                })
+                .Build();
+        }
+
+
+        private static async Task CreateStringResourceFileIfNotExists(StorageFolder stringsFolder, string language, string resourceFileName)
+        {
+            StorageFolder languageFolder = await stringsFolder.CreateFolderAsync(
+                language,
+                CreationCollisionOption.OpenIfExists);
+
+            if (await languageFolder.TryGetItemAsync(resourceFileName) is null)
+            {
+                string resourceFilePath = Path.Combine(stringsFolder.Name, language, resourceFileName);
+                StorageFile resourceFile = await LoadStringResourcesFileFromAppResource(resourceFilePath);
+                _ = await resourceFile.CopyAsync(languageFolder);
+            }
+        }
+
+        private static async Task<StorageFile> LoadStringResourcesFileFromAppResource(string filePath)
+        {
+            Uri resourcesFileUri = new($"ms-appx:///{filePath}");
+            return await StorageFile.GetFileFromApplicationUriAsync(resourcesFileUri);
+        }
+
         // Метод для установки MainWindow и начальной темы
         public static void InitializeMainWindow(MainWindow mainWindow)
         {
+
+
             try
             {
                 System.Diagnostics.Debug.WriteLine("App.InitializeMainWindow: Инициализация MainWindow.");

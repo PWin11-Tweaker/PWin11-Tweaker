@@ -6,117 +6,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Principal;
-using Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class PerformancePage : Page
     {
-        private ResourceLoader _resourceLoader;
-
         public PerformancePage()
         {
-            try
-            {
-                this.InitializeComponent();
-                System.Diagnostics.Debug.WriteLine("PerformancePage: InitializeComponent завершён.");
-
-                // Инициализация ResourceLoader для текущего языка
-                _resourceLoader = ResourceLoader.GetForViewIndependentUse($"Strings/{LocalizationManager.CurrentLanguage}/Resources");
-
-                // Проверка прав администратора
-                if (!IsAdministrator())
-                {
-                    ShowErrorDialog(LocalizationManager.GetString("AdminRightsRequired"));
-                    ApplyButton.IsEnabled = false;
-                }
-
-                LoadCurrentSettings();
-                System.Diagnostics.Debug.WriteLine("PerformancePage: LoadCurrentSettings завершён.");
-
-                // Подписываемся на событие смены языка
-                LocalizationManager.LanguageChanged += LocalizationManager_LanguageChanged;
-
-                // Инициализация текста элементов (для первого запуска)
-                UpdateUIText();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"PerformancePage: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                ShowErrorDialog($"{LocalizationManager.GetString("ErrorDialog.Content")} {ex.Message}");
-            }
-        }
-
-        private bool IsAdministrator()
-        {
-            var identity = WindowsIdentity.GetCurrent();
-            var principal = new WindowsPrincipal(identity);
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
-        }
-
-        private async void ShowErrorDialog(string message)
-        {
-            var dialog = new ContentDialog
-            {
-                Title = LocalizationManager.GetString("ErrorDialog.Title"),
-                Content = message,
-                CloseButtonText = "OK",
-                XamlRoot = this.XamlRoot
-            };
-            await dialog.ShowAsync();
-        }
-
-        private void LocalizationManager_LanguageChanged(object sender, EventArgs e)
-        {
-            // Обновляем ResourceLoader для нового языка
-            _resourceLoader = ResourceLoader.GetForViewIndependentUse($"Strings/{LocalizationManager.CurrentLanguage}/Resources");
-
-            // Обновляем текст UI-элементов
-            UpdateUIText();
-
-            System.Diagnostics.Debug.WriteLine("PerformancePage: UI обновлён после смены языка.");
-        }
-
-        private void UpdateUIText()
-        {
-            // Обновляем текст всех элементов вручную, используя ResourceLoader
-            // Заголовок страницы
-            var titleTextBlock = this.FindName("TitleTextBlock") as TextBlock;
-            if (titleTextBlock != null)
-            {
-                titleTextBlock.Text = _resourceLoader.GetString("PerformancePage.Title");
-            }
-
-            // CheckBox: Отключение визуальных эффектов
-            DisableVisualEffectsToggle.Content = _resourceLoader.GetString("DisableVisualEffectsToggle.Content");
-
-            // CheckBox: Отключение Windows Search
-            DisableWindowsSearchToggle.Content = _resourceLoader.GetString("DisableWindowsSearchToggle.Content");
-
-            // CheckBox: Отключение SysMain
-            DisableSysMainToggle.Content = _resourceLoader.GetString("DisableSysMainToggle.Content");
-
-            // Метка для плана электропитания
-            var powerPlanLabel = this.FindName("PowerPlanLabel") as TextBlock;
-            if (powerPlanLabel != null)
-            {
-                powerPlanLabel.Text = _resourceLoader.GetString("PowerPlanLabel.Text");
-            }
-
-            // Элементы ComboBox для плана электропитания
-            foreach (ComboBoxItem item in PowerPlanCombo.Items)
-            {
-                if (item.Tag.ToString() == "HighPerformance")
-                    item.Content = _resourceLoader.GetString("PowerPlanCombo.HighPerformance");
-                else if (item.Tag.ToString() == "Balanced")
-                    item.Content = _resourceLoader.GetString("PowerPlanCombo.Balanced");
-                else if (item.Tag.ToString() == "PowerSaver")
-                    item.Content = _resourceLoader.GetString("PowerPlanCombo.PowerSaver");
-            }
-
-            // Кнопка "Применить"
-            ApplyButton.Content = _resourceLoader.GetString("ApplyButton.Content");
+            this.InitializeComponent();
+            LoadCurrentSettings();
         }
 
         private void LoadCurrentSettings()
@@ -179,7 +77,7 @@ namespace PWin11_Tweaker_s
             {
                 ProgressPanel.Visibility = Visibility.Visible;
                 ApplyButton.IsEnabled = false;
-                StatusText.Text = LocalizationManager.GetString("StatusText.Preparing");
+                StatusText.Text = "Подготовка...";
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
@@ -221,7 +119,7 @@ namespace PWin11_Tweaker_s
                 batContent += $"powercfg /setactive {powerPlanGuid} >nul 2>&1\n";
 
                 // Сохранение и применение
-                StatusText.Text = LocalizationManager.GetString("StatusText.SavingChanges");
+                StatusText.Text = "Сохранение изменений...";
                 ProgressBar.Value = 50;
                 await Task.Delay(100);
 
@@ -235,7 +133,7 @@ namespace PWin11_Tweaker_s
                               "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
 
-                StatusText.Text = LocalizationManager.GetString("StatusText.ApplyingChanges");
+                StatusText.Text = "Применение изменений...";
                 ProgressBar.Value = 75;
                 await Task.Delay(100);
 
@@ -253,18 +151,18 @@ namespace PWin11_Tweaker_s
                     process.WaitForExit(5000);
                     if (process.ExitCode != 0)
                     {
-                        throw new Exception($"Error applying settings, code: {process.ExitCode}");
+                        throw new Exception($"Ошибка применения настроек, код: {process.ExitCode}");
                     }
                 }
 
-                StatusText.Text = LocalizationManager.GetString("StatusText.Completed");
+                StatusText.Text = "Готово!";
                 ProgressBar.Value = 100;
                 await Task.Delay(500);
 
                 var dialog = new ContentDialog
                 {
-                    Title = LocalizationManager.GetString("SuccessDialog.Title"),
-                    Content = LocalizationManager.GetString("PerformanceSuccessDialog.Content"),
+                    Title = "Успех",
+                    Content = "Настройки производительности успешно применены! Для некоторых изменений может потребоваться перезагрузка.",
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
@@ -275,8 +173,8 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
                 var dialog = new ContentDialog
                 {
-                    Title = LocalizationManager.GetString("ErrorDialog.Title"),
-                    Content = $"{LocalizationManager.GetString("ErrorDialog.Content")} {ex.Message}",
+                    Title = "Ошибка",
+                    Content = $"Не удалось применить настройки: {ex.Message}",
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };

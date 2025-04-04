@@ -6,38 +6,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Transparent">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20" Spacing="15">
-            <TextBlock Text="Настройки Проводника" FontSize="24" FontWeight="SemiBold"/>
+            <TextBlock x:Uid="Text_Settings" FontSize="24" FontWeight="SemiBold"/>
 
             <!-- Показ скрытых файлов -->
-            <CheckBox x:Name="ShowHiddenFiles" Content="Показывать скрытые файлы и папки">
+            <CheckBox x:Name="ShowHiddenFiles" x:Uid="ShowHiddenFiles">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Включает отображение скрытых файлов, папок и системных файлов."/>
+                    <ToolTip x:Uid="Coment_ShowHiddenFiles"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Уменьшение кнопок -->
-            <CheckBox x:Name="UseSmallCaptions" Content="Уменьшить кнопки управления окном">
+            <CheckBox x:Name="UseSmallCaptions" x:Uid="UseSmallCaptions">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Уменьшает размер кнопок Закрыть/Свернуть/Развернуть."/>
+                    <ToolTip x:Uid="Coment_UseSmallCaptions"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Классическое контекстное меню -->
-            <CheckBox x:Name="ClassicContextMenuToggle" Content="Использовать классическое контекстное меню">
+            <CheckBox x:Name="ClassicContextMenuToggle" x:Uid="ClassicContextMenu">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Возвращает классическое контекстное меню Windows 10."/>
+                    <ToolTip x:Uid="Coment_ClassicContextMenu"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Установка/удаление StartAllBack -->
-            <Button x:Name="InstallStartAllBackButton" Content="Установить StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+            <Button x:Name="InstallStartAllBackButton" x:Uid="Content_Button_StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
 
             <!-- Кнопка применения -->
-            <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
+            <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
 
             <!-- Прогресс и статус -->
             <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">

@@ -6,17 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Transparent">
 
     <StackPanel Margin="20" Spacing="10">
-        <TextBlock Text="Настройки интерфейса" FontSize="24" FontWeight="SemiBold"/>
+        <TextBlock x:Uid="SettingsInterface" FontSize="24" FontWeight="SemiBold"/>
 
         <!-- Выравнивание панели задач -->
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock Text="Выравнивание панели задач:" VerticalAlignment="Center"/>
+            <TextBlock x:Uid="TaskbarAlignment" VerticalAlignment="Center"/>
             <ComboBox x:Name="TaskbarAlignmentCombo" SelectionChanged="TaskbarAlignmentCombo_SelectionChanged">
-                <ComboBoxItem Content="По центру" Tag="1"/>
-                <ComboBoxItem Content="Слева" Tag="0"/>
+                <ComboBoxItem x:Uid="Center" Tag="1"/>
+                <ComboBoxItem x:Uid="LeftTaskBar" Tag="0"/>
             </ComboBox>
         </StackPanel>
 

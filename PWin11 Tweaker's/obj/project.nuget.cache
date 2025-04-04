@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "skO88RWBAyI=",
+  "dgSpecHash": "nDbvW/5hTmg=",
   "success": true,
   "projectFilePath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.14\\microsoft.net.illink.tasks.8.0.14.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.platforms\\7.0.4\\microsoft.netcore.platforms.7.0.4.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.targets\\5.0.0\\microsoft.netcore.targets.5.0.0.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.web.webview2\\1.0.3124.44\\microsoft.web.webview2.1.0.3124.44.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.26100.1742\\microsoft.windows.sdk.buildtools.10.0.26100.1742.nupkg.sha512",
+    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.26100.1742\\microsoft.windows.sdk.buildtools.10.0.26100.1742.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windowsappsdk\\1.7.250310001\\microsoft.windowsappsdk.1.7.250310001.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.3\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.3.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.3\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.3.nupkg.sha512",
@@ -56,16 +58,18 @@
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.14\\microsoft.netcore.app.runtime.win-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\winui3localizer\\2.2.0\\winui3localizer.2.2.0.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\8.0.14\\microsoft.netcore.app.runtime.win-x86.8.0.14.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.app.runtime.win-arm64\\8.0.14\\microsoft.netcore.app.runtime.win-arm64.8.0.14.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.14.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.14.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-arm64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-arm64.8.0.14.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.14\\microsoft.aspnetcore.app.runtime.win-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\8.0.14\\microsoft.netcore.app.crossgen2.win-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.26100.57\\microsoft.windows.sdk.net.ref.10.0.26100.57.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\8.0.14\\microsoft.aspnetcore.app.runtime.win-x86.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.app.runtime.win-arm64\\8.0.14\\microsoft.netcore.app.runtime.win-arm64.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.14\\microsoft.aspnetcore.app.runtime.win-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-arm64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-arm64.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.14.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-arm64\\8.0.14\\microsoft.aspnetcore.app.runtime.win-arm64.8.0.14.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.26100.57\\microsoft.windows.sdk.net.ref.10.0.26100.57.nupkg.sha512"
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.14\\microsoft.netcore.app.runtime.win-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.14\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.14.nupkg.sha512"
   ],
   "logs": []
 }

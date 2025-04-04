@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Transparent">
 
     <Page.Resources>
         <Style TargetType="Button" x:Key="TweakerButtonStyle">
@@ -28,43 +28,42 @@
 
     <ScrollViewer>
         <StackPanel Padding="20" Spacing="10">
-            <!-- Заголовок -->
-            <TextBlock x:Name="TitleTextBlock" x:Uid="SystemPage.Title" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Text="Настройки системы" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
 
             <!-- Оптимизация служб -->
-            <TextBlock x:Name="ServicesSectionHeader" x:Uid="SystemPage.ServicesSectionHeader" Style="{StaticResource SectionHeaderStyle}"/>
-            <Button x:Name="DisableServicesButton" x:Uid="DisableServicesButton.Content" Style="{StaticResource TweakerButtonStyle}">
+            <TextBlock Text="Оптимизация служб" Style="{StaticResource SectionHeaderStyle}"/>
+            <Button x:Name="DisableServicesButton" Content="Отключить ненужные службы" Style="{StaticResource TweakerButtonStyle}">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableServicesButton.ToolTip"/>
+                    <ToolTip Content="Отключает службы: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic."/>
                 </ToolTipService.ToolTip>
             </Button>
 
             <!-- Безопасность -->
-            <TextBlock x:Name="SecuritySectionHeader" x:Uid="SystemPage.SecuritySectionHeader" Style="{StaticResource SectionHeaderStyle}"/>
-            <CheckBox x:Name="DisableUACCheckBox" x:Uid="DisableUACCheckBox.Content" Style="{StaticResource TweakerCheckBoxStyle}">
+            <TextBlock Text="Безопасность" Style="{StaticResource SectionHeaderStyle}"/>
+            <CheckBox x:Name="DisableUACCheckBox" Content="Отключить контроль учётных записей (UAC)" Style="{StaticResource TweakerCheckBoxStyle}">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableUACCheckBox.ToolTip"/>
+                    <ToolTip Content="Отключает запросы UAC для повышения удобства (может снизить безопасность)."/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Конфиденциальность -->
-            <TextBlock x:Name="PrivacySectionHeader" x:Uid="SystemPage.PrivacySectionHeader" Style="{StaticResource SectionHeaderStyle}"/>
-            <CheckBox x:Name="DisableClipboardCheckBox" x:Uid="DisableClipboardCheckBox.Content" Style="{StaticResource TweakerCheckBoxStyle}">
+            <TextBlock Text="Конфиденциальность" Style="{StaticResource SectionHeaderStyle}"/>
+            <CheckBox x:Name="DisableClipboardCheckBox" Content="Отключить историю буфера обмена" Style="{StaticResource TweakerCheckBoxStyle}">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableClipboardCheckBox.ToolTip"/>
+                    <ToolTip Content="Запрещает Windows сохранять историю буфера обмена."/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Производительность -->
-            <TextBlock x:Name="PerformanceSectionHeader" x:Uid="SystemPage.PerformanceSectionHeader" Style="{StaticResource SectionHeaderStyle}"/>
-            <Button x:Name="SpeedUpWindowsButton" x:Uid="SpeedUpWindowsButton.Content" Style="{StaticResource TweakerButtonStyle}">
+            <TextBlock Text="Производительность" Style="{StaticResource SectionHeaderStyle}"/>
+            <Button x:Name="SpeedUpWindowsButton" Content="Ускорить работу Windows" Style="{StaticResource TweakerButtonStyle}">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="SpeedUpWindowsButton.ToolTip"/>
+                    <ToolTip Content="Отключает анимации и задержку меню Пуск для ускорения системы."/>
                 </ToolTipService.ToolTip>
             </Button>
 
             <!-- Кнопка применения -->
-            <Button x:Name="ApplyButton" x:Uid="ApplyButton.Content" Click="ApplyButton_Click" Style="{StaticResource TweakerButtonStyle}" Margin="0,10,0,0"/>
+            <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
 
             <!-- Прогресс и статус -->
             <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">

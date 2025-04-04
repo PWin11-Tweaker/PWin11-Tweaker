@@ -6,45 +6,37 @@ namespace PWin11_Tweaker_s
 {
     public static class LocalizationManager
     {
-        private static ResourceLoader _resourceLoader;
         private const string LanguageSettingKey = "AppLanguage";
-        private static string _currentLanguage;
+        private static string _currentLanguage = "ru-RU";
         private static bool _isInitialized = false;
+
+        public static event EventHandler LanguageChanged;
 
         public static void Initialize()
         {
             if (_isInitialized)
+            {
+                System.Diagnostics.Debug.WriteLine("LocalizationManager: Уже инициализирован, пропускаем повторную инициализацию.");
                 return;
+            }
 
             try
             {
                 System.Diagnostics.Debug.WriteLine("LocalizationManager: Начало инициализации.");
 
-                // Загружаем сохранённый язык или используем русский по умолчанию
-                string savedLanguage = null;
-                try
-                {
-                    savedLanguage = ApplicationData.Current.LocalSettings.Values[LanguageSettingKey] as string;
-                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Сохранённый язык: {savedLanguage ?? "не установлен"}");
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при чтении LocalSettings: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                }
+                string savedLanguage = ApplicationData.Current.LocalSettings.Values[LanguageSettingKey] as string;
+                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Сохранённый язык: {savedLanguage ?? "не установлен"}");
 
                 _currentLanguage = savedLanguage ?? "ru-RU";
                 System.Diagnostics.Debug.WriteLine($"LocalizationManager: Установлен язык: {_currentLanguage}");
 
-                UpdateResourceLoader();
-                System.Diagnostics.Debug.WriteLine("LocalizationManager: Инициализация завершена.");
-
                 _isInitialized = true;
+                System.Diagnostics.Debug.WriteLine("LocalizationManager: Инициализация успешно завершена.");
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 _currentLanguage = "ru-RU";
-                UpdateResourceLoader();
                 _isInitialized = true;
             }
         }
@@ -62,54 +54,26 @@ namespace PWin11_Tweaker_s
                 if (!_isInitialized)
                     Initialize();
 
+                if (_currentLanguage == value)
+                {
+                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Язык уже установлен на {value}, пропускаем.");
+                    return;
+                }
+
                 try
                 {
-                    if (_currentLanguage != value)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"LocalizationManager: Смена языка на {value}");
-                        _currentLanguage = value;
+                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Смена языка на {value}");
+                    _currentLanguage = value;
 
-                        try
-                        {
-                            ApplicationData.Current.LocalSettings.Values[LanguageSettingKey] = value;
-                            System.Diagnostics.Debug.WriteLine("LocalizationManager: Язык сохранён в LocalSettings.");
-                        }
-                        catch (Exception ex)
-                        {
-                            System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при сохранении языка в LocalSettings: {ex.Message}");
-                        }
+                    ApplicationData.Current.LocalSettings.Values[LanguageSettingKey] = value;
+                    System.Diagnostics.Debug.WriteLine("LocalizationManager: Язык сохранён в LocalSettings.");
 
-                        UpdateResourceLoader();
-                        LanguageChanged?.Invoke(null, EventArgs.Empty);
-                        System.Diagnostics.Debug.WriteLine("LocalizationManager: Событие LanguageChanged вызвано.");
-                    }
+                    LanguageChanged?.Invoke(null, EventArgs.Empty);
+                    System.Diagnostics.Debug.WriteLine("LocalizationManager: Событие LanguageChanged вызвано.");
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при установке языка: {ex.Message}");
-                }
-            }
-        }
-
-        public static event EventHandler LanguageChanged;
-
-        private static void UpdateResourceLoader()
-        {
-            try
-            {
-                // Исправляем путь: в WinUI 3 нужно указывать только базовое имя ресурса
-                // Файлы ресурсов должны быть в папке Strings, например, Strings/ru-RU/Resources.resw
-                _resourceLoader = ResourceLoader.GetForViewIndependentUse("Resources");
-                System.Diagnostics.Debug.WriteLine($"LocalizationManager: ResourceLoader обновлён для языка {_currentLanguage}.");
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при обновлении ResourceLoader: {ex.Message}");
-                if (_currentLanguage != "ru-RU")
-                {
-                    _currentLanguage = "ru-RU";
-                    _resourceLoader = ResourceLoader.GetForViewIndependentUse("Resources");
-                    System.Diagnostics.Debug.WriteLine("LocalizationManager: Установлен язык по умолчанию (ru-RU) после ошибки.");
+                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при смене языка: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 }
             }
         }
@@ -119,22 +83,30 @@ namespace PWin11_Tweaker_s
             if (!_isInitialized)
                 Initialize();
 
+            if (string.IsNullOrEmpty(resourceKey))
+            {
+                System.Diagnostics.Debug.WriteLine("LocalizationManager: Ключ ресурса пустой или null.");
+                return string.Empty;
+            }
+
             try
             {
-                string result = _resourceLoader.GetString(resourceKey);
+                // Указываем язык вручную при создании ResourceLoader
+                var resourceLoader = ResourceLoader.GetForViewIndependentUse($"Strings/{_currentLanguage}/Resources");
+                string result = resourceLoader.GetString(resourceKey);
+
                 if (string.IsNullOrEmpty(result))
                 {
                     System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ресурс {resourceKey} не найден для языка {_currentLanguage}.");
+                    return resourceKey;
                 }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ресурс {resourceKey} найден: {result}");
-                }
+
+                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ресурс {resourceKey} найден: {result}");
                 return result;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при получении ресурса {resourceKey}: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при получении ресурса {resourceKey}: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 return resourceKey;
             }
         }

@@ -7,13 +7,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Transparent">
 
     <Grid>
         <!-- Основной контейнер -->
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="600" Margin="20">
             <!-- Заголовок -->
-            <TextBlock Text="Добро пожаловать в PWin11 Tweaker's" 
+            <TextBlock x:Uid="Welcome" 
                        FontSize="36" 
                        FontWeight="Bold" 
                        TextWrapping="Wrap" 
@@ -21,7 +21,7 @@
                        Foreground="{ThemeResource SystemAccentColor}"/>
 
             <!-- Описание -->
-            <TextBlock Text="PWin11 Tweaker's — это мощный инструмент для настройки и оптимизации Windows 11. Настраивайте систему, интерфейс, приватность и производительность с помощью простых и удобных твиков." 
+            <TextBlock x:Uid="About"
                        FontSize="16" 
                        TextWrapping="Wrap" 
                        HorizontalAlignment="Center" 
@@ -35,12 +35,12 @@
                     BorderThickness="1" 
                     Padding="20">
                 <StackPanel>
-                    <TextBlock Text="Начните с настройки приватности" 
+                    <TextBlock x:Uid="Start_Use" 
                                FontSize="18" 
                                FontWeight="SemiBold" 
                                Margin="0,0,0,10"/>
                     <Button x:Name="GoToPrivacyButton" 
-                            Content="Перейти к приватности" 
+                            x:Uid="GoToPrivacyButton"
                             Click="GoToPrivacyButton_Click" 
                             HorizontalAlignment="Stretch" 
                             Style="{StaticResource AccentButtonStyle}"/>

@@ -6,33 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Transparent">
 
     <StackPanel Margin="20" Spacing="10">
-        <!-- Заголовок -->
-        <TextBlock x:Name="TitleTextBlock" x:Uid="PerformancePage.Title" FontSize="24" FontWeight="SemiBold"/>
+        <TextBlock Text="Настройки производительности" FontSize="24" FontWeight="SemiBold"/>
 
         <!-- Отключение визуальных эффектов -->
-        <CheckBox x:Name="DisableVisualEffectsToggle" x:Uid="DisableVisualEffectsToggle.Content"/>
+        <CheckBox x:Name="DisableVisualEffectsToggle" Content="Отключить визуальные эффекты (анимации, тени и т.д.)"/>
 
         <!-- Отключение Windows Search -->
-        <CheckBox x:Name="DisableWindowsSearchToggle" x:Uid="DisableWindowsSearchToggle.Content"/>
+        <CheckBox x:Name="DisableWindowsSearchToggle" Content="Отключить службу Windows Search"/>
 
         <!-- Отключение SysMain -->
-        <CheckBox x:Name="DisableSysMainToggle" x:Uid="DisableSysMainToggle.Content"/>
+        <CheckBox x:Name="DisableSysMainToggle" Content="Отключить службу SysMain (Superfetch)"/>
 
         <!-- План электропитания -->
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock x:Name="PowerPlanLabel" x:Uid="PowerPlanLabel.Text" VerticalAlignment="Center"/>
+            <TextBlock Text="План электропитания:" VerticalAlignment="Center"/>
             <ComboBox x:Name="PowerPlanCombo" SelectionChanged="PowerPlanCombo_SelectionChanged">
-                <ComboBoxItem x:Uid="PowerPlanCombo.HighPerformance" Tag="HighPerformance"/>
-                <ComboBoxItem x:Uid="PowerPlanCombo.Balanced" Tag="Balanced"/>
-                <ComboBoxItem x:Uid="PowerPlanCombo.PowerSaver" Tag="PowerSaver"/>
+                <ComboBoxItem Content="Максимальная производительность" Tag="HighPerformance"/>
+                <ComboBoxItem Content="Сбалансированный" Tag="Balanced"/>
+                <ComboBoxItem Content="Экономия энергии" Tag="PowerSaver"/>
             </ComboBox>
         </StackPanel>
 
         <!-- Кнопка применения -->
-        <Button x:Name="ApplyButton" x:Uid="ApplyButton.Content" Click="ApplyButton_Click" Margin="0,10,0,0"/>
+        <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Margin="0,10,0,0"/>
 
         <!-- Прогресс и статус -->
         <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">

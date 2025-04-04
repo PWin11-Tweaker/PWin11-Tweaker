@@ -50,6 +50,12 @@
         "net8.0-windows10.0.26100": {
           "targetAlias": "net8.0-windows10.0.26100.0",
           "dependencies": {
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.14, )",
+              "autoReferenced": true
+            },
             "Microsoft.NETCore.Platforms": {
               "target": "Package",
               "version": "[7.0.4, )"
@@ -102,6 +108,10 @@
               "target": "Package",
               "version": "[4.3.1, )"
             },
+            "WinUI3Localizer": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": {
               "target": "Package",
               "version": "[4.3.3, )"
@@ -141,6 +151,10 @@
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
+              "version": "[8.0.14, 8.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
               "version": "[8.0.14, 8.0.14]"
             },
             {

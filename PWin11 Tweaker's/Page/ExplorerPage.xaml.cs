@@ -8,14 +8,16 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using PWin11_Tweaker_s.Script;
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class ExplorerPage : Page
     {
         private const string StartAllBackUrl = "https://www.startallback.com/download.php";
-        private string StartAllBackExePath = string.Empty; // Динамически определяемый путь
-        private bool isStartAllBackInstalled; // Проверка, установлен ли StartAllBack
+        private string StartAllBackExePath = string.Empty;
+        private bool isStartAllBackInstalled;
+        private readonly ResourceLoader resourceLoader;
 
         public ExplorerPage()
         {
@@ -24,8 +26,7 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine("ExplorerPage: Начало инициализации...");
                 this.InitializeComponent();
                 System.Diagnostics.Debug.WriteLine("ExplorerPage: InitializeComponent завершён.");
-
-                // Определяем путь к StartAllBack
+                resourceLoader = new ResourceLoader();
                 StartAllBackExePath = FindStartAllBackPath();
                 System.Diagnostics.Debug.WriteLine($"ExplorerPage: Путь к StartAllBack: {StartAllBackExePath}");
 
@@ -40,12 +41,10 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        // Метод для поиска пути к StartAllBack
         private string FindStartAllBackPath()
         {
             try
             {
-                // Получаем путь к папке AppData\Local текущего пользователя
                 string localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 string userPath = Path.Combine(localAppDataPath, @"StartAllBack\StartAllBackCfg.exe");
                 if (File.Exists(userPath))
@@ -54,14 +53,12 @@ namespace PWin11_Tweaker_s
                     return userPath;
                 }
 
-                // Дополнительные возможные пути установки
                 string[] possiblePaths = new[]
                 {
                     @"C:\Program Files\StartAllBack\StartAllBackCfg.exe",
                     @"C:\Program Files (x86)\StartAllBack\StartAllBackCfg.exe"
                 };
 
-                // Проверяем возможные пути
                 foreach (var path in possiblePaths)
                 {
                     if (File.Exists(path))
@@ -71,7 +68,6 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                // Проверяем через реестр
                 using (RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"))
                 {
                     if (key != null)
@@ -127,17 +123,16 @@ namespace PWin11_Tweaker_s
                 }
 
                 System.Diagnostics.Debug.WriteLine("FindStartAllBackPath: StartAllBack не найден. Используем путь по умолчанию.");
-                return Path.Combine(localAppDataPath, @"StartAllBack\StartAllBackCfg.exe"); // Путь по умолчанию
+                return Path.Combine(localAppDataPath, @"StartAllBack\StartAllBackCfg.exe");
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"FindStartAllBackPath: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 string localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                return Path.Combine(localAppDataPath, @"StartAllBack\StartAllBackCfg.exe"); // Путь по умолчанию в случае ошибки
+                return Path.Combine(localAppDataPath, @"StartAllBack\StartAllBackCfg.exe");
             }
         }
 
-        // Кнопка установки StartAllBack
         private async void InstallStartAllBackButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -146,7 +141,7 @@ namespace PWin11_Tweaker_s
                 ProgressPanel.Visibility = Visibility.Visible;
                 ApplyButton.IsEnabled = false;
                 InstallStartAllBackButton.IsEnabled = false;
-                StatusText.Text = "Подготовка...";
+                StatusText.Text = resourceLoader.GetString("StatusText_Preparing");
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
@@ -154,7 +149,6 @@ namespace PWin11_Tweaker_s
                 {
                     System.Diagnostics.Debug.WriteLine("InstallStartAllBackButton_Click: Удаление StartAllBack...");
                     await UninstallStartAllBack();
-                    // Проверяем реальное состояние после удаления
                     StartAllBackExePath = FindStartAllBackPath();
                     isStartAllBackInstalled = File.Exists(StartAllBackExePath);
                     TweakStatus.IsStartAllBackInstalled = isStartAllBackInstalled;
@@ -164,15 +158,15 @@ namespace PWin11_Tweaker_s
                 {
                     System.Diagnostics.Debug.WriteLine("InstallStartAllBackButton_Click: Установка StartAllBack...");
                     await DownloadAndInstallStartAllBack();
-                    // Проверяем реальное состояние после установки
                     StartAllBackExePath = FindStartAllBackPath();
                     isStartAllBackInstalled = File.Exists(StartAllBackExePath);
                     TweakStatus.IsStartAllBackInstalled = isStartAllBackInstalled;
                     System.Diagnostics.Debug.WriteLine($"InstallStartAllBackButton_Click: После установки StartAllBack установлен: {isStartAllBackInstalled}");
                 }
 
-                // Обновляем текст кнопки на основе реального состояния
-                InstallStartAllBackButton.Content = isStartAllBackInstalled ? "Удалить StartAllBack" : "Установить StartAllBack";
+                InstallStartAllBackButton.Content = isStartAllBackInstalled
+                    ? resourceLoader.GetString("Content_Button_StartAllBack_Uninstall")
+                    : resourceLoader.GetString("Content_Button_StartAllBack");
                 System.Diagnostics.Debug.WriteLine($"InstallStartAllBackButton_Click: Текст кнопки обновлён: {InstallStartAllBackButton.Content}");
                 System.Diagnostics.Debug.WriteLine("InstallStartAllBackButton_Click: Завершено успешно.");
             }
@@ -181,9 +175,9 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"InstallStartAllBackButton_Click: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 ContentDialog errorDialog = new()
                 {
-                    Title = "Ошибка",
-                    Content = $"Произошла ошибка: {ex.Message}",
-                    CloseButtonText = "OK",
+                    Title = resourceLoader.GetString("Dialog_Error_Title"),
+                    Content = $"{resourceLoader.GetString("Dialog_Error_Content")}: {ex.Message}",
+                    CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
                     XamlRoot = this.XamlRoot
                 };
                 await errorDialog.ShowAsync();
@@ -204,27 +198,24 @@ namespace PWin11_Tweaker_s
                 ProgressPanel.Visibility = Visibility.Visible;
                 ApplyButton.IsEnabled = false;
                 InstallStartAllBackButton.IsEnabled = false;
-                StatusText.Text = "Подготовка...";
+                StatusText.Text = resourceLoader.GetString("StatusText_Preparing");
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
                 string regContent = "Windows Registry Editor Version 5.00\n\n";
 
-                // Твик: Показывать скрытые файлы
                 bool showHiddenFiles = ShowHiddenFiles.IsChecked ?? false;
                 regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n" +
                               $"\"Hidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n" +
                               $"\"ShowSuperHidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n\n";
                 TweakStatus.IsShowHiddenFilesEnabled = showHiddenFiles;
 
-                // Твик: Уменьшение кнопок Закрыть/Свернуть/Развернуть
                 bool useSmallCaptions = UseSmallCaptions.IsChecked ?? false;
                 string captionHeightValue = useSmallCaptions ? "-180" : "-330";
                 regContent += $"[HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics]\n" +
                               $"\"CaptionHeight\"=\"{captionHeightValue}\"\n\n";
                 TweakStatus.IsSmallCaptionsEnabled = useSmallCaptions;
 
-                // Твик: Использовать классическое контекстное меню
                 bool applyClassicContextMenu = ClassicContextMenuToggle.IsChecked ?? false;
                 if (applyClassicContextMenu)
                 {
@@ -237,7 +228,7 @@ namespace PWin11_Tweaker_s
                 }
                 TweakStatus.IsClassicContextMenuEnabled = applyClassicContextMenu;
 
-                StatusText.Text = "Сохранение изменений в реестре...";
+                StatusText.Text = resourceLoader.GetString("StatusText_SavingRegistryChanges");
                 ProgressBar.Value = 90;
                 await Task.Delay(100);
                 string tempRegPath = Path.Combine(Path.GetTempPath(), "PWin11Tweaker.reg");
@@ -260,7 +251,7 @@ namespace PWin11_Tweaker_s
                 File.WriteAllText(tempBatPath, batContent);
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Создан .bat файл: {tempBatPath}");
 
-                StatusText.Text = "Применение изменений в реестре...";
+                StatusText.Text = resourceLoader.GetString("StatusText_ApplyingRegistryChanges");
                 ProgressBar.Value = 95;
                 await Task.Delay(100);
                 ProcessStartInfo batProcess = new ProcessStartInfo
@@ -324,7 +315,7 @@ namespace PWin11_Tweaker_s
                 {
                     try
                     {
-                        StatusText.Text = "Перезапуск Проводника...";
+                        StatusText.Text = resourceLoader.GetString("StatusText_RestartingExplorer");
                         ProgressBar.Value = 100;
                         await Task.Delay(100);
                         System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Перезапускаем Проводник...");
@@ -371,9 +362,9 @@ namespace PWin11_Tweaker_s
 
                     ContentDialog successDialog = new()
                     {
-                        Title = "Успех",
-                        Content = "Настройки успешно применены! Проводник перезапущен.\nДля применения уменьшения кнопок управления окном и стиля StartAllBack может потребоваться перезапуск системы.",
-                        CloseButtonText = "OK",
+                        Title = resourceLoader.GetString("Dialog_Success_Title"),
+                        Content = resourceLoader.GetString("Dialog_Success_Content"),
+                        CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
                         XamlRoot = this.XamlRoot
                     };
                     await successDialog.ShowAsync();
@@ -383,9 +374,9 @@ namespace PWin11_Tweaker_s
                     System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Не удалось применить настройки. Проверьте лог: {tempLogPath}");
                     ContentDialog errorDialog = new()
                     {
-                        Title = "Ошибка",
-                        Content = "Не удалось применить настройки. Проверьте лог: " + tempLogPath,
-                        CloseButtonText = "OK",
+                        Title = resourceLoader.GetString("Dialog_Error_Title"),
+                        Content = $"{resourceLoader.GetString("Dialog_FailedApplySettings_Content")} {tempLogPath}",
+                        CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
                         XamlRoot = this.XamlRoot
                     };
                     await errorDialog.ShowAsync();
@@ -396,9 +387,9 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 ContentDialog errorDialog = new()
                 {
-                    Title = "Ошибка",
-                    Content = $"Произошла ошибка: {ex.Message}",
-                    CloseButtonText = "OK",
+                    Title = resourceLoader.GetString("Dialog_Error_Title"),
+                    Content = $"{resourceLoader.GetString("Dialog_Error_Content")}: {ex.Message}",
+                    CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
                     XamlRoot = this.XamlRoot
                 };
                 await errorDialog.ShowAsync();
@@ -417,7 +408,7 @@ namespace PWin11_Tweaker_s
             try
             {
                 System.Diagnostics.Debug.WriteLine("DownloadAndInstallStartAllBack: Начало выполнения...");
-                StatusText.Text = "Скачивание StartAllBack...";
+                StatusText.Text = resourceLoader.GetString("StatusText_DownloadingStartAllBack");
                 ProgressBar.Value = 10;
                 await Task.Delay(100);
                 string tempInstallerPath = Path.Combine(Path.GetTempPath(), "StartAllBackSetup.exe");
@@ -428,7 +419,7 @@ namespace PWin11_Tweaker_s
                     var response = await client.GetAsync(StartAllBackUrl);
                     if (!response.IsSuccessStatusCode)
                     {
-                        throw new Exception($"Не удалось скачать StartAllBack. Код состояния: {response.StatusCode}");
+                        throw new Exception($"{resourceLoader.GetString("Error_DownloadFailed")}: {response.StatusCode}");
                     }
                     using (var fs = new FileStream(tempInstallerPath, FileMode.Create, FileAccess.Write))
                     {
@@ -439,7 +430,7 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 40;
                 await Task.Delay(100);
 
-                StatusText.Text = "Установка StartAllBack...";
+                StatusText.Text = resourceLoader.GetString("StatusText_InstallingStartAllBack");
                 ProcessStartInfo installProcess = new ProcessStartInfo
                 {
                     FileName = tempInstallerPath,
@@ -453,7 +444,7 @@ namespace PWin11_Tweaker_s
                 {
                     if (process != null)
                     {
-                        process.WaitForExit(30000); // Увеличиваем время ожидания до 30 секунд
+                        process.WaitForExit(30000);
                         if (process.ExitCode == 0)
                         {
                             System.Diagnostics.Debug.WriteLine("DownloadAndInstallStartAllBack: StartAllBack успешно установлен.");
@@ -464,16 +455,16 @@ namespace PWin11_Tweaker_s
                         else
                         {
                             System.Diagnostics.Debug.WriteLine($"DownloadAndInstallStartAllBack: Ошибка установки StartAllBack, код: {process.ExitCode}");
-                            throw new Exception($"Не удалось установить StartAllBack. Код ошибки: {process.ExitCode}");
+                            throw new Exception($"{resourceLoader.GetString("Error_InstallFailed")}: {process.ExitCode}");
                         }
                     }
                     else
                     {
-                        throw new Exception("Не удалось запустить процесс установки StartAllBack.");
+                        throw new Exception(resourceLoader.GetString("Error_InstallProcessFailed"));
                     }
                 }
 
-                StatusText.Text = "Очистка временных файлов...";
+                StatusText.Text = resourceLoader.GetString("StatusText_CleaningTempFiles");
                 if (File.Exists(tempInstallerPath))
                 {
                     File.Delete(tempInstallerPath);
@@ -482,8 +473,8 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 80;
                 await Task.Delay(100);
 
-                StatusText.Text = "Применение настроек StartAllBack...";
-                StartAllBackExePath = FindStartAllBackPath(); // Обновляем путь после установки
+                StatusText.Text = resourceLoader.GetString("StatusText_ApplyingStartAllBackSettings");
+                StartAllBackExePath = FindStartAllBackPath();
                 if (File.Exists(StartAllBackExePath))
                 {
                     ProcessStartInfo configProcess = new ProcessStartInfo
@@ -523,7 +514,6 @@ namespace PWin11_Tweaker_s
             }
             finally
             {
-                // Проверяем, действительно ли StartAllBack установлен
                 StartAllBackExePath = FindStartAllBackPath();
                 bool isInstalled = File.Exists(StartAllBackExePath);
                 System.Diagnostics.Debug.WriteLine($"DownloadAndInstallStartAllBack: Проверка после установки: StartAllBack установлен: {isInstalled}");
@@ -542,7 +532,7 @@ namespace PWin11_Tweaker_s
             try
             {
                 System.Diagnostics.Debug.WriteLine("UninstallStartAllBack: Начало выполнения...");
-                StatusText.Text = "Завершение процессов StartAllBack...";
+                StatusText.Text = resourceLoader.GetString("StatusText_TerminatingStartAllBack");
                 ProgressBar.Value = 10;
                 await Task.Delay(100);
 
@@ -574,7 +564,7 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 30;
                 await Task.Delay(100);
 
-                StatusText.Text = "Попытка удаления StartAllBack...";
+                StatusText.Text = resourceLoader.GetString("StatusText_UninstallingStartAllBack");
                 bool uninstallSuccess = false;
                 if (File.Exists(StartAllBackExePath))
                 {
@@ -624,7 +614,7 @@ namespace PWin11_Tweaker_s
 
                 if (!uninstallSuccess)
                 {
-                    StatusText.Text = "Поиск команды удаления в реестре...";
+                    StatusText.Text = resourceLoader.GetString("StatusText_SearchingUninstallString");
                     string? uninstallString = FindUninstallString();
                     if (!string.IsNullOrEmpty(uninstallString))
                     {
@@ -674,7 +664,7 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 60;
                 await Task.Delay(100);
 
-                StatusText.Text = "Очистка оставшихся файлов...";
+                StatusText.Text = resourceLoader.GetString("StatusText_CleaningRemainingFiles");
                 string startAllBackFolder = Path.GetDirectoryName(StartAllBackExePath) ?? string.Empty;
                 if (Directory.Exists(startAllBackFolder))
                 {
@@ -708,7 +698,7 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 80;
                 await Task.Delay(100);
 
-                StatusText.Text = "Обновление интерфейса...";
+                StatusText.Text = resourceLoader.GetString("StatusText_UpdatingUI");
                 ProgressBar.Value = 90;
                 await Task.Delay(100);
             }
@@ -720,7 +710,6 @@ namespace PWin11_Tweaker_s
             }
             finally
             {
-                // Проверяем, действительно ли StartAllBack удалён
                 StartAllBackExePath = FindStartAllBackPath();
                 bool isInstalled = File.Exists(StartAllBackExePath);
                 System.Diagnostics.Debug.WriteLine($"UninstallStartAllBack: Проверка после удаления: StartAllBack установлен: {isInstalled}");
@@ -809,13 +798,12 @@ namespace PWin11_Tweaker_s
                 ClassicContextMenuToggle.IsChecked = TweakStatus.IsClassicContextMenuEnabled;
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: ClassicContextMenuToggle установлен в {TweakStatus.IsClassicContextMenuEnabled}");
 
-                // Проверяем реальное состояние StartAllBack
                 StartAllBackExePath = FindStartAllBackPath();
                 isStartAllBackInstalled = File.Exists(StartAllBackExePath);
                 TweakStatus.IsStartAllBackInstalled = isStartAllBackInstalled;
                 InstallStartAllBackButton.Content = isStartAllBackInstalled
-                    ? "Удалить StartAllBack"
-                    : "Установить StartAllBack";
+                    ? resourceLoader.GetString("Content_Button_StartAllBack_Uninstall")
+                    : resourceLoader.GetString("Content_Button_StartAllBack");
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: StartAllBack установлен: {isStartAllBackInstalled} (проверка через File.Exists)");
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Путь к StartAllBack: {StartAllBackExePath}");
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Текст кнопки: {InstallStartAllBackButton.Content}");

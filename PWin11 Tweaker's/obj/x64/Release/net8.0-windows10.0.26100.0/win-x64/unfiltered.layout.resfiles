@@ -2,6 +2,8 @@ ILLink\ILLink.Descriptors.LibraryBuild.xml
 Assets\LockScreenLogo.scale-200.png
 Assets\logo.ico
 Assets\logo.png
+Assets\logo-black.png
+Assets\logo-png.png
 Assets\OldNewExplorer\OldNewExplorer.exe
 Assets\OldNewExplorer\OldNewExplorer32.dll
 Assets\OldNewExplorer\OldNewExplorer64.dll
@@ -11,3 +13,13 @@ Assets\Square44x44Logo.scale-200.png
 Assets\Square44x44Logo.targetsize-24_altform-unplated.png
 Assets\StoreLogo.png
 Assets\Wide310x150Logo.scale-200.png
+icons\explorer.png
+icons\home.png
+icons\interface.png
+icons\performance.png
+icons\privacy.png
+icons\settings.png
+icons\system.png
+icons\theme.png
+Strings\en-US\Resources.resw
+Strings\ru_RU\Resources.resw
