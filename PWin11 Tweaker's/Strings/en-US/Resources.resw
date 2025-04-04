@@ -273,4 +273,11 @@
   <data name="SettingsInterface.Text" xml:space="preserve">
     <value>Settings Interface</value>
   </data>
+  <data name="TaskbarTransparency.Content" xml:space="preserve">
+    <value>Enable taskbar transparency</value>
+  </data>
+  <data name="HideSearchButton.Content" xml:space="preserve">
+    <value>Hide the search button on the taskbar</value>
+  </data>
+
 </root>

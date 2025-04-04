@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Dispatching;
-using Microsoft.UI.Windowing; // Для AppWindow
+using Microsoft.UI.Windowing;
 using Windows.Storage;
 
 namespace PWin11_Tweaker_s
@@ -13,11 +14,9 @@ namespace PWin11_Tweaker_s
     {
         private MicaBackdrop micaBackdrop;
         private const string ThemePreferenceKey = "ThemePreference";
+
         public MainWindow()
         {
-
-           
-
             try
             {
                 System.Diagnostics.Debug.WriteLine("MainWindow: Начало инициализации.");
@@ -28,6 +27,7 @@ namespace PWin11_Tweaker_s
                 this.SystemBackdrop = micaBackdrop;
                 System.Diagnostics.Debug.WriteLine("MainWindow: MicaBackdrop установлен.");
                 SetCustomIcon();
+
                 // Откладываем навигацию на HomePage
                 DispatcherQueue.TryEnqueue(() =>
                 {
@@ -72,55 +72,86 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"MainWindow.SetCustomIcon: Ошибка: {ex.Message}");
             }
         }
-        
-        
+
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             try
             {
-                if (args.IsSettingsInvoked)
+                System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Начало обработки события навигации.");
+
+                // Проверяем, что ContentFrame инициализирован
+                if (ContentFrame == null)
                 {
-                    ContentFrame.Navigate(typeof(SettingsPage));
+                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Ошибка: ContentFrame не инициализирован.");
                     return;
                 }
 
+                // Обработка перехода на страницу настроек
+                if (args.IsSettingsInvoked)
+                {
+                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Переход на страницу настроек (SettingsPage).");
+                    if (ContentFrame.CurrentSourcePageType != typeof(SettingsPage))
+                    {
+                        ContentFrame.Navigate(typeof(SettingsPage));
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Уже на странице SettingsPage, навигация не требуется.");
+                    }
+                    return;
+                }
+
+                // Получаем вызванный элемент
                 var invokedItem = args.InvokedItemContainer as NavigationViewItem;
-                if (invokedItem == null) return;
+                if (invokedItem == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Ошибка: InvokedItemContainer не является NavigationViewItem.");
+                    return;
+                }
 
+                // Получаем тег элемента
                 string? tag = invokedItem.Tag?.ToString();
-                if (tag == null) return;
-
-                Type? pageType = null;
-                switch (tag)
+                if (string.IsNullOrEmpty(tag))
                 {
-                    case "HomePage":
-                        pageType = typeof(HomePage);
-                        break;
-                    case "ExplorerPage":
-                        pageType = typeof(ExplorerPage);
-                        break;
-                    case "SystemPage":
-                        pageType = typeof(SystemPage);
-                        break;
-                    case "InterfacePage":
-                        pageType = typeof(InterfacePage);
-                        break;
-                    case "PerformancePage":
-                        pageType = typeof(PerformancePage);
-                        break;
-                    case "PrivacyPage":
-                        pageType = typeof(PrivacyPage);
-                        break;
+                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Ошибка: Тег элемента пустой или null.");
+                    return;
                 }
 
-                if (pageType != null && ContentFrame.CurrentSourcePageType != pageType)
+                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Выбран тег: {tag}");
+
+                // Словарь для сопоставления тегов с типами страниц
+                var pageMap = new Dictionary<string, Type>
+        {
+            { "HomePage", typeof(HomePage) },
+            { "ExplorerPage", typeof(ExplorerPage) },
+            { "SystemPage", typeof(SystemPage) },
+            { "InterfacePage", typeof(InterfacePage) },
+            { "PerformancePage", typeof(PerformancePage) },
+            { "PrivacyPage", typeof(PrivacyPage) }
+        };
+
+                // Проверяем, есть ли тег в словаре
+                if (!pageMap.TryGetValue(tag, out Type? pageType) || pageType == null)
                 {
-                    ContentFrame.Navigate(pageType);
+                    System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Ошибка: Неизвестный тег '{tag}'.");
+                    return;
                 }
+
+                // Проверяем, не находится ли пользователь уже на этой странице
+                if (ContentFrame.CurrentSourcePageType == pageType)
+                {
+                    System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Уже на странице {pageType.Name}, навигация не требуется.");
+                    return;
+                }
+
+                // Выполняем навигацию
+                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Переход на страницу {pageType.Name}.");
+                ContentFrame.Navigate(pageType);
+                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Навигация на {pageType.Name} выполнена успешно.");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Ошибка: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Ошибка при навигации: {ex.Message}\nStackTrace: {ex.StackTrace}");
             }
         }
 

@@ -108,6 +108,14 @@
               "target": "Package",
               "version": "[4.3.1, )"
             },
+            "System.Security.Principal": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Threading.Tasks": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "WinUI3Localizer": {
               "target": "Package",
               "version": "[2.2.0, )"

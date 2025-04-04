@@ -273,4 +273,10 @@
   <data name="SettingsInterface.Text" xml:space="preserve">
     <value>Настройки Интерфейса</value>
   </data>
+  <data name="TaskbarTransparency.Content" xml:space="preserve">
+    <value>Включить прозрачность панели задач</value>
+  </data>
+  <data name="HideSearchButton.Content" xml:space="preserve">
+    <value>Скрыть кнопку поиска на панели задач</value>
+  </data>
 </root>
