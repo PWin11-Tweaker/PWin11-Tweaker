@@ -22,7 +22,7 @@ namespace PWin11_Tweaker_s
                 this.InitializeComponent();
                 System.Diagnostics.Debug.WriteLine("App: Инициализация завершена.");
                 LocalizationManager.Initialize();
-                
+                PWin11_Tweaker_s.Script.DebugLogger.Initialize();
                 DebugLogger.Initialize();
             }
             catch (Exception ex)

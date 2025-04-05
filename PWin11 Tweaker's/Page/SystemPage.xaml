@@ -10,11 +10,11 @@
 
             <!-- Оптимизация служб -->
             <TextBlock Text="Оптимизация служб" FontSize="18" FontWeight="SemiBold" Margin="0,10,0,5"/>
-            <Button x:Name="DisableServicesButton" Content="Отключить ненужные службы" Margin="0,5,0,5">
+            <CheckBox x:Name="DisableServicesCheckBox" Content="Отключить ненужные службы" Margin="0,5,0,5">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Отключает службы: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic."/>
                 </ToolTipService.ToolTip>
-            </Button>
+            </CheckBox>
 
             <!-- Безопасность -->
             <TextBlock Text="Безопасность" FontSize="18" FontWeight="SemiBold" Margin="0,10,0,5"/>
@@ -34,14 +34,17 @@
 
             <!-- Производительность -->
             <TextBlock Text="Производительность" FontSize="18" FontWeight="SemiBold" Margin="0,10,0,5"/>
-            <Button x:Name="SpeedUpWindowsButton" Content="Ускорить работу Windows" Margin="0,5,0,5">
+            <CheckBox x:Name="SpeedUpWindowsCheckBox" Content="Ускорить работу Windows" Margin="0,5,0,5">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Отключает анимации и задержку меню Пуск для ускорения системы."/>
                 </ToolTipService.ToolTip>
-            </Button>
+            </CheckBox>
 
             <!-- Кнопка применения -->
-            <Button x:Name="ApplyButton" Content="Применить" Margin="0,10,0,0"/>
+            <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Margin="0,10,0,0"/>
+
+            <!-- Статус -->
+            <TextBlock x:Name="StatusText" Text="" FontSize="14" Margin="0,10,0,0" Visibility="Collapsed"/>
         </StackPanel>
     </ScrollViewer>
 </Page>
