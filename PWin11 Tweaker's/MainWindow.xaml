@@ -7,7 +7,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        
         <NavigationView x:Name="NavView"
                         PaneDisplayMode="Left"
                         IsBackButtonVisible="Collapsed"
@@ -24,38 +23,54 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Home -->
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <!-- Home -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Explorer" Tag="ExplorerPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Folder -->
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <!-- Folder -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="System" Tag="SystemPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- System -->
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <!-- System -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Layout -->
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <!-- Layout -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Speedometer -->
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <!-- Speedometer -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/> <!-- Permissions -->
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <!-- Permissions -->
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator/>
-                <!-- Удалён пункт "Переключить тему" -->
             </NavigationView.MenuItems>
             <Frame x:Name="ContentFrame" Margin="20" />
         </NavigationView>
+
+        <!-- Надпись о правах администратора -->
+        <TextBlock x:Name="AdminWarningText" 
+                   x:Uid="AdminWarning" 
+                   Foreground="Red" 
+                   FontSize="14" 
+                   TextWrapping="Wrap" 
+                   Visibility="Collapsed" 
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,10"/>
     </Grid>
 </Window>

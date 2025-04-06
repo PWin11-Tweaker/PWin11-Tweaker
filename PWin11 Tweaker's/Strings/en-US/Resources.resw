@@ -279,5 +279,13 @@
   <data name="HideSearchButton.Content" xml:space="preserve">
     <value>Hide the search button on the taskbar</value>
   </data>
-
+  <data name="AdminWarning.Text" xml:space="preserve">
+    <value>For the application to work correctly, run it as an administrator.</value>
+  </data>
+  <data name="SettingsPrivacy.Text" xml:space="preserve">
+    <value>Privacy Settings</value>
+  </data>
+  <data name="DisableTelemetry.Content" xml:space="preserve">
+    <value>Disable telemetry and data collection</value>
+  </data>
 </root>

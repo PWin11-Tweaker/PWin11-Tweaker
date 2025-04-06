@@ -15,6 +15,8 @@ namespace PWin11_Tweaker_s
         private const string ThemePreferenceKey = "ThemePreference";
         public static MainWindow MainWindowInstance { get; private set; }
 
+        public DispatcherQueue DispatcherQueue { get; private set; }
+
         public App()
         {
             try
@@ -22,8 +24,9 @@ namespace PWin11_Tweaker_s
                 this.InitializeComponent();
                 System.Diagnostics.Debug.WriteLine("App: Инициализация завершена.");
                 LocalizationManager.Initialize();
-                PWin11_Tweaker_s.Script.DebugLogger.Initialize();
+                DispatcherQueue = DispatcherQueue.GetForCurrentThread();
                 DebugLogger.Initialize();
+                PWin11_Tweaker_s.Script.DebugLogger.Initialize();
             }
             catch (Exception ex)
             {

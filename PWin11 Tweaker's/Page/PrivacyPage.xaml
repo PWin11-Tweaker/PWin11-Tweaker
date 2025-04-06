@@ -2,8 +2,70 @@
     x:Class="PWin11_Tweaker_s.PrivacyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PWin11_Tweaker_s"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     Background="Transparent">
-    <Grid>
-        <TextBlock Text="Privacy Page" FontSize="24"/>
-    </Grid>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" Spacing="15">
+            <TextBlock x:Uid="SettingsPrivacy" FontSize="24" FontWeight="SemiBold"/>
+
+            <!-- Отключение телеметрии -->
+            <CheckBox x:Name="DisableTelemetryToggle" x:Uid="DisableTelemetry">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Отключает отправку диагностических данных в Microsoft."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение рекламного ID -->
+            <CheckBox x:Name="DisableAdvertisingIdToggle" Content="Отключить рекламный идентификатор">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Предотвращает использование ID для персонализированной рекламы."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение отслеживания местоположения -->
+            <CheckBox x:Name="DisableLocationToggle" Content="Отключить отслеживание местоположения">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Запрещает приложениям и системе определять ваше местоположение."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение Cortana -->
+            <CheckBox x:Name="DisableCortanaToggle" Content="Отключить Cortana">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Отключает голосового помощника и связанные с ним службы."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение фоновых приложений -->
+            <CheckBox x:Name="DisableBackgroundAppsToggle" Content="Отключить фоновые приложения">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Запрещает приложениям работать в фоновом режиме."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение отправки данных в облако -->
+            <CheckBox x:Name="DisableCloudContentToggle" Content="Отключить отправку данных в облако (OneDrive, Suggestions)">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Предотвращает отправку данных для предложений и синхронизации."/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Кнопки -->
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
+                <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+                <Button x:Name="ResetButton" Content="Сбросить" Click="ResetButton_Click"/>
+            </StackPanel>
+
+            <!-- Прогресс и статус -->
+            <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
+                <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+                <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" 
+                             Foreground="{ThemeResource SystemAccentColor}" Background="{ThemeResource SubtleFillColorSecondary}"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 </Page>
