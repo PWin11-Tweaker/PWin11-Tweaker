@@ -22,47 +22,47 @@
             <!-- Отключение рекламного ID -->
             <CheckBox x:Name="DisableAdvertisingIdToggle" x:Uid="DisableAdvertisingId">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Предотвращает использование ID для персонализированной рекламы."/>
+                    <ToolTip x:Uid="DisableAdvertisingComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение отслеживания местоположения -->
-            <CheckBox x:Name="DisableLocationToggle" Content="Отключить отслеживание местоположения">
+            <CheckBox x:Name="DisableLocationToggle" x:Uid="DisableLocation">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Запрещает приложениям и системе определять ваше местоположение."/>
+                    <ToolTip x:Uid="DisableLocationComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение Cortana -->
-            <CheckBox x:Name="DisableCortanaToggle" Content="Отключить Cortana">
+            <CheckBox x:Name="DisableCortanaToggle" x:Uid="DisableCortana">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Отключает голосового помощника и связанные с ним службы."/>
+                    <ToolTip x:Uid="DisableCortanaComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение фоновых приложений -->
-            <CheckBox x:Name="DisableBackgroundAppsToggle" Content="Отключить фоновые приложения">
+            <CheckBox x:Name="DisableBackgroundAppsToggle" x:Uid="DisableBackgroundApps">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Запрещает приложениям работать в фоновом режиме."/>
+                    <ToolTip x:Uid="DisableBackgroundAppsComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение отправки данных в облако -->
-            <CheckBox x:Name="DisableCloudContentToggle" Content="Отключить отправку данных в облако (OneDrive, Suggestions)">
+            <CheckBox x:Name="DisableCloudContentToggle" x:Uid="DisableCloudContent">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Предотвращает отправку данных для предложений и синхронизации."/>
+                    <ToolTip x:Uid="DisableCloudContentComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Кнопки -->
             <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
-                <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}"/>
-                <Button x:Name="ResetButton" Content="Сбросить" Click="ResetButton_Click"/>
+                <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+                <Button x:Name="ResetButton" x:Uid="Restore" Click="ResetButton_Click"/>
             </StackPanel>
 
             <!-- Прогресс и статус -->
             <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
-                <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+                <TextBlock x:Name="StatusText" x:Uid="Status"/>
                 <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" 
                              Foreground="{ThemeResource SystemAccentColor}" Background="{ThemeResource SubtleFillColorSecondary}"/>
             </StackPanel>

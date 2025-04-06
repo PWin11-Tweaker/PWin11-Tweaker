@@ -4,16 +4,25 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using PWin11_Tweaker_s.Script;
+using Microsoft.Windows.ApplicationModel.Resources; // Для работы локализации
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class InterfacePage : Page
     {
+        //Для локализации
+        private readonly ResourceLoader resourceLoader;
+
+
         public InterfacePage()
         {
             this.InitializeComponent();
+            //Инициализируем наши ресурсы для локализации
+            resourceLoader = new ResourceLoader();
             LoadCurrentSettings();
         }
 
@@ -59,7 +68,7 @@ namespace PWin11_Tweaker_s
             {
                 ProgressPanel.Visibility = Visibility.Visible;
                 ApplyButton.IsEnabled = false;
-                StatusText.Text = "Подготовка...";
+                StatusText.Text = resourceLoader.GetString("Preparation");
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
@@ -81,7 +90,7 @@ namespace PWin11_Tweaker_s
                               $"\"SearchboxTaskbarMode\"=dword:0000000{(hideSearch ? 0 : 1)}\n\n";
 
                 // Сохранение и применение изменений
-                StatusText.Text = "Сохранение изменений...";
+                StatusText.Text = resourceLoader.GetString("Apply_Change");
                 ProgressBar.Value = 50;
                 await Task.Delay(100);
 
@@ -97,7 +106,7 @@ namespace PWin11_Tweaker_s
                                    "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
 
-                StatusText.Text = "Применение изменений...";
+                StatusText.Text = resourceLoader.GetString("Apply_Change");
                 ProgressBar.Value = 75;
                 await Task.Delay(100);
 
@@ -119,14 +128,14 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                StatusText.Text = "Готово!";
+                StatusText.Text = resourceLoader.GetString("Success");
                 ProgressBar.Value = 100;
                 await Task.Delay(500);
 
                 var dialog = new ContentDialog
-                {
-                    Title = "Успех",
-                    Content = "Настройки интерфейса успешно применены!",
+                {   // Ввод локализации не обязательно вводить что то после локализации например не надо вводить "???.Text"
+                    Title = resourceLoader.GetString("Success"),
+                    Content = resourceLoader.GetString("Success_Title_Interface"),
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
@@ -137,8 +146,8 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
                 var dialog = new ContentDialog
                 {
-                    Title = "Ошибка",
-                    Content = $"Не удалось применить настройки: {ex.Message}",
+                    Title = resourceLoader.GetString("Dialog_Error_Title"),
+                    Content = $"{ex.Message}",
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
