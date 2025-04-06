@@ -7,6 +7,8 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Windowing;
 using Windows.Storage;
+using System.Diagnostics;
+using System.Security.Principal; // Для проверки прав администратора
 
 namespace PWin11_Tweaker_s
 {
@@ -27,6 +29,9 @@ namespace PWin11_Tweaker_s
                 this.SystemBackdrop = micaBackdrop;
                 System.Diagnostics.Debug.WriteLine("MainWindow: MicaBackdrop установлен.");
                 SetCustomIcon();
+
+                // Проверяем права администратора
+                CheckAdminRights();
 
                 // Откладываем навигацию на HomePage
                 DispatcherQueue.TryEnqueue(() =>
@@ -49,6 +54,29 @@ namespace PWin11_Tweaker_s
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"MainWindow: Ошибка при инициализации: {ex.Message}");
+            }
+        }
+
+        private void CheckAdminRights()
+        {
+            try
+            {
+                // Проверяем, запущено ли приложение с правами администратора
+                using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
+                {
+                    WindowsPrincipal principal = new WindowsPrincipal(identity);
+                    bool isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+                    // Если не администратор, показываем предупреждение
+                    AdminWarningText.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
+                    System.Diagnostics.Debug.WriteLine($"MainWindow: Приложение запущено с правами администратора: {isAdmin}");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"MainWindow: Ошибка при проверке прав администратора: {ex.Message}");
+                // В случае ошибки показываем предупреждение, чтобы быть на стороне безопасности
+                AdminWarningText.Visibility = Visibility.Visible;
             }
         }
 
@@ -121,14 +149,14 @@ namespace PWin11_Tweaker_s
 
                 // Словарь для сопоставления тегов с типами страниц
                 var pageMap = new Dictionary<string, Type>
-        {
-            { "HomePage", typeof(HomePage) },
-            { "ExplorerPage", typeof(ExplorerPage) },
-            { "SystemPage", typeof(SystemPage) },
-            { "InterfacePage", typeof(InterfacePage) },
-            { "PerformancePage", typeof(PerformancePage) },
-            { "PrivacyPage", typeof(PrivacyPage) }
-        };
+                {
+                    { "HomePage", typeof(HomePage) },
+                    { "ExplorerPage", typeof(ExplorerPage) },
+                    { "SystemPage", typeof(SystemPage) },
+                    { "InterfacePage", typeof(InterfacePage) },
+                    { "PerformancePage", typeof(PerformancePage) },
+                    { "PrivacyPage", typeof(PrivacyPage) }
+                };
 
                 // Проверяем, есть ли тег в словаре
                 if (!pageMap.TryGetValue(tag, out Type? pageType) || pageType == null)

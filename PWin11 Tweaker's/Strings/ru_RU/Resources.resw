@@ -279,4 +279,13 @@
   <data name="HideSearchButton.Content" xml:space="preserve">
     <value>Скрыть кнопку поиска на панели задач</value>
   </data>
+  <data name="AdminWarning.Text" xml:space="preserve">
+    <value>Для корректной работы приложения запустите его от имени администратора</value>
+  </data>
+  <data name="SettingsPrivacy.Text" xml:space="preserve">
+    <value>Настройки конфиденциальности</value>
+  </data>
+  <data name="DisableTelemetry.Content" xml:space="preserve">
+    <value>Отключить телеметрию и сбор данных</value>
+  </data>
 </root>

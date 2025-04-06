@@ -324,3 +324,4 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Strings\ru_RU\Resources.resw
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Extensions.Logging.Abstractions.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\WinUI3Localizer.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Assets\github.png
