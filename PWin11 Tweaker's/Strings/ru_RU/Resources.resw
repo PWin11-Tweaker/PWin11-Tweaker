@@ -247,7 +247,7 @@
     <value>Начните с этих настроек❤️</value>
   </data>
   <data name="GoToPrivacyButton.Content" xml:space="preserve">
-    <value>Перейти к приватности</value>
+    <value>Перейти в приватность</value>
   </data>
   <data name="System.Content" xml:space="preserve">
     <value>Система</value>
@@ -293,5 +293,119 @@
   </data>
   <data name="DisSendDiagDatatoMicrosoft.Content" xml:space="preserve">
     <value>Отключает отправку диагностических данных в Microsoft</value>
+  </data>
+  <data name="Preparation" xml:space="preserve">
+    <value>Подготовка...</value>
+  </data>
+  <data name="Apply_Change" xml:space="preserve">
+    <value>Применение изменений</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Готово! Перезагрузите систему</value>
+  </data>
+  <data name="Success_Title_Interface" xml:space="preserve">
+    <value>Настройки интерфейса успешно применены!</value>
+  </data>
+  <data name="Performance_Settings.Text" xml:space="preserve">
+    <value>Настройки производительности</value>
+  </data>
+  <data name="DisableVisualEffects.Content" xml:space="preserve">
+    <value>Отключить визуальные эффекты (анимации, тени и т.д.)</value>
+  </data>
+  <data name="DisableWindowsSearch.Content" xml:space="preserve">
+    <value>Отключить службу Windows Search</value>
+  </data>
+  <data name="DisableSysMain.Content" xml:space="preserve">
+    <value>Отключить службу SysMain (Superfetch)</value>
+  </data>
+  <data name="Power_Plan.Text" xml:space="preserve">
+    <value>План электропитания:</value>
+  </data>
+  <data name="MaxPerf.Content" xml:space="preserve">
+    <value>Максимальная производительность</value>
+  </data>
+  <data name="Balanced.Content" xml:space="preserve">
+    <value>Сбалансированный</value>
+  </data>
+  <data name="EnergySaving.Content" xml:space="preserve">
+    <value>Экономия энергии</value>
+  </data>
+  <data name="Success_Title_Performance" xml:space="preserve">
+    <value>Настройки производительности успешно применены! Для некоторых изменений может потребоваться перезагрузка.</value>
+  </data>
+  <data name="Restore.Content" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="DisableAdvertisingComment.Content" xml:space="preserve">
+    <value>Предотвращает использование ID для персонализированной рекламы</value>
+  </data>
+  <data name="DisableLocation.Content" xml:space="preserve">
+    <value>Отключить отслеживание местоположения</value>
+  </data>
+  <data name="DisableLocationComment.Content" xml:space="preserve">
+    <value>Запрещает приложениям и системе определять ваше местоположение</value>
+  </data>
+  <data name="DisableCortana.Content" xml:space="preserve">
+    <value>Отключить Cortana</value>
+  </data>
+  <data name="DisableCortanaComment.Content" xml:space="preserve">
+    <value>Отключает голосового помощника и связанные с ним службы</value>
+  </data>
+  <data name="DisableBackgroundApps.Content" xml:space="preserve">
+    <value>Отключить фоновые приложения</value>
+  </data>
+  <data name="DisableBackgroundAppsComment.Content" xml:space="preserve">
+    <value>Запрещает приложениям работать в фоновом режиме</value>
+  </data>
+  <data name="DisableCloudContent.Content" xml:space="preserve">
+    <value>Отключить отправку данных в облако (OneDrive, Suggestions)</value>
+  </data>
+  <data name="DisableCloudContentComment.Content" xml:space="preserve">
+    <value>Предотвращает отправку данных для предложений и синхронизации</value>
+  </data>
+  <data name="Success_Title_Privacy" xml:space="preserve">
+    <value>Настройки конфиденциальности успешно применены! Для некоторых изменений может потребоваться перезагрузка.</value>
+  </data>
+  <data name="System_Settings.Text" xml:space="preserve">
+    <value>Настройки системы</value>
+  </data>
+  <data name="DisableServices.Content" xml:space="preserve">
+    <value>Отключить ненужные службы</value>
+  </data>
+  <data name="DisableServicesComment.Content" xml:space="preserve">
+    <value>Отключение: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic.</value>
+  </data>
+  <data name="Optimization.Text" xml:space="preserve">
+    <value>Оптимизация служб</value>
+  </data>
+  <data name="Secure.Text" xml:space="preserve">
+    <value>Безопасность</value>
+  </data>
+  <data name="DisableUAC.Content" xml:space="preserve">
+    <value>Отключить контроль учётных записей (UAC)</value>
+  </data>
+  <data name="DisableUACComment.Content" xml:space="preserve">
+    <value>Отключает запросы UAC для повышения удобства (может снизить безопасность)</value>
+  </data>
+  <data name="PrivacyTitle.Text" xml:space="preserve">
+    <value>Конфиденциальность</value>
+  </data>
+  <data name="DisableClipboardHistory.Content" xml:space="preserve">
+    <value>Отключить историю буфера обмена</value>
+  </data>
+  <data name="DisableClipboardHistoryComment.Content" xml:space="preserve">
+    <value>Запрещает Windows сохранять историю буфера обмена</value>
+  </data>
+  <data name="PerformanceTitle.Text" xml:space="preserve">
+    <value>Производительность</value>
+  </data>
+  <data name="SpeedUPWin.Content" xml:space="preserve">
+    <value>Ускорить работу Windows</value>
+  </data>
+  <data name="SpeedUPWinComment.Content" xml:space="preserve">
+    <value>Отключает анимации и задержку меню Пуск для ускорения системы</value>
+  </data>
+  <data name="pwin11.Text" xml:space="preserve">
+    <value>PWin11 Tweaker</value>
   </data>
 </root>

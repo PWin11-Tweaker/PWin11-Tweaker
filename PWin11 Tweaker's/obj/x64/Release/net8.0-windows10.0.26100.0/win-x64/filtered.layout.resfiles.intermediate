@@ -1,8 +1,8 @@
 ILLink\ILLink.Descriptors.LibraryBuild.xml
 Assets\github.png
 Assets\LockScreenLogo.scale-200.png
-Assets\logo.ico
 Assets\logo.png
+Assets\logo2.ico
 Assets\logo-black.png
 Assets\logo-png.png
 Assets\OldNewExplorer\OldNewExplorer.exe
@@ -13,6 +13,7 @@ Assets\Square150x150Logo.scale-200.png
 Assets\Square44x44Logo.scale-200.png
 Assets\Square44x44Logo.targetsize-24_altform-unplated.png
 Assets\StoreLogo.png
+Assets\telegram.png
 Assets\Wide310x150Logo.scale-200.png
 icons\explorer.png
 icons\home.png

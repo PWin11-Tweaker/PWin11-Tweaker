@@ -4,11 +4,15 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using PWin11_Tweaker_s.Script;
+using Microsoft.Windows.ApplicationModel.Resources; // Для работы локализации
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class SystemPage : Page
     {
+        //Для локализации
+        private readonly ResourceLoader resourceLoader;
+
         public SystemPage()
         {
             try
@@ -25,6 +29,8 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"SystemPage: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 ShowError($"Ошибка инициализации: {ex.Message}");
             }
+            //Инициализируем наши ресурсы для локализации
+            resourceLoader = new ResourceLoader();
         }
 
         private void LoadCurrentSettings()
@@ -106,7 +112,7 @@ namespace PWin11_Tweaker_s
                 SpeedUpWindowsCheckBox.IsEnabled = false;
 
                 // Показываем статус
-                StatusText.Text = "Подготовка...";
+                StatusText.Text = resourceLoader.GetString("Preparation");
                 StatusText.Visibility = Visibility.Visible;
 
                 // Отключение ненужных служб
@@ -251,7 +257,7 @@ namespace PWin11_Tweaker_s
                 }
 
                 // Показываем статус "Готово!"
-                StatusText.Text = "Готово! Для применения изменений (особенно для служб) перезагрузите систему.";
+                StatusText.Text = resourceLoader.GetString("Success");
             }
             catch (Exception ex)
             {

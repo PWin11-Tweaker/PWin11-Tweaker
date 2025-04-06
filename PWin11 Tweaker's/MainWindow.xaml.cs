@@ -9,6 +9,7 @@ using Microsoft.UI.Windowing;
 using Windows.Storage;
 using System.Diagnostics;
 using System.Security.Principal; // Для проверки прав администратора
+using Windows.UI.ViewManagement;
 
 namespace PWin11_Tweaker_s
 {
@@ -16,6 +17,7 @@ namespace PWin11_Tweaker_s
     {
         private MicaBackdrop micaBackdrop;
         private const string ThemePreferenceKey = "ThemePreference";
+        private AppWindow _appWindow;
 
         public MainWindow()
         {

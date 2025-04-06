@@ -294,4 +294,121 @@
   <data name="DisSendDiagDatatoMicrosoft.Content" xml:space="preserve">
     <value>Disables sending diagnostic data to Microsoft</value>
   </data>
+  <data name="Preparation" xml:space="preserve">
+    <value>Preparation...</value>
+  </data>
+  <data name="Apply_Change" xml:space="preserve">
+    <value>Applying the changes</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Ready! Restart the system</value>
+  </data>
+  <data name="Success_Title_Interface" xml:space="preserve">
+    <value>The interface settings have been successfully applied!</value>
+  </data>
+  <data name="Performance_Settings.Text" xml:space="preserve">
+    <value>Performance settings </value>
+  </data>
+  <data name="DisableVisualEffects.Content" xml:space="preserve">
+    <value>Disable visual effects (animations, shadows, etc.)</value>
+  </data>
+  <data name="DisableWindowsSearch.Content" xml:space="preserve">
+    <value>Disable the Windows Search service</value>
+  </data>
+  <data name="DisableSysMain.Content" xml:space="preserve">
+    <value>Disable the SysMain (Superfetch) service</value>
+  </data>
+  <data name="Power_Plan.Text" xml:space="preserve">
+    <value>Power supply plan:</value>
+  </data>
+  <data name="MaxPerf.Content" xml:space="preserve">
+    <value>Maximum performance</value>
+  </data>
+  <data name="Balanced.Content" xml:space="preserve">
+    <value>Balanced</value>
+  </data>
+  <data name="EnergySaving.Content" xml:space="preserve">
+    <value>Energy saving</value>
+  </data>
+  <data name="Success_Title_Performance" xml:space="preserve">
+    <value>Performance settings have been successfully applied! Some changes may require a reboot.</value>
+  </data>
+  <data name="Restore.Content" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="DisableAdvertisingComment.Content" xml:space="preserve">
+    <value>Prevents the use of ID for personalized advertising</value>
+  </data>
+  <data name="DisableLocation.Content" xml:space="preserve">
+    <value>Disable location tracking</value>
+  </data>
+  <data name="DisableLocationComment.Content" xml:space="preserve">
+    <value>Prohibits apps and the system from detecting your location</value>
+  </data>
+  <data name="DisableCortana.Content" xml:space="preserve">
+    <value>Disable Cortana</value>
+  </data>
+  <data name="DisableCortanaComment.Content" xml:space="preserve">
+    <value>Disables the voice assistant and related services</value>
+  </data>
+  <data name="DisableBackgroundApps.Content" xml:space="preserve">
+    <value>Disable background apps</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Prohibits applications from running in the background</value>
+  </data>
+  <data name="DisableCloudContent.Content" xml:space="preserve">
+    <value>Disable sending data to the cloud (OneDrive, Suggestions)</value>
+  </data>
+  <data name="DisableCloudContentComment.Content" xml:space="preserve">
+    <value>Prevents sending data for suggestions and synchronization</value>
+  </data>
+  <data name="Success_Title_Privacy" xml:space="preserve">
+    <value>Privacy settings have been successfully applied! Some changes may require a reboot.</value>
+  </data>
+  <data name="DisableBackgroundAppsComment.Content" xml:space="preserve">
+    <value>Prohibits applications from running in the background</value>
+  </data>
+  <data name="System_Settings.Text" xml:space="preserve">
+    <value>Settings System</value>
+  </data>
+  <data name="DisableServices.Content" xml:space="preserve">
+    <value>Disable unnecessary services</value>
+  </data>
+  <data name="DisableServicesComment.Content" xml:space="preserve">
+    <value>Disable: Windows Search, Fax, Print Spooler, Remote Registry, Windows Update Medic.</value>
+  </data>
+  <data name="Optimization.Text" xml:space="preserve">
+    <value>Optimization of services</value>
+  </data>
+  <data name="Secure.Text" xml:space="preserve">
+    <value>Safety</value>
+  </data>
+  <data name="DisableUAC.Content" xml:space="preserve">
+    <value>Disable User Account Control (UAC)</value>
+  </data>
+  <data name="DisableUACComment.Content" xml:space="preserve">
+    <value>Disables UAC requests for increased convenience (may reduce security)</value>
+  </data>
+  <data name="PrivacyTitle.Text" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="DisableClipboardHistory.Content" xml:space="preserve">
+    <value>Disable Clipboard History</value>
+  </data>
+  <data name="DisableClipboardHistoryComment.Content" xml:space="preserve">
+    <value>Prevents Windows from saving clipboard history</value>
+  </data>
+  <data name="PerformanceTitle.Text" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="SpeedUPWin.Content" xml:space="preserve">
+    <value>Speed up Windows operation</value>
+  </data>
+  <data name="SpeedUPWinComment.Content" xml:space="preserve">
+    <value>Disables animations and Start menu delay to speed up the system</value>
+  </data>
+  <data name="pwin11.Text" xml:space="preserve">
+    <value>PWin11 Tweaker</value>
+  </data>
 </root>

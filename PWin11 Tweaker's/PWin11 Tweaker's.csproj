@@ -6,10 +6,11 @@
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>PWin11_Tweaker_s</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <!-- Укажи версию здесь -->
-    <Version>1.0.9.8</Version>
-    <AssemblyVersion>1.0.9.8</AssemblyVersion>
-    <FileVersion>1.0.9.8</FileVersion>
+    <!-- ↓ Укажи версию здесь ↓ -->
+    <Version>1.0.10.0</Version>
+    <AssemblyVersion>1.0.10.0</AssemblyVersion>
+    <FileVersion>1.0.10.0</FileVersion>
+	  <!-- ↑ Version Here ↑ -->
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
@@ -29,9 +30,9 @@
     <Content Include="Strings\en-US\Resources.resw" />
     <Content Include="Strings\ru_RU\Resources.resw" />
     <None Remove="Assets\github.png" />
-    <None Remove="Assets\logo.ico" />
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\logo-png.png" />
+    <None Remove="Assets\telegram.png" />
     <None Remove="ExplorerPage.xaml" />
     <None Remove="InterfacePage.xaml" />
     <None Remove="PerformancePage.xaml" />
@@ -39,7 +40,6 @@
     <None Remove="RebootWindow.xaml" />
     <None Remove="SplashScreen.xaml" />
     <None Remove="SystemPage.xaml" />
-    <None Remove="Windowww\DebugWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -89,7 +89,7 @@
     <Folder Include="icons\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\logo.ico" />
+    <Resource Include="Assets\logo2.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\OldNewExplorer\OldNewExplorer.exe">
@@ -138,13 +138,15 @@
     <AppInstallerUri>C:\Users\Admin\Documents\PWin11</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
-    <ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\logo2.ico</ApplicationIcon>
     <PackageCertificateThumbprint>220E2A64CA78A023ABF51AC246F7C350B2A45FB8</PackageCertificateThumbprint>
     <AppxPackageDir>C:\Users\yttut\Music\PWin11_Build\1.0.7\</AppxPackageDir>
     <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
     <Authors>ph1ncyn</Authors>
     <NeutralLanguage>ru</NeutralLanguage>
     <WindowsPackageType>None</WindowsPackageType>
+    <Product>PWin11 Tweaker</Product>
+    <Description>Tweaker For Windows 11</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LayoutDir>D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\x64\Debug\Msix</LayoutDir>

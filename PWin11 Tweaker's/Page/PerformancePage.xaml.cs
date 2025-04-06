@@ -6,14 +6,20 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Windows.ApplicationModel.Resources; // Для работы локализации
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class PerformancePage : Page
     {
+
+        //Для локализации
+        private readonly ResourceLoader resourceLoader;
+
         public PerformancePage()
         {
             this.InitializeComponent();
+            resourceLoader = new ResourceLoader();
             LoadCurrentSettings();
         }
 
@@ -77,7 +83,7 @@ namespace PWin11_Tweaker_s
             {
                 ProgressPanel.Visibility = Visibility.Visible;
                 ApplyButton.IsEnabled = false;
-                StatusText.Text = "Подготовка...";
+                StatusText.Text = resourceLoader.GetString("Preparation");
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
@@ -119,7 +125,7 @@ namespace PWin11_Tweaker_s
                 batContent += $"powercfg /setactive {powerPlanGuid} >nul 2>&1\n";
 
                 // Сохранение и применение
-                StatusText.Text = "Сохранение изменений...";
+                StatusText.Text = resourceLoader.GetString("Apply_Change");
                 ProgressBar.Value = 50;
                 await Task.Delay(100);
 
@@ -133,7 +139,7 @@ namespace PWin11_Tweaker_s
                               "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
 
-                StatusText.Text = "Применение изменений...";
+                StatusText.Text = resourceLoader.GetString("Apply_Change");
                 ProgressBar.Value = 75;
                 await Task.Delay(100);
 
@@ -155,14 +161,14 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                StatusText.Text = "Готово!";
+                StatusText.Text = resourceLoader.GetString("Success");
                 ProgressBar.Value = 100;
                 await Task.Delay(500);
 
                 var dialog = new ContentDialog
                 {
-                    Title = "Успех",
-                    Content = "Настройки производительности успешно применены! Для некоторых изменений может потребоваться перезагрузка.",
+                    Title = resourceLoader.GetString("Success"),
+                    Content = resourceLoader.GetString("Success_Title_Performance"),
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
@@ -173,8 +179,8 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
                 var dialog = new ContentDialog
                 {
-                    Title = "Ошибка",
-                    Content = $"Не удалось применить настройки: {ex.Message}",
+                    Title = resourceLoader.GetString("Dialog_Error_Title"),
+                    Content = $"{ex.Message}",
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };

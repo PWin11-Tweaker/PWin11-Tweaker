@@ -9,33 +9,33 @@
     Background="Transparent">
 
     <StackPanel Margin="20" Spacing="10">
-        <TextBlock Text="Настройки производительности" FontSize="24" FontWeight="SemiBold"/>
+        <TextBlock x:Uid="Performance_Settings" FontSize="24" FontWeight="SemiBold"/>
 
         <!-- Отключение визуальных эффектов -->
-        <CheckBox x:Name="DisableVisualEffectsToggle" Content="Отключить визуальные эффекты (анимации, тени и т.д.)"/>
+        <CheckBox x:Name="DisableVisualEffectsToggle" x:Uid="DisableVisualEffects"/>
 
         <!-- Отключение Windows Search -->
-        <CheckBox x:Name="DisableWindowsSearchToggle" Content="Отключить службу Windows Search"/>
+        <CheckBox x:Name="DisableWindowsSearchToggle" x:Uid="DisableWindowsSearch"/>
 
         <!-- Отключение SysMain -->
-        <CheckBox x:Name="DisableSysMainToggle" Content="Отключить службу SysMain (Superfetch)"/>
+        <CheckBox x:Name="DisableSysMainToggle" x:Uid="DisableSysMain"/>
 
         <!-- План электропитания -->
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock Text="План электропитания:" VerticalAlignment="Center"/>
+            <TextBlock x:Uid="Power_Plan" VerticalAlignment="Center"/>
             <ComboBox x:Name="PowerPlanCombo" SelectionChanged="PowerPlanCombo_SelectionChanged">
-                <ComboBoxItem Content="Максимальная производительность" Tag="HighPerformance"/>
-                <ComboBoxItem Content="Сбалансированный" Tag="Balanced"/>
-                <ComboBoxItem Content="Экономия энергии" Tag="PowerSaver"/>
+                <ComboBoxItem x:Uid="MaxPerf" Tag="HighPerformance"/>
+                <ComboBoxItem x:Uid="Balanced" Tag="Balanced"/>
+                <ComboBoxItem x:Uid="EnergySaving" Tag="PowerSaver"/>
             </ComboBox>
         </StackPanel>
 
         <!-- Кнопка применения -->
-        <Button x:Name="ApplyButton" Content="Применить" Click="ApplyButton_Click" Margin="0,10,0,0"/>
+        <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Margin="0,10,0,0"/>
 
         <!-- Прогресс и статус -->
         <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
-            <TextBlock x:Name="StatusText" Text="Выполняется..."/>
+            <TextBlock x:Name="StatusText" x:Uid="Status"/>
             <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0"/>
         </StackPanel>
     </StackPanel>
