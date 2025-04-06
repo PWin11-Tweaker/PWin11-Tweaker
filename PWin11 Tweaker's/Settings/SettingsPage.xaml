@@ -16,8 +16,8 @@
                 <TextBlock Text="Repo" FontSize="14"/>
             </StackPanel>
         </Button>
-        
-        
-        
+
+        <Button Content="Open Debug" Click="DebugButton_Click"/>
+
     </StackPanel>
 </Page>

@@ -15,12 +15,12 @@
             <!-- Отключение телеметрии -->
             <CheckBox x:Name="DisableTelemetryToggle" x:Uid="DisableTelemetry">
                 <ToolTipService.ToolTip>
-                    <ToolTip Content="Отключает отправку диагностических данных в Microsoft."/>
+                    <ToolTip x:Uid="DisSendDiagDatatoMicrosoft" />
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение рекламного ID -->
-            <CheckBox x:Name="DisableAdvertisingIdToggle" Content="Отключить рекламный идентификатор">
+            <CheckBox x:Name="DisableAdvertisingIdToggle" x:Uid="DisableAdvertisingId">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Предотвращает использование ID для персонализированной рекламы."/>
                 </ToolTipService.ToolTip>

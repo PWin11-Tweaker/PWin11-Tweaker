@@ -288,4 +288,10 @@
   <data name="DisableTelemetry.Content" xml:space="preserve">
     <value>Disable telemetry and data collection</value>
   </data>
+  <data name="DisableAdvertisingId.Content" xml:space="preserve">
+    <value>Disable the advertising ID</value>
+  </data>
+  <data name="DisSendDiagDatatoMicrosoft.Content" xml:space="preserve">
+    <value>Disables sending diagnostic data to Microsoft</value>
+  </data>
 </root>
