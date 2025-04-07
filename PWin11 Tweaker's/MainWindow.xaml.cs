@@ -10,6 +10,7 @@ using Windows.Storage;
 using System.Diagnostics;
 using System.Security.Principal; // Для проверки прав администратора
 using Windows.UI.ViewManagement;
+using WinRT.Interop;
 
 namespace PWin11_Tweaker_s
 {
@@ -52,11 +53,22 @@ namespace PWin11_Tweaker_s
 
                 // Инициализируем MainWindow в App
                 App.InitializeMainWindow(this);
+
+                _appWindow = GetAppWindowForCurrentWindow();
+                _appWindow.Title = "PWin11";
+                _appWindow.SetIcon("Assets/logo2.ico");
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"MainWindow: Ошибка при инициализации: {ex.Message}");
             }
+        }
+
+        private AppWindow GetAppWindowForCurrentWindow()
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(this);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            return AppWindow.GetFromWindowId(wndId);
         }
 
         private void CheckAdminRights()
