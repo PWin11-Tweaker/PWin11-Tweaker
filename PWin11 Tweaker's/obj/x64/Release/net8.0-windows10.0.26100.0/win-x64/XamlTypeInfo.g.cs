@@ -478,7 +478,6 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 userType.AddMemberName("PaneDisplayMode");
                 userType.AddMemberName("IsBackButtonVisible");
                 userType.AddMemberName("IsSettingsVisible");
-                userType.AddMemberName("Header");
                 userType.AddMemberName("MenuItems");
                 userType.AddMemberName("AlwaysShowHeader");
                 userType.AddMemberName("AutoSuggestBox");
@@ -489,6 +488,7 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 userType.AddMemberName("ExpandedModeThresholdWidth");
                 userType.AddMemberName("FooterMenuItems");
                 userType.AddMemberName("FooterMenuItemsSource");
+                userType.AddMemberName("Header");
                 userType.AddMemberName("HeaderTemplate");
                 userType.AddMemberName("IsBackEnabled");
                 userType.AddMemberName("IsPaneOpen");
@@ -940,100 +940,100 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.IsSettingsVisible = (global::System.Boolean)Value;
         }
-        private object get_4_NavigationView_Header(object instance)
-        {
-            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
-            return that.Header;
-        }
-        private void set_4_NavigationView_Header(object instance, object Value)
-        {
-            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
-            that.Header = (global::System.Object)Value;
-        }
-        private object get_5_NavigationView_MenuItems(object instance)
+        private object get_4_NavigationView_MenuItems(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.MenuItems;
         }
-        private object get_6_NavigationView_AlwaysShowHeader(object instance)
+        private object get_5_NavigationView_AlwaysShowHeader(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.AlwaysShowHeader;
         }
-        private void set_6_NavigationView_AlwaysShowHeader(object instance, object Value)
+        private void set_5_NavigationView_AlwaysShowHeader(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.AlwaysShowHeader = (global::System.Boolean)Value;
         }
-        private object get_7_NavigationView_AutoSuggestBox(object instance)
+        private object get_6_NavigationView_AutoSuggestBox(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.AutoSuggestBox;
         }
-        private void set_7_NavigationView_AutoSuggestBox(object instance, object Value)
+        private void set_6_NavigationView_AutoSuggestBox(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.AutoSuggestBox = (global::Microsoft.UI.Xaml.Controls.AutoSuggestBox)Value;
         }
-        private object get_8_NavigationView_CompactModeThresholdWidth(object instance)
+        private object get_7_NavigationView_CompactModeThresholdWidth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.CompactModeThresholdWidth;
         }
-        private void set_8_NavigationView_CompactModeThresholdWidth(object instance, object Value)
+        private void set_7_NavigationView_CompactModeThresholdWidth(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.CompactModeThresholdWidth = (global::System.Double)Value;
         }
-        private object get_9_NavigationView_CompactPaneLength(object instance)
+        private object get_8_NavigationView_CompactPaneLength(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.CompactPaneLength;
         }
-        private void set_9_NavigationView_CompactPaneLength(object instance, object Value)
+        private void set_8_NavigationView_CompactPaneLength(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.CompactPaneLength = (global::System.Double)Value;
         }
-        private object get_10_NavigationView_ContentOverlay(object instance)
+        private object get_9_NavigationView_ContentOverlay(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.ContentOverlay;
         }
-        private void set_10_NavigationView_ContentOverlay(object instance, object Value)
+        private void set_9_NavigationView_ContentOverlay(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.ContentOverlay = (global::Microsoft.UI.Xaml.UIElement)Value;
         }
-        private object get_11_NavigationView_DisplayMode(object instance)
+        private object get_10_NavigationView_DisplayMode(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.DisplayMode;
         }
-        private object get_12_NavigationView_ExpandedModeThresholdWidth(object instance)
+        private object get_11_NavigationView_ExpandedModeThresholdWidth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.ExpandedModeThresholdWidth;
         }
-        private void set_12_NavigationView_ExpandedModeThresholdWidth(object instance, object Value)
+        private void set_11_NavigationView_ExpandedModeThresholdWidth(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.ExpandedModeThresholdWidth = (global::System.Double)Value;
         }
-        private object get_13_NavigationView_FooterMenuItems(object instance)
+        private object get_12_NavigationView_FooterMenuItems(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.FooterMenuItems;
         }
-        private object get_14_NavigationView_FooterMenuItemsSource(object instance)
+        private object get_13_NavigationView_FooterMenuItemsSource(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             return that.FooterMenuItemsSource;
         }
-        private void set_14_NavigationView_FooterMenuItemsSource(object instance, object Value)
+        private void set_13_NavigationView_FooterMenuItemsSource(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
             that.FooterMenuItemsSource = (global::System.Object)Value;
+        }
+        private object get_14_NavigationView_Header(object instance)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            return that.Header;
+        }
+        private void set_14_NavigationView_Header(object instance, object Value)
+        {
+            var that = (global::Microsoft.UI.Xaml.Controls.NavigationView)instance;
+            that.Header = (global::System.Object)Value;
         }
         private object get_15_NavigationView_HeaderTemplate(object instance)
         {
@@ -1476,82 +1476,82 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlMember.Getter = get_3_NavigationView_IsSettingsVisible;
                 xamlMember.Setter = set_3_NavigationView_IsSettingsVisible;
                 break;
-            case "Microsoft.UI.Xaml.Controls.NavigationView.Header":
-                userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
-                xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Header", "Object");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_4_NavigationView_Header;
-                xamlMember.Setter = set_4_NavigationView_Header;
-                break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.MenuItems":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "MenuItems", "System.Collections.Generic.IList`1<Object>");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_5_NavigationView_MenuItems;
+                xamlMember.Getter = get_4_NavigationView_MenuItems;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.AlwaysShowHeader":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "AlwaysShowHeader", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_6_NavigationView_AlwaysShowHeader;
-                xamlMember.Setter = set_6_NavigationView_AlwaysShowHeader;
+                xamlMember.Getter = get_5_NavigationView_AlwaysShowHeader;
+                xamlMember.Setter = set_5_NavigationView_AlwaysShowHeader;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.AutoSuggestBox":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "AutoSuggestBox", "Microsoft.UI.Xaml.Controls.AutoSuggestBox");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_7_NavigationView_AutoSuggestBox;
-                xamlMember.Setter = set_7_NavigationView_AutoSuggestBox;
+                xamlMember.Getter = get_6_NavigationView_AutoSuggestBox;
+                xamlMember.Setter = set_6_NavigationView_AutoSuggestBox;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.CompactModeThresholdWidth":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "CompactModeThresholdWidth", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_8_NavigationView_CompactModeThresholdWidth;
-                xamlMember.Setter = set_8_NavigationView_CompactModeThresholdWidth;
+                xamlMember.Getter = get_7_NavigationView_CompactModeThresholdWidth;
+                xamlMember.Setter = set_7_NavigationView_CompactModeThresholdWidth;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.CompactPaneLength":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "CompactPaneLength", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_9_NavigationView_CompactPaneLength;
-                xamlMember.Setter = set_9_NavigationView_CompactPaneLength;
+                xamlMember.Getter = get_8_NavigationView_CompactPaneLength;
+                xamlMember.Setter = set_8_NavigationView_CompactPaneLength;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.ContentOverlay":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "ContentOverlay", "Microsoft.UI.Xaml.UIElement");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_10_NavigationView_ContentOverlay;
-                xamlMember.Setter = set_10_NavigationView_ContentOverlay;
+                xamlMember.Getter = get_9_NavigationView_ContentOverlay;
+                xamlMember.Setter = set_9_NavigationView_ContentOverlay;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.DisplayMode":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "DisplayMode", "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_11_NavigationView_DisplayMode;
+                xamlMember.Getter = get_10_NavigationView_DisplayMode;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.ExpandedModeThresholdWidth":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "ExpandedModeThresholdWidth", "Double");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_12_NavigationView_ExpandedModeThresholdWidth;
-                xamlMember.Setter = set_12_NavigationView_ExpandedModeThresholdWidth;
+                xamlMember.Getter = get_11_NavigationView_ExpandedModeThresholdWidth;
+                xamlMember.Setter = set_11_NavigationView_ExpandedModeThresholdWidth;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.FooterMenuItems":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "FooterMenuItems", "System.Collections.Generic.IList`1<Object>");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_13_NavigationView_FooterMenuItems;
+                xamlMember.Getter = get_12_NavigationView_FooterMenuItems;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.FooterMenuItemsSource":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
                 xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "FooterMenuItemsSource", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_14_NavigationView_FooterMenuItemsSource;
-                xamlMember.Setter = set_14_NavigationView_FooterMenuItemsSource;
+                xamlMember.Getter = get_13_NavigationView_FooterMenuItemsSource;
+                xamlMember.Setter = set_13_NavigationView_FooterMenuItemsSource;
+                break;
+            case "Microsoft.UI.Xaml.Controls.NavigationView.Header":
+                userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
+                xamlMember = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlMember(this, "Header", "Object");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_14_NavigationView_Header;
+                xamlMember.Setter = set_14_NavigationView_Header;
                 break;
             case "Microsoft.UI.Xaml.Controls.NavigationView.HeaderTemplate":
                 userType = (global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationView");
