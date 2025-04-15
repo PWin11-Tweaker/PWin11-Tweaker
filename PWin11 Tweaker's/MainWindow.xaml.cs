@@ -75,15 +75,18 @@ namespace PWin11_Tweaker_s
         {
             try
             {
+                
                 // Проверяем, запущено ли приложение с правами администратора
                 using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
                 {
+                    
                     WindowsPrincipal principal = new WindowsPrincipal(identity);
                     bool isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
 
                     // Если не администратор, показываем предупреждение
                     AdminWarningText.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
                     System.Diagnostics.Debug.WriteLine($"MainWindow: Приложение запущено с правами администратора: {isAdmin}");
+                    
                 }
             }
             catch (Exception ex)

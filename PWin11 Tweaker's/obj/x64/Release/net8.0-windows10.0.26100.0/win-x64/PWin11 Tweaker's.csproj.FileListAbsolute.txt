@@ -9,7 +9,6 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Windowww\RebootWindow.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Windowww\SplashScreen.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\ILLink\ILLink.Descriptors.LibraryBuild.xml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Assets\github.png
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Assets\LockScreenLogo.scale-200.png
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Assets\logo-black.png
@@ -43,7 +42,9 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\PWin11 Tweaker's.pdb
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\resources.pri
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Web.WebView2.Core.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Extensions.Logging.Abstractions.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Win32.SystemEvents.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.InteractiveExperiences.Projection.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Security.Authentication.OAuth.Projection.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.WinUI.dll
@@ -64,7 +65,10 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Windows.System.Projection.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Windows.Widgets.Projection.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Newtonsoft.Json.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\System.Diagnostics.DiagnosticSource.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\System.Drawing.Common.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\System.Private.Windows.Core.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\WinUI3Localizer.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\WebView2Loader.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll
@@ -246,7 +250,7 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\hostfxr.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\hostpolicy.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\mscordaccore.dll
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\mscordaccore_amd64_amd64_8.0.1425.11118.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\mscordaccore_amd64_amd64_8.0.1525.16413.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\mscordbi.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\mscorrc.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\msquic.dll

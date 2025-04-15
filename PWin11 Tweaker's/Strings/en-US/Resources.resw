@@ -411,4 +411,23 @@
   <data name="pwin11.Text" xml:space="preserve">
     <value>PWin11 Tweaker</value>
   </data>
+  
+    <!-- SplashScreen -->
+    
+    <data name="TweakClassicContextMenu" xml:space="preserve">
+      <value>Checking the classic context menu...</value>
+    </data>
+    
+      <data name="TweakShowHiddenFiles" xml:space="preserve">
+        <value>Checking the secrecy of files...</value>
+      </data>
+      
+      <data name="TweakSmallCaptions" xml:space="preserve">
+        <value>Checking the reduction of the window control buttons...</value>
+      </data>
+      
+      <data name="TweakStartAllBack" xml:space="preserve">
+        <value>Checking the StartAllback installation...</value>
+      </data>
+  
 </root>
