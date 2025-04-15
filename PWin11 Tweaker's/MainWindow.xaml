@@ -2,6 +2,7 @@
     x:Class="PWin11_Tweaker_s.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PWin11_Tweaker_s"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -13,7 +14,6 @@
                         IsSettingsVisible="True"
                         ItemInvoked="NavView_ItemInvoked">
             <NavigationView.Resources>
-                
                 <Style TargetType="FontIcon">
                     <Setter Property="FontSize" Value="20"/>
                     <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimary}"/>
@@ -23,37 +23,31 @@
                 <NavigationViewItem x:Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                        
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Explorer" Tag="ExplorerPage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                        
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="System" Tag="SystemPage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                        
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                        
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                        
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                        
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator/>
@@ -61,7 +55,6 @@
             <Frame x:Name="ContentFrame" Margin="20" />
         </NavigationView>
 
-        
         <TextBlock x:Name="AdminWarningText" 
                    x:Uid="AdminWarning" 
                    Foreground="Red" 

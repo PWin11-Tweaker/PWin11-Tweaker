@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using WinRT.Interop;
 using Microsoft.Win32;
 using System.IO;
-using PWin11_Tweaker_s.Script; // Добавляем для File.Exists
+using PWin11_Tweaker_s.Script;
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class SplashScreen : Window
     {
         private readonly AppWindow? _appWindow;
+        private readonly ResourceLoader _resourceLoader;
 
         public SplashScreen()
         {
@@ -28,6 +30,7 @@ namespace PWin11_Tweaker_s
                 IntPtr hWnd = WindowNative.GetWindowHandle(this);
                 WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
                 _appWindow = AppWindow.GetFromWindowId(windowId);
+                _resourceLoader = new ResourceLoader();
 
                 if (_appWindow != null)
                 {
@@ -45,7 +48,7 @@ namespace PWin11_Tweaker_s
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("Не удалось инициализировать AppWindow.");
+                    System.Diagnostics.Debug.WriteLine("S003");
                 }
 
                 // Проверяем поддержку Mica и применяем запасной фон, если нужно
@@ -70,6 +73,12 @@ namespace PWin11_Tweaker_s
                 this.Close();
             }
         }
+        
+        
+        
+        
+        
+        
 
         private bool IsMicaSupported()
         {
@@ -83,7 +92,7 @@ namespace PWin11_Tweaker_s
             {
                 if (_appWindow == null)
                 {
-                    System.Diagnostics.Debug.WriteLine("AppWindow не инициализирован.");
+                    System.Diagnostics.Debug.WriteLine("S003");
                     return;
                 }
 
@@ -166,12 +175,12 @@ namespace PWin11_Tweaker_s
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine("Элемент 'SplashImage' не найден.");
+                        System.Diagnostics.Debug.WriteLine("S001");
                     }
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("Корневой элемент не является Grid.");
+                    System.Diagnostics.Debug.WriteLine("S002");
                 }
             }
             catch (Exception ex)
@@ -211,10 +220,10 @@ namespace PWin11_Tweaker_s
                 // Список твиков для проверки
                 var tweaks = new[]
                 {
-                    new { Name = "Проверка классического контекстного меню...", CheckFunc = new Func<bool>(() => CheckClassicContextMenu()) },
-                    new { Name = "Проверка скрытности файлов...", CheckFunc = new Func<bool>(() => CheckShowHiddenFiles()) },
-                    new { Name = "Проверка уменьшения кнопок управления окном...", CheckFunc = new Func<bool>(() => CheckSmallCaptions()) },
-                    new { Name = "Проверка установки StartAllBack...", CheckFunc = new Func<bool>(() => CheckStartAllBack()) }
+                    new { Name = _resourceLoader.GetString("TweakClassicContextMenu"), CheckFunc = new Func<bool>(() => CheckClassicContextMenu()) },
+                    new { Name = _resourceLoader.GetString("TweakShowHiddenFiles"), CheckFunc = new Func<bool>(() => CheckShowHiddenFiles()) },
+                    new { Name = _resourceLoader.GetString("TweakSmallCaptions"), CheckFunc = new Func<bool>(() => CheckSmallCaptions()) },
+                    new { Name = _resourceLoader.GetString("TweakStartAllBack"), CheckFunc = new Func<bool>(() => CheckStartAllBack()) }
                 };
 
                 int totalTweaks = tweaks.Length;
@@ -266,7 +275,7 @@ namespace PWin11_Tweaker_s
                 {
                     if (rootGridFinal.FindName("StatusText") is TextBlock finalStatusText)
                     {
-                        finalStatusText.Text = "Проверка завершена!";
+                        finalStatusText.Text = "";
                     }
 
                     if (rootGridFinal.FindName("ProgressBar") is ProgressBar finalProgressBar)
