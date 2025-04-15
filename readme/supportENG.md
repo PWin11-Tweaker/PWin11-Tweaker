@@ -17,3 +17,10 @@ If you encounter these errors, please contact the developer via Issues on GitHub
 | E009       | Error saving theme settings                  | Failed to save theme settings to local storage.                                   | Ensure the application has permission to write to local settings. Restart the application.    |
 | E010       | Operation canceled                           | An asynchronous operation (e.g., opening a page) was canceled.                    | Try again. If the error persists, check system stability and contact the developer.           |
 | E011       | General application error                    | An unknown error related to the application's operation.                          | Restart the application. If the error persists, contact the developer with a description of the issue and logs (if available). |
+
+
+| SplashScreen error code | Error description | Possible cause | Recommendation for a programmer |
+|-------------------------|-------------------|----------------|---------------------------------|
+| S001                    | The 'SplashImage' element was not found. | Change or check the image path for SplashImage | Check the path to the image in the SplashScreen.xaml.cs script |
+| S002                    | The root element is not a Grid. | Xaml must have a Grid, not another markup. | Check the Splash Screen.xaml markup | 
+| S003                    | The AppWindow could not be initialized. | Couldn't start the window                              |    Check the code                     | 
