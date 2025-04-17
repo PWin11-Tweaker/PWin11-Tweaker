@@ -10,7 +10,7 @@ using Microsoft.Windows.ApplicationModel.Resources; // Для работы ло�
 
 namespace PWin11_Tweaker_s
 {
-    public sealed partial class PerformancePage : Page
+    public sealed partial class PerformancePage : Microsoft.UI.Xaml.Controls.Page
     {
 
         //Для локализации

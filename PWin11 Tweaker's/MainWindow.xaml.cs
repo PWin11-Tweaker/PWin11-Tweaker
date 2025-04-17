@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Security.Principal; // Для проверки прав администратора
 using Windows.UI.ViewManagement;
 using WinRT.Interop;
+using PWin11_Tweaker_s.Page;
 
 namespace PWin11_Tweaker_s
 {
@@ -172,7 +173,8 @@ namespace PWin11_Tweaker_s
                     { "SystemPage", typeof(SystemPage) },
                     { "InterfacePage", typeof(InterfacePage) },
                     { "PerformancePage", typeof(PerformancePage) },
-                    { "PrivacyPage", typeof(PrivacyPage) }
+                    { "PrivacyPage", typeof(PrivacyPage) },
+                    { "StartupManagerPage", typeof(StartupManagerPage) },
                 };
 
                 // Проверяем, есть ли тег в словаре

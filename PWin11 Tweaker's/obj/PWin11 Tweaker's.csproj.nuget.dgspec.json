@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {
-      "version": "1.0.10",
+      "version": "1.0.10.1",
       "restore": {
         "projectUniqueName": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
         "projectName": "PWin11 Tweaker's",
@@ -50,13 +50,35 @@
         "net8.0-windows10.0.26100": {
           "targetAlias": "net8.0-windows10.0.26100.0",
           "dependencies": {
+            "Microsoft.Bcl.AsyncInterfaces": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[9.0.4, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.15, )",
+              "autoReferenced": true
             },
             "Microsoft.NETCore.Platforms": {
               "target": "Package",
@@ -66,13 +88,31 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.Toolkit.Uwp.Notifications": {
+              "target": "Package",
+              "version": "[7.1.3, )"
+            },
             "Microsoft.Web.WebView2": {
               "target": "Package",
               "version": "[1.0.3179.45, )"
             },
+            "Microsoft.Win32.Registry": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.Win32.SystemEvents": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.Windows.CsWin32": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.3.183, )"
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
@@ -86,6 +126,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "System.CodeDom": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "System.Collections": {
               "target": "Package",
               "version": "[4.3.0, )"
@@ -93,6 +137,10 @@
             "System.Collections.Concurrent": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "System.Diagnostics.Debug": {
               "target": "Package",
@@ -105,6 +153,10 @@
             "System.Diagnostics.Tracing": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "System.DirectoryServices": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "System.Drawing.Common": {
               "target": "Package",
@@ -130,17 +182,33 @@
               "target": "Package",
               "version": "[4.3.0, )"
             },
+            "System.Management": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
+            },
+            "System.Reflection": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             },
             "System.Runtime": {
               "target": "Package",
               "version": "[4.3.1, )"
             },
+            "System.Security.Permissions": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "System.Security.Principal": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "System.ServiceProcess.ServiceController": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "System.Threading": {
               "target": "Package",
@@ -149,6 +217,10 @@
             "System.Threading.Tasks": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "System.Windows.Extensions": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "WinUI3Localizer": {
               "target": "Package",
@@ -193,6 +265,10 @@
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
               "version": "[8.0.15, 8.0.15]"
             },
             {

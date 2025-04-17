@@ -37,17 +37,22 @@
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE790;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF71C;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF552;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Startup" Tag="StartupManagerPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4A;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator/>

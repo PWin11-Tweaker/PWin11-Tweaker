@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="PWin11_Tweaker_s.Page.StartupManagerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PWin11_Tweaker_s.Page"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock 
+            Grid.Row="0"
+            Text="Управление автозапуском"
+            FontSize="24"
+            FontWeight="Bold"
+            Margin="0,0,0,20"/>
+
+        <!-- Основной контент -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Программы автозапуска -->
+            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                <TextBlock 
+                    Text="Программы автозапуска"
+                    FontSize="18"
+                    Margin="0,0,0,10"/>
+                <ListView 
+                    x:Name="StartupProgramsList"
+                    Height="400"
+                    SelectionMode="None"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListView.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Название" FontWeight="SemiBold"/>
+                            <TextBlock Grid.Column="1" Text="Состояние" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="ProgramNameText" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <ToggleSwitch 
+                                    Grid.Column="1"
+                                    x:Name="ProgramToggle"
+                                    OnContent="Вкл" 
+                                    OffContent="Выкл"
+                                    Toggled="ToggleStartupProgram"
+                                    HorizontalAlignment="Right"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+
+            <!-- Службы -->
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <TextBlock 
+                    Text="Службы"
+                    FontSize="18"
+                    Margin="0,0,0,10"/>
+                <ListView 
+                    x:Name="ServicesList"
+                    Height="400"
+                    SelectionMode="None"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListView.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Название" FontWeight="SemiBold"/>
+                            <TextBlock Grid.Column="1" Text="Состояние" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="ServiceNameText" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                <ToggleSwitch 
+                                    Grid.Column="1"
+                                    x:Name="ServiceToggle"
+                                    OnContent="Вкл" 
+                                    OffContent="Выкл"
+                                    Toggled="ToggleService"
+                                    HorizontalAlignment="Right"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

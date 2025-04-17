@@ -408,22 +408,19 @@
   <data name="pwin11.Text" xml:space="preserve">
     <value>PWin11 Tweaker</value>
   </data>
-  
-  <!-- SplashScreen -->
-  
   <data name="TweakClassicContextMenu" xml:space="preserve">
     <value>Проверка классического контекстного меню...</value>
   </data>
-  
-    <data name="TweakShowHiddenFiles" xml:space="preserve">
-      <value>Проверка скрытности файлов...</value>
-    </data>
-    
-    <data name="TweakSmallCaptions" xml:space="preserve">
-      <value>Проверка уменьшения кнопок управления окном...</value>
-    </data>
-    
-    <data name="TweakStartAllBack" xml:space="preserve">
-      <value>Проверка установки StartAllBack...</value>
-    </data>
+  <data name="TweakShowHiddenFiles" xml:space="preserve">
+    <value>Проверка скрытности файлов...</value>
+  </data>
+  <data name="TweakSmallCaptions" xml:space="preserve">
+    <value>Проверка уменьшения кнопок управления окном...</value>
+  </data>
+  <data name="TweakStartAllBack" xml:space="preserve">
+    <value>Проверка установки StartAllBack...</value>
+  </data>
+  <data name="Startup.Content" xml:space="preserve">
+    <value>Автозапуск</value>
+  </data>
 </root>

@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace PWin11_Tweaker_s
 {
-    public sealed partial class HomePage : Page
+    public sealed partial class HomePage : Microsoft.UI.Xaml.Controls.Page
     {
         public HomePage()
         {
