@@ -10,7 +10,7 @@ using Microsoft.Windows.ApplicationModel.Resources; // Для работы ло�
 
 namespace PWin11_Tweaker_s
 {
-    public sealed partial class PrivacyPage : Page
+    public sealed partial class PrivacyPage : Microsoft.UI.Xaml.Controls.Page
     {
         //Для локализации
         private readonly ResourceLoader resourceLoader;

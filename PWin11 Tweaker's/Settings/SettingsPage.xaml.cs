@@ -8,7 +8,7 @@ using Windows.System;
 
 namespace PWin11_Tweaker_s
 {
-    public sealed partial class SettingsPage : Page
+    public sealed partial class SettingsPage : Microsoft.UI.Xaml.Controls.Page
     {
         
         public SettingsPage()

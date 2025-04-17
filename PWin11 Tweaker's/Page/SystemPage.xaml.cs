@@ -8,7 +8,7 @@ using Microsoft.Windows.ApplicationModel.Resources; // Для работы ло�
 
 namespace PWin11_Tweaker_s
 {
-    public sealed partial class SystemPage : Page
+    public sealed partial class SystemPage : Microsoft.UI.Xaml.Controls.Page
     {
         //Для локализации
         private readonly ResourceLoader resourceLoader;

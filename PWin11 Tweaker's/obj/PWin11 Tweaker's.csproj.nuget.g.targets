@@ -5,5 +5,6 @@
     <Import Project="$(NuGetPackageRoot)microsoft.web.webview2\1.0.3179.45\buildTransitive\Microsoft.Web.WebView2.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.web.webview2\1.0.3179.45\buildTransitive\Microsoft.Web.WebView2.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windowsappsdk\1.7.250401001\buildTransitive\Microsoft.WindowsAppSDK.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.windowsappsdk\1.7.250401001\buildTransitive\Microsoft.WindowsAppSDK.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\9.0.4\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\9.0.4\buildTransitive\net8.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.options\9.0.4\buildTransitive\net8.0\Microsoft.Extensions.Options.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.options\9.0.4\buildTransitive\net8.0\Microsoft.Extensions.Options.targets')" />
   </ImportGroup>
 </Project>
