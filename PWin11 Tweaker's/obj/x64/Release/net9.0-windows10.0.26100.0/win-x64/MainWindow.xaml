@@ -2,6 +2,7 @@
     x:Class="PWin11_Tweaker_s.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PWin11_Tweaker_s"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -11,19 +12,63 @@
                         PaneDisplayMode="Left"
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
-                        Header="PWin11 Tweaker's"
-                                                                   >
+                                                         >
+            <NavigationView.Resources>
+                <Style TargetType="FontIcon">
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimary}"/>
+                </Style>
+            </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Проводник" Tag="Explorer" />
-                <NavigationViewItem Content="Система" Tag="System" />
-                <NavigationViewItem Content="Интерфейс" Tag="Interface" />
-                <NavigationViewItem Content="Производительность" Tag="Performance" />
-                <NavigationViewItem Content="Конфиденциальность" Tag="Privacy" />
-
-                <Button x:ConnectionId='3' Content="Переключить тему"                                />
+                <NavigationViewItem x:Uid="Home" Tag="HomePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Explorer" Tag="ExplorerPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="System" Tag="SystemPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE790;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF71C;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF552;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Startup" Tag="BloatwareRemoverPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4A;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator/>
             </NavigationView.MenuItems>
             <Frame x:ConnectionId='4' x:Name="ContentFrame" Margin="20" />
         </NavigationView>
+
+        <TextBlock x:ConnectionId='3' x:Name="AdminWarningText" 
+                   x:Uid="AdminWarning" 
+                   Foreground="Red" 
+                   FontSize="14" 
+                   TextWrapping="Wrap" 
+                   Visibility="Collapsed" 
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,10"/>
     </Grid>
 </Window>
 

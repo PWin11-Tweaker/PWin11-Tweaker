@@ -50,7 +50,7 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF552;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Startup" Tag="StartupManagerPage">
+                <NavigationViewItem x:Uid="Startup" Tag="BloatwareRemoverPage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4A;"/>
                     </NavigationViewItem.Icon>
