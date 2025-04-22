@@ -406,3 +406,4 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\zh-Hans\System.Web.Services.Description.resources.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\zh-Hant\System.Web.Services.Description.resources.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\sni.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net8.0-windows10.0.26100.0\win-x64\Microsoft.Win32.dll

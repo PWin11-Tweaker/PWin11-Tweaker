@@ -19,14 +19,14 @@
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="Bloatware\BloatwareRemoverPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <None Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </None>
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="Page\StartupManagerPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 </Project>

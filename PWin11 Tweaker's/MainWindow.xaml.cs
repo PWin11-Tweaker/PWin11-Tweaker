@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Security.Principal; // Для проверки прав администратора
 using Windows.UI.ViewManagement;
 using WinRT.Interop;
-using PWin11_Tweaker_s.Page;
+using PWin11_Tweaker_s.Bloatware;
 
 namespace PWin11_Tweaker_s
 {
@@ -19,7 +19,7 @@ namespace PWin11_Tweaker_s
     {
         private MicaBackdrop micaBackdrop;
         private const string ThemePreferenceKey = "ThemePreference";
-        private AppWindow _appWindow;
+        private AppWindow appWindow;
 
         public MainWindow()
         {
@@ -55,9 +55,9 @@ namespace PWin11_Tweaker_s
                 // Инициализируем MainWindow в App
                 App.InitializeMainWindow(this);
 
-                _appWindow = GetAppWindowForCurrentWindow();
-                _appWindow.Title = "PWin11";
-                _appWindow.SetIcon("Assets/logo2.ico");
+                appWindow = GetAppWindowForCurrentWindow();
+                appWindow.Title = "PWin11";
+                appWindow.SetIcon("Assets/logo2.ico");
             }
             catch (Exception ex)
             {
@@ -174,7 +174,7 @@ namespace PWin11_Tweaker_s
                     { "InterfacePage", typeof(InterfacePage) },
                     { "PerformancePage", typeof(PerformancePage) },
                     { "PrivacyPage", typeof(PrivacyPage) },
-                    { "StartupManagerPage", typeof(StartupManagerPage) },
+                    { "BloatwareRemoverPage", typeof(BloatwareRemoverPage) },
                 };
 
                 // Проверяем, есть ли тег в словаре

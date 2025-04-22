@@ -424,6 +424,6 @@
     <value>Checking the StartAllback installation...</value>
   </data>
   <data name="Startup.Content" xml:space="preserve">
-    <value>Startup</value>
+    <value>Startup and unistall soft</value>
   </data>
 </root>

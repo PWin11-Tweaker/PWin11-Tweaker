@@ -421,6 +421,6 @@
     <value>Проверка установки StartAllBack...</value>
   </data>
   <data name="Startup.Content" xml:space="preserve">
-    <value>Автозапуск</value>
+    <value>Автозапуск и удаление программ</value>
   </data>
 </root>
