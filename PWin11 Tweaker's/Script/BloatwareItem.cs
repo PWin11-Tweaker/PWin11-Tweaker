@@ -55,4 +55,56 @@ namespace PWin11_Tweaker_s.Script
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
+    public class StartupItem : INotifyPropertyChanged
+    {
+        private string _name;
+        private string _path;
+        private bool _isEnabled;
+
+        public string Name
+        {
+            get => _name;
+            set { _name = value; OnPropertyChanged(); OnPropertyChanged(nameof(DisplayText)); }
+        }
+
+        public string Path
+        {
+            get => _path;
+            set { _path = value; OnPropertyChanged(); OnPropertyChanged(nameof(DisplayText)); }
+        }
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set { _isEnabled = value; OnPropertyChanged(); }
+        }
+
+        public string DisplayText
+        {
+            get
+            {
+                string convertedName = string.Empty;
+                if (!string.IsNullOrEmpty(Path))
+                {
+                    try
+                    {
+                        convertedName = System.IO.Path.GetFileNameWithoutExtension(Path);
+                    }
+                    catch
+                    {
+                        convertedName = Name; // Если путь некорректен, используем Name
+                    }
+                }
+                return string.IsNullOrEmpty(convertedName) ? Name : $"{convertedName} ({Path})";
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }

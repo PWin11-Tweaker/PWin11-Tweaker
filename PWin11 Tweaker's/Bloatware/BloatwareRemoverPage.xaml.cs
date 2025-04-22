@@ -12,6 +12,7 @@ using Windows.Management.Deployment;
 using Microsoft.UI.Dispatching;
 using PWin11_Tweaker_s.Script;
 using Windows.ApplicationModel;
+using Microsoft.Win32;
 
 namespace PWin11_Tweaker_s.Bloatware
 {
@@ -40,12 +41,16 @@ namespace PWin11_Tweaker_s.Bloatware
             base.OnNavigatedTo(e);
             Log("BloatwareRemoverPage OnNavigatedTo.");
 
-            if (!IsAdministrator())
+            try
             {
-                await ShowWarningAsync("Запустите приложение от имени администратора для полной функциональности.");
+                await LoadBloatwareAsync();
+                await LoadStartupProgramsAsync();
             }
-
-            await LoadBloatwareAsync();
+            catch (Exception ex)
+            {
+                Log($"Critical error in OnNavigatedTo: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                await ShowErrorAsync($"Критическая ошибка при загрузке страницы: {ex.Message}");
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -67,11 +72,25 @@ namespace PWin11_Tweaker_s.Bloatware
 
                 var bloatwareItems = new List<BloatwareItem>();
 
-                // Загрузка UWP-приложений
-                await LoadUwpAppsAsync(bloatwareItems, token);
+                try
+                {
+                    await LoadUwpAppsAsync(bloatwareItems, token);
+                }
+                catch (Exception ex)
+                {
+                    Log($"Failed to load UWP apps: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                    await ShowErrorAsync($"Ошибка загрузки UWP-приложений: {ex.Message}");
+                }
 
-                // Загрузка OEM-приложений
-                await LoadOemAppsAsync(bloatwareItems, token);
+                try
+                {
+                    await LoadOemAppsAsync(bloatwareItems, token);
+                }
+                catch (Exception ex)
+                {
+                    Log($"Failed to load OEM apps: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                    await ShowErrorAsync($"Ошибка загрузки OEM-приложений: {ex.Message}");
+                }
 
                 Log($"Loaded {bloatwareItems.Count} bloatware items.");
                 DispatcherQueue.TryEnqueue(() =>
@@ -89,8 +108,8 @@ namespace PWin11_Tweaker_s.Bloatware
             }
             catch (Exception ex)
             {
-                Log($"Error loading bloatware: {ex.Message}");
-                await ShowErrorAsync($"Ошибка загрузки: {ex.Message}");
+                Log($"Unexpected error loading bloatware: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                await ShowErrorAsync($"Неожиданная ошибка загрузки: {ex.Message}");
             }
             finally
             {
@@ -107,7 +126,17 @@ namespace PWin11_Tweaker_s.Bloatware
                 {
                     token.ThrowIfCancellationRequested();
                     var packageManager = new PackageManager();
-                    var packages = packageManager.FindPackagesForUser("");
+                    IEnumerable<Windows.ApplicationModel.Package> packages;
+
+                    try
+                    {
+                        packages = packageManager.FindPackagesForUser("");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log($"Error accessing PackageManager: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                        return;
+                    }
 
                     foreach (var package in packages)
                     {
@@ -116,11 +145,16 @@ namespace PWin11_Tweaker_s.Bloatware
                         string name = package.Id.Name ?? "";
                         string packageFullName = package.Id.FullName ?? "";
                         if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(packageFullName))
+                        {
+                            Log($"Skipping package with empty name or full name: {name}, {packageFullName}");
                             continue;
+                        }
 
-                        // Пропускаем системные пакеты
                         if (package.IsFramework || package.IsResourcePackage || package.SignatureKind == PackageSignatureKind.System)
+                        {
+                            Log($"Skipping system/framework package: {name}");
                             continue;
+                        }
 
                         long size = 0;
                         try
@@ -131,13 +165,14 @@ namespace PWin11_Tweaker_s.Bloatware
                                 var dirInfo = new System.IO.DirectoryInfo(installLocation);
                                 size = await Task.Run(() =>
                                     dirInfo.EnumerateFiles("*", System.IO.SearchOption.AllDirectories)
-                                        .Take(1000) // Ограничение для предотвращения перегрузки
+                                        .Take(1000)
                                         .Sum(f => f.Length), token);
                             }
                         }
                         catch (Exception ex)
                         {
-                            Log($"Error calculating size for UWP {name}: {ex.Message}");
+                            Log($"Error calculating size for UWP {name}: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                            size = 0;
                         }
 
                         items.Add(new BloatwareItem
@@ -154,7 +189,7 @@ namespace PWin11_Tweaker_s.Bloatware
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error loading UWP apps: {ex.Message}");
+                    Log($"Error in LoadUwpAppsAsync: {ex.Message}\nStackTrace: {ex.StackTrace}");
                     throw;
                 }
             }, token);
@@ -168,96 +203,122 @@ namespace PWin11_Tweaker_s.Bloatware
                 {
                     token.ThrowIfCancellationRequested();
 
-                    // Поиск через реестр
                     using (var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"))
                     {
                         if (key == null)
                         {
                             Log("Registry key not found: SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall");
-                            return;
                         }
-
-                        foreach (var subKeyName in key.GetSubKeyNames())
+                        else
                         {
-                            token.ThrowIfCancellationRequested();
-
-                            using (var subKey = key.OpenSubKey(subKeyName))
+                            foreach (var subKeyName in key.GetSubKeyNames())
                             {
-                                string name = subKey?.GetValue("DisplayName")?.ToString() ?? "";
-                                if (string.IsNullOrEmpty(name) || items.Any(i => i.Name == name))
-                                    continue;
+                                token.ThrowIfCancellationRequested();
 
-                                string identifyingNumber = subKeyName;
-                                long size = 0;
                                 try
                                 {
-                                    string estimatedSize = subKey?.GetValue("EstimatedSize")?.ToString() ?? "0";
-                                    size = Convert.ToInt64(estimatedSize) * 1024; // KB to bytes
+                                    using (var subKey = key.OpenSubKey(subKeyName))
+                                    {
+                                        string name = subKey?.GetValue("DisplayName")?.ToString() ?? "";
+                                        if (string.IsNullOrEmpty(name) || items.Any(i => i.Name == name))
+                                        {
+                                            Log($"Skipping OEM app with empty name or duplicate: {name}, SubKey: {subKeyName}");
+                                            continue;
+                                        }
+
+                                        string identifyingNumber = subKeyName;
+                                        long size = 0;
+                                        try
+                                        {
+                                            string estimatedSize = subKey?.GetValue("EstimatedSize")?.ToString() ?? "0";
+                                            size = Convert.ToInt64(estimatedSize) * 1024;
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Log($"Error parsing size for OEM (registry) {name}: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                                            size = 0;
+                                        }
+
+                                        items.Add(new BloatwareItem
+                                        {
+                                            Name = name,
+                                            Type = "OEM",
+                                            Size = size,
+                                            Recommendation = _recommendations.ContainsKey(name) ? _recommendations[name] : "Неизвестно, проверьте назначение.",
+                                            PackageName = identifyingNumber
+                                        });
+
+                                        Log($"Loaded OEM app (registry): {name}, Size: {size}, ID: {identifyingNumber}");
+                                    }
                                 }
                                 catch (Exception ex)
                                 {
-                                    Log($"Error parsing size for OEM (registry) {name}: {ex.Message}");
+                                    Log($"Error processing registry subkey {subKeyName}: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                                    continue;
                                 }
-
-                                items.Add(new BloatwareItem
-                                {
-                                    Name = name,
-                                    Type = "OEM",
-                                    Size = size,
-                                    Recommendation = _recommendations.ContainsKey(name) ? _recommendations[name] : "Неизвестно, проверьте назначение.",
-                                    PackageName = identifyingNumber
-                                });
-
-                                Log($"Loaded OEM app (registry): {name}, Size: {size}, ID: {identifyingNumber}");
                             }
                         }
                     }
 
-                    // Дополнительно проверим 32-битные приложения на 64-битной системе
                     using (var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"))
                     {
                         if (key == null)
+                        {
+                            Log("Registry key not found: SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall");
                             return;
+                        }
 
                         foreach (var subKeyName in key.GetSubKeyNames())
                         {
                             token.ThrowIfCancellationRequested();
 
-                            using (var subKey = key.OpenSubKey(subKeyName))
+                            try
                             {
-                                string name = subKey?.GetValue("DisplayName")?.ToString() ?? "";
-                                if (string.IsNullOrEmpty(name) || items.Any(i => i.Name == name))
-                                    continue;
-
-                                string identifyingNumber = subKeyName;
-                                long size = 0;
-                                try
+                                using (var subKey = key.OpenSubKey(subKeyName))
                                 {
-                                    string estimatedSize = subKey?.GetValue("EstimatedSize")?.ToString() ?? "0";
-                                    size = Convert.ToInt64(estimatedSize) * 1024; // KB to bytes
+                                    string name = subKey?.GetValue("DisplayName")?.ToString() ?? "";
+                                    if (string.IsNullOrEmpty(name) || items.Any(i => i.Name == name))
+                                    {
+                                        Log($"Skipping OEM app (WOW6432Node) with empty name or duplicate: {name}, SubKey: {subKeyName}");
+                                        continue;
+                                    }
+
+                                    string identifyingNumber = subKeyName;
+                                    long size = 0;
+                                    try
+                                    {
+                                        string estimatedSize = subKey?.GetValue("EstimatedSize")?.ToString() ?? "0";
+                                        size = Convert.ToInt64(estimatedSize) * 1024;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Log($"Error parsing size for OEM (WOW6432Node) {name}: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                                        size = 0;
+                                    }
+
+                                    items.Add(new BloatwareItem
+                                    {
+                                        Name = name,
+                                        Type = "OEM",
+                                        Size = size,
+                                        Recommendation = _recommendations.ContainsKey(name) ? _recommendations[name] : "Неизвестно, проверьте назначение.",
+                                        PackageName = identifyingNumber
+                                    });
+
+                                    Log($"Loaded OEM app (WOW6432Node): {name}, Size: {size}, ID: {identifyingNumber}");
                                 }
-                                catch (Exception ex)
-                                {
-                                    Log($"Error parsing size for OEM (WOW6432Node) {name}: {ex.Message}");
-                                }
-
-                                items.Add(new BloatwareItem
-                                {
-                                    Name = name,
-                                    Type = "OEM",
-                                    Size = size,
-                                    Recommendation = _recommendations.ContainsKey(name) ? _recommendations[name] : "Неизвестно, проверьте назначение.",
-                                    PackageName = identifyingNumber
-                                });
-
-                                Log($"Loaded OEM app (WOW6432Node): {name}, Size: {size}, ID: {identifyingNumber}");
+                            }
+                            catch (Exception ex)
+                            {
+                                Log($"Error processing WOW6432Node subkey {subKeyName}: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                                continue;
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error loading OEM apps via registry: {ex.Message}");
+                    Log($"Error in LoadOemAppsAsync: {ex.Message}\nStackTrace: {ex.StackTrace}");
                     throw;
                 }
             }, token);
@@ -326,7 +387,6 @@ namespace PWin11_Tweaker_s.Bloatware
                     return;
                 }
 
-                // Подтверждение удаления
                 if (!await ConfirmRemovalAsync(selectedItems.Count))
                     return;
 
@@ -364,7 +424,7 @@ namespace PWin11_Tweaker_s.Bloatware
             }
             catch (Exception ex)
             {
-                Log($"Error during removal: {ex.Message}");
+                Log($"Error during removal: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 await ShowErrorAsync($"Ошибка удаления: {ex.Message}");
             }
             finally
@@ -408,7 +468,7 @@ namespace PWin11_Tweaker_s.Bloatware
             }
             catch (Exception ex)
             {
-                Log($"Error removing UWP app {packageName}: {ex.Message}");
+                Log($"Error removing UWP app {packageName}: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 return false;
             }
         }
@@ -452,7 +512,6 @@ namespace PWin11_Tweaker_s.Bloatware
                     }
                 });
 
-                // Очистка остаточных файлов
                 if (success)
                 {
                     string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
@@ -474,7 +533,7 @@ namespace PWin11_Tweaker_s.Bloatware
             }
             catch (Exception ex)
             {
-                Log($"Error removing OEM app {identifyingNumber}: {ex.Message}");
+                Log($"Error removing OEM app {identifyingNumber}: {ex.Message}\nStackTrace: {ex.StackTrace}");
             }
             return success;
         }
@@ -486,11 +545,6 @@ namespace PWin11_Tweaker_s.Bloatware
 
             try
             {
-                if (!IsAdministrator())
-                {
-                    await ShowWarningAsync("Для восстановления UWP-приложений запустите приложение от имени администратора.");
-                    return;
-                }
 
                 DispatcherQueue.TryEnqueue(() =>
                 {
@@ -501,7 +555,6 @@ namespace PWin11_Tweaker_s.Bloatware
                 int restoredCount = 0;
                 await Task.Run(async () =>
                 {
-                    // Шаг 1: Выполняем восстановление UWP-приложений
                     using (var psRestore = new Process())
                     {
                         psRestore.StartInfo.FileName = "powershell.exe";
@@ -522,7 +575,6 @@ namespace PWin11_Tweaker_s.Bloatware
                         }
                     }
 
-                    // Шаг 2: Получаем количество восстановленных приложений
                     using (var psCount = new Process())
                     {
                         psCount.StartInfo.FileName = "powershell.exe";
@@ -568,7 +620,7 @@ namespace PWin11_Tweaker_s.Bloatware
             }
             catch (Exception ex)
             {
-                Log($"Error restoring UWP apps: {ex.Message}");
+                Log($"Error restoring UWP apps: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 await ShowErrorAsync($"Ошибка восстановления: {ex.Message}");
             }
             finally
@@ -579,6 +631,139 @@ namespace PWin11_Tweaker_s.Bloatware
                 });
                 _cts?.Dispose();
                 _cts = null;
+            }
+        }
+
+        private async Task LoadStartupProgramsAsync()
+        {
+            _cts = new CancellationTokenSource();
+            var token = _cts.Token;
+
+            try
+            {
+                Log("Loading startup programs...");
+                await UpdateStatusAsync("Загрузка программ автозапуска...");
+
+                var startupItems = new List<StartupItem>();
+
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true))
+                {
+                    if (key != null)
+                    {
+                        foreach (string name in key.GetValueNames())
+                        {
+                            token.ThrowIfCancellationRequested();
+                            string path = key.GetValue(name)?.ToString() ?? "Unknown Path";
+                            bool isEnabled = !string.IsNullOrEmpty(path);
+                            startupItems.Add(new StartupItem
+                            {
+                                Name = name,
+                                Path = path,
+                                IsEnabled = isEnabled
+                            });
+                        }
+                    }
+                    else
+                    {
+                        Log("Registry key not found: Software\\Microsoft\\Windows\\CurrentVersion\\Run");
+                    }
+                }
+
+                if (startupItems.Count == 0)
+                {
+                    startupItems.Add(new StartupItem
+                    {
+                        Name = "Notepad",
+                        Path = @"C:\Windows\notepad.exe",
+                        IsEnabled = true
+                    });
+                    startupItems.Add(new StartupItem
+                    {
+                        Name = "Explorer",
+                        Path = @"C:\Windows\explorer.exe",
+                        IsEnabled = false
+                    });
+                    Log("No startup items found in registry, added test data.");
+                }
+
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    StartupProgramsList.ItemsSource = startupItems;
+                    Log($"StartupProgramsList updated with {startupItems.Count} items.");
+                });
+
+                await UpdateStatusAsync($"Загружено {startupItems.Count} программ автозапуска.");
+            }
+            catch (OperationCanceledException)
+            {
+                Log("Loading startup programs was canceled.");
+                await UpdateStatusAsync("Загрузка программ автозапуска отменена.");
+            }
+            catch (Exception ex)
+            {
+                Log($"Error loading startup programs: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                await ShowErrorAsync($"Ошибка загрузки программ автозапуска: {ex.Message}");
+            }
+            finally
+            {
+                _cts?.Dispose();
+                _cts = null;
+            }
+        }
+
+        private async void RefreshStartupButton_Click(object sender, RoutedEventArgs e)
+        {
+            await LoadStartupProgramsAsync();
+        }
+
+        private void ToggleStartupProgram(object sender, RoutedEventArgs e)
+        {
+            if (sender is ToggleSwitch toggle)
+            {
+                var item = toggle.DataContext as StartupItem;
+                if (item == null)
+                {
+                    Log("ToggleStartupProgram: DataContext is not a StartupItem.");
+                    return;
+                }
+
+                bool isEnabled = toggle.IsOn;
+                string name = item.Name;
+                string path = item.Path;
+
+                try
+                {
+                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true))
+                    {
+                        if (key != null)
+                        {
+                            if (isEnabled)
+                            {
+                                key.SetValue(name, path);
+                            }
+                            else
+                            {
+                                key.DeleteValue(name, false);
+                            }
+                            item.IsEnabled = isEnabled;
+                            Log($"Startup Program {name} toggled to {isEnabled}");
+                            DispatcherQueue.TryEnqueue(async () =>
+                            {
+                                await UpdateStatusAsync($"Программа {name} {(isEnabled ? "включена" : "отключена")} в автозапуске.");
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log($"Error toggling startup program {name}: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                    toggle.IsOn = !isEnabled;
+                    item.IsEnabled = !isEnabled;
+                    DispatcherQueue.TryEnqueue(async () =>
+                    {
+                        await ShowErrorAsync($"Ошибка управления автозапуском {name}: {ex.Message}");
+                    });
+                }
             }
         }
 
@@ -635,13 +820,6 @@ namespace PWin11_Tweaker_s.Bloatware
                 Debug.WriteLine($"Error writing to log file: {ex.Message}");
             }
         }
-
-        private bool IsAdministrator()
-        {
-            var identity = System.Security.Principal.WindowsIdentity.GetCurrent();
-            var principal = new System.Security.Principal.WindowsPrincipal(identity);
-            return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
-        }
     }
 
     public class SizeConverter : IValueConverter
@@ -653,6 +831,30 @@ namespace PWin11_Tweaker_s.Bloatware
                 return $"{(size / 1024.0 / 1024.0):F2} MB";
             }
             return "0 MB";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class PathToNameConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is string path && !string.IsNullOrEmpty(path))
+            {
+                try
+                {
+                    return System.IO.Path.GetFileNameWithoutExtension(path);
+                }
+                catch
+                {
+                    return string.Empty;
+                }
+            }
+            return string.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
