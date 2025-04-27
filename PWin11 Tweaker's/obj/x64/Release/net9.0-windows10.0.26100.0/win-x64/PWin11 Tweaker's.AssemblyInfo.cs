@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Tweaker For Windows 11")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.10.1")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.10.1+0b84a60a762ff07a5bfd8ae367a5d6a58718742c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.10.1+1adf0cfb6a2a887e6a6bd9f293c5fd969ea3a6f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("PWin11 Tweaker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PWin11 Tweaker\'s")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.10.1")]

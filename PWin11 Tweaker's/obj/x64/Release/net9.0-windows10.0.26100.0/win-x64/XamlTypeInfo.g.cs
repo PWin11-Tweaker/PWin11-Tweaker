@@ -226,121 +226,119 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
         
         private void InitTypeTables()
         {
-            _typeNameTable = new string[56];
+            _typeNameTable = new string[55];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
             _typeNameTable[3] = "Boolean";
             _typeNameTable[4] = "PWin11_Tweaker_s.Bloatware.SizeConverter";
-            _typeNameTable[5] = "PWin11_Tweaker_s.Bloatware.PathToNameConverter";
-            _typeNameTable[6] = "Microsoft.UI.Xaml.Controls.ProgressBar";
-            _typeNameTable[7] = "Microsoft.UI.Xaml.Controls.Primitives.RangeBase";
-            _typeNameTable[8] = "Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings";
-            _typeNameTable[9] = "Microsoft.UI.Xaml.DependencyObject";
-            _typeNameTable[10] = "PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage";
-            _typeNameTable[11] = "Microsoft.UI.Xaml.Controls.Page";
-            _typeNameTable[12] = "Microsoft.UI.Xaml.Controls.UserControl";
-            _typeNameTable[13] = "Microsoft.UI.Xaml.Controls.NavigationView";
-            _typeNameTable[14] = "Microsoft.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[15] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
-            _typeNameTable[16] = "System.Enum";
-            _typeNameTable[17] = "System.ValueType";
-            _typeNameTable[18] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
-            _typeNameTable[19] = "System.Collections.Generic.IList`1<Object>";
-            _typeNameTable[20] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
-            _typeNameTable[21] = "Double";
-            _typeNameTable[22] = "Microsoft.UI.Xaml.UIElement";
-            _typeNameTable[23] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
-            _typeNameTable[24] = "Microsoft.UI.Xaml.DataTemplate";
-            _typeNameTable[25] = "Microsoft.UI.Xaml.Style";
-            _typeNameTable[26] = "Microsoft.UI.Xaml.Controls.StyleSelector";
-            _typeNameTable[27] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
-            _typeNameTable[28] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
-            _typeNameTable[29] = "String";
-            _typeNameTable[30] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
-            _typeNameTable[31] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
-            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
-            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
-            _typeNameTable[34] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
-            _typeNameTable[35] = "Microsoft.UI.Xaml.Controls.IconElement";
-            _typeNameTable[36] = "Microsoft.UI.Xaml.Controls.InfoBadge";
-            _typeNameTable[37] = "Microsoft.UI.Xaml.Controls.Control";
-            _typeNameTable[38] = "Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator";
-            _typeNameTable[39] = "PWin11_Tweaker_s.MainWindow";
-            _typeNameTable[40] = "Microsoft.UI.Xaml.Window";
-            _typeNameTable[41] = "PWin11_Tweaker_s.ExplorerPage";
-            _typeNameTable[42] = "PWin11_Tweaker_s.HomePage";
-            _typeNameTable[43] = "PWin11_Tweaker_s.InterfacePage";
-            _typeNameTable[44] = "PWin11_Tweaker_s.PerformancePage";
-            _typeNameTable[45] = "PWin11_Tweaker_s.PrivacyPage";
-            _typeNameTable[46] = "PWin11_Tweaker_s.SystemPage";
-            _typeNameTable[47] = "PWin11_Tweaker_s.SettingsPage";
-            _typeNameTable[48] = "PWin11_Tweaker_s.RebootWindow";
-            _typeNameTable[49] = "Microsoft.UI.Xaml.Media.MicaBackdrop";
-            _typeNameTable[50] = "Microsoft.UI.Xaml.Media.SystemBackdrop";
-            _typeNameTable[51] = "Microsoft.UI.Composition.SystemBackdrops.MicaKind";
-            _typeNameTable[52] = "PWin11_Tweaker_s.SplashScreen";
-            _typeNameTable[53] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[54] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[55] = "Int32";
+            _typeNameTable[5] = "Microsoft.UI.Xaml.Controls.ProgressBar";
+            _typeNameTable[6] = "Microsoft.UI.Xaml.Controls.Primitives.RangeBase";
+            _typeNameTable[7] = "Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings";
+            _typeNameTable[8] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[9] = "PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage";
+            _typeNameTable[10] = "Microsoft.UI.Xaml.Controls.Page";
+            _typeNameTable[11] = "Microsoft.UI.Xaml.Controls.UserControl";
+            _typeNameTable[12] = "Microsoft.UI.Xaml.Controls.NavigationView";
+            _typeNameTable[13] = "Microsoft.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[14] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
+            _typeNameTable[15] = "System.Enum";
+            _typeNameTable[16] = "System.ValueType";
+            _typeNameTable[17] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
+            _typeNameTable[18] = "System.Collections.Generic.IList`1<Object>";
+            _typeNameTable[19] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
+            _typeNameTable[20] = "Double";
+            _typeNameTable[21] = "Microsoft.UI.Xaml.UIElement";
+            _typeNameTable[22] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
+            _typeNameTable[23] = "Microsoft.UI.Xaml.DataTemplate";
+            _typeNameTable[24] = "Microsoft.UI.Xaml.Style";
+            _typeNameTable[25] = "Microsoft.UI.Xaml.Controls.StyleSelector";
+            _typeNameTable[26] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
+            _typeNameTable[27] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
+            _typeNameTable[28] = "String";
+            _typeNameTable[29] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
+            _typeNameTable[30] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
+            _typeNameTable[31] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
+            _typeNameTable[32] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
+            _typeNameTable[33] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
+            _typeNameTable[34] = "Microsoft.UI.Xaml.Controls.IconElement";
+            _typeNameTable[35] = "Microsoft.UI.Xaml.Controls.InfoBadge";
+            _typeNameTable[36] = "Microsoft.UI.Xaml.Controls.Control";
+            _typeNameTable[37] = "Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator";
+            _typeNameTable[38] = "PWin11_Tweaker_s.MainWindow";
+            _typeNameTable[39] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[40] = "PWin11_Tweaker_s.ExplorerPage";
+            _typeNameTable[41] = "PWin11_Tweaker_s.HomePage";
+            _typeNameTable[42] = "PWin11_Tweaker_s.InterfacePage";
+            _typeNameTable[43] = "PWin11_Tweaker_s.PerformancePage";
+            _typeNameTable[44] = "PWin11_Tweaker_s.PrivacyPage";
+            _typeNameTable[45] = "PWin11_Tweaker_s.SystemPage";
+            _typeNameTable[46] = "PWin11_Tweaker_s.SettingsPage";
+            _typeNameTable[47] = "PWin11_Tweaker_s.RebootWindow";
+            _typeNameTable[48] = "Microsoft.UI.Xaml.Media.MicaBackdrop";
+            _typeNameTable[49] = "Microsoft.UI.Xaml.Media.SystemBackdrop";
+            _typeNameTable[50] = "Microsoft.UI.Composition.SystemBackdrops.MicaKind";
+            _typeNameTable[51] = "PWin11_Tweaker_s.SplashScreen";
+            _typeNameTable[52] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[53] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[54] = "Int32";
 
-            _typeTable = new global::System.Type[56];
+            _typeTable = new global::System.Type[55];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
             _typeTable[3] = typeof(global::System.Boolean);
             _typeTable[4] = typeof(global::PWin11_Tweaker_s.Bloatware.SizeConverter);
-            _typeTable[5] = typeof(global::PWin11_Tweaker_s.Bloatware.PathToNameConverter);
-            _typeTable[6] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar);
-            _typeTable[7] = typeof(global::Microsoft.UI.Xaml.Controls.Primitives.RangeBase);
-            _typeTable[8] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings);
-            _typeTable[9] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
-            _typeTable[10] = typeof(global::PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage);
-            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
-            _typeTable[12] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
-            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
-            _typeTable[14] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
-            _typeTable[15] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
-            _typeTable[16] = typeof(global::System.Enum);
-            _typeTable[17] = typeof(global::System.ValueType);
-            _typeTable[18] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
-            _typeTable[19] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
-            _typeTable[20] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
-            _typeTable[21] = typeof(global::System.Double);
-            _typeTable[22] = typeof(global::Microsoft.UI.Xaml.UIElement);
-            _typeTable[23] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
-            _typeTable[24] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
-            _typeTable[25] = typeof(global::Microsoft.UI.Xaml.Style);
-            _typeTable[26] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
-            _typeTable[27] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
-            _typeTable[28] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
-            _typeTable[29] = typeof(global::System.String);
-            _typeTable[30] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
-            _typeTable[31] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
-            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
-            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
-            _typeTable[34] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
-            _typeTable[35] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
-            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge);
-            _typeTable[37] = typeof(global::Microsoft.UI.Xaml.Controls.Control);
-            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator);
-            _typeTable[39] = typeof(global::PWin11_Tweaker_s.MainWindow);
-            _typeTable[40] = typeof(global::Microsoft.UI.Xaml.Window);
-            _typeTable[41] = typeof(global::PWin11_Tweaker_s.ExplorerPage);
-            _typeTable[42] = typeof(global::PWin11_Tweaker_s.HomePage);
-            _typeTable[43] = typeof(global::PWin11_Tweaker_s.InterfacePage);
-            _typeTable[44] = typeof(global::PWin11_Tweaker_s.PerformancePage);
-            _typeTable[45] = typeof(global::PWin11_Tweaker_s.PrivacyPage);
-            _typeTable[46] = typeof(global::PWin11_Tweaker_s.SystemPage);
-            _typeTable[47] = typeof(global::PWin11_Tweaker_s.SettingsPage);
-            _typeTable[48] = typeof(global::PWin11_Tweaker_s.RebootWindow);
-            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop);
-            _typeTable[50] = typeof(global::Microsoft.UI.Xaml.Media.SystemBackdrop);
-            _typeTable[51] = typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind);
-            _typeTable[52] = typeof(global::PWin11_Tweaker_s.SplashScreen);
-            _typeTable[53] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[54] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[55] = typeof(global::System.Int32);
+            _typeTable[5] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar);
+            _typeTable[6] = typeof(global::Microsoft.UI.Xaml.Controls.Primitives.RangeBase);
+            _typeTable[7] = typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings);
+            _typeTable[8] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[9] = typeof(global::PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage);
+            _typeTable[10] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
+            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
+            _typeTable[12] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
+            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
+            _typeTable[14] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
+            _typeTable[15] = typeof(global::System.Enum);
+            _typeTable[16] = typeof(global::System.ValueType);
+            _typeTable[17] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
+            _typeTable[18] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
+            _typeTable[19] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
+            _typeTable[20] = typeof(global::System.Double);
+            _typeTable[21] = typeof(global::Microsoft.UI.Xaml.UIElement);
+            _typeTable[22] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
+            _typeTable[23] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
+            _typeTable[24] = typeof(global::Microsoft.UI.Xaml.Style);
+            _typeTable[25] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
+            _typeTable[26] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
+            _typeTable[27] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
+            _typeTable[28] = typeof(global::System.String);
+            _typeTable[29] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
+            _typeTable[30] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
+            _typeTable[31] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
+            _typeTable[32] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
+            _typeTable[33] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
+            _typeTable[34] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
+            _typeTable[35] = typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge);
+            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.Controls.Control);
+            _typeTable[37] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator);
+            _typeTable[38] = typeof(global::PWin11_Tweaker_s.MainWindow);
+            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[40] = typeof(global::PWin11_Tweaker_s.ExplorerPage);
+            _typeTable[41] = typeof(global::PWin11_Tweaker_s.HomePage);
+            _typeTable[42] = typeof(global::PWin11_Tweaker_s.InterfacePage);
+            _typeTable[43] = typeof(global::PWin11_Tweaker_s.PerformancePage);
+            _typeTable[44] = typeof(global::PWin11_Tweaker_s.PrivacyPage);
+            _typeTable[45] = typeof(global::PWin11_Tweaker_s.SystemPage);
+            _typeTable[46] = typeof(global::PWin11_Tweaker_s.SettingsPage);
+            _typeTable[47] = typeof(global::PWin11_Tweaker_s.RebootWindow);
+            _typeTable[48] = typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop);
+            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.Media.SystemBackdrop);
+            _typeTable[50] = typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind);
+            _typeTable[51] = typeof(global::PWin11_Tweaker_s.SplashScreen);
+            _typeTable[52] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[53] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[54] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -377,61 +375,59 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
 
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
         private object Activate_4_SizeConverter() { return new global::PWin11_Tweaker_s.Bloatware.SizeConverter(); }
-        private object Activate_5_PathToNameConverter() { return new global::PWin11_Tweaker_s.Bloatware.PathToNameConverter(); }
-        private object Activate_6_ProgressBar() { return new global::Microsoft.UI.Xaml.Controls.ProgressBar(); }
-        private object Activate_10_BloatwareRemoverPage() { return new global::PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage(); }
-        private object Activate_13_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
-        private object Activate_32_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
-        private object Activate_33_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
-        private object Activate_36_InfoBadge() { return new global::Microsoft.UI.Xaml.Controls.InfoBadge(); }
-        private object Activate_38_NavigationViewItemSeparator() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator(); }
-        private object Activate_39_MainWindow() { return new global::PWin11_Tweaker_s.MainWindow(); }
-        private object Activate_41_ExplorerPage() { return new global::PWin11_Tweaker_s.ExplorerPage(); }
-        private object Activate_42_HomePage() { return new global::PWin11_Tweaker_s.HomePage(); }
-        private object Activate_43_InterfacePage() { return new global::PWin11_Tweaker_s.InterfacePage(); }
-        private object Activate_44_PerformancePage() { return new global::PWin11_Tweaker_s.PerformancePage(); }
-        private object Activate_45_PrivacyPage() { return new global::PWin11_Tweaker_s.PrivacyPage(); }
-        private object Activate_46_SystemPage() { return new global::PWin11_Tweaker_s.SystemPage(); }
-        private object Activate_47_SettingsPage() { return new global::PWin11_Tweaker_s.SettingsPage(); }
-        private object Activate_48_RebootWindow() { return new global::PWin11_Tweaker_s.RebootWindow(); }
-        private object Activate_49_MicaBackdrop() { return new global::Microsoft.UI.Xaml.Media.MicaBackdrop(); }
-        private object Activate_52_SplashScreen() { return new global::PWin11_Tweaker_s.SplashScreen(); }
-        private object Activate_53_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_5_ProgressBar() { return new global::Microsoft.UI.Xaml.Controls.ProgressBar(); }
+        private object Activate_9_BloatwareRemoverPage() { return new global::PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage(); }
+        private object Activate_12_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
+        private object Activate_31_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
+        private object Activate_32_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
+        private object Activate_35_InfoBadge() { return new global::Microsoft.UI.Xaml.Controls.InfoBadge(); }
+        private object Activate_37_NavigationViewItemSeparator() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator(); }
+        private object Activate_38_MainWindow() { return new global::PWin11_Tweaker_s.MainWindow(); }
+        private object Activate_40_ExplorerPage() { return new global::PWin11_Tweaker_s.ExplorerPage(); }
+        private object Activate_41_HomePage() { return new global::PWin11_Tweaker_s.HomePage(); }
+        private object Activate_42_InterfacePage() { return new global::PWin11_Tweaker_s.InterfacePage(); }
+        private object Activate_43_PerformancePage() { return new global::PWin11_Tweaker_s.PerformancePage(); }
+        private object Activate_44_PrivacyPage() { return new global::PWin11_Tweaker_s.PrivacyPage(); }
+        private object Activate_45_SystemPage() { return new global::PWin11_Tweaker_s.SystemPage(); }
+        private object Activate_46_SettingsPage() { return new global::PWin11_Tweaker_s.SettingsPage(); }
+        private object Activate_47_RebootWindow() { return new global::PWin11_Tweaker_s.RebootWindow(); }
+        private object Activate_48_MicaBackdrop() { return new global::Microsoft.UI.Xaml.Media.MicaBackdrop(); }
+        private object Activate_51_SplashScreen() { return new global::PWin11_Tweaker_s.SplashScreen(); }
+        private object Activate_52_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void StaticInitializer_0_XamlControlsResources() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources).TypeHandle);
         private void StaticInitializer_4_SizeConverter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.Bloatware.SizeConverter).TypeHandle);
-        private void StaticInitializer_5_PathToNameConverter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.Bloatware.PathToNameConverter).TypeHandle);
-        private void StaticInitializer_6_ProgressBar() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar).TypeHandle);
-        private void StaticInitializer_8_ProgressBarTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings).TypeHandle);
-        private void StaticInitializer_10_BloatwareRemoverPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage).TypeHandle);
-        private void StaticInitializer_13_NavigationView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationView).TypeHandle);
-        private void StaticInitializer_15_NavigationViewPaneDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode).TypeHandle);
-        private void StaticInitializer_16_Enum() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Enum).TypeHandle);
-        private void StaticInitializer_17_ValueType() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.ValueType).TypeHandle);
-        private void StaticInitializer_18_NavigationViewBackButtonVisible() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible).TypeHandle);
-        private void StaticInitializer_19_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::System.Object>).TypeHandle);
-        private void StaticInitializer_23_NavigationViewDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode).TypeHandle);
-        private void StaticInitializer_28_NavigationViewOverflowLabelMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode).TypeHandle);
-        private void StaticInitializer_30_NavigationViewSelectionFollowsFocus() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus).TypeHandle);
-        private void StaticInitializer_31_NavigationViewShoulderNavigationEnabled() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled).TypeHandle);
-        private void StaticInitializer_32_NavigationViewTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings).TypeHandle);
-        private void StaticInitializer_33_NavigationViewItem() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem).TypeHandle);
-        private void StaticInitializer_34_NavigationViewItemBase() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase).TypeHandle);
-        private void StaticInitializer_36_InfoBadge() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge).TypeHandle);
-        private void StaticInitializer_38_NavigationViewItemSeparator() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator).TypeHandle);
-        private void StaticInitializer_39_MainWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.MainWindow).TypeHandle);
-        private void StaticInitializer_41_ExplorerPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.ExplorerPage).TypeHandle);
-        private void StaticInitializer_42_HomePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.HomePage).TypeHandle);
-        private void StaticInitializer_43_InterfacePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.InterfacePage).TypeHandle);
-        private void StaticInitializer_44_PerformancePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.PerformancePage).TypeHandle);
-        private void StaticInitializer_45_PrivacyPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.PrivacyPage).TypeHandle);
-        private void StaticInitializer_46_SystemPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SystemPage).TypeHandle);
-        private void StaticInitializer_47_SettingsPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SettingsPage).TypeHandle);
-        private void StaticInitializer_48_RebootWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.RebootWindow).TypeHandle);
-        private void StaticInitializer_49_MicaBackdrop() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop).TypeHandle);
-        private void StaticInitializer_51_MicaKind() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind).TypeHandle);
-        private void StaticInitializer_52_SplashScreen() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SplashScreen).TypeHandle);
-        private void StaticInitializer_53_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
-        private void StaticInitializer_54_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
+        private void StaticInitializer_5_ProgressBar() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBar).TypeHandle);
+        private void StaticInitializer_7_ProgressBarTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings).TypeHandle);
+        private void StaticInitializer_9_BloatwareRemoverPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage).TypeHandle);
+        private void StaticInitializer_12_NavigationView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationView).TypeHandle);
+        private void StaticInitializer_14_NavigationViewPaneDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode).TypeHandle);
+        private void StaticInitializer_15_Enum() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Enum).TypeHandle);
+        private void StaticInitializer_16_ValueType() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.ValueType).TypeHandle);
+        private void StaticInitializer_17_NavigationViewBackButtonVisible() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible).TypeHandle);
+        private void StaticInitializer_18_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::System.Object>).TypeHandle);
+        private void StaticInitializer_22_NavigationViewDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode).TypeHandle);
+        private void StaticInitializer_27_NavigationViewOverflowLabelMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode).TypeHandle);
+        private void StaticInitializer_29_NavigationViewSelectionFollowsFocus() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus).TypeHandle);
+        private void StaticInitializer_30_NavigationViewShoulderNavigationEnabled() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled).TypeHandle);
+        private void StaticInitializer_31_NavigationViewTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings).TypeHandle);
+        private void StaticInitializer_32_NavigationViewItem() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem).TypeHandle);
+        private void StaticInitializer_33_NavigationViewItemBase() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase).TypeHandle);
+        private void StaticInitializer_35_InfoBadge() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge).TypeHandle);
+        private void StaticInitializer_37_NavigationViewItemSeparator() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator).TypeHandle);
+        private void StaticInitializer_38_MainWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.MainWindow).TypeHandle);
+        private void StaticInitializer_40_ExplorerPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.ExplorerPage).TypeHandle);
+        private void StaticInitializer_41_HomePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.HomePage).TypeHandle);
+        private void StaticInitializer_42_InterfacePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.InterfacePage).TypeHandle);
+        private void StaticInitializer_43_PerformancePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.PerformancePage).TypeHandle);
+        private void StaticInitializer_44_PrivacyPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.PrivacyPage).TypeHandle);
+        private void StaticInitializer_45_SystemPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SystemPage).TypeHandle);
+        private void StaticInitializer_46_SettingsPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SettingsPage).TypeHandle);
+        private void StaticInitializer_47_RebootWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.RebootWindow).TypeHandle);
+        private void StaticInitializer_48_MicaBackdrop() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop).TypeHandle);
+        private void StaticInitializer_50_MicaKind() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind).TypeHandle);
+        private void StaticInitializer_51_SplashScreen() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::PWin11_Tweaker_s.SplashScreen).TypeHandle);
+        private void StaticInitializer_52_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
+        private void StaticInitializer_53_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -439,13 +435,13 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_19_IList(object instance, object item)
+        private void VectorAdd_18_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.Object>)instance;
             var newItem = (global::System.Object)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_54_IList(object instance, object item)
+        private void VectorAdd_53_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -491,18 +487,10 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 5:   //  PWin11_Tweaker_s.Bloatware.PathToNameConverter
-                userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_5_PathToNameConverter;
-                userType.StaticInitializer = StaticInitializer_5_PathToNameConverter;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 6:   //  Microsoft.UI.Xaml.Controls.ProgressBar
+            case 5:   //  Microsoft.UI.Xaml.Controls.ProgressBar
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Primitives.RangeBase"));
-                userType.Activator = Activate_6_ProgressBar;
-                userType.StaticInitializer = StaticInitializer_6_ProgressBar;
+                userType.Activator = Activate_5_ProgressBar;
+                userType.StaticInitializer = StaticInitializer_5_ProgressBar;
                 userType.AddMemberName("IsIndeterminate");
                 userType.AddMemberName("ShowError");
                 userType.AddMemberName("ShowPaused");
@@ -510,41 +498,41 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 7:   //  Microsoft.UI.Xaml.Controls.Primitives.RangeBase
+            case 6:   //  Microsoft.UI.Xaml.Controls.Primitives.RangeBase
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 8:   //  Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings
+            case 7:   //  Microsoft.UI.Xaml.Controls.ProgressBarTemplateSettings
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.StaticInitializer = StaticInitializer_8_ProgressBarTemplateSettings;
+                userType.StaticInitializer = StaticInitializer_7_ProgressBarTemplateSettings;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 9:   //  Microsoft.UI.Xaml.DependencyObject
+            case 8:   //  Microsoft.UI.Xaml.DependencyObject
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage
+            case 9:   //  PWin11_Tweaker_s.Bloatware.BloatwareRemoverPage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_10_BloatwareRemoverPage;
-                userType.StaticInitializer = StaticInitializer_10_BloatwareRemoverPage;
+                userType.Activator = Activate_9_BloatwareRemoverPage;
+                userType.StaticInitializer = StaticInitializer_9_BloatwareRemoverPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Microsoft.UI.Xaml.Controls.Page
+            case 10:   //  Microsoft.UI.Xaml.Controls.Page
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  Microsoft.UI.Xaml.Controls.UserControl
+            case 11:   //  Microsoft.UI.Xaml.Controls.UserControl
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 13:   //  Microsoft.UI.Xaml.Controls.NavigationView
+            case 12:   //  Microsoft.UI.Xaml.Controls.NavigationView
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
-                userType.Activator = Activate_13_NavigationView;
-                userType.StaticInitializer = StaticInitializer_13_NavigationView;
+                userType.Activator = Activate_12_NavigationView;
+                userType.StaticInitializer = StaticInitializer_12_NavigationView;
                 userType.AddMemberName("PaneDisplayMode");
                 userType.AddMemberName("IsBackButtonVisible");
                 userType.AddMemberName("IsSettingsVisible");
@@ -585,13 +573,13 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 14:   //  Microsoft.UI.Xaml.Controls.ContentControl
+            case 13:   //  Microsoft.UI.Xaml.Controls.ContentControl
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
+            case 14:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_15_NavigationViewPaneDisplayMode;
+                userType.StaticInitializer = StaticInitializer_14_NavigationViewPaneDisplayMode;
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto);
                 userType.AddEnumValue("Left", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left);
                 userType.AddEnumValue("Top", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top);
@@ -600,112 +588,112 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 16:   //  System.Enum
+            case 15:   //  System.Enum
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
-                userType.StaticInitializer = StaticInitializer_16_Enum;
+                userType.StaticInitializer = StaticInitializer_15_Enum;
                 xamlType = userType;
                 break;
 
-            case 17:   //  System.ValueType
+            case 16:   //  System.ValueType
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.StaticInitializer = StaticInitializer_17_ValueType;
+                userType.StaticInitializer = StaticInitializer_16_ValueType;
                 xamlType = userType;
                 break;
 
-            case 18:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
+            case 17:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_18_NavigationViewBackButtonVisible;
+                userType.StaticInitializer = StaticInitializer_17_NavigationViewBackButtonVisible;
                 userType.AddEnumValue("Collapsed", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Collapsed);
                 userType.AddEnumValue("Visible", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Visible);
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Auto);
                 xamlType = userType;
                 break;
 
-            case 19:   //  System.Collections.Generic.IList`1<Object>
+            case 18:   //  System.Collections.Generic.IList`1<Object>
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_19_IList;
-                userType.CollectionAdd = VectorAdd_19_IList;
+                userType.StaticInitializer = StaticInitializer_18_IList;
+                userType.CollectionAdd = VectorAdd_18_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 20:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
+            case 19:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 21:   //  Double
+            case 20:   //  Double
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 22:   //  Microsoft.UI.Xaml.UIElement
+            case 21:   //  Microsoft.UI.Xaml.UIElement
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 23:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
+            case 22:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_23_NavigationViewDisplayMode;
+                userType.StaticInitializer = StaticInitializer_22_NavigationViewDisplayMode;
                 userType.AddEnumValue("Minimal", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal);
                 userType.AddEnumValue("Compact", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact);
                 userType.AddEnumValue("Expanded", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded);
                 xamlType = userType;
                 break;
 
-            case 24:   //  Microsoft.UI.Xaml.DataTemplate
+            case 23:   //  Microsoft.UI.Xaml.DataTemplate
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 25:   //  Microsoft.UI.Xaml.Style
+            case 24:   //  Microsoft.UI.Xaml.Style
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 26:   //  Microsoft.UI.Xaml.Controls.StyleSelector
+            case 25:   //  Microsoft.UI.Xaml.Controls.StyleSelector
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 27:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
+            case 26:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 28:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
+            case 27:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_28_NavigationViewOverflowLabelMode;
+                userType.StaticInitializer = StaticInitializer_27_NavigationViewOverflowLabelMode;
                 userType.AddEnumValue("MoreLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.MoreLabel);
                 userType.AddEnumValue("NoLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.NoLabel);
                 xamlType = userType;
                 break;
 
-            case 29:   //  String
+            case 28:   //  String
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 30:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
+            case 29:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_30_NavigationViewSelectionFollowsFocus;
+                userType.StaticInitializer = StaticInitializer_29_NavigationViewSelectionFollowsFocus;
                 userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Disabled);
                 userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Enabled);
                 xamlType = userType;
                 break;
 
-            case 31:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
+            case 30:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_31_NavigationViewShoulderNavigationEnabled;
+                userType.StaticInitializer = StaticInitializer_30_NavigationViewShoulderNavigationEnabled;
                 userType.AddEnumValue("WhenSelectionFollowsFocus", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.WhenSelectionFollowsFocus);
                 userType.AddEnumValue("Always", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Always);
                 userType.AddEnumValue("Never", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Never);
                 xamlType = userType;
                 break;
 
-            case 32:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
+            case 31:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.StaticInitializer = StaticInitializer_32_NavigationViewTemplateSettings;
+                userType.StaticInitializer = StaticInitializer_31_NavigationViewTemplateSettings;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 33:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
+            case 32:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase"));
-                userType.Activator = Activate_33_NavigationViewItem;
-                userType.StaticInitializer = StaticInitializer_33_NavigationViewItem;
+                userType.Activator = Activate_32_NavigationViewItem;
+                userType.StaticInitializer = StaticInitializer_32_NavigationViewItem;
                 userType.AddMemberName("Icon");
                 userType.AddMemberName("CompactPaneLength");
                 userType.AddMemberName("HasUnrealizedChildren");
@@ -718,143 +706,143 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 34:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
+            case 33:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
-                userType.StaticInitializer = StaticInitializer_34_NavigationViewItemBase;
+                userType.StaticInitializer = StaticInitializer_33_NavigationViewItemBase;
                 userType.AddMemberName("IsSelected");
                 xamlType = userType;
                 break;
 
-            case 35:   //  Microsoft.UI.Xaml.Controls.IconElement
+            case 34:   //  Microsoft.UI.Xaml.Controls.IconElement
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 36:   //  Microsoft.UI.Xaml.Controls.InfoBadge
+            case 35:   //  Microsoft.UI.Xaml.Controls.InfoBadge
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Control"));
-                userType.StaticInitializer = StaticInitializer_36_InfoBadge;
+                userType.StaticInitializer = StaticInitializer_35_InfoBadge;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 37:   //  Microsoft.UI.Xaml.Controls.Control
+            case 36:   //  Microsoft.UI.Xaml.Controls.Control
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 38:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator
+            case 37:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemSeparator
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase"));
-                userType.Activator = Activate_38_NavigationViewItemSeparator;
-                userType.StaticInitializer = StaticInitializer_38_NavigationViewItemSeparator;
+                userType.Activator = Activate_37_NavigationViewItemSeparator;
+                userType.StaticInitializer = StaticInitializer_37_NavigationViewItemSeparator;
                 xamlType = userType;
                 break;
 
-            case 39:   //  PWin11_Tweaker_s.MainWindow
+            case 38:   //  PWin11_Tweaker_s.MainWindow
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_39_MainWindow;
-                userType.StaticInitializer = StaticInitializer_39_MainWindow;
+                userType.Activator = Activate_38_MainWindow;
+                userType.StaticInitializer = StaticInitializer_38_MainWindow;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 40:   //  Microsoft.UI.Xaml.Window
+            case 39:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 41:   //  PWin11_Tweaker_s.ExplorerPage
+            case 40:   //  PWin11_Tweaker_s.ExplorerPage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_41_ExplorerPage;
-                userType.StaticInitializer = StaticInitializer_41_ExplorerPage;
+                userType.Activator = Activate_40_ExplorerPage;
+                userType.StaticInitializer = StaticInitializer_40_ExplorerPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 42:   //  PWin11_Tweaker_s.HomePage
+            case 41:   //  PWin11_Tweaker_s.HomePage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_42_HomePage;
-                userType.StaticInitializer = StaticInitializer_42_HomePage;
+                userType.Activator = Activate_41_HomePage;
+                userType.StaticInitializer = StaticInitializer_41_HomePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 43:   //  PWin11_Tweaker_s.InterfacePage
+            case 42:   //  PWin11_Tweaker_s.InterfacePage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_43_InterfacePage;
-                userType.StaticInitializer = StaticInitializer_43_InterfacePage;
+                userType.Activator = Activate_42_InterfacePage;
+                userType.StaticInitializer = StaticInitializer_42_InterfacePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 44:   //  PWin11_Tweaker_s.PerformancePage
+            case 43:   //  PWin11_Tweaker_s.PerformancePage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_44_PerformancePage;
-                userType.StaticInitializer = StaticInitializer_44_PerformancePage;
+                userType.Activator = Activate_43_PerformancePage;
+                userType.StaticInitializer = StaticInitializer_43_PerformancePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 45:   //  PWin11_Tweaker_s.PrivacyPage
+            case 44:   //  PWin11_Tweaker_s.PrivacyPage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_45_PrivacyPage;
-                userType.StaticInitializer = StaticInitializer_45_PrivacyPage;
+                userType.Activator = Activate_44_PrivacyPage;
+                userType.StaticInitializer = StaticInitializer_44_PrivacyPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 46:   //  PWin11_Tweaker_s.SystemPage
+            case 45:   //  PWin11_Tweaker_s.SystemPage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_46_SystemPage;
-                userType.StaticInitializer = StaticInitializer_46_SystemPage;
+                userType.Activator = Activate_45_SystemPage;
+                userType.StaticInitializer = StaticInitializer_45_SystemPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 47:   //  PWin11_Tweaker_s.SettingsPage
+            case 46:   //  PWin11_Tweaker_s.SettingsPage
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_47_SettingsPage;
-                userType.StaticInitializer = StaticInitializer_47_SettingsPage;
+                userType.Activator = Activate_46_SettingsPage;
+                userType.StaticInitializer = StaticInitializer_46_SettingsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 48:   //  PWin11_Tweaker_s.RebootWindow
+            case 47:   //  PWin11_Tweaker_s.RebootWindow
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_48_RebootWindow;
-                userType.StaticInitializer = StaticInitializer_48_RebootWindow;
+                userType.Activator = Activate_47_RebootWindow;
+                userType.StaticInitializer = StaticInitializer_47_RebootWindow;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 49:   //  Microsoft.UI.Xaml.Media.MicaBackdrop
+            case 48:   //  Microsoft.UI.Xaml.Media.MicaBackdrop
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Media.SystemBackdrop"));
-                userType.Activator = Activate_49_MicaBackdrop;
-                userType.StaticInitializer = StaticInitializer_49_MicaBackdrop;
+                userType.Activator = Activate_48_MicaBackdrop;
+                userType.StaticInitializer = StaticInitializer_48_MicaBackdrop;
                 userType.AddMemberName("Kind");
                 xamlType = userType;
                 break;
 
-            case 50:   //  Microsoft.UI.Xaml.Media.SystemBackdrop
+            case 49:   //  Microsoft.UI.Xaml.Media.SystemBackdrop
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 51:   //  Microsoft.UI.Composition.SystemBackdrops.MicaKind
+            case 50:   //  Microsoft.UI.Composition.SystemBackdrops.MicaKind
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_51_MicaKind;
+                userType.StaticInitializer = StaticInitializer_50_MicaKind;
                 userType.AddEnumValue("Base", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
                 userType.AddEnumValue("BaseAlt", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
                 xamlType = userType;
                 break;
 
-            case 52:   //  PWin11_Tweaker_s.SplashScreen
+            case 51:   //  PWin11_Tweaker_s.SplashScreen
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_52_SplashScreen;
-                userType.StaticInitializer = StaticInitializer_52_SplashScreen;
+                userType.Activator = Activate_51_SplashScreen;
+                userType.StaticInitializer = StaticInitializer_51_SplashScreen;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 53:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 52:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_53_TreeViewNode;
-                userType.StaticInitializer = StaticInitializer_53_TreeViewNode;
+                userType.Activator = Activate_52_TreeViewNode;
+                userType.StaticInitializer = StaticInitializer_52_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -866,15 +854,15 @@ namespace PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 54:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 53:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_54_IList;
-                userType.CollectionAdd = VectorAdd_54_IList;
+                userType.StaticInitializer = StaticInitializer_53_IList;
+                userType.CollectionAdd = VectorAdd_53_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 55:   //  Int32
+            case 54:   //  Int32
                 xamlType = new global::PWin11_Tweaker_s.PWin11_Tweaker_s_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
