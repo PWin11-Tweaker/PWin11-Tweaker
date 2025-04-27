@@ -7,9 +7,9 @@
     <RootNamespace>PWin11_Tweaker_s</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- ↓ Укажи версию здесь ↓ -->
-    <Version>1.0.10.1</Version>
-    <AssemblyVersion>1.0.10.1</AssemblyVersion>
-    <FileVersion>1.0.10.1</FileVersion>
+    <Version>1.0.10.4</Version>
+    <AssemblyVersion>1.0.10.4</AssemblyVersion>
+    <FileVersion>1.0.10.4</FileVersion>
 	  <!-- ↑ Version Here ↑ -->
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -33,7 +33,6 @@
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\logo-png.png" />
     <None Remove="Assets\telegram.png" />
-    <None Remove="Bloatware\BloatwareRemoverPage.xaml" />
     <None Remove="ExplorerPage.xaml" />
     <None Remove="InterfacePage.xaml" />
     <None Remove="Pages\StartUPPage.xaml" />
@@ -42,6 +41,7 @@
     <None Remove="RebootWindow.xaml" />
     <None Remove="SplashScreen.xaml" />
     <None Remove="SystemPage.xaml" />
+    <None Remove="TempCleaner\TempCleanerPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -139,7 +139,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Bloatware\BloatwareRemoverPage.xaml">
+    <Page Update="TempCleaner\TempCleanerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

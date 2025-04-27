@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Security.Principal; // Для проверки прав администратора
 using Windows.UI.ViewManagement;
 using WinRT.Interop;
-using PWin11_Tweaker_s.Bloatware;
+using PWin11_Tweaker_s.TempCleaner;
 
 namespace PWin11_Tweaker_s
 {
@@ -174,7 +174,7 @@ namespace PWin11_Tweaker_s
                     { "InterfacePage", typeof(InterfacePage) },
                     { "PerformancePage", typeof(PerformancePage) },
                     { "PrivacyPage", typeof(PrivacyPage) },
-                    { "BloatwareRemoverPage", typeof(BloatwareRemoverPage) },
+                    { "TempCleanerPage", typeof(TempCleanerPage)},
                 };
 
                 // Проверяем, есть ли тег в словаре

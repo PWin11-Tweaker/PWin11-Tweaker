@@ -426,4 +426,7 @@
   <data name="Startup.Content" xml:space="preserve">
     <value>Startup and unistall soft</value>
   </data>
+  <data name="TempCleaner.Content" xml:space="preserve">
+    <value>Cleaner</value>
+  </data>
 </root>

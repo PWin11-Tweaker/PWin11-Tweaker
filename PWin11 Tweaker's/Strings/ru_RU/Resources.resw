@@ -423,4 +423,7 @@
   <data name="Startup.Content" xml:space="preserve">
     <value>Автозапуск и удаление программ</value>
   </data>
+  <data name="TempCleaner.Content" xml:space="preserve">
+    <value>Очистка</value>
+  </data>
 </root>

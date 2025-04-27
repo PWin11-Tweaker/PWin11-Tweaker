@@ -19,7 +19,7 @@
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="Bloatware\BloatwareRemoverPage.xaml">
+    <Page Update="TempCleaner\TempCleanerPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <None Update="MainWindow.xaml">
