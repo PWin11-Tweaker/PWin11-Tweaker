@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
+using Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s.TempCleaner
 {
@@ -17,6 +18,8 @@ namespace PWin11_Tweaker_s.TempCleaner
         private long _tempFilesSize;
         private long _recycleBinSize;
         private long _browserCacheSize;
+        private long _windowsUpdateCacheSize;
+        private long _thumbnailsSize;
 
         public TempCleanerPage()
         {
@@ -87,8 +90,15 @@ namespace PWin11_Tweaker_s.TempCleaner
                 totalSize += _recycleBinSize;
             if (BrowserCacheCheckBox.IsChecked == true)
                 totalSize += _browserCacheSize;
+            if (WindowsUpdateCacheCheckBox.IsChecked == true)
+                totalSize += _windowsUpdateCacheSize;
+            if (ThumbnailsCheckBox.IsChecked == true)
+                totalSize += _thumbnailsSize;
 
-            TotalSizeText.Text = $"Всего: {FormatSize(totalSize)}";
+            // Локализация строки
+            var resourceLoader = new ResourceLoader();
+            string totalSizeLabel = resourceLoader.GetString("TotalSizeLabel");
+            TotalSizeText.Text = string.Format(totalSizeLabel, FormatSize(totalSize));
         }
 
         private async void CleanButton_Click(object sender, RoutedEventArgs e)

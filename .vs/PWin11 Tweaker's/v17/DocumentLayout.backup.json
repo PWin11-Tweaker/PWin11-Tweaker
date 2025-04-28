@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "D:\\.project-new-git\\PWin11-Tweaker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\pwin11 tweaker\u0027s.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\pwin11 tweaker\u0027s.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\tempcleaner\\tempcleanerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\tempcleaner\\tempcleanerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\tempcleaner\\tempcleanerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\tempcleaner\\tempcleanerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\tempcleaner\\tempcleanerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\tempcleaner\\tempcleanerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\strings\\en-us\\resources.resw||{81828910-B8B3-4D2B-99A3-067027C180C1}",
@@ -33,6 +17,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\strings\\ru_ru\\resources.resw||{81828910-B8B3-4D2B-99A3-067027C180C1}",
       "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\strings\\ru_ru\\resources.resw||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\pwin11 tweaker\u0027s.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\pwin11 tweaker\u0027s.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|d:\\.project-new-git\\pwin11-tweaker\\pwin11 tweaker\u0027s\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{33AB623C-FC60-48F3-AD83-89778C90B9C1}|PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj|solutionrelative:pwin11 tweaker\u0027s\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,17 +42,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 282,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "TempCleanerPage.xaml",
               "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml",
               "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml",
               "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml",
               "RelativeToolTip": "PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAiwH8AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-04-27T07:24:42.118Z",
               "IsPinned": true,
@@ -60,42 +60,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "TempCleanerPage.xaml.cs",
               "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml.cs",
               "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml.cs",
               "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml.cs",
               "RelativeToolTip": "PWin11 Tweaker\u0027s\\TempCleaner\\TempCleanerPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUCAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwDEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T07:24:52.113Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "app.manifest",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\app.manifest",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\app.manifest",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\app.manifest",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\app.manifest",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
-              "WhenOpened": "2025-04-27T08:50:59.153Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PWin11 Tweaker\u0027s",
-              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
-              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
-              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
-              "RelativeToolTip": "PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-27T08:50:47.72Z",
               "EditorCaption": ""
             },
             {
@@ -109,6 +83,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "app.manifest",
+              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\app.manifest",
+              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\app.manifest",
+              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\app.manifest",
+              "RelativeToolTip": "PWin11 Tweaker\u0027s\\app.manifest",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
+              "WhenOpened": "2025-04-27T08:50:59.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PWin11 Tweaker\u0027s.csproj",
+              "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
+              "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
+              "ToolTip": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
+              "RelativeToolTip": "PWin11 Tweaker\u0027s\\PWin11 Tweaker\u0027s.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-27T08:50:47.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\MainWindow.xaml",
               "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\MainWindow.xaml",
@@ -116,12 +115,11 @@
               "RelativeToolTip": "PWin11 Tweaker\u0027s\\MainWindow.xaml",
               "ViewState": "AgIAABgAAAAAAAAAAAAAADcAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-27T07:27:03.278Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T07:27:03.278Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\MainWindow.xaml.cs",
@@ -129,8 +127,7 @@
               "RelativeToolTip": "PWin11 Tweaker\u0027s\\MainWindow.xaml.cs",
               "ViewState": "AgIAAJcAAAAAAAAAAAAcwKoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T07:26:06.607Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T07:26:06.607Z"
             }
           ]
         }
@@ -141,9 +138,9 @@
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
         "Id": "1e6e69a8-342e-46a3-af7f-204cf1e25df7",
-        "Display": 0,
-        "X": 848,
-        "Y": 105,
+        "Display": 1,
+        "X": 721,
+        "Y": 94,
         "Width": 918,
         "Height": 856,
         "WindowState": 0
@@ -155,7 +152,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "Resources.resw",
               "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\Strings\\en-US\\Resources.resw",
               "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\Strings\\en-US\\Resources.resw",
@@ -167,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Resources.resw",
               "DocumentMoniker": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker\u0027s\\Strings\\ru_RU\\Resources.resw",
               "RelativeDocumentMoniker": "PWin11 Tweaker\u0027s\\Strings\\ru_RU\\Resources.resw",

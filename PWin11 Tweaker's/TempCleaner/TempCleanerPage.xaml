@@ -9,6 +9,19 @@
     mc:Ignorable="d"
     Background="Transparent">
 
+    <Page.Resources>
+        <!-- Стили для единообразного вида -->
+        <Style x:Key="CheckBoxStackPanelStyle" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style x:Key="SizeTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Page.Resources>
+
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -19,33 +32,118 @@
         <!-- Заголовок -->
         <TextBlock 
             Grid.Row="0"
-            Text="Очистка временных файлов"
+            x:Uid="TempPageTitle"
             FontSize="24"
             FontWeight="Bold"
-            Margin="0,0,0,20"/>
+            Margin="0,0,0,20"
+            Text="Очистка временных файлов"/>
 
         <!-- Список категорий для очистки -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <CheckBox x:Name="TempFilesCheckBox" Content="Временные файлы (%TEMP%)" IsChecked="True" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed"/>
-                <TextBlock x:Name="TempFilesSizeText" Text="0 MB" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <!-- Временные файлы -->
+            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                <CheckBox 
+                    x:Name="TempFilesCheckBox" 
+                    x:Uid="TempCheckBoxTEMP" 
+                    IsChecked="True" 
+                    Checked="CheckBox_Changed" 
+                    Unchecked="CheckBox_Changed"
+                    Content="Временные файлы (%TEMP%)"/>
+                <TextBlock 
+                    x:Name="TempFilesSizeText" 
+                    Style="{StaticResource SizeTextBlockStyle}" 
+                    Text="Error"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <CheckBox x:Name="RecycleBinCheckBox" Content="Корзина" IsChecked="True" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed"/>
-                <TextBlock x:Name="RecycleBinSizeText" Text="0 MB" Margin="10,0,0,0" VerticalAlignment="Center"/>
+
+            <!-- Корзина -->
+            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                <CheckBox 
+                    x:Name="RecycleBinCheckBox" 
+                    x:Uid="TempPageCheckBoxTrash" 
+                    IsChecked="True" 
+                    Checked="CheckBox_Changed" 
+                    Unchecked="CheckBox_Changed"
+                    Content="Корзина"/>
+                <TextBlock 
+                    x:Name="RecycleBinSizeText" 
+                    Style="{StaticResource SizeTextBlockStyle}" 
+                    Text="0 MB"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <CheckBox x:Name="BrowserCacheCheckBox" Content="Кэш браузеров" IsChecked="True" Checked="CheckBox_Changed" Unchecked="CheckBox_Changed"/>
-                <TextBlock x:Name="BrowserCacheSizeText" Text="0 MB" Margin="10,0,0,0" VerticalAlignment="Center"/>
+
+            <!-- Кэш браузеров -->
+            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                <CheckBox 
+                    x:Name="BrowserCacheCheckBox" 
+                    x:Uid="TempPageCacheBrowserCheckBox" 
+                    IsChecked="True" 
+                    Checked="CheckBox_Changed" 
+                    Unchecked="CheckBox_Changed"
+                    Content="Кэш браузеров"/>
+                <TextBlock 
+                    x:Name="BrowserCacheSizeText" 
+                    Style="{StaticResource SizeTextBlockStyle}" 
+                    Text="0 MB"/>
+            </StackPanel>
+
+            <!-- Кэш обновлений Windows -->
+            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                <CheckBox 
+                    x:Name="WindowsUpdateCacheCheckBox" 
+                    x:Uid="TempPageWindowsUpdateCacheCheckBox" 
+                    IsChecked="False" 
+                    Checked="CheckBox_Changed" 
+                    Unchecked="CheckBox_Changed"
+                    Content="Кэш обновлений Windows"/>
+                <TextBlock 
+                    x:Name="WindowsUpdateCacheSizeText" 
+                    Style="{StaticResource SizeTextBlockStyle}" 
+                    Text="0 MB"/>
+            </StackPanel>
+
+            <!-- Эскизы -->
+            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                <CheckBox 
+                    x:Name="ThumbnailsCheckBox" 
+                    x:Uid="TempPageThumbnailsCheckBox" 
+                    IsChecked="False" 
+                    Checked="CheckBox_Changed" 
+                    Unchecked="CheckBox_Changed"
+                    Content="Эскизы"/>
+                <TextBlock 
+                    x:Name="ThumbnailsSizeText" 
+                    Style="{StaticResource SizeTextBlockStyle}" 
+                    Text="0 MB"/>
             </StackPanel>
         </StackPanel>
 
-        <!-- Кнопка очистки и статус -->
+        <!-- Кнопка очистки, итоговый размер и статус -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button x:Name="CleanButton" Content="Очистить" Click="CleanButton_Click" Margin="0,0,10,0"/>
-            <TextBlock x:Name="TotalSizeText" Text="Всего: 0 MB" Margin="10,0,10,0" VerticalAlignment="Center"/>
-            <ProgressBar x:Name="ProgressBar" Width="200" IsIndeterminate="True" Visibility="Collapsed" Margin="10,0,0,0"/>
+            <Button 
+                x:Name="CleanButton" 
+                x:Uid="CleanButton" 
+                Click="CleanButton_Click" 
+                Margin="0,0,10,0"
+                Content="Очистить"/>
+            <TextBlock 
+                x:Name="TotalSizeText" 
+                Text="Всего: 0 MB" 
+                Margin="10,0,10,0" 
+                VerticalAlignment="Center"
+                FontSize="14"/>
+            <ProgressBar 
+                x:Name="ProgressBar" 
+                Width="200" 
+                IsIndeterminate="True" 
+                Visibility="Collapsed" 
+                Margin="10,0,0,0"/>
         </StackPanel>
-        <TextBlock x:Name="StatusText" Grid.Row="2" Text="" FontSize="14" Foreground="Green" Margin="0,40,0,0" HorizontalAlignment="Left"/>
+        <TextBlock 
+            x:Name="StatusText" 
+            Grid.Row="2" 
+            Text="" 
+            FontSize="14" 
+            Foreground="Green" 
+            Margin="0,40,0,0" 
+            HorizontalAlignment="Left"/>
     </Grid>
 </Page>
