@@ -1,11 +1,11 @@
-# PWin11 Tweaker - A Convenient and Beautiful Tweaker for Windows 11
+<img src="./img/bg.png"/>
 
 <a href="./readme/support.md">Support!</a>
 
 
 
 
-<img src="./img/bg.png"/>
+
 
 Pls Star!!🥺
 
