@@ -423,4 +423,25 @@
   <data name="Startup.Content" xml:space="preserve">
     <value>Автозапуск и удаление программ</value>
   </data>
+  <data name="TempCleaner.Content" xml:space="preserve">
+    <value>Очистка</value>
+  </data>
+  <data name="TempPageTitle.Text" xml:space="preserve">
+    <value>Очистка временных файлов</value>
+  </data>
+  <data name="TempCheckBoxTEMP.Content" xml:space="preserve">
+    <value>Временные файлы (%TEMP%)</value>
+  </data>
+  <data name="TempPageCheckBoxTrash.Content" xml:space="preserve">
+    <value>Корзина</value>
+  </data>
+  <data name="TempPageCacheBrowserCheckBox.Content" xml:space="preserve">
+    <value>Кэш браузеров</value>
+  </data>
+  <data name="CleanButton.Content" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="TotalSizeLabel" xml:space="preserve">
+    <value>Всего: {0}</value>
+  </data>
 </root>

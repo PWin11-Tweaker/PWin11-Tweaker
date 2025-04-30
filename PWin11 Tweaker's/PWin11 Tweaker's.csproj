@@ -7,9 +7,9 @@
     <RootNamespace>PWin11_Tweaker_s</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- ↓ Укажи версию здесь ↓ -->
-    <Version>1.0.10.1</Version>
-    <AssemblyVersion>1.0.10.1</AssemblyVersion>
-    <FileVersion>1.0.10.1</FileVersion>
+    <Version>1.0.11.0</Version>
+    <AssemblyVersion>1.0.11.0</AssemblyVersion>
+    <FileVersion>1.0.11.0</FileVersion>
 	  <!-- ↑ Version Here ↑ -->
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -33,7 +33,6 @@
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\logo-png.png" />
     <None Remove="Assets\telegram.png" />
-    <None Remove="Bloatware\BloatwareRemoverPage.xaml" />
     <None Remove="ExplorerPage.xaml" />
     <None Remove="InterfacePage.xaml" />
     <None Remove="Pages\StartUPPage.xaml" />
@@ -42,6 +41,7 @@
     <None Remove="RebootWindow.xaml" />
     <None Remove="SplashScreen.xaml" />
     <None Remove="SystemPage.xaml" />
+    <None Remove="TempCleaner\TempCleanerPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -139,7 +139,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Bloatware\BloatwareRemoverPage.xaml">
+    <Page Update="TempCleaner\TempCleanerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -179,7 +179,7 @@
     <AppInstallerUri>C:\Users\Admin\Documents\PWin11</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
-    <ApplicationIcon>Assets\logo2.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\logo3.ico</ApplicationIcon>
     <PackageCertificateThumbprint>220E2A64CA78A023ABF51AC246F7C350B2A45FB8</PackageCertificateThumbprint>
     <AppxPackageDir>C:\Users\yttut\Music\PWin11_Build\1.0.7\</AppxPackageDir>
     <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>

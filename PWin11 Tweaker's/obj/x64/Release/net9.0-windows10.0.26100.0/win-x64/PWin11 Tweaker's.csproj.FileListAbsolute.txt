@@ -255,8 +255,6 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\qualifiers.txt
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\qualifiers.txt.intermediate
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\MultipleQualifiersPerDimensionFound.txt
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Bloatware\BloatwareRemoverPage.g.i.cs
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Bloatware\BloatwareRemoverPage.g.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\ExplorerPage.g.i.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\ExplorerPage.g.cs
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\HomePage.g.i.cs
@@ -284,7 +282,6 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xaml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Windowww\RebootWindow.xaml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Windowww\SplashScreen.xaml
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Bloatware\BloatwareRemoverPage.xaml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\ExplorerPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\HomePage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\InterfacePage.xbf
@@ -294,8 +291,6 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Settings\SettingsPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Windowww\RebootWindow.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Windowww\SplashScreen.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\Bloatware\BloatwareRemoverPage.xbf
-D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Bloatware\BloatwareRemoverPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\ExplorerPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\HomePage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Page\InterfacePage.xbf
@@ -418,3 +413,13 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\getfilesiginforedist.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\sni.dll
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\mscordaccore_amd64_amd64_9.0.425.16305.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.g.i.cs
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.g.cs
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.xaml
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11-png-version-psd.psd
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11-png-version.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11-psd.psd
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\logo3.ico

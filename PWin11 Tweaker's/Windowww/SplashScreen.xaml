@@ -16,7 +16,7 @@
     <Grid Background="Transparent">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image x:Name="SplashImage"
-                   Source="/Assets/logo-png.png"
+                   Source="/Assets/new-logo-1.0.11-png-version.png"
                    Width="150"
                    Opacity="0">
                 <Image.RenderTransform>
