@@ -418,3 +418,8 @@ D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windo
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.xaml
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\obj\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.xbf
 D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\TempCleaner\TempCleanerPage.xbf
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11-png-version-psd.psd
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11-png-version.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11-psd.psd
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\new-logo-1.0.11.png
+D:\.project-new-git\PWin11-Tweaker\PWin11 Tweaker's\bin\x64\Release\net9.0-windows10.0.26100.0\win-x64\Assets\logo3.ico

@@ -8,40 +8,33 @@
     mc:Ignorable="d">
 
     <Grid Margin="20">
-        <!-- Определяем два столбца: левый для изображения, правый для текста и кнопок -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <!-- Для изображения -->
             <ColumnDefinition Width="*"/>
-            <!-- Для текста и кнопок -->
         </Grid.ColumnDefinitions>
 
-        <!-- Левый столбец: Изображение -->
         <Image Grid.Column="0" 
-               Source="/Assets/logo.png" 
+               Source="/Assets/new-logo-1.0.11.png" 
                Height="150" 
                Width="150" 
                Margin="0,0,20,0"
                VerticalAlignment="Top"/>
-        <!-- Отступ справа для разделения -->
 
-        <!-- Правый столбец: Текст и кнопки -->
         <StackPanel Grid.Column="1" 
                     VerticalAlignment="Top"
                     Margin="0,0,0,0">
-            <!-- Заголовок -->
+            
             <TextBlock x:Uid="pwin11" 
                        FontSize="24" 
                        Margin="0,0,0,10"/>
 
-            <!-- Текст "О программе" -->
+
             <TextBlock x:Uid="About" 
                        TextWrapping="Wrap" 
                        FontSize="16" 
-                       Margin="0,0,0,20">    
+                       Margin="0,0,0,20">
             </TextBlock>
 
-            <!-- Кнопки -->
             <Button x:Name="VisitGitHubButton" 
                     Click="VisitGitHubButton_Click" 
                     Margin="0,10,0,0">
@@ -56,22 +49,9 @@
                     Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="/Assets/telegram.png" Width="16" Height="16"/>
-                    <TextBlock Text="Visit ph1ncyn Telegram (Rus)" FontSize="14"/>
+                    <TextBlock Text="Visit ph1ncyn(Rus)" FontSize="14"/>
                 </StackPanel>
             </Button>
-        </StackPanel>                                                                       
+        </StackPanel>
     </Grid>
-</Page>
-
-
-
-<!--    <Button x:Name="VisitSupportButton"                                         -->
-<!--            Click="VisitSupportButton_Click"                                    -->
-<!--            Margin="0,10,0,0">                                                  -->
-<!--        <StackPanel Orientation="Horizontal" Spacing="5">                       -->
-<!--            <Image Source="/Assets/support.png" Width="16" Height="16"/>        -->
-<!--            <TextBlock Text="Support" FontSize="14"/>                           -->
-<!--        </StackPanel>                                                           -->
-<!--    </Button>                                                                   -->
-     
-            
+</Page>         

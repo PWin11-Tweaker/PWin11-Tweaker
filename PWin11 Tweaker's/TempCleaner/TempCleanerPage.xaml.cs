@@ -18,8 +18,8 @@ namespace PWin11_Tweaker_s.TempCleaner
         private long _tempFilesSize;
         private long _recycleBinSize;
         private long _browserCacheSize;
-        private long _windowsUpdateCacheSize;
-        private long _thumbnailsSize;
+        private long _windowsUpdateCacheSize; // Добавляем переменную
+        private long _thumbnailsSize; // Добавляем переменную
 
         public TempCleanerPage()
         {
@@ -33,7 +33,7 @@ namespace PWin11_Tweaker_s.TempCleaner
             catch (Exception ex)
             {
                 Log($"Failed to initialize TempCleanerPage: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                throw; // Для отладки, чтобы увидеть исключение в IDE
+                throw;
             }
         }
 
@@ -42,20 +42,24 @@ namespace PWin11_Tweaker_s.TempCleaner
             try
             {
                 Log("Loading sizes for categories...");
-                // Подсчет размера для каждой категории
                 _tempFilesSize = await CalculateTempFilesSizeAsync();
                 Log($"Temp files size: {_tempFilesSize} bytes");
                 _recycleBinSize = await CalculateRecycleBinSizeAsync();
                 Log($"Recycle Bin size: {_recycleBinSize} bytes");
                 _browserCacheSize = await CalculateBrowserCacheSizeAsync();
                 Log($"Browser cache size: {_browserCacheSize} bytes");
+                _windowsUpdateCacheSize = await CalculateWindowsUpdateCacheSizeAsync(); // Добавляем подсчет
+                Log($"Windows Update cache size: {_windowsUpdateCacheSize} bytes");
+                _thumbnailsSize = await CalculateThumbnailsSizeAsync(); // Добавляем подсчет
+                Log($"Thumbnails size: {_thumbnailsSize} bytes");
 
-                // Обновление UI
                 DispatcherQueue.TryEnqueue(() =>
                 {
                     TempFilesSizeText.Text = FormatSize(_tempFilesSize);
                     RecycleBinSizeText.Text = FormatSize(_recycleBinSize);
                     BrowserCacheSizeText.Text = FormatSize(_browserCacheSize);
+                    WindowsUpdateCacheSizeText.Text = FormatSize(_windowsUpdateCacheSize); // Обновляем UI
+                    ThumbnailsSizeText.Text = FormatSize(_thumbnailsSize); // Обновляем UI
                     UpdateTotalSize();
                     Log("UI updated with category sizes.");
                 });
@@ -95,7 +99,6 @@ namespace PWin11_Tweaker_s.TempCleaner
             if (ThumbnailsCheckBox.IsChecked == true)
                 totalSize += _thumbnailsSize;
 
-            // Локализация строки
             var resourceLoader = new ResourceLoader();
             string totalSizeLabel = resourceLoader.GetString("TotalSizeLabel");
             TotalSizeText.Text = string.Format(totalSizeLabel, FormatSize(totalSize));
@@ -116,7 +119,6 @@ namespace PWin11_Tweaker_s.TempCleaner
 
                 long totalFreedSpace = 0;
 
-                // Очистка временных файлов
                 if (TempFilesCheckBox.IsChecked == true)
                 {
                     long freedSpace = await CleanTempFilesAsync(token);
@@ -126,7 +128,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                     DispatcherQueue.TryEnqueue(() => TempFilesSizeText.Text = "0 MB");
                 }
 
-                // Очистка корзины
                 if (RecycleBinCheckBox.IsChecked == true)
                 {
                     long freedSpace = await CleanRecycleBinAsync(token);
@@ -136,7 +137,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                     DispatcherQueue.TryEnqueue(() => RecycleBinSizeText.Text = "0 MB");
                 }
 
-                // Очистка кэша браузеров
                 if (BrowserCacheCheckBox.IsChecked == true)
                 {
                     long freedSpace = await CleanBrowserCacheAsync(token);
@@ -144,6 +144,24 @@ namespace PWin11_Tweaker_s.TempCleaner
                     Log($"Freed {freedSpace} bytes from browser cache.");
                     _browserCacheSize = 0;
                     DispatcherQueue.TryEnqueue(() => BrowserCacheSizeText.Text = "0 MB");
+                }
+
+                if (WindowsUpdateCacheCheckBox.IsChecked == true)
+                {
+                    long freedSpace = await CleanWindowsUpdateCacheAsync(token);
+                    totalFreedSpace += freedSpace;
+                    Log($"Freed {freedSpace} bytes from Windows Update cache.");
+                    _windowsUpdateCacheSize = 0;
+                    DispatcherQueue.TryEnqueue(() => WindowsUpdateCacheSizeText.Text = "0 MB");
+                }
+
+                if (ThumbnailsCheckBox.IsChecked == true)
+                {
+                    long freedSpace = await CleanThumbnailsAsync(token);
+                    totalFreedSpace += freedSpace;
+                    Log($"Freed {freedSpace} bytes from thumbnails.");
+                    _thumbnailsSize = 0;
+                    DispatcherQueue.TryEnqueue(() => ThumbnailsSizeText.Text = "0 MB");
                 }
 
                 DispatcherQueue.TryEnqueue(() => UpdateTotalSize());
@@ -251,7 +269,6 @@ namespace PWin11_Tweaker_s.TempCleaner
 
                 try
                 {
-                    // Microsoft Edge
                     string edgeCachePath = Path.Combine(localAppData, @"Microsoft\Edge\User Data\Default\Cache");
                     if (Directory.Exists(edgeCachePath))
                     {
@@ -261,7 +278,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                             .Sum(f => f.Length);
                     }
 
-                    // Google Chrome
                     string chromeCachePath = Path.Combine(localAppData, @"Google\Chrome\User Data\Default\Cache");
                     if (Directory.Exists(chromeCachePath))
                     {
@@ -271,7 +287,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                             .Sum(f => f.Length);
                     }
 
-                    // Firefox
                     string firefoxProfilesPath = Path.Combine(localAppData, @"Mozilla\Firefox\Profiles");
                     if (Directory.Exists(firefoxProfilesPath))
                     {
@@ -300,6 +315,59 @@ namespace PWin11_Tweaker_s.TempCleaner
                 catch (Exception ex)
                 {
                     Log($"Error calculating browser cache size: {ex.Message}");
+                }
+
+                return size;
+            });
+        }
+
+        private async Task<long> CalculateWindowsUpdateCacheSizeAsync()
+        {
+            return await Task.Run(() =>
+            {
+                long size = 0;
+                string updateCachePath = @"C:\Windows\SoftwareDistribution\Download";
+
+                try
+                {
+                    if (Directory.Exists(updateCachePath))
+                    {
+                        var dirInfo = new DirectoryInfo(updateCachePath);
+                        size = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                            .Take(10000)
+                            .Sum(f => f.Length);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log($"Error calculating Windows Update cache size: {ex.Message}");
+                }
+
+                return size;
+            });
+        }
+
+        private async Task<long> CalculateThumbnailsSizeAsync()
+        {
+            return await Task.Run(() =>
+            {
+                long size = 0;
+                string thumbnailsPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    @"Microsoft\Windows\Explorer");
+
+                try
+                {
+                    if (Directory.Exists(thumbnailsPath))
+                    {
+                        var dirInfo = new DirectoryInfo(thumbnailsPath);
+                        size = dirInfo.EnumerateFiles("thumbcache_*.db", SearchOption.TopDirectoryOnly)
+                            .Sum(f => f.Length);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log($"Error calculating thumbnails size: {ex.Message}");
                 }
 
                 return size;
@@ -415,7 +483,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                 {
                     token.ThrowIfCancellationRequested();
 
-                    // Очистка кэша Microsoft Edge
                     string edgeCachePath = Path.Combine(localAppData, @"Microsoft\Edge\User Data\Default\Cache");
                     if (Directory.Exists(edgeCachePath))
                     {
@@ -448,7 +515,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                         }
                     }
 
-                    // Очистка кэша Google Chrome
                     string chromeCachePath = Path.Combine(localAppData, @"Google\Chrome\User Data\Default\Cache");
                     if (Directory.Exists(chromeCachePath))
                     {
@@ -481,7 +547,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                         }
                     }
 
-                    // Очистка кэша Firefox
                     string firefoxProfilesPath = Path.Combine(localAppData, @"Mozilla\Firefox\Profiles");
                     if (Directory.Exists(firefoxProfilesPath))
                     {
@@ -556,6 +621,145 @@ namespace PWin11_Tweaker_s.TempCleaner
                 catch (Exception ex)
                 {
                     Log($"Error cleaning browser cache: {ex.Message}");
+                }
+
+                return freedSpace;
+            }, token);
+        }
+
+        private async Task<long> CleanWindowsUpdateCacheAsync(CancellationToken token)
+        {
+            return await Task.Run(async () =>
+            {
+                long freedSpace = 0;
+                string updateCachePath = @"C:\Windows\SoftwareDistribution\Download";
+
+                try
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    ProcessStartInfo stopServiceInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = "/c net stop wuauserv",
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true
+                    };
+
+                    using (Process stopProcess = new Process())
+                    {
+                        stopProcess.StartInfo = stopServiceInfo;
+                        stopProcess.Start();
+                        await stopProcess.WaitForExitAsync(token);
+                        if (stopProcess.ExitCode != 0)
+                        {
+                            string error = await stopProcess.StandardError.ReadToEndAsync();
+                            Log($"Error stopping Windows Update service: {error}");
+                        }
+                    }
+
+                    if (Directory.Exists(updateCachePath))
+                    {
+                        var dirInfo = new DirectoryInfo(updateCachePath);
+                        freedSpace = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                            .Sum(f => f.Length);
+
+                        foreach (var file in Directory.GetFiles(updateCachePath, "*", SearchOption.AllDirectories))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                File.Delete(file);
+                            }
+                            catch (Exception ex)
+                            {
+                                Log($"Error deleting Windows Update cache file {file}: {ex.Message}");
+                            }
+                        }
+
+                        foreach (var dir in Directory.GetDirectories(updateCachePath, "*", SearchOption.AllDirectories))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                Directory.Delete(dir, true);
+                            }
+                            catch (Exception ex)
+                            {
+                                Log($"Error deleting Windows Update cache directory {dir}: {ex.Message}");
+                            }
+                        }
+                    }
+
+                    ProcessStartInfo startServiceInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = "/c net start wuauserv",
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true
+                    };
+
+                    using (Process startProcess = new Process())
+                    {
+                        startProcess.StartInfo = startServiceInfo;
+                        startProcess.Start();
+                        await startProcess.WaitForExitAsync(token);
+                        if (startProcess.ExitCode != 0)
+                        {
+                            string error = await startProcess.StandardError.ReadToEndAsync();
+                            Log($"Error starting Windows Update service: {error}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log($"Error cleaning Windows Update cache: {ex.Message}");
+                }
+
+                return freedSpace;
+            }, token);
+        }
+
+        private async Task<long> CleanThumbnailsAsync(CancellationToken token)
+        {
+            return await Task.Run(async () =>
+            {
+                long freedSpace = 0;
+                string thumbnailsPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    @"Microsoft\Windows\Explorer");
+
+                try
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    if (Directory.Exists(thumbnailsPath))
+                    {
+                        var dirInfo = new DirectoryInfo(thumbnailsPath);
+                        freedSpace = dirInfo.EnumerateFiles("thumbcache_*.db", SearchOption.TopDirectoryOnly)
+                            .Sum(f => f.Length);
+
+                        foreach (var file in Directory.GetFiles(thumbnailsPath, "thumbcache_*.db", SearchOption.TopDirectoryOnly))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                File.Delete(file);
+                            }
+                            catch (Exception ex)
+                            {
+                                Log($"Error deleting thumbnail file {file}: {ex.Message}");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log($"Error cleaning thumbnails: {ex.Message}");
                 }
 
                 return freedSpace;
