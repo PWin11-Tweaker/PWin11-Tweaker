@@ -24,3 +24,9 @@ If you encounter these errors, please contact the developer via Issues on GitHub
 | S001                    | The 'SplashImage' element was not found. | Change or check the image path for SplashImage | Check the path to the image in the SplashScreen.xaml.cs script |
 | S002                    | The root element is not a Grid. | Xaml must have a Grid, not another markup. | Check the Splash Screen.xaml markup | 
 | S003                    | The AppWindow could not be initialized. | Couldn't start the window                              |    Check the code                     | 
+
+
+
+| The error code in TempCleanerPage | Error description | Possible cause | Recommendation for users |
+|------------------------------|-----------------|-------------------|--------------------------------|
+|Error near ComboBox| Where should the size be, how much should be cleared is written Error | Program(PWin11 Tweaker) not running as an administrator | Restart the program as an administrator |
