@@ -5,6 +5,7 @@
     xmlns:local="using:PWin11_Tweaker_s"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:animations="using:Microsoft.UI.Xaml.Media.Animation"
     mc:Ignorable="d">
 
     <Grid>
@@ -20,6 +21,7 @@
                 </Style>
             </NavigationView.Resources>
             <NavigationView.MenuItems>
+                <!-- Кнопки для панели -->
                 <NavigationViewItem x:Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
@@ -37,27 +39,40 @@
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE790;"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF71C;"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF552;"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="TempCleaner" Tag="TempCleanerPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74D;" />
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <!-- Button For Panel -->
                 <NavigationViewItemSeparator/>
             </NavigationView.MenuItems>
-            <Frame x:Name="ContentFrame" Margin="20" />
+            <!-- Анимация -->
+            <Frame x:Name="ContentFrame" Margin="20">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <DrillInNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+            <!-- Animation -->
         </NavigationView>
 
         <TextBlock x:Name="AdminWarningText" 

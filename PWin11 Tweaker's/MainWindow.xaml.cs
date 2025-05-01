@@ -4,11 +4,12 @@ using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Animation; // Добавляем для DrillInNavigationTransitionInfo
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Windowing;
 using Windows.Storage;
 using System.Diagnostics;
-using System.Security.Principal; // Для проверки прав администратора
+using System.Security.Principal;
 using Windows.UI.ViewManagement;
 using WinRT.Interop;
 using PWin11_Tweaker_s.TempCleaner;
@@ -34,15 +35,13 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine("MainWindow: MicaBackdrop установлен.");
                 SetCustomIcon();
 
-                // Проверяем права администратора
                 CheckAdminRights();
 
-                // Откладываем навигацию на HomePage
                 DispatcherQueue.TryEnqueue(() =>
                 {
                     try
                     {
-                        ContentFrame.Navigate(typeof(HomePage));
+                        ContentFrame.Navigate(typeof(HomePage), null, new DrillInNavigationTransitionInfo());
                         NavView.SelectedItem = NavView.MenuItems[0];
                         System.Diagnostics.Debug.WriteLine("MainWindow: Начальная страница установлена.");
                     }
@@ -52,7 +51,6 @@ namespace PWin11_Tweaker_s
                     }
                 });
 
-                // Инициализируем MainWindow в App
                 App.InitializeMainWindow(this);
 
                 appWindow = GetAppWindowForCurrentWindow();
@@ -76,24 +74,17 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                
-                // Проверяем, запущено ли приложение с правами администратора
                 using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
                 {
-                    
                     WindowsPrincipal principal = new WindowsPrincipal(identity);
                     bool isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
-
-                    // Если не администратор, показываем предупреждение
                     AdminWarningText.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
                     System.Diagnostics.Debug.WriteLine($"MainWindow: Приложение запущено с правами администратора: {isAdmin}");
-                    
                 }
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"MainWindow: Ошибка при проверке прав администратора: {ex.Message}");
-                // В случае ошибки показываем предупреждение, чтобы быть на стороне безопасности
                 AdminWarningText.Visibility = Visibility.Visible;
             }
         }
@@ -102,15 +93,11 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Получаем AppWindow из текущего окна
                 var windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(this);
                 var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
                 var appWindow = AppWindow.GetFromWindowId(windowId);
-
-                // Указываем путь к файлу иконки
                 string iconPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.ico");
                 appWindow.SetIcon(iconPath);
-
                 System.Diagnostics.Debug.WriteLine("MainWindow: Кастомная иконка установлена.");
             }
             catch (Exception ex)
@@ -125,20 +112,18 @@ namespace PWin11_Tweaker_s
             {
                 System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Начало обработки события навигации.");
 
-                // Проверяем, что ContentFrame инициализирован
                 if (ContentFrame == null)
                 {
                     System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Ошибка: ContentFrame не инициализирован.");
                     return;
                 }
 
-                // Обработка перехода на страницу настроек
                 if (args.IsSettingsInvoked)
                 {
                     System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Переход на страницу настроек (SettingsPage).");
                     if (ContentFrame.CurrentSourcePageType != typeof(SettingsPage))
                     {
-                        ContentFrame.Navigate(typeof(SettingsPage));
+                        ContentFrame.Navigate(typeof(SettingsPage), null, new DrillInNavigationTransitionInfo());
                     }
                     else
                     {
@@ -147,7 +132,6 @@ namespace PWin11_Tweaker_s
                     return;
                 }
 
-                // Получаем вызванный элемент
                 var invokedItem = args.InvokedItemContainer as NavigationViewItem;
                 if (invokedItem == null)
                 {
@@ -155,7 +139,6 @@ namespace PWin11_Tweaker_s
                     return;
                 }
 
-                // Получаем тег элемента
                 string? tag = invokedItem.Tag?.ToString();
                 if (string.IsNullOrEmpty(tag))
                 {
@@ -165,7 +148,6 @@ namespace PWin11_Tweaker_s
 
                 System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Выбран тег: {tag}");
 
-                // Словарь для сопоставления тегов с типами страниц
                 var pageMap = new Dictionary<string, Type>
                 {
                     { "HomePage", typeof(HomePage) },
@@ -177,23 +159,20 @@ namespace PWin11_Tweaker_s
                     { "TempCleanerPage", typeof(TempCleanerPage)},
                 };
 
-                // Проверяем, есть ли тег в словаре
                 if (!pageMap.TryGetValue(tag, out Type? pageType) || pageType == null)
                 {
                     System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Ошибка: Неизвестный тег '{tag}'.");
                     return;
                 }
 
-                // Проверяем, не находится ли пользователь уже на этой странице
                 if (ContentFrame.CurrentSourcePageType == pageType)
                 {
                     System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Уже на странице {pageType.Name}, навигация не требуется.");
                     return;
                 }
 
-                // Выполняем навигацию
                 System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Переход на страницу {pageType.Name}.");
-                ContentFrame.Navigate(pageType);
+                ContentFrame.Navigate(pageType, null, new DrillInNavigationTransitionInfo());
                 System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Навигация на {pageType.Name} выполнена успешно.");
             }
             catch (Exception ex)
@@ -207,11 +186,7 @@ namespace PWin11_Tweaker_s
             try
             {
                 System.Diagnostics.Debug.WriteLine("MainWindow.ToggleTheme: Переключаем тему.");
-
-                // Сохраняем выбор темы
                 var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-
-                // Переключаем тему
                 var currentTheme = ((FrameworkElement)this.Content).RequestedTheme;
                 if (currentTheme == ElementTheme.Dark)
                 {
