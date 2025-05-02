@@ -2,7 +2,7 @@
 
 <a href="./readme/support.md">Support!</a>
 
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Download!</a>
+<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/release.zip">Download!</a>
 
 
 
