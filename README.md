@@ -13,6 +13,8 @@ Tweaker for OS: Windows 11
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Latest Release</a>
 </p>
+<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md on Russian</a>
+</p>
 </div>
 
 ## Getting Started
