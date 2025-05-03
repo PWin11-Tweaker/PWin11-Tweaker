@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {
-      "version": "1.0.11",
+      "version": "1.0.11.5",
       "restore": {
         "projectUniqueName": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
         "projectName": "PWin11 Tweaker's",
@@ -14,7 +14,7 @@
         "outputPath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Program Files (x86)\\Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\yttut\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -87,6 +87,10 @@
             "Microsoft.NETCore.Targets": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Microsoft.PowerShell.Native": {
+              "target": "Package",
+              "version": "[7.4.0, )"
             },
             "Microsoft.Toolkit.Uwp.Notifications": {
               "target": "Package",
@@ -200,7 +204,7 @@
             },
             "System.Management.Automation": {
               "target": "Package",
-              "version": "[7.5.0, )"
+              "version": "[7.5.1, )"
             },
             "System.Net.Http": {
               "target": "Package",
