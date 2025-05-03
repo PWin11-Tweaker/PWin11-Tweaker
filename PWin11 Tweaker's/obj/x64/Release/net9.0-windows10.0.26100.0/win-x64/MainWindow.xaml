@@ -10,7 +10,7 @@
 
     <Grid>
         <NavigationView x:ConnectionId='2' x:Name="NavView"
-                        PaneDisplayMode="Left"
+                        PaneDisplayMode="Top"
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
                                                          >
@@ -21,6 +21,7 @@
                 </Style>
             </NavigationView.Resources>
             <NavigationView.MenuItems>
+                <!-- Кнопки для панели -->
                 <NavigationViewItem x:Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
@@ -56,6 +57,7 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <!-- Button For Panel -->
                 <NavigationViewItemSeparator/>
             </NavigationView.MenuItems>
             <!-- Анимация -->
