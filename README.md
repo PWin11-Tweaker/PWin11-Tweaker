@@ -68,6 +68,13 @@ We welcome contributions! Whether it's bug report, feature request, or code enha
 ## License
 
 Distributed under the MIT License. See [MIT License](https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/LICENSE) for more information.
+
+
+<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/LICENSE">
+<img src="https://badgen.net/github/license/kubaam/Windows-11-Fix-Tweaks"/>
+</a>
+
+
 ## Contact
 
 In telegram channel: tg on Eng lang: @PWin11_news and on Rus lang: @pwin11_news_rus
