@@ -444,4 +444,64 @@
   <data name="TotalSizeLabel" xml:space="preserve">
     <value>Всего: {0}</value>
   </data>
+
+    <data name="DisableFindMyDevice.Content" xml:space="preserve">
+    <value>Отключить функцию "Найти мое устройство"</value>
+  </data>
+
+  <data name="DisableInsiderTelemetry.Content" xml:space="preserve">
+    <value>Отключить телеметрию Windows Insider</value>
+  </data>
+
+  <data name="DisableEdgeDiagnostics.Content" xml:space="preserve">
+    <value>Отключить сбор данных Microsoft Edge</value>
+  </data>
+
+  <data name="DisableSuggestedContent.Content" xml:space="preserve">
+    <value>Отключить предлагаемый контент</value>
+  </data>
+
+
+
+
+  <data name="TweakTelemetry" xml:space="preserve">
+    <value>Проверка отключения телеметрии</value>
+  </data>
+
+  <data name="TweakAdvertisingId" xml:space="preserve">
+    <value>Проверка отключения рекламного идентификатора</value>
+  </data>
+
+  <data name="TweakLocationTracking" xml:space="preserve">
+    <value>Проверка отключения отслеживания местоположения</value>
+  </data>
+
+  <data name="TweakCortana" xml:space="preserve">
+    <value>Проверка отключения Cortana</value>
+  </data>
+
+  <data name="TweakBackgroundApps" xml:space="preserve">
+    <value>Проверка отключения фоновых приложений</value>
+  </data>
+
+  <data name="TweakCloudContent" xml:space="preserve">
+    <value>Проверка отключения облачного контента</value>
+  </data>
+
+  <data name="TweakFindMyDevice" xml:space="preserve">
+    <value>Проверка отключения функции "Найти мое устройство"</value>
+  </data>
+
+  <data name="TweakInsiderTelemetry" xml:space="preserve">
+    <value>Проверка отключения телеметрии Windows Insider</value>
+  </data>
+
+  <data name="TweakEdgeDiagnostics" xml:space="preserve">
+    <value>Проверка отключения сбора данных Microsoft Edge</value>
+  </data>
+
+  <data name="TweakSuggestedContent" xml:space="preserve">
+    <value>Проверка отключения предлагаемого контента</value>
+  </data>
+
 </root>

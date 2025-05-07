@@ -23,10 +23,8 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Инициализация компонентов XAML
                 this.InitializeComponent();
 
-                // Получаем AppWindow для управления окном
                 IntPtr hWnd = WindowNative.GetWindowHandle(this);
                 WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
                 _appWindow = AppWindow.GetFromWindowId(windowId);
@@ -34,16 +32,13 @@ namespace PWin11_Tweaker_s
 
                 if (_appWindow != null)
                 {
-                    // Устанавливаем размер окна
                     _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 400));
 
-                    // Убираем рамку и заголовок
                     if (_appWindow.Presenter is OverlappedPresenter presenter)
                     {
                         presenter.SetBorderAndTitleBar(false, false);
                     }
 
-                    // Центрируем окно
                     CenterWindow();
                 }
                 else
@@ -51,7 +46,6 @@ namespace PWin11_Tweaker_s
                     System.Diagnostics.Debug.WriteLine("S003");
                 }
 
-                // Проверяем поддержку Mica и применяем запасной фон, если нужно
                 if (!IsMicaSupported())
                 {
                     System.Diagnostics.Debug.WriteLine("Mica не поддерживается, применяем запасной фон.");
@@ -61,10 +55,7 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                // Запуск анимации
                 StartSplashAnimation();
-
-                // Запуск проверки твиков и основной логики приложения
                 StartApp();
             }
             catch (Exception ex)
@@ -73,16 +64,9 @@ namespace PWin11_Tweaker_s
                 this.Close();
             }
         }
-        
-        
-        
-        
-        
-        
 
         private bool IsMicaSupported()
         {
-            // Mica поддерживается только на Windows 11 (сборка 22000 и выше)
             return Environment.OSVersion.Version.Build >= 22000;
         }
 
@@ -96,7 +80,6 @@ namespace PWin11_Tweaker_s
                     return;
                 }
 
-                // Получаем размеры экрана
                 var displayArea = DisplayArea.GetFromWindowId(_appWindow.Id, DisplayAreaFallback.Nearest);
                 if (displayArea == null)
                 {
@@ -107,13 +90,11 @@ namespace PWin11_Tweaker_s
                 int screenWidth = displayArea.WorkArea.Width;
                 int screenHeight = displayArea.WorkArea.Height;
 
-                // Вычисляем позицию для центрирования
                 int windowWidth = _appWindow.Size.Width;
                 int windowHeight = _appWindow.Size.Height;
                 int x = (screenWidth - windowWidth) / 2;
                 int y = (screenHeight - windowHeight) / 2;
 
-                // Устанавливаем позицию окна
                 _appWindow.Move(new Windows.Graphics.PointInt32(x, y));
             }
             catch (Exception ex)
@@ -128,13 +109,10 @@ namespace PWin11_Tweaker_s
             {
                 if (this.Content is Grid rootGrid)
                 {
-                    // Находим Image по имени
                     if (rootGrid.FindName("SplashImage") is Image splashImage)
                     {
-                        // Создаем Storyboard
                         Storyboard storyboard = new Storyboard();
 
-                        // Анимация для Opacity
                         DoubleAnimation opacityAnimation = new DoubleAnimation
                         {
                             From = 0,
@@ -146,7 +124,6 @@ namespace PWin11_Tweaker_s
                         Storyboard.SetTargetProperty(opacityAnimation, "Opacity");
                         storyboard.Children.Add(opacityAnimation);
 
-                        // Анимация для ScaleX
                         DoubleAnimation scaleXAnimation = new DoubleAnimation
                         {
                             From = 0.8,
@@ -158,7 +135,6 @@ namespace PWin11_Tweaker_s
                         Storyboard.SetTargetProperty(scaleXAnimation, "(UIElement.RenderTransform).(ScaleTransform.ScaleX)");
                         storyboard.Children.Add(scaleXAnimation);
 
-                        // Анимация для ScaleY
                         DoubleAnimation scaleYAnimation = new DoubleAnimation
                         {
                             From = 0.8,
@@ -170,7 +146,6 @@ namespace PWin11_Tweaker_s
                         Storyboard.SetTargetProperty(scaleYAnimation, "(UIElement.RenderTransform).(ScaleTransform.ScaleY)");
                         storyboard.Children.Add(scaleYAnimation);
 
-                        // Запускаем анимацию
                         storyboard.Begin();
                     }
                     else
@@ -193,17 +168,11 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Ждём завершения анимации (1.5 секунды)
                 await Task.Delay(1500);
-
-                // Проверяем состояние твиков
                 await CheckTweaksStatus();
 
-                // Открываем MainWindow
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Activate();
-
-                // Закрываем SplashScreen
                 this.Close();
             }
             catch (Exception ex)
@@ -217,13 +186,22 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Список твиков для проверки
                 var tweaks = new[]
                 {
                     new { Name = _resourceLoader.GetString("TweakClassicContextMenu"), CheckFunc = new Func<bool>(() => CheckClassicContextMenu()) },
                     new { Name = _resourceLoader.GetString("TweakShowHiddenFiles"), CheckFunc = new Func<bool>(() => CheckShowHiddenFiles()) },
                     new { Name = _resourceLoader.GetString("TweakSmallCaptions"), CheckFunc = new Func<bool>(() => CheckSmallCaptions()) },
-                    new { Name = _resourceLoader.GetString("TweakStartAllBack"), CheckFunc = new Func<bool>(() => CheckStartAllBack()) }
+                    new { Name = _resourceLoader.GetString("TweakStartAllBack"), CheckFunc = new Func<bool>(() => CheckStartAllBack()) },
+                    new { Name = _resourceLoader.GetString("TweakTelemetry"), CheckFunc = new Func<bool>(() => CheckTelemetry()) },
+                    new { Name = _resourceLoader.GetString("TweakAdvertisingId"), CheckFunc = new Func<bool>(() => CheckAdvertisingId()) },
+                    new { Name = _resourceLoader.GetString("TweakLocationTracking"), CheckFunc = new Func<bool>(() => CheckLocationTracking()) },
+                    new { Name = _resourceLoader.GetString("TweakCortana"), CheckFunc = new Func<bool>(() => CheckCortana()) },
+                    new { Name = _resourceLoader.GetString("TweakBackgroundApps"), CheckFunc = new Func<bool>(() => CheckBackgroundApps()) },
+                    new { Name = _resourceLoader.GetString("TweakCloudContent"), CheckFunc = new Func<bool>(() => CheckCloudContent()) },
+                    new { Name = _resourceLoader.GetString("TweakFindMyDevice"), CheckFunc = new Func<bool>(() => CheckFindMyDevice()) },
+                    new { Name = _resourceLoader.GetString("TweakInsiderTelemetry"), CheckFunc = new Func<bool>(() => CheckInsiderTelemetry()) },
+                    new { Name = _resourceLoader.GetString("TweakEdgeDiagnostics"), CheckFunc = new Func<bool>(() => CheckEdgeDiagnostics()) },
+                    new { Name = _resourceLoader.GetString("TweakSuggestedContent"), CheckFunc = new Func<bool>(() => CheckSuggestedContent()) }
                 };
 
                 int totalTweaks = tweaks.Length;
@@ -231,7 +209,6 @@ namespace PWin11_Tweaker_s
 
                 foreach (var tweak in tweaks)
                 {
-                    // Обновляем текст статуса
                     if (this.Content is Grid rootGrid)
                     {
                         if (rootGrid.FindName("StatusText") is TextBlock statusText)
@@ -246,7 +223,6 @@ namespace PWin11_Tweaker_s
                         }
                     }
 
-                    // Выполняем проверку
                     bool result = tweak.CheckFunc();
                     System.Diagnostics.Debug.WriteLine($"{tweak.Name} Результат: {(result ? "Включён" : "Выключен")}");
 
@@ -266,11 +242,50 @@ namespace PWin11_Tweaker_s
                     {
                         TweakStatus.IsStartAllBackInstalled = result;
                     }
-                    // Задержка для имитации проверки
+                    else if (tweak.Name.Contains("телеметрии"))
+                    {
+                        TweakStatus.IsTelemetryDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("рекламного идентификатора"))
+                    {
+                        TweakStatus.IsAdvertisingIdDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("отслеживания местоположения"))
+                    {
+                        TweakStatus.IsLocationTrackingDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("Cortana"))
+                    {
+                        TweakStatus.IsCortanaDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("фоновых приложений"))
+                    {
+                        TweakStatus.IsBackgroundAppsDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("облачного контента"))
+                    {
+                        TweakStatus.IsCloudContentDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("функции \"Найти мое устройство\""))
+                    {
+                        TweakStatus.IsFindMyDeviceDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("телеметрии Windows Insider"))
+                    {
+                        TweakStatus.IsInsiderTelemetryDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("сбора данных Microsoft Edge"))
+                    {
+                        TweakStatus.IsEdgeDiagnosticsDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("предлагаемого контента"))
+                    {
+                        TweakStatus.IsSuggestedContentDisabled = result;
+                    }
+
                     await Task.Delay(500);
                 }
 
-                // Финальный статус
                 if (this.Content is Grid rootGridFinal)
                 {
                     if (rootGridFinal.FindName("StatusText") is TextBlock finalStatusText)
@@ -284,7 +299,6 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                // Дополнительная задержка перед открытием MainWindow
                 await Task.Delay(500);
             }
             catch (Exception ex)
@@ -356,6 +370,146 @@ namespace PWin11_Tweaker_s
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Ошибка при проверке StartAllBack: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckTelemetry()
+        {
+            try
+            {
+                using var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection");
+                return (int?)key?.GetValue("AllowTelemetry", 1) == 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке телеметрии: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckAdvertisingId()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo");
+                return (int?)key?.GetValue("Enabled", 1) == 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке рекламного идентификатора: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckLocationTracking()
+        {
+            try
+            {
+                using var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors");
+                return (int?)key?.GetValue("DisableLocation", 0) == 1;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке отслеживания местоположения: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckCortana()
+        {
+            try
+            {
+                using var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Search");
+                return (int?)key?.GetValue("AllowCortana", 1) == 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке Cortana: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckBackgroundApps()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications");
+                return (int?)key?.GetValue("GlobalUserDisabled", 0) == 1;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке фоновых приложений: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckCloudContent()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost");
+                return (int?)key?.GetValue("DisableCloudOptimizedContent", 0) == 1;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке облачного контента: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckFindMyDevice()
+        {
+            try
+            {
+                using var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\FindMyDevice");
+                return (int?)key?.GetValue("AllowFindMyDevice", 1) == 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке функции 'Найти мое устройство': {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckInsiderTelemetry()
+        {
+            try
+            {
+                using var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds");
+                return (int?)key?.GetValue("AllowBuildPreview", 1) == 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке телеметрии Windows Insider: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckEdgeDiagnostics()
+        {
+            try
+            {
+                using var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Edge");
+                return (int?)key?.GetValue("DiagnosticData", 1) == 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке сбора данных Microsoft Edge: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckSuggestedContent()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager");
+                return (int?)key?.GetValue("SubscribedContent-338393Enabled", 1) == 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка при проверке предлагаемого контента: {ex.Message}");
                 return false;
             }
         }

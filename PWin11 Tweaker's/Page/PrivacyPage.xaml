@@ -54,6 +54,12 @@
                 </ToolTipService.ToolTip>
             </CheckBox>
 
+
+            <CheckBox x:Name="DisableFindMyDeviceToggle" x:Uid="DisableFindMyDevice" Content="Disable Find My Device" Margin="0,10,0,0"/>
+            <CheckBox x:Name="DisableInsiderTelemetryToggle" x:Uid="DisableInsiderTelemetry" Content="Disable Windows Insider Telemetry" Margin="0,10,0,0"/>
+            <CheckBox x:Name="DisableEdgeDiagnosticsToggle" x:Uid="DisableEdgeDiagnostics" Content="Disable Microsoft Edge Diagnostics" Margin="0,10,0,0"/>
+            <CheckBox x:Name="DisableSuggestedContentToggle" x:Uid="DisableSuggestedContent" Content="Disable Suggested Content" Margin="0,10,0,0"/>
+            
             <!-- Кнопки -->
             <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
                 <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}"/>

@@ -21,9 +21,13 @@ namespace PWin11_Tweaker_s.Script
         public static bool IsCortanaDisabled { get; set; }
         public static bool IsBackgroundAppsDisabled { get; set; }
         public static bool IsCloudContentDisabled { get; set; }
+        public static bool IsFindMyDeviceDisabled { get; set; }
+        public static bool IsInsiderTelemetryDisabled { get; set; }
+        public static bool IsEdgeDiagnosticsDisabled { get; set; }
+        public static bool IsSuggestedContentDisabled { get; set; }
 
         // InterfacePage
-        public static bool IsTaskbarAlignmentLeft { get; set; } // true = слева, false = по центру
+        public static bool IsTaskbarAlignmentLeft { get; set; }
         public static bool IsTaskbarTransparencyEnabled { get; set; }
         public static bool IsSearchButtonHidden { get; set; }
 
@@ -31,7 +35,7 @@ namespace PWin11_Tweaker_s.Script
         public static bool IsVisualEffectsDisabled { get; set; }
         public static bool IsWindowsSearchDisabled { get; set; }
         public static bool IsSysMainDisabled { get; set; }
-        public static string CurrentPowerPlan { get; set; } // "HighPerformance", "Balanced", "PowerSaver"
+        public static string CurrentPowerPlan { get; set; }
 
         // SystemPage
         public static bool IsServicesDisabled { get; set; }
@@ -39,7 +43,6 @@ namespace PWin11_Tweaker_s.Script
         public static bool IsClipboardHistoryDisabled { get; set; }
         public static bool IsWindowsSpeedUpApplied { get; set; }
 
-        // Методы для сохранения и загрузки состояния
         private static readonly string SettingsFilePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "PWin11Tweaker",
@@ -47,7 +50,6 @@ namespace PWin11_Tweaker_s.Script
 
         static TweakStatus()
         {
-            // Создаём директорию, если она не существует
             Directory.CreateDirectory(Path.GetDirectoryName(SettingsFilePath));
             LoadSettings();
         }
@@ -69,6 +71,10 @@ namespace PWin11_Tweaker_s.Script
                     IsCortanaDisabled,
                     IsBackgroundAppsDisabled,
                     IsCloudContentDisabled,
+                    IsFindMyDeviceDisabled,
+                    IsInsiderTelemetryDisabled,
+                    IsEdgeDiagnosticsDisabled,
+                    IsSuggestedContentDisabled,
                     IsTaskbarAlignmentLeft,
                     IsTaskbarTransparencyEnabled,
                     IsSearchButtonHidden,
@@ -111,6 +117,10 @@ namespace PWin11_Tweaker_s.Script
                     IsCortanaDisabled = GetBool(settings, nameof(IsCortanaDisabled));
                     IsBackgroundAppsDisabled = GetBool(settings, nameof(IsBackgroundAppsDisabled));
                     IsCloudContentDisabled = GetBool(settings, nameof(IsCloudContentDisabled));
+                    IsFindMyDeviceDisabled = GetBool(settings, nameof(IsFindMyDeviceDisabled));
+                    IsInsiderTelemetryDisabled = GetBool(settings, nameof(IsInsiderTelemetryDisabled));
+                    IsEdgeDiagnosticsDisabled = GetBool(settings, nameof(IsEdgeDiagnosticsDisabled));
+                    IsSuggestedContentDisabled = GetBool(settings, nameof(IsSuggestedContentDisabled));
                     IsTaskbarAlignmentLeft = GetBool(settings, nameof(IsTaskbarAlignmentLeft));
                     IsTaskbarTransparencyEnabled = GetBool(settings, nameof(IsTaskbarTransparencyEnabled));
                     IsSearchButtonHidden = GetBool(settings, nameof(IsSearchButtonHidden));
