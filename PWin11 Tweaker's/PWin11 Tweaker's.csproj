@@ -7,9 +7,9 @@
     <RootNamespace>PWin11_Tweaker_s</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- ↓ Укажи версию здесь ↓ -->
-    <Version>1.0.11.5</Version>
-    <AssemblyVersion>1.0.11.5</AssemblyVersion>
-    <FileVersion>1.0.11.5</FileVersion>
+    <Version>1.0.11.7</Version>
+    <AssemblyVersion>1.0.11.7</AssemblyVersion>
+    <FileVersion>1.0.11.7</FileVersion>
 	  <!-- ↑ Version Here ↑ -->
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -193,4 +193,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LayoutDir>D:\.project-new-git\PWin11 Tweaker's\PWin11 Tweaker's\PWin11 Tweaker's\bin\x64\Debug\Msix</LayoutDir>
   </PropertyGroup>
+  <ItemGroup>
+    <PRIResource Remove="Strings\en-US\Resources.resw" />
+  </ItemGroup>
 </Project>
