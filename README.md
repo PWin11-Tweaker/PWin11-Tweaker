@@ -6,9 +6,9 @@
 <p align="center">
 Tweaker for OS: Windows 11
 <br/>   
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar2.png?raw=true" width="500"/>
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar58.png?raw=true" width="500"/>
 <br/>
-<a>   56% / 100%   </a>
+<a>   58% / 100%   </a>
 <br/>
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Explore the docs »</strong></a>
