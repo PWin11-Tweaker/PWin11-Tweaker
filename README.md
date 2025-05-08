@@ -62,7 +62,7 @@ PWin11 Tweaker is a lightweight, open-source utility that allows you to tweak va
 
    • Operating System: Windows 11 (64-bit)
 
-   • Framework: .NET 6.0 or later
+   • Framework: .NET 9.0 or later
 
    • Permissions: Administrator rights recommended for some features
    
