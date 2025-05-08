@@ -2,14 +2,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+    <TargetFramework>net9.0-windows10.0.22000.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>PWin11_Tweaker_s</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- ↓ Укажи версию здесь ↓ -->
-    <Version>1.0.11.7</Version>
-    <AssemblyVersion>1.0.11.7</AssemblyVersion>
-    <FileVersion>1.0.11.7</FileVersion>
+    <Version>1.0.11.8</Version>
+    <AssemblyVersion>1.0.11.8</AssemblyVersion>
+    <FileVersion>1.0.11.8</FileVersion>
 	  <!-- ↑ Version Here ↑ -->
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -74,7 +74,7 @@
     <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" />
     <PackageReference Include="Microsoft.PowerShell.Native" Version="7.4.0" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3179.45" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3240.44" />
     <PackageReference Include="Microsoft.Win32" Version="2.0.1" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
     <PackageReference Include="Microsoft.Win32.SystemEvents" Version="9.0.4" />
@@ -83,7 +83,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.3916" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250401001" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl" Version="4.3.3" />
@@ -183,7 +183,7 @@
     <ApplicationIcon>Assets\logo3.ico</ApplicationIcon>
     <PackageCertificateThumbprint>220E2A64CA78A023ABF51AC246F7C350B2A45FB8</PackageCertificateThumbprint>
     <AppxPackageDir>C:\Users\yttut\Music\PWin11_Build\1.0.7\</AppxPackageDir>
-    <SupportedOSPlatformVersion>10.0.26100.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>10.0.22000.0</SupportedOSPlatformVersion>
     <Authors>ph1ncyn</Authors>
     <NeutralLanguage>ru</NeutralLanguage>
     <WindowsPackageType>None</WindowsPackageType>

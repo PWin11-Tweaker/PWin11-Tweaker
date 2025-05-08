@@ -503,5 +503,28 @@
   <data name="TweakSuggestedContent" xml:space="preserve">
     <value>Проверка отключения предлагаемого контента</value>
   </data>
-
+<data name="TempPageWindowsUpdateCacheCheckBox.Content" xml:space="preserve">
+    <value>Кэш обновлений Windows</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="TempPageThumbnailsCheckBox.Content" xml:space="preserve">
+    <value>Эскизы</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="TotalSizeText.Text" xml:space="preserve">
+    <value>Всего: {0}</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatusText.Text" xml:space="preserve">
+    <value></value>
+    <comment>TempCleanerPage.xaml - Начальный пустой статус</comment>
+  </data>
+  <data name="StatusText_Cleaning.Text" xml:space="preserve">
+    <value>Очистка в процессе...</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatusText_Completed.Text" xml:space="preserve">
+    <value>Очистка завершена.</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
 </root>
