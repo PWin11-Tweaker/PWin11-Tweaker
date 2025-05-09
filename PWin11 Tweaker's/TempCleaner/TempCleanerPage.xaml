@@ -35,8 +35,7 @@
             x:Uid="TempPageTitle"
             FontSize="24"
             FontWeight="Bold"
-            Margin="0,0,0,20"
-            Text="Очистка временных файлов"/>
+            Margin="0,0,0,20"/>
 
         <!-- Список категорий для очистки -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
@@ -47,8 +46,7 @@
                     x:Uid="TempCheckBoxTEMP" 
                     IsChecked="True" 
                     Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"
-                    Content="Временные файлы (%TEMP%)"/>
+                    Unchecked="CheckBox_Changed"/>
                 <TextBlock 
                     x:Name="TempFilesSizeText" 
                     Style="{StaticResource SizeTextBlockStyle}" 
@@ -62,8 +60,7 @@
                     x:Uid="TempPageCheckBoxTrash" 
                     IsChecked="True" 
                     Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"
-                    Content="Корзина"/>
+                    Unchecked="CheckBox_Changed"/>
                 <TextBlock 
                     x:Name="RecycleBinSizeText" 
                     Style="{StaticResource SizeTextBlockStyle}" 
@@ -77,8 +74,7 @@
                     x:Uid="TempPageCacheBrowserCheckBox" 
                     IsChecked="True" 
                     Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"
-                    Content="Кэш браузеров"/>
+                    Unchecked="CheckBox_Changed"/>
                 <TextBlock 
                     x:Name="BrowserCacheSizeText" 
                     Style="{StaticResource SizeTextBlockStyle}" 
@@ -92,8 +88,7 @@
                     x:Uid="TempPageWindowsUpdateCacheCheckBox" 
                     IsChecked="False" 
                     Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"
-                    Content="Кэш обновлений Windows"/>
+                    Unchecked="CheckBox_Changed"/>
                 <TextBlock 
                     x:Name="WindowsUpdateCacheSizeText" 
                     Style="{StaticResource SizeTextBlockStyle}" 
@@ -107,8 +102,7 @@
                     x:Uid="TempPageThumbnailsCheckBox" 
                     IsChecked="False" 
                     Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"
-                    Content="Эскизы"/>
+                    Unchecked="CheckBox_Changed"/>
                 <TextBlock 
                     x:Name="ThumbnailsSizeText" 
                     Style="{StaticResource SizeTextBlockStyle}" 
@@ -122,11 +116,10 @@
                 x:Name="CleanButton" 
                 x:Uid="CleanButton" 
                 Click="CleanButton_Click" 
-                Margin="0,0,10,0"
-                Content="Очистить"/>
+                Margin="0,0,10,0"/>
             <TextBlock 
                 x:Name="TotalSizeText" 
-                Text="Всего: 0 MB" 
+                x:Uid="TotalSizeText"
                 Margin="10,0,10,0" 
                 VerticalAlignment="Center"
                 FontSize="14"/>
@@ -139,8 +132,8 @@
         </StackPanel>
         <TextBlock 
             x:Name="StatusText" 
+            x:Uid="StatusText" 
             Grid.Row="2" 
-            Text="" 
             FontSize="14" 
             Foreground="Green" 
             Margin="0,40,0,0" 

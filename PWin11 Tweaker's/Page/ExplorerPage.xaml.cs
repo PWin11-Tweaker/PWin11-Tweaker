@@ -12,7 +12,7 @@ using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
-    public sealed partial class ExplorerPage : Microsoft.UI.Xaml.Controls.Page 
+    public sealed partial class ExplorerPage : Page
     {
         private const string StartAllBackUrl = "https://www.startallback.com/download.php";
         private string StartAllBackExePath = string.Empty;

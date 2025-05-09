@@ -220,7 +220,7 @@
     <value>Success</value>
   </data>
   <data name="Dialog_Success_Content" xml:space="preserve">
-    <value>Settings applied successfully! File Explorer has been restarted.\nA system restart may be required to apply changes to window control buttons and StartAllBack style.</value>
+    <value>Settings applied successfully! File Explorer has been restarted. A system restart may be required to apply changes to window control buttons and StartAllBack style.</value>
   </data>
   <data name="Dialog_FailedApplySettings_Content" xml:space="preserve">
     <value>Failed to apply settings. Check the log:</value>
@@ -464,8 +464,6 @@
     <value>Disable Suggested Content</value>
   </data>
 
-
-
   <data name="TweakTelemetry" xml:space="preserve">
     <value>Checking Telemetry Disable</value>
   </data>
@@ -506,5 +504,54 @@
     <value>Checking Suggested Content Disable</value>
   </data>
 
+  <data name="DisableExplorerAdsToggle" xml:space="preserve">
+    <value>Disable Explorer Ads</value>
+  </data>
+  <data name="DisablePreviewPaneToggle" xml:space="preserve">
+    <value>Disable Preview Pane</value>
+  </data>
+  <data name="DisableFileGroupingToggle" xml:space="preserve">
+    <value>Disable File Grouping</value>
+  </data>
+  <data name="ShowIconsOnlyToggle" xml:space="preserve">
+    <value>Show Icons Only</value>
+  </data>
 
+  <data name="TweakDisableExplorerAds" xml:space="preserve">
+    <value>Checking Explorer ads...</value>
+  </data>
+  <data name="TweakDisablePreviewPane" xml:space="preserve">
+    <value>Checking preview pane...</value>
+  </data>
+  <data name="TweakDisableFileGrouping" xml:space="preserve">
+    <value>Checking file grouping...</value>
+  </data>
+  <data name="TweakShowIconsOnly" xml:space="preserve">
+    <value>Checking icons only mode...</value>
+  </data>
+
+  <data name="TempPageWindowsUpdateCacheCheckBox.Content" xml:space="preserve">
+    <value>Windows Update Cache</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="TempPageThumbnailsCheckBox.Content" xml:space="preserve">
+    <value>Thumbnails</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="TotalSizeText.Text" xml:space="preserve">
+    <value>Total: {0}</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatusText.Text" xml:space="preserve">
+    <value></value>
+    <comment>TempCleanerPage.xaml - Initial empty status</comment>
+  </data>
+  <data name="StatusText_Cleaning.Text" xml:space="preserve">
+    <value>Cleaning in progress...</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatusText_Completed.Text" xml:space="preserve">
+    <value>Cleanup completed.</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
 </root>
