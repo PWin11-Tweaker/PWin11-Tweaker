@@ -23,6 +23,8 @@ Tweaker for OS: Windows 11
 
 ## Getting Started
 
+0. Click on Star and Follow Organization
+
 1. Download: Clone the repository or download the latest release from the GitHub page.
 
 2. Installation: Ensure you have .NET and WinUI 3 dependencies installed, then run the application.
