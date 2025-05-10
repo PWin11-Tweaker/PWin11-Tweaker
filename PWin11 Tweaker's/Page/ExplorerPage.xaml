@@ -36,6 +36,9 @@
             <!-- Установка/удаление StartAllBack -->
             <Button x:Name="InstallStartAllBackButton" x:Uid="Content_Button_StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
 
+            <!-- Кнопка открытия OldNewExplorer -->
+            <Button x:Name="OpenOldNewExplorerButton" x:Uid="OpenOldNewExplorer" Click="OpenOldNewExplorerButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
+
             <!-- Кнопка применения -->
             <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
 

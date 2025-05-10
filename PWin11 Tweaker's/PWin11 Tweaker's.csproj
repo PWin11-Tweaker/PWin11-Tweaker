@@ -7,9 +7,9 @@
     <RootNamespace>PWin11_Tweaker_s</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- ↓ Укажи версию здесь ↓ -->
-    <Version>1.0.11.9</Version>
-    <AssemblyVersion>1.0.11.9</AssemblyVersion>
-    <FileVersion>1.0.11.9</FileVersion>
+    <Version>1.0.12.0</Version>
+    <AssemblyVersion>1.0.12.0</AssemblyVersion>
+    <FileVersion>1.0.12.0</FileVersion>
 	  <!-- ↑ Version Here ↑ -->
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -109,6 +109,7 @@
     <PackageReference Include="System.Management" Version="9.0.4" />
     <PackageReference Include="System.Management.Automation" Version="7.5.1" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.ObjectModel" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
@@ -121,23 +122,11 @@
     <PackageReference Include="WinUI3Localizer" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\OldNewExplorer\" />
     <Folder Include="asset\" />
     <Folder Include="icons\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\logo2.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Update="Assets\OldNewExplorer\OldNewExplorer.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\OldNewExplorer\OldNewExplorer32.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\OldNewExplorer\OldNewExplorer64.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Update="TempCleaner\TempCleanerPage.xaml">
@@ -195,5 +184,16 @@
   </PropertyGroup>
   <ItemGroup>
     <PRIResource Remove="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Assets\OldNewExplorer\OldNewExplorer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\OldNewExplorer\OldNewExplorer32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\OldNewExplorer\OldNewExplorer64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

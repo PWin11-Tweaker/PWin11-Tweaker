@@ -527,4 +527,25 @@
     <value>Очистка завершена.</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
+
+  <data name="ScheduleButton.Content" xml:space="preserve">
+    <value>Запланировать очистку</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="PreviewButton.Content" xml:space="preserve">
+    <value>Предпросмотр файлов</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="FeedbackButton.Content" xml:space="preserve">
+    <value>Оповестить о баге</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatisticsLabel.Text" xml:space="preserve">
+    <value>Статистика:</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+
+  <data name="OpenOldNewExplorer.Content" xml:space="preserve">
+    <value>Открыть OldNewExplorer</value>
+  </data>
 </root>

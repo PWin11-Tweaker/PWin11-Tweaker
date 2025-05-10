@@ -10,7 +10,6 @@
     Background="Transparent">
 
     <Page.Resources>
-        <!-- Стили для единообразного вида -->
         <Style x:Key="CheckBoxStackPanelStyle" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="Margin" Value="0,0,0,10"/>
@@ -19,6 +18,17 @@
             <Setter Property="Margin" Value="10,0,0,0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style x:Key="PreviewListItemStyle" TargetType="ListViewItem">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="IconStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe Fluent Icons"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </Page.Resources>
 
@@ -29,7 +39,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Заголовок -->
         <TextBlock 
             Grid.Row="0"
             x:Uid="TempPageTitle"
@@ -37,9 +46,7 @@
             FontWeight="Bold"
             Margin="0,0,0,20"/>
 
-        <!-- Список категорий для очистки -->
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
-            <!-- Временные файлы -->
             <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
                 <CheckBox 
                     x:Name="TempFilesCheckBox" 
@@ -53,7 +60,6 @@
                     Text="Error"/>
             </StackPanel>
 
-            <!-- Корзина -->
             <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
                 <CheckBox 
                     x:Name="RecycleBinCheckBox" 
@@ -67,7 +73,6 @@
                     Text="0 MB"/>
             </StackPanel>
 
-            <!-- Кэш браузеров -->
             <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
                 <CheckBox 
                     x:Name="BrowserCacheCheckBox" 
@@ -80,8 +85,7 @@
                     Style="{StaticResource SizeTextBlockStyle}" 
                     Text="0 MB"/>
             </StackPanel>
-
-            <!-- Кэш обновлений Windows -->
+            
             <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
                 <CheckBox 
                     x:Name="WindowsUpdateCacheCheckBox" 
@@ -95,7 +99,6 @@
                     Text="0 MB"/>
             </StackPanel>
 
-            <!-- Эскизы -->
             <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
                 <CheckBox 
                     x:Name="ThumbnailsCheckBox" 
@@ -110,33 +113,74 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Кнопка очистки, итоговый размер и статус -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button 
-                x:Name="CleanButton" 
-                x:Uid="CleanButton" 
-                Click="CleanButton_Click" 
-                Margin="0,0,10,0"/>
+        <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <Button 
+                    x:Name="CleanButton" 
+                    x:Uid="CleanButton" 
+                    Click="CleanButton_Click" 
+                    Margin="0,0,10,0"/>
+                <TextBlock 
+                    x:Name="TotalSizeText" 
+                    x:Uid="TotalSizeText" 
+                    Margin="10,0,10,0" 
+                    VerticalAlignment="Center"
+                    FontSize="14"/>
+                <ProgressBar 
+                    x:Name="ProgressBar" 
+                    Width="200" 
+                    IsIndeterminate="True" 
+                    Visibility="Collapsed" 
+                    Margin="10,0,0,0"/>
+            </StackPanel>
             <TextBlock 
-                x:Name="TotalSizeText" 
-                x:Uid="TotalSizeText"
-                Margin="10,0,10,0" 
-                VerticalAlignment="Center"
-                FontSize="14"/>
-            <ProgressBar 
-                x:Name="ProgressBar" 
-                Width="200" 
-                IsIndeterminate="True" 
-                Visibility="Collapsed" 
-                Margin="10,0,0,0"/>
+                x:Name="StatisticsText" 
+                x:Uid="StatisticsText" 
+                FontSize="12" 
+                Margin="0,10,0,0" 
+                TextWrapping="Wrap"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button 
+                    x:Name="PreviewButton" 
+                    x:Uid="PreviewButton" 
+                    Click="PreviewButton_Click"/>
+                <TextBlock 
+                    x:Name="ToggleIcon" 
+                    Style="{StaticResource IconStyle}" 
+                    Text="&#xE70D;" 
+                    Visibility="Collapsed"/>
+            </StackPanel>
+            <ScrollViewer 
+                VerticalScrollBarVisibility="Auto" 
+                Margin="0,10,0,0">
+                <ListView 
+                    x:Name="PreviewListView" 
+                    Visibility="Collapsed" 
+                    MaxHeight="150" 
+                    SelectionMode="None"
+                    ItemContainerStyle="{StaticResource PreviewListItemStyle}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Name}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding Path=Size}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+            <TextBlock 
+                x:Name="StatusText" 
+                x:Uid="StatusText" 
+                FontSize="14" 
+                Foreground="Green" 
+                Margin="0,20,0,0" 
+                HorizontalAlignment="Left"/>
+            <Button 
+                x:Name="FeedbackButton" 
+                x:Uid="FeedbackButton" 
+                Click="FeedbackButton_Click" 
+                Margin="0,10,0,0"/>
         </StackPanel>
-        <TextBlock 
-            x:Name="StatusText" 
-            x:Uid="StatusText" 
-            Grid.Row="2" 
-            FontSize="14" 
-            Foreground="Green" 
-            Margin="0,40,0,0" 
-            HorizontalAlignment="Left"/>
     </Grid>
 </Page>

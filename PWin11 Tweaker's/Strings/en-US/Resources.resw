@@ -554,4 +554,25 @@
     <value>Cleanup completed.</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
+
+  <data name="ScheduleButton.Content" xml:space="preserve">
+    <value>Schedule Cleanup</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="PreviewButton.Content" xml:space="preserve">
+    <value>Preview Files</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="FeedbackButton.Content" xml:space="preserve">
+    <value>Send Bugs</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatisticsLabel.Text" xml:space="preserve">
+    <value>Statistics:</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+
+  <data name="OpenOldNewExplorer.Content" xml:space="preserve">
+    <value>Open OldNewExplorer</value>
+  </data>
 </root>
