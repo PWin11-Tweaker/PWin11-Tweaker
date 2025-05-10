@@ -402,6 +402,49 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        private async void OpenOldNewExplorerButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string oldNewExplorerPath = Path.Combine(AppContext.BaseDirectory, "Assets", "OldNewExplorer", "OldNewExplorer.exe");
+                if (File.Exists(oldNewExplorerPath))
+                {
+                    ProcessStartInfo processInfo = new ProcessStartInfo
+                    {
+                        FileName = oldNewExplorerPath,
+                        UseShellExecute = true,
+                        CreateNoWindow = false
+                    };
+                    Process.Start(processInfo);
+                    System.Diagnostics.Debug.WriteLine($"OpenOldNewExplorerButton_Click: OldNewExplorer запущен по пути: {oldNewExplorerPath}");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine($"OpenOldNewExplorerButton_Click: Файл OldNewExplorer.exe не найден по пути: {oldNewExplorerPath}");
+                    ContentDialog errorDialog = new()
+                    {
+                        Title = resourceLoader.GetString("Dialog_Error_Title"),
+                        Content = resourceLoader.GetString("Dialog_OldNewExplorerNotFound_Content"),
+                        CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
+                        XamlRoot = this.XamlRoot
+                    };
+                    await errorDialog.ShowAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"OpenOldNewExplorerButton_Click: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                ContentDialog errorDialog = new()
+                {
+                    Title = resourceLoader.GetString("Dialog_Error_Title"),
+                    Content = $"{resourceLoader.GetString("Dialog_Error_Content")}: {ex.Message}",
+                    CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
+                    XamlRoot = this.XamlRoot
+                };
+                await errorDialog.ShowAsync();
+            }
+        }
+
         private async Task DownloadAndInstallStartAllBack()
         {
             bool installationSuccessful = false;

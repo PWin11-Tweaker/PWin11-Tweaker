@@ -2,37 +2,43 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Dispatching;
 using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
+using Windows.Storage;
+using Windows.System;
 
 namespace PWin11_Tweaker_s.TempCleaner
 {
     public sealed partial class TempCleanerPage : Page
     {
-        private readonly string _logFilePath = "tempcleaner.log";
         private CancellationTokenSource _cts;
         private long _tempFilesSize;
         private long _recycleBinSize;
         private long _browserCacheSize;
-        private long _windowsUpdateCacheSize; // Добавляем переменную
-        private long _thumbnailsSize; // Добавляем переменную
+        private long _windowsUpdateCacheSize;
+        private long _thumbnailsSize;
+        private ObservableCollection<FileInfoModel> _previewFiles = new ObservableCollection<FileInfoModel>();
+        private readonly string[] _exclusionPaths = new string[0]; // Настраиваемые исключения
+        private bool _isPreviewVisible = false; // Флаг для отслеживания состояния списка
 
         public TempCleanerPage()
         {
             try
             {
-                Log("Attempting to initialize TempCleanerPage...");
+                Debug.WriteLine("Attempting to initialize TempCleanerPage...");
                 this.InitializeComponent();
-                Log("TempCleanerPage initialized successfully.");
+                Debug.WriteLine("TempCleanerPage initialized successfully.");
+                PreviewListView.ItemsSource = _previewFiles;
                 LoadSizesAsync();
             }
             catch (Exception ex)
             {
-                Log($"Failed to initialize TempCleanerPage: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Failed to initialize TempCleanerPage: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 throw;
             }
         }
@@ -41,32 +47,28 @@ namespace PWin11_Tweaker_s.TempCleaner
         {
             try
             {
-                Log("Loading sizes for categories...");
+                Debug.WriteLine("Loading sizes for categories...");
                 _tempFilesSize = await CalculateTempFilesSizeAsync();
-                Log($"Temp files size: {_tempFilesSize} bytes");
                 _recycleBinSize = await CalculateRecycleBinSizeAsync();
-                Log($"Recycle Bin size: {_recycleBinSize} bytes");
                 _browserCacheSize = await CalculateBrowserCacheSizeAsync();
-                Log($"Browser cache size: {_browserCacheSize} bytes");
-                _windowsUpdateCacheSize = await CalculateWindowsUpdateCacheSizeAsync(); // Добавляем подсчет
-                Log($"Windows Update cache size: {_windowsUpdateCacheSize} bytes");
-                _thumbnailsSize = await CalculateThumbnailsSizeAsync(); // Добавляем подсчет
-                Log($"Thumbnails size: {_thumbnailsSize} bytes");
+                _windowsUpdateCacheSize = await CalculateWindowsUpdateCacheSizeAsync();
+                _thumbnailsSize = await CalculateThumbnailsSizeAsync();
 
                 DispatcherQueue.TryEnqueue(() =>
                 {
                     TempFilesSizeText.Text = FormatSize(_tempFilesSize);
                     RecycleBinSizeText.Text = FormatSize(_recycleBinSize);
                     BrowserCacheSizeText.Text = FormatSize(_browserCacheSize);
-                    WindowsUpdateCacheSizeText.Text = FormatSize(_windowsUpdateCacheSize); // Обновляем UI
-                    ThumbnailsSizeText.Text = FormatSize(_thumbnailsSize); // Обновляем UI
+                    WindowsUpdateCacheSizeText.Text = FormatSize(_windowsUpdateCacheSize);
+                    ThumbnailsSizeText.Text = FormatSize(_thumbnailsSize);
                     UpdateTotalSize();
-                    Log("UI updated with category sizes.");
+                    UpdateStatistics();
+                    Debug.WriteLine("UI updated with category sizes.");
                 });
             }
             catch (Exception ex)
             {
-                Log($"Error loading sizes: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Error loading sizes: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 await ShowErrorAsync($"Ошибка при подсчете размеров: {ex.Message}");
             }
         }
@@ -76,32 +78,39 @@ namespace PWin11_Tweaker_s.TempCleaner
             try
             {
                 UpdateTotalSize();
-                Log("Total size updated after checkbox change.");
+                UpdateStatistics();
+                Debug.WriteLine("Total size updated after checkbox change.");
             }
             catch (Exception ex)
             {
-                Log($"Error in CheckBox_Changed: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Error in CheckBox_Changed: {ex.Message}\nStackTrace: {ex.StackTrace}");
             }
         }
 
         private void UpdateTotalSize()
         {
             long totalSize = 0;
-
-            if (TempFilesCheckBox.IsChecked == true)
-                totalSize += _tempFilesSize;
-            if (RecycleBinCheckBox.IsChecked == true)
-                totalSize += _recycleBinSize;
-            if (BrowserCacheCheckBox.IsChecked == true)
-                totalSize += _browserCacheSize;
-            if (WindowsUpdateCacheCheckBox.IsChecked == true)
-                totalSize += _windowsUpdateCacheSize;
-            if (ThumbnailsCheckBox.IsChecked == true)
-                totalSize += _thumbnailsSize;
+            if (TempFilesCheckBox.IsChecked == true) totalSize += _tempFilesSize;
+            if (RecycleBinCheckBox.IsChecked == true) totalSize += _recycleBinSize;
+            if (BrowserCacheCheckBox.IsChecked == true) totalSize += _browserCacheSize;
+            if (WindowsUpdateCacheCheckBox.IsChecked == true) totalSize += _windowsUpdateCacheSize;
+            if (ThumbnailsCheckBox.IsChecked == true) totalSize += _thumbnailsSize;
 
             var resourceLoader = new ResourceLoader();
-            string totalSizeLabel = resourceLoader.GetString("TotalSizeLabel");
+            string totalSizeLabel = resourceLoader.GetString("TotalSizeText.Text");
             TotalSizeText.Text = string.Format(totalSizeLabel, FormatSize(totalSize));
+        }
+
+        private void UpdateStatistics()
+        {
+            var resourceLoader = new ResourceLoader();
+            string stats = $"{resourceLoader.GetString("StatisticsLabel")}\n" +
+                           $"Temp: {FormatSize(_tempFilesSize)}\n" +
+                           $"Recycle Bin: {FormatSize(_recycleBinSize)}\n" +
+                           $"Browser Cache: {FormatSize(_browserCacheSize)}\n" +
+                           $"Windows Update: {FormatSize(_windowsUpdateCacheSize)}\n" +
+                           $"Thumbnails: {FormatSize(_thumbnailsSize)}";
+            StatisticsText.Text = stats;
         }
 
         private async void CleanButton_Click(object sender, RoutedEventArgs e)
@@ -118,63 +127,28 @@ namespace PWin11_Tweaker_s.TempCleaner
                 });
 
                 long totalFreedSpace = 0;
+                if (TempFilesCheckBox.IsChecked == true) totalFreedSpace += await CleanTempFilesAsync(token);
+                if (RecycleBinCheckBox.IsChecked == true) totalFreedSpace += await CleanRecycleBinAsync(token);
+                if (BrowserCacheCheckBox.IsChecked == true) totalFreedSpace += await CleanBrowserCacheAsync(token);
+                if (WindowsUpdateCacheCheckBox.IsChecked == true) totalFreedSpace += await CleanWindowsUpdateCacheAsync(token);
+                if (ThumbnailsCheckBox.IsChecked == true) totalFreedSpace += await CleanThumbnailsAsync(token);
 
-                if (TempFilesCheckBox.IsChecked == true)
+                DispatcherQueue.TryEnqueue(() =>
                 {
-                    long freedSpace = await CleanTempFilesAsync(token);
-                    totalFreedSpace += freedSpace;
-                    Log($"Freed {freedSpace} bytes from %TEMP%.");
-                    _tempFilesSize = 0;
-                    DispatcherQueue.TryEnqueue(() => TempFilesSizeText.Text = "0 MB");
-                }
-
-                if (RecycleBinCheckBox.IsChecked == true)
-                {
-                    long freedSpace = await CleanRecycleBinAsync(token);
-                    totalFreedSpace += freedSpace;
-                    Log($"Freed {freedSpace} bytes from Recycle Bin.");
-                    _recycleBinSize = 0;
-                    DispatcherQueue.TryEnqueue(() => RecycleBinSizeText.Text = "0 MB");
-                }
-
-                if (BrowserCacheCheckBox.IsChecked == true)
-                {
-                    long freedSpace = await CleanBrowserCacheAsync(token);
-                    totalFreedSpace += freedSpace;
-                    Log($"Freed {freedSpace} bytes from browser cache.");
-                    _browserCacheSize = 0;
-                    DispatcherQueue.TryEnqueue(() => BrowserCacheSizeText.Text = "0 MB");
-                }
-
-                if (WindowsUpdateCacheCheckBox.IsChecked == true)
-                {
-                    long freedSpace = await CleanWindowsUpdateCacheAsync(token);
-                    totalFreedSpace += freedSpace;
-                    Log($"Freed {freedSpace} bytes from Windows Update cache.");
-                    _windowsUpdateCacheSize = 0;
-                    DispatcherQueue.TryEnqueue(() => WindowsUpdateCacheSizeText.Text = "0 MB");
-                }
-
-                if (ThumbnailsCheckBox.IsChecked == true)
-                {
-                    long freedSpace = await CleanThumbnailsAsync(token);
-                    totalFreedSpace += freedSpace;
-                    Log($"Freed {freedSpace} bytes from thumbnails.");
-                    _thumbnailsSize = 0;
-                    DispatcherQueue.TryEnqueue(() => ThumbnailsSizeText.Text = "0 MB");
-                }
-
-                DispatcherQueue.TryEnqueue(() => UpdateTotalSize());
+                    UpdateTotalSize();
+                    UpdateStatistics();
+                });
                 await UpdateStatusAsync($"Освобождено {FormatSize(totalFreedSpace)}.");
+                _ = ShowNotificationAsync("Очистка завершена!");
             }
             catch (OperationCanceledException)
             {
-                Log("Cleaning operation was canceled.");
+                Debug.WriteLine("Cleaning operation was canceled.");
                 await UpdateStatusAsync("Очистка отменена.");
             }
             catch (Exception ex)
             {
-                Log($"Error during cleaning: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Error during cleaning: {ex.Message}\nStackTrace: {ex.StackTrace}");
                 await ShowErrorAsync($"Ошибка при очистке: {ex.Message}");
             }
             finally
@@ -187,6 +161,132 @@ namespace PWin11_Tweaker_s.TempCleaner
                 _cts?.Dispose();
                 _cts = null;
             }
+        }
+
+        private async void PreviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!_isPreviewVisible)
+            {
+                _previewFiles.Clear();
+                long totalSize = 0;
+                if (TempFilesCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(Path.GetTempPath(), "Temp Files");
+                if (RecycleBinCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(@"C:\$Recycle.Bin", "Recycle Bin");
+                if (BrowserCacheCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Microsoft\Edge\User Data\Default\Cache"), "Browser Cache");
+                if (WindowsUpdateCacheCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(@"C:\Windows\SoftwareDistribution\Download", "Windows Update");
+                if (ThumbnailsCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Microsoft\Windows\Explorer"), "Thumbnails");
+
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    PreviewListView.Visibility = Visibility.Visible;
+                    ToggleIcon.Visibility = Visibility.Visible;
+                    ToggleIcon.Text = "\xE70E"; // ChevronUp (свернуть)
+                    _isPreviewVisible = true;
+                    UpdateStatistics();
+                });
+            }
+            else
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    PreviewListView.Visibility = Visibility.Collapsed;
+                    ToggleIcon.Text = "\xE70D"; // ChevronDown (развернуть)
+                    _isPreviewVisible = false;
+                });
+            }
+        }
+
+        private async Task<long> AddPreviewFilesAsync(string path, string category)
+        {
+            long size = 0;
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    var files = Directory.EnumerateFiles(path, "*", SearchOption.TopDirectoryOnly).Take(100);
+                    foreach (var file in files)
+                    {
+                        if (!_exclusionPaths.Contains(file))
+                        {
+                            var info = new FileInfo(file);
+                            size += info.Length;
+                            _previewFiles.Add(new FileInfoModel { Name = info.Name, Size = FormatSize(info.Length), Path = path });
+                        }
+                    }
+
+                    // Поиск поддиректории с максимальным размером
+                    long maxSubDirSize = 0;
+                    string maxSubDirPath = path;
+                    var subDirs = Directory.GetDirectories(path);
+                    foreach (var subDir in subDirs)
+                    {
+                        long subDirSize = await CalculateDirectorySizeAsync(subDir);
+                        if (subDirSize > maxSubDirSize)
+                        {
+                            maxSubDirSize = subDirSize;
+                            maxSubDirPath = subDir;
+                        }
+                    }
+
+                    if (maxSubDirSize > 0)
+                    {
+                        _previewFiles.Add(new FileInfoModel
+                        {
+                            Name = "[Largest Subdirectory]",
+                            Size = FormatSize(maxSubDirSize),
+                            Path = maxSubDirPath
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error previewing files in {category}: {ex.Message}");
+            }
+            return size;
+        }
+
+        private async Task<long> CalculateDirectorySizeAsync(string directoryPath)
+        {
+            return await Task.Run(() =>
+            {
+                long size = 0;
+                try
+                {
+                    var dirInfo = new DirectoryInfo(directoryPath);
+                    size = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                        .Take(10000)
+                        .Sum(f => f.Length);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error calculating size of {directoryPath}: {ex.Message}");
+                }
+                return size;
+            });
+        }
+
+        private async void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md"));
+            Debug.WriteLine("Feedback link opened.");
+        }
+
+        private async Task ShowNotificationAsync(string message)
+        {
+            await Task.Run(() => DispatcherQueue.TryEnqueue(() =>
+            {
+                StatusText.Text = message;
+                StatusText.Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Green);
+            }));
+        }
+
+        private async Task ShowErrorAsync(string message)
+        {
+            await Task.Run(() => DispatcherQueue.TryEnqueue(() =>
+            {
+                StatusText.Text = message;
+                StatusText.Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Red);
+            }));
         }
 
         private async Task<long> CalculateTempFilesSizeAsync()
@@ -208,7 +308,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error calculating %TEMP% size: {ex.Message}");
+                    Debug.WriteLine($"Error calculating %TEMP% size: {ex.Message}");
                 }
 
                 return size;
@@ -247,13 +347,13 @@ namespace PWin11_Tweaker_s.TempCleaner
                         else
                         {
                             string error = await process.StandardError.ReadToEndAsync();
-                            Log($"Error calculating Recycle Bin size: {error}");
+                            Debug.WriteLine($"Error calculating Recycle Bin size: {error}");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error calculating Recycle Bin size: {ex.Message}");
+                    Debug.WriteLine($"Error calculating Recycle Bin size: {ex.Message}");
                 }
 
                 return size;
@@ -314,7 +414,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error calculating browser cache size: {ex.Message}");
+                    Debug.WriteLine($"Error calculating browser cache size: {ex.Message}");
                 }
 
                 return size;
@@ -340,7 +440,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error calculating Windows Update cache size: {ex.Message}");
+                    Debug.WriteLine($"Error calculating Windows Update cache size: {ex.Message}");
                 }
 
                 return size;
@@ -367,7 +467,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error calculating thumbnails size: {ex.Message}");
+                    Debug.WriteLine($"Error calculating thumbnails size: {ex.Message}");
                 }
 
                 return size;
@@ -398,7 +498,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting temp file {file}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting temp file {file}: {ex.Message}");
                             }
                         }
 
@@ -411,14 +511,14 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting temp directory {dir}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting temp directory {dir}: {ex.Message}");
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error cleaning %TEMP%: {ex.Message}");
+                    Debug.WriteLine($"Error cleaning %TEMP%: {ex.Message}");
                 }
 
                 return freedSpace;
@@ -455,7 +555,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                         if (process.ExitCode != 0)
                         {
                             string error = await process.StandardError.ReadToEndAsync();
-                            Log($"Error cleaning Recycle Bin: {error}");
+                            Debug.WriteLine($"Error cleaning Recycle Bin: {error}");
                         }
                         else
                         {
@@ -465,7 +565,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error cleaning Recycle Bin: {ex.Message}");
+                    Debug.WriteLine($"Error cleaning Recycle Bin: {ex.Message}");
                 }
 
                 return freedSpace;
@@ -497,7 +597,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting Edge cache file {file}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting Edge cache file {file}: {ex.Message}");
                             }
                         }
 
@@ -510,7 +610,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting Edge cache directory {dir}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting Edge cache directory {dir}: {ex.Message}");
                             }
                         }
                     }
@@ -529,7 +629,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting Chrome cache file {file}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting Chrome cache file {file}: {ex.Message}");
                             }
                         }
 
@@ -542,7 +642,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting Chrome cache directory {dir}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting Chrome cache directory {dir}: {ex.Message}");
                             }
                         }
                     }
@@ -566,7 +666,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                                     }
                                     catch (Exception ex)
                                     {
-                                        Log($"Error deleting Firefox cache file {file}: {ex.Message}");
+                                        Debug.WriteLine($"Error deleting Firefox cache file {file}: {ex.Message}");
                                     }
                                 }
 
@@ -579,7 +679,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                                     }
                                     catch (Exception ex)
                                     {
-                                        Log($"Error deleting Firefox cache directory {dir}: {ex.Message}");
+                                        Debug.WriteLine($"Error deleting Firefox cache directory {dir}: {ex.Message}");
                                     }
                                 }
                             }
@@ -598,7 +698,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                                     }
                                     catch (Exception ex)
                                     {
-                                        Log($"Error deleting Firefox cache2 file {file}: {ex.Message}");
+                                        Debug.WriteLine($"Error deleting Firefox cache2 file {file}: {ex.Message}");
                                     }
                                 }
 
@@ -611,7 +711,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                                     }
                                     catch (Exception ex)
                                     {
-                                        Log($"Error deleting Firefox cache2 directory {dir}: {ex.Message}");
+                                        Debug.WriteLine($"Error deleting Firefox cache2 directory {dir}: {ex.Message}");
                                     }
                                 }
                             }
@@ -620,7 +720,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error cleaning browser cache: {ex.Message}");
+                    Debug.WriteLine($"Error cleaning browser cache: {ex.Message}");
                 }
 
                 return freedSpace;
@@ -656,7 +756,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                         if (stopProcess.ExitCode != 0)
                         {
                             string error = await stopProcess.StandardError.ReadToEndAsync();
-                            Log($"Error stopping Windows Update service: {error}");
+                            Debug.WriteLine($"Error stopping Windows Update service: {error}");
                         }
                     }
 
@@ -675,7 +775,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting Windows Update cache file {file}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting Windows Update cache file {file}: {ex.Message}");
                             }
                         }
 
@@ -688,7 +788,7 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting Windows Update cache directory {dir}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting Windows Update cache directory {dir}: {ex.Message}");
                             }
                         }
                     }
@@ -711,13 +811,13 @@ namespace PWin11_Tweaker_s.TempCleaner
                         if (startProcess.ExitCode != 0)
                         {
                             string error = await startProcess.StandardError.ReadToEndAsync();
-                            Log($"Error starting Windows Update service: {error}");
+                            Debug.WriteLine($"Error starting Windows Update service: {error}");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error cleaning Windows Update cache: {ex.Message}");
+                    Debug.WriteLine($"Error cleaning Windows Update cache: {ex.Message}");
                 }
 
                 return freedSpace;
@@ -752,14 +852,14 @@ namespace PWin11_Tweaker_s.TempCleaner
                             }
                             catch (Exception ex)
                             {
-                                Log($"Error deleting thumbnail file {file}: {ex.Message}");
+                                Debug.WriteLine($"Error deleting thumbnail file {file}: {ex.Message}");
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log($"Error cleaning thumbnails: {ex.Message}");
+                    Debug.WriteLine($"Error cleaning thumbnails: {ex.Message}");
                 }
 
                 return freedSpace;
@@ -786,27 +886,12 @@ namespace PWin11_Tweaker_s.TempCleaner
             }));
         }
 
-        private async Task ShowErrorAsync(string message)
+        // Обновленная модель для хранения пути
+        private class FileInfoModel
         {
-            await Task.Run(() => DispatcherQueue.TryEnqueue(() =>
-            {
-                StatusText.Text = message;
-                StatusText.Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Red);
-            }));
-        }
-
-        private void Log(string message)
-        {
-            string logEntry = $"[{DateTime.Now}] {message}";
-            Debug.WriteLine(logEntry);
-            try
-            {
-                File.AppendAllText(_logFilePath, logEntry + "\n");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error writing to log file: {ex.Message}");
-            }
+            public string Name { get; set; }
+            public string Size { get; set; }
+            public string Path { get; set; }
         }
     }
 }

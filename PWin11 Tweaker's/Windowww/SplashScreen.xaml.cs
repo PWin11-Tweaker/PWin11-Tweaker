@@ -11,6 +11,8 @@ using Microsoft.Win32;
 using System.IO;
 using PWin11_Tweaker_s.Script;
 using Microsoft.Windows.ApplicationModel.Resources;
+using System.Diagnostics;
+using Windows.System;
 
 namespace PWin11_Tweaker_s
 {
@@ -32,7 +34,7 @@ namespace PWin11_Tweaker_s
 
                 if (_appWindow != null)
                 {
-                    _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 400));
+                    _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 300)); // Уменьшил высоту до 300
 
                     if (_appWindow.Presenter is OverlappedPresenter presenter)
                     {
@@ -109,48 +111,76 @@ namespace PWin11_Tweaker_s
             {
                 if (this.Content is Grid rootGrid)
                 {
-                    if (rootGrid.FindName("SplashImage") is Image splashImage)
+                    // Анимация логотипа программы (запускается сразу)
+                    if (rootGrid.FindName("SplashImage") is Image splashImage && rootGrid.FindName("SplashImageTranslate") is TranslateTransform splashImageTranslate)
                     {
-                        Storyboard storyboard = new Storyboard();
+                        Storyboard splashStoryboard = new Storyboard();
 
+                        // Прозрачность
                         DoubleAnimation opacityAnimation = new DoubleAnimation
                         {
                             From = 0,
                             To = 1,
-                            Duration = new Duration(TimeSpan.FromSeconds(1.5)),
+                            Duration = new Duration(TimeSpan.FromSeconds(0.8)),
                             EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
                         };
                         Storyboard.SetTarget(opacityAnimation, splashImage);
                         Storyboard.SetTargetProperty(opacityAnimation, "Opacity");
-                        storyboard.Children.Add(opacityAnimation);
+                        splashStoryboard.Children.Add(opacityAnimation);
 
+                        // Масштабирование
                         DoubleAnimation scaleXAnimation = new DoubleAnimation
                         {
-                            From = 0.8,
-                            To = 1,
-                            Duration = new Duration(TimeSpan.FromSeconds(1.5)),
-                            EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+                            From = 0.5,
+                            To = 1.2,
+                            Duration = new Duration(TimeSpan.FromSeconds(0.8)),
+                            EasingFunction = new BounceEase { EasingMode = EasingMode.EaseOut, Bounces = 2, Bounciness = 2 }
                         };
                         Storyboard.SetTarget(scaleXAnimation, splashImage);
-                        Storyboard.SetTargetProperty(scaleXAnimation, "(UIElement.RenderTransform).(ScaleTransform.ScaleX)");
-                        storyboard.Children.Add(scaleXAnimation);
+                        Storyboard.SetTargetProperty(scaleXAnimation, "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)");
+                        splashStoryboard.Children.Add(scaleXAnimation);
 
                         DoubleAnimation scaleYAnimation = new DoubleAnimation
                         {
-                            From = 0.8,
-                            To = 1,
-                            Duration = new Duration(TimeSpan.FromSeconds(1.5)),
-                            EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+                            From = 0.5,
+                            To = 1.2,
+                            Duration = new Duration(TimeSpan.FromSeconds(0.8)),
+                            EasingFunction = new BounceEase { EasingMode = EasingMode.EaseOut, Bounces = 2, Bounciness = 2 }
                         };
                         Storyboard.SetTarget(scaleYAnimation, splashImage);
-                        Storyboard.SetTargetProperty(scaleYAnimation, "(UIElement.RenderTransform).(ScaleTransform.ScaleY)");
-                        storyboard.Children.Add(scaleYAnimation);
+                        Storyboard.SetTargetProperty(scaleYAnimation, "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)");
+                        splashStoryboard.Children.Add(scaleYAnimation);
 
-                        storyboard.Begin();
+                        // Дрожание
+                        DoubleAnimation translateXAnimation = new DoubleAnimation
+                        {
+                            From = 0,
+                            To = 10,
+                            Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+                            AutoReverse = true,
+                            RepeatBehavior = new RepeatBehavior(2)
+                        };
+                        Storyboard.SetTarget(translateXAnimation, splashImageTranslate);
+                        Storyboard.SetTargetProperty(translateXAnimation, "X");
+                        splashStoryboard.Children.Add(translateXAnimation);
+
+                        DoubleAnimation translateYAnimation = new DoubleAnimation
+                        {
+                            From = 0,
+                            To = 10,
+                            Duration = new Duration(TimeSpan.FromSeconds(0.2)),
+                            AutoReverse = true,
+                            RepeatBehavior = new RepeatBehavior(2)
+                        };
+                        Storyboard.SetTarget(translateYAnimation, splashImageTranslate);
+                        Storyboard.SetTargetProperty(translateYAnimation, "Y");
+                        splashStoryboard.Children.Add(translateYAnimation);
+
+                        splashStoryboard.Begin();
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine("S001");
+                        System.Diagnostics.Debug.WriteLine("SplashImage или SplashImageTranslate не найдены");
                     }
                 }
                 else
@@ -168,7 +198,7 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                await Task.Delay(1500);
+                await Task.Delay(500);
                 await CheckTweaksStatus();
 
                 MainWindow mainWindow = new MainWindow();
@@ -283,7 +313,7 @@ namespace PWin11_Tweaker_s
                         TweakStatus.IsSuggestedContentDisabled = result;
                     }
 
-                    await Task.Delay(500);
+                    await Task.Delay(200);
                 }
 
                 if (this.Content is Grid rootGridFinal)
@@ -299,7 +329,7 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                await Task.Delay(500);
+                await Task.Delay(200);
             }
             catch (Exception ex)
             {
@@ -512,6 +542,12 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"Ошибка при проверке предлагаемого контента: {ex.Message}");
                 return false;
             }
+        }
+
+        private async void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md"));
+            Debug.WriteLine("Feedback link opened.");
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
 using PWin11_Tweaker_s.Script;
 using Windows.System;
+using System.Diagnostics;
 
 
 namespace PWin11_Tweaker_s
@@ -64,7 +65,11 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"VisitWebsiteButton_Click: Ошибка при открытии веб-сайта: {ex.Message}");
             }
         }
-
+        private async void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md"));
+            Debug.WriteLine("Feedback link opened.");
+        }
 
     }
 }

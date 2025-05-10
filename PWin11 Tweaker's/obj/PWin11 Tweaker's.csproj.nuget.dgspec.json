@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {
-      "version": "1.0.11.9",
+      "version": "1.0.12",
       "restore": {
         "projectUniqueName": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
         "projectName": "PWin11 Tweaker's",
@@ -209,6 +209,10 @@
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
+            },
+            "System.ObjectModel": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             },
             "System.Reflection": {
               "target": "Package",
