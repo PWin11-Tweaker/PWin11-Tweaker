@@ -77,7 +77,7 @@ Distributed under the MIT License. See [MIT License](https://github.com/PWin11-T
 
 
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/LICENSE">
-<img src="https://badgen.net/github/license/kubaam/Windows-11-Fix-Tweaks"/>
+<img src="https://badgen.net/github/license/PWin11-Tweaker/Pwin11-Tweaker"/>
 </a>
 
 
