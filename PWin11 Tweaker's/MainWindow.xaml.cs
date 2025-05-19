@@ -55,7 +55,7 @@ namespace PWin11_Tweaker_s
 
                 appWindow = GetAppWindowForCurrentWindow();
                 appWindow.Title = "PWin11";
-                appWindow.SetIcon("Assets/logo3.ico");
+                appWindow.SetIcon("Assets/logo.ico");
             }
             catch (Exception ex)
             {
