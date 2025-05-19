@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eU6LB1JfEUA=",
+  "dgSpecHash": "6vTSnB7tAxI=",
   "success": true,
   "projectFilePath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,7 @@
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.maccatalyst-x64.runtime.native.system.io.ports\\9.0.4\\runtime.maccatalyst-x64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.native.system\\4.3.1\\runtime.native.system.4.3.1.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\runtime.native.system.io.compression\\4.3.0\\runtime.native.system.io.compression.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.native.system.io.ports\\9.0.4\\runtime.native.system.io.ports.9.0.4.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.native.system.net.http\\4.3.1\\runtime.native.system.net.http.4.3.1.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.native.system.security.cryptography.apple\\4.3.0\\runtime.native.system.security.cryptography.apple.4.3.0.nupkg.sha512",
@@ -72,6 +73,7 @@
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.codedom\\9.0.4\\system.codedom.9.0.4.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
@@ -96,6 +98,7 @@
     "C:\\Users\\yttut\\.nuget\\packages\\system.globalization.calendars\\4.3.0\\system.globalization.calendars.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.globalization.extensions\\4.3.0\\system.globalization.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\yttut\\.nuget\\packages\\system.io.compression\\4.3.0\\system.io.compression.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\yttut\\.nuget\\packages\\system.io.packaging\\9.0.4\\system.io.packaging.9.0.4.nupkg.sha512",
