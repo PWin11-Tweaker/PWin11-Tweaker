@@ -190,6 +190,10 @@
               "target": "Package",
               "version": "[4.3.0, )"
             },
+            "System.IO.Compression": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "System.IO.FileSystem": {
               "target": "Package",
               "version": "[4.3.0, )"
