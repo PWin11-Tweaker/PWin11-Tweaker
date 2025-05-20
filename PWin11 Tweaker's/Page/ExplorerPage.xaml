@@ -33,6 +33,20 @@
                 </ToolTipService.ToolTip>
             </CheckBox>
 
+            <!-- Отключение папки "Главное" -->
+            <CheckBox x:Name="DisableHomeFolder" x:Uid="DisableHomeFolder">
+                <ToolTipService.ToolTip>
+                    <ToolTip x:Uid="Coment_DisableHomeFolder"/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
+            <!-- Отключение папки "Галерея" -->
+            <CheckBox x:Name="DisableGalleryFolder" x:Uid="DisableGalleryFolder">
+                <ToolTipService.ToolTip>
+                    <ToolTip x:Uid="Coment_DisableGalleryFolder"/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
             <!-- Установка/удаление StartAllBack -->
             <Button x:Name="InstallStartAllBackButton" x:Uid="Content_Button_StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
 

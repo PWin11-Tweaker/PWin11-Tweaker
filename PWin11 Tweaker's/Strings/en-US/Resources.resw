@@ -575,4 +575,22 @@
   <data name="OpenOldNewExplorer.Content" xml:space="preserve">
     <value>Open OldNewExplorer</value>
   </data>
+
+  <!-- For Explorer -->
+
+  <data name="DisableHomeFolder.Content" xml:space="preserve">
+    <value>Disable the Home folder</value>
+  </data>
+
+  <data name="Coment_DisableHomeFolder.Content" xml:space="preserve">
+    <value>Disables the display of the "Home" folder in the Explorer</value>
+  </data>
+
+  <data name="DisableGalleryFolder.Content" xml:space="preserve">
+    <value>Disable the Gallery folder</value>
+  </data>
+
+  <data name="Coment_DisableGalleryFolder.Content" xml:space="preserve">
+    <value>Disables the display of the Gallery folder in Explorer</value>
+  </data>
 </root>

@@ -43,6 +43,9 @@ namespace PWin11_Tweaker_s.Script
         public static bool IsClipboardHistoryDisabled { get; set; }
         public static bool IsWindowsSpeedUpApplied { get; set; }
 
+        public static bool IsHomeFolderDisabled { get; set; }
+        public static bool IsGalleryFolderDisabled { get; set; }
+
         private static readonly string SettingsFilePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "PWin11Tweaker",
@@ -85,7 +88,9 @@ namespace PWin11_Tweaker_s.Script
                     IsServicesDisabled,
                     IsUACDisabled,
                     IsClipboardHistoryDisabled,
-                    IsWindowsSpeedUpApplied
+                    IsWindowsSpeedUpApplied,
+                    IsHomeFolderDisabled,
+                    IsGalleryFolderDisabled
                 };
                 string json = JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(SettingsFilePath, json);
@@ -132,6 +137,8 @@ namespace PWin11_Tweaker_s.Script
                     IsUACDisabled = GetBool(settings, nameof(IsUACDisabled));
                     IsClipboardHistoryDisabled = GetBool(settings, nameof(IsClipboardHistoryDisabled));
                     IsWindowsSpeedUpApplied = GetBool(settings, nameof(IsWindowsSpeedUpApplied));
+                    IsHomeFolderDisabled = GetBool(settings, nameof(IsHomeFolderDisabled));
+                    IsGalleryFolderDisabled = GetBool(settings, nameof(IsGalleryFolderDisabled));
 
                     System.Diagnostics.Debug.WriteLine($"TweakStatus: Настройки загружены из {SettingsFilePath}");
                 }

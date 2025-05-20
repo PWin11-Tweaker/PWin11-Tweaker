@@ -548,4 +548,24 @@
   <data name="OpenOldNewExplorer.Content" xml:space="preserve">
     <value>Открыть OldNewExplorer</value>
   </data>
+
+<!-- Для проводника -->
+
+  <data name="DisableHomeFolder.Content" xml:space="preserve">
+    <value>Отключить папку "Главное"</value>
+  </data>
+
+  <data name="Coment_DisableHomeFolder.Content" xml:space="preserve">
+    <value>Отключает отображение папки "Главное" в Проводнике</value>
+  </data>
+
+  <data name="DisableGalleryFolder.Content" xml:space="preserve">
+    <value>Отключить папку "Галерея"</value>
+  </data>
+
+  <data name="Coment_DisableGalleryFolder.Content" xml:space="preserve">
+    <value>Отключает отображение папки "Галерея" в Проводнике</value>
+  </data>
+
+  
 </root>
