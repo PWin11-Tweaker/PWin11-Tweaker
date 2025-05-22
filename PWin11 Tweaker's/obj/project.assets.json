@@ -18,7 +18,7 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
+      "Microsoft.Bcl.AsyncInterfaces/9.0.5": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -34,10 +34,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
@@ -53,7 +53,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -69,12 +69,12 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging/9.0.4": {
+      "Microsoft.Extensions.Logging/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "9.0.4",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Options": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection": "9.0.5",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Options": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.dll": {
@@ -90,10 +90,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -122,11 +122,11 @@
           }
         }
       },
-      "Microsoft.Extensions.Options/9.0.4": {
+      "Microsoft.Extensions.Options/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Primitives": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Primitives": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Options.dll": {
@@ -142,7 +142,7 @@
           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
         }
       },
-      "Microsoft.Extensions.Primitives/9.0.4": {
+      "Microsoft.Extensions.Primitives/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
@@ -219,7 +219,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "Microsoft.NET.ILLink.Tasks/9.0.5": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -424,7 +424,7 @@
           }
         }
       },
-      "Microsoft.Win32.Registry.AccessControl/9.0.4": {
+      "Microsoft.Win32.Registry.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.Registry.AccessControl.dll": {
@@ -446,7 +446,7 @@
           }
         }
       },
-      "Microsoft.Win32.SystemEvents/9.0.4": {
+      "Microsoft.Win32.SystemEvents/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
@@ -468,46 +468,46 @@
           }
         }
       },
-      "Microsoft.Windows.Compatibility/9.0.4": {
+      "Microsoft.Windows.Compatibility/9.0.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "5.0.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
-          "Microsoft.Win32.SystemEvents": "9.0.4",
-          "System.CodeDom": "9.0.4",
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.ComponentModel.Composition.Registration": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Data.Odbc": "9.0.4",
-          "System.Data.OleDb": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.5",
+          "Microsoft.Win32.SystemEvents": "9.0.5",
+          "System.CodeDom": "9.0.5",
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.ComponentModel.Composition.Registration": "9.0.5",
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Data.Odbc": "9.0.5",
+          "System.Data.OleDb": "9.0.5",
           "System.Data.SqlClient": "4.8.6",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.AccountManagement": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4",
-          "System.Drawing.Common": "9.0.4",
-          "System.IO.Packaging": "9.0.4",
-          "System.IO.Ports": "9.0.4",
-          "System.Management": "9.0.4",
-          "System.Reflection.Context": "9.0.4",
-          "System.Runtime.Caching": "9.0.4",
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.AccountManagement": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5",
+          "System.Drawing.Common": "9.0.5",
+          "System.IO.Packaging": "9.0.5",
+          "System.IO.Ports": "9.0.5",
+          "System.Management": "9.0.5",
+          "System.Reflection.Context": "9.0.5",
+          "System.Runtime.Caching": "9.0.5",
           "System.Security.AccessControl": "6.0.0",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Cryptography.Xml": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
+          "System.Security.Cryptography.Pkcs": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5",
+          "System.Security.Cryptography.Xml": "9.0.5",
+          "System.Security.Permissions": "9.0.5",
           "System.Security.Principal.Windows": "5.0.0",
           "System.ServiceModel.Duplex": "4.10.0",
           "System.ServiceModel.Http": "4.10.0",
           "System.ServiceModel.NetTcp": "4.10.0",
           "System.ServiceModel.Primitives": "4.10.0",
           "System.ServiceModel.Security": "4.10.0",
-          "System.ServiceModel.Syndication": "9.0.4",
-          "System.ServiceProcess.ServiceController": "9.0.4",
-          "System.Speech": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Threading.AccessControl": "9.0.4",
+          "System.ServiceModel.Syndication": "9.0.5",
+          "System.ServiceProcess.ServiceController": "9.0.5",
+          "System.Speech": "9.0.5",
+          "System.Text.Encoding.CodePages": "9.0.5",
+          "System.Threading.AccessControl": "9.0.5",
           "System.Web.Services.Description": "4.10.0"
         }
       },
@@ -522,7 +522,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.3916": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -560,13 +560,14 @@
           "buildTransitive/netstandard1.0/Microsoft.Windows.WDK.Win32Metadata.props": {}
         }
       },
-      "Microsoft.WindowsAppSDK/1.7.250401001": {
+      "Microsoft.WindowsAppSDK/1.7.250513003": {
         "type": "package",
         "dependencies": {
           "Microsoft.Web.WebView2": "1.0.2903.40",
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756"
         },
         "compile": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -574,6 +575,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -619,6 +624,7 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WindowsAppRuntime.Bootstrap.Net.dll": {}
         },
         "runtime": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -626,6 +632,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -722,7 +732,7 @@
           }
         }
       },
-      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/libSystem.IO.Ports.Native.so": {
@@ -791,7 +801,7 @@
           }
         }
       },
-      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -860,7 +870,7 @@
           }
         }
       },
-      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -929,7 +939,7 @@
           }
         }
       },
-      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1025,7 +1035,7 @@
           }
         }
       },
-      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1094,7 +1104,7 @@
           }
         }
       },
-      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1163,7 +1173,7 @@
           }
         }
       },
-      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1232,7 +1242,7 @@
           }
         }
       },
-      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1301,7 +1311,7 @@
           }
         }
       },
-      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1370,7 +1380,7 @@
           }
         }
       },
-      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1439,7 +1449,7 @@
           }
         }
       },
-      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1508,7 +1518,7 @@
           }
         }
       },
-      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1577,7 +1587,7 @@
           }
         }
       },
-      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1646,7 +1656,7 @@
           }
         }
       },
-      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1749,25 +1759,25 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.5"
         }
       },
       "runtime.native.System.Net.Http/4.3.1": {
@@ -1834,7 +1844,7 @@
           }
         }
       },
-      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -1903,7 +1913,7 @@
           }
         }
       },
-      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/android-arm/native/_._": {
@@ -2069,7 +2079,7 @@
           "lib/netstandard1.1/System.Buffers.dll": {}
         }
       },
-      "System.CodeDom/9.0.4": {
+      "System.CodeDom/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.CodeDom.dll": {
@@ -2135,7 +2145,7 @@
           "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
-      "System.ComponentModel.Composition/9.0.4": {
+      "System.ComponentModel.Composition/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.dll": {
@@ -2151,11 +2161,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ComponentModel.Composition.Registration/9.0.4": {
+      "System.ComponentModel.Composition.Registration/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.Reflection.Context": "9.0.4"
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.Reflection.Context": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.Registration.dll": {
@@ -2171,11 +2181,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Configuration.ConfigurationManager/9.0.4": {
+      "System.Configuration.ConfigurationManager/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Configuration.ConfigurationManager.dll": {
@@ -2191,7 +2201,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Data.Odbc/9.0.4": {
+      "System.Data.Odbc/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Data.Odbc.dll": {
@@ -2217,11 +2227,11 @@
           }
         }
       },
-      "System.Data.OleDb/9.0.4": {
+      "System.Data.OleDb/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Data.OleDb.dll": {
@@ -2284,7 +2294,7 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/9.0.4": {
+      "System.Diagnostics.DiagnosticSource/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.DiagnosticSource.dll": {
@@ -2300,7 +2310,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.EventLog/9.0.4": {
+      "System.Diagnostics.EventLog/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.EventLog.dll": {
@@ -2326,10 +2336,10 @@
           }
         }
       },
-      "System.Diagnostics.PerformanceCounter/9.0.4": {
+      "System.Diagnostics.PerformanceCounter/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Diagnostics.PerformanceCounter.dll": {
@@ -2364,7 +2374,7 @@
           }
         }
       },
-      "System.DirectoryServices/9.0.4": {
+      "System.DirectoryServices/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.dll": {
@@ -2386,12 +2396,12 @@
           }
         }
       },
-      "System.DirectoryServices.AccountManagement/9.0.4": {
+      "System.DirectoryServices.AccountManagement/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.DirectoryServices.AccountManagement.dll": {
@@ -2413,7 +2423,7 @@
           }
         }
       },
-      "System.DirectoryServices.Protocols/9.0.4": {
+      "System.DirectoryServices.Protocols/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.Protocols.dll": {
@@ -2443,10 +2453,10 @@
           }
         }
       },
-      "System.Drawing.Common/9.0.4": {
+      "System.Drawing.Common/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "9.0.4"
+          "Microsoft.Win32.SystemEvents": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Drawing.Common.dll": {
@@ -2630,7 +2640,7 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Packaging/9.0.4": {
+      "System.IO.Packaging/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.IO.Packaging.dll": {
@@ -2646,10 +2656,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.IO.Ports/9.0.4": {
+      "System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.native.System.IO.Ports": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.IO.Ports.dll": {
@@ -2723,10 +2733,10 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/9.0.4": {
+      "System.Management/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "9.0.4"
+          "System.CodeDom": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Management.dll": {
@@ -2947,7 +2957,7 @@
           }
         }
       },
-      "System.Reflection.Context/9.0.4": {
+      "System.Reflection.Context/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Reflection.Context.dll": {
@@ -3087,10 +3097,10 @@
           }
         }
       },
-      "System.Runtime.Caching/9.0.4": {
+      "System.Runtime.Caching/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Runtime.Caching.dll": {
@@ -3361,7 +3371,7 @@
           }
         }
       },
-      "System.Security.Cryptography.Pkcs/9.0.4": {
+      "System.Security.Cryptography.Pkcs/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Pkcs.dll": {
@@ -3401,7 +3411,7 @@
           "lib/netstandard1.3/System.Security.Cryptography.Primitives.dll": {}
         }
       },
-      "System.Security.Cryptography.ProtectedData/9.0.4": {
+      "System.Security.Cryptography.ProtectedData/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -3462,10 +3472,10 @@
           }
         }
       },
-      "System.Security.Cryptography.Xml/9.0.4": {
+      "System.Security.Cryptography.Xml/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.Pkcs": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Xml.dll": {
@@ -3481,10 +3491,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Security.Permissions/9.0.4": {
+      "System.Security.Permissions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Windows.Extensions": "9.0.4"
+          "System.Windows.Extensions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Permissions.dll": {
@@ -3615,7 +3625,7 @@
           }
         }
       },
-      "System.ServiceModel.Syndication/9.0.4": {
+      "System.ServiceModel.Syndication/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ServiceModel.Syndication.dll": {
@@ -3631,10 +3641,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ServiceProcess.ServiceController/9.0.4": {
+      "System.ServiceProcess.ServiceController/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ServiceProcess.ServiceController.dll": {
@@ -3656,7 +3666,7 @@
           }
         }
       },
-      "System.Speech/9.0.4": {
+      "System.Speech/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Speech.dll": {
@@ -3691,7 +3701,7 @@
           }
         }
       },
-      "System.Text.Encoding.CodePages/9.0.4": {
+      "System.Text.Encoding.CodePages/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Text.Encoding.CodePages.dll": {
@@ -3728,7 +3738,7 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.AccessControl/9.0.4": {
+      "System.Threading.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Threading.AccessControl.dll": {
@@ -3826,7 +3836,7 @@
           }
         }
       },
-      "System.Windows.Extensions/9.0.4": {
+      "System.Windows.Extensions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Windows.Extensions.dll": {
@@ -3845,7 +3855,7 @@
           }
         }
       },
-      "WinUI3Localizer/2.2.0": {
+      "WinUI3Localizer/2.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
@@ -3881,7 +3891,7 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
+      "Microsoft.Bcl.AsyncInterfaces/9.0.5": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -3897,10 +3907,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
@@ -3916,7 +3926,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -3932,12 +3942,12 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging/9.0.4": {
+      "Microsoft.Extensions.Logging/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "9.0.4",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Options": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection": "9.0.5",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Options": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.dll": {
@@ -3953,10 +3963,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -3985,11 +3995,11 @@
           }
         }
       },
-      "Microsoft.Extensions.Options/9.0.4": {
+      "Microsoft.Extensions.Options/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Primitives": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Primitives": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Options.dll": {
@@ -4005,7 +4015,7 @@
           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
         }
       },
-      "Microsoft.Extensions.Primitives/9.0.4": {
+      "Microsoft.Extensions.Primitives/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
@@ -4045,7 +4055,7 @@
           "runtimes/win-arm64/native/microsoft.management.infrastructure.native.unmanaged.dll": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "Microsoft.NET.ILLink.Tasks/9.0.5": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -4160,7 +4170,7 @@
           }
         }
       },
-      "Microsoft.Win32.Registry.AccessControl/9.0.4": {
+      "Microsoft.Win32.Registry.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.Registry.AccessControl.dll": {
@@ -4176,7 +4186,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/9.0.4": {
+      "Microsoft.Win32.SystemEvents/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
@@ -4192,46 +4202,46 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Windows.Compatibility/9.0.4": {
+      "Microsoft.Windows.Compatibility/9.0.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "5.0.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
-          "Microsoft.Win32.SystemEvents": "9.0.4",
-          "System.CodeDom": "9.0.4",
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.ComponentModel.Composition.Registration": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Data.Odbc": "9.0.4",
-          "System.Data.OleDb": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.5",
+          "Microsoft.Win32.SystemEvents": "9.0.5",
+          "System.CodeDom": "9.0.5",
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.ComponentModel.Composition.Registration": "9.0.5",
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Data.Odbc": "9.0.5",
+          "System.Data.OleDb": "9.0.5",
           "System.Data.SqlClient": "4.8.6",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.AccountManagement": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4",
-          "System.Drawing.Common": "9.0.4",
-          "System.IO.Packaging": "9.0.4",
-          "System.IO.Ports": "9.0.4",
-          "System.Management": "9.0.4",
-          "System.Reflection.Context": "9.0.4",
-          "System.Runtime.Caching": "9.0.4",
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.AccountManagement": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5",
+          "System.Drawing.Common": "9.0.5",
+          "System.IO.Packaging": "9.0.5",
+          "System.IO.Ports": "9.0.5",
+          "System.Management": "9.0.5",
+          "System.Reflection.Context": "9.0.5",
+          "System.Runtime.Caching": "9.0.5",
           "System.Security.AccessControl": "6.0.0",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Cryptography.Xml": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
+          "System.Security.Cryptography.Pkcs": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5",
+          "System.Security.Cryptography.Xml": "9.0.5",
+          "System.Security.Permissions": "9.0.5",
           "System.Security.Principal.Windows": "5.0.0",
           "System.ServiceModel.Duplex": "4.10.0",
           "System.ServiceModel.Http": "4.10.0",
           "System.ServiceModel.NetTcp": "4.10.0",
           "System.ServiceModel.Primitives": "4.10.0",
           "System.ServiceModel.Security": "4.10.0",
-          "System.ServiceModel.Syndication": "9.0.4",
-          "System.ServiceProcess.ServiceController": "9.0.4",
-          "System.Speech": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Threading.AccessControl": "9.0.4",
+          "System.ServiceModel.Syndication": "9.0.5",
+          "System.ServiceProcess.ServiceController": "9.0.5",
+          "System.Speech": "9.0.5",
+          "System.Text.Encoding.CodePages": "9.0.5",
+          "System.Threading.AccessControl": "9.0.5",
           "System.Web.Services.Description": "4.10.0"
         }
       },
@@ -4246,7 +4256,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.3916": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -4284,13 +4294,14 @@
           "buildTransitive/netstandard1.0/Microsoft.Windows.WDK.Win32Metadata.props": {}
         }
       },
-      "Microsoft.WindowsAppSDK/1.7.250401001": {
+      "Microsoft.WindowsAppSDK/1.7.250513003": {
         "type": "package",
         "dependencies": {
           "Microsoft.Web.WebView2": "1.0.2903.40",
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756"
         },
         "compile": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -4298,6 +4309,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -4343,6 +4358,7 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WindowsAppRuntime.Bootstrap.Net.dll": {}
         },
         "runtime": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -4350,6 +4366,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -4416,16 +4436,16 @@
           }
         }
       },
-      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.3": {
@@ -4437,34 +4457,34 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
         "type": "package"
       },
-      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.native.System/4.3.1": {
@@ -4501,25 +4521,25 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.5"
         }
       },
       "runtime.native.System.Net.Http/4.3.1": {
@@ -4574,10 +4594,10 @@
       "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
         "type": "package"
       },
-      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
@@ -4626,7 +4646,7 @@
           "lib/netstandard1.1/System.Buffers.dll": {}
         }
       },
-      "System.CodeDom/9.0.4": {
+      "System.CodeDom/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.CodeDom.dll": {
@@ -4692,7 +4712,7 @@
           "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
-      "System.ComponentModel.Composition/9.0.4": {
+      "System.ComponentModel.Composition/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.dll": {
@@ -4708,11 +4728,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ComponentModel.Composition.Registration/9.0.4": {
+      "System.ComponentModel.Composition.Registration/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.Reflection.Context": "9.0.4"
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.Reflection.Context": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.Registration.dll": {
@@ -4728,11 +4748,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Configuration.ConfigurationManager/9.0.4": {
+      "System.Configuration.ConfigurationManager/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Configuration.ConfigurationManager.dll": {
@@ -4748,7 +4768,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Data.Odbc/9.0.4": {
+      "System.Data.Odbc/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Data.Odbc.dll": {
@@ -4764,11 +4784,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Data.OleDb/9.0.4": {
+      "System.Data.OleDb/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Data.OleDb.dll": {
@@ -4815,7 +4835,7 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/9.0.4": {
+      "System.Diagnostics.DiagnosticSource/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.DiagnosticSource.dll": {
@@ -4831,7 +4851,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.EventLog/9.0.4": {
+      "System.Diagnostics.EventLog/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.EventLog.dll": {
@@ -4848,10 +4868,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.PerformanceCounter/9.0.4": {
+      "System.Diagnostics.PerformanceCounter/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Diagnostics.PerformanceCounter.dll": {
@@ -4880,7 +4900,7 @@
           }
         }
       },
-      "System.DirectoryServices/9.0.4": {
+      "System.DirectoryServices/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.dll": {
@@ -4896,12 +4916,12 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.DirectoryServices.AccountManagement/9.0.4": {
+      "System.DirectoryServices.AccountManagement/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.DirectoryServices.AccountManagement.dll": {
@@ -4917,7 +4937,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.DirectoryServices.Protocols/9.0.4": {
+      "System.DirectoryServices.Protocols/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.Protocols.dll": {
@@ -4933,10 +4953,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Drawing.Common/9.0.4": {
+      "System.Drawing.Common/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "9.0.4"
+          "Microsoft.Win32.SystemEvents": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Drawing.Common.dll": {
@@ -5106,7 +5126,7 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Packaging/9.0.4": {
+      "System.IO.Packaging/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.IO.Packaging.dll": {
@@ -5122,10 +5142,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.IO.Ports/9.0.4": {
+      "System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.native.System.IO.Ports": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.IO.Ports.dll": {
@@ -5189,10 +5209,10 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/9.0.4": {
+      "System.Management/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "9.0.4"
+          "System.CodeDom": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Management.dll": {
@@ -5393,7 +5413,7 @@
           }
         }
       },
-      "System.Reflection.Context/9.0.4": {
+      "System.Reflection.Context/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Reflection.Context.dll": {
@@ -5533,10 +5553,10 @@
           }
         }
       },
-      "System.Runtime.Caching/9.0.4": {
+      "System.Runtime.Caching/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Runtime.Caching.dll": {
@@ -5757,7 +5777,7 @@
           "lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll": {}
         }
       },
-      "System.Security.Cryptography.Pkcs/9.0.4": {
+      "System.Security.Cryptography.Pkcs/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Pkcs.dll": {
@@ -5791,7 +5811,7 @@
           "lib/netstandard1.3/System.Security.Cryptography.Primitives.dll": {}
         }
       },
-      "System.Security.Cryptography.ProtectedData/9.0.4": {
+      "System.Security.Cryptography.ProtectedData/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -5845,10 +5865,10 @@
           "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
-      "System.Security.Cryptography.Xml/9.0.4": {
+      "System.Security.Cryptography.Xml/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.Pkcs": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Xml.dll": {
@@ -5864,10 +5884,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Security.Permissions/9.0.4": {
+      "System.Security.Permissions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Windows.Extensions": "9.0.4"
+          "System.Windows.Extensions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Permissions.dll": {
@@ -5988,7 +6008,7 @@
           }
         }
       },
-      "System.ServiceModel.Syndication/9.0.4": {
+      "System.ServiceModel.Syndication/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ServiceModel.Syndication.dll": {
@@ -6004,10 +6024,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ServiceProcess.ServiceController/9.0.4": {
+      "System.ServiceProcess.ServiceController/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ServiceProcess.ServiceController.dll": {
@@ -6023,7 +6043,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Speech/9.0.4": {
+      "System.Speech/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Speech.dll": {
@@ -6052,7 +6072,7 @@
           }
         }
       },
-      "System.Text.Encoding.CodePages/9.0.4": {
+      "System.Text.Encoding.CodePages/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Text.Encoding.CodePages.dll": {
@@ -6083,7 +6103,7 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.AccessControl/9.0.4": {
+      "System.Threading.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Threading.AccessControl.dll": {
@@ -6175,7 +6195,7 @@
           }
         }
       },
-      "System.Windows.Extensions/9.0.4": {
+      "System.Windows.Extensions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Windows.Extensions.dll": {
@@ -6188,7 +6208,7 @@
           }
         }
       },
-      "WinUI3Localizer/2.2.0": {
+      "WinUI3Localizer/2.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
@@ -6224,7 +6244,7 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
+      "Microsoft.Bcl.AsyncInterfaces/9.0.5": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -6240,10 +6260,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
@@ -6259,7 +6279,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -6275,12 +6295,12 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging/9.0.4": {
+      "Microsoft.Extensions.Logging/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "9.0.4",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Options": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection": "9.0.5",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Options": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.dll": {
@@ -6296,10 +6316,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -6328,11 +6348,11 @@
           }
         }
       },
-      "Microsoft.Extensions.Options/9.0.4": {
+      "Microsoft.Extensions.Options/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Primitives": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Primitives": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Options.dll": {
@@ -6348,7 +6368,7 @@
           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
         }
       },
-      "Microsoft.Extensions.Primitives/9.0.4": {
+      "Microsoft.Extensions.Primitives/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
@@ -6388,7 +6408,7 @@
           "runtimes/win-x64/native/microsoft.management.infrastructure.native.unmanaged.dll": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "Microsoft.NET.ILLink.Tasks/9.0.5": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -6503,7 +6523,7 @@
           }
         }
       },
-      "Microsoft.Win32.Registry.AccessControl/9.0.4": {
+      "Microsoft.Win32.Registry.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.Registry.AccessControl.dll": {
@@ -6519,7 +6539,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/9.0.4": {
+      "Microsoft.Win32.SystemEvents/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
@@ -6535,46 +6555,46 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Windows.Compatibility/9.0.4": {
+      "Microsoft.Windows.Compatibility/9.0.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "5.0.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
-          "Microsoft.Win32.SystemEvents": "9.0.4",
-          "System.CodeDom": "9.0.4",
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.ComponentModel.Composition.Registration": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Data.Odbc": "9.0.4",
-          "System.Data.OleDb": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.5",
+          "Microsoft.Win32.SystemEvents": "9.0.5",
+          "System.CodeDom": "9.0.5",
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.ComponentModel.Composition.Registration": "9.0.5",
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Data.Odbc": "9.0.5",
+          "System.Data.OleDb": "9.0.5",
           "System.Data.SqlClient": "4.8.6",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.AccountManagement": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4",
-          "System.Drawing.Common": "9.0.4",
-          "System.IO.Packaging": "9.0.4",
-          "System.IO.Ports": "9.0.4",
-          "System.Management": "9.0.4",
-          "System.Reflection.Context": "9.0.4",
-          "System.Runtime.Caching": "9.0.4",
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.AccountManagement": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5",
+          "System.Drawing.Common": "9.0.5",
+          "System.IO.Packaging": "9.0.5",
+          "System.IO.Ports": "9.0.5",
+          "System.Management": "9.0.5",
+          "System.Reflection.Context": "9.0.5",
+          "System.Runtime.Caching": "9.0.5",
           "System.Security.AccessControl": "6.0.0",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Cryptography.Xml": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
+          "System.Security.Cryptography.Pkcs": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5",
+          "System.Security.Cryptography.Xml": "9.0.5",
+          "System.Security.Permissions": "9.0.5",
           "System.Security.Principal.Windows": "5.0.0",
           "System.ServiceModel.Duplex": "4.10.0",
           "System.ServiceModel.Http": "4.10.0",
           "System.ServiceModel.NetTcp": "4.10.0",
           "System.ServiceModel.Primitives": "4.10.0",
           "System.ServiceModel.Security": "4.10.0",
-          "System.ServiceModel.Syndication": "9.0.4",
-          "System.ServiceProcess.ServiceController": "9.0.4",
-          "System.Speech": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Threading.AccessControl": "9.0.4",
+          "System.ServiceModel.Syndication": "9.0.5",
+          "System.ServiceProcess.ServiceController": "9.0.5",
+          "System.Speech": "9.0.5",
+          "System.Text.Encoding.CodePages": "9.0.5",
+          "System.Threading.AccessControl": "9.0.5",
           "System.Web.Services.Description": "4.10.0"
         }
       },
@@ -6589,7 +6609,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.3916": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -6627,13 +6647,14 @@
           "buildTransitive/netstandard1.0/Microsoft.Windows.WDK.Win32Metadata.props": {}
         }
       },
-      "Microsoft.WindowsAppSDK/1.7.250401001": {
+      "Microsoft.WindowsAppSDK/1.7.250513003": {
         "type": "package",
         "dependencies": {
           "Microsoft.Web.WebView2": "1.0.2903.40",
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756"
         },
         "compile": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -6641,6 +6662,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -6686,6 +6711,7 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WindowsAppRuntime.Bootstrap.Net.dll": {}
         },
         "runtime": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -6693,6 +6719,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -6759,16 +6789,16 @@
           }
         }
       },
-      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.3": {
@@ -6780,34 +6810,34 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
         "type": "package"
       },
-      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.native.System/4.3.1": {
@@ -6844,25 +6874,25 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.5"
         }
       },
       "runtime.native.System.Net.Http/4.3.1": {
@@ -6917,10 +6947,10 @@
       "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
         "type": "package"
       },
-      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
@@ -6969,7 +6999,7 @@
           "lib/netstandard1.1/System.Buffers.dll": {}
         }
       },
-      "System.CodeDom/9.0.4": {
+      "System.CodeDom/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.CodeDom.dll": {
@@ -7035,7 +7065,7 @@
           "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
-      "System.ComponentModel.Composition/9.0.4": {
+      "System.ComponentModel.Composition/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.dll": {
@@ -7051,11 +7081,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ComponentModel.Composition.Registration/9.0.4": {
+      "System.ComponentModel.Composition.Registration/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.Reflection.Context": "9.0.4"
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.Reflection.Context": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.Registration.dll": {
@@ -7071,11 +7101,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Configuration.ConfigurationManager/9.0.4": {
+      "System.Configuration.ConfigurationManager/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Configuration.ConfigurationManager.dll": {
@@ -7091,7 +7121,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Data.Odbc/9.0.4": {
+      "System.Data.Odbc/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Data.Odbc.dll": {
@@ -7107,11 +7137,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Data.OleDb/9.0.4": {
+      "System.Data.OleDb/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Data.OleDb.dll": {
@@ -7158,7 +7188,7 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/9.0.4": {
+      "System.Diagnostics.DiagnosticSource/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.DiagnosticSource.dll": {
@@ -7174,7 +7204,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.EventLog/9.0.4": {
+      "System.Diagnostics.EventLog/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.EventLog.dll": {
@@ -7191,10 +7221,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.PerformanceCounter/9.0.4": {
+      "System.Diagnostics.PerformanceCounter/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Diagnostics.PerformanceCounter.dll": {
@@ -7223,7 +7253,7 @@
           }
         }
       },
-      "System.DirectoryServices/9.0.4": {
+      "System.DirectoryServices/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.dll": {
@@ -7239,12 +7269,12 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.DirectoryServices.AccountManagement/9.0.4": {
+      "System.DirectoryServices.AccountManagement/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.DirectoryServices.AccountManagement.dll": {
@@ -7260,7 +7290,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.DirectoryServices.Protocols/9.0.4": {
+      "System.DirectoryServices.Protocols/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.Protocols.dll": {
@@ -7276,10 +7306,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Drawing.Common/9.0.4": {
+      "System.Drawing.Common/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "9.0.4"
+          "Microsoft.Win32.SystemEvents": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Drawing.Common.dll": {
@@ -7449,7 +7479,7 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Packaging/9.0.4": {
+      "System.IO.Packaging/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.IO.Packaging.dll": {
@@ -7465,10 +7495,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.IO.Ports/9.0.4": {
+      "System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.native.System.IO.Ports": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.IO.Ports.dll": {
@@ -7532,10 +7562,10 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/9.0.4": {
+      "System.Management/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "9.0.4"
+          "System.CodeDom": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Management.dll": {
@@ -7736,7 +7766,7 @@
           }
         }
       },
-      "System.Reflection.Context/9.0.4": {
+      "System.Reflection.Context/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Reflection.Context.dll": {
@@ -7876,10 +7906,10 @@
           }
         }
       },
-      "System.Runtime.Caching/9.0.4": {
+      "System.Runtime.Caching/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Runtime.Caching.dll": {
@@ -8100,7 +8130,7 @@
           "lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll": {}
         }
       },
-      "System.Security.Cryptography.Pkcs/9.0.4": {
+      "System.Security.Cryptography.Pkcs/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Pkcs.dll": {
@@ -8134,7 +8164,7 @@
           "lib/netstandard1.3/System.Security.Cryptography.Primitives.dll": {}
         }
       },
-      "System.Security.Cryptography.ProtectedData/9.0.4": {
+      "System.Security.Cryptography.ProtectedData/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -8188,10 +8218,10 @@
           "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
-      "System.Security.Cryptography.Xml/9.0.4": {
+      "System.Security.Cryptography.Xml/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.Pkcs": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Xml.dll": {
@@ -8207,10 +8237,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Security.Permissions/9.0.4": {
+      "System.Security.Permissions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Windows.Extensions": "9.0.4"
+          "System.Windows.Extensions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Permissions.dll": {
@@ -8331,7 +8361,7 @@
           }
         }
       },
-      "System.ServiceModel.Syndication/9.0.4": {
+      "System.ServiceModel.Syndication/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ServiceModel.Syndication.dll": {
@@ -8347,10 +8377,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ServiceProcess.ServiceController/9.0.4": {
+      "System.ServiceProcess.ServiceController/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ServiceProcess.ServiceController.dll": {
@@ -8366,7 +8396,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Speech/9.0.4": {
+      "System.Speech/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Speech.dll": {
@@ -8395,7 +8425,7 @@
           }
         }
       },
-      "System.Text.Encoding.CodePages/9.0.4": {
+      "System.Text.Encoding.CodePages/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Text.Encoding.CodePages.dll": {
@@ -8426,7 +8456,7 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.AccessControl/9.0.4": {
+      "System.Threading.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Threading.AccessControl.dll": {
@@ -8518,7 +8548,7 @@
           }
         }
       },
-      "System.Windows.Extensions/9.0.4": {
+      "System.Windows.Extensions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Windows.Extensions.dll": {
@@ -8531,7 +8561,7 @@
           }
         }
       },
-      "WinUI3Localizer/2.2.0": {
+      "WinUI3Localizer/2.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
@@ -8567,7 +8597,7 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
+      "Microsoft.Bcl.AsyncInterfaces/9.0.5": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -8583,10 +8613,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll": {
@@ -8602,7 +8632,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -8618,12 +8648,12 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging/9.0.4": {
+      "Microsoft.Extensions.Logging/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "9.0.4",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Options": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection": "9.0.5",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Options": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.dll": {
@@ -8639,10 +8669,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
+      "Microsoft.Extensions.Logging.Abstractions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -8671,11 +8701,11 @@
           }
         }
       },
-      "Microsoft.Extensions.Options/9.0.4": {
+      "Microsoft.Extensions.Options/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
-          "Microsoft.Extensions.Primitives": "9.0.4"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.5",
+          "Microsoft.Extensions.Primitives": "9.0.5"
         },
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Options.dll": {
@@ -8691,7 +8721,7 @@
           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
         }
       },
-      "Microsoft.Extensions.Primitives/9.0.4": {
+      "Microsoft.Extensions.Primitives/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Extensions.Primitives.dll": {
@@ -8731,7 +8761,7 @@
           "runtimes/win-x86/native/microsoft.management.infrastructure.native.unmanaged.dll": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "Microsoft.NET.ILLink.Tasks/9.0.5": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -8846,7 +8876,7 @@
           }
         }
       },
-      "Microsoft.Win32.Registry.AccessControl/9.0.4": {
+      "Microsoft.Win32.Registry.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.Registry.AccessControl.dll": {
@@ -8862,7 +8892,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Win32.SystemEvents/9.0.4": {
+      "Microsoft.Win32.SystemEvents/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
@@ -8878,46 +8908,46 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Windows.Compatibility/9.0.4": {
+      "Microsoft.Windows.Compatibility/9.0.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "5.0.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
-          "Microsoft.Win32.SystemEvents": "9.0.4",
-          "System.CodeDom": "9.0.4",
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.ComponentModel.Composition.Registration": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Data.Odbc": "9.0.4",
-          "System.Data.OleDb": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.5",
+          "Microsoft.Win32.SystemEvents": "9.0.5",
+          "System.CodeDom": "9.0.5",
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.ComponentModel.Composition.Registration": "9.0.5",
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Data.Odbc": "9.0.5",
+          "System.Data.OleDb": "9.0.5",
           "System.Data.SqlClient": "4.8.6",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.AccountManagement": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4",
-          "System.Drawing.Common": "9.0.4",
-          "System.IO.Packaging": "9.0.4",
-          "System.IO.Ports": "9.0.4",
-          "System.Management": "9.0.4",
-          "System.Reflection.Context": "9.0.4",
-          "System.Runtime.Caching": "9.0.4",
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.AccountManagement": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5",
+          "System.Drawing.Common": "9.0.5",
+          "System.IO.Packaging": "9.0.5",
+          "System.IO.Ports": "9.0.5",
+          "System.Management": "9.0.5",
+          "System.Reflection.Context": "9.0.5",
+          "System.Runtime.Caching": "9.0.5",
           "System.Security.AccessControl": "6.0.0",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Cryptography.Xml": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
+          "System.Security.Cryptography.Pkcs": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5",
+          "System.Security.Cryptography.Xml": "9.0.5",
+          "System.Security.Permissions": "9.0.5",
           "System.Security.Principal.Windows": "5.0.0",
           "System.ServiceModel.Duplex": "4.10.0",
           "System.ServiceModel.Http": "4.10.0",
           "System.ServiceModel.NetTcp": "4.10.0",
           "System.ServiceModel.Primitives": "4.10.0",
           "System.ServiceModel.Security": "4.10.0",
-          "System.ServiceModel.Syndication": "9.0.4",
-          "System.ServiceProcess.ServiceController": "9.0.4",
-          "System.Speech": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Threading.AccessControl": "9.0.4",
+          "System.ServiceModel.Syndication": "9.0.5",
+          "System.ServiceProcess.ServiceController": "9.0.5",
+          "System.Speech": "9.0.5",
+          "System.Text.Encoding.CodePages": "9.0.5",
+          "System.Threading.AccessControl": "9.0.5",
           "System.Web.Services.Description": "4.10.0"
         }
       },
@@ -8932,7 +8962,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.3916": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -8970,13 +9000,14 @@
           "buildTransitive/netstandard1.0/Microsoft.Windows.WDK.Win32Metadata.props": {}
         }
       },
-      "Microsoft.WindowsAppSDK/1.7.250401001": {
+      "Microsoft.WindowsAppSDK/1.7.250513003": {
         "type": "package",
         "dependencies": {
           "Microsoft.Web.WebView2": "1.0.2903.40",
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756"
         },
         "compile": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -8984,6 +9015,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -9029,6 +9064,7 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WindowsAppRuntime.Bootstrap.Net.dll": {}
         },
         "runtime": {
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll": {
             "related": ".xml"
           },
@@ -9036,6 +9072,10 @@
           "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll": {
             "related": ".xml"
           },
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll": {},
+          "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll": {},
           "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll": {
             "related": ".xml"
           },
@@ -9102,16 +9142,16 @@
           }
         }
       },
-      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.android-x86.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.3": {
@@ -9123,34 +9163,34 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
         "type": "package"
       },
-      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.native.System/4.3.1": {
@@ -9187,25 +9227,25 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.native.System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.4",
-          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.android-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.android-x86.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-bionic-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-musl-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.linux-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.maccatalyst-x64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-arm64.runtime.native.System.IO.Ports": "9.0.5",
+          "runtime.osx-x64.runtime.native.System.IO.Ports": "9.0.5"
         }
       },
       "runtime.native.System.Net.Http/4.3.1": {
@@ -9260,10 +9300,10 @@
       "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
         "type": "package"
       },
-      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
-      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.4": {
+      "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.5": {
         "type": "package"
       },
       "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
@@ -9312,7 +9352,7 @@
           "lib/netstandard1.1/System.Buffers.dll": {}
         }
       },
-      "System.CodeDom/9.0.4": {
+      "System.CodeDom/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.CodeDom.dll": {
@@ -9378,7 +9418,7 @@
           "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
-      "System.ComponentModel.Composition/9.0.4": {
+      "System.ComponentModel.Composition/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.dll": {
@@ -9394,11 +9434,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ComponentModel.Composition.Registration/9.0.4": {
+      "System.ComponentModel.Composition.Registration/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.ComponentModel.Composition": "9.0.4",
-          "System.Reflection.Context": "9.0.4"
+          "System.ComponentModel.Composition": "9.0.5",
+          "System.Reflection.Context": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ComponentModel.Composition.Registration.dll": {
@@ -9414,11 +9454,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Configuration.ConfigurationManager/9.0.4": {
+      "System.Configuration.ConfigurationManager/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5",
+          "System.Security.Cryptography.ProtectedData": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Configuration.ConfigurationManager.dll": {
@@ -9434,7 +9474,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Data.Odbc/9.0.4": {
+      "System.Data.Odbc/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Data.Odbc.dll": {
@@ -9450,11 +9490,11 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Data.OleDb/9.0.4": {
+      "System.Data.OleDb/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.PerformanceCounter": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.Diagnostics.PerformanceCounter": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Data.OleDb.dll": {
@@ -9501,7 +9541,7 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/9.0.4": {
+      "System.Diagnostics.DiagnosticSource/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.DiagnosticSource.dll": {
@@ -9517,7 +9557,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.EventLog/9.0.4": {
+      "System.Diagnostics.EventLog/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Diagnostics.EventLog.dll": {
@@ -9534,10 +9574,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Diagnostics.PerformanceCounter/9.0.4": {
+      "System.Diagnostics.PerformanceCounter/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Diagnostics.PerformanceCounter.dll": {
@@ -9566,7 +9606,7 @@
           }
         }
       },
-      "System.DirectoryServices/9.0.4": {
+      "System.DirectoryServices/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.dll": {
@@ -9582,12 +9622,12 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.DirectoryServices.AccountManagement/9.0.4": {
+      "System.DirectoryServices.AccountManagement/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.DirectoryServices.Protocols": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5",
+          "System.DirectoryServices": "9.0.5",
+          "System.DirectoryServices.Protocols": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.DirectoryServices.AccountManagement.dll": {
@@ -9603,7 +9643,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.DirectoryServices.Protocols/9.0.4": {
+      "System.DirectoryServices.Protocols/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.DirectoryServices.Protocols.dll": {
@@ -9619,10 +9659,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Drawing.Common/9.0.4": {
+      "System.Drawing.Common/9.0.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "9.0.4"
+          "Microsoft.Win32.SystemEvents": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Drawing.Common.dll": {
@@ -9792,7 +9832,7 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Packaging/9.0.4": {
+      "System.IO.Packaging/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.IO.Packaging.dll": {
@@ -9808,10 +9848,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.IO.Ports/9.0.4": {
+      "System.IO.Ports/9.0.5": {
         "type": "package",
         "dependencies": {
-          "runtime.native.System.IO.Ports": "9.0.4"
+          "runtime.native.System.IO.Ports": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.IO.Ports.dll": {
@@ -9875,10 +9915,10 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
-      "System.Management/9.0.4": {
+      "System.Management/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.CodeDom": "9.0.4"
+          "System.CodeDom": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Management.dll": {
@@ -10079,7 +10119,7 @@
           }
         }
       },
-      "System.Reflection.Context/9.0.4": {
+      "System.Reflection.Context/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Reflection.Context.dll": {
@@ -10219,10 +10259,10 @@
           }
         }
       },
-      "System.Runtime.Caching/9.0.4": {
+      "System.Runtime.Caching/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.4"
+          "System.Configuration.ConfigurationManager": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Runtime.Caching.dll": {
@@ -10443,7 +10483,7 @@
           "lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll": {}
         }
       },
-      "System.Security.Cryptography.Pkcs/9.0.4": {
+      "System.Security.Cryptography.Pkcs/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Pkcs.dll": {
@@ -10477,7 +10517,7 @@
           "lib/netstandard1.3/System.Security.Cryptography.Primitives.dll": {}
         }
       },
-      "System.Security.Cryptography.ProtectedData/9.0.4": {
+      "System.Security.Cryptography.ProtectedData/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Security.Cryptography.ProtectedData.dll": {
@@ -10531,10 +10571,10 @@
           "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
-      "System.Security.Cryptography.Xml/9.0.4": {
+      "System.Security.Cryptography.Xml/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.Pkcs": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Cryptography.Xml.dll": {
@@ -10550,10 +10590,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Security.Permissions/9.0.4": {
+      "System.Security.Permissions/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Windows.Extensions": "9.0.4"
+          "System.Windows.Extensions": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.Security.Permissions.dll": {
@@ -10674,7 +10714,7 @@
           }
         }
       },
-      "System.ServiceModel.Syndication/9.0.4": {
+      "System.ServiceModel.Syndication/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.ServiceModel.Syndication.dll": {
@@ -10690,10 +10730,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.ServiceProcess.ServiceController/9.0.4": {
+      "System.ServiceProcess.ServiceController/9.0.5": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.5"
         },
         "compile": {
           "lib/net9.0/System.ServiceProcess.ServiceController.dll": {
@@ -10709,7 +10749,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Speech/9.0.4": {
+      "System.Speech/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Speech.dll": {
@@ -10738,7 +10778,7 @@
           }
         }
       },
-      "System.Text.Encoding.CodePages/9.0.4": {
+      "System.Text.Encoding.CodePages/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Text.Encoding.CodePages.dll": {
@@ -10769,7 +10809,7 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.AccessControl/9.0.4": {
+      "System.Threading.AccessControl/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Threading.AccessControl.dll": {
@@ -10861,7 +10901,7 @@
           }
         }
       },
-      "System.Windows.Extensions/9.0.4": {
+      "System.Windows.Extensions/9.0.5": {
         "type": "package",
         "compile": {
           "lib/net9.0/System.Windows.Extensions.dll": {
@@ -10874,7 +10914,7 @@
           }
         }
       },
-      "WinUI3Localizer/2.2.0": {
+      "WinUI3Localizer/2.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
@@ -10916,10 +10956,10 @@
         "microsoft.applicationinsights.nuspec"
       ]
     },
-    "Microsoft.Bcl.AsyncInterfaces/9.0.4": {
-      "sha512": "9VGI5kxIvrNG2mqLQZnUR6y/3fcnygD8eNpHR+CqfbnIXvea6nehnYknDKQTxZVPMpzpNca+7DxLBmpdB3q0Bw==",
+    "Microsoft.Bcl.AsyncInterfaces/9.0.5": {
+      "sha512": "eNQDjbtFj8kOLxbckCbn2JXTsnzK8+xkA4jg7NULO9jhIvlOSngC9BFzmiqVPpw1INQaP1pQ3YteY2XhfWNjtQ==",
       "type": "package",
-      "path": "microsoft.bcl.asyncinterfaces/9.0.4",
+      "path": "microsoft.bcl.asyncinterfaces/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10937,15 +10977,15 @@
         "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
-        "microsoft.bcl.asyncinterfaces.9.0.4.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.9.0.5.nupkg.sha512",
         "microsoft.bcl.asyncinterfaces.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection/9.0.4": {
-      "sha512": "f2MTUaS2EQ3lX4325ytPAISZqgBfXmY0WvgD80ji6Z20AoDNiCESxsqo6mFRwHJD/jfVKRw9FsW6+86gNre3ug==",
+    "Microsoft.Extensions.DependencyInjection/9.0.5": {
+      "sha512": "N1Mn0T/tUBPoLL+Fzsp+VCEtneUhhxc1//Dx3BeuQ8AX+XrMlYCfnp2zgpEXnTCB7053CLdiqVWPZ7mEX6MPjg==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection/9.0.4",
+      "path": "microsoft.extensions.dependencyinjection/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10967,15 +11007,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
-        "microsoft.extensions.dependencyinjection.9.0.4.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.9.0.5.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.4": {
-      "sha512": "UI0TQPVkS78bFdjkTodmkH0Fe8lXv9LnhGFKgKrsgUJ5a5FVdFRcgjIkBVLbGgdRhxWirxH/8IXUtEyYJx6GQg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.5": {
+      "sha512": "cjnRtsEAzU73aN6W7vkWy8Phj5t3Xm78HSqgrbh/O4Q9SK/yN73wZVa21QQY6amSLQRQ/M8N+koGnY6PuvKQsw==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.4",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10997,15 +11037,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.9.0.5.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging/9.0.4": {
-      "sha512": "xW6QPYsqhbuWBO9/1oA43g/XPKbohJx+7G8FLQgQXIriYvY7s+gxr2wjQJfRoPO900dvvv2vVH7wZovG+M1m6w==",
+    "Microsoft.Extensions.Logging/9.0.5": {
+      "sha512": "rQU61lrgvpE/UgcAd4E56HPxUIkX/VUQCxWmwDTLLVeuwRDYTL0q/FLGfAW17cGTKyCh7ywYAEnY3sTEvURsfg==",
       "type": "package",
-      "path": "microsoft.extensions.logging/9.0.4",
+      "path": "microsoft.extensions.logging/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11027,15 +11067,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.xml",
-        "microsoft.extensions.logging.9.0.4.nupkg.sha512",
+        "microsoft.extensions.logging.9.0.5.nupkg.sha512",
         "microsoft.extensions.logging.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/9.0.4": {
-      "sha512": "0MXlimU4Dud6t+iNi5NEz3dO2w1HXdhoOLaYFuLPCjAsvlPQGwOT6V2KZRMLEhCAm/stSZt1AUv0XmDdkjvtbw==",
+    "Microsoft.Extensions.Logging.Abstractions/9.0.5": {
+      "sha512": "pP1PADCrIxMYJXxFmTVbAgEU7GVpjK5i0/tyfU9DiE0oXQy3JWQaOVgCkrCiePLgS8b5sghM3Fau3EeHiVWbCg==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/9.0.4",
+      "path": "microsoft.extensions.logging.abstractions/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11098,7 +11138,7 @@
         "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.9.0.5.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -11122,10 +11162,10 @@
         "microsoft.extensions.objectpool.nuspec"
       ]
     },
-    "Microsoft.Extensions.Options/9.0.4": {
-      "sha512": "fiFI2+58kicqVZyt/6obqoFwHiab7LC4FkQ3mmiBJ28Yy4fAvy2+v9MRnSvvlOO8chTOjKsdafFl/K9veCPo5g==",
+    "Microsoft.Extensions.Options/9.0.5": {
+      "sha512": "vPdJQU8YLOUSSK8NL0RmwcXJr2E0w8xH559PGQl4JYsglgilZr9LZnqV2zdgk+XR05+kuvhBEZKoDVd46o7NqA==",
       "type": "package",
-      "path": "microsoft.extensions.options/9.0.4",
+      "path": "microsoft.extensions.options/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11162,15 +11202,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Options.xml",
-        "microsoft.extensions.options.9.0.4.nupkg.sha512",
+        "microsoft.extensions.options.9.0.5.nupkg.sha512",
         "microsoft.extensions.options.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/9.0.4": {
-      "sha512": "SPFyMjyku1nqTFFJ928JAMd0QnRe4xjE7KeKnZMWXf3xk+6e0WiOZAluYtLdbJUXtsl2cCRSi8cBquJ408k8RA==",
+    "Microsoft.Extensions.Primitives/9.0.5": {
+      "sha512": "b4OAv1qE1C9aM+ShWJu3rlo/WjDwa/I30aIPXqDWSKXTtKl1Wwh6BZn+glH5HndGVVn3C6ZAPQj5nv7/7HJNBQ==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/9.0.4",
+      "path": "microsoft.extensions.primitives/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11190,7 +11230,7 @@
         "lib/net9.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.9.0.4.nupkg.sha512",
+        "microsoft.extensions.primitives.9.0.5.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -11261,10 +11301,10 @@
         "runtimes/win-x86/native/microsoft.management.infrastructure.native.unmanaged.dll"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.4": {
-      "sha512": "xUdlUxiFwXhTYhB4VxKg/IA0+jlZXJPo70LYuMryWbJHdonIpZjw+7DO2B0pWwpXIOs6MlH5WVXPEtfrGEcVZA==",
+    "Microsoft.NET.ILLink.Tasks/9.0.5": {
+      "sha512": "4L7wbb3Y4BJgIeSnmAf/C6S/qCs9rT1b0dX72uj3qo0qvUH7D0U1tU5ZlC7A3Wb8E/dXK4caOi4JkdLTVJaXhw==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.4",
+      "path": "microsoft.net.illink.tasks/9.0.5",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -11278,7 +11318,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.4.nupkg.sha512",
+        "microsoft.net.illink.tasks.9.0.5.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -11605,10 +11645,10 @@
         "version.txt"
       ]
     },
-    "Microsoft.Win32.Registry.AccessControl/9.0.4": {
-      "sha512": "ffgPu/Uts9O5lXBbzu6pOm5sxEuBMxq8dVpRPdj81327Ne0EDx4ZqpssWxaMzdYVGhG2pm4wzMhlsAB+Vv5M0Q==",
+    "Microsoft.Win32.Registry.AccessControl/9.0.5": {
+      "sha512": "cRlrRR0Yw+3wvf0UVLwR498pUGo7sUJ17ZT/TPdorXljjsF+VXjWXdbN0MjX841DGXsReT0RJ+YebFvZCLkeuA==",
       "type": "package",
-      "path": "microsoft.win32.registry.accesscontrol/9.0.4",
+      "path": "microsoft.win32.registry.accesscontrol/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11628,7 +11668,7 @@
         "lib/net9.0/Microsoft.Win32.Registry.AccessControl.xml",
         "lib/netstandard2.0/Microsoft.Win32.Registry.AccessControl.dll",
         "lib/netstandard2.0/Microsoft.Win32.Registry.AccessControl.xml",
-        "microsoft.win32.registry.accesscontrol.9.0.4.nupkg.sha512",
+        "microsoft.win32.registry.accesscontrol.9.0.5.nupkg.sha512",
         "microsoft.win32.registry.accesscontrol.nuspec",
         "runtimes/win/lib/net8.0/Microsoft.Win32.Registry.AccessControl.dll",
         "runtimes/win/lib/net8.0/Microsoft.Win32.Registry.AccessControl.xml",
@@ -11637,10 +11677,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Win32.SystemEvents/9.0.4": {
-      "sha512": "kHgtAkXhNEP8oGuAVe3Q5admxsdMlSdWE2rXcA9FfeGDZJQawPccmZgnOswgW3ugUPSJt7VH+TMQPz65mnhGSQ==",
+    "Microsoft.Win32.SystemEvents/9.0.5": {
+      "sha512": "D4OYNpmvAsF9MkaY2W8Jue2XuNHDhygvwzo019hs+lP85KaVnOlXmqsjDKr1dHb1DPxDnOKpe6mAgJN7S6ttwg==",
       "type": "package",
-      "path": "microsoft.win32.systemevents/9.0.4",
+      "path": "microsoft.win32.systemevents/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11660,7 +11700,7 @@
         "lib/net9.0/Microsoft.Win32.SystemEvents.xml",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.9.0.4.nupkg.sha512",
+        "microsoft.win32.systemevents.9.0.5.nupkg.sha512",
         "microsoft.win32.systemevents.nuspec",
         "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.dll",
         "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.xml",
@@ -11669,16 +11709,16 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Windows.Compatibility/9.0.4": {
-      "sha512": "kjKrBzxtBA0QeXZ9LGpQOXxPdq7o2Ns+grOalXjapf7KruZoco2pvkK6HKpb1zVF9G22ZUiWzYWHPcM6fyxtKg==",
+    "Microsoft.Windows.Compatibility/9.0.5": {
+      "sha512": "0fIcZn4BUShzuRiK10GoJ95cBTgoKw+wt8kwSMCc8UNqQK8BKZ/7sfPxTFy3fp9ZbOoo/cT2x8q5upEQmfpaZA==",
       "type": "package",
-      "path": "microsoft.windows.compatibility/9.0.4",
+      "path": "microsoft.windows.compatibility/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "PACKAGE.md",
-        "microsoft.windows.compatibility.9.0.4.nupkg.sha512",
+        "microsoft.windows.compatibility.9.0.5.nupkg.sha512",
         "microsoft.windows.compatibility.nuspec"
       ]
     },
@@ -11709,10 +11749,10 @@
         "tools/uninstall.ps1"
       ]
     },
-    "Microsoft.Windows.SDK.BuildTools/10.0.26100.3916": {
-      "sha512": "Msz2kgT4zU6dt8LMZHPdSTt9d+esfxLQuI4dFdcAXvLkGtrEwPvviHJ1bgD9XH2HqtUE86Pk1QP+ZcWX1iQlSg==",
+    "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
+      "sha512": "sjksqXKnxleoY9qvKPS/fsiGKZ8ZYjwDTfSQvfv6gETTtQQIqZRIhCZCZ+rgjFjS6ZVjjn7iRjT/X64v25IEyA==",
       "type": "package",
-      "path": "microsoft.windows.sdk.buildtools/10.0.26100.3916",
+      "path": "microsoft.windows.sdk.buildtools/10.0.26100.4188",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -11881,7 +11921,7 @@
         "build/Microsoft.Windows.SDK.BuildTools.targets",
         "buildTransitive/Microsoft.Windows.SDK.BuildTools.props",
         "buildTransitive/Microsoft.Windows.SDK.BuildTools.targets",
-        "microsoft.windows.sdk.buildtools.10.0.26100.3916.nupkg.sha512",
+        "microsoft.windows.sdk.buildtools.10.0.26100.4188.nupkg.sha512",
         "microsoft.windows.sdk.buildtools.nuspec",
         "schemas/10.0.26100.0/winrt/AppxManifestSchema.xsd",
         "schemas/10.0.26100.0/winrt/AppxManifestSchema2010_v2.xsd",
@@ -11965,10 +12005,10 @@
         "sdk_license.txt"
       ]
     },
-    "Microsoft.WindowsAppSDK/1.7.250401001": {
-      "sha512": "kPsJ2LZoo3Xs/6FtIWMZRGnQ2ZMx9zDa0ZpqRGz1qwZr0gwwlXZJTmngaA1Ym2AHmIa05NtX2jEE2He8CzfhTg==",
+    "Microsoft.WindowsAppSDK/1.7.250513003": {
+      "sha512": "K5QqtDmMEa6Jy2PLAXKj9XWZoldG21IX5+TPe2XjxtNL/xLlciaqlOe22mjyET26Ry0gEVw0xOaQcpwtLCbMog==",
       "type": "package",
-      "path": "microsoft.windowsappsdk/1.7.250401001",
+      "path": "microsoft.windowsappsdk/1.7.250513003",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -12032,6 +12072,8 @@
         "build/Microsoft.WinUI.References.targets",
         "build/Microsoft.WinUI.props",
         "build/Microsoft.WinUI.targets",
+        "build/Microsoft.WindowsAppSDK.AIFabric.PublicTransportPackage.props",
+        "build/Microsoft.WindowsAppSDK.AIFabric.PublicTransportPackage.targets",
         "build/Microsoft.WindowsAppSDK.AppXReference.props",
         "build/Microsoft.WindowsAppSDK.AutoInitializer.CS.targets",
         "build/Microsoft.WindowsAppSDK.AutoInitializerCommon.targets",
@@ -12079,6 +12121,7 @@
         "build/native/Microsoft.WinUI.References.targets",
         "build/native/Microsoft.WinUI.props",
         "build/native/Microsoft.WinUI.targets",
+        "build/native/Microsoft.WindowsAppSDK.AIFabric.PublicTransportPackage.targets",
         "build/native/Microsoft.WindowsAppSDK.Foundation.props",
         "build/native/Microsoft.WindowsAppSDK.Foundation.targets",
         "build/native/Microsoft.WindowsAppSDK.InteractiveExperiences.props",
@@ -12153,6 +12196,8 @@
         "buildTransitive/Microsoft.WinUI.References.targets",
         "buildTransitive/Microsoft.WinUI.props",
         "buildTransitive/Microsoft.WinUI.targets",
+        "buildTransitive/Microsoft.WindowsAppSDK.AIFabric.PublicTransportPackage.props",
+        "buildTransitive/Microsoft.WindowsAppSDK.AIFabric.PublicTransportPackage.targets",
         "buildTransitive/Microsoft.WindowsAppSDK.AppXReference.props",
         "buildTransitive/Microsoft.WindowsAppSDK.AutoInitializer.CS.targets",
         "buildTransitive/Microsoft.WindowsAppSDK.AutoInitializerCommon.targets",
@@ -12200,6 +12245,7 @@
         "buildTransitive/native/Microsoft.WinUI.References.targets",
         "buildTransitive/native/Microsoft.WinUI.props",
         "buildTransitive/native/Microsoft.WinUI.targets",
+        "buildTransitive/native/Microsoft.WindowsAppSDK.AIFabric.PublicTransportPackage.targets",
         "buildTransitive/native/Microsoft.WindowsAppSDK.Foundation.props",
         "buildTransitive/native/Microsoft.WindowsAppSDK.Foundation.targets",
         "buildTransitive/native/Microsoft.WindowsAppSDK.InteractiveExperiences.props",
@@ -12265,12 +12311,17 @@
         "lib/native/win10-arm64ec/Microsoft.UI.Dispatching.lib",
         "lib/native/win10-x64/Microsoft.UI.Dispatching.lib",
         "lib/native/win10-x86/Microsoft.UI.Dispatching.lib",
+        "lib/net6.0-windows10.0.17763.0/Microsoft.Graphics.Imaging.Projection.dll",
         "lib/net6.0-windows10.0.17763.0/Microsoft.InteractiveExperiences.Projection.dll",
         "lib/net6.0-windows10.0.17763.0/Microsoft.InteractiveExperiences.Projection.xml",
         "lib/net6.0-windows10.0.17763.0/Microsoft.Security.Authentication.OAuth.Projection.dll",
         "lib/net6.0-windows10.0.17763.0/Microsoft.WinUI.dll",
         "lib/net6.0-windows10.0.17763.0/Microsoft.WinUI.xml",
         "lib/net6.0-windows10.0.17763.0/Microsoft.WinUI/Themes/generic.xaml",
+        "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.AI.ContentSafety.Projection.dll",
+        "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.AI.Imaging.Projection.dll",
+        "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.AI.Projection.dll",
+        "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.AI.Text.Projection.dll",
         "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.AppLifecycle.Projection.dll",
         "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.AppLifecycle.Projection.xml",
         "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.AppNotifications.Builder.Projection.dll",
@@ -12301,12 +12352,17 @@
         "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.Widgets.Projection.dll",
         "lib/net6.0-windows10.0.17763.0/Microsoft.Windows.Widgets.Projection.xml",
         "lib/net6.0-windows10.0.17763.0/Microsoft.WindowsAppRuntime.Bootstrap.Net.dll",
+        "lib/net6.0-windows10.0.18362.0/Microsoft.Graphics.Imaging.Projection.dll",
         "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.dll",
         "lib/net6.0-windows10.0.18362.0/Microsoft.InteractiveExperiences.Projection.xml",
         "lib/net6.0-windows10.0.18362.0/Microsoft.Security.Authentication.OAuth.Projection.dll",
         "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.dll",
         "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI.xml",
         "lib/net6.0-windows10.0.18362.0/Microsoft.WinUI/Themes/generic.xaml",
+        "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.ContentSafety.Projection.dll",
+        "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Imaging.Projection.dll",
+        "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Projection.dll",
+        "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AI.Text.Projection.dll",
         "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.dll",
         "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppLifecycle.Projection.xml",
         "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.AppNotifications.Builder.Projection.dll",
@@ -12337,12 +12393,17 @@
         "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.Widgets.Projection.dll",
         "lib/net6.0-windows10.0.18362.0/Microsoft.Windows.Widgets.Projection.xml",
         "lib/net6.0-windows10.0.18362.0/Microsoft.WindowsAppRuntime.Bootstrap.Net.dll",
+        "lib/net6.0-windows10.0.22621.0/Microsoft.Graphics.Imaging.Projection.dll",
         "lib/net6.0-windows10.0.22621.0/Microsoft.InteractiveExperiences.Projection.dll",
         "lib/net6.0-windows10.0.22621.0/Microsoft.InteractiveExperiences.Projection.xml",
         "lib/net6.0-windows10.0.22621.0/Microsoft.Security.Authentication.OAuth.Projection.dll",
         "lib/net6.0-windows10.0.22621.0/Microsoft.WinUI.dll",
         "lib/net6.0-windows10.0.22621.0/Microsoft.WinUI.xml",
         "lib/net6.0-windows10.0.22621.0/Microsoft.WinUI/Themes/generic.xaml",
+        "lib/net6.0-windows10.0.22621.0/Microsoft.Windows.AI.ContentSafety.Projection.dll",
+        "lib/net6.0-windows10.0.22621.0/Microsoft.Windows.AI.Imaging.Projection.dll",
+        "lib/net6.0-windows10.0.22621.0/Microsoft.Windows.AI.Projection.dll",
+        "lib/net6.0-windows10.0.22621.0/Microsoft.Windows.AI.Text.Projection.dll",
         "lib/net6.0-windows10.0.22621.0/Microsoft.Windows.AppLifecycle.Projection.dll",
         "lib/net6.0-windows10.0.22621.0/Microsoft.Windows.AppLifecycle.Projection.xml",
         "lib/net6.0-windows10.0.22621.0/Microsoft.Windows.AppNotifications.Builder.Projection.dll",
@@ -12383,12 +12444,17 @@
         "lib/uap10.0.18362/Microsoft.Graphics.xml",
         "lib/uap10.0.18362/Microsoft.UI.winmd",
         "lib/uap10.0.18362/Microsoft.UI.xml",
+        "lib/uap10.0/Microsoft.Graphics.Imaging.winmd",
         "lib/uap10.0/Microsoft.Security.Authentication.OAuth.winmd",
         "lib/uap10.0/Microsoft.UI.Text.winmd",
         "lib/uap10.0/Microsoft.UI.Text.xml",
         "lib/uap10.0/Microsoft.UI.Xaml.winmd",
         "lib/uap10.0/Microsoft.UI.Xaml.xml",
         "lib/uap10.0/Microsoft.UI/Themes/generic.xaml",
+        "lib/uap10.0/Microsoft.Windows.AI.ContentSafety.winmd",
+        "lib/uap10.0/Microsoft.Windows.AI.Imaging.winmd",
+        "lib/uap10.0/Microsoft.Windows.AI.Text.winmd",
+        "lib/uap10.0/Microsoft.Windows.AI.winmd",
         "lib/uap10.0/Microsoft.Windows.AppLifecycle.winmd",
         "lib/uap10.0/Microsoft.Windows.AppLifecycle.xml",
         "lib/uap10.0/Microsoft.Windows.AppNotifications.Builder.winmd",
@@ -12421,6 +12487,7 @@
         "lib/uap10.0/Microsoft.Windows.System.xml",
         "lib/uap10.0/Microsoft.Windows.Widgets.winmd",
         "lib/uap10.0/Microsoft.Windows.Widgets.xml",
+        "lib/uap10.0/Microsoft.Windows.Workloads.winmd",
         "lib/win10-arm64/DWriteCore.lib",
         "lib/win10-arm64/MRM.lib",
         "lib/win10-arm64/Microsoft.WindowsAppRuntime.Bootstrap.lib",
@@ -12441,7 +12508,7 @@
         "manifests/Microsoft.InteractiveExperiences.manifest",
         "manifests/Microsoft.WindowsAppSdk.Foundation.manifest",
         "manifests/manifests/Microsoft.WindowsAppSdk.WinUI.manifest",
-        "microsoft.windowsappsdk.1.7.250401001.nupkg.sha512",
+        "microsoft.windowsappsdk.1.7.250513003.nupkg.sha512",
         "microsoft.windowsappsdk.nuspec",
         "runtimes/win-arm64/native/Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll",
         "runtimes/win-arm64/native/Microsoft.WindowsAppRuntime.Bootstrap.dll",
@@ -12543,10 +12610,10 @@
         "packageIcon.png"
       ]
     },
-    "runtime.android-arm.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "5nNvTbKRkrIYTm48h2n2gPR4Roat2W1ALkThnqeKuGYcnTVMnrAXi0IfLZR3IhIlQ3CfQ4zqjTWFHk3O2/cQDQ==",
+    "runtime.android-arm.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "jdX92XbJ6rBTSPb3VwYRxDs6s5Vj9KcVDP6++6pVNF/D7OI13hgklUSVGMBRELpiC7SDEp/Bpsu980liACzC3g==",
       "type": "package",
-      "path": "runtime.android-arm.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.android-arm.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12554,7 +12621,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.android-arm.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.android-arm.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.android-arm.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/libSystem.IO.Ports.Native.so",
         "runtimes/android-arm64/native/_._",
@@ -12575,10 +12642,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "zSIn0tjbcEMj8SCerMo1UGq1dKWbTXTM2qtu0O8h+C0QsPh6L0DZKd92kHuVe3DsryotKVdqHivbQv3JCUHX6A==",
+    "runtime.android-arm64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "z1LP33lTie6vWZR6dUXip5hOTobZ1WuXO+xpPCRcaKZo0bNkmEGaDatrwKnEUYxm/3PFBgFkH+M/s7uEub0SKQ==",
       "type": "package",
-      "path": "runtime.android-arm64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.android-arm64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12586,7 +12653,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.android-arm64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.android-arm64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.android-arm64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/libSystem.IO.Ports.Native.so",
@@ -12607,10 +12674,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.android-x64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "Ut0XmnR22XEhVH9niETFA5MX18ri8Hj273iC2v4B4GxVdczjdIdoCV/NXEqr0Krq9ngK5IQr2bZ8cGu9l4i1Yg==",
+    "runtime.android-x64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "7xLefsg9LjqPIIhlFjVmJ41rIygrUxCvmOlrdWBoCJZLCK1uii7OovtX1iPwDe3I1Z1zZeEAPsMMN38Q5kJjPw==",
       "type": "package",
-      "path": "runtime.android-x64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.android-x64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12618,7 +12685,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.android-x64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.android-x64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.android-x64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12639,10 +12706,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.android-x86.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "t194lL5QZ9wYU5DmR8YApguB7bshAngwi89sttOPcGwBZxUdW9Zxg30VXAnecPwy2f0kulHyfhyHac216rABKw==",
+    "runtime.android-x86.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "p20gfW2eN8CvUBwkrkHJGvY4+6vERGqmGiYmViv2of29MgzkWYdrOM7BaFIRPtmN0zNp1QGGIgmXl1W1cti//Q==",
       "type": "package",
-      "path": "runtime.android-x86.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.android-x86.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12650,7 +12717,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.android-x86.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.android-x86.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.android-x86.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12713,10 +12780,10 @@
         "runtimes/fedora.24-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "45EPNw3aK3C/LNb/n3J4fLoDAZHMBpQJ/c1wcsJQZXp/w4s7MIHceYB9xqhYjCmtSOE2pBhDgogtRzfETHfriw==",
+    "runtime.linux-arm.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "Psp2JYBZ6CjEBew2qioj7zrSfwXjujPuuh8fuKnfMfkABP9F55pMT3UNfZen7gKVUoiPNhvAj0DrwUY0lKtmxA==",
       "type": "package",
-      "path": "runtime.linux-arm.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-arm.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12724,7 +12791,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-arm.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-arm.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-arm.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12745,10 +12812,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "27N/9PkhBqSGKtdop6Qg4AOdcAtWeGQSUeBVF+oijFPTAZvlcugmtxLZRldovEjd2SZL30PiOjoVIQWKD6kR1w==",
+    "runtime.linux-arm64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "rv3UX69IGI6VLM55OIYvoqbeAsicoit5gfk5T8VYy54B3lOIejwYa2QFcut9MW5cjxMH+dFCZ658fMd9jL+faA==",
       "type": "package",
-      "path": "runtime.linux-arm64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-arm64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12756,7 +12823,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-arm64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-arm64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-arm64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12777,10 +12844,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "T7Z3P/NjvCetnKBvb3/azngU7KvN9i9iNZaywK4Gptoi/OZNUT1Zh2btwSFC3p8dKtG7YdtSASG556bVPGWMCA==",
+    "runtime.linux-bionic-arm64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "8r4n05KMOeBkIiTyLP0jYCPwUVJ40RMEEUBTN/rrS+0X+Pj00zd8Qw48VW7JJ3PS7RFeJLiAP8q7uPCnAiFYPg==",
       "type": "package",
-      "path": "runtime.linux-bionic-arm64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-bionic-arm64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12788,7 +12855,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-bionic-arm64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-bionic-arm64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-bionic-arm64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12809,10 +12876,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "dbf+R8kZcJo0hAbQhcDjRZKBO5b8Nge8hJVCe/U8yo5cZY8ryDlwGfDkUemFeKdI6cxzcV6t+B6YsO6HzwzZvw==",
+    "runtime.linux-bionic-x64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "1hcUPsq3RkJFp/4EYmhiS6NrjvpbaiqIUWYrn3gCs/pJIzEPB52GyyeeeabRrz720PkewEwUWtCXghCCtXrNqA==",
       "type": "package",
-      "path": "runtime.linux-bionic-x64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-bionic-x64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12820,7 +12887,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-bionic-x64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-bionic-x64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-bionic-x64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12841,10 +12908,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "H9ObF2A79dVfVKwNQ9zEOlIgAr6Cufsz+eMALq8CQUcn3MX1F4tBlhtP5nE2JEK6ERTeIgKJ3Jt59tZ6Il1p5A==",
+    "runtime.linux-musl-arm.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "jRLQt8O72nEtSelkrY8KL4Tj9ojbXl6zSQhmZ0NAQB1yZmihcFfqaHeqckreyUJ2xET/vb+tXZy1mcDHKop6Bw==",
       "type": "package",
-      "path": "runtime.linux-musl-arm.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-musl-arm.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12852,7 +12919,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-musl-arm.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-musl-arm.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-musl-arm.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12873,10 +12940,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "zgqN6GKr/8mRQb1I3sLzHdCbxv01eXrWEorDu6dg2AktYX4ICsGiHzpm+SkeLxznIM68hMkslGr4A8FF1VLf6Q==",
+    "runtime.linux-musl-arm64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "1yN18dV+F0Y/dMaAWCJ3eYVrBOi1j9u4TDA//oX5FqVjCHkYm8wG718EDXLhUYe9+JNH7ijFDl/+Ac2WAz2p+A==",
       "type": "package",
-      "path": "runtime.linux-musl-arm64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-musl-arm64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12884,7 +12951,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-musl-arm64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-musl-arm64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-musl-arm64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12905,10 +12972,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "ol6VYfBYGqSfqzcIPdIM6LOC8xnJjuJg3MUczi0vuSA0PfTYweep5DDyP3qmglh7wrSvvnaedAP6505Kp2jjPg==",
+    "runtime.linux-musl-x64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "l13ArjVyln6Zp4dHNXQDv38wWI6uT6LMiAygcQuYYU7fuEwM33WPBD7yNIaZEM2u5y+80u10p9TijIKHzDndrw==",
       "type": "package",
-      "path": "runtime.linux-musl-x64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-musl-x64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12916,7 +12983,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-musl-x64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-musl-x64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-musl-x64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12937,10 +13004,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "/YaCelKLkIC57MAZ/1l7ctBG1q2CbwQxRwjjKLGt7eSqsX+A3IIG41hMsxFTCqIJisEPC8ov3zVTtnSKfop3vg==",
+    "runtime.linux-x64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "Hwr1s9Yxv07IFKUnR04ZVnUvukGCbpCtB0Lu3tfrRTEChLU8aCICCd6nPu37HBVNv7Cmpl78zLaFUHM7MA6EBw==",
       "type": "package",
-      "path": "runtime.linux-x64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.linux-x64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12948,7 +13015,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.linux-x64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.linux-x64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.linux-x64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -12969,10 +13036,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "3aVVHiHrK0iA3KhC+9k3H2kFccEZtzp9Q5qVB4WYPMx75+bvKq7YG/f8eImrnXY+0CawwdU4T2F1N/yyd3P1zw==",
+    "runtime.maccatalyst-arm64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "ML0BtpUQ39NhTM1PWihbtPpY1gZraLTXd14oyx46KmCWi0se8Xw3ph0zonvp3NXr86kAhvXwSnOIQqmZ+GMuXA==",
       "type": "package",
-      "path": "runtime.maccatalyst-arm64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.maccatalyst-arm64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -12980,7 +13047,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.maccatalyst-arm64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.maccatalyst-arm64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.maccatalyst-arm64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -13001,10 +13068,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "mY8meyI74mHWD8C+YD5T4glgH1moe/QYIvOjKoJp68oUa9H2hAq7KTvVD74u9ZMOU0Ectt7pj1jINziduYaXHg==",
+    "runtime.maccatalyst-x64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "nYwoFTuKG1i48QHaGI3xoXRtWhMdvcwaP/zgnrtaLpDYlF3K+XPDPsMZdILU5EOkqFu9WPYhcP3Lf78yUOCFIg==",
       "type": "package",
-      "path": "runtime.maccatalyst-x64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.maccatalyst-x64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13012,7 +13079,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.maccatalyst-x64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.maccatalyst-x64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.maccatalyst-x64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -13076,10 +13143,10 @@
         "runtime.native.system.io.compression.nuspec"
       ]
     },
-    "runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "8acFIuku7gZytPQ8IQXikr5gpYY+OmRL0hUQth6vUxTSgWHxTHt8O17BD+dnuSJTrT+oVjqcvFuE7y+GHZVu5A==",
+    "runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "VBaRoAdPdpwvFf8r/A9Ob3GEuXebdqBCw339+UbLeSZZZJf4Rn0vFSZv078G85MBwLLGkSOURKAjljsa7EOmRA==",
       "type": "package",
-      "path": "runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13087,7 +13154,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.native.system.io.ports.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -13162,10 +13229,10 @@
         "runtimes/opensuse.42.1-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "aLNRjefYluZLbXK7vxU3CezR+Nrimff1OQivr71SoZCS5nLXPi8cSKib8apgdwiooR2fHOlGF+FR6k2D0l2B1A==",
+    "runtime.osx-arm64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "Ibaf8gfeFmlzHDFt6wHimINiKm60gtd7lQmx1YzVUZyp75z3He1bPDl/eNM4o0iMe//gYftrnFrEQGEVYPnq4Q==",
       "type": "package",
-      "path": "runtime.osx-arm64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.osx-arm64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13173,7 +13240,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.osx-arm64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.osx-arm64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.osx-arm64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -13194,10 +13261,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.4": {
-      "sha512": "b4Ik3pgeaGXmy3J3+fa3QmZatpq0ikWq6toEQYKTHuGIL/0dzYWYIoUNvSTEbsr3IF7XZPrNOKTxK7tcIsMqWA==",
+    "runtime.osx-x64.runtime.native.System.IO.Ports/9.0.5": {
+      "sha512": "IzJV9kWskpB4KJbVxixUR404Sp/ABNXL3tmqWhb7nLSvrU7PZ3Hm7c9ycX0MRY4WmGkrFLICisDq1dmL9cxooA==",
       "type": "package",
-      "path": "runtime.osx-x64.runtime.native.system.io.ports/9.0.4",
+      "path": "runtime.osx-x64.runtime.native.system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13205,7 +13272,7 @@
         "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
-        "runtime.osx-x64.runtime.native.system.io.ports.9.0.4.nupkg.sha512",
+        "runtime.osx-x64.runtime.native.system.io.ports.9.0.5.nupkg.sha512",
         "runtime.osx-x64.runtime.native.system.io.ports.nuspec",
         "runtimes/android-arm/native/_._",
         "runtimes/android-arm64/native/_._",
@@ -13373,10 +13440,10 @@
         "system.buffers.nuspec"
       ]
     },
-    "System.CodeDom/9.0.4": {
-      "sha512": "aJdv7Z87PoPW8ijvGIincocooYRbH3Umtlz7OrJKf6GDInbdu1bvk5X1fFlmbl7WP+9ntoIBd7NjKz+siVFdHA==",
+    "System.CodeDom/9.0.5": {
+      "sha512": "cuzLM2MWutf9ZBEMPYYfd0DXwYdvntp7VCT6a/wvbKCa2ZuvGmW74xi+YBa2mrfEieAXqM4TNKlMmSnfAfpUoQ==",
       "type": "package",
-      "path": "system.codedom/9.0.4",
+      "path": "system.codedom/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13396,7 +13463,7 @@
         "lib/net9.0/System.CodeDom.xml",
         "lib/netstandard2.0/System.CodeDom.dll",
         "lib/netstandard2.0/System.CodeDom.xml",
-        "system.codedom.9.0.4.nupkg.sha512",
+        "system.codedom.9.0.5.nupkg.sha512",
         "system.codedom.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -13596,10 +13663,10 @@
         "system.componentmodel.nuspec"
       ]
     },
-    "System.ComponentModel.Composition/9.0.4": {
-      "sha512": "8iLE2dR3kQuj8vOQFBIGXwSb9oDCwlbO6YskpS3nbxb58xtombuqmILuw1u3GNWREOiQa9VleGBQh7hgU9Gc2w==",
+    "System.ComponentModel.Composition/9.0.5": {
+      "sha512": "9OiCFedf3KuqWn1RIjtegnt9oGSbpex6FxDwg1S71+l8MtcQd+e4qVJx6W11Ern/9hlHz0GC0FiYFIu0sszaTg==",
       "type": "package",
-      "path": "system.componentmodel.composition/9.0.4",
+      "path": "system.componentmodel.composition/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13615,15 +13682,15 @@
         "lib/net9.0/System.ComponentModel.Composition.xml",
         "lib/netstandard2.0/System.ComponentModel.Composition.dll",
         "lib/netstandard2.0/System.ComponentModel.Composition.xml",
-        "system.componentmodel.composition.9.0.4.nupkg.sha512",
+        "system.componentmodel.composition.9.0.5.nupkg.sha512",
         "system.componentmodel.composition.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.ComponentModel.Composition.Registration/9.0.4": {
-      "sha512": "Ie1WC0asrNchZ+t1HgN2W/DL+7AcFrK3MYy7Orf/1fefnTD5ED40M6sfkT0Mfgmq/qK16fkTV09Ld5tRiD0h7Q==",
+    "System.ComponentModel.Composition.Registration/9.0.5": {
+      "sha512": "A26C9CG5KtUw9uupqLwsdSP1hTYQSU6p3VnYtrqYg/WId2vy02WlVsiyCFHLnftAEn17orDImDIB66j2K6y9yQ==",
       "type": "package",
-      "path": "system.componentmodel.composition.registration/9.0.4",
+      "path": "system.componentmodel.composition.registration/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13639,15 +13706,15 @@
         "lib/net9.0/System.ComponentModel.Composition.Registration.xml",
         "lib/netstandard2.1/System.ComponentModel.Composition.Registration.dll",
         "lib/netstandard2.1/System.ComponentModel.Composition.Registration.xml",
-        "system.componentmodel.composition.registration.9.0.4.nupkg.sha512",
+        "system.componentmodel.composition.registration.9.0.5.nupkg.sha512",
         "system.componentmodel.composition.registration.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Configuration.ConfigurationManager/9.0.4": {
-      "sha512": "dvjqKp+2LpGid6phzrdrS/2mmEPxFl3jE1+L7614q4ZChKbLJCpHXg6sBILlCCED1t//EE+un/UdAetzIMpqnw==",
+    "System.Configuration.ConfigurationManager/9.0.5": {
+      "sha512": "6JiI15x4eqlHptNG8HqFtQ1NmNTK1hNKuZGECY97deaVpca85XkITo8Me8uCTlKb01egRZGTFA9/kMjewwttPw==",
       "type": "package",
-      "path": "system.configuration.configurationmanager/9.0.4",
+      "path": "system.configuration.configurationmanager/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13667,15 +13734,15 @@
         "lib/net9.0/System.Configuration.ConfigurationManager.xml",
         "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll",
         "lib/netstandard2.0/System.Configuration.ConfigurationManager.xml",
-        "system.configuration.configurationmanager.9.0.4.nupkg.sha512",
+        "system.configuration.configurationmanager.9.0.5.nupkg.sha512",
         "system.configuration.configurationmanager.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Data.Odbc/9.0.4": {
-      "sha512": "fxBPK4Tq/0ZIBqwFKQCqUHli0fDuwIwr/u+J0wS9qtQTWxXvAT0xfhfybktCkm97zJ8FJVGS9IuSBsfMWxRjEw==",
+    "System.Data.Odbc/9.0.5": {
+      "sha512": "CRjplFrr7wZEX/Ixs7gYGTcvF+m94p373XjiU8kB6tu0/uHYe41HHC7FisfIUiGvszotj8t3kkU3LvJJDnPlOg==",
       "type": "package",
-      "path": "system.data.odbc/9.0.4",
+      "path": "system.data.odbc/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13703,15 +13770,15 @@
         "runtimes/win/lib/net8.0/System.Data.Odbc.xml",
         "runtimes/win/lib/net9.0/System.Data.Odbc.dll",
         "runtimes/win/lib/net9.0/System.Data.Odbc.xml",
-        "system.data.odbc.9.0.4.nupkg.sha512",
+        "system.data.odbc.9.0.5.nupkg.sha512",
         "system.data.odbc.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Data.OleDb/9.0.4": {
-      "sha512": "b4n3L1M67SpXLcbAknhv4sOMoki3u21MFyv93nI8TiuiWFk2HAiXSh3kNQtQ3BPPk5Xm9rRcNTSYTgXd5T5yFA==",
+    "System.Data.OleDb/9.0.5": {
+      "sha512": "qEIUYjV9aP17ZP8adKv8D+DN8K61dAoxqFA1+IS6Mh9TLeEd4KPS3mwkpq5QbXGSUbHPB0YyHKFPizlYx7c7VQ==",
       "type": "package",
-      "path": "system.data.oledb/9.0.4",
+      "path": "system.data.oledb/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13735,7 +13802,7 @@
         "runtimes/win/lib/net8.0/System.Data.OleDb.xml",
         "runtimes/win/lib/net9.0/System.Data.OleDb.dll",
         "runtimes/win/lib/net9.0/System.Data.OleDb.xml",
-        "system.data.oledb.9.0.4.nupkg.sha512",
+        "system.data.oledb.9.0.5.nupkg.sha512",
         "system.data.oledb.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -13894,10 +13961,10 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/9.0.4": {
-      "sha512": "Be0emq8bRmcK4eeJIFUt9+vYPf7kzuQrFs8Ef1CdGvXpq/uSve22PTSkRF09bF/J7wmYJ2DHf2v7GaT3vMXnwQ==",
+    "System.Diagnostics.DiagnosticSource/9.0.5": {
+      "sha512": "WoI5or8kY2VxFdDmsaRZ5yaYvvb+4MCyy66eXo79Cy1uMa7qXeGIlYmZx7R9Zy5S4xZjmqvkk2V8L6/vDwAAEA==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/9.0.4",
+      "path": "system.diagnostics.diagnosticsource/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13916,15 +13983,15 @@
         "lib/net9.0/System.Diagnostics.DiagnosticSource.xml",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.9.0.4.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.9.0.5.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Diagnostics.EventLog/9.0.4": {
-      "sha512": "getRQEXD8idlpb1KW56XuxImMy0FKp2WJPDf3Qr0kI/QKxxJSftqfDFVo0DZ3HCJRLU73qHSruv5q2l5O47jQQ==",
+    "System.Diagnostics.EventLog/9.0.5": {
+      "sha512": "nhtTvAgKTD7f6t0bkOb4/hNv0PShb8GHs5Fhn7PvYhwhyWiVyVBvL2vTGH0Hlw5jOZQmWkzQxjY6M/h4tl8M6Q==",
       "type": "package",
-      "path": "system.diagnostics.eventlog/9.0.4",
+      "path": "system.diagnostics.eventlog/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13950,15 +14017,15 @@
         "runtimes/win/lib/net9.0/System.Diagnostics.EventLog.Messages.dll",
         "runtimes/win/lib/net9.0/System.Diagnostics.EventLog.dll",
         "runtimes/win/lib/net9.0/System.Diagnostics.EventLog.xml",
-        "system.diagnostics.eventlog.9.0.4.nupkg.sha512",
+        "system.diagnostics.eventlog.9.0.5.nupkg.sha512",
         "system.diagnostics.eventlog.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Diagnostics.PerformanceCounter/9.0.4": {
-      "sha512": "dPtvbm/WuXQHFHzi/lC0bO+AJAEx5m/Gdk9A0JSXjAD/AQtXKCEOInP9VhADovaf595pjCGV0jqRFzkqDUzrqw==",
+    "System.Diagnostics.PerformanceCounter/9.0.5": {
+      "sha512": "anE9Ao3gEAhYr9yZdLZipJvT5fak+B/5gd7yK2vKuVwS3FIVI0sxctZ0foVfKMbA1cimOUsijAqn9FasKSTR6A==",
       "type": "package",
-      "path": "system.diagnostics.performancecounter/9.0.4",
+      "path": "system.diagnostics.performancecounter/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13982,7 +14049,7 @@
         "runtimes/win/lib/net8.0/System.Diagnostics.PerformanceCounter.xml",
         "runtimes/win/lib/net9.0/System.Diagnostics.PerformanceCounter.dll",
         "runtimes/win/lib/net9.0/System.Diagnostics.PerformanceCounter.xml",
-        "system.diagnostics.performancecounter.9.0.4.nupkg.sha512",
+        "system.diagnostics.performancecounter.9.0.5.nupkg.sha512",
         "system.diagnostics.performancecounter.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -14077,10 +14144,10 @@
         "system.diagnostics.tracing.nuspec"
       ]
     },
-    "System.DirectoryServices/9.0.4": {
-      "sha512": "qYUtcmdjVXnr8i7I8CrTovmFWLiaKexmsONERt3+SUiAwjAiPmjFe5n56Jh2J44LP1mCIAQOEmpDNQ0e0DWBwQ==",
+    "System.DirectoryServices/9.0.5": {
+      "sha512": "/DLPgcnnpcbMGopcWvOZy7Hla3y+Rqx0MTtFuwh3b5s1jxB/EJqjycaeeCNxo90b21QECNy+GVugkRPCzQg+Iw==",
       "type": "package",
-      "path": "system.directoryservices/9.0.4",
+      "path": "system.directoryservices/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14101,15 +14168,15 @@
         "runtimes/win/lib/net8.0/System.DirectoryServices.xml",
         "runtimes/win/lib/net9.0/System.DirectoryServices.dll",
         "runtimes/win/lib/net9.0/System.DirectoryServices.xml",
-        "system.directoryservices.9.0.4.nupkg.sha512",
+        "system.directoryservices.9.0.5.nupkg.sha512",
         "system.directoryservices.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.DirectoryServices.AccountManagement/9.0.4": {
-      "sha512": "rQH+PhZS91rupPW5NpM2DmgI0QClrdWqGMOGphvBTvb1gnqG/1EbYnNzP8rSIzDJgWEEILXyLHaw2BeBPH2NkQ==",
+    "System.DirectoryServices.AccountManagement/9.0.5": {
+      "sha512": "Z+gv6juCixKS/2T0I1eZPFJ+rqXJpKowxJgERqDXVRAH1XgpodmV8qcW8daF8fCavhGTgcGQBkkbPQSHyyYORg==",
       "type": "package",
-      "path": "system.directoryservices.accountmanagement/9.0.4",
+      "path": "system.directoryservices.accountmanagement/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14130,15 +14197,15 @@
         "runtimes/win/lib/net8.0/System.DirectoryServices.AccountManagement.xml",
         "runtimes/win/lib/net9.0/System.DirectoryServices.AccountManagement.dll",
         "runtimes/win/lib/net9.0/System.DirectoryServices.AccountManagement.xml",
-        "system.directoryservices.accountmanagement.9.0.4.nupkg.sha512",
+        "system.directoryservices.accountmanagement.9.0.5.nupkg.sha512",
         "system.directoryservices.accountmanagement.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.DirectoryServices.Protocols/9.0.4": {
-      "sha512": "fGdiJme2/nN4xKV6sP67bN4HBz+EdoTYECFH5YVIiIRm/AJwCB+Y/4NW/7xtOFR2h6STlTY+e2/VztiaSI+ZaA==",
+    "System.DirectoryServices.Protocols/9.0.5": {
+      "sha512": "FyHuvvljcAbnrz7I8YcLedytPkad/3UmYZR5gQxQqOe7kFjXzT06Fc+0I4nCSZRo64JVi8yC2MN/M8I5GLc3UQ==",
       "type": "package",
-      "path": "system.directoryservices.protocols/9.0.4",
+      "path": "system.directoryservices.protocols/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14167,15 +14234,15 @@
         "runtimes/win/lib/net8.0/System.DirectoryServices.Protocols.xml",
         "runtimes/win/lib/net9.0/System.DirectoryServices.Protocols.dll",
         "runtimes/win/lib/net9.0/System.DirectoryServices.Protocols.xml",
-        "system.directoryservices.protocols.9.0.4.nupkg.sha512",
+        "system.directoryservices.protocols.9.0.5.nupkg.sha512",
         "system.directoryservices.protocols.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Drawing.Common/9.0.4": {
-      "sha512": "SbtusMUT1bCxZ14904ZPo2GZyelze0rwUni9wXrp8KX9Zlsda8idqpxra1RBvOA85WM0wW+fCI4GLrlCTYiE6A==",
+    "System.Drawing.Common/9.0.5": {
+      "sha512": "T/6nqx0B7/uTe5JjBwrKZilLuwfhHLOVmNKlT/wr4A9Dna94mgTdz3lTfrdJ72QRx7IHCv/LzoJPmFSfK/N6WA==",
       "type": "package",
-      "path": "system.drawing.common/9.0.4",
+      "path": "system.drawing.common/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14209,7 +14276,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "system.drawing.common.9.0.4.nupkg.sha512",
+        "system.drawing.common.9.0.5.nupkg.sha512",
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -14661,10 +14728,10 @@
         "system.io.filesystem.primitives.nuspec"
       ]
     },
-    "System.IO.Packaging/9.0.4": {
-      "sha512": "p4E6xqW9T8zTgS1NoB3oYkeuNp75bKMK11YuArrkg52wygxcQjbcPB8Ryh9E5ohLu+ZRCqmsg7flE9F9fUeeyA==",
+    "System.IO.Packaging/9.0.5": {
+      "sha512": "GeqX4i9ZCtPQaGnZF2UDjYHJchoEfkvBMcQZKkPFor/VbdwI76YjkLFJv9pogpTEPFH5N3GrtyKYgOwZc3nJXw==",
       "type": "package",
-      "path": "system.io.packaging/9.0.4",
+      "path": "system.io.packaging/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14683,15 +14750,15 @@
         "lib/net9.0/System.IO.Packaging.xml",
         "lib/netstandard2.0/System.IO.Packaging.dll",
         "lib/netstandard2.0/System.IO.Packaging.xml",
-        "system.io.packaging.9.0.4.nupkg.sha512",
+        "system.io.packaging.9.0.5.nupkg.sha512",
         "system.io.packaging.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.IO.Ports/9.0.4": {
-      "sha512": "3YWwrBYZg2MabN7QYAOLToYJn551a+lXHsLW9biyXi+162+BjrkXrRsXioPSAoc+7mSim8B/iFPlOYc1BKnOhA==",
+    "System.IO.Ports/9.0.5": {
+      "sha512": "Ni0EW9jqQVgnx+v5XH/TFbahQF2lRXLQRe4OYFwxuMLLTOkkdOO8zGV3DiG18tCCo2ojpRqBaDGkt0MADQ4ITw==",
       "type": "package",
-      "path": "system.io.ports/9.0.4",
+      "path": "system.io.ports/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14719,7 +14786,7 @@
         "runtimes/win/lib/net8.0/System.IO.Ports.xml",
         "runtimes/win/lib/net9.0/System.IO.Ports.dll",
         "runtimes/win/lib/net9.0/System.IO.Ports.xml",
-        "system.io.ports.9.0.4.nupkg.sha512",
+        "system.io.ports.9.0.5.nupkg.sha512",
         "system.io.ports.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -14880,10 +14947,10 @@
         "system.linq.expressions.nuspec"
       ]
     },
-    "System.Management/9.0.4": {
-      "sha512": "MfY9+SrkSvchAoFiChTkhQYCAjBaQQ9u3LwiKmho7oTbujucnxCzORlPgLhId/ChLSptsQ/1UmtPGLZaKYVdsA==",
+    "System.Management/9.0.5": {
+      "sha512": "n6o9PZm9p25+zAzC3/48K0oHnaPKTInRrxqFq1fi/5TPbMLjuoCm/h//mS3cUmSy+9AO1Z+qsC/Ilt/ZFatv5Q==",
       "type": "package",
-      "path": "system.management/9.0.4",
+      "path": "system.management/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14904,7 +14971,7 @@
         "runtimes/win/lib/net8.0/System.Management.xml",
         "runtimes/win/lib/net9.0/System.Management.dll",
         "runtimes/win/lib/net9.0/System.Management.xml",
-        "system.management.9.0.4.nupkg.sha512",
+        "system.management.9.0.5.nupkg.sha512",
         "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -15274,10 +15341,10 @@
         "system.reflection.nuspec"
       ]
     },
-    "System.Reflection.Context/9.0.4": {
-      "sha512": "5ai+AIAVXlXC60uPbLILi9HFmaaFz2kjOVSBxgNbKNR3dNtcpa3WEQTnOo7UzFK+xJZBrmxlQ3KSHIFfnW0bwQ==",
+    "System.Reflection.Context/9.0.5": {
+      "sha512": "jNLKPFq9b2c2zdecmawoKuJf27ImbT26T2EuCZ6J8rX/iArWrIfJS9JGzAQpkXHU4sEFIp9zd4waUMBEijQ4qQ==",
       "type": "package",
-      "path": "system.reflection.context/9.0.4",
+      "path": "system.reflection.context/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -15296,7 +15363,7 @@
         "lib/netstandard2.0/System.Reflection.Context.xml",
         "lib/netstandard2.1/System.Reflection.Context.dll",
         "lib/netstandard2.1/System.Reflection.Context.xml",
-        "system.reflection.context.9.0.4.nupkg.sha512",
+        "system.reflection.context.9.0.5.nupkg.sha512",
         "system.reflection.context.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -15817,10 +15884,10 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.Caching/9.0.4": {
-      "sha512": "ePDc9MvE/9QXeY6lU4Y85hjOSRzqdDF1XlqINhpThLKV33PYC2fLu/fadwDCWplq3mSef7Fof3vui3FUWpUp6w==",
+    "System.Runtime.Caching/9.0.5": {
+      "sha512": "fYMSRkLBi3V3PYUpGS8Yboo/3/4kR6eRfYTvNjjzQLGo/bN/fXYG8R7ePFPkWp+indB/4g0rDQoGLmPsG5KWBA==",
       "type": "package",
-      "path": "system.runtime.caching/9.0.4",
+      "path": "system.runtime.caching/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -15847,7 +15914,7 @@
         "runtimes/win/lib/net8.0/System.Runtime.Caching.xml",
         "runtimes/win/lib/net9.0/System.Runtime.Caching.dll",
         "runtimes/win/lib/net9.0/System.Runtime.Caching.xml",
-        "system.runtime.caching.9.0.4.nupkg.sha512",
+        "system.runtime.caching.9.0.5.nupkg.sha512",
         "system.runtime.caching.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -16332,10 +16399,10 @@
         "system.security.cryptography.openssl.nuspec"
       ]
     },
-    "System.Security.Cryptography.Pkcs/9.0.4": {
-      "sha512": "cUFTcMlz/Qw9s90b2wnWSCvHdjv51Bau9FQqhsr4TlwSe1OX+7SoXUqphis5G74MLOvMOCghxPPlEqOdCrVVGA==",
+    "System.Security.Cryptography.Pkcs/9.0.5": {
+      "sha512": "7CmpoOp7auyc7fdVgZSUhR+QYMsF2XH+uKbjDYrvyTvehDlKuic+Hhv9RM+Wyf5xMnC28RrTGgzmo5fFt0Fmxg==",
       "type": "package",
-      "path": "system.security.cryptography.pkcs/9.0.4",
+      "path": "system.security.cryptography.pkcs/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -16360,7 +16427,7 @@
         "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.xml",
         "runtimes/win/lib/net9.0/System.Security.Cryptography.Pkcs.dll",
         "runtimes/win/lib/net9.0/System.Security.Cryptography.Pkcs.xml",
-        "system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
+        "system.security.cryptography.pkcs.9.0.5.nupkg.sha512",
         "system.security.cryptography.pkcs.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -16394,10 +16461,10 @@
         "system.security.cryptography.primitives.nuspec"
       ]
     },
-    "System.Security.Cryptography.ProtectedData/9.0.4": {
-      "sha512": "o94k2RKuAce3GeDMlUvIXlhVa1kWpJw95E6C9LwW0KlG0nj5+SgCiIxJ2Eroqb9sLtG1mEMbFttZIBZ13EJPvQ==",
+    "System.Security.Cryptography.ProtectedData/9.0.5": {
+      "sha512": "tgS+q4zR08qX4ZA/HPtpNXU2i1EDRBNhNtbTGFdSgYyWcKf5mUtlihbzKcYqArisG1b3x4dk/FIOiWxnHrSENw==",
       "type": "package",
-      "path": "system.security.cryptography.protecteddata/9.0.4",
+      "path": "system.security.cryptography.protecteddata/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -16423,7 +16490,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "system.security.cryptography.protecteddata.9.0.4.nupkg.sha512",
+        "system.security.cryptography.protecteddata.9.0.5.nupkg.sha512",
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -16484,10 +16551,10 @@
         "system.security.cryptography.x509certificates.nuspec"
       ]
     },
-    "System.Security.Cryptography.Xml/9.0.4": {
-      "sha512": "YXQBGO+rIp142WrIVqq5HyOx6fTKDMHxhGWNeSYZDSMH6AnCEmx6ue6GMokdg+LTWEqtomPguRMiL3KT0LUeAg==",
+    "System.Security.Cryptography.Xml/9.0.5": {
+      "sha512": "1qlQ4Q4vjxjGMn1KL1yrEP/9FA0MGVbVQ994xJaDOIwpX5g2M1p1YZiFhONPr2jcaj9Odfw0Ao5rpy85ScTVdA==",
       "type": "package",
-      "path": "system.security.cryptography.xml/9.0.4",
+      "path": "system.security.cryptography.xml/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -16506,15 +16573,15 @@
         "lib/net9.0/System.Security.Cryptography.Xml.xml",
         "lib/netstandard2.0/System.Security.Cryptography.Xml.dll",
         "lib/netstandard2.0/System.Security.Cryptography.Xml.xml",
-        "system.security.cryptography.xml.9.0.4.nupkg.sha512",
+        "system.security.cryptography.xml.9.0.5.nupkg.sha512",
         "system.security.cryptography.xml.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Security.Permissions/9.0.4": {
-      "sha512": "klHa+d7n6Nc7IjaJygnbqgTMoYOQCaCP/G38T0vjIDuls9uatPsyofrTc3OQBdcKk/rjGDSIzIFUX/OF4yxVlQ==",
+    "System.Security.Permissions/9.0.5": {
+      "sha512": "8yMr2v0W2/XdDpFdVkffrSRNxzjD67meUYCQLdBgZOBmMWo2xlgAWuX4OX6r40pnA4/+LaXrlFAKUlOQs289lg==",
       "type": "package",
-      "path": "system.security.permissions/9.0.4",
+      "path": "system.security.permissions/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -16533,7 +16600,7 @@
         "lib/net9.0/System.Security.Permissions.xml",
         "lib/netstandard2.0/System.Security.Permissions.dll",
         "lib/netstandard2.0/System.Security.Permissions.xml",
-        "system.security.permissions.9.0.4.nupkg.sha512",
+        "system.security.permissions.9.0.5.nupkg.sha512",
         "system.security.permissions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -16904,10 +16971,10 @@
         "system.servicemodel.security.nuspec"
       ]
     },
-    "System.ServiceModel.Syndication/9.0.4": {
-      "sha512": "j7WkV38j0ZSjG716WPR8YQfOnSs2qCMgFzzZzQnwzmyJtimsploZ0kjahpZsQ82DHg1EoCdGlrs+9zseNBs1nA==",
+    "System.ServiceModel.Syndication/9.0.5": {
+      "sha512": "gO8FeyiSgCN4jnzCUu8Uk2kv1JMUii2jBcZPXR7srd7GQzFNdEr+LRK5j5VyvH/7F9PYXuyvFlqIB05u4X6l5Q==",
       "type": "package",
-      "path": "system.servicemodel.syndication/9.0.4",
+      "path": "system.servicemodel.syndication/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -16927,15 +16994,15 @@
         "lib/net9.0/System.ServiceModel.Syndication.xml",
         "lib/netstandard2.0/System.ServiceModel.Syndication.dll",
         "lib/netstandard2.0/System.ServiceModel.Syndication.xml",
-        "system.servicemodel.syndication.9.0.4.nupkg.sha512",
+        "system.servicemodel.syndication.9.0.5.nupkg.sha512",
         "system.servicemodel.syndication.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.ServiceProcess.ServiceController/9.0.4": {
-      "sha512": "j6Z+ED1d/yxe/Cm+UlFf+LNw2HSYBSgtFh71KnEEmUtHIwgoTVQxji5URvXPOAZ7iuKHItjMIzpCLyRZc8OmrQ==",
+    "System.ServiceProcess.ServiceController/9.0.5": {
+      "sha512": "3mOK5BIwcBHAWzrH9oHCEgwmHecIgoW/P0B42MB8UgG3TqH5K68MBt1/4Mn7znexNP2o6AniDJIXfg04+feELA==",
       "type": "package",
-      "path": "system.serviceprocess.servicecontroller/9.0.4",
+      "path": "system.serviceprocess.servicecontroller/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -16959,15 +17026,15 @@
         "runtimes/win/lib/net8.0/System.ServiceProcess.ServiceController.xml",
         "runtimes/win/lib/net9.0/System.ServiceProcess.ServiceController.dll",
         "runtimes/win/lib/net9.0/System.ServiceProcess.ServiceController.xml",
-        "system.serviceprocess.servicecontroller.9.0.4.nupkg.sha512",
+        "system.serviceprocess.servicecontroller.9.0.5.nupkg.sha512",
         "system.serviceprocess.servicecontroller.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Speech/9.0.4": {
-      "sha512": "XpRYztNXNwH84pwjUNXPTO5TptugoPGJUZNztilpHo4RQ8oBsAqbhy7RhMTEcoJ3tfGLtizezk0r2AiJczpUFA==",
+    "System.Speech/9.0.5": {
+      "sha512": "nPZ2rcEVaZlxaLwBamFzz8f5MVM7Y08kzmDbcedXgeSWCGS9NN8mFjSsuTZm3W5pQLI4QhHmcu4h7A0Wf+cD/Q==",
       "type": "package",
-      "path": "system.speech/9.0.4",
+      "path": "system.speech/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -16988,7 +17055,7 @@
         "runtimes/win/lib/net8.0/System.Speech.xml",
         "runtimes/win/lib/net9.0/System.Speech.dll",
         "runtimes/win/lib/net9.0/System.Speech.xml",
-        "system.speech.9.0.4.nupkg.sha512",
+        "system.speech.9.0.5.nupkg.sha512",
         "system.speech.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -17061,10 +17128,10 @@
         "system.text.encoding.nuspec"
       ]
     },
-    "System.Text.Encoding.CodePages/9.0.4": {
-      "sha512": "2lmgWFN1nRaLqIQvbPeL/N0h2SFftmRyckEM9kHO3eRDniN+07nPDepC1HEPgeD+Nzihyi0r8VGTErj6WTO9KQ==",
+    "System.Text.Encoding.CodePages/9.0.5": {
+      "sha512": "P6gqCJcVjdWA50Eai95eYdG4ryrb1xCd770NhQrvj847C7m30CJwQqzKykWoEMvV4qvjUazL/m7UMQdMZTp5xw==",
       "type": "package",
-      "path": "system.text.encoding.codepages/9.0.4",
+      "path": "system.text.encoding.codepages/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -17094,7 +17161,7 @@
         "runtimes/win/lib/net8.0/System.Text.Encoding.CodePages.xml",
         "runtimes/win/lib/net9.0/System.Text.Encoding.CodePages.dll",
         "runtimes/win/lib/net9.0/System.Text.Encoding.CodePages.xml",
-        "system.text.encoding.codepages.9.0.4.nupkg.sha512",
+        "system.text.encoding.codepages.9.0.5.nupkg.sha512",
         "system.text.encoding.codepages.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -17170,10 +17237,10 @@
         "system.threading.nuspec"
       ]
     },
-    "System.Threading.AccessControl/9.0.4": {
-      "sha512": "Zg3MqTbRI5z+vMpKCDzqDg+ct0DUWQBA/nHNVqDlpOV23rtNBvYwz3Mxuvzp7YCse1a/V6qbotvAbUMIN7CI4Q==",
+    "System.Threading.AccessControl/9.0.5": {
+      "sha512": "3wKv3B+T/QhCGGQRcqf8jMyEQiRi/ECKXTg7ULojJlrdTjTqjyMx9uAgoZuAB3fdVGhL8ZWA18lK3mKGsUEddw==",
       "type": "package",
-      "path": "system.threading.accesscontrol/9.0.4",
+      "path": "system.threading.accesscontrol/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -17197,7 +17264,7 @@
         "runtimes/win/lib/net8.0/System.Threading.AccessControl.xml",
         "runtimes/win/lib/net9.0/System.Threading.AccessControl.dll",
         "runtimes/win/lib/net9.0/System.Threading.AccessControl.xml",
-        "system.threading.accesscontrol.9.0.4.nupkg.sha512",
+        "system.threading.accesscontrol.9.0.5.nupkg.sha512",
         "system.threading.accesscontrol.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -17345,10 +17412,10 @@
         "system.web.services.description.nuspec"
       ]
     },
-    "System.Windows.Extensions/9.0.4": {
-      "sha512": "LBfgiBxCpJWch0PI7h55FyzlCdSXxBZM2/B/H+v1SBkhux/Da8L3fIP+r7WFwNuTfKiClNfB0Ne3BL12xiCEGw==",
+    "System.Windows.Extensions/9.0.5": {
+      "sha512": "zY91ORvF6opIT4QHp4Xi7x7lpg0ZVi0x2JoNYnjHx63UrhAYrUSQzQbpJPdkMS6gqRnFDKx3ojF1QVlKeucWAg==",
       "type": "package",
-      "path": "system.windows.extensions/9.0.4",
+      "path": "system.windows.extensions/9.0.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -17364,15 +17431,15 @@
         "runtimes/win/lib/net8.0/System.Windows.Extensions.xml",
         "runtimes/win/lib/net9.0/System.Windows.Extensions.dll",
         "runtimes/win/lib/net9.0/System.Windows.Extensions.xml",
-        "system.windows.extensions.9.0.4.nupkg.sha512",
+        "system.windows.extensions.9.0.5.nupkg.sha512",
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "WinUI3Localizer/2.2.0": {
-      "sha512": "P1RW+n1/KDUgRfdlFBsVUaS2WAy+5X2Wr/8EwmuPEYdIJJQu7SbaUGgZywMnvKM04suOJAC38iiV5bUKq2XrsQ==",
+    "WinUI3Localizer/2.3.0": {
+      "sha512": "8hi9RQmDg/hzkpgKbYST6y6as1Ym70aKhrktHfd+oGkm+lm9k37IzcIqQztErbY1eVkgiVJlqxBaYya4cHND/Q==",
       "type": "package",
-      "path": "winui3localizer/2.2.0",
+      "path": "winui3localizer/2.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -17382,20 +17449,20 @@
         "lib/net7.0-windows10.0.19041/WinUI3Localizer.dll",
         "lib/net7.0-windows10.0.19041/WinUI3Localizer.pri",
         "winui.png",
-        "winui3localizer.2.2.0.nupkg.sha512",
+        "winui3localizer.2.3.0.nupkg.sha512",
         "winui3localizer.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "net9.0-windows10.0.22000": [
-      "Microsoft.Bcl.AsyncInterfaces >= 9.0.4",
-      "Microsoft.Extensions.DependencyInjection >= 9.0.4",
-      "Microsoft.Extensions.DependencyInjection.Abstractions >= 9.0.4",
-      "Microsoft.Extensions.Logging >= 9.0.4",
-      "Microsoft.Extensions.Logging.Abstractions >= 9.0.4",
-      "Microsoft.Extensions.Options >= 9.0.4",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.4",
+      "Microsoft.Bcl.AsyncInterfaces >= 9.0.5",
+      "Microsoft.Extensions.DependencyInjection >= 9.0.5",
+      "Microsoft.Extensions.DependencyInjection.Abstractions >= 9.0.5",
+      "Microsoft.Extensions.Logging >= 9.0.5",
+      "Microsoft.Extensions.Logging.Abstractions >= 9.0.5",
+      "Microsoft.Extensions.Options >= 9.0.5",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.5",
       "Microsoft.NETCore.Platforms >= 7.0.4",
       "Microsoft.NETCore.Targets >= 5.0.0",
       "Microsoft.PowerShell.Native >= 7.4.0",
@@ -17403,22 +17470,22 @@
       "Microsoft.Web.WebView2 >= 1.0.3240.44",
       "Microsoft.Win32 >= 2.0.1",
       "Microsoft.Win32.Registry >= 5.0.0",
-      "Microsoft.Win32.SystemEvents >= 9.0.4",
-      "Microsoft.Windows.Compatibility >= 9.0.4",
+      "Microsoft.Win32.SystemEvents >= 9.0.5",
+      "Microsoft.Windows.Compatibility >= 9.0.5",
       "Microsoft.Windows.CsWin32 >= 0.3.183",
-      "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.3916",
-      "Microsoft.WindowsAppSDK >= 1.7.250401001",
+      "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.4188",
+      "Microsoft.WindowsAppSDK >= 1.7.250513003",
       "Newtonsoft.Json >= 13.0.3",
-      "System.CodeDom >= 9.0.4",
+      "System.CodeDom >= 9.0.5",
       "System.Collections >= 4.3.0",
       "System.Collections.Concurrent >= 4.3.0",
       "System.ComponentModel >= 4.3.0",
-      "System.Configuration.ConfigurationManager >= 9.0.4",
+      "System.Configuration.ConfigurationManager >= 9.0.5",
       "System.Diagnostics.Debug >= 4.3.0",
-      "System.Diagnostics.DiagnosticSource >= 9.0.4",
+      "System.Diagnostics.DiagnosticSource >= 9.0.5",
       "System.Diagnostics.Tracing >= 4.3.0",
-      "System.DirectoryServices >= 9.0.4",
-      "System.Drawing.Common >= 9.0.4",
+      "System.DirectoryServices >= 9.0.5",
+      "System.Drawing.Common >= 9.0.5",
       "System.Dynamic.Runtime >= 4.3.0",
       "System.Globalization >= 4.3.0",
       "System.Globalization.Extensions >= 4.3.0",
@@ -17426,20 +17493,20 @@
       "System.IO.Compression >= 4.3.0",
       "System.IO.FileSystem >= 4.3.0",
       "System.Linq >= 4.3.0",
-      "System.Management >= 9.0.4",
+      "System.Management >= 9.0.5",
       "System.Management.Automation >= 7.5.1",
       "System.Net.Http >= 4.3.4",
       "System.ObjectModel >= 4.3.0",
       "System.Reflection >= 4.3.0",
       "System.Runtime >= 4.3.1",
       "System.Runtime.CompilerServices.Unsafe >= 6.1.2",
-      "System.Security.Permissions >= 9.0.4",
+      "System.Security.Permissions >= 9.0.5",
       "System.Security.Principal >= 4.3.0",
-      "System.ServiceProcess.ServiceController >= 9.0.4",
+      "System.ServiceProcess.ServiceController >= 9.0.5",
       "System.Threading >= 4.3.0",
       "System.Threading.Tasks >= 4.3.0",
-      "System.Windows.Extensions >= 9.0.4",
-      "WinUI3Localizer >= 2.2.0",
+      "System.Windows.Extensions >= 9.0.5",
+      "WinUI3Localizer >= 2.3.0",
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl >= 4.3.3",
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl >= 4.3.3",
       "runtime.native.System >= 4.3.1",
@@ -17490,7 +17557,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0-windows10.0.22000": {
@@ -17498,32 +17565,32 @@
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.Extensions.DependencyInjection.Abstractions": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.Extensions.Logging": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.Extensions.Logging.Abstractions": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.Extensions.Options": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.4, )",
+            "version": "[9.0.5, )",
             "autoReferenced": true
           },
           "Microsoft.NETCore.Platforms": {
@@ -17556,11 +17623,11 @@
           },
           "Microsoft.Win32.SystemEvents": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.Windows.Compatibility": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "Microsoft.Windows.CsWin32": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -17570,11 +17637,11 @@
           },
           "Microsoft.Windows.SDK.BuildTools": {
             "target": "Package",
-            "version": "[10.0.26100.3916, )"
+            "version": "[10.0.26100.4188, )"
           },
           "Microsoft.WindowsAppSDK": {
             "target": "Package",
-            "version": "[1.7.250401001, )"
+            "version": "[1.7.250513003, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -17582,7 +17649,7 @@
           },
           "System.CodeDom": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Collections": {
             "target": "Package",
@@ -17598,7 +17665,7 @@
           },
           "System.Configuration.ConfigurationManager": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Diagnostics.Debug": {
             "target": "Package",
@@ -17606,7 +17673,7 @@
           },
           "System.Diagnostics.DiagnosticSource": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Diagnostics.Tracing": {
             "target": "Package",
@@ -17614,11 +17681,11 @@
           },
           "System.DirectoryServices": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Drawing.Common": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Dynamic.Runtime": {
             "target": "Package",
@@ -17650,7 +17717,7 @@
           },
           "System.Management": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Management.Automation": {
             "target": "Package",
@@ -17678,7 +17745,7 @@
           },
           "System.Security.Permissions": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Security.Principal": {
             "target": "Package",
@@ -17686,7 +17753,7 @@
           },
           "System.ServiceProcess.ServiceController": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "System.Threading": {
             "target": "Package",
@@ -17698,11 +17765,11 @@
           },
           "System.Windows.Extensions": {
             "target": "Package",
-            "version": "[9.0.4, )"
+            "version": "[9.0.5, )"
           },
           "WinUI3Localizer": {
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[2.3.0, )"
           },
           "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": {
             "target": "Package",
@@ -17735,31 +17802,31 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -17767,15 +17834,15 @@
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[9.0.4, 9.0.4]"
+            "version": "[9.0.5, 9.0.5]"
           }
         ],
         "frameworkReferences": {
@@ -17786,7 +17853,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
