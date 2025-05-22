@@ -22,7 +22,7 @@
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid Width="120" Height="120">
                 <Image x:Name="SplashImage"
-                       Source="/Assets/new-logo-1.0.11-png-version.png"
+                       Source="/Assets/logo.png"
                        Width="120"
                        Opacity="0">
                     <Image.RenderTransform>

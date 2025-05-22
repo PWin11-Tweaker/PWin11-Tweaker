@@ -133,6 +133,42 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        private bool CheckHomeFolderDisabled()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}");
+                if (key != null)
+                {
+                    return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
+                }
+                return false; // Если ключа нет, папка считается включённой
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"CheckHomeFolderDisabled: Ошибка: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckGalleryFolderDisabled()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}");
+                if (key != null)
+                {
+                    return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
+                }
+                return false; // Если ключа нет, папка считается включённой
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"CheckGalleryFolderDisabled: Ошибка: {ex.Message}");
+                return false;
+            }
+        }
+
         private async void InstallStartAllBackButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -204,6 +240,35 @@ namespace PWin11_Tweaker_s
 
                 string regContent = "Windows Registry Editor Version 5.00\n\n";
 
+                // Отключение папки "Главное"
+                bool disableHomeFolder = DisableHomeFolder.IsChecked ?? false;
+                if (disableHomeFolder)
+                {
+                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]\n" +
+                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000\n\n";
+                }
+                else
+                {
+                    // Восстановление по умолчанию (удаление ключа для включения папки)
+                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]\n\n";
+                }
+                TweakStatus.IsHomeFolderDisabled = disableHomeFolder;
+
+                // Отключение папки "Галерея"
+                bool disableGalleryFolder = DisableGalleryFolder.IsChecked ?? false;
+                if (disableGalleryFolder)
+                {
+                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]\n" +
+                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000\n\n";
+                }
+                else
+                {
+                    // Восстановление по умолчанию (удаление ключа для включения папки)
+                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]\n\n";
+                }
+                TweakStatus.IsGalleryFolderDisabled = disableGalleryFolder;
+
+                // Включить показ скрытых файлов 
                 bool showHiddenFiles = ShowHiddenFiles.IsChecked ?? false;
                 regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n" +
                               $"\"Hidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n" +
@@ -852,6 +917,16 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Текст кнопки: {InstallStartAllBackButton.Content}");
 
                 System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Текущие настройки успешно загружены из TweakStatus.");
+
+                // Загрузка состояния для "Главное"
+                DisableHomeFolder.IsChecked = CheckHomeFolderDisabled();
+                TweakStatus.IsHomeFolderDisabled = DisableHomeFolder.IsChecked ?? false;
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: DisableHomeFolder установлен в {TweakStatus.IsHomeFolderDisabled}");
+
+                // Загрузка состояния для "Галерея"
+                DisableGalleryFolder.IsChecked = CheckGalleryFolderDisabled();
+                TweakStatus.IsGalleryFolderDisabled = DisableGalleryFolder.IsChecked ?? false;
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: DisableGalleryFolder установлен в {TweakStatus.IsGalleryFolderDisabled}");
             }
             catch (Exception ex)
             {

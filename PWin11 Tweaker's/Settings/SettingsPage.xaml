@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <Image Grid.Column="0" 
-               Source="/Assets/new-logo-1.0.11.png" 
+               Source="/Assets/logo.png" 
                Height="150" 
                Width="150" 
                Margin="0,0,20,0"

@@ -212,27 +212,65 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        private bool CheckHomeFolderDisabled()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}");
+                if (key != null)
+                {
+                    return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
+                }
+                return false; // Если ключа нет, папка считается включённой
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"CheckHomeFolderDisabled: Ошибка: {ex.Message}");
+                return false;
+            }
+        }
+
+        private bool CheckGalleryFolderDisabled()
+        {
+            try
+            {
+                using var key = Registry.CurrentUser.OpenSubKey(@"Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}");
+                if (key != null)
+                {
+                    return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
+                }
+                return false; // Если ключа нет, папка считается включённой
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"CheckGalleryFolderDisabled: Ошибка: {ex.Message}");
+                return false;
+            }
+        }
+
         private async Task CheckTweaksStatus()
         {
             try
             {
                 var tweaks = new[]
                 {
-                    new { Name = _resourceLoader.GetString("TweakClassicContextMenu"), CheckFunc = new Func<bool>(() => CheckClassicContextMenu()) },
-                    new { Name = _resourceLoader.GetString("TweakShowHiddenFiles"), CheckFunc = new Func<bool>(() => CheckShowHiddenFiles()) },
-                    new { Name = _resourceLoader.GetString("TweakSmallCaptions"), CheckFunc = new Func<bool>(() => CheckSmallCaptions()) },
-                    new { Name = _resourceLoader.GetString("TweakStartAllBack"), CheckFunc = new Func<bool>(() => CheckStartAllBack()) },
-                    new { Name = _resourceLoader.GetString("TweakTelemetry"), CheckFunc = new Func<bool>(() => CheckTelemetry()) },
-                    new { Name = _resourceLoader.GetString("TweakAdvertisingId"), CheckFunc = new Func<bool>(() => CheckAdvertisingId()) },
-                    new { Name = _resourceLoader.GetString("TweakLocationTracking"), CheckFunc = new Func<bool>(() => CheckLocationTracking()) },
-                    new { Name = _resourceLoader.GetString("TweakCortana"), CheckFunc = new Func<bool>(() => CheckCortana()) },
-                    new { Name = _resourceLoader.GetString("TweakBackgroundApps"), CheckFunc = new Func<bool>(() => CheckBackgroundApps()) },
-                    new { Name = _resourceLoader.GetString("TweakCloudContent"), CheckFunc = new Func<bool>(() => CheckCloudContent()) },
-                    new { Name = _resourceLoader.GetString("TweakFindMyDevice"), CheckFunc = new Func<bool>(() => CheckFindMyDevice()) },
-                    new { Name = _resourceLoader.GetString("TweakInsiderTelemetry"), CheckFunc = new Func<bool>(() => CheckInsiderTelemetry()) },
-                    new { Name = _resourceLoader.GetString("TweakEdgeDiagnostics"), CheckFunc = new Func<bool>(() => CheckEdgeDiagnostics()) },
-                    new { Name = _resourceLoader.GetString("TweakSuggestedContent"), CheckFunc = new Func<bool>(() => CheckSuggestedContent()) }
-                };
+            new { Name = _resourceLoader.GetString("TweakClassicContextMenu"), CheckFunc = new Func<bool>(() => CheckClassicContextMenu()) },
+            new { Name = _resourceLoader.GetString("TweakShowHiddenFiles"), CheckFunc = new Func<bool>(() => CheckShowHiddenFiles()) },
+            new { Name = _resourceLoader.GetString("TweakSmallCaptions"), CheckFunc = new Func<bool>(() => CheckSmallCaptions()) },
+            new { Name = _resourceLoader.GetString("TweakStartAllBack"), CheckFunc = new Func<bool>(() => CheckStartAllBack()) },
+            new { Name = _resourceLoader.GetString("TweakTelemetry"), CheckFunc = new Func<bool>(() => CheckTelemetry()) },
+            new { Name = _resourceLoader.GetString("TweakAdvertisingId"), CheckFunc = new Func<bool>(() => CheckAdvertisingId()) },
+            new { Name = _resourceLoader.GetString("TweakLocationTracking"), CheckFunc = new Func<bool>(() => CheckLocationTracking()) },
+            new { Name = _resourceLoader.GetString("TweakCortana"), CheckFunc = new Func<bool>(() => CheckCortana()) },
+            new { Name = _resourceLoader.GetString("TweakBackgroundApps"), CheckFunc = new Func<bool>(() => CheckBackgroundApps()) },
+            new { Name = _resourceLoader.GetString("TweakCloudContent"), CheckFunc = new Func<bool>(() => CheckCloudContent()) },
+            new { Name = _resourceLoader.GetString("TweakFindMyDevice"), CheckFunc = new Func<bool>(() => CheckFindMyDevice()) },
+            new { Name = _resourceLoader.GetString("TweakInsiderTelemetry"), CheckFunc = new Func<bool>(() => CheckInsiderTelemetry()) },
+            new { Name = _resourceLoader.GetString("TweakEdgeDiagnostics"), CheckFunc = new Func<bool>(() => CheckEdgeDiagnostics()) },
+            new { Name = _resourceLoader.GetString("TweakSuggestedContent"), CheckFunc = new Func<bool>(() => CheckSuggestedContent()) },
+            new { Name = _resourceLoader.GetString("TweakHomeFolder"), CheckFunc = new Func<bool>(() => CheckHomeFolderDisabled()) },      // Добавляем
+            new { Name = _resourceLoader.GetString("TweakGalleryFolder"), CheckFunc = new Func<bool>(() => CheckGalleryFolderDisabled()) }  // Добавляем
+        };
 
                 int totalTweaks = tweaks.Length;
                 int completedTweaks = 0;
@@ -311,6 +349,14 @@ namespace PWin11_Tweaker_s
                     else if (tweak.Name.Contains("предлагаемого контента"))
                     {
                         TweakStatus.IsSuggestedContentDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("папки \"Главное\""))  // Добавляем
+                    {
+                        TweakStatus.IsHomeFolderDisabled = result;
+                    }
+                    else if (tweak.Name.Contains("папки \"Галерея\""))  // Добавляем
+                    {
+                        TweakStatus.IsGalleryFolderDisabled = result;
                     }
 
                     await Task.Delay(200);
