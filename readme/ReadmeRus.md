@@ -8,6 +8,9 @@
 <br/>
 <img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar-60-frozen.png?raw=true" width="500"/>
 <br/>
+<a>   65% / 100%   </a>
+<br/>
+<br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Ознакомьтесь с документами »</strong></a>
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md">Сообщить об ошибке</a>
@@ -17,6 +20,8 @@
 </div>
 
 ## Getting Started
+
+0. Оставьте звезду и подпишитесь на организацию PWin11 
 
 1. Загрузка: Скопируйте репозиторий или загрузите последнюю версию со страницы GitHub.
 
