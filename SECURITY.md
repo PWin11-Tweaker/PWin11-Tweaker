@@ -2,20 +2,15 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Versions with a check mark mean that the version is updated and stable.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.12.x   | :white_check_mark: |
-| 1.11.x   | :white_check_mark:  |
-| 1.10.x   | :white_check_mark: |
-| < 1.10.x   | :x:                |
+| 1.12.x   | ✔️ |
+| 1.x.11.x   | :x:   |
+| 1.x.10.x   | :x:  |
+| < 1.x.10.x   | :x:                |
 
-## Reporting a Vulnerability
+## I work for quality
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Support for each version is 2 weeks.
