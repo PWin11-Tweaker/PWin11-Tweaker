@@ -17,7 +17,6 @@ namespace PWin11_Tweaker_s
         //Для локализации
         private readonly ResourceLoader resourceLoader;
 
-
         public InterfacePage()
         {
             this.InitializeComponent();

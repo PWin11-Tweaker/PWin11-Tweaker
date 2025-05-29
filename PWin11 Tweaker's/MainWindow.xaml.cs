@@ -18,9 +18,9 @@ namespace PWin11_Tweaker_s
 {
     public sealed partial class MainWindow : Window
     {
-        private MicaBackdrop micaBackdrop;
+        private MicaBackdrop micaBackdrop = new MicaBackdrop();
         private const string ThemePreferenceKey = "ThemePreference";
-        private AppWindow appWindow;
+        private AppWindow? appWindow;
 
         public MainWindow()
         {
@@ -30,7 +30,6 @@ namespace PWin11_Tweaker_s
                 this.InitializeComponent();
                 System.Diagnostics.Debug.WriteLine("MainWindow: InitializeComponent завершён.");
 
-                micaBackdrop = new MicaBackdrop();
                 this.SystemBackdrop = micaBackdrop;
                 System.Diagnostics.Debug.WriteLine("MainWindow: MicaBackdrop установлен.");
                 SetCustomIcon();
@@ -54,8 +53,15 @@ namespace PWin11_Tweaker_s
                 App.InitializeMainWindow(this);
 
                 appWindow = GetAppWindowForCurrentWindow();
-                appWindow.Title = "PWin11";
-                appWindow.SetIcon("Assets/logo.ico");
+                if (appWindow != null)
+                {
+                    appWindow.Title = "PWin11";
+                    appWindow.SetIcon("Assets/logo.ico");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("MainWindow: Не удалось инициализировать appWindow.");
+                }
             }
             catch (Exception ex)
             {

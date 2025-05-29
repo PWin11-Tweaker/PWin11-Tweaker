@@ -6,14 +6,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Windows.ApplicationModel.Resources; // Для работы локализации
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class PerformancePage : Microsoft.UI.Xaml.Controls.Page
     {
-
-        //Для локализации
         private readonly ResourceLoader resourceLoader;
 
         public PerformancePage()
@@ -27,10 +25,22 @@ namespace PWin11_Tweaker_s
         {
             try
             {
+
+                // Отключение индексации поиска
+                using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Search"))
+                {
+                    int? allowIndexing = key?.GetValue("AllowIndexingEncryptedStores") as int?;
+                    using (var serviceKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\WSearch"))
+                    {
+                        int? startValue = serviceKey?.GetValue("Start") as int?;
+                        DisableSearchIndexingToggle.IsChecked = startValue == 4 || allowIndexing == 0; // 4 = отключена служба
+                    }
+                }
+
                 // Визуальные эффекты
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects"))
                 {
-                    int? visualEffects = key?.GetValue("VisualFXSetting") as int?;
+                    int? visualEffects = key != null && key.GetValue("VisualFXSetting") is int value ? value : null;
                     DisableVisualEffectsToggle.IsChecked = visualEffects == 2; // 2 = отключены
                 }
 
@@ -49,7 +59,7 @@ namespace PWin11_Tweaker_s
                 }
 
                 // План электропитания
-                Process powercfg = Process.Start(new ProcessStartInfo
+                Process? powercfg = Process.Start(new ProcessStartInfo
                 {
                     FileName = "powercfg",
                     Arguments = "/getactivescheme",
@@ -57,6 +67,13 @@ namespace PWin11_Tweaker_s
                     UseShellExecute = false,
                     CreateNoWindow = true
                 });
+
+                if (powercfg == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("Не удалось запустить процесс powercfg.");
+                    return;
+                }
+
                 string output = powercfg.StandardOutput.ReadToEnd();
                 powercfg.WaitForExit();
                 if (output.Contains("8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c"))
@@ -74,7 +91,7 @@ namespace PWin11_Tweaker_s
 
         private void PowerPlanCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Можно сразу применять, но оставим для кнопки "Применить"
+            // Оставим для кнопки "Применить"
         }
 
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +106,16 @@ namespace PWin11_Tweaker_s
 
                 string regContent = "Windows Registry Editor Version 5.00\n\n";
                 string batContent = "@echo off\n";
+
+
+                // Отключение индексации поиска
+                bool disableIndexing = DisableSearchIndexingToggle.IsChecked ?? false;
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "\n" +
+                              $"\"AllowIndexingEncryptedStores\"=dword:0000000{(disableIndexing ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]" + "\n" +
+                              $"\"Start\"=dword:0000000{(disableIndexing ? 4 : 2)}\n\n"; // 4 = отключена, 2 = автоматический запуск
+                if (disableIndexing)
+                    batContent += "sc stop WSearch >nul 2>&1\n";
 
                 // Визуальные эффекты
                 bool disableEffects = DisableVisualEffectsToggle.IsChecked ?? false;
@@ -115,7 +142,7 @@ namespace PWin11_Tweaker_s
                     batContent += "sc stop SysMain >nul 2>&1\n";
 
                 // План электропитания
-                string powerPlanGuid = PowerPlanCombo.SelectedItem is ComboBoxItem item ? item.Tag.ToString() switch
+                string powerPlanGuid = PowerPlanCombo.SelectedItem is ComboBoxItem item && item.Tag is string tag ? tag switch
                 {
                     "HighPerformance" => "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c",
                     "Balanced" => "381b4222-f694-41f0-9685-ff5bb260df2e",
@@ -152,7 +179,13 @@ namespace PWin11_Tweaker_s
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
 
-                using (Process process = Process.Start(processInfo))
+                Process? process = Process.Start(processInfo);
+                if (process == null)
+                {
+                    throw new Exception("Не удалось запустить процесс для применения настроек.");
+                }
+
+                using (process)
                 {
                     process.WaitForExit(5000);
                     if (process.ExitCode != 0)
