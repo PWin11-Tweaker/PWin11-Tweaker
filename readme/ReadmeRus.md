@@ -17,6 +17,7 @@
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Последний выпуск</a>
 <br/>
+<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Скачать!</a>
 </div>
 
 ## Getting Started
