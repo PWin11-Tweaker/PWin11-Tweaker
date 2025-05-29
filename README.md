@@ -19,6 +19,7 @@ Tweaker for OS: Windows 11
 </p>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md on Russian</a>
 </p>
+<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Download!</a>
 </div>
 
 ## Getting Started
