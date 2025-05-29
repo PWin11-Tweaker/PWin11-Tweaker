@@ -35,7 +35,7 @@ namespace PWin11_Tweaker_s.Script
         public static bool IsVisualEffectsDisabled { get; set; }
         public static bool IsWindowsSearchDisabled { get; set; }
         public static bool IsSysMainDisabled { get; set; }
-        public static string CurrentPowerPlan { get; set; }
+        public static string? CurrentPowerPlan { get; set; } // Исправлено: сделано nullable
 
         // SystemPage
         public static bool IsServicesDisabled { get; set; }
@@ -53,7 +53,11 @@ namespace PWin11_Tweaker_s.Script
 
         static TweakStatus()
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(SettingsFilePath));
+            string? directory = Path.GetDirectoryName(SettingsFilePath); // Исправлено: проверка на null
+            if (directory != null)
+            {
+                Directory.CreateDirectory(directory);
+            }
             LoadSettings();
         }
 
@@ -153,11 +157,11 @@ namespace PWin11_Tweaker_s.Script
             }
         }
 
-        private static bool GetBool(Dictionary<string, object> settings, string key)
+        private static bool GetBool(Dictionary<string, object>? settings, string key) // Исправлено: сделано nullable
         {
-            if (settings.TryGetValue(key, out var value) && value is bool boolValue)
-                return boolValue;
-            return false;
+            if (settings == null || !settings.TryGetValue(key, out var value) || value is not bool boolValue)
+                return false;
+            return boolValue;
         }
     }
 }

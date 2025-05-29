@@ -20,6 +20,9 @@
         <!-- Отключение SysMain -->
         <CheckBox x:Name="DisableSysMainToggle" x:Uid="DisableSysMain"/>
 
+        <!-- Отключение индексации поиска -->
+        <CheckBox x:Name="DisableSearchIndexingToggle" x:Uid="DisableSearchIndexing"/>
+
         <!-- План электропитания -->
         <StackPanel Orientation="Horizontal" Spacing="10">
             <TextBlock x:Uid="Power_Plan" VerticalAlignment="Center"/>

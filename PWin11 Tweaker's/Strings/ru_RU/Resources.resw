@@ -276,6 +276,12 @@
   <data name="TaskbarTransparency.Content" xml:space="preserve">
     <value>Включить прозрачность панели задач</value>
   </data>
+  <data name="DisableSearchIndexing.Content" xml:space="preserve">
+  <value>Отключает индексацию файлов</value>
+  </data>
+  <data name="DisableAnimations.Content" xml:space="preserve">
+  <value>Отключить анимации</value>
+  </data>  
   <data name="HideSearchButton.Content" xml:space="preserve">
     <value>Скрыть кнопку поиска на панели задач</value>
   </data>

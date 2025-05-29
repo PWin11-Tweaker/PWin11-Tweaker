@@ -276,6 +276,12 @@
   <data name="TaskbarTransparency.Content" xml:space="preserve">
     <value>Enable taskbar transparency</value>
   </data>
+  <data name="DisableAnimations.Content" xml:space="preserve">
+      <value>Disable Animation</value>
+  </data>  
+  <data name="DisableSearchIndexing.Content" xml:space="preserve">
+   <value>Disables file indexing</value>
+  </data>
   <data name="HideSearchButton.Content" xml:space="preserve">
     <value>Hide the search button on the taskbar</value>
   </data>

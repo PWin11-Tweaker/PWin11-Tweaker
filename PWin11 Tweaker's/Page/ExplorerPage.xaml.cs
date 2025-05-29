@@ -169,6 +169,7 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        //Кнопка установки StartAllBack 
         private async void InstallStartAllBackButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -226,6 +227,7 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        //Кнопка Применения
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -467,6 +469,7 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        //Кнопка открытья для OldNewExplorer
         private async void OpenOldNewExplorerButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -510,6 +513,7 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        //Механика для Установки StartAllBack
         private async Task DownloadAndInstallStartAllBack()
         {
             bool installationSuccessful = false;
@@ -634,6 +638,7 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        //Механика для Удаления StartAllBack
         private async Task UninstallStartAllBack()
         {
             bool uninstallSuccessful = false;
@@ -891,6 +896,7 @@ namespace PWin11_Tweaker_s
             }
         }
 
+        //Загрузка включённых параметров
         private void LoadCurrentSettings()
         {
             try

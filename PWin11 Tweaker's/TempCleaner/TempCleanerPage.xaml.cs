@@ -16,7 +16,7 @@ namespace PWin11_Tweaker_s.TempCleaner
 {
     public sealed partial class TempCleanerPage : Page
     {
-        private CancellationTokenSource _cts;
+        private CancellationTokenSource? _cts; // Исправлено: сделано nullable
         private long _tempFilesSize;
         private long _recycleBinSize;
         private long _browserCacheSize;
@@ -267,8 +267,22 @@ namespace PWin11_Tweaker_s.TempCleaner
 
         private async void FeedbackButton_Click(object sender, RoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(new Uri("https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md"));
-            Debug.WriteLine("Feedback link opened.");
+            try
+            {
+                bool success = await Launcher.LaunchUriAsync(new Uri("https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md"));
+                if (success)
+                {
+                    Debug.WriteLine("Feedback link opened successfully.");
+                }
+                else
+                {
+                    Debug.WriteLine("Failed to open feedback link.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error opening feedback link: {ex.Message}");
+            }
         }
 
         private async Task ShowNotificationAsync(string message)
@@ -889,9 +903,9 @@ namespace PWin11_Tweaker_s.TempCleaner
         // Обновленная модель для хранения пути
         private class FileInfoModel
         {
-            public string Name { get; set; }
-            public string Size { get; set; }
-            public string Path { get; set; }
+            public string? Name { get; set; } // Исправлено: сделано nullable
+            public string? Size { get; set; } // Исправлено: сделано nullable
+            public string? Path { get; set; } // Исправлено: сделано nullable
         }
     }
 }

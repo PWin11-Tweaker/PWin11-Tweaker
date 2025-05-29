@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Dispatching;
 using System;
-using Windows.UI.Popups; // Для MessageDialog
+using Windows.UI.Popups;
 using System.Threading.Tasks;
 using PWin11_Tweaker_s.Script;
 using Windows.Storage;
@@ -13,7 +13,7 @@ namespace PWin11_Tweaker_s
     public partial class App : Application
     {
         private const string ThemePreferenceKey = "ThemePreference";
-        public static MainWindow MainWindowInstance { get; private set; }
+        public static MainWindow? MainWindowInstance { get; private set; }
 
         public DispatcherQueue DispatcherQueue { get; private set; }
 
@@ -33,13 +33,10 @@ namespace PWin11_Tweaker_s
                 throw;
             }
         }
-
-        // Указываем, что sender может быть null
         private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
         {
-            // Логируем асинхронные ошибки
             System.Diagnostics.Debug.WriteLine($"Асинхронная ошибка: {e.Exception.Message}\nСтек: {e.Exception.StackTrace}");
-            e.SetObserved(); // Помечаем как обработанное
+            e.SetObserved();
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
@@ -48,7 +45,6 @@ namespace PWin11_Tweaker_s
             {
                 System.Diagnostics.Debug.WriteLine("App.OnLaunched: Запуск приложения.");
 
-                // Запускаем SplashScreen
                 Window splashScreen = new SplashScreen();
                 splashScreen.Activate();
             }
@@ -57,7 +53,6 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"App.OnLaunched: Ошибка при запуске приложения: {ex.Message}");
             }
         }
-
 
         private async Task InitializeLocalizer()
         {
@@ -73,7 +68,6 @@ namespace PWin11_Tweaker_s
                 })
                 .Build();
         }
-
 
         private static async Task CreateStringResourceFileIfNotExists(StorageFolder stringsFolder, string language, string resourceFileName)
         {
@@ -98,8 +92,6 @@ namespace PWin11_Tweaker_s
         // Метод для установки MainWindow и начальной темы
         public static void InitializeMainWindow(MainWindow mainWindow)
         {
-
-
             try
             {
                 System.Diagnostics.Debug.WriteLine("App.InitializeMainWindow: Инициализация MainWindow.");
@@ -132,7 +124,6 @@ namespace PWin11_Tweaker_s
             {
                 System.Diagnostics.Debug.WriteLine($"App.InitializeMainWindow: Ошибка: {ex.Message}");
             }
-            
         }
     }
 }
