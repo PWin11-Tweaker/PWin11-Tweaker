@@ -1,12 +1,12 @@
 <div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/logo-pwin11-tweaker1.png?raw=true" alt="Logo" width="80" height="80">
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/New%20Logo%20Era%20Pwin11%20Tweaker.png?raw=true" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">PWin11 Tweaker</h3>
 <p align="center">
 Tweaker for OS: Windows 11
 <br/>   
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar-60-frozen.png?raw=true" width="500"/>
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar6.png?raw=true" width="500"/>
 <br/>
 <a>   65% / 100%   </a>
 <br/>
