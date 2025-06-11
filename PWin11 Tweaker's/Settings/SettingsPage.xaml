@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <Image Grid.Column="0" 
-               Source="/Assets/logo.png" 
+               Source="/Assets/icon4.png" 
                Height="150" 
                Width="150" 
                Margin="0,0,20,0"
@@ -23,11 +23,10 @@
         <StackPanel Grid.Column="1" 
                     VerticalAlignment="Top"
                     Margin="0,0,0,0">
-            
+
             <TextBlock x:Uid="pwin11" 
                        FontSize="24" 
                        Margin="0,0,0,10"/>
-
 
             <TextBlock x:Uid="About" 
                        TextWrapping="Wrap" 
@@ -52,11 +51,34 @@
                     <TextBlock Text="Visit ph1ncyn(Rus)" FontSize="14"/>
                 </StackPanel>
             </Button>
-            <Button 
-                x:Name="FeedbackButton" 
-                x:Uid="FeedbackButton" 
-                Click="FeedbackButton_Click" 
-                Margin="0,10,0,0"/>
+
+            <Button x:Name="FeedbackButton" 
+                    x:Uid="FeedbackButton" 
+                    Click="FeedbackButton_Click" 
+                    Margin="0,10,0,0"/>
+
+            <!-- Новая кнопка для проверки обновлений -->
+            <Button x:Name="CheckUpdatesButton" 
+                    Click="CheckUpdatesButton_Click" 
+                    Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="/Assets/update.png" Width="16" Height="16"/>
+                    <!-- Добавьте иконку обновления -->
+                    <TextBlock Text="Check for Updates" FontSize="14"/>
+                </StackPanel>
+            </Button>
+
+            <!-- Элементы для отображения прогресса (добавлены для удобства) -->
+            <TextBlock x:Name="UpdateStatusText" 
+                       Text="Update Status: Not Checked" 
+                       Margin="0,10,0,0"/>
+            <ProgressBar x:Name="UpdateProgressBar" 
+                        IsIndeterminate="False" 
+                        Minimum="0" 
+                        Maximum="100" 
+                        Value="0" 
+                        Margin="0,5,0,0" 
+                        Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
-</Page>         
+</Page>
