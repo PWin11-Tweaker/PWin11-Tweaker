@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PWin11Update (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PWin11Update (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

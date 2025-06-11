@@ -1,0 +1,15 @@
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\bin\Release\net9.0\PWin11Updater.exe
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\bin\Release\net9.0\PWin11Updater.deps.json
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\bin\Release\net9.0\PWin11Updater.runtimeconfig.json
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\bin\Release\net9.0\PWin11Updater.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\bin\Release\net9.0\PWin11Updater.pdb
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.GeneratedMSBuildEditorConfig.editorconfig
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.AssemblyInfoInputs.cache
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.AssemblyInfo.cs
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.csproj.CoreCompileInputs.cache
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.sourcelink.json
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\refint\PWin11Updater.dll
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.pdb
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\PWin11Updater.genruntimeconfig.cache
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\net9.0\ref\PWin11Updater.dll
