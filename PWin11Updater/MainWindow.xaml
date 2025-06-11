@@ -1,0 +1,50 @@
+﻿<Window x:Class="PWin11Updater.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PWin11 Updater" Height="369" Width="675" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#4A90E2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                BorderThickness="1"
+                                BorderBrush="#357ABD">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#357ABD"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#242424">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <!-- Дополнительная строка для кнопки -->
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="/img/Update.png" Width="180" Height="190" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,12,0,0" Grid.RowSpan="4"/>
+        <Image Grid.Row="0" Source="/img/ph1ncyn.png" Width="80" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock Grid.Row="2" x:Name="LocalVersionText" Text="Local Version: Not Loaded" HorizontalAlignment="Left" FontSize="14" Foreground="White" Margin="16,3,0,98" Grid.RowSpan="2"/>
+        <TextBlock Grid.Row="1" x:Name="ServerVersionText" Text="Server Version: Not Checked" HorizontalAlignment="Left" FontSize="14" Foreground="White" Margin="490,50,0,101" Grid.RowSpan="3"/>
+        <Button Grid.Row="3" x:Name="CheckUpdatesButton" Click="CheckUpdatesButton_Click" Content="Check for Updates" HorizontalAlignment="Left" Margin="16,8,0,1" Width="529" Background="#FF48C2DC"/>
+        <TextBlock Grid.Row="4" x:Name="UpdateStatusText" Text="Update Status: Not Checked" HorizontalAlignment="Left" Margin="16,10,0,0" Foreground="White"/>
+        <Button Grid.Row="3" x:Name="OpenProgramButton" Click="OpenProgramButton_Click" Content="Open Program" HorizontalAlignment="Left" IsEnabled="True" Margin="550,8,0,2" Width="115" Background="#FF48C2DC"/>
+    </Grid>
+</Window>

@@ -34,51 +34,14 @@
                        Margin="0,0,0,20">
             </TextBlock>
 
-            <Button x:Name="VisitGitHubButton" 
-                    Click="VisitGitHubButton_Click" 
-                    Margin="0,10,0,0">
-                <StackPanel Orientation="Horizontal" Spacing="5">
-                    <Image Source="/Assets/github.png" Width="16" Height="16"/>
-                    <TextBlock Text="GitHub Repository" FontSize="14"/>
-                </StackPanel>
-            </Button>
-
-            <Button x:Name="VisitWebsiteButton" 
-                    Click="VisitWebsiteButton_Click" 
-                    Margin="0,10,0,0">
-                <StackPanel Orientation="Horizontal" Spacing="5">
-                    <Image Source="/Assets/telegram.png" Width="16" Height="16"/>
-                    <TextBlock Text="Visit ph1ncyn(Rus)" FontSize="14"/>
-                </StackPanel>
-            </Button>
-
-            <Button x:Name="FeedbackButton" 
-                    x:Uid="FeedbackButton" 
-                    Click="FeedbackButton_Click" 
-                    Margin="0,10,0,0"/>
-
-            <!-- Новая кнопка для проверки обновлений -->
-            <Button x:Name="CheckUpdatesButton" 
-                    Click="CheckUpdatesButton_Click" 
+            <Button x:Name="OpenUpdaterButton" 
+                    Click="OpenUpdaterButton_Click" 
                     Margin="0,10,0,0">
                 <StackPanel Orientation="Horizontal" Spacing="5">
                     <Image Source="/Assets/update.png" Width="16" Height="16"/>
-                    <!-- Добавьте иконку обновления -->
-                    <TextBlock Text="Check for Updates" FontSize="14"/>
+                    <TextBlock Text="Open Updater" FontSize="14"/>
                 </StackPanel>
             </Button>
-
-            <!-- Элементы для отображения прогресса (добавлены для удобства) -->
-            <TextBlock x:Name="UpdateStatusText" 
-                       Text="Update Status: Not Checked" 
-                       Margin="0,10,0,0"/>
-            <ProgressBar x:Name="UpdateProgressBar" 
-                        IsIndeterminate="False" 
-                        Minimum="0" 
-                        Maximum="100" 
-                        Value="0" 
-                        Margin="0,5,0,0" 
-                        Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
 </Page>
