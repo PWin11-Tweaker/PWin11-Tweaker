@@ -12,3 +12,4 @@ D:\.project-new-git\PWin11-Tweaker\PWin11Updater\bin\Release\PWin11Updater.exe
 D:\.project-new-git\PWin11-Tweaker\PWin11Updater\bin\Release\PWin11Updater.pdb
 D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\PWin11Updater.exe
 D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\PWin11Updater.pdb
+D:\.project-new-git\PWin11-Tweaker\PWin11Updater\obj\Release\PWin11Updater.exe.config

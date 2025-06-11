@@ -20,11 +20,13 @@ namespace PWin11Updater
         private string localVersion;
         private string serverVersion;
         private CancellationTokenSource cancelTokenSource;
+        private bool isUpdating = false; // Флаг состояния обновления
 
         public MainWindow()
         {
             InitializeComponent();
             LoadLocalVersion();
+            OpenProgramButton.IsEnabled = true; // Изначально кнопка активна
         }
 
         private void LoadLocalVersion()
@@ -53,9 +55,10 @@ namespace PWin11Updater
 
         private async void CheckUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
+            if (isUpdating) return; // Предотвращаем повторный запуск обновления
+            isUpdating = true;
+            OpenProgramButton.IsEnabled = false; // Отключаем кнопку во время обновления
             UpdateStatusText.Text = "Update Status: Checking...";
-            UpdateProgressBar.Visibility = Visibility.Visible;
-            UpdateProgressBar.Value = 0;
 
             try
             {
@@ -79,7 +82,8 @@ namespace PWin11Updater
             }
             finally
             {
-                UpdateProgressBar.Visibility = Visibility.Collapsed;
+                isUpdating = false;
+                OpenProgramButton.IsEnabled = true; // Включаем кнопку после завершения
             }
         }
 
@@ -107,21 +111,18 @@ namespace PWin11Updater
 
         private async Task DownloadAndInstallUpdateAsync()
         {
-            UpdateProgressBar.Value = 10;
             Debug.WriteLine("DownloadAndInstallUpdateAsync: Starting download...");
 
             cancelTokenSource = new CancellationTokenSource();
             CancellationToken cancellationToken = cancelTokenSource.Token;
 
-            // Проверка и закрытие процесса PWin11 Tweaker
             if (IsProcessRunning("PWin11 Tweaker's"))
             {
-                UpdateStatusText.Text = "Update Status: Closing PWin11 Tweaker...";
+                UpdateStatusText.Text = "Update Status: Closing PWin11 Tweaker's...";
                 CloseProcess("PWin11 Tweaker's");
-                await Task.Delay(2000); // Ждём закрытия процесса
+                await Task.Delay(2000);
             }
 
-            // Убедимся, что директория для zipPath существует
             string zipDirectory = Path.GetDirectoryName(zipPath) ?? appPath;
             if (!Directory.Exists(zipDirectory))
             {
@@ -131,11 +132,6 @@ namespace PWin11Updater
 
             using (var client = new HttpClient())
             {
-                var progress = new Progress<long>((bytes) =>
-                {
-                    UpdateProgressBar.Value = (bytes / 1024.0 / 1024.0) / 10 * 100; // Примерная оценка прогресса
-                });
-
                 try
                 {
                     var request = new HttpRequestMessage(HttpMethod.Get, "https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip");
@@ -148,18 +144,15 @@ namespace PWin11Updater
                         await stream.CopyToAsync(fileStream, 81920, cancellationToken); // Буфер 80KB
                     }
 
-                    UpdateProgressBar.Value = 50;
                     Debug.WriteLine("DownloadAndInstallUpdateAsync: Download completed.");
 
                     // Распаковка
                     if (Directory.Exists(tempUnzipPath)) Directory.Delete(tempUnzipPath, true);
                     Directory.CreateDirectory(tempUnzipPath);
-                    UpdateProgressBar.Value = 60;
 
                     using (var zip = ZipFile.OpenRead(zipPath))
                     {
                         int entryCount = zip.Entries.Count;
-                        UpdateProgressBar.Maximum = entryCount;
                         int extractProgress = 0;
 
                         foreach (var entry in zip.Entries)
@@ -171,20 +164,19 @@ namespace PWin11Updater
                                 Directory.CreateDirectory(extractDir);
                                 Debug.WriteLine($"Created directory: {extractDir}");
                             }
-                            entry.ExtractToFile(extractPath, true);
-                            UpdateProgressBar.Value = ++extractProgress;
+                            if (entry.Length > 0 || !entry.FullName.EndsWith("/"))
+                            {
+                                entry.ExtractToFile(extractPath, true);
+                            }
+
                         }
                     }
 
-                    UpdateProgressBar.Value = 80;
                     Debug.WriteLine("DownloadAndInstallUpdateAsync: Extraction completed.");
-
-                    // Замена файлов, кроме исполняемых
-                    string[] excludeFiles = { "PWin11Updater.exe", "PWin11 Tweaker's.exe" }; // Исключаем исполняемые файлы
+                    string[] excludeFiles = { "PWin11Updater.exe" };
                     foreach (string file in Directory.GetFiles(tempUnzipPath, "*.*", SearchOption.AllDirectories))
                     {
-                        // Ручная реализация относительного пути
-                        string relativePath = file.Substring(tempUnzipPath.Length + 1); // Удаляем tempUnzipPath и слеш
+                        string relativePath = file.Substring(tempUnzipPath.Length + 1);
                         string destPath = Path.Combine(appPath, relativePath);
                         string destDir = Path.GetDirectoryName(destPath);
 
@@ -200,7 +192,22 @@ namespace PWin11Updater
                         }
                     }
 
-                    UpdateProgressBar.Value = 100;
+                    string sourceExe = Path.Combine(tempUnzipPath, "PWin11 Tweaker's.exe");
+                    string destExe = Path.Combine(appPath, "PWin11 Tweaker's.exe");
+                    if (File.Exists(sourceExe))
+                    {
+                        if (!string.IsNullOrEmpty(Path.GetDirectoryName(destExe)) && !Directory.Exists(Path.GetDirectoryName(destExe)))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(destExe));
+                        }
+                        File.Copy(sourceExe, destExe, true);
+                        Debug.WriteLine($"Copied PWin11 Tweaker's.exe from {sourceExe} to {destExe}");
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"PWin11 Tweaker's.exe not found in {tempUnzipPath}");
+                    }
+
                     File.Delete(zipPath);
                     Directory.Delete(tempUnzipPath, true);
                     Debug.WriteLine("DownloadAndInstallUpdateAsync: Update installed.");
@@ -208,8 +215,25 @@ namespace PWin11Updater
                 catch (Exception ex)
                 {
                     UpdateStatusText.Text = $"Update Status: Error - {ex.Message}";
-                    Debug.WriteLine($"DownloadAndInstallUpdateAsync: Error - {ex.Message}");
+                    Debug.WriteLine($"DownloadAndInstallUpdateAsync: Error - {ex.Message}\nStackTrace: {ex.StackTrace}");
                     throw;
+                }
+            }
+        }
+
+        private void OpenProgramButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isUpdating) // Запуск только если обновление не активно
+            {
+                string exePath = Path.Combine(appPath, "PWin11 Tweaker's.exe");
+                if (File.Exists(exePath))
+                {
+                    Process.Start(exePath);
+                    Debug.WriteLine($"Opened PWin11 Tweaker's.exe: {exePath}");
+                }
+                else
+                {
+                    Debug.WriteLine($"PWin11 Tweaker's.exe not found at: {exePath}");
                 }
             }
         }

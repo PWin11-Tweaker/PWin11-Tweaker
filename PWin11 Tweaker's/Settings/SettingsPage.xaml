@@ -33,6 +33,15 @@
                        FontSize="16" 
                        Margin="0,0,0,20">
             </TextBlock>
+
+            <Button x:Name="OpenUpdaterButton" 
+                    Click="OpenUpdaterButton_Click" 
+                    Margin="0,10,0,0">
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="/Assets/update.png" Width="16" Height="16"/>
+                    <TextBlock Text="Open Updater" FontSize="14"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>
