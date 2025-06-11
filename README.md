@@ -8,7 +8,7 @@ Tweaker for OS: Windows 11
 <br/>   
 <img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar66.png?raw=true" width="500"/>
 <br/>
-<a>   65% / 100%   </a>
+<a>   70% / 100%   </a>
 <br/>
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Explore the docs »</strong></a>
