@@ -47,6 +47,13 @@
                 </ToolTipService.ToolTip>
             </CheckBox>
 
+            <!-- Инвертированный скролл -->
+            <CheckBox x:Name="InvertScrollToggle" x:Uid="InvertScroll">
+                <ToolTipService.ToolTip>
+                    <ToolTip x:Uid="Coment_InvertScroll"/>
+                </ToolTipService.ToolTip>
+            </CheckBox>
+
             <!-- Установка/удаление StartAllBack -->
             <Button x:Name="InstallStartAllBackButton" x:Uid="Content_Button_StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
 
