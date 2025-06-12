@@ -169,7 +169,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Кнопка установки StartAllBack 
         private async void InstallStartAllBackButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -227,7 +226,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Кнопка Применения
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -251,7 +249,6 @@ namespace PWin11_Tweaker_s
                 }
                 else
                 {
-                    // Восстановление по умолчанию (удаление ключа для включения папки)
                     regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]\n\n";
                 }
                 TweakStatus.IsHomeFolderDisabled = disableHomeFolder;
@@ -265,7 +262,6 @@ namespace PWin11_Tweaker_s
                 }
                 else
                 {
-                    // Восстановление по умолчанию (удаление ключа для включения папки)
                     regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]\n\n";
                 }
                 TweakStatus.IsGalleryFolderDisabled = disableGalleryFolder;
@@ -283,6 +279,22 @@ namespace PWin11_Tweaker_s
                               $"\"CaptionHeight\"=\"{captionHeightValue}\"\n\n";
                 TweakStatus.IsSmallCaptionsEnabled = useSmallCaptions;
 
+                // Инвертированный скролл через ScrollDirection
+                bool invertScroll = InvertScrollToggle.IsChecked ?? false;
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PointerIntegration]" + "\n" +
+                              $"\"ScrollDirection\"=REG_SZ:{(invertScroll ? "1" : "0")}\n\n";
+
+                // Уведомление о перезагрузке (добавляем в диалог успеха)
+                if (invertScroll)
+                {
+                    TweakStatus.IsInvertScrollEnabled = true;
+                    regContent += "; Перезапуск Проводника рекомендуется для применения инвертированного скролла\n";
+                }
+                else
+                {
+                    TweakStatus.IsInvertScrollEnabled = false;
+                }
+
                 bool applyClassicContextMenu = ClassicContextMenuToggle.IsChecked ?? false;
                 if (applyClassicContextMenu)
                 {
@@ -298,9 +310,43 @@ namespace PWin11_Tweaker_s
                 StatusText.Text = resourceLoader.GetString("StatusText_SavingRegistryChanges");
                 ProgressBar.Value = 90;
                 await Task.Delay(100);
+
                 string tempRegPath = Path.Combine(Path.GetTempPath(), "PWin11Tweaker.reg");
-                File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Создан .reg файл: {tempRegPath}");
+                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Планируется запись .reg файла в: {tempRegPath}");
+
+                // Проверка прав доступа и создание файла
+                try
+                {
+                    if (!Directory.Exists(Path.GetTempPath()))
+                    {
+                        Directory.CreateDirectory(Path.GetTempPath());
+                        System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Временная папка создана: {Path.GetTempPath()}");
+                    }
+
+                    // Проверка возможности записи
+                    using (FileStream fs = File.Create(tempRegPath, 4096, FileOptions.DeleteOnClose))
+                    {
+                        byte[] contentBytes = Encoding.Unicode.GetBytes(regContent);
+                        fs.Write(contentBytes, 0, contentBytes.Length);
+                        fs.Flush();
+                    }
+                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: .reg файл успешно создан и записан: {tempRegPath}");
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Нет прав доступа: {ex.Message}");
+                    throw new Exception($"Нет прав для записи в {tempRegPath}. Запустите приложение от имени администратора.");
+                }
+                catch (IOException ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка ввода-вывода: {ex.Message}");
+                    throw new Exception($"Не удалось создать файл {tempRegPath}. Проверьте доступ к папке.");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка при создании файла: {ex.Message}");
+                    throw;
+                }
 
                 string tempBatPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerApply.bat");
                 string tempLogPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerLog.txt");
@@ -327,7 +373,8 @@ namespace PWin11_Tweaker_s
                     Arguments = $"/C \"{tempBatPath}\"",
                     UseShellExecute = true,
                     CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    Verb = "runas" // Запуск с повышенными привилегиями
                 };
 
                 bool success = false;
@@ -358,7 +405,7 @@ namespace PWin11_Tweaker_s
                         try
                         {
                             string logContent = File.ReadAllText(tempLogPath);
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Лог выполнения:\n{logContent}");
+                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Лог выполнения: {logContent}");
                         }
                         catch (IOException ioEx)
                         {
@@ -394,15 +441,10 @@ namespace PWin11_Tweaker_s
                             CreateNoWindow = true,
                             WindowStyle = ProcessWindowStyle.Hidden
                         };
-                        Process? taskKillProcess = Process.Start(taskKillInfo);
-                        if (taskKillProcess != null)
+                        using (Process? taskKillProcess = Process.Start(taskKillInfo))
                         {
-                            taskKillProcess.WaitForExit(2000);
+                            taskKillProcess?.WaitForExit(2000);
                             System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Процесс explorer.exe успешно завершён.");
-                        }
-                        else
-                        {
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Ошибка: Не удалось запустить taskkill для завершения explorer.exe.");
                         }
 
                         ProcessStartInfo explorerInfo = new()
@@ -412,14 +454,9 @@ namespace PWin11_Tweaker_s
                             CreateNoWindow = true,
                             WindowStyle = ProcessWindowStyle.Hidden
                         };
-                        Process? explorerProcess = Process.Start(explorerInfo);
-                        if (explorerProcess != null)
+                        using (Process? explorerProcess = Process.Start(explorerInfo))
                         {
                             System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Проводник успешно запущен заново.");
-                        }
-                        else
-                        {
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Ошибка: Не удалось запустить explorer.exe.");
                         }
                     }
                     catch (Exception ex)
@@ -427,10 +464,17 @@ namespace PWin11_Tweaker_s
                         System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при перезапуске Проводника: {ex.Message}");
                     }
 
+                    // Уведомление о необходимости перезагрузки, если включён инвертированный скролл
+                    string successMessage = resourceLoader.GetString("Dialog_Success_Content");
+                    if (invertScroll)
+                    {
+                        successMessage += "\n" + resourceLoader.GetString("Dialog_RestartRequired_Content");
+                    }
+
                     ContentDialog successDialog = new()
                     {
                         Title = resourceLoader.GetString("Dialog_Success_Title"),
-                        Content = resourceLoader.GetString("Dialog_Success_Content"),
+                        Content = successMessage,
                         CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
                         XamlRoot = this.XamlRoot
                     };
@@ -451,7 +495,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 ContentDialog errorDialog = new()
                 {
                     Title = resourceLoader.GetString("Dialog_Error_Title"),
@@ -469,7 +513,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Кнопка открытья для OldNewExplorer
         private async void OpenOldNewExplorerButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -513,7 +556,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Механика для Установки StartAllBack
         private async Task DownloadAndInstallStartAllBack()
         {
             bool installationSuccessful = false;
@@ -638,7 +680,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Механика для Удаления StartAllBack
         private async Task UninstallStartAllBack()
         {
             bool uninstallSuccessful = false;
@@ -817,7 +858,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"UninstallStartAllBack: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"UninstallStartAllBack: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 uninstallSuccessful = false;
                 throw;
             }
@@ -891,12 +932,11 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"FindUninstallString: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"FindUninstallString: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 return null;
             }
         }
 
-        //Загрузка включённых параметров
         private void LoadCurrentSettings()
         {
             try
@@ -933,10 +973,26 @@ namespace PWin11_Tweaker_s
                 DisableGalleryFolder.IsChecked = CheckGalleryFolderDisabled();
                 TweakStatus.IsGalleryFolderDisabled = DisableGalleryFolder.IsChecked ?? false;
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: DisableGalleryFolder установлен в {TweakStatus.IsGalleryFolderDisabled}");
+
+                // Инвертированный скролл через ScrollDirection
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\PointerIntegration"))
+                {
+                    if (key != null)
+                    {
+                        string? scrollDirection = key.GetValue("ScrollDirection") as string;
+                        InvertScrollToggle.IsChecked = scrollDirection == "1";
+                        System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: InvertScrollToggle установлен в {scrollDirection == "1"} (ScrollDirection: {scrollDirection})");
+                    }
+                    else
+                    {
+                        InvertScrollToggle.IsChecked = false;
+                        System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Ключ PointerIntegration не найден, InvertScrollToggle установлен в false");
+                    }
+                }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 throw;
             }
         }
