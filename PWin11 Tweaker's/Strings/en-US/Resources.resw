@@ -277,10 +277,10 @@
     <value>Enable taskbar transparency</value>
   </data>
   <data name="DisableAnimations.Content" xml:space="preserve">
-      <value>Disable Animation</value>
-  </data>  
+    <value>Disable Animation</value>
+  </data>
   <data name="DisableSearchIndexing.Content" xml:space="preserve">
-   <value>Disables file indexing</value>
+    <value>Disables file indexing</value>
   </data>
   <data name="HideSearchButton.Content" xml:space="preserve">
     <value>Hide the search button on the taskbar</value>
@@ -453,63 +453,48 @@
   <data name="TotalSizeLabel" xml:space="preserve">
     <value>Total: {0}</value>
   </data>
-
   <data name="DisableFindMyDevice.Content" xml:space="preserve">
     <value>Disable Find My Device</value>
   </data>
-
   <data name="DisableInsiderTelemetry.Content" xml:space="preserve">
     <value>Disable Windows Insider Telemetry</value>
   </data>
-
   <data name="DisableEdgeDiagnostics.Content" xml:space="preserve">
     <value>Disable Microsoft Edge Diagnostics</value>
   </data>
-
   <data name="DisableSuggestedContent.Content" xml:space="preserve">
     <value>Disable Suggested Content</value>
   </data>
-
   <data name="TweakTelemetry" xml:space="preserve">
     <value>Checking Telemetry Disable</value>
   </data>
-
   <data name="TweakAdvertisingId" xml:space="preserve">
     <value>Checking Advertising ID Disable</value>
   </data>
-
   <data name="TweakLocationTracking" xml:space="preserve">
     <value>Checking Location Tracking Disable</value>
   </data>
-
   <data name="TweakCortana" xml:space="preserve">
     <value>Checking Cortana Disable</value>
   </data>
-
   <data name="TweakBackgroundApps" xml:space="preserve">
     <value>Checking Background Apps Disable</value>
   </data>
-
   <data name="TweakCloudContent" xml:space="preserve">
     <value>Checking Background Apps Disable</value>
   </data>
-
   <data name="TweakFindMyDevice" xml:space="preserve">
     <value>Checking Find My Device Disable</value>
   </data>
-
   <data name="TweakInsiderTelemetry" xml:space="preserve">
     <value>Checking Windows Insider Telemetry Disable</value>
   </data>
-
   <data name="TweakEdgeDiagnostics" xml:space="preserve">
     <value>Checking Microsoft Edge Diagnostics Disable</value>
   </data>
-
   <data name="TweakSuggestedContent" xml:space="preserve">
     <value>Checking Suggested Content Disable</value>
   </data>
-
   <data name="DisableExplorerAdsToggle" xml:space="preserve">
     <value>Disable Explorer Ads</value>
   </data>
@@ -522,7 +507,6 @@
   <data name="ShowIconsOnlyToggle" xml:space="preserve">
     <value>Show Icons Only</value>
   </data>
-
   <data name="TweakDisableExplorerAds" xml:space="preserve">
     <value>Checking Explorer ads...</value>
   </data>
@@ -535,7 +519,6 @@
   <data name="TweakShowIconsOnly" xml:space="preserve">
     <value>Checking icons only mode...</value>
   </data>
-
   <data name="TempPageWindowsUpdateCacheCheckBox.Content" xml:space="preserve">
     <value>Windows Update Cache</value>
     <comment>TempCleanerPage.xaml</comment>
@@ -549,7 +532,7 @@
     <comment>TempCleanerPage.xaml</comment>
   </data>
   <data name="StatusText.Text" xml:space="preserve">
-    <value></value>
+    <value />
     <comment>TempCleanerPage.xaml - Initial empty status</comment>
   </data>
   <data name="StatusText_Cleaning.Text" xml:space="preserve">
@@ -560,7 +543,6 @@
     <value>Cleanup completed.</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
-
   <data name="ScheduleButton.Content" xml:space="preserve">
     <value>Schedule Cleanup</value>
     <comment>TempCleanerPage.xaml</comment>
@@ -577,26 +559,34 @@
     <value>Statistics:</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
-
   <data name="OpenOldNewExplorer.Content" xml:space="preserve">
     <value>Open OldNewExplorer</value>
   </data>
-
-  <!-- For Explorer -->
-
   <data name="DisableHomeFolder.Content" xml:space="preserve">
     <value>Disable the Home folder</value>
   </data>
-
   <data name="Coment_DisableHomeFolder.Content" xml:space="preserve">
     <value>Disables the display of the "Home" folder in the Explorer</value>
   </data>
-
   <data name="DisableGalleryFolder.Content" xml:space="preserve">
     <value>Disable the Gallery folder</value>
   </data>
-
   <data name="Coment_DisableGalleryFolder.Content" xml:space="preserve">
     <value>Disables the display of the Gallery folder in Explorer</value>
+  </data>
+  <data name="Welcome_HomePage.Text" xml:space="preserve">
+    <value>Welcome to PWin11</value>
+  </data>
+  <data name="PrivacyButton_HomePage.Content" xml:space="preserve">
+    <value>Privacy Settings</value>
+  </data>
+  <data name="PerformanceButton_HomePage.Content" xml:space="preserve">
+    <value>Settings Performance </value>
+  </data>
+  <data name="ExplorerButton_HomePage.Content" xml:space="preserve">
+    <value>Settings Explorer</value>
+  </data>
+  <data name="AboutText_Settings.Text" xml:space="preserve">
+    <value>PWin11 Tweaker is a lightweight, open-source utility that allows you to tweak various aspects of Windows 11 without delving into complex system settings or third-party software. With a focus on performance optimization, system cleanup, privacy protection, and interface customization, this tool simplifies the process of tailoring your OS to your specific needs. The intuitive navigation and responsive design make it accessible to everyone, while advanced options cater to tech enthusiasts.</value>
   </data>
 </root>

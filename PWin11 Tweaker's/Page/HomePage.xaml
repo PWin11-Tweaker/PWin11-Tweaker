@@ -16,7 +16,7 @@
             <Image Source="/Assets/icon4.png" Width="100" Height="100" Margin="0,0,0,20" HorizontalAlignment="Center"/>
 
             <!-- Текст Welcome с анимированным градиентом -->
-            <TextBlock Text="Welcome To PWin11 Tweaker"
+            <TextBlock x:Uid="Welcome_HomePage"
                        Name="WelcomeText"
                        FontSize="36" 
                        FontWeight="Bold" 
@@ -35,7 +35,7 @@
             </TextBlock>
 
             <!-- Текст About -->
-            <TextBlock Text="About"
+            <TextBlock x:Uid="About"
                        Name="AboutText"
                        FontSize="16" 
                        TextWrapping="Wrap" 
@@ -50,13 +50,13 @@
 
             <!-- Кнопки в ряд внизу -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="15">
-                <Button Content="Privacy"
+                <Button x:Uid="PrivacyButton_HomePage"
                         Click="GoToPrivacyButton_Click"
                         Style="{StaticResource AccentButtonStyle}"/>
-                <Button Content="Performance"
+                <Button x:Uid="PerformanceButton_HomePage"
                         Click="GoToPerformanceButton_Click"
                         Style="{StaticResource AccentButtonStyle}"/>
-                <Button Content="Explorer"
+                <Button x:Uid="ExplorerButton_HomePage"
                         Click="GoToExplorerButton_Click"
                         Style="{StaticResource AccentButtonStyle}"/>
             </StackPanel>
