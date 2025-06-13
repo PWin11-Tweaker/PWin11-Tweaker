@@ -11,41 +11,55 @@
 
     <Grid>
         <!-- Основной контейнер -->
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="600" Margin="20">
-            <!-- Заголовок -->
-            <TextBlock x:Uid="Welcome" 
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="700" Margin="20">
+            <!-- Логотип сверху -->
+            <Image Source="/Assets/icon4.png" Width="100" Height="100" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+
+            <!-- Текст Welcome с анимированным градиентом -->
+            <TextBlock x:Uid="Welcome_HomePage"
+                       Name="WelcomeText"
                        FontSize="36" 
                        FontWeight="Bold" 
                        TextWrapping="Wrap" 
-                       HorizontalAlignment="Center" 
-                       Foreground="{ThemeResource SystemAccentColor}"/>
+                       HorizontalAlignment="Center"
+                       Opacity="0">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform x:Name="WelcomeTransform" Y="50"/>
+                </TextBlock.RenderTransform>
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="3,0">
+                        <GradientStop Color="#2c79a4" Offset="0"/>
+                        <GradientStop Color="#b3eaff" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
 
-            <!-- Описание -->
+            <!-- Текст About -->
             <TextBlock x:Uid="About"
+                       Name="AboutText"
                        FontSize="16" 
                        TextWrapping="Wrap" 
                        HorizontalAlignment="Center" 
                        Margin="0,20,0,30" 
-                       Foreground="{ThemeResource TextFillColorSecondary}"/>
+                       Foreground="{ThemeResource TextFillColorSecondary}"
+                       Opacity="0">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform x:Name="AboutTransform" Y="50"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
 
-            <!-- Карточка с кнопкой -->
-            <Border CornerRadius="10" 
-                    Background="{ThemeResource CardBackgroundFillColorDefault}" 
-                    BorderBrush="{ThemeResource CardStrokeColorDefault}" 
-                    BorderThickness="1" 
-                    Padding="20">
-                <StackPanel>
-                    <TextBlock x:Uid="Start_Use" 
-                               FontSize="18" 
-                               FontWeight="SemiBold" 
-                               Margin="0,0,0,10"/>
-                    <Button x:Name="GoToPrivacyButton" 
-                            x:Uid="GoToPrivacyButton"
-                            Click="GoToPrivacyButton_Click" 
-                            HorizontalAlignment="Stretch" 
-                            Style="{StaticResource AccentButtonStyle}"/>
-                </StackPanel>
-            </Border>
+            <!-- Кнопки в ряд внизу -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="15">
+                <Button x:Uid="PrivacyButton_HomePage"
+                        Click="GoToPrivacyButton_Click"
+                        Style="{StaticResource AccentButtonStyle}"/>
+                <Button x:Uid="PerformanceButton_HomePage"
+                        Click="GoToPerformanceButton_Click"
+                        Style="{StaticResource AccentButtonStyle}"/>
+                <Button x:Uid="ExplorerButton_HomePage"
+                        Click="GoToExplorerButton_Click"
+                        Style="{StaticResource AccentButtonStyle}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

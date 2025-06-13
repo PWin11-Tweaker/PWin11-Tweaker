@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -218,11 +277,11 @@
     <value>Включить прозрачность панели задач</value>
   </data>
   <data name="DisableSearchIndexing.Content" xml:space="preserve">
-  <value>Отключает индексацию файлов</value>
+    <value>Отключает индексацию файлов</value>
   </data>
   <data name="DisableAnimations.Content" xml:space="preserve">
-  <value>Отключить анимации</value>
-  </data>  
+    <value>Отключить анимации</value>
+  </data>
   <data name="HideSearchButton.Content" xml:space="preserve">
     <value>Скрыть кнопку поиска на панели задач</value>
   </data>
@@ -254,7 +313,7 @@
     <value>Настройки интерфейса успешно применены!</value>
   </data>
   <data name="Performance_Settings.Text" xml:space="preserve">
-    <value>Настройки производительности</value>
+    <value>Настройки Производительности</value>
   </data>
   <data name="DisableVisualEffects.Content" xml:space="preserve">
     <value>Отключить визуальные эффекты (анимации, тени и т.д.)</value>
@@ -391,66 +450,49 @@
   <data name="TotalSizeLabel" xml:space="preserve">
     <value>Всего: {0}</value>
   </data>
-
-    <data name="DisableFindMyDevice.Content" xml:space="preserve">
+  <data name="DisableFindMyDevice.Content" xml:space="preserve">
     <value>Отключить функцию "Найти мое устройство"</value>
   </data>
-
   <data name="DisableInsiderTelemetry.Content" xml:space="preserve">
     <value>Отключить телеметрию Windows Insider</value>
   </data>
-
   <data name="DisableEdgeDiagnostics.Content" xml:space="preserve">
     <value>Отключить сбор данных Microsoft Edge</value>
   </data>
-
   <data name="DisableSuggestedContent.Content" xml:space="preserve">
     <value>Отключить предлагаемый контент</value>
   </data>
-
-
-
-
   <data name="TweakTelemetry" xml:space="preserve">
     <value>Проверка отключения телеметрии</value>
   </data>
-
   <data name="TweakAdvertisingId" xml:space="preserve">
     <value>Проверка отключения рекламного идентификатора</value>
   </data>
-
   <data name="TweakLocationTracking" xml:space="preserve">
     <value>Проверка отключения отслеживания местоположения</value>
   </data>
-
   <data name="TweakCortana" xml:space="preserve">
     <value>Проверка отключения Cortana</value>
   </data>
-
   <data name="TweakBackgroundApps" xml:space="preserve">
     <value>Проверка отключения фоновых приложений</value>
   </data>
-
   <data name="TweakCloudContent" xml:space="preserve">
     <value>Проверка отключения облачного контента</value>
   </data>
-
   <data name="TweakFindMyDevice" xml:space="preserve">
     <value>Проверка отключения функции "Найти мое устройство"</value>
   </data>
-
   <data name="TweakInsiderTelemetry" xml:space="preserve">
     <value>Проверка отключения телеметрии Windows Insider</value>
   </data>
-
   <data name="TweakEdgeDiagnostics" xml:space="preserve">
     <value>Проверка отключения сбора данных Microsoft Edge</value>
   </data>
-
   <data name="TweakSuggestedContent" xml:space="preserve">
     <value>Проверка отключения предлагаемого контента</value>
   </data>
-<data name="TempPageWindowsUpdateCacheCheckBox.Content" xml:space="preserve">
+  <data name="TempPageWindowsUpdateCacheCheckBox.Content" xml:space="preserve">
     <value>Кэш обновлений Windows</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
@@ -463,7 +505,7 @@
     <comment>TempCleanerPage.xaml</comment>
   </data>
   <data name="StatusText.Text" xml:space="preserve">
-    <value></value>
+    <value />
     <comment>TempCleanerPage.xaml - Начальный пустой статус</comment>
   </data>
   <data name="StatusText_Cleaning.Text" xml:space="preserve">
@@ -474,7 +516,6 @@
     <value>Очистка завершена.</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
-
   <data name="ScheduleButton.Content" xml:space="preserve">
     <value>Запланировать очистку</value>
     <comment>TempCleanerPage.xaml</comment>
@@ -491,39 +532,34 @@
     <value>Статистика:</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
-
   <data name="OpenOldNewExplorer.Content" xml:space="preserve">
     <value>Открыть OldNewExplorer</value>
   </data>
-
-<!-- Для проводника -->
-
   <data name="DisableHomeFolder.Content" xml:space="preserve">
     <value>Отключить папку "Главное"</value>
   </data>
-
   <data name="Coment_DisableHomeFolder.Content" xml:space="preserve">
     <value>Отключает отображение папки "Главное" в Проводнике</value>
   </data>
-
   <data name="DisableGalleryFolder.Content" xml:space="preserve">
     <value>Отключить папку "Галерея"</value>
   </data>
-
   <data name="Coment_DisableGalleryFolder.Content" xml:space="preserve">
     <value>Отключает отображение папки "Галерея" в Проводнике</value>
   </data>
-
-  <data name="InvertScroll.Content" xml:space="preserve">
-    <value>Инвертировать прокрутку</value>
+  <data name="Welcome_HomePage.Text" xml:space="preserve">
+    <value>Добро пожаловать в PWin11</value>
   </data>
-
-  <data name="Coment_InvertScroll.Content" xml:space="preserve">
-    <value>Инвертирует направление прокрутки в Проводнике</value>
+  <data name="PrivacyButton_HomePage.Content" xml:space="preserve">
+    <value>Настройки Приватности</value>
   </data>
-
-  <data name="Dialog_RestartRequired_Content" xml:space="preserve">
-    <value>Требуется перезагрузка системы для применения инвертированной прокрутки.</value>
+  <data name="PerformanceButton_HomePage.Content" xml:space="preserve">
+    <value>Настройки Производительности </value>
   </data>
-
+  <data name="ExplorerButton_HomePage.Content" xml:space="preserve">
+    <value>Настройки Проводника</value>
+  </data>
+  <data name="AboutText_Settings.Text" xml:space="preserve">
+    <value>PWin11 Tweaker - это легкая утилита с открытым исходным кодом, которая позволяет настраивать различные аспекты Windows 11, не вникая в сложные системные настройки или стороннее программное обеспечение. Уделяя особое внимание оптимизации производительности, очистке системы, защите конфиденциальности и настройке интерфейса, этот инструмент упрощает процесс адаптации ОС к вашим конкретным потребностям. Интуитивно понятная навигация и отзывчивый дизайн делают его доступным для всех, а расширенные опции - для энтузиастов.</value>
+  </data>
 </root>

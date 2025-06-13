@@ -28,7 +28,7 @@
                        FontSize="24" 
                        Margin="0,0,0,10"/>
 
-            <TextBlock x:Uid="About" 
+            <TextBlock x:Uid="AboutText_Settings" 
                        TextWrapping="Wrap" 
                        FontSize="16" 
                        Margin="0,0,0,20">

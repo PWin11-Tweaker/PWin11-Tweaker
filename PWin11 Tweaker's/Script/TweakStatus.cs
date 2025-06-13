@@ -12,7 +12,6 @@ namespace PWin11_Tweaker_s.Script
         public static bool IsSmallCaptionsEnabled { get; set; }
         public static bool IsClassicContextMenuEnabled { get; set; }
         public static bool IsStartAllBackInstalled { get; set; }
-        public static bool IsInvertScrollEnabled { get; set; }
 
         // PrivacyPage
         public static bool IsInputDataCollectionDisabled { get; set; }
