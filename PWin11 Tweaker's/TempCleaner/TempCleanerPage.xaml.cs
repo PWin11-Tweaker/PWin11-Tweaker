@@ -16,15 +16,19 @@ namespace PWin11_Tweaker_s.TempCleaner
 {
     public sealed partial class TempCleanerPage : Page
     {
-        private CancellationTokenSource? _cts; // Исправлено: сделано nullable
+        private CancellationTokenSource? _cts;
         private long _tempFilesSize;
         private long _recycleBinSize;
         private long _browserCacheSize;
         private long _windowsUpdateCacheSize;
         private long _thumbnailsSize;
+        private long _deliveryOptSize;
+        private long _systemLogsSize;
+        private long _oldWinFilesSize;
+        private long _appCacheSize;
         private ObservableCollection<FileInfoModel> _previewFiles = new ObservableCollection<FileInfoModel>();
-        private readonly string[] _exclusionPaths = new string[0]; // Настраиваемые исключения
-        private bool _isPreviewVisible = false; // Флаг для отслеживания состояния списка
+        private readonly string[] _exclusionPaths = new string[0];
+        private bool _isPreviewVisible = false;
 
         public TempCleanerPage()
         {
@@ -53,6 +57,10 @@ namespace PWin11_Tweaker_s.TempCleaner
                 _browserCacheSize = await CalculateBrowserCacheSizeAsync();
                 _windowsUpdateCacheSize = await CalculateWindowsUpdateCacheSizeAsync();
                 _thumbnailsSize = await CalculateThumbnailsSizeAsync();
+                _deliveryOptSize = await CalculateDeliveryOptSizeAsync();
+                _systemLogsSize = await CalculateSystemLogsSizeAsync();
+                _oldWinFilesSize = await CalculateOldWinFilesSizeAsync();
+                _appCacheSize = await CalculateAppCacheSizeAsync();
 
                 DispatcherQueue.TryEnqueue(() =>
                 {
@@ -61,6 +69,10 @@ namespace PWin11_Tweaker_s.TempCleaner
                     BrowserCacheSizeText.Text = FormatSize(_browserCacheSize);
                     WindowsUpdateCacheSizeText.Text = FormatSize(_windowsUpdateCacheSize);
                     ThumbnailsSizeText.Text = FormatSize(_thumbnailsSize);
+                    DeliveryOptSizeText.Text = FormatSize(_deliveryOptSize);
+                    SystemLogsSizeText.Text = FormatSize(_systemLogsSize);
+                    OldWinFilesSizeText.Text = FormatSize(_oldWinFilesSize);
+                    AppCacheSizeText.Text = FormatSize(_appCacheSize);
                     UpdateTotalSize();
                     UpdateStatistics();
                     Debug.WriteLine("UI updated with category sizes.");
@@ -95,6 +107,10 @@ namespace PWin11_Tweaker_s.TempCleaner
             if (BrowserCacheCheckBox.IsChecked == true) totalSize += _browserCacheSize;
             if (WindowsUpdateCacheCheckBox.IsChecked == true) totalSize += _windowsUpdateCacheSize;
             if (ThumbnailsCheckBox.IsChecked == true) totalSize += _thumbnailsSize;
+            if (DeliveryOptCheckBox.IsChecked == true) totalSize += _deliveryOptSize;
+            if (SystemLogsCheckBox.IsChecked == true) totalSize += _systemLogsSize;
+            if (OldWinFilesCheckBox.IsChecked == true) totalSize += _oldWinFilesSize;
+            if (AppCacheCheckBox.IsChecked == true) totalSize += _appCacheSize;
 
             var resourceLoader = new ResourceLoader();
             string totalSizeLabel = resourceLoader.GetString("TotalSizeText.Text");
@@ -109,7 +125,11 @@ namespace PWin11_Tweaker_s.TempCleaner
                            $"Recycle Bin: {FormatSize(_recycleBinSize)}\n" +
                            $"Browser Cache: {FormatSize(_browserCacheSize)}\n" +
                            $"Windows Update: {FormatSize(_windowsUpdateCacheSize)}\n" +
-                           $"Thumbnails: {FormatSize(_thumbnailsSize)}";
+                           $"Thumbnails: {FormatSize(_thumbnailsSize)}\n" +
+                           $"Delivery Opt: {FormatSize(_deliveryOptSize)}\n" +
+                           $"System Logs: {FormatSize(_systemLogsSize)}\n" +
+                           $"Old Win Files: {FormatSize(_oldWinFilesSize)}\n" +
+                           $"App Cache: {FormatSize(_appCacheSize)}";
             StatisticsText.Text = stats;
         }
 
@@ -132,6 +152,10 @@ namespace PWin11_Tweaker_s.TempCleaner
                 if (BrowserCacheCheckBox.IsChecked == true) totalFreedSpace += await CleanBrowserCacheAsync(token);
                 if (WindowsUpdateCacheCheckBox.IsChecked == true) totalFreedSpace += await CleanWindowsUpdateCacheAsync(token);
                 if (ThumbnailsCheckBox.IsChecked == true) totalFreedSpace += await CleanThumbnailsAsync(token);
+                if (DeliveryOptCheckBox.IsChecked == true) totalFreedSpace += await CleanDeliveryOptAsync(token);
+                if (SystemLogsCheckBox.IsChecked == true) totalFreedSpace += await CleanSystemLogsAsync(token);
+                if (OldWinFilesCheckBox.IsChecked == true) totalFreedSpace += await CleanOldWinFilesAsync(token);
+                if (AppCacheCheckBox.IsChecked == true) totalFreedSpace += await CleanAppCacheAsync(token);
 
                 DispatcherQueue.TryEnqueue(() =>
                 {
@@ -174,6 +198,10 @@ namespace PWin11_Tweaker_s.TempCleaner
                 if (BrowserCacheCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Microsoft\Edge\User Data\Default\Cache"), "Browser Cache");
                 if (WindowsUpdateCacheCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(@"C:\Windows\SoftwareDistribution\Download", "Windows Update");
                 if (ThumbnailsCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Microsoft\Windows\Explorer"), "Thumbnails");
+                if (DeliveryOptCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(@"C:\Windows\SoftwareDistribution\DeliveryOptimization", "Delivery Opt");
+                if (SystemLogsCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(@"C:\Windows\Logs", "System Logs");
+                if (OldWinFilesCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(@"C:\Windows.old", "Old Win Files");
+                if (AppCacheCheckBox.IsChecked == true) totalSize += await AddPreviewFilesAsync(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Packages"), "App Cache");
 
                 DispatcherQueue.TryEnqueue(() =>
                 {
@@ -213,7 +241,6 @@ namespace PWin11_Tweaker_s.TempCleaner
                         }
                     }
 
-                    // Поиск поддиректории с максимальным размером
                     long maxSubDirSize = 0;
                     string maxSubDirPath = path;
                     var subDirs = Directory.GetDirectories(path);
@@ -482,6 +509,114 @@ namespace PWin11_Tweaker_s.TempCleaner
                 catch (Exception ex)
                 {
                     Debug.WriteLine($"Error calculating thumbnails size: {ex.Message}");
+                }
+
+                return size;
+            });
+        }
+
+        private async Task<long> CalculateDeliveryOptSizeAsync()
+        {
+            return await Task.Run(() =>
+            {
+                long size = 0;
+                string deliveryOptPath = @"C:\Windows\SoftwareDistribution\DeliveryOptimization";
+
+                try
+                {
+                    if (Directory.Exists(deliveryOptPath))
+                    {
+                        var dirInfo = new DirectoryInfo(deliveryOptPath);
+                        size = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                            .Take(10000)
+                            .Sum(f => f.Length);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error calculating Delivery Optimization size: {ex.Message}");
+                }
+
+                return size;
+            });
+        }
+
+        private async Task<long> CalculateSystemLogsSizeAsync()
+        {
+            return await Task.Run(() =>
+            {
+                long size = 0;
+                string logsPath = @"C:\Windows\Logs";
+
+                try
+                {
+                    if (Directory.Exists(logsPath))
+                    {
+                        var dirInfo = new DirectoryInfo(logsPath);
+                        size = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                            .Take(10000)
+                            .Sum(f => f.Length);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error calculating System Logs size: {ex.Message}");
+                }
+
+                return size;
+            });
+        }
+
+        private async Task<long> CalculateOldWinFilesSizeAsync()
+        {
+            return await Task.Run(() =>
+            {
+                long size = 0;
+                string[] oldWinPaths = { @"C:\Windows.old", @"C:\$Windows.~WS" };
+
+                try
+                {
+                    foreach (var path in oldWinPaths)
+                    {
+                        if (Directory.Exists(path))
+                        {
+                            var dirInfo = new DirectoryInfo(path);
+                            size += dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                                .Take(10000)
+                                .Sum(f => f.Length);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error calculating Old Windows Files size: {ex.Message}");
+                }
+
+                return size;
+            });
+        }
+
+        private async Task<long> CalculateAppCacheSizeAsync()
+        {
+            return await Task.Run(() =>
+            {
+                long size = 0;
+                string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Packages");
+
+                try
+                {
+                    if (Directory.Exists(appDataPath))
+                    {
+                        var dirInfo = new DirectoryInfo(appDataPath);
+                        size = dirInfo.EnumerateDirectories("*", SearchOption.TopDirectoryOnly)
+                            .SelectMany(d => d.EnumerateFiles("*", SearchOption.AllDirectories))
+                            .Take(10000)
+                            .Sum(f => f.Length);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error calculating App Cache size: {ex.Message}");
                 }
 
                 return size;
@@ -880,6 +1015,209 @@ namespace PWin11_Tweaker_s.TempCleaner
             }, token);
         }
 
+        private async Task<long> CleanDeliveryOptAsync(CancellationToken token)
+        {
+            return await Task.Run(() =>
+            {
+                long freedSpace = 0;
+                string deliveryOptPath = @"C:\Windows\SoftwareDistribution\DeliveryOptimization";
+
+                try
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    if (Directory.Exists(deliveryOptPath))
+                    {
+                        var dirInfo = new DirectoryInfo(deliveryOptPath);
+                        freedSpace = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                            .Sum(f => f.Length);
+
+                        foreach (var file in Directory.GetFiles(deliveryOptPath, "*", SearchOption.AllDirectories))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                File.Delete(file);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Error deleting Delivery Opt file {file}: {ex.Message}");
+                            }
+                        }
+
+                        foreach (var dir in Directory.GetDirectories(deliveryOptPath, "*", SearchOption.AllDirectories))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                Directory.Delete(dir, true);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Error deleting Delivery Opt directory {dir}: {ex.Message}");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error cleaning Delivery Optimization: {ex.Message}");
+                }
+
+                return freedSpace;
+            }, token);
+        }
+
+        private async Task<long> CleanSystemLogsAsync(CancellationToken token)
+        {
+            return await Task.Run(() =>
+            {
+                long freedSpace = 0;
+                string logsPath = @"C:\Windows\Logs";
+
+                try
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    if (Directory.Exists(logsPath))
+                    {
+                        var dirInfo = new DirectoryInfo(logsPath);
+                        freedSpace = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                            .Sum(f => f.Length);
+
+                        foreach (var file in Directory.GetFiles(logsPath, "*", SearchOption.AllDirectories))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                File.Delete(file);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Error deleting System Log file {file}: {ex.Message}");
+                            }
+                        }
+
+                        foreach (var dir in Directory.GetDirectories(logsPath, "*", SearchOption.AllDirectories))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                Directory.Delete(dir, true);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Error deleting System Log directory {dir}: {ex.Message}");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error cleaning System Logs: {ex.Message}");
+                }
+
+                return freedSpace;
+            }, token);
+        }
+
+        private async Task<long> CleanOldWinFilesAsync(CancellationToken token)
+        {
+            return await Task.Run(() =>
+            {
+                long freedSpace = 0;
+                string[] oldWinPaths = { @"C:\Windows.old", @"C:\$Windows.~WS" };
+
+                try
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    foreach (var path in oldWinPaths)
+                    {
+                        if (Directory.Exists(path))
+                        {
+                            var dirInfo = new DirectoryInfo(path);
+                            freedSpace += dirInfo.EnumerateFiles("*", SearchOption.AllDirectories)
+                                .Sum(f => f.Length);
+
+                            foreach (var file in Directory.GetFiles(path, "*", SearchOption.AllDirectories))
+                            {
+                                token.ThrowIfCancellationRequested();
+                                try
+                                {
+                                    File.Delete(file);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Debug.WriteLine($"Error deleting Old Win file {file}: {ex.Message}");
+                                }
+                            }
+
+                            foreach (var dir in Directory.GetDirectories(path, "*", SearchOption.AllDirectories))
+                            {
+                                token.ThrowIfCancellationRequested();
+                                try
+                                {
+                                    Directory.Delete(dir, true);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Debug.WriteLine($"Error deleting Old Win directory {dir}: {ex.Message}");
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error cleaning Old Windows Files: {ex.Message}");
+                }
+
+                return freedSpace;
+            }, token);
+        }
+
+        private async Task<long> CleanAppCacheAsync(CancellationToken token)
+        {
+            return await Task.Run(() =>
+            {
+                long freedSpace = 0;
+                string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Packages");
+
+                try
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    if (Directory.Exists(appDataPath))
+                    {
+                        var dirInfo = new DirectoryInfo(appDataPath);
+                        freedSpace = dirInfo.EnumerateDirectories("*", SearchOption.TopDirectoryOnly)
+                            .SelectMany(d => d.EnumerateFiles("*", SearchOption.AllDirectories))
+                            .Sum(f => f.Length);
+
+                        foreach (var dir in Directory.GetDirectories(appDataPath, "*", SearchOption.TopDirectoryOnly))
+                        {
+                            token.ThrowIfCancellationRequested();
+                            try
+                            {
+                                Directory.Delete(dir, true);
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Error deleting App Cache directory {dir}: {ex.Message}");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error cleaning App Cache: {ex.Message}");
+                }
+
+                return freedSpace;
+            }, token);
+        }
+
         private string FormatSize(long bytes)
         {
             double mb = bytes / 1024.0 / 1024.0;
@@ -900,12 +1238,11 @@ namespace PWin11_Tweaker_s.TempCleaner
             }));
         }
 
-        // Обновленная модель для хранения пути
         private class FileInfoModel
         {
-            public string? Name { get; set; } // Исправлено: сделано nullable
-            public string? Size { get; set; } // Исправлено: сделано nullable
-            public string? Path { get; set; } // Исправлено: сделано nullable
+            public string? Name { get; set; }
+            public string? Size { get; set; }
+            public string? Path { get; set; }
         }
     }
 }

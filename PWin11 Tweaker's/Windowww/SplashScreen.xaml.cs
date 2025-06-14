@@ -57,7 +57,6 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                StartSplashAnimation();
                 StartApp();
             }
             catch (Exception ex)
@@ -105,100 +104,11 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        private void StartSplashAnimation()
-        {
-            try
-            {
-                if (this.Content is Grid rootGrid)
-                {
-                    // Анимация логотипа программы (запускается сразу)
-                    if (rootGrid.FindName("SplashImage") is Image splashImage && rootGrid.FindName("SplashImageTranslate") is TranslateTransform splashImageTranslate)
-                    {
-                        Storyboard splashStoryboard = new Storyboard();
-
-                        // Прозрачность
-                        DoubleAnimation opacityAnimation = new DoubleAnimation
-                        {
-                            From = 0,
-                            To = 1,
-                            Duration = new Duration(TimeSpan.FromSeconds(0.8)),
-                            EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
-                        };
-                        Storyboard.SetTarget(opacityAnimation, splashImage);
-                        Storyboard.SetTargetProperty(opacityAnimation, "Opacity");
-                        splashStoryboard.Children.Add(opacityAnimation);
-
-                        // Масштабирование
-                        DoubleAnimation scaleXAnimation = new DoubleAnimation
-                        {
-                            From = 0.5,
-                            To = 1.2,
-                            Duration = new Duration(TimeSpan.FromSeconds(0.8)),
-                            EasingFunction = new BounceEase { EasingMode = EasingMode.EaseOut, Bounces = 2, Bounciness = 2 }
-                        };
-                        Storyboard.SetTarget(scaleXAnimation, splashImage);
-                        Storyboard.SetTargetProperty(scaleXAnimation, "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)");
-                        splashStoryboard.Children.Add(scaleXAnimation);
-
-                        DoubleAnimation scaleYAnimation = new DoubleAnimation
-                        {
-                            From = 0.5,
-                            To = 1.2,
-                            Duration = new Duration(TimeSpan.FromSeconds(0.8)),
-                            EasingFunction = new BounceEase { EasingMode = EasingMode.EaseOut, Bounces = 2, Bounciness = 2 }
-                        };
-                        Storyboard.SetTarget(scaleYAnimation, splashImage);
-                        Storyboard.SetTargetProperty(scaleYAnimation, "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)");
-                        splashStoryboard.Children.Add(scaleYAnimation);
-
-                        // Дрожание
-                        DoubleAnimation translateXAnimation = new DoubleAnimation
-                        {
-                            From = 0,
-                            To = 10,
-                            Duration = new Duration(TimeSpan.FromSeconds(0.2)),
-                            AutoReverse = true,
-                            RepeatBehavior = new RepeatBehavior(2)
-                        };
-                        Storyboard.SetTarget(translateXAnimation, splashImageTranslate);
-                        Storyboard.SetTargetProperty(translateXAnimation, "X");
-                        splashStoryboard.Children.Add(translateXAnimation);
-
-                        DoubleAnimation translateYAnimation = new DoubleAnimation
-                        {
-                            From = 0,
-                            To = 10,
-                            Duration = new Duration(TimeSpan.FromSeconds(0.2)),
-                            AutoReverse = true,
-                            RepeatBehavior = new RepeatBehavior(2)
-                        };
-                        Storyboard.SetTarget(translateYAnimation, splashImageTranslate);
-                        Storyboard.SetTargetProperty(translateYAnimation, "Y");
-                        splashStoryboard.Children.Add(translateYAnimation);
-
-                        splashStoryboard.Begin();
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("SplashImage или SplashImageTranslate не найдены");
-                    }
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("S002");
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Ошибка при запуске анимации: {ex.Message}");
-            }
-        }
-
         private async void StartApp()
         {
             try
             {
-                await Task.Delay(500);
+                await Task.Delay(1100);
                 await CheckTweaksStatus();
 
                 MainWindow mainWindow = new MainWindow();

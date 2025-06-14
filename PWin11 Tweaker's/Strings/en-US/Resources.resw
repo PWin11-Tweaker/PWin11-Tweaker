@@ -532,7 +532,7 @@
     <comment>TempCleanerPage.xaml</comment>
   </data>
   <data name="StatusText.Text" xml:space="preserve">
-    <value />
+    <value>Process...</value>
     <comment>TempCleanerPage.xaml - Initial empty status</comment>
   </data>
   <data name="StatusText_Cleaning.Text" xml:space="preserve">
@@ -588,5 +588,38 @@
   </data>
   <data name="AboutText_Settings.Text" xml:space="preserve">
     <value>PWin11 Tweaker is a lightweight, open-source utility that allows you to tweak various aspects of Windows 11 without delving into complex system settings or third-party software. With a focus on performance optimization, system cleanup, privacy protection, and interface customization, this tool simplifies the process of tailoring your OS to your specific needs. The intuitive navigation and responsive design make it accessible to everyone, while advanced options cater to tech enthusiasts.</value>
+  </data>
+  <data name="Small.Content" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="Large.Content" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="Medium.Content" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="TaskbarSize.Text" xml:space="preserve">
+    <value>Taskbar size</value>
+  </data>
+  <data name="TaskbarPosition.Text" xml:space="preserve">
+    <value>Taskbar Position</value>
+  </data>
+  <data name="Top.Content" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="Bottom.Content" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="TempPageDeliveryOptCheckBox.Content" xml:space="preserve">
+    <value>Delivery Optimization Cache</value>
+  </data>
+  <data name="TempPageSystemLogsCheckBox.Content" xml:space="preserve">
+    <value>System Log Files</value>
+  </data>
+  <data name="TempPageOldWinFilesCheckBox.Content" xml:space="preserve">
+    <value>Old Windows Installation Files</value>
+  </data>
+  <data name="TempPageAppCacheCheckBox.Content" xml:space="preserve">
+    <value>Application Cache</value>
   </data>
 </root>

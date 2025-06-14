@@ -46,72 +46,126 @@
             FontWeight="Bold"
             Margin="0,0,0,20"/>
 
-        <StackPanel Grid.Row="1" Margin="0,0,0,20">
-            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
-                <CheckBox 
-                    x:Name="TempFilesCheckBox" 
-                    x:Uid="TempCheckBoxTEMP" 
-                    IsChecked="True" 
-                    Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"/>
-                <TextBlock 
-                    x:Name="TempFilesSizeText" 
-                    Style="{StaticResource SizeTextBlockStyle}" 
-                    Text="Error"/>
-            </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,0,0,20">
+            <StackPanel>
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="TempFilesCheckBox" 
+                        x:Uid="TempCheckBoxTEMP" 
+                        IsChecked="True" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="TempFilesSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="Error"/>
+                </StackPanel>
 
-            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
-                <CheckBox 
-                    x:Name="RecycleBinCheckBox" 
-                    x:Uid="TempPageCheckBoxTrash" 
-                    IsChecked="True" 
-                    Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"/>
-                <TextBlock 
-                    x:Name="RecycleBinSizeText" 
-                    Style="{StaticResource SizeTextBlockStyle}" 
-                    Text="0 MB"/>
-            </StackPanel>
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="RecycleBinCheckBox" 
+                        x:Uid="TempPageCheckBoxTrash" 
+                        IsChecked="True" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="RecycleBinSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
 
-            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
-                <CheckBox 
-                    x:Name="BrowserCacheCheckBox" 
-                    x:Uid="TempPageCacheBrowserCheckBox" 
-                    IsChecked="True" 
-                    Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"/>
-                <TextBlock 
-                    x:Name="BrowserCacheSizeText" 
-                    Style="{StaticResource SizeTextBlockStyle}" 
-                    Text="0 MB"/>
-            </StackPanel>
-            
-            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
-                <CheckBox 
-                    x:Name="WindowsUpdateCacheCheckBox" 
-                    x:Uid="TempPageWindowsUpdateCacheCheckBox" 
-                    IsChecked="False" 
-                    Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"/>
-                <TextBlock 
-                    x:Name="WindowsUpdateCacheSizeText" 
-                    Style="{StaticResource SizeTextBlockStyle}" 
-                    Text="0 MB"/>
-            </StackPanel>
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="BrowserCacheCheckBox" 
+                        x:Uid="TempPageCacheBrowserCheckBox" 
+                        IsChecked="True" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="BrowserCacheSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
 
-            <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
-                <CheckBox 
-                    x:Name="ThumbnailsCheckBox" 
-                    x:Uid="TempPageThumbnailsCheckBox" 
-                    IsChecked="False" 
-                    Checked="CheckBox_Changed" 
-                    Unchecked="CheckBox_Changed"/>
-                <TextBlock 
-                    x:Name="ThumbnailsSizeText" 
-                    Style="{StaticResource SizeTextBlockStyle}" 
-                    Text="0 MB"/>
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="WindowsUpdateCacheCheckBox" 
+                        x:Uid="TempPageWindowsUpdateCacheCheckBox" 
+                        IsChecked="False" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="WindowsUpdateCacheSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="ThumbnailsCheckBox" 
+                        x:Uid="TempPageThumbnailsCheckBox" 
+                        IsChecked="False" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="ThumbnailsSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="DeliveryOptCheckBox" 
+                        x:Uid="TempPageDeliveryOptCheckBox" 
+                        IsChecked="False" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="DeliveryOptSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="SystemLogsCheckBox" 
+                        x:Uid="TempPageSystemLogsCheckBox" 
+                        IsChecked="False" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="SystemLogsSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="OldWinFilesCheckBox" 
+                        x:Uid="TempPageOldWinFilesCheckBox" 
+                        IsChecked="False" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="OldWinFilesSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
+
+                <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
+                    <CheckBox 
+                        x:Name="AppCacheCheckBox" 
+                        x:Uid="TempPageAppCacheCheckBox" 
+                        IsChecked="False" 
+                        Checked="CheckBox_Changed" 
+                        Unchecked="CheckBox_Changed"/>
+                    <TextBlock 
+                        x:Name="AppCacheSizeText" 
+                        Style="{StaticResource SizeTextBlockStyle}" 
+                        Text="0 MB"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
 
         <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal">
@@ -147,7 +201,7 @@
                 <TextBlock 
                     x:Name="ToggleIcon" 
                     Style="{StaticResource IconStyle}" 
-                    Text="&#xE70D;" 
+                    Text="" 
                     Visibility="Collapsed"/>
             </StackPanel>
             <ScrollViewer 
