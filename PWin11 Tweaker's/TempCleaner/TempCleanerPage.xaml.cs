@@ -16,15 +16,15 @@ namespace PWin11_Tweaker_s.TempCleaner
 {
     public sealed partial class TempCleanerPage : Page
     {
-        private CancellationTokenSource? _cts; // Исправлено: сделано nullable
+        private CancellationTokenSource? _cts;
         private long _tempFilesSize;
         private long _recycleBinSize;
         private long _browserCacheSize;
         private long _windowsUpdateCacheSize;
         private long _thumbnailsSize;
         private ObservableCollection<FileInfoModel> _previewFiles = new ObservableCollection<FileInfoModel>();
-        private readonly string[] _exclusionPaths = new string[0]; // Настраиваемые исключения
-        private bool _isPreviewVisible = false; // Флаг для отслеживания состояния списка
+        private readonly string[] _exclusionPaths = new string[0]; 
+        private bool _isPreviewVisible = false; 
 
         public TempCleanerPage()
         {
@@ -900,12 +900,11 @@ namespace PWin11_Tweaker_s.TempCleaner
             }));
         }
 
-        // Обновленная модель для хранения пути
         private class FileInfoModel
         {
-            public string? Name { get; set; } // Исправлено: сделано nullable
-            public string? Size { get; set; } // Исправлено: сделано nullable
-            public string? Path { get; set; } // Исправлено: сделано nullable
+            public string? Name { get; set; } 
+            public string? Size { get; set; } 
+            public string? Path { get; set; } 
         }
     }
 }
