@@ -610,4 +610,16 @@
   <data name="Bottom.Content" xml:space="preserve">
     <value>Bottom</value>
   </data>
+  <data name="TempPageDeliveryOptCheckBox.Content" xml:space="preserve">
+    <value>Delivery Optimization Cache</value>
+  </data>
+  <data name="TempPageSystemLogsCheckBox.Content" xml:space="preserve">
+    <value>System Log Files</value>
+  </data>
+  <data name="TempPageOldWinFilesCheckBox.Content" xml:space="preserve">
+    <value>Old Windows Installation Files</value>
+  </data>
+  <data name="TempPageAppCacheCheckBox.Content" xml:space="preserve">
+    <value>Application Cache</value>
+  </data>
 </root>

@@ -505,7 +505,7 @@
     <comment>TempCleanerPage.xaml</comment>
   </data>
   <data name="StatusText.Text" xml:space="preserve">
-    <value>Выполняется...</value>
+    <value>Ожидание...</value>
     <comment>TempCleanerPage.xaml - Начальный пустой статус</comment>
   </data>
   <data name="StatusText_Cleaning.Text" xml:space="preserve">
@@ -582,5 +582,17 @@
   </data>
   <data name="Top.Content" xml:space="preserve">
     <value>Сверху</value>
+  </data>
+  <data name="TempPageDeliveryOptCheckBox.Content" xml:space="preserve">
+    <value>Кэш оптимизации доставки</value>
+  </data>
+  <data name="TempPageSystemLogsCheckBox.Content" xml:space="preserve">
+    <value>Системные лог-файлы</value>
+  </data>
+  <data name="TempPageOldWinFilesCheckBox.Content" xml:space="preserve">
+    <value>Старые файлы установки Windows</value>
+  </data>
+  <data name="TempPageAppCacheCheckBox.Content" xml:space="preserve">
+    <value>Кэш приложений</value>
   </data>
 </root>
