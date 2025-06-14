@@ -198,7 +198,7 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                await Task.Delay(500);
+                await Task.Delay(800);
                 await CheckTweaksStatus();
 
                 MainWindow mainWindow = new MainWindow();

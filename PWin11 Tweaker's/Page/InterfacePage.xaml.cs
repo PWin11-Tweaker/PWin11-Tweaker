@@ -36,10 +36,11 @@ namespace PWin11_Tweaker_s
                     TaskbarAlignmentCombo.SelectedIndex = alignment == 0 ? 1 : 0; // 0 = слева, 1 = по центру
                 }
 
+
                 // Прозрачность панели задач
-                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+                using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"))
                 {
-                    int? transparency = key?.GetValue("UseOLEDTaskbarTransparency") as int?;
+                    int? transparency = key?.GetValue("EnableTransparency") as int?;
                     TaskbarTransparencyToggle.IsChecked = transparency == 1;
                 }
 
@@ -58,8 +59,10 @@ namespace PWin11_Tweaker_s
 
         private void TaskbarAlignmentCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Можно сразу применять изменения при выборе, но оставим для кнопки "Применить"
+            // Чтобы не было ошибок ^_- (Всё через кнопку применить)
         }
+
+
 
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -80,8 +83,8 @@ namespace PWin11_Tweaker_s
 
                 // Прозрачность панели задач
                 bool transparency = TaskbarTransparencyToggle.IsChecked ?? false;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]" + "\n" +
-                              $"\"UseOLEDTaskbarTransparency\"=dword:0000000{(transparency ? 1 : 0)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]" + "\n" +
+                              $"\"EnableTransparency\"=dword:0000000{(transparency ? 1 : 0)}\n\n";
 
                 // Скрытие кнопки поиска
                 bool hideSearch = HideSearchButtonToggle.IsChecked ?? false;
@@ -132,7 +135,7 @@ namespace PWin11_Tweaker_s
                 await Task.Delay(500);
 
                 var dialog = new ContentDialog
-                {   // Ввод локализации не обязательно вводить что то после локализации например не надо вводить "???.Text"
+                {
                     Title = resourceLoader.GetString("Success"),
                     Content = resourceLoader.GetString("Success_Title_Interface"),
                     CloseButtonText = "OK",

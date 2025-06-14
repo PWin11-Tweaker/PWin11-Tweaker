@@ -50,6 +50,22 @@
         "net9.0-windows10.0.22000": {
           "targetAlias": "net9.0-windows10.0.22000.0",
           "dependencies": {
+            "CommunityToolkit.WinUI.Extensions": {
+              "target": "Package",
+              "version": "[8.2.250402, )"
+            },
+            "CommunityToolkit.WinUI.UI.Controls.Core": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "CommunityToolkit.WinUI.UI.Controls.Markdown": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "CommunityToolkit.WinUI.UI.Controls.Primitives": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "Microsoft.Bcl.AsyncInterfaces": {
               "target": "Package",
               "version": "[9.0.6, )"
