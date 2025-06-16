@@ -414,18 +414,6 @@
   <data name="pwin11.Text" xml:space="preserve">
     <value>PWin11 Tweaker</value>
   </data>
-  <data name="TweakClassicContextMenu" xml:space="preserve">
-    <value>Проверка классического контекстного меню...</value>
-  </data>
-  <data name="TweakShowHiddenFiles" xml:space="preserve">
-    <value>Проверка скрытности файлов...</value>
-  </data>
-  <data name="TweakSmallCaptions" xml:space="preserve">
-    <value>Проверка уменьшения кнопок управления окном...</value>
-  </data>
-  <data name="TweakStartAllBack" xml:space="preserve">
-    <value>Проверка установки StartAllBack...</value>
-  </data>
   <data name="Startup.Content" xml:space="preserve">
     <value>Автозапуск и удаление программ</value>
   </data>
@@ -462,34 +450,25 @@
   <data name="DisableSuggestedContent.Content" xml:space="preserve">
     <value>Отключить предлагаемый контент</value>
   </data>
-  <data name="TweakTelemetry" xml:space="preserve">
-    <value>Проверка отключения телеметрии</value>
-  </data>
-  <data name="TweakAdvertisingId" xml:space="preserve">
+  <data name="TweakAdvertisingId.Text" xml:space="preserve">
     <value>Проверка отключения рекламного идентификатора</value>
   </data>
-  <data name="TweakLocationTracking" xml:space="preserve">
+  <data name="TweakLocationTracking.Text" xml:space="preserve">
     <value>Проверка отключения отслеживания местоположения</value>
   </data>
-  <data name="TweakCortana" xml:space="preserve">
+  <data name="TweakCortana.Text" xml:space="preserve">
     <value>Проверка отключения Cortana</value>
   </data>
-  <data name="TweakBackgroundApps" xml:space="preserve">
+  <data name="TweakBackgroundApps.Text" xml:space="preserve">
     <value>Проверка отключения фоновых приложений</value>
   </data>
-  <data name="TweakCloudContent" xml:space="preserve">
-    <value>Проверка отключения облачного контента</value>
-  </data>
-  <data name="TweakFindMyDevice" xml:space="preserve">
-    <value>Проверка отключения функции "Найти мое устройство"</value>
-  </data>
-  <data name="TweakInsiderTelemetry" xml:space="preserve">
+  <data name="TweakInsiderTelemetry.Text" xml:space="preserve">
     <value>Проверка отключения телеметрии Windows Insider</value>
   </data>
-  <data name="TweakEdgeDiagnostics" xml:space="preserve">
+  <data name="TweakEdgeDiagnostics.Text" xml:space="preserve">
     <value>Проверка отключения сбора данных Microsoft Edge</value>
   </data>
-  <data name="TweakSuggestedContent" xml:space="preserve">
+  <data name="TweakSuggestedContent.Text" xml:space="preserve">
     <value>Проверка отключения предлагаемого контента</value>
   </data>
   <data name="TempPageWindowsUpdateCacheCheckBox.Content" xml:space="preserve">
@@ -594,5 +573,62 @@
   </data>
   <data name="TempPageAppCacheCheckBox.Content" xml:space="preserve">
     <value>Кэш приложений</value>
+  </data>
+  <data name="TweakClassicContextMenu.Text" xml:space="preserve">
+    <value>Классическое контекстное меню</value>
+  </data>
+  <data name="TweakShowHiddenFiles.Text" xml:space="preserve">
+    <value>Отображение скрытых файлов</value>
+  </data>
+  <data name="TweakSmallCaptions.Text" xml:space="preserve">
+    <value>Уменьшение кнопок управления окном</value>
+  </data>
+  <data name="TweakStartAllBack.Text" xml:space="preserve">
+    <value>Установка StartAllBack</value>
+  </data>
+  <data name="TweakTelemetry.Text" xml:space="preserve">
+    <value>Отключение телеметрии</value>
+  </data>
+  <data name="TweakCloudContent.Text" xml:space="preserve">
+    <value>Отключение облачного контента</value>
+  </data>
+  <data name="TweakFindMyDevice.Text" xml:space="preserve">
+    <value>Отключение функции "Найти мое устройство"</value>
+  </data>
+  <data name="TweakHomeFolder.Text" xml:space="preserve">
+    <value>Отключение папки "Главное"</value>
+  </data>
+  <data name="TweakGalleryFolder.Text" xml:space="preserve">
+    <value>Отключение папки "Галерея"</value>
+  </data>
+  <data name="TweakTaskbarAlignment.Text" xml:space="preserve">
+    <value>Выравнивание панели задач</value>
+  </data>
+  <data name="TweakTaskbarTransparency.Text" xml:space="preserve">
+    <value>Прозрачность панели задач</value>
+  </data>
+  <data name="TweakHideSearchButton.Text" xml:space="preserve">
+    <value>Скрытие кнопки поиска</value>
+  </data>
+  <data name="TweakVisualEffects.Text" xml:space="preserve">
+    <value>Отключение визуальных эффектов</value>
+  </data>
+  <data name="TweakWindowsSearch.Text" xml:space="preserve">
+    <value>Отключение поиска Windows</value>
+  </data>
+  <data name="TweakSysMain.Text" xml:space="preserve">
+    <value>Отключение SysMain</value>
+  </data>
+  <data name="TweakServices.Text" xml:space="preserve">
+    <value>Отключение служб</value>
+  </data>
+  <data name="TweakUAC.Text" xml:space="preserve">
+    <value>Отключение UAC</value>
+  </data>
+  <data name="TweakClipboardHistory.Text" xml:space="preserve">
+    <value>Отключение истории буфера обмена</value>
+  </data>
+  <data name="TweakWindowsSpeedUp.Text" xml:space="preserve">
+    <value>Применение ускорения Windows</value>
   </data>
 </root>
