@@ -1,12 +1,13 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Win32;
+using Microsoft.Windows.ApplicationModel.Resources;
+using PWin11_Tweaker_s.Script;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
@@ -25,7 +26,6 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-
                 // Отключение индексации поиска
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Search"))
                 {
@@ -43,6 +43,7 @@ namespace PWin11_Tweaker_s
                     int? visualEffects = key != null && key.GetValue("VisualFXSetting") is int value ? value : null;
                     DisableVisualEffectsToggle.IsChecked = visualEffects == 2; // 2 = отключены
                 }
+                DisableVisualEffectsToggle.IsChecked = TweakStatus.IsVisualEffectsDisabled; // Синхронизация с TweakStatus
 
                 // Windows Search
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\WSearch"))
@@ -50,6 +51,7 @@ namespace PWin11_Tweaker_s
                     int? startValue = key?.GetValue("Start") as int?;
                     DisableWindowsSearchToggle.IsChecked = startValue == 4; // 4 = отключена
                 }
+                DisableWindowsSearchToggle.IsChecked = TweakStatus.IsWindowsSearchDisabled; // Синхронизация с TweakStatus
 
                 // SysMain
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\SysMain"))
@@ -57,6 +59,7 @@ namespace PWin11_Tweaker_s
                     int? startValue = key?.GetValue("Start") as int?;
                     DisableSysMainToggle.IsChecked = startValue == 4; // 4 = отключена
                 }
+                DisableSysMainToggle.IsChecked = TweakStatus.IsSysMainDisabled; // Синхронизация с TweakStatus
 
                 // План электропитания
                 Process? powercfg = Process.Start(new ProcessStartInfo
@@ -82,6 +85,12 @@ namespace PWin11_Tweaker_s
                     PowerPlanCombo.SelectedIndex = 1; // Balanced
                 else if (output.Contains("a1841308-3541-4fab-bc81-f71556f20b4a"))
                     PowerPlanCombo.SelectedIndex = 2; // Power Saver
+                else
+                    PowerPlanCombo.SelectedIndex = 1; // Balanced по умолчанию
+                                                      // Синхронизация с TweakStatus
+                if (TweakStatus.CurrentPowerPlan == "HighPerformance") PowerPlanCombo.SelectedIndex = 0;
+                else if (TweakStatus.CurrentPowerPlan == "Balanced") PowerPlanCombo.SelectedIndex = 1;
+                else if (TweakStatus.CurrentPowerPlan == "PowerSaver") PowerPlanCombo.SelectedIndex = 2;
             }
             catch (Exception ex)
             {
@@ -107,7 +116,6 @@ namespace PWin11_Tweaker_s
                 string regContent = "Windows Registry Editor Version 5.00\n\n";
                 string batContent = "@echo off\n";
 
-
                 // Отключение индексации поиска
                 bool disableIndexing = DisableSearchIndexingToggle.IsChecked ?? false;
                 regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "\n" +
@@ -126,6 +134,7 @@ namespace PWin11_Tweaker_s
                     regContent += @"[HKEY_CURRENT_USER\Control Panel\Desktop]" + "\n" +
                                   "\"UserPreferencesMask\"=hex:90,12,03,80,10,00,00,00\n\n";
                 }
+                TweakStatus.IsVisualEffectsDisabled = disableEffects;
 
                 // Windows Search
                 bool disableSearch = DisableWindowsSearchToggle.IsChecked ?? false;
@@ -133,6 +142,7 @@ namespace PWin11_Tweaker_s
                               $"\"Start\"=dword:0000000{(disableSearch ? 4 : 3)}\n\n";
                 if (disableSearch)
                     batContent += "sc stop WSearch >nul 2>&1\n";
+                TweakStatus.IsWindowsSearchDisabled = disableSearch;
 
                 // SysMain
                 bool disableSysMain = DisableSysMainToggle.IsChecked ?? false;
@@ -140,6 +150,7 @@ namespace PWin11_Tweaker_s
                               $"\"Start\"=dword:0000000{(disableSysMain ? 4 : 3)}\n\n";
                 if (disableSysMain)
                     batContent += "sc stop SysMain >nul 2>&1\n";
+                TweakStatus.IsSysMainDisabled = disableSysMain;
 
                 // План электропитания
                 string powerPlanGuid = PowerPlanCombo.SelectedItem is ComboBoxItem item && item.Tag is string tag ? tag switch
@@ -150,6 +161,7 @@ namespace PWin11_Tweaker_s
                     _ => "381b4222-f694-41f0-9685-ff5bb260df2e"
                 } : "381b4222-f694-41f0-9685-ff5bb260df2e";
                 batContent += $"powercfg /setactive {powerPlanGuid} >nul 2>&1\n";
+                TweakStatus.CurrentPowerPlan = PowerPlanCombo.SelectedItem is ComboBoxItem selectedItem && selectedItem.Tag is string selectedTag ? selectedTag : "Balanced";
 
                 // Сохранение и применение
                 StatusText.Text = resourceLoader.GetString("Apply_Change");
@@ -193,6 +205,9 @@ namespace PWin11_Tweaker_s
                         throw new Exception($"Ошибка применения настроек, код: {process.ExitCode}");
                     }
                 }
+
+                // Сохранение состояния после применения
+                TweakStatus.SaveSettings();
 
                 StatusText.Text = resourceLoader.GetString("Success");
                 ProgressBar.Value = 100;
