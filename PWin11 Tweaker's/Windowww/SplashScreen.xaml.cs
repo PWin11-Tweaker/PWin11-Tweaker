@@ -14,6 +14,19 @@ using Microsoft.Windows.ApplicationModel.Resources;
 using System.Diagnostics;
 using Windows.System;
 
+// Определение класса для элементов массива твиков
+public class TweakCheck
+{
+    public string Name { get; set; }
+    public Delegate CheckFunc { get; set; } // Используем Delegate как общий тип
+
+    public TweakCheck(string name, Delegate checkFunc)
+    {
+        Name = name;
+        CheckFunc = checkFunc;
+    }
+}
+
 namespace PWin11_Tweaker_s
 {
     public sealed partial class SplashScreen : Window
@@ -34,7 +47,7 @@ namespace PWin11_Tweaker_s
 
                 if (_appWindow != null)
                 {
-                    _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 300)); // Уменьшил высоту до 300
+                    _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 300));
 
                     if (_appWindow.Presenter is OverlappedPresenter presenter)
                     {
@@ -90,7 +103,6 @@ namespace PWin11_Tweaker_s
 
                 int screenWidth = displayArea.WorkArea.Width;
                 int screenHeight = displayArea.WorkArea.Height;
-
                 int windowWidth = _appWindow.Size.Width;
                 int windowHeight = _appWindow.Size.Height;
                 int x = (screenWidth - windowWidth) / 2;
@@ -131,7 +143,7 @@ namespace PWin11_Tweaker_s
                 {
                     return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
                 }
-                return false; // Если ключа нет, папка считается включённой
+                return false;
             }
             catch (Exception ex)
             {
@@ -149,7 +161,7 @@ namespace PWin11_Tweaker_s
                 {
                     return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
                 }
-                return false; // Если ключа нет, папка считается включённой
+                return false;
             }
             catch (Exception ex)
             {
@@ -162,34 +174,36 @@ namespace PWin11_Tweaker_s
         {
             try
             {
+                // Явно типизированный массив с использованием класса TweakCheck
                 var tweaks = new[]
                 {
-                    new { Name = _resourceLoader.GetString("TweakClassicContextMenu"), CheckFunc = new Func<bool>(() => CheckClassicContextMenu()) },
-                    new { Name = _resourceLoader.GetString("TweakShowHiddenFiles"), CheckFunc = new Func<bool>(() => CheckShowHiddenFiles()) },
-                    new { Name = _resourceLoader.GetString("TweakSmallCaptions"), CheckFunc = new Func<bool>(() => CheckSmallCaptions()) },
-                    new { Name = _resourceLoader.GetString("TweakStartAllBack"), CheckFunc = new Func<bool>(() => CheckStartAllBack()) },
-                    new { Name = _resourceLoader.GetString("TweakTelemetry"), CheckFunc = new Func<bool>(() => CheckTelemetry()) },
-                    new { Name = _resourceLoader.GetString("TweakAdvertisingId"), CheckFunc = new Func<bool>(() => CheckAdvertisingId()) },
-                    new { Name = _resourceLoader.GetString("TweakLocationTracking"), CheckFunc = new Func<bool>(() => CheckLocationTracking()) },
-                    new { Name = _resourceLoader.GetString("TweakCortana"), CheckFunc = new Func<bool>(() => CheckCortana()) },
-                    new { Name = _resourceLoader.GetString("TweakBackgroundApps"), CheckFunc = new Func<bool>(() => CheckBackgroundApps()) },
-                    new { Name = _resourceLoader.GetString("TweakCloudContent"), CheckFunc = new Func<bool>(() => CheckCloudContent()) },
-                    new { Name = _resourceLoader.GetString("TweakFindMyDevice"), CheckFunc = new Func<bool>(() => CheckFindMyDevice()) },
-                    new { Name = _resourceLoader.GetString("TweakInsiderTelemetry"), CheckFunc = new Func<bool>(() => CheckInsiderTelemetry()) },
-                    new { Name = _resourceLoader.GetString("TweakEdgeDiagnostics"), CheckFunc = new Func<bool>(() => CheckEdgeDiagnostics()) },
-                    new { Name = _resourceLoader.GetString("TweakSuggestedContent"), CheckFunc = new Func<bool>(() => CheckSuggestedContent()) },
-                    new { Name = _resourceLoader.GetString("TweakHomeFolder"), CheckFunc = new Func<bool>(() => CheckHomeFolderDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakGalleryFolder"), CheckFunc = new Func<bool>(() => CheckGalleryFolderDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakTaskbarAlignment"), CheckFunc = new Func<bool>(() => CheckTaskbarAlignmentLeft()) },
-                    new { Name = _resourceLoader.GetString("TweakTaskbarTransparency"), CheckFunc = new Func<bool>(() => CheckTaskbarTransparencyEnabled()) },
-                    new { Name = _resourceLoader.GetString("TweakHideSearchButton"), CheckFunc = new Func<bool>(() => CheckSearchButtonHidden()) },
-                    new { Name = _resourceLoader.GetString("TweakVisualEffects"), CheckFunc = new Func<bool>(() => CheckVisualEffectsDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakWindowsSearch"), CheckFunc = new Func<bool>(() => CheckWindowsSearchDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakSysMain"), CheckFunc = new Func<bool>(() => CheckSysMainDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakServices"), CheckFunc = new Func<bool>(() => CheckServicesDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakUAC"), CheckFunc = new Func<bool>(() => CheckUACDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakClipboardHistory"), CheckFunc = new Func<bool>(() => CheckClipboardHistoryDisabled()) },
-                    new { Name = _resourceLoader.GetString("TweakWindowsSpeedUp"), CheckFunc = new Func<bool>(() => CheckWindowsSpeedUpApplied()) }
+                    new TweakCheck(_resourceLoader.GetString("TweakClassicContextMenu"), new Func<bool>(() => CheckClassicContextMenu())),
+                    new TweakCheck(_resourceLoader.GetString("TweakShowHiddenFiles"), new Func<bool>(() => CheckShowHiddenFiles())),
+                    new TweakCheck(_resourceLoader.GetString("TweakSmallCaptions"), new Func<bool>(() => CheckSmallCaptions())),
+                    new TweakCheck(_resourceLoader.GetString("TweakStartAllBack"), new Func<bool>(() => CheckStartAllBack())),
+                    new TweakCheck(_resourceLoader.GetString("TweakTelemetry"), new Func<bool>(() => CheckTelemetry())),
+                    new TweakCheck(_resourceLoader.GetString("TweakAdvertisingId"), new Func<bool>(() => CheckAdvertisingId())),
+                    new TweakCheck(_resourceLoader.GetString("TweakLocationTracking"), new Func<bool>(() => CheckLocationTracking())),
+                    new TweakCheck(_resourceLoader.GetString("TweakCortana"), new Func<bool>(() => CheckCortana())),
+                    new TweakCheck(_resourceLoader.GetString("TweakBackgroundApps"), new Func<bool>(() => CheckBackgroundApps())),
+                    new TweakCheck(_resourceLoader.GetString("TweakCloudContent"), new Func<bool>(() => CheckCloudContent())),
+                    new TweakCheck(_resourceLoader.GetString("TweakFindMyDevice"), new Func<bool>(() => CheckFindMyDevice())),
+                    new TweakCheck(_resourceLoader.GetString("TweakInsiderTelemetry"), new Func<bool>(() => CheckInsiderTelemetry())),
+                    new TweakCheck(_resourceLoader.GetString("TweakEdgeDiagnostics"), new Func<bool>(() => CheckEdgeDiagnostics())),
+                    new TweakCheck(_resourceLoader.GetString("TweakSuggestedContent"), new Func<bool>(() => CheckSuggestedContent())),
+                    new TweakCheck(_resourceLoader.GetString("TweakHomeFolder"), new Func<bool>(() => CheckHomeFolderDisabled())),
+                    new TweakCheck(_resourceLoader.GetString("TweakGalleryFolder"), new Func<bool>(() => CheckGalleryFolderDisabled())),
+                    new TweakCheck(_resourceLoader.GetString("TweakTaskbarAlignment"), new Func<bool>(() => CheckTaskbarAlignmentLeft())),
+                    new TweakCheck(_resourceLoader.GetString("TweakTaskbarTransparency"), new Func<bool>(() => CheckTaskbarTransparencyEnabled())),
+                    new TweakCheck(_resourceLoader.GetString("TweakHideSearchButton"), new Func<bool>(() => CheckSearchButtonHidden())),
+                    new TweakCheck(_resourceLoader.GetString("TweakVisualEffects"), new Func<bool>(() => CheckVisualEffects())),
+                    new TweakCheck(_resourceLoader.GetString("TweakWindowsSearch"), new Func<bool>(() => CheckWindowsSearch())),
+                    new TweakCheck(_resourceLoader.GetString("TweakSysMain"), new Func<bool>(() => CheckSysMain())),
+                    new TweakCheck(_resourceLoader.GetString("TweakServices"), new Func<bool>(() => CheckServicesDisabled())),
+                    new TweakCheck(_resourceLoader.GetString("TweakUAC"), new Func<bool>(() => CheckUACDisabled())),
+                    new TweakCheck(_resourceLoader.GetString("TweakClipboardHistory"), new Func<bool>(() => CheckClipboardHistoryDisabled())),
+                    new TweakCheck(_resourceLoader.GetString("TweakWindowsSpeedUp"), new Func<bool>(() => CheckWindowsSpeedUpApplied())),
+                    new TweakCheck(_resourceLoader.GetString("TweakPowerPlan"), new Func<string?>(() => CheckCurrentPowerPlan()))
                 };
 
                 int totalTweaks = tweaks.Length;
@@ -211,112 +225,124 @@ namespace PWin11_Tweaker_s
                         }
                     }
 
-                    bool result = tweak.CheckFunc();
-                    System.Diagnostics.Debug.WriteLine($"{tweak.Name} Результат: {(result ? "Включён" : "Выключен")}");
+                    if (tweak.CheckFunc is Func<bool> boolFunc)
+                    {
+                        bool result = boolFunc();
+                        System.Diagnostics.Debug.WriteLine($"{tweak.Name} Результат: {(result ? "Включён" : "Выключен")}");
 
-                    if (tweak.Name.Contains("классического контекстного меню"))
-                    {
-                        TweakStatus.IsClassicContextMenuEnabled = result;
+                        if (tweak.Name.Contains("классического контекстного меню"))
+                        {
+                            TweakStatus.IsClassicContextMenuEnabled = result;
+                        }
+                        else if (tweak.Name.Contains("отображения скрытых файлов"))
+                        {
+                            TweakStatus.IsShowHiddenFilesEnabled = result;
+                        }
+                        else if (tweak.Name.Contains("уменьшения кнопок управления окном"))
+                        {
+                            TweakStatus.IsSmallCaptionsEnabled = result;
+                        }
+                        else if (tweak.Name.Contains("установки StartAllBack"))
+                        {
+                            TweakStatus.IsStartAllBackInstalled = result;
+                        }
+                        else if (tweak.Name.Contains("телеметрии"))
+                        {
+                            TweakStatus.IsTelemetryDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("рекламного идентификатора"))
+                        {
+                            TweakStatus.IsAdvertisingIdDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("отслеживания местоположения"))
+                        {
+                            TweakStatus.IsLocationTrackingDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("Cortana"))
+                        {
+                            TweakStatus.IsCortanaDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("фоновых приложений"))
+                        {
+                            TweakStatus.IsBackgroundAppsDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("облачного контента"))
+                        {
+                            TweakStatus.IsCloudContentDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("функции \"Найти мое устройство\""))
+                        {
+                            TweakStatus.IsFindMyDeviceDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("телеметрии Windows Insider"))
+                        {
+                            TweakStatus.IsInsiderTelemetryDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("сбора данных Microsoft Edge"))
+                        {
+                            TweakStatus.IsEdgeDiagnosticsDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("предлагаемого контента"))
+                        {
+                            TweakStatus.IsSuggestedContentDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("папки \"Главное\""))
+                        {
+                            TweakStatus.IsHomeFolderDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("папки \"Галерея\""))
+                        {
+                            TweakStatus.IsGalleryFolderDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("выравнивания панели задач"))
+                        {
+                            TweakStatus.IsTaskbarAlignmentLeft = result;
+                        }
+                        else if (tweak.Name.Contains("прозрачности панели задач"))
+                        {
+                            TweakStatus.IsTaskbarTransparencyEnabled = result;
+                        }
+                        else if (tweak.Name.Contains("скрытия кнопки поиска"))
+                        {
+                            TweakStatus.IsSearchButtonHidden = result;
+                        }
+                        else if (tweak.Name.Contains("визуальных эффектов"))
+                        {
+                            TweakStatus.IsVisualEffectsDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("поиска Windows"))
+                        {
+                            TweakStatus.IsWindowsSearchDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("SysMain"))
+                        {
+                            TweakStatus.IsSysMainDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("служб"))
+                        {
+                            TweakStatus.IsServicesDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("UAC"))
+                        {
+                            TweakStatus.IsUACDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("истории буфера обмена"))
+                        {
+                            TweakStatus.IsClipboardHistoryDisabled = result;
+                        }
+                        else if (tweak.Name.Contains("ускорения Windows"))
+                        {
+                            TweakStatus.IsWindowsSpeedUpApplied = result;
+                        }
                     }
-                    else if (tweak.Name.Contains("отображения скрытых файлов"))
+                    else if (tweak.CheckFunc is Func<string?> stringFunc)
                     {
-                        TweakStatus.IsShowHiddenFilesEnabled = result;
-                    }
-                    else if (tweak.Name.Contains("уменьшения кнопок управления окном"))
-                    {
-                        TweakStatus.IsSmallCaptionsEnabled = result;
-                    }
-                    else if (tweak.Name.Contains("установки StartAllBack"))
-                    {
-                        TweakStatus.IsStartAllBackInstalled = result;
-                    }
-                    else if (tweak.Name.Contains("телеметрии"))
-                    {
-                        TweakStatus.IsTelemetryDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("рекламного идентификатора"))
-                    {
-                        TweakStatus.IsAdvertisingIdDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("отслеживания местоположения"))
-                    {
-                        TweakStatus.IsLocationTrackingDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("Cortana"))
-                    {
-                        TweakStatus.IsCortanaDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("фоновых приложений"))
-                    {
-                        TweakStatus.IsBackgroundAppsDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("облачного контента"))
-                    {
-                        TweakStatus.IsCloudContentDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("функции \"Найти мое устройство\""))
-                    {
-                        TweakStatus.IsFindMyDeviceDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("телеметрии Windows Insider"))
-                    {
-                        TweakStatus.IsInsiderTelemetryDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("сбора данных Microsoft Edge"))
-                    {
-                        TweakStatus.IsEdgeDiagnosticsDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("предлагаемого контента"))
-                    {
-                        TweakStatus.IsSuggestedContentDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("папки \"Главное\""))
-                    {
-                        TweakStatus.IsHomeFolderDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("папки \"Галерея\""))
-                    {
-                        TweakStatus.IsGalleryFolderDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("выравнивания панели задач"))
-                    {
-                        TweakStatus.IsTaskbarAlignmentLeft = result;
-                    }
-                    else if (tweak.Name.Contains("прозрачности панели задач"))
-                    {
-                        TweakStatus.IsTaskbarTransparencyEnabled = result;
-                    }
-                    else if (tweak.Name.Contains("скрытия кнопки поиска"))
-                    {
-                        TweakStatus.IsSearchButtonHidden = result;
-                    }
-                    else if (tweak.Name.Contains("визуальных эффектов"))
-                    {
-                        TweakStatus.IsVisualEffectsDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("поиска Windows"))
-                    {
-                        TweakStatus.IsWindowsSearchDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("SysMain"))
-                    {
-                        TweakStatus.IsSysMainDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("служб"))
-                    {
-                        TweakStatus.IsServicesDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("UAC"))
-                    {
-                        TweakStatus.IsUACDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("истории буфера обмена"))
-                    {
-                        TweakStatus.IsClipboardHistoryDisabled = result;
-                    }
-                    else if (tweak.Name.Contains("ускорения Windows"))
-                    {
-                        TweakStatus.IsWindowsSpeedUpApplied = result;
+                        string? result = stringFunc();
+                        System.Diagnostics.Debug.WriteLine($"{tweak.Name} Результат: {result ?? "Не определён"}");
+                        if (tweak.Name.Contains("плана электропитания"))
+                        {
+                            TweakStatus.CurrentPowerPlan = result;
+                        }
                     }
 
                     await Task.Delay(200);
@@ -351,7 +377,7 @@ namespace PWin11_Tweaker_s
                 if (key != null)
                 {
                     string? defaultValue = key.GetValue("") as string;
-                    bool isClassicContextMenuEnabled = string.IsNullOrEmpty(defaultValue); // Пустое значение означает включённый твик
+                    bool isClassicContextMenuEnabled = string.IsNullOrEmpty(defaultValue);
                     System.Diagnostics.Debug.WriteLine($"CheckClassicContextMenu: Ключ найден, значение по умолчанию: '{defaultValue}', результат: {isClassicContextMenuEnabled}");
                     return isClassicContextMenuEnabled;
                 }
@@ -564,7 +590,7 @@ namespace PWin11_Tweaker_s
             {
                 using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced");
                 int? alignment = key?.GetValue("TaskbarAl") as int?;
-                return alignment == 0; // 0 = слева, 1 = по центру
+                return alignment == 0;
             }
             catch (Exception ex)
             {
@@ -594,7 +620,7 @@ namespace PWin11_Tweaker_s
             {
                 using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Search");
                 int? searchboxTaskbarMode = key?.GetValue("SearchboxTaskbarMode") as int?;
-                return searchboxTaskbarMode == 0; // 0 = скрыто, 1 = видимо
+                return searchboxTaskbarMode == 0;
             }
             catch (Exception ex)
             {
@@ -603,47 +629,50 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        private bool CheckVisualEffectsDisabled()
+        private bool CheckVisualEffects()
         {
             try
             {
                 using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects");
-                int? effects = key?.GetValue("VisualFXSetting", 3) as int?; // 3 = стандарт, 2 = оптимизация производительности
+                int? effects = key?.GetValue("VisualFXSetting", 3) as int?;
+                System.Diagnostics.Debug.WriteLine($"CheckVisualEffects: Значение VisualFXSetting = {effects}");
                 return effects == 2;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"CheckVisualEffectsDisabled: Ошибка: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"CheckVisualEffects: Ошибка: {ex.Message}");
                 return false;
             }
         }
 
-        private bool CheckWindowsSearchDisabled()
+        private bool CheckWindowsSearch()
         {
             try
             {
                 using var key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\WSearch");
-                int? start = key?.GetValue("Start") as int?; // 4 = отключено
+                int? start = key?.GetValue("Start") as int?;
+                System.Diagnostics.Debug.WriteLine($"CheckWindowsSearch: Значение Start = {start}");
                 return start == 4;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"CheckWindowsSearchDisabled: Ошибка: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"CheckWindowsSearch: Ошибка: {ex.Message}");
                 return false;
             }
         }
 
-        private bool CheckSysMainDisabled()
+        private bool CheckSysMain()
         {
             try
             {
                 using var key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\SysMain");
-                int? start = key?.GetValue("Start") as int?; // 4 = отключено
+                int? start = key?.GetValue("Start") as int?;
+                System.Diagnostics.Debug.WriteLine($"CheckSysMain: Значение Start = {start}");
                 return start == 4;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"CheckSysMainDisabled: Ошибка: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"CheckSysMain: Ошибка: {ex.Message}");
                 return false;
             }
         }
@@ -652,7 +681,6 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Простая проверка: если список отключённых служб в реестре, но точная реализация зависит от конкретных служб
                 using var key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services");
                 if (key != null)
                 {
@@ -660,7 +688,7 @@ namespace PWin11_Tweaker_s
                     {
                         using var subKey = key.OpenSubKey(subKeyName);
                         int? start = subKey?.GetValue("Start") as int?;
-                        if (start == 4) return true; // Если хотя бы одна служба отключена
+                        if (start == 4) return true;
                     }
                 }
                 return false;
@@ -677,7 +705,7 @@ namespace PWin11_Tweaker_s
             try
             {
                 using var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
-                int? consentPromptBehavior = key?.GetValue("ConsentPromptBehaviorAdmin", 5) as int?; // 0 = отключено
+                int? consentPromptBehavior = key?.GetValue("ConsentPromptBehaviorAdmin", 5) as int?;
                 return consentPromptBehavior == 0;
             }
             catch (Exception ex)
@@ -692,7 +720,7 @@ namespace PWin11_Tweaker_s
             try
             {
                 using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Clipboard");
-                int? enabled = key?.GetValue("EnableClipboardHistory", 1) as int?; // 0 = отключено
+                int? enabled = key?.GetValue("EnableClipboardHistory", 1) as int?;
                 return enabled == 0;
             }
             catch (Exception ex)
@@ -706,7 +734,6 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Простая проверка: можно использовать индикатор, например, файл или ключ реестра
                 using var key = Registry.CurrentUser.OpenSubKey(@"Software\PWin11Tweaker\Performance");
                 return key?.GetValue("WindowsSpeedUpApplied") != null;
             }
@@ -714,6 +741,45 @@ namespace PWin11_Tweaker_s
             {
                 System.Diagnostics.Debug.WriteLine($"CheckWindowsSpeedUpApplied: Ошибка: {ex.Message}");
                 return false;
+            }
+        }
+
+        private string? CheckCurrentPowerPlan()
+        {
+            try
+            {
+                Process? powercfg = Process.Start(new ProcessStartInfo
+                {
+                    FileName = "powercfg",
+                    Arguments = "/getactivescheme",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                });
+
+                if (powercfg == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("CheckCurrentPowerPlan: Не удалось запустить powercfg.");
+                    return "Balanced";
+                }
+
+                string output = powercfg.StandardOutput.ReadToEnd();
+                powercfg.WaitForExit();
+                System.Diagnostics.Debug.WriteLine($"CheckCurrentPowerPlan: Вывод powercfg: {output}");
+
+                if (output.Contains("8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c"))
+                    return "HighPerformance";
+                else if (output.Contains("381b4222-f694-41f0-9685-ff5bb260df2e"))
+                    return "Balanced";
+                else if (output.Contains("a1841308-3541-4fab-bc81-f71556f20b4a"))
+                    return "PowerSaver";
+                else
+                    return "Balanced";
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"CheckCurrentPowerPlan: Ошибка: {ex.Message}");
+                return "Balanced";
             }
         }
 
