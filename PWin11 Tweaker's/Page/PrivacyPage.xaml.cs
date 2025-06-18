@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Windows.ApplicationModel.Resources;
-using PWin11_Tweaker_s.Script; // Для TweakStatus
+using PWin11_Tweaker_s.Script;
 
 namespace PWin11_Tweaker_s
 {
@@ -29,7 +29,7 @@ namespace PWin11_Tweaker_s
             {
                 Debug.WriteLine("LoadCurrentSettings: Загрузка текущих настроек начата.");
 
-                // Телеметрия
+                // Телеметрия (Не работает, исправить!!!!) 
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection"))
                 {
                     int? telemetry = key?.GetValue("AllowTelemetry") as int?;
@@ -37,7 +37,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Телеметрия - AllowTelemetry = {telemetry}, Toggle = {DisableTelemetryToggle.IsChecked}");
                 }
 
-                // Рекламный ID
+                // Рекламный ID (Работает) 
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo"))
                 {
                     int? adId = key?.GetValue("Enabled") as int?;
@@ -45,7 +45,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Рекламный ID - Enabled = {adId}, Toggle = {DisableAdvertisingIdToggle.IsChecked}");
                 }
 
-                // Местоположение
+                // Местоположение (Не работает, исправить!!!!) 
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors"))
                 {
                     int? location = key?.GetValue("DisableLocation") as int?;
@@ -53,7 +53,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Местоположение - DisableLocation = {location}, Toggle = {DisableLocationToggle.IsChecked}");
                 }
 
-                // Cortana
+                // Cortana (Не работает, исправить!!!!) 
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Search"))
                 {
                     int? cortana = key?.GetValue("AllowCortana") as int?;
@@ -61,7 +61,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Cortana - AllowCortana = {cortana}, Toggle = {DisableCortanaToggle.IsChecked}");
                 }
 
-                // Фоновые приложения
+                // Фоновые приложения (Работает) 
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications"))
                 {
                     int? backgroundApps = key?.GetValue("GlobalUserDisabled") as int?;
@@ -69,7 +69,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Фоновые приложения - GlobalUserDisabled = {backgroundApps}, Toggle = {DisableBackgroundAppsToggle.IsChecked}");
                 }
 
-                // Облачный контент
+                // Облачный контент (Работает) 
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost"))
                 {
                     int? cloudContent = key?.GetValue("DisableCloudOptimizedContent") as int?;
@@ -77,7 +77,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Облачный контент - DisableCloudOptimizedContent = {cloudContent}, Toggle = {DisableCloudContentToggle.IsChecked}");
                 }
 
-                // Find My Device
+                // Find My Device (Не работает, исправить!!!!) 
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\FindMyDevice"))
                 {
                     int? findMyDevice = key?.GetValue("AllowFindMyDevice") as int?;
@@ -85,7 +85,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Find My Device - AllowFindMyDevice = {findMyDevice}, Toggle = {DisableFindMyDeviceToggle.IsChecked}");
                 }
 
-                // Windows Insider Program телеметрия
+                // Windows Insider Program телеметрия (Не работает, исправить!!!!) 
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds"))
                 {
                     int? insiderTelemetry = key?.GetValue("AllowBuildPreview") as int?;
@@ -93,7 +93,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Windows Insider Telemetry - AllowBuildPreview = {insiderTelemetry}, Toggle = {DisableInsiderTelemetryToggle.IsChecked}");
                 }
 
-                // Сбор данных Microsoft Edge
+                // Сбор данных Microsoft Edge (Не работает, исправить!!!!) 
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Edge"))
                 {
                     int? edgeDiagnostics = key?.GetValue("DiagnosticData") as int?;
@@ -101,7 +101,7 @@ namespace PWin11_Tweaker_s
                     Debug.WriteLine($"LoadCurrentSettings: Microsoft Edge Diagnostics - DiagnosticData = {edgeDiagnostics}, Toggle = {DisableEdgeDiagnosticsToggle.IsChecked}");
                 }
 
-                // Suggested Content
+                // Suggested Content (Работает) 
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"))
                 {
                     int? suggestedContent = key?.GetValue("SubscribedContent-338393Enabled") as int?;
