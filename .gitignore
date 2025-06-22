@@ -2,4 +2,6 @@
 *.cache
 /PWin11 Tweaker's/obj
 /PWin11 Tweaker's/bin
+/PWin11Updater/bin
+/PWin11Updater/obj
 /.vs
