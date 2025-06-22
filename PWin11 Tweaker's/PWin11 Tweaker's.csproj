@@ -132,7 +132,6 @@
     <Folder Include="icons\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\logo2.ico" />
     <Content Include="Update\versionLocal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
