@@ -39,12 +39,12 @@
             <RowDefinition Height="*"/>
             <!-- Дополнительная строка для кнопки -->
         </Grid.RowDefinitions>
-        <Image Grid.Row="0" Source="/img/Update.png" Width="180" Height="190" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,12,0,0" Grid.RowSpan="4"/>
+        <Image Grid.Row="0" Source="/img/Update.png" Width="123" Height="132" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,28,0,0" Grid.RowSpan="3"/>
         <Image Grid.Row="0" Source="/img/ph1ncyn.png" Width="80" Height="84" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBlock Grid.Row="2" x:Name="LocalVersionText" Text="Local Version: Not Loaded" HorizontalAlignment="Left" FontSize="14" Foreground="White" Margin="16,3,0,98" Grid.RowSpan="2"/>
         <TextBlock Grid.Row="1" x:Name="ServerVersionText" Text="Server Version: Not Checked" HorizontalAlignment="Left" FontSize="14" Foreground="White" Margin="490,50,0,101" Grid.RowSpan="3"/>
-        <Button Grid.Row="3" x:Name="CheckUpdatesButton" Click="CheckUpdatesButton_Click" Content="Check for Updates" HorizontalAlignment="Left" Margin="16,8,0,1" Width="529" Background="#FF48C2DC"/>
+        <Button Grid.Row="3" x:Name="CheckUpdatesButton" Click="CheckUpdatesButton_Click" Content="Check for Updates" HorizontalAlignment="Left" Margin="24,4,0,5" Width="488" Background="#FF48C2DC"/>
         <TextBlock Grid.Row="4" x:Name="UpdateStatusText" Text="Update Status: Not Checked" HorizontalAlignment="Left" Margin="16,10,0,0" Foreground="White"/>
-        <Button Grid.Row="3" x:Name="OpenProgramButton" Click="OpenProgramButton_Click" Content="Open Program" HorizontalAlignment="Left" IsEnabled="True" Margin="550,8,0,2" Width="115" Background="#FF48C2DC"/>
+        <Button Grid.Row="3" x:Name="OpenProgramButton" Click="OpenProgramButton_Click" Content="Open Program" HorizontalAlignment="Left" IsEnabled="True" Margin="528,5,0,5" Width="115" Background="#FF48C2DC"/>
     </Grid>
 </Window>
