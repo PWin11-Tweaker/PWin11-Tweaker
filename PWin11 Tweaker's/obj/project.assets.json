@@ -394,10 +394,10 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.1": {
+      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.2": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.6"
         },
         "compile": {
           "ref/net9.0/Microsoft.PowerShell.CoreCLR.Eventing.dll": {
@@ -3034,28 +3034,28 @@
           }
         }
       },
-      "System.Management.Automation/7.5.1": {
+      "System.Management.Automation/7.5.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.ApplicationInsights": "2.22.0",
           "Microsoft.Management.Infrastructure": "3.0.0",
-          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.1",
+          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.2",
           "Microsoft.PowerShell.Native": "7.4.0",
           "Microsoft.Security.Extensions": "1.4.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.6",
           "Newtonsoft.Json": "13.0.3",
-          "System.CodeDom": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.DiagnosticSource": "9.0.4",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.Management": "9.0.4",
+          "System.CodeDom": "9.0.6",
+          "System.Configuration.ConfigurationManager": "9.0.6",
+          "System.Diagnostics.DiagnosticSource": "9.0.6",
+          "System.Diagnostics.EventLog": "9.0.6",
+          "System.DirectoryServices": "9.0.6",
+          "System.Management": "9.0.6",
           "System.Security.AccessControl": "6.0.1",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Windows.Extensions": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.6",
+          "System.Security.Cryptography.ProtectedData": "9.0.6",
+          "System.Security.Permissions": "9.0.6",
+          "System.Text.Encoding.CodePages": "9.0.6",
+          "System.Windows.Extensions": "9.0.6"
         },
         "compile": {
           "ref/net9.0/System.Management.Automation.dll": {
@@ -4660,10 +4660,10 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.1": {
+      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.2": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.6"
         },
         "compile": {
           "ref/net9.0/Microsoft.PowerShell.CoreCLR.Eventing.dll": {
@@ -5934,28 +5934,28 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Management.Automation/7.5.1": {
+      "System.Management.Automation/7.5.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.ApplicationInsights": "2.22.0",
           "Microsoft.Management.Infrastructure": "3.0.0",
-          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.1",
+          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.2",
           "Microsoft.PowerShell.Native": "7.4.0",
           "Microsoft.Security.Extensions": "1.4.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.6",
           "Newtonsoft.Json": "13.0.3",
-          "System.CodeDom": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.DiagnosticSource": "9.0.4",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.Management": "9.0.4",
+          "System.CodeDom": "9.0.6",
+          "System.Configuration.ConfigurationManager": "9.0.6",
+          "System.Diagnostics.DiagnosticSource": "9.0.6",
+          "System.Diagnostics.EventLog": "9.0.6",
+          "System.DirectoryServices": "9.0.6",
+          "System.Management": "9.0.6",
           "System.Security.AccessControl": "6.0.1",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Windows.Extensions": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.6",
+          "System.Security.Cryptography.ProtectedData": "9.0.6",
+          "System.Security.Permissions": "9.0.6",
+          "System.Text.Encoding.CodePages": "9.0.6",
+          "System.Windows.Extensions": "9.0.6"
         },
         "compile": {
           "ref/net9.0/System.Management.Automation.dll": {
@@ -7433,10 +7433,10 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.1": {
+      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.2": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.6"
         },
         "compile": {
           "ref/net9.0/Microsoft.PowerShell.CoreCLR.Eventing.dll": {
@@ -8707,28 +8707,28 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Management.Automation/7.5.1": {
+      "System.Management.Automation/7.5.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.ApplicationInsights": "2.22.0",
           "Microsoft.Management.Infrastructure": "3.0.0",
-          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.1",
+          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.2",
           "Microsoft.PowerShell.Native": "7.4.0",
           "Microsoft.Security.Extensions": "1.4.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.6",
           "Newtonsoft.Json": "13.0.3",
-          "System.CodeDom": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.DiagnosticSource": "9.0.4",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.Management": "9.0.4",
+          "System.CodeDom": "9.0.6",
+          "System.Configuration.ConfigurationManager": "9.0.6",
+          "System.Diagnostics.DiagnosticSource": "9.0.6",
+          "System.Diagnostics.EventLog": "9.0.6",
+          "System.DirectoryServices": "9.0.6",
+          "System.Management": "9.0.6",
           "System.Security.AccessControl": "6.0.1",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Windows.Extensions": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.6",
+          "System.Security.Cryptography.ProtectedData": "9.0.6",
+          "System.Security.Permissions": "9.0.6",
+          "System.Text.Encoding.CodePages": "9.0.6",
+          "System.Windows.Extensions": "9.0.6"
         },
         "compile": {
           "ref/net9.0/System.Management.Automation.dll": {
@@ -10206,10 +10206,10 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.1": {
+      "Microsoft.PowerShell.CoreCLR.Eventing/7.5.2": {
         "type": "package",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.4"
+          "System.Diagnostics.EventLog": "9.0.6"
         },
         "compile": {
           "ref/net9.0/Microsoft.PowerShell.CoreCLR.Eventing.dll": {
@@ -11480,28 +11480,28 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "System.Management.Automation/7.5.1": {
+      "System.Management.Automation/7.5.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.ApplicationInsights": "2.22.0",
           "Microsoft.Management.Infrastructure": "3.0.0",
-          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.1",
+          "Microsoft.PowerShell.CoreCLR.Eventing": "7.5.2",
           "Microsoft.PowerShell.Native": "7.4.0",
           "Microsoft.Security.Extensions": "1.4.0",
-          "Microsoft.Win32.Registry.AccessControl": "9.0.4",
+          "Microsoft.Win32.Registry.AccessControl": "9.0.6",
           "Newtonsoft.Json": "13.0.3",
-          "System.CodeDom": "9.0.4",
-          "System.Configuration.ConfigurationManager": "9.0.4",
-          "System.Diagnostics.DiagnosticSource": "9.0.4",
-          "System.Diagnostics.EventLog": "9.0.4",
-          "System.DirectoryServices": "9.0.4",
-          "System.Management": "9.0.4",
+          "System.CodeDom": "9.0.6",
+          "System.Configuration.ConfigurationManager": "9.0.6",
+          "System.Diagnostics.DiagnosticSource": "9.0.6",
+          "System.Diagnostics.EventLog": "9.0.6",
+          "System.DirectoryServices": "9.0.6",
+          "System.Management": "9.0.6",
           "System.Security.AccessControl": "6.0.1",
-          "System.Security.Cryptography.Pkcs": "9.0.4",
-          "System.Security.Cryptography.ProtectedData": "9.0.4",
-          "System.Security.Permissions": "9.0.4",
-          "System.Text.Encoding.CodePages": "9.0.4",
-          "System.Windows.Extensions": "9.0.4"
+          "System.Security.Cryptography.Pkcs": "9.0.6",
+          "System.Security.Cryptography.ProtectedData": "9.0.6",
+          "System.Security.Permissions": "9.0.6",
+          "System.Text.Encoding.CodePages": "9.0.6",
+          "System.Windows.Extensions": "9.0.6"
         },
         "compile": {
           "ref/net9.0/System.Management.Automation.dll": {
@@ -13266,15 +13266,15 @@
         "version.txt"
       ]
     },
-    "Microsoft.PowerShell.CoreCLR.Eventing/7.5.1": {
-      "sha512": "qB+o/cHg40UaQeMuMicibWrLYvISOIcCBPVG5LJUaGq97EEMTosTvWxUzSOrv2qCnbnHZQEOFkx5ISnc3P4ufg==",
+    "Microsoft.PowerShell.CoreCLR.Eventing/7.5.2": {
+      "sha512": "HEGIFgdH00wDi8c2Eaf8LuoVL6i3lq82O0Q8ByREEi6IfYtHniuswRFo9WOklHMpv4aZX9MdeiNN/ebeOUvpWg==",
       "type": "package",
-      "path": "microsoft.powershell.coreclr.eventing/7.5.1",
+      "path": "microsoft.powershell.coreclr.eventing/7.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Powershell_black_64.png",
-        "microsoft.powershell.coreclr.eventing.7.5.1.nupkg.sha512",
+        "microsoft.powershell.coreclr.eventing.7.5.2.nupkg.sha512",
         "microsoft.powershell.coreclr.eventing.nuspec",
         "ref/net9.0/Microsoft.PowerShell.CoreCLR.Eventing.dll",
         "ref/net9.0/Microsoft.PowerShell.CoreCLR.Eventing.xml",
@@ -17043,10 +17043,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Management.Automation/7.5.1": {
-      "sha512": "RZixtBufFUEtt2s2/BXovg16cxjtp4D/oa3fG4LfCWyrhebyGSB8892nAJdnkvWRCs0/qPAynwa+9nowBt544Q==",
+    "System.Management.Automation/7.5.2": {
+      "sha512": "blBOGSal9OpK2KknHf2Vf1tIQQqolD7mo70vyL8vs64FW2lKyTFxcuFEoZY/4tbGbwRmuepb6+1DLLymQVYkJw==",
       "type": "package",
-      "path": "system.management.automation/7.5.1",
+      "path": "system.management.automation/7.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -17055,7 +17055,7 @@
         "ref/net9.0/System.Management.Automation.xml",
         "runtimes/unix/lib/net9.0/System.Management.Automation.dll",
         "runtimes/win/lib/net9.0/System.Management.Automation.dll",
-        "system.management.automation.7.5.1.nupkg.sha512",
+        "system.management.automation.7.5.2.nupkg.sha512",
         "system.management.automation.nuspec"
       ]
     },
@@ -19999,7 +19999,7 @@
       "System.IO.FileSystem >= 4.3.0",
       "System.Linq >= 4.3.0",
       "System.Management >= 9.0.6",
-      "System.Management.Automation >= 7.5.1",
+      "System.Management.Automation >= 7.5.2",
       "System.Net.Http >= 4.3.4",
       "System.ObjectModel >= 4.3.0",
       "System.Reflection >= 4.3.0",
@@ -20242,7 +20242,7 @@
           },
           "System.Management.Automation": {
             "target": "Package",
-            "version": "[7.5.1, )"
+            "version": "[7.5.2, )"
           },
           "System.Net.Http": {
             "target": "Package",

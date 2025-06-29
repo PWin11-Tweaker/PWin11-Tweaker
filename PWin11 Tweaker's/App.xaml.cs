@@ -16,12 +16,14 @@ namespace PWin11_Tweaker_s
         public static MainWindow? MainWindowInstance { get; private set; }
 
         public DispatcherQueue DispatcherQueue { get; private set; }
+        public static Window MainWindow { get; internal set; }
 
         public App()
         {
             try
             {
                 this.InitializeComponent();
+
                 System.Diagnostics.Debug.WriteLine("App: Инициализация завершена.");
                 LocalizationManager.Initialize();
                 DispatcherQueue = DispatcherQueue.GetForCurrentThread();
