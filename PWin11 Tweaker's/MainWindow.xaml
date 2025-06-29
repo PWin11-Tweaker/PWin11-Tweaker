@@ -9,11 +9,25 @@
     mc:Ignorable="d">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TitleBar x:Name="SimpleTitleBar"
+                  Title="PWin11 Tweaker"
+                  Grid.Row="0">
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="/Assets/icon4.png" />
+            </TitleBar.IconSource>
+        </TitleBar>
         <NavigationView x:Name="NavView"
                         PaneDisplayMode="Top"
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
-                        ItemInvoked="NavView_ItemInvoked">
+                        ItemInvoked="NavView_ItemInvoked"
+                        Grid.Row="1">
             <NavigationView.Resources>
                 <Style TargetType="FontIcon">
                     <Setter Property="FontSize" Value="20"/>
@@ -21,7 +35,6 @@
                 </Style>
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <!-- Кнопки для панели -->
                 <NavigationViewItem x:Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
@@ -57,10 +70,8 @@
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <!-- Button For Panel -->
                 <NavigationViewItemSeparator/>
             </NavigationView.MenuItems>
-            <!-- Анимация -->
             <Frame x:Name="ContentFrame" Margin="20">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
@@ -72,7 +83,6 @@
                     </TransitionCollection>
                 </Frame.ContentTransitions>
             </Frame>
-            <!-- Animation -->
         </NavigationView>
 
         <TextBlock x:Name="AdminWarningText" 
@@ -83,6 +93,7 @@
                    Visibility="Collapsed" 
                    VerticalAlignment="Bottom" 
                    HorizontalAlignment="Center" 
-                   Margin="0,0,0,10"/>
+                   Margin="0,0,0,10"
+                   Grid.Row="2"/>
     </Grid>
 </Window>

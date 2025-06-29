@@ -25,11 +25,15 @@ namespace PWin11_Tweaker_s
         {
             try
             {
+
+                // Hides the default system title bar.
+                ExtendsContentIntoTitleBar = true;
+                // Replace system title bar with the WinUI TitleBar control. 
+                SetTitleBar(SimpleTitleBar);
                 Debug.WriteLine("MainWindow: Starting initialization.");
                 this.InitializeComponent();
                 Debug.WriteLine("MainWindow: InitializeComponent completed.");
 
-                // Set Acrylic backdrop
                 try
                 {
                     this.SystemBackdrop = acrylicBackdrop;
@@ -43,7 +47,6 @@ namespace PWin11_Tweaker_s
                 SetCustomIcon();
                 CheckAdminRights();
 
-                // Initialize navigation
                 DispatcherQueue.TryEnqueue(() =>
                 {
                     try
@@ -256,4 +259,5 @@ namespace PWin11_Tweaker_s
             }
         }
     }
+
 }
