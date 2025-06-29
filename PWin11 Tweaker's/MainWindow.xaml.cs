@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.UI;
+﻿using Microsoft.UI;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Animation; // Добавляем для DrillInNavigationTransitionInfo
-using Microsoft.UI.Dispatching;
-using Microsoft.UI.Windowing;
-using Windows.Storage;
+using Microsoft.UI.Xaml.Media.Animation;
+using PWin11_Tweaker_s.TempCleaner;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Principal;
-using Windows.UI.ViewManagement;
+using Windows.Storage;
 using WinRT.Interop;
-using PWin11_Tweaker_s.TempCleaner;
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class MainWindow : Window
     {
-        private MicaBackdrop micaBackdrop = new MicaBackdrop();
+        private readonly DesktopAcrylicBackdrop acrylicBackdrop = new DesktopAcrylicBackdrop();
         private const string ThemePreferenceKey = "ThemePreference";
         private AppWindow? appWindow;
 
@@ -26,46 +25,75 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("MainWindow: Начало инициализации.");
+                Debug.WriteLine("MainWindow: Starting initialization.");
                 this.InitializeComponent();
-                System.Diagnostics.Debug.WriteLine("MainWindow: InitializeComponent завершён.");
+                Debug.WriteLine("MainWindow: InitializeComponent completed.");
 
-                this.SystemBackdrop = micaBackdrop;
-                System.Diagnostics.Debug.WriteLine("MainWindow: MicaBackdrop установлен.");
+                // Set Acrylic backdrop
+                try
+                {
+                    this.SystemBackdrop = acrylicBackdrop;
+                    Debug.WriteLine("MainWindow: DesktopAcrylicBackdrop set.");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"MainWindow: Failed to set DesktopAcrylicBackdrop, using XAML Acrylic fallback. Error: {ex.Message}");
+                }
+
                 SetCustomIcon();
-
                 CheckAdminRights();
 
+                // Initialize navigation
                 DispatcherQueue.TryEnqueue(() =>
                 {
                     try
                     {
-                        ContentFrame.Navigate(typeof(HomePage), null, new DrillInNavigationTransitionInfo());
-                        NavView.SelectedItem = NavView.MenuItems[0];
-                        System.Diagnostics.Debug.WriteLine("MainWindow: Начальная страница установлена.");
+                        if (Type.GetType("PWin11_Tweaker_s.HomePage") != null)
+                        {
+                            ContentFrame.Navigate(typeof(HomePage), null, new DrillInNavigationTransitionInfo());
+                            NavView.SelectedItem = NavView.MenuItems[0];
+                            Debug.WriteLine("MainWindow: Navigated to HomePage.");
+                        }
+                        else
+                        {
+                            Debug.WriteLine("MainWindow: HomePage type not found.");
+                            ContentFrame.Content = new TextBlock
+                            {
+                                Text = "Error: HomePage not found. Please check page definitions.",
+                                Foreground = new SolidColorBrush(Colors.Red),
+                                HorizontalAlignment = HorizontalAlignment.Center,
+                                VerticalAlignment = VerticalAlignment.Center
+                            };
+                        }
                     }
                     catch (Exception ex)
                     {
-                        System.Diagnostics.Debug.WriteLine($"MainWindow: Ошибка при навигации на HomePage: {ex.Message}");
+                        Debug.WriteLine($"MainWindow: Error navigating to HomePage: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                        ContentFrame.Content = new TextBlock
+                        {
+                            Text = $"Navigation Error: {ex.Message}",
+                            Foreground = new SolidColorBrush(Colors.Red),
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Center
+                        };
                     }
                 });
-
-                App.InitializeMainWindow(this);
 
                 appWindow = GetAppWindowForCurrentWindow();
                 if (appWindow != null)
                 {
                     appWindow.Title = "PWin11";
                     appWindow.SetIcon("Assets/icon4.ico");
+                    Debug.WriteLine("MainWindow: AppWindow title and icon set.");
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("MainWindow: Не удалось инициализировать appWindow.");
+                    Debug.WriteLine("MainWindow: Failed to initialize AppWindow.");
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"MainWindow: Ошибка при инициализации: {ex.Message}");
+                Debug.WriteLine($"MainWindow: Initialization error: {ex.Message}\nStackTrace: {ex.StackTrace}");
             }
         }
 
@@ -85,12 +113,12 @@ namespace PWin11_Tweaker_s
                     WindowsPrincipal principal = new WindowsPrincipal(identity);
                     bool isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
                     AdminWarningText.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
-                    System.Diagnostics.Debug.WriteLine($"MainWindow: Приложение запущено с правами администратора: {isAdmin}");
+                    Debug.WriteLine($"MainWindow: Running with admin privileges: {isAdmin}");
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"MainWindow: Ошибка при проверке прав администратора: {ex.Message}");
+                Debug.WriteLine($"MainWindow: Error checking admin rights: {ex.Message}");
                 AdminWarningText.Visibility = Visibility.Visible;
             }
         }
@@ -99,16 +127,16 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                var windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(this);
+                var windowHandle = WindowNative.GetWindowHandle(this);
                 var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
                 var appWindow = AppWindow.GetFromWindowId(windowId);
                 string iconPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "logo.ico");
                 appWindow.SetIcon(iconPath);
-                System.Diagnostics.Debug.WriteLine("MainWindow: Кастомная иконка установлена.");
+                Debug.WriteLine("MainWindow: Custom icon set.");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"MainWindow.SetCustomIcon: Ошибка: {ex.Message}");
+                Debug.WriteLine($"MainWindow.SetCustomIcon: Error: {ex.Message}");
             }
         }
 
@@ -116,24 +144,24 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Начало обработки события навигации.");
+                Debug.WriteLine("NavView_ItemInvoked: Handling navigation event.");
 
                 if (ContentFrame == null)
                 {
-                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Ошибка: ContentFrame не инициализирован.");
+                    Debug.WriteLine("NavView_ItemInvoked: Error: ContentFrame is not initialized.");
                     return;
                 }
 
                 if (args.IsSettingsInvoked)
                 {
-                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Переход на страницу настроек (SettingsPage).");
+                    Debug.WriteLine("NavView_ItemInvoked: Navigating to SettingsPage.");
                     if (ContentFrame.CurrentSourcePageType != typeof(SettingsPage))
                     {
                         ContentFrame.Navigate(typeof(SettingsPage), null, new DrillInNavigationTransitionInfo());
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Уже на странице SettingsPage, навигация не требуется.");
+                        Debug.WriteLine("NavView_ItemInvoked: Already on SettingsPage, no navigation needed.");
                     }
                     return;
                 }
@@ -141,18 +169,18 @@ namespace PWin11_Tweaker_s
                 var invokedItem = args.InvokedItemContainer as NavigationViewItem;
                 if (invokedItem == null)
                 {
-                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Ошибка: InvokedItemContainer не является NavigationViewItem.");
+                    Debug.WriteLine("NavView_ItemInvoked: Error: InvokedItemContainer is not a NavigationViewItem.");
                     return;
                 }
 
                 string? tag = invokedItem.Tag?.ToString();
                 if (string.IsNullOrEmpty(tag))
                 {
-                    System.Diagnostics.Debug.WriteLine("NavView_ItemInvoked: Ошибка: Тег элемента пустой или null.");
+                    Debug.WriteLine("NavView_ItemInvoked: Error: Item tag is empty or null.");
                     return;
                 }
 
-                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Выбран тег: {tag}");
+                Debug.WriteLine($"NavView_ItemInvoked: Selected tag: {tag}");
 
                 var pageMap = new Dictionary<string, Type>
                 {
@@ -162,28 +190,43 @@ namespace PWin11_Tweaker_s
                     { "InterfacePage", typeof(InterfacePage) },
                     { "PerformancePage", typeof(PerformancePage) },
                     { "PrivacyPage", typeof(PrivacyPage) },
-                    { "TempCleanerPage", typeof(TempCleanerPage)},
+                    { "TempCleanerPage", typeof(TempCleanerPage) }
                 };
 
                 if (!pageMap.TryGetValue(tag, out Type? pageType) || pageType == null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Ошибка: Неизвестный тег '{tag}'.");
+                    Debug.WriteLine($"NavView_ItemInvoked: Error: Unknown tag '{tag}'.");
+                    ContentFrame.Content = new TextBlock
+                    {
+                        Text = $"Error: Page for tag '{tag}' not found.",
+                        Foreground = new SolidColorBrush(Colors.Red),
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
                     return;
                 }
 
-                if (ContentFrame.CurrentSourcePageType == pageType)
+                if (ContentFrame.CurrentSourcePageType != pageType)
                 {
-                    System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Уже на странице {pageType.Name}, навигация не требуется.");
-                    return;
+                    Debug.WriteLine($"NavView_ItemInvoked: Navigating to {pageType.Name}.");
+                    ContentFrame.Navigate(pageType, null, new DrillInNavigationTransitionInfo());
+                    Debug.WriteLine($"NavView_ItemInvoked: Navigation to {pageType.Name} completed.");
                 }
-
-                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Переход на страницу {pageType.Name}.");
-                ContentFrame.Navigate(pageType, null, new DrillInNavigationTransitionInfo());
-                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Навигация на {pageType.Name} выполнена успешно.");
+                else
+                {
+                    Debug.WriteLine($"NavView_ItemInvoked: Already on {pageType.Name}, no navigation needed.");
+                }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"NavView_ItemInvoked: Ошибка при навигации: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"NavView_ItemInvoked: Navigation error: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                ContentFrame.Content = new TextBlock
+                {
+                    Text = $"Navigation Error: {ex.Message}",
+                    Foreground = new SolidColorBrush(Colors.Red),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
             }
         }
 
@@ -191,25 +234,25 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("MainWindow.ToggleTheme: Переключаем тему.");
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                Debug.WriteLine("MainWindow.ToggleTheme: Switching theme.");
+                var localSettings = ApplicationData.Current.LocalSettings;
                 var currentTheme = ((FrameworkElement)this.Content).RequestedTheme;
                 if (currentTheme == ElementTheme.Dark)
                 {
-                    System.Diagnostics.Debug.WriteLine("MainWindow.ToggleTheme: Устанавливаем светлую тему.");
+                    Debug.WriteLine("MainWindow.ToggleTheme: Setting light theme.");
                     ((FrameworkElement)this.Content).RequestedTheme = ElementTheme.Light;
                     localSettings.Values[ThemePreferenceKey] = "Light";
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("MainWindow.ToggleTheme: Устанавливаем тёмную тему.");
+                    Debug.WriteLine("MainWindow.ToggleTheme: Setting dark theme.");
                     ((FrameworkElement)this.Content).RequestedTheme = ElementTheme.Dark;
                     localSettings.Values[ThemePreferenceKey] = "Dark";
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"MainWindow.ToggleTheme: Ошибка: {ex.Message}");
+                Debug.WriteLine($"MainWindow.ToggleTheme: Error: {ex.Message}");
             }
         }
     }
