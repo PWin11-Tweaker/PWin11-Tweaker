@@ -35,7 +35,7 @@ Tweaker for OS: Windows 11
 4. Explore: Navigate through the menu to access optimization, cleanup, and customization options.
 ## About The Project
 
-![Tweaker](https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/PWin11_Tweaker's_oCT4F3NQYJ.png?raw=true)
+![Tweaker](https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/screenPWin11.png?raw=true)
 
 PWin11 Tweaker is a lightweight, open-source utility that allows you to tweak various aspects of Windows 11 without delving into complex system settings or third-party software. With a focus on performance optimization, system cleanup, privacy protection, and interface customization, this tool simplifies the process of tailoring your OS to your specific needs. The intuitive navigation and responsive design make it accessible to everyone, while advanced options cater to tech enthusiasts.
 
