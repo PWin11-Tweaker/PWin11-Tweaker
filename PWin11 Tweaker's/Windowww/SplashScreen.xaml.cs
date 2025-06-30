@@ -13,12 +13,10 @@ using PWin11_Tweaker_s.Script;
 using Microsoft.Windows.ApplicationModel.Resources;
 using System.Diagnostics;
 using Windows.System;
-
-// Определение класса для элементов массива твиков
 public class TweakCheck
 {
     public string Name { get; set; }
-    public Delegate CheckFunc { get; set; } // Используем Delegate как общий тип
+    public Delegate CheckFunc { get; set; }
 
     public TweakCheck(string name, Delegate checkFunc)
     {
