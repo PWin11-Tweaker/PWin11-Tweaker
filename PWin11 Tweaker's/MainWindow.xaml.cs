@@ -25,11 +25,13 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-
+                //FOR TITLEBAR
                 // Hides the default system title bar.
                 ExtendsContentIntoTitleBar = true;
                 // Replace system title bar with the WinUI TitleBar control. 
                 SetTitleBar(SimpleTitleBar);
+
+
                 Debug.WriteLine("MainWindow: Starting initialization.");
                 this.InitializeComponent();
                 Debug.WriteLine("MainWindow: InitializeComponent completed.");
