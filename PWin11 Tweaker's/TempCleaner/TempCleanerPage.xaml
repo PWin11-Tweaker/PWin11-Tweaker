@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="PWin11_Tweaker_s.TempCleaner.TempCleanerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -35,18 +34,30 @@
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock 
+            x:Name="UpdateWarningText"
             Grid.Row="0"
+            x:Uid="UpdateWarning" 
+            Foreground="Orange"
+            FontSize="14"
+            TextWrapping="Wrap"
+            Visibility="Collapsed"
+            HorizontalAlignment="Center"
+            Margin="0,10,0,20"/>
+
+        <TextBlock 
+            Grid.Row="1"
             x:Uid="TempPageTitle"
             FontSize="24"
             FontWeight="Bold"
             Margin="0,0,0,20"/>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,0,0,20">
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="0,0,0,20">
             <StackPanel>
                 <StackPanel Style="{StaticResource CheckBoxStackPanelStyle}">
                     <CheckBox 
@@ -167,7 +178,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal">
                 <Button 
                     x:Name="CleanButton" 

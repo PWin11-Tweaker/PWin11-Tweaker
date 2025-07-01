@@ -95,5 +95,18 @@
                    HorizontalAlignment="Center" 
                    Margin="0,0,0,10"
                    Grid.Row="2"/>
+
+
+        <TextBlock x:Name="UpdateWarningText" 
+                   x:Uid="UpdateWarning" 
+                   Text="Обнови Windows" 
+                   Foreground="Orange" 
+                   FontSize="14" 
+                   TextWrapping="Wrap" 
+                   Visibility="Collapsed" 
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,40"
+                   Grid.Row="2"/>
     </Grid>
 </Window>

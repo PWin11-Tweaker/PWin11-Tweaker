@@ -31,7 +31,6 @@ namespace PWin11_Tweaker_s
                 // Replace system title bar with the WinUI TitleBar control. 
                 SetTitleBar(SimpleTitleBar);
 
-
                 Debug.WriteLine("MainWindow: Starting initialization.");
                 this.InitializeComponent();
                 Debug.WriteLine("MainWindow: InitializeComponent completed.");
@@ -48,6 +47,7 @@ namespace PWin11_Tweaker_s
 
                 SetCustomIcon();
                 CheckAdminRights();
+                CheckWindowsVersion();
 
                 DispatcherQueue.TryEnqueue(() =>
                 {
@@ -260,6 +260,30 @@ namespace PWin11_Tweaker_s
                 Debug.WriteLine($"MainWindow.ToggleTheme: Error: {ex.Message}");
             }
         }
-    }
 
+        private void CheckWindowsVersion()
+        {
+            try
+            {
+                var osVersion = Environment.OSVersion.Version;
+                Debug.WriteLine($"MainWindow: Detected OS Version: {osVersion}");
+
+                if (osVersion.Major < 10 || (osVersion.Major == 10 && osVersion.Build < 26100))
+                {
+                    UpdateWarningText.Visibility = Visibility.Visible;
+                    Debug.WriteLine("MainWindow: Windows version is below 24H2. Showing update warning.");
+                }
+                else
+                {
+                    UpdateWarningText.Visibility = Visibility.Collapsed;
+                    Debug.WriteLine("MainWindow: Windows version is 24H2 or higher. No update warning.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"MainWindow: Error checking Windows version: {ex.Message}");
+                UpdateWarningText.Visibility = Visibility.Collapsed;
+            }
+        }
+    }
 }

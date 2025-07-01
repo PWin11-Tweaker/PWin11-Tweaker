@@ -658,4 +658,7 @@
   <data name="TweakWindowsSpeedUp.Text" xml:space="preserve">
     <value>Apply Windows Speed Up</value>
   </data>
+  <data name="UpdateWarning.Text" xml:space="preserve">
+    <value>Update Windows 11 to the latest release!</value>
+  </data>
 </root>
