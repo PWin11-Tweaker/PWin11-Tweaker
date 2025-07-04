@@ -33,6 +33,9 @@
             </ComboBox>
         </StackPanel>
 
+        <!-- Кнопка для Process Monitor -->
+        <Button x:Name="ProcessMonitorButton" Click="ProcessMonitorButton_Click" Margin="0,10,0,0" Content="Проверить"/>
+
         <!-- Кнопка применения -->
         <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Margin="0,10,0,0"/>
 

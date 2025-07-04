@@ -634,4 +634,19 @@
   <data name="UpdateWarning.Text" xml:space="preserve">
     <value>Обновите Windows 11 до последнего релиза!</value>
   </data>
+  <data name="Install_ProcessMonitor" xml:space="preserve">
+    <value>Установить Process Monitor</value>
+  </data>
+  <data name="Uninstall_ProcessMonitor" xml:space="preserve">
+    <value>Удалить Process Monitor</value>
+  </data>
+  <data name="Downloading_ProcessMonitor" xml:space="preserve">
+    <value>Скачивание Process Monitor...</value>
+  </data>
+  <data name="Installing_ProcessMonitor" xml:space="preserve">
+    <value>Установка Process Monitor...</value>
+  </data>
+  <data name="Uninstalling_ProcessMonitor" xml:space="preserve">
+    <value>Удаление Process Monitor...</value>
+  </data>
 </root>
