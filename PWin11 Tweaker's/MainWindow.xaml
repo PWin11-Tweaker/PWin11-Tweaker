@@ -87,7 +87,7 @@
 
         <TextBlock x:Name="AdminWarningText" 
                    x:Uid="AdminWarning" 
-                   Foreground="Red" 
+                   Foreground="WhiteSmoke" 
                    FontSize="14" 
                    TextWrapping="Wrap" 
                    Visibility="Collapsed" 
@@ -100,7 +100,7 @@
         <TextBlock x:Name="UpdateWarningText" 
                    x:Uid="UpdateWarning" 
                    Text="Обнови Windows" 
-                   Foreground="Orange" 
+                   Foreground="Red" 
                    FontSize="14" 
                    TextWrapping="Wrap" 
                    Visibility="Collapsed" 

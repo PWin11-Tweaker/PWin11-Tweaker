@@ -120,15 +120,15 @@ namespace PWin11_Tweaker_s.TempCleaner
         private void UpdateStatistics()
         {
             var resourceLoader = new ResourceLoader();
-            string stats = $"{resourceLoader.GetString("StatisticsLabel")}\n" +
-                           $"Temp: {FormatSize(_tempFilesSize)}\n" +
-                           $"Recycle Bin: {FormatSize(_recycleBinSize)}\n" +
-                           $"Browser Cache: {FormatSize(_browserCacheSize)}\n" +
-                           $"Windows Update: {FormatSize(_windowsUpdateCacheSize)}\n" +
-                           $"Thumbnails: {FormatSize(_thumbnailsSize)}\n" +
-                           $"Delivery Opt: {FormatSize(_deliveryOptSize)}\n" +
-                           $"System Logs: {FormatSize(_systemLogsSize)}\n" +
-                           $"Old Win Files: {FormatSize(_oldWinFilesSize)}\n" +
+            string stats = $"{resourceLoader.GetString("StatisticsLabel")}" +
+                           $"Temp: {FormatSize(_tempFilesSize)}" +
+                           $"Recycle Bin: {FormatSize(_recycleBinSize)}" +
+                           $"Browser Cache: {FormatSize(_browserCacheSize)}" +
+                           $"Windows Update: {FormatSize(_windowsUpdateCacheSize)}" +
+                           $"Thumbnails: {FormatSize(_thumbnailsSize)}" +
+                           $"Delivery Opt: {FormatSize(_deliveryOptSize)}" +
+                           $"System Logs: {FormatSize(_systemLogsSize)}" +
+                           $"Old Win Files: {FormatSize(_oldWinFilesSize)}" +
                            $"App Cache: {FormatSize(_appCacheSize)}";
             StatisticsText.Text = stats;
         }
