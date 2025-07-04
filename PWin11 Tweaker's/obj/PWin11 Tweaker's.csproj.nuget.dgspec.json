@@ -114,7 +114,7 @@
             },
             "Microsoft.Web.WebView2": {
               "target": "Package",
-              "version": "[1.0.3296.44, )"
+              "version": "[1.0.3351.48, )"
             },
             "Microsoft.Win32": {
               "target": "Package",
