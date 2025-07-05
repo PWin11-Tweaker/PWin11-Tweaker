@@ -6,8 +6,6 @@ using PWin11_Tweaker_s.Script;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,9 +14,7 @@ namespace PWin11_Tweaker_s
     public sealed partial class PerformancePage : Microsoft.UI.Xaml.Controls.Page
     {
         private readonly ResourceLoader resourceLoader;
-        private const string ProcessMonitorUrl = "https://download.sysinternals.com/files/ProcessMonitor.zip";
-        private const string InstallPath = @"Assets\ProcessMonitor";
-        private const string ExeName = "Procmon.exe";
+        private const string ProcessMonitorPath = @"Assets\ProcMon\ProcessMonitorPortable.exe";
 
         public PerformancePage()
         {
@@ -265,11 +261,11 @@ namespace PWin11_Tweaker_s
 
         private void UpdateProcessMonitorButton()
         {
-            string processMonitorPath = Path.Combine(AppContext.BaseDirectory, InstallPath, ExeName);
-            ProcessMonitorButton.Content = File.Exists(processMonitorPath)
-                ? resourceLoader.GetString("Uninstall_ProcessMonitor")
+            string fullPath = Path.Combine(AppContext.BaseDirectory, ProcessMonitorPath);
+            ProcessMonitorButton.Content = File.Exists(fullPath)
+                ? resourceLoader.GetString("Open_ProcessMonitor")
                 : resourceLoader.GetString("Install_ProcessMonitor");
-            Debug.WriteLine($"UpdateProcessMonitorButton: Статус кнопки обновлён, Process Monitor {(File.Exists(processMonitorPath) ? "установлен" : "не установлен")}");
+            Debug.WriteLine($"UpdateProcessMonitorButton: Статус кнопки обновлён, Process Monitor {(File.Exists(fullPath) ? "доступен" : "не доступен")}");
         }
 
         private async void ProcessMonitorButton_Click(object sender, RoutedEventArgs e)
@@ -282,81 +278,57 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
-                string processMonitorPath = Path.Combine(AppContext.BaseDirectory, InstallPath, ExeName);
+                string fullPath = Path.Combine(AppContext.BaseDirectory, ProcessMonitorPath);
 
-                if (File.Exists(processMonitorPath))
+                if (File.Exists(fullPath))
                 {
-                    // Удаление Process Monitor
-                    Debug.WriteLine("ProcessMonitorButton_Click: Начало удаления Process Monitor...");
-                    StatusText.Text = resourceLoader.GetString("Uninstalling_ProcessMonitor");
-                    ProgressBar.Value = 30;
+                    // Открытие программы от имени администратора
+                    Debug.WriteLine("ProcessMonitorButton_Click: Начало открытия Process Monitor...");
+                    StatusText.Text = resourceLoader.GetString("Opening_ProcessMonitor");
+                    ProgressBar.Value = 50;
                     await Task.Delay(100);
 
-                    string installDir = Path.Combine(AppContext.BaseDirectory, InstallPath);
-                    if (Directory.Exists(installDir))
+                    ProcessStartInfo psi = new ProcessStartInfo
                     {
-                        Directory.Delete(installDir, true);
-                        Debug.WriteLine($"ProcessMonitorButton_Click: Папка {installDir} удалена.");
-                    }
+                        FileName = fullPath,
+                        Verb = "runas", // Запуск с правами администратора
+                        UseShellExecute = true,
+                        CreateNoWindow = false
+                    };
 
-                    StatusText.Text = resourceLoader.GetString("Success");
-                    ProgressBar.Value = 100;
-                    await Task.Delay(500);
+                    using (Process process = Process.Start(psi))
+                    {
+                        if (process != null)
+                        {
+                            Debug.WriteLine("ProcessMonitorButton_Click: Process Monitor успешно запущен.");
+                        }
+                        else
+                        {
+                            throw new Exception("Не удалось запустить Process Monitor.");
+                        }
+                    }
                 }
                 else
                 {
-                    // Установка Process Monitor
-                    Debug.WriteLine("ProcessMonitorButton_Click: Начало установки Process Monitor...");
-                    StatusText.Text = resourceLoader.GetString("Downloading_ProcessMonitor");
-                    ProgressBar.Value = 10;
-                    await Task.Delay(100);
-
-                    string tempZipPath = Path.Combine(Path.GetTempPath(), "ProcessMonitor.zip");
-                    using (var client = new HttpClient())
-                    {
-                        client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
-                        var response = await client.GetAsync(ProcessMonitorUrl);
-                        if (!response.IsSuccessStatusCode)
-                        {
-                            throw new Exception($"Ошибка скачивания: {response.StatusCode}");
-                        }
-
-                        using (var fs = new FileStream(tempZipPath, FileMode.Create, FileAccess.Write))
-                        {
-                            await response.Content.CopyToAsync(fs);
-                        }
-                    }
-                    Debug.WriteLine($"ProcessMonitorButton_Click: Process Monitor скачан в {tempZipPath}");
-
-                    StatusText.Text = resourceLoader.GetString("Installing_ProcessMonitor");
-                    ProgressBar.Value = 40;
-                    await Task.Delay(100);
-
-                    string installDir = Path.Combine(AppContext.BaseDirectory, InstallPath);
-                    if (Directory.Exists(installDir))
-                        Directory.Delete(installDir, true);
-                    Directory.CreateDirectory(installDir);
-
-                    using (ZipArchive archive = ZipFile.OpenRead(tempZipPath))
-                    {
-                        foreach (ZipArchiveEntry entry in archive.Entries)
-                        {
-                            string destinationPath = Path.Combine(installDir, entry.FullName);
-                            if (entry.Name != "")
-                            {
-                                entry.ExtractToFile(destinationPath, true);
-                            }
-                        }
-                    }
-                    File.Delete(tempZipPath);
-                    Debug.WriteLine($"ProcessMonitorButton_Click: Process Monitor установлен в {installDir}");
-
-                    StatusText.Text = resourceLoader.GetString("Success");
+                    // Предупреждение о необходимости установки
+                    Debug.WriteLine("ProcessMonitorButton_Click: Process Monitor не найден.");
+                    StatusText.Text = resourceLoader.GetString("Error_ProcessMonitorNotFound");
                     ProgressBar.Value = 100;
                     await Task.Delay(500);
+
+                    var dialog = new ContentDialog
+                    {
+                        Title = resourceLoader.GetString("Dialog_Error_Title"),
+                        Content = resourceLoader.GetString("Error_ProcessMonitorNotFound_Message"),
+                        CloseButtonText = "OK",
+                        XamlRoot = this.XamlRoot
+                    };
+                    await dialog.ShowAsync();
                 }
 
-                UpdateProcessMonitorButton();
+                StatusText.Text = resourceLoader.GetString("Success");
+                ProgressBar.Value = 100;
+                await Task.Delay(500);
             }
             catch (Exception ex)
             {

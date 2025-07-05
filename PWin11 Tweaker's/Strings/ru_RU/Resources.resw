@@ -307,7 +307,7 @@
     <value>Применение изменений</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Готово! Перезагрузите систему</value>
+    <value>Готово!</value>
   </data>
   <data name="Success_Title_Interface" xml:space="preserve">
     <value>Настройки интерфейса успешно применены!</value>
@@ -648,5 +648,17 @@
   </data>
   <data name="Uninstalling_ProcessMonitor" xml:space="preserve">
     <value>Удаление Process Monitor...</value>
+  </data>
+  <data name="Open_ProcessMonitor" xml:space="preserve">
+    <value>Открыть Process Monitor</value>
+  </data>
+  <data name="Opening_ProcessMonitor" xml:space="preserve">
+    <value>Открытие Process Monitor....</value>
+  </data>
+  <data name="Error_ProcessMonitorNotFound" xml:space="preserve">
+    <value>Process Monitor не найден</value>
+  </data>
+  <data name="Error_ProcessMonitorNotFound_Message" xml:space="preserve">
+    <value>Пожалуйста, установите Process Monitor в папку Assets\ProcMon</value>
   </data>
 </root>
