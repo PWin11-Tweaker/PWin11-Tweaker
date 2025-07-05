@@ -307,7 +307,7 @@
     <value>Applying the changes</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Ready! Restart the system</value>
+    <value>Ready!</value>
   </data>
   <data name="Success_Title_Interface" xml:space="preserve">
     <value>The interface settings have been successfully applied!</value>
@@ -675,5 +675,17 @@
   </data>
   <data name="Uninstalling_ProcessMonitor" xml:space="preserve">
     <value>Deleting the Process Monitor...</value>
+  </data>
+  <data name="Open_ProcessMonitor" xml:space="preserve">
+    <value>Open Process Monitor</value>
+  </data>
+  <data name="Opening_ProcessMonitor" xml:space="preserve">
+    <value>Opening Process Monitor...</value>
+  </data>
+  <data name="Error_ProcessMonitorNotFound" xml:space="preserve">
+    <value>Process Monitor Not Found</value>
+  </data>
+  <data name="Error_ProcessMonitorNotFound_Message" xml:space="preserve">
+    <value>Please install Process Monitor in the folder Assets\ProcMon</value>
   </data>
 </root>
