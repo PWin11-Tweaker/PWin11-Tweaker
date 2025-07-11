@@ -100,4 +100,6 @@ docs this means there were changes in the documentation or in the Readme files.
 fix means that there were updates without a version, but a quick fix for an error that was in the project, then it will be in the subrelease
 
 X.X.X.X-1-9 this means how many changes there were in the version
-
+<div align="center">
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/bg.png?raw=true" width="500"/>
+</div>
