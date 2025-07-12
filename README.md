@@ -5,7 +5,8 @@
 <h3 align="center">PWin11 Tweaker</h3>
 <p align="center">
 Tweaker for OS: Windows 11
-<br/>   
+<br/>
+<string>Language: Eng, Rus</string>   
 <img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar95.png?raw=true" width="500"/>
 <br/>
 <a>   85% / 100%   </a>
