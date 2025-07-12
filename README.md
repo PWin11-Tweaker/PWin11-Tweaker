@@ -101,5 +101,6 @@ fix means that there were updates without a version, but a quick fix for an erro
 
 X.X.X.X-1-9 this means how many changes there were in the version
 <div align="center">
+<string>This project is not Russian, this project is global</string>
 <img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/bg.png?raw=true" width="500"/>
 </div>
