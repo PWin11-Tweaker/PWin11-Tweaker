@@ -37,37 +37,37 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <BitmapIcon UriSource="/Assets/icons_nav/home.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Explorer" Tag="ExplorerPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <BitmapIcon UriSource="/Assets/icons_nav/explorer.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="System" Tag="SystemPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <BitmapIcon UriSource="/Assets/icons_nav/system.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <BitmapIcon UriSource="/Assets/icons_nav/interface.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <BitmapIcon UriSource="/Assets/icons_nav/performans.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                        <BitmapIcon UriSource="/Assets/icons_nav/privacy.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="TempCleaner" Tag="TempCleanerPage">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="" />
+                        <BitmapIcon UriSource="/Assets/icons_nav/trash.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator/>
