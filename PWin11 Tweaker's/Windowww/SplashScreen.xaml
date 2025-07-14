@@ -8,18 +8,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:media="using:Microsoft.UI.Xaml.Media"
-    mc:Ignorable="d"
-    Title="Wait...">
+    mc:Ignorable="d">
     <Window.SystemBackdrop>
         <media:MicaBackdrop />
     </Window.SystemBackdrop>
+
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <muxc:TitleBar x:Name="SimpleTitleBar"
+                       Title="PWin11 Tweaker"
+                       Grid.Row="0">
+            <muxc:TitleBar.IconSource>
+                <muxc:ImageIconSource ImageSource="/Assets/icon4.png" />
+            </muxc:TitleBar.IconSource>
+        </muxc:TitleBar>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid Width="120" Height="120">
                 <Image
                        Source="/Assets/logo4.gif"
@@ -55,7 +64,7 @@
             x:Name="FeedbackButton" 
             x:Uid="FeedbackButton" 
             Click="FeedbackButton_Click" 
-            Grid.Row="1"
+            Grid.Row="2"
             HorizontalAlignment="Center"
             Margin="0,10,0,10"/>
     </Grid>

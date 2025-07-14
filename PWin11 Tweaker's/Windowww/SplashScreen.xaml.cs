@@ -13,6 +13,7 @@ using PWin11_Tweaker_s.Script;
 using Microsoft.Windows.ApplicationModel.Resources;
 using System.Diagnostics;
 using Windows.System;
+
 public class TweakCheck
 {
     public string Name { get; set; }
@@ -37,7 +38,8 @@ namespace PWin11_Tweaker_s
             try
             {
                 this.InitializeComponent();
-
+                ExtendsContentIntoTitleBar = true;
+                SetTitleBar(SimpleTitleBar);
                 IntPtr hWnd = WindowNative.GetWindowHandle(this);
                 WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
                 _appWindow = AppWindow.GetFromWindowId(windowId);
@@ -46,12 +48,6 @@ namespace PWin11_Tweaker_s
                 if (_appWindow != null)
                 {
                     _appWindow.Resize(new Windows.Graphics.SizeInt32(300, 300));
-
-                    if (_appWindow.Presenter is OverlappedPresenter presenter)
-                    {
-                        presenter.SetBorderAndTitleBar(false, false);
-                    }
-
                     CenterWindow();
                 }
                 else
