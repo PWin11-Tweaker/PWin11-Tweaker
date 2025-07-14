@@ -5,12 +5,12 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\ph1nc\.nuget\packages\;D:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\ph1ncyn\.nuget\packages\;D:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.14.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\ph1nc\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\ph1ncyn\.nuget\packages\" />
     <SourceRoot Include="D:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
@@ -20,15 +20,15 @@
     <Import Project="$(NuGetPackageRoot)microsoft.windows.wdk.win32metadata\0.12.8-experimental\buildTransitive\netstandard1.0\Microsoft.Windows.WDK.Win32Metadata.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.wdk.win32metadata\0.12.8-experimental\buildTransitive\netstandard1.0\Microsoft.Windows.WDK.Win32Metadata.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.win32docs\0.1.42-alpha\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Docs.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.win32docs\0.1.42-alpha\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Docs.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.183\build\netstandard1.0\Microsoft.Windows.CsWin32.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.183\build\netstandard1.0\Microsoft.Windows.CsWin32.props')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.6\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.6\build\Microsoft.NET.ILLink.Tasks.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.7\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.7\build\Microsoft.NET.ILLink.Tasks.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\ph1nc\.nuget\packages\microsoft.web.webview2\1.0.3351.48</PkgMicrosoft_Web_WebView2>
-    <PkgMicrosoft_WindowsAppSDK Condition=" '$(PkgMicrosoft_WindowsAppSDK)' == '' ">C:\Users\ph1nc\.nuget\packages\microsoft.windowsappsdk\1.7.250606001</PkgMicrosoft_WindowsAppSDK>
-    <PkgMicrosoft_Windows_CsWin32 Condition=" '$(PkgMicrosoft_Windows_CsWin32)' == '' ">C:\Users\ph1nc\.nuget\packages\microsoft.windows.cswin32\0.3.183</PkgMicrosoft_Windows_CsWin32>
-    <PkgMicrosoft_NET_ILLink_Tasks Condition=" '$(PkgMicrosoft_NET_ILLink_Tasks)' == '' ">C:\Users\ph1nc\.nuget\packages\microsoft.net.illink.tasks\9.0.6</PkgMicrosoft_NET_ILLink_Tasks>
-    <PkgCommunityToolkit_WinUI_UI_Controls_Primitives Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Primitives)' == '' ">C:\Users\ph1nc\.nuget\packages\communitytoolkit.winui.ui.controls.primitives\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Primitives>
-    <PkgCommunityToolkit_WinUI_UI_Controls_Core Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Core)' == '' ">C:\Users\ph1nc\.nuget\packages\communitytoolkit.winui.ui.controls.core\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Core>
-    <PkgCommunityToolkit_WinUI_UI_Controls_Markdown Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Markdown)' == '' ">C:\Users\ph1nc\.nuget\packages\communitytoolkit.winui.ui.controls.markdown\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Markdown>
+    <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.web.webview2\1.0.3351.48</PkgMicrosoft_Web_WebView2>
+    <PkgMicrosoft_WindowsAppSDK Condition=" '$(PkgMicrosoft_WindowsAppSDK)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.windowsappsdk\1.7.250606001</PkgMicrosoft_WindowsAppSDK>
+    <PkgMicrosoft_Windows_CsWin32 Condition=" '$(PkgMicrosoft_Windows_CsWin32)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.windows.cswin32\0.3.183</PkgMicrosoft_Windows_CsWin32>
+    <PkgMicrosoft_NET_ILLink_Tasks Condition=" '$(PkgMicrosoft_NET_ILLink_Tasks)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.net.illink.tasks\9.0.7</PkgMicrosoft_NET_ILLink_Tasks>
+    <PkgCommunityToolkit_WinUI_UI_Controls_Primitives Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Primitives)' == '' ">C:\Users\ph1ncyn\.nuget\packages\communitytoolkit.winui.ui.controls.primitives\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Primitives>
+    <PkgCommunityToolkit_WinUI_UI_Controls_Core Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Core)' == '' ">C:\Users\ph1ncyn\.nuget\packages\communitytoolkit.winui.ui.controls.core\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Core>
+    <PkgCommunityToolkit_WinUI_UI_Controls_Markdown Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Markdown)' == '' ">C:\Users\ph1ncyn\.nuget\packages\communitytoolkit.winui.ui.controls.markdown\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Markdown>
   </PropertyGroup>
 </Project>
