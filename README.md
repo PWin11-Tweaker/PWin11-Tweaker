@@ -90,8 +90,9 @@ Distributed under the MIT License. See [MIT License](https://github.com/PWin11-T
 
 ## Contact
 
-In telegram channel: tg on Eng lang: @PWin11_news and on Rus lang: @pwin11_news_rus
 My official tg channel: @ph1ncyn
+
+My mail: phancyncloud@gmail.com
 
 ## Versions:
 
