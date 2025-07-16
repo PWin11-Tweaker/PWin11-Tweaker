@@ -29,6 +29,7 @@
   <Resources>
     <Resource Language="ru-RU" />
     <Resource Language="en-US" />
+	<Resource Language="fr-FR"/>
   </Resources>
 
   <Applications>

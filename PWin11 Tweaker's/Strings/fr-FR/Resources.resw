@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apply.Content" xml:space="preserve">
+    <value>Appliquer</value>
+    <comment>Tous</comment>
+  </data>
+  <data name="ClassicContextMenu.Content" xml:space="preserve">
+    <value>Menu contextuel classique</value>
+    <comment>ExplorerPage.xaml</comment>
+  </data>
+  <data name="Coment_ClassicContextMenu.Content" xml:space="preserve">
+    <value>Restaure le menu contextuel classique de Windows 10</value>
+    <comment>ExplorerPage.xaml</comment>
+  </data>
+  <data name="Coment_ShowHiddenFiles.Content" xml:space="preserve">
+    <value>Active l'affichage des fichiers, dossiers et fichiers système cachés</value>
+    <comment>ExplorerPage.xaml</comment>
+  </data>
+  <data name="Coment_UseSmallCaptions.Content" xml:space="preserve">
+    <value>Réduit la taille des boutons Fermer/Enrouler/Dérouler</value>
+    <comment>ExplorerPage.xaml</comment>
+  </data>
+  <data name="Explorer.Content" xml:space="preserve">
+    <value>Explorateur</value>
+    <comment>MainWindow.xaml</comment>
+  </data>
+  <data name="Home.Content" xml:space="preserve">
+    <value>Accueil</value>
+    <comment>MainWindow.xaml</comment>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Français</value>
+    <comment>Par défaut</comment>
+  </data>
+  <data name="ShowHiddenFiles.Content" xml:space="preserve">
+    <value>Afficher les fichiers cachés</value>
+    <comment>ExplorerPage.xaml</comment>
+  </data>
+  <data name="Status.Text" xml:space="preserve">
+    <value>En cours...</value>
+    <comment>ExplorerPage.xaml</comment>
+  </data>
+  <data name="Text_Settings.Text" xml:space="preserve">
+    <value>Page des paramètres</value>
+    <comment>SettingsPage.xaml</comment>
+  </data>
+  <data name="UseSmallCaptions.Content" xml:space="preserve">
+    <value>Réduire la taille des boutons de contrôle de la fenêtre</value>
+    <comment>ExplorerPage.xaml</comment>
+  </data>
+  <data name="Content_Button_StartAllBack" xml:space="preserve">
+    <value>Installer StartAllBack</value>
+  </data>
+  <data name="Content_Button_StartAllBack_Uninstall" xml:space="preserve">
+    <value>Supprimer StartAllBack</value>
+  </data>
+  <data name="StatusText_Preparing" xml:space="preserve">
+    <value>Préparation...</value>
+  </data>
+  <data name="StatusText_DownloadingStartAllBack" xml:space="preserve">
+    <value>Téléchargement de StartAllBack...</value>
+  </data>
+  <data name="StatusText_InstallingStartAllBack" xml:space="preserve">
+    <value>Installation de StartAllBack...</value>
+  </data>
+  <data name="StatusText_CleaningTempFiles" xml:space="preserve">
+    <value>Nettoyage des fichiers temporaires...</value>
+  </data>
+  <data name="StatusText_ApplyingStartAllBackSettings" xml:space="preserve">
+    <value>Application des paramètres de StartAllBack...</value>
+  </data>
+  <data name="StatusText_TerminatingStartAllBack" xml:space="preserve">
+    <value>Arrêt des processus de StartAllBack...</value>
+  </data>
+  <data name="StatusText_UninstallingStartAllBack" xml:space="preserve">
+    <value>Tentative de désinstallation de StartAllBack...</value>
+  </data>
+  <data name="StatusText_SearchingUninstallString" xml:space="preserve">
+    <value>Recherche de la commande de désinstallation dans le registre...</value>
+  </data>
+  <data name="StatusText_CleaningRemainingFiles" xml:space="preserve">
+    <value>Nettoyage des fichiers restants...</value>
+  </data>
+  <data name="StatusText_UpdatingUI" xml:space="preserve">
+    <value>Mise à jour de l'interface...</value>
+  </data>
+  <data name="StatusText_SavingRegistryChanges" xml:space="preserve">
+    <value>Sauvegarde des modifications du registre...</value>
+  </data>
+  <data name="StatusText_ApplyingRegistryChanges" xml:space="preserve">
+    <value>Application des modifications du registre...</value>
+  </data>
+  <data name="StatusText_RestartingExplorer" xml:space="preserve">
+    <value>Redémarrage de l'Explorateur de fichiers...</value>
+  </data>
+  <data name="Dialog_Error_Title" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="Dialog_Error_Content" xml:space="preserve">
+    <value>Une erreur s'est produite</value>
+  </data>
+  <data name="Dialog_Success_Title" xml:space="preserve">
+    <value>Succès</value>
+  </data>
+  <data name="Dialog_Success_Content" xml:space="preserve">
+    <value>Les paramètres ont été appliqués avec succès ! L'Explorateur de fichiers a été redémarré. Un redémarrage du système peut être requis pour appliquer les modifications aux boutons de contrôle de la fenêtre et au style StartAllBack.</value>
+  </data>
+  <data name="Dialog_FailedApplySettings_Content" xml:space="preserve">
+    <value>Échec de l'application des paramètres. Vérifiez le journal :</value>
+  </data>
+  <data name="Dialog_CloseButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Error_DownloadFailed" xml:space="preserve">
+    <value>Échec du téléchargement de StartAllBack. Code d'état</value>
+  </data>
+  <data name="Error_InstallFailed" xml:space="preserve">
+    <value>Échec de l'installation de StartAllBack. Code d'erreur</value>
+  </data>
+  <data name="Error_InstallProcessFailed" xml:space="preserve">
+    <value>Échec du démarrage du processus d'installation de StartAllBack.</value>
+  </data>
+  <data name="Welcome.Text" xml:space="preserve">
+    <value>Bienvenue sur PWin11 Tweaker</value>
+  </data>
+  <data name="About.Text" xml:space="preserve">
+    <value>PWin11 Tweaker est un outil puissant pour configurer et optimiser Windows 11. Personnalisez le système, l'interface, la confidentialité et les performances avec des ajustements simples et conviviaux.</value>
+  </data>
+  <data name="Start_Use.Text" xml:space="preserve">
+    <value>Commencer avec ces paramètres 😍</value>
+  </data>
+  <data name="GoToPrivacyButton.Content" xml:space="preserve">
+    <value>Aller à la confidentialité</value>
+  </data>
+  <data name="System.Content" xml:space="preserve">
+    <value>Système</value>
+  </data>
+  <data name="Interface.Content" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="Performance.Content" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Privacy.Content" xml:space="preserve">
+    <value>Confidentialité</value>
+  </data>
+  <data name="TaskbarAlignment.Text" xml:space="preserve">
+    <value>Alignement de la barre des tâches :</value>
+  </data>
+  <data name="Center.Content" xml:space="preserve">
+    <value>Centre</value>
+  </data>
+  <data name="LeftTaskBar.Content" xml:space="preserve">
+    <value>Gauche</value>
+  </data>
+  <data name="SettingsInterface.Text" xml:space="preserve">
+    <value>Paramètres de l'interface</value>
+  </data>
+  <data name="TaskbarTransparency.Content" xml:space="preserve">
+    <value>Activer la transparence de la barre des tâches</value>
+  </data>
+  <data name="DisableAnimations.Content" xml:space="preserve">
+    <value>Désactiver les animations</value>
+  </data>
+  <data name="DisableSearchIndexing.Content" xml:space="preserve">
+    <value>Désactiver l'indexation des fichiers</value>
+  </data>
+  <data name="HideSearchButton.Content" xml:space="preserve">
+    <value>Masquer le bouton de recherche sur la barre des tâches</value>
+  </data>
+  <data name="AdminWarning.Text" xml:space="preserve">
+    <value>Pour que l'application fonctionne correctement, exécutez-la en tant qu'administrateur.</value>
+  </data>
+  <data name="SettingsPrivacy.Text" xml:space="preserve">
+    <value>Paramètres de confidentialité</value>
+  </data>
+  <data name="DisableTelemetry.Content" xml:space="preserve">
+    <value>Désactiver la télémétrie et la collecte de données</value>
+  </data>
+  <data name="DisableAdvertisingId.Content" xml:space="preserve">
+    <value>Désactiver l'ID publicitaire</value>
+  </data>
+  <data name="DisSendDiagDatatoMicrosoft.Content" xml:space="preserve">
+    <value>Désactiver l'envoi de données de diagnostic à Microsoft</value>
+  </data>
+  <data name="Preparation" xml:space="preserve">
+    <value>Préparation...</value>
+  </data>
+  <data name="Apply_Change" xml:space="preserve">
+    <value>Application des modifications</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Prêt !</value>
+  </data>
+  <data name="Success_Title_Interface" xml:space="preserve">
+    <value>Les paramètres de l'interface ont été appliqués avec succès !</value>
+  </data>
+  <data name="Performance_Settings.Text" xml:space="preserve">
+    <value>Paramètres de performance</value>
+  </data>
+  <data name="DisableVisualEffects.Content" xml:space="preserve">
+    <value>Désactiver les effets visuels (animations, ombres, etc.)</value>
+  </data>
+  <data name="DisableWindowsSearch.Content" xml:space="preserve">
+    <value>Désactiver le service de recherche Windows</value>
+  </data>
+  <data name="DisableSysMain.Content" xml:space="preserve">
+    <value>Désactiver le service SysMain (Superfetch)</value>
+  </data>
+  <data name="Power_Plan.Text" xml:space="preserve">
+    <value>Plan d'alimentation :</value>
+  </data>
+  <data name="MaxPerf.Content" xml:space="preserve">
+    <value>Performance maximale</value>
+  </data>
+  <data name="Balanced.Content" xml:space="preserve">
+    <value>Équilibré</value>
+  </data>
+  <data name="EnergySaving.Content" xml:space="preserve">
+    <value>Économie d'énergie</value>
+  </data>
+  <data name="Success_Title_Performance" xml:space="preserve">
+    <value>Les paramètres de performance ont été appliqués avec succès ! Certains changements peuvent nécessiter un redémarrage.</value>
+  </data>
+  <data name="Restore.Content" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="DisableAdvertisingComment.Content" xml:space="preserve">
+    <value>Empêche l'utilisation de l'ID pour la publicité personnalisée</value>
+  </data>
+  <data name="DisableLocation.Content" xml:space="preserve">
+    <value>Désactiver le suivi de localisation</value>
+  </data>
+  <data name="DisableLocationComment.Content" xml:space="preserve">
+    <value>Interdit aux applications et au système de détecter votre localisation</value>
+  </data>
+  <data name="DisableCortana.Content" xml:space="preserve">
+    <value>Désactiver Cortana</value>
+  </data>
+  <data name="DisableCortanaComment.Content" xml:space="preserve">
+    <value>Désactive l'assistant vocal et les services associés</value>
+  </data>
+  <data name="DisableBackgroundApps.Content" xml:space="preserve">
+    <value>Désactiver les applications en arrière-plan</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Interdit aux applications de s'exécuter en arrière-plan</value>
+  </data>
+  <data name="DisableCloudContent.Content" xml:space="preserve">
+    <value>Désactiver l'envoi de données au cloud (OneDrive, Suggestions)</value>
+  </data>
+  <data name="DisableCloudContentComment.Content" xml:space="preserve">
+    <value>Empêche l'envoi de données pour les suggestions et la synchronisation</value>
+  </data>
+  <data name="Success_Title_Privacy" xml:space="preserve">
+    <value>Les paramètres de confidentialité ont été appliqués avec succès ! Certains changements peuvent nécessiter un redémarrage.</value>
+  </data>
+  <data name="DisableBackgroundAppsComment.Content" xml:space="preserve">
+    <value>Interdit aux applications de s'exécuter en arrière-plan</value>
+  </data>
+  <data name="System_Settings.Text" xml:space="preserve">
+    <value>Paramètres système</value>
+  </data>
+  <data name="DisableServices.Content" xml:space="preserve">
+    <value>Désactiver les services inutiles</value>
+  </data>
+  <data name="DisableServicesComment.Content" xml:space="preserve">
+    <value>Désactiver : Recherche Windows, Fax, File d'attente d'impression, Registre à distance, Windows Update Medic.</value>
+  </data>
+  <data name="Optimization.Text" xml:space="preserve">
+    <value>Optimisation des services</value>
+  </data>
+  <data name="Secure.Text" xml:space="preserve">
+    <value>Sécurité</value>
+  </data>
+  <data name="DisableUAC.Content" xml:space="preserve">
+    <value>Désactiver le Contrôle de compte d'utilisateur (UAC)</value>
+  </data>
+  <data name="DisableUACComment.Content" xml:space="preserve">
+    <value>Désactive les demandes UAC pour plus de commodité (peut réduire la sécurité)</value>
+  </data>
+  <data name="PrivacyTitle.Text" xml:space="preserve">
+    <value>Confidentialité</value>
+  </data>
+  <data name="DisableClipboardHistory.Content" xml:space="preserve">
+    <value>Désactiver l'historique du presse-papiers</value>
+  </data>
+  <data name="DisableClipboardHistoryComment.Content" xml:space="preserve">
+    <value>Empêche Windows de sauvegarder l'historique du presse-papiers</value>
+  </data>
+  <data name="PerformanceTitle.Text" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="SpeedUPWin.Content" xml:space="preserve">
+    <value>Accélérer le fonctionnement de Windows</value>
+  </data>
+  <data name="SpeedUPWinComment.Content" xml:space="preserve">
+    <value>Désactive les animations et le délai du menu Démarrer pour accélérer le système</value>
+  </data>
+  <data name="pwin11.Text" xml:space="preserve">
+    <value>PWin11 Tweaker</value>
+  </data>
+  <data name="Startup.Content" xml:space="preserve">
+    <value>Démarrage et désinstallation des logiciels</value>
+  </data>
+  <data name="TempCleaner.Content" xml:space="preserve">
+    <value>Nettoyeur</value>
+  </data>
+  <data name="TempPageTitle.Text" xml:space="preserve">
+    <value>Nettoyage des fichiers temporaires</value>
+  </data>
+  <data name="TempCheckBoxTEMP.Content" xml:space="preserve">
+    <value>Fichiers temporaires (%TEMP%)</value>
+  </data>
+  <data name="TempPageCheckBoxTrash.Content" xml:space="preserve">
+    <value>Corbeille</value>
+  </data>
+  <data name="TempPageCacheBrowserCheckBox.Content" xml:space="preserve">
+    <value>Cache du navigateur</value>
+  </data>
+  <data name="CleanButton.Content" xml:space="preserve">
+    <value>Nettoyer</value>
+  </data>
+  <data name="TotalSizeLabel" xml:space="preserve">
+    <value>Total : {0}</value>
+  </data>
+  <data name="DisableFindMyDevice.Content" xml:space="preserve">
+    <value>Désactiver Localiser mon appareil</value>
+  </data>
+  <data name="DisableInsiderTelemetry.Content" xml:space="preserve">
+    <value>Désactiver la télémétrie Windows Insider</value>
+  </data>
+  <data name="DisableEdgeDiagnostics.Content" xml:space="preserve">
+    <value>Désactiver les diagnostics Microsoft Edge</value>
+  </data>
+  <data name="DisableSuggestedContent.Content" xml:space="preserve">
+    <value>Désactiver le contenu suggéré</value>
+  </data>
+  <data name="TweakInsiderTelemetry.Text" xml:space="preserve">
+    <value>Vérification de la désactivation de la télémétrie Windows Insider</value>
+  </data>
+  <data name="TweakEdgeDiagnostics.Text" xml:space="preserve">
+    <value>Vérification de la désactivation des diagnostics Microsoft Edge</value>
+  </data>
+  <data name="TweakSuggestedContent.Text" xml:space="preserve">
+    <value>Vérification de la désactivation du contenu suggéré</value>
+  </data>
+  <data name="DisableExplorerAdsToggle" xml:space="preserve">
+    <value>Désactiver les publicités dans l'Explorateur</value>
+  </data>
+  <data name="DisablePreviewPaneToggle" xml:space="preserve">
+    <value>Désactiver le panneau d'aperçu</value>
+  </data>
+  <data name="DisableFileGroupingToggle" xml:space="preserve">
+    <value>Désactiver le regroupement des fichiers</value>
+  </data>
+  <data name="ShowIconsOnlyToggle" xml:space="preserve">
+    <value>Afficher uniquement les icônes</value>
+  </data>
+  <data name="TweakDisableExplorerAds" xml:space="preserve">
+    <value>Vérification des publicités dans l'Explorateur...</value>
+  </data>
+  <data name="TweakDisablePreviewPane" xml:space="preserve">
+    <value>Vérification du panneau d'aperçu...</value>
+  </data>
+  <data name="TweakDisableFileGrouping" xml:space="preserve">
+    <value>Vérification du regroupement des fichiers...</value>
+  </data>
+  <data name="TweakShowIconsOnly" xml:space="preserve">
+    <value>Vérification du mode icônes uniquement...</value>
+  </data>
+  <data name="TempPageWindowsUpdateCacheCheckBox.Content" xml:space="preserve">
+    <value>Cache des mises à jour Windows</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="TempPageThumbnailsCheckBox.Content" xml:space="preserve">
+    <value>Miniatures</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="TotalSizeText.Text" xml:space="preserve">
+    <value>Total : {0}</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatusText.Text" xml:space="preserve">
+    <value>En cours...</value>
+    <comment>TempCleanerPage.xaml - Statut initial vide</comment>
+  </data>
+  <data name="StatusText_Cleaning.Text" xml:space="preserve">
+    <value>Nettoyage en cours...</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatusText_Completed.Text" xml:space="preserve">
+    <value>Nettoyage terminé.</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="ScheduleButton.Content" xml:space="preserve">
+    <value>Planifier le nettoyage</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="PreviewButton.Content" xml:space="preserve">
+    <value>Aperçu des fichiers</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="FeedbackButton.Content" xml:space="preserve">
+    <value>Signaler des bugs</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="StatisticsLabel.Text" xml:space="preserve">
+    <value>Statistiques :</value>
+    <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="OpenOldNewExplorer.Content" xml:space="preserve">
+    <value>Ouvrir OldNewExplorer</value>
+  </data>
+  <data name="DisableHomeFolder.Content" xml:space="preserve">
+    <value>Désactiver le dossier Accueil</value>
+  </data>
+  <data name="Coment_DisableHomeFolder.Content" xml:space="preserve">
+    <value>Désactive l'affichage du dossier "Accueil" dans l'Explorateur</value>
+  </data>
+  <data name="DisableGalleryFolder.Content" xml:space="preserve">
+    <value>Désactiver le dossier Galerie</value>
+  </data>
+  <data name="Coment_DisableGalleryFolder.Content" xml:space="preserve">
+    <value>Désactive l'affichage du dossier Galerie dans l'Explorateur</value>
+  </data>
+  <data name="Welcome_HomePage.Text" xml:space="preserve">
+    <value>Bienvenue sur PWin11</value>
+  </data>
+  <data name="PrivacyButton_HomePage.Content" xml:space="preserve">
+    <value>Paramètres de confidentialité</value>
+  </data>
+  <data name="PerformanceButton_HomePage.Content" xml:space="preserve">
+    <value>Paramètres de performance</value>
+  </data>
+  <data name="ExplorerButton_HomePage.Content" xml:space="preserve">
+    <value>Paramètres de l'Explorateur</value>
+  </data>
+  <data name="AboutText_Settings.Text" xml:space="preserve">
+    <value>PWin11 Tweaker est un utilitaire léger et open-source qui permet d'ajuster divers aspects de Windows 11 sans plonger dans des paramètres système complexes ou des logiciels tiers. Avec un accent sur l'optimisation des performances, le nettoyage du système, la protection de la confidentialité et la personnalisation de l'interface, cet outil simplifie le processus d'adaptation de votre OS à vos besoins spécifiques. La navigation intuitive et la conception réactive le rendent accessible à tous, tandis que les options avancées s'adressent aux passionnés de technologie.</value>
+  </data>
+  <data name="Small.Content" xml:space="preserve">
+    <value>Petit</value>
+  </data>
+  <data name="Large.Content" xml:space="preserve">
+    <value>Grand</value>
+  </data>
+  <data name="Medium.Content" xml:space="preserve">
+    <value>Moyen</value>
+  </data>
+  <data name="TaskbarSize.Text" xml:space="preserve">
+    <value>Taille de la barre des tâches</value>
+  </data>
+  <data name="TaskbarPosition.Text" xml:space="preserve">
+    <value>Position de la barre des tâches</value>
+  </data>
+  <data name="Top.Content" xml:space="preserve">
+    <value>Haut</value>
+  </data>
+  <data name="Bottom.Content" xml:space="preserve">
+    <value>Bas</value>
+  </data>
+  <data name="TempPageDeliveryOptCheckBox.Content" xml:space="preserve">
+    <value>Cache d'optimisation de distribution</value>
+  </data>
+  <data name="TempPageSystemLogsCheckBox.Content" xml:space="preserve">
+    <value>Fichiers de journal système</value>
+  </data>
+  <data name="TempPageOldWinFilesCheckBox.Content" xml:space="preserve">
+    <value>Anciens fichiers d'installation de Windows</value>
+  </data>
+  <data name="TempPageAppCacheCheckBox.Content" xml:space="preserve">
+    <value>Cache des applications</value>
+  </data>
+  <data name="TweakClassicContextMenu.Text" xml:space="preserve">
+    <value>Menu contextuel classique</value>
+  </data>
+  <data name="TweakShowHiddenFiles.Text" xml:space="preserve">
+    <value>Afficher les fichiers cachés</value>
+  </data>
+  <data name="TweakSmallCaptions.Text" xml:space="preserve">
+    <value>Réduire les boutons de contrôle de la fenêtre</value>
+  </data>
+  <data name="TweakStartAllBack.Text" xml:space="preserve">
+    <value>Installer StartAllBack</value>
+  </data>
+  <data name="TweakTelemetry.Text" xml:space="preserve">
+    <value>Désactiver la télémétrie</value>
+  </data>
+  <data name="TweakAdvertisingId.Text" xml:space="preserve">
+    <value>Désactiver l'ID publicitaire</value>
+  </data>
+  <data name="TweakLocationTracking.Text" xml:space="preserve">
+    <value>Désactiver le suivi de localisation</value>
+  </data>
+  <data name="TweakCortana.Text" xml:space="preserve">
+    <value>Désactiver Cortana</value>
+  </data>
+  <data name="TweakBackgroundApps.Text" xml:space="preserve">
+    <value>Désactiver les applications en arrière-plan</value>
+  </data>
+  <data name="TweakCloudContent.Text" xml:space="preserve">
+    <value>Désactiver le contenu cloud</value>
+  </data>
+  <data name="TweakFindMyDevice.Text" xml:space="preserve">
+    <value>Désactiver Localiser mon appareil</value>
+  </data>
+  <data name="TweakHomeFolder.Text" xml:space="preserve">
+    <value>Désactiver le dossier Accueil</value>
+  </data>
+  <data name="TweakGalleryFolder.Text" xml:space="preserve">
+    <value>Désactiver le dossier Galerie</value>
+  </data>
+  <data name="TweakTaskbarAlignment.Text" xml:space="preserve">
+    <value>Alignement de la barre des tâches</value>
+  </data>
+  <data name="TweakTaskbarTransparency.Text" xml:space="preserve">
+    <value>Transparence de la barre des tâches</value>
+  </data>
+  <data name="TweakHideSearchButton.Text" xml:space="preserve">
+    <value>Masquer le bouton de recherche</value>
+  </data>
+  <data name="TweakVisualEffects.Text" xml:space="preserve">
+    <value>Désactiver les effets visuels</value>
+  </data>
+  <data name="TweakWindowsSearch.Text" xml:space="preserve">
+    <value>Désactiver la recherche Windows</value>
+  </data>
+  <data name="TweakSysMain.Text" xml:space="preserve">
+    <value>Désactiver SysMain</value>
+  </data>
+  <data name="TweakServices.Text" xml:space="preserve">
+    <value>Désactiver les services</value>
+  </data>
+  <data name="TweakUAC.Text" xml:space="preserve">
+    <value>Désactiver UAC</value>
+  </data>
+  <data name="TweakClipboardHistory.Text" xml:space="preserve">
+    <value>Désactiver l'historique du presse-papiers</value>
+  </data>
+  <data name="TweakWindowsSpeedUp.Text" xml:space="preserve">
+    <value>Appliquer l'accélération de Windows</value>
+  </data>
+  <data name="UpdateWarning.Text" xml:space="preserve">
+    <value>Mettez à jour Windows 11 vers la dernière version !</value>
+  </data>
+  <data name="Install_ProcessMonitor" xml:space="preserve">
+    <value>Installer Process Monitor</value>
+  </data>
+  <data name="Uninstall_ProcessMonitor" xml:space="preserve">
+    <value>Supprimer Process Monitor</value>
+  </data>
+  <data name="Downloading_ProcessMonitor" xml:space="preserve">
+    <value>Téléchargement de Process Monitor...</value>
+  </data>
+  <data name="Installing_ProcessMonitor" xml:space="preserve">
+    <value>Installation de Process Monitor...</value>
+  </data>
+  <data name="Uninstalling_ProcessMonitor" xml:space="preserve">
+    <value>Suppression de Process Monitor...</value>
+  </data>
+  <data name="Open_ProcessMonitor" xml:space="preserve">
+    <value>Ouvrir Process Monitor</value>
+  </data>
+  <data name="Opening_ProcessMonitor" xml:space="preserve">
+    <value>Ouverture de Process Monitor...</value>
+  </data>
+  <data name="Error_ProcessMonitorNotFound" xml:space="preserve">
+    <value>Process Monitor non trouvé</value>
+  </data>
+  <data name="Error_ProcessMonitorNotFound_Message" xml:space="preserve">
+    <value>Veuillez installer Process Monitor dans le dossier Assets\ProcMon</value>
+  </data>
+</root>
