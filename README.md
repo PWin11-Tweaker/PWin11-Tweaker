@@ -8,6 +8,8 @@ Tweaker for OS: Windows 11
 <br/>
 <string>Language: Eng, Rus</string>  
 <br/>
+<string>Languages coming soon: France </string>
+<br/>
 <img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar95.png?raw=true" width="500"/>
 <br/>
 <a>   85% / 100%   </a>
