@@ -11,7 +11,6 @@ namespace PWin11_Tweaker_s
         public HomePage()
         {
             this.InitializeComponent();
-            System.Diagnostics.Debug.WriteLine("HomePage: Инициализация завершена.");
             LoadAnimations();
             StartGradientAnimation();
         }
