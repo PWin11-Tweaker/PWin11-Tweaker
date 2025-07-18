@@ -19,7 +19,7 @@
                   Title="PWin11 Tweaker"
                   Grid.Row="0">
             <TitleBar.IconSource>
-                <ImageIconSource ImageSource="/Assets/icon4.png" />
+                <ImageIconSource ImageSource="/Assets/icon5.png" />
             </TitleBar.IconSource>
         </TitleBar>
         <NavigationView x:Name="NavView"

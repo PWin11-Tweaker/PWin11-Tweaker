@@ -178,7 +178,7 @@
     <AppInstallerUri>C:\Users\Admin\Documents\PWin11</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
-    <ApplicationIcon>Assets\icon4.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\icon5.ico</ApplicationIcon>
     <PackageCertificateThumbprint>220E2A64CA78A023ABF51AC246F7C350B2A45FB8</PackageCertificateThumbprint>
     <AppxPackageDir>C:\Users\yttut\Music\PWin11_Build\1.0.7\</AppxPackageDir>
     <SupportedOSPlatformVersion>10.0.22000.0</SupportedOSPlatformVersion>

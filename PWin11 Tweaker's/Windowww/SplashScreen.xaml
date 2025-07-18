@@ -24,7 +24,7 @@
                        Title="PWin11 Tweaker"
                        Grid.Row="0">
             <muxc:TitleBar.IconSource>
-                <muxc:ImageIconSource ImageSource="/Assets/icon4.png" />
+                <muxc:ImageIconSource ImageSource="/Assets/icon5.png" />
             </muxc:TitleBar.IconSource>
         </muxc:TitleBar>
 

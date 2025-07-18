@@ -191,5 +191,8 @@
   <ItemGroup>
     <Resource Include="Update.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\ghost.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
