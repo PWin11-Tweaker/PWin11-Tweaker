@@ -1,18 +1,16 @@
 <div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/new%20era%20logo%20PWin11%20Tweaker.png?raw=true" alt="Logo" width="80" height="80">
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/PWin11%20Tweaker's/Assets/icon5.png?raw=true" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">PWin11 Tweaker</h3>
 <p align="center">
 Tweaker for OS: Windows 11
 <br/>
-<string>Language: Eng, Rus</string>  
+<string>Language: Eng, Rus, Frn</string>  
 <br/>
-<string>Languages coming soon: France </string>
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar100.png?raw=true" width="500"/>
 <br/>
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar95.png?raw=true" width="500"/>
-<br/>
-<a>   85% / 100%   </a>
+<a>   100% / 100%   </a>
 <br/>
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Explore the docs »</strong></a>
