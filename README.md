@@ -8,23 +8,25 @@ Tweaker for OS: Windows 11
 <br/>
 <string>Language: Eng, Rus, Frn</string>  
 <br/>
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar100.png?raw=true" width="500"/>
-<br/>
-<a>   100% / 100%   </a>
-<br/>
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Explore the docs »</strong></a>
 <br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
 <br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Latest Release</a>
 <br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md on Russian</a>
 <br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Wiki</a>
 <br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Download!</a>
 <br/>
+   <br/>
 <a href="https://sourceforge.net/projects/pwin11-tweaker/files/latest/download"><img alt="Download PWin11-Tweaker" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
 </div>
 
