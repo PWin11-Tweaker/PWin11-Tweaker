@@ -140,7 +140,7 @@
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
-              "version": "[10.0.26100.4188, )"
+              "version": "[10.0.26100.4654, )"
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
