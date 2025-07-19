@@ -684,7 +684,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4654": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -4848,7 +4848,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4654": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -7621,7 +7621,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4654": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -10394,7 +10394,7 @@
           "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.4654": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -13667,10 +13667,10 @@
         "tools/uninstall.ps1"
       ]
     },
-    "Microsoft.Windows.SDK.BuildTools/10.0.26100.4188": {
-      "sha512": "sjksqXKnxleoY9qvKPS/fsiGKZ8ZYjwDTfSQvfv6gETTtQQIqZRIhCZCZ+rgjFjS6ZVjjn7iRjT/X64v25IEyA==",
+    "Microsoft.Windows.SDK.BuildTools/10.0.26100.4654": {
+      "sha512": "2mgcOlj/t2RfSyyw+pVESfO+Tk1RkfQzto9Vrq42M1lUQIfQEwbi8QLha9GXWIOj+TFzeHIEJckIoF25mgiM8A==",
       "type": "package",
-      "path": "microsoft.windows.sdk.buildtools/10.0.26100.4188",
+      "path": "microsoft.windows.sdk.buildtools/10.0.26100.4654",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -13839,7 +13839,7 @@
         "build/Microsoft.Windows.SDK.BuildTools.targets",
         "buildTransitive/Microsoft.Windows.SDK.BuildTools.props",
         "buildTransitive/Microsoft.Windows.SDK.BuildTools.targets",
-        "microsoft.windows.sdk.buildtools.10.0.26100.4188.nupkg.sha512",
+        "microsoft.windows.sdk.buildtools.10.0.26100.4654.nupkg.sha512",
         "microsoft.windows.sdk.buildtools.nuspec",
         "schemas/10.0.26100.0/winrt/AppxManifestSchema.xsd",
         "schemas/10.0.26100.0/winrt/AppxManifestSchema2010_v2.xsd",
@@ -19978,7 +19978,7 @@
       "Microsoft.Win32.SystemEvents >= 9.0.7",
       "Microsoft.Windows.Compatibility >= 9.0.7",
       "Microsoft.Windows.CsWin32 >= 0.3.183",
-      "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.4188",
+      "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.4654",
       "Microsoft.WindowsAppSDK >= 1.7.250606001",
       "Newtonsoft.Json >= 13.0.3",
       "System.CodeDom >= 9.0.7",
@@ -20158,7 +20158,7 @@
           },
           "Microsoft.Windows.SDK.BuildTools": {
             "target": "Package",
-            "version": "[10.0.26100.4188, )"
+            "version": "[10.0.26100.4654, )"
           },
           "Microsoft.WindowsAppSDK": {
             "target": "Package",

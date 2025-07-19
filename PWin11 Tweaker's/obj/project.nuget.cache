@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nMdDbqenflg=",
+  "dgSpecHash": "0HzqorevOao=",
   "success": true,
   "projectFilePath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
   "expectedPackageFiles": [
@@ -40,7 +40,7 @@
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.win32.systemevents\\9.0.7\\microsoft.win32.systemevents.9.0.7.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.compatibility\\9.0.7\\microsoft.windows.compatibility.9.0.7.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.cswin32\\0.3.183\\microsoft.windows.cswin32.0.3.183.nupkg.sha512",
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.26100.4188\\microsoft.windows.sdk.buildtools.10.0.26100.4188.nupkg.sha512",
+    "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.26100.4654\\microsoft.windows.sdk.buildtools.10.0.26100.4654.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.sdk.win32docs\\0.1.42-alpha\\microsoft.windows.sdk.win32docs.0.1.42-alpha.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.sdk.win32metadata\\61.0.15-preview\\microsoft.windows.sdk.win32metadata.61.0.15-preview.nupkg.sha512",
     "C:\\Users\\ph1ncyn\\.nuget\\packages\\microsoft.windows.wdk.win32metadata\\0.12.8-experimental\\microsoft.windows.wdk.win32metadata.0.12.8-experimental.nupkg.sha512",
