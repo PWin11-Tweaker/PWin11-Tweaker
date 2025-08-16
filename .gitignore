@@ -6,3 +6,476 @@
 /PWin11Updater/obj
 /.vs
 /.idea
+._LICENSE
+._README.md
+._.gitignore
+._SECURITY.md
+._CODE_OF_CONDUCT.md
+._PWin11 Tweaker's.sln
+._PWin11 Tweaker's.sln.DotSettings.user
+PWin11Updater/._App.xaml
+PWin11 Tweaker's/._App.xaml
+.github/._FUNDING.yml
+PWin11Updater/._App.config
+readme/._ReadmeRus.md
+packages/Splat.15.4.1/._LICENSE
+packages/Splat.15.5.1/._LICENSE
+packages/._Splat.15.4.1
+packages/._Splat.15.5.1
+PWin11Updater/._App.xaml.cs
+PWin11 Tweaker's/._App.xaml.cs
+packages/Splat.15.4.1/._README.md
+packages/Splat.15.5.1/._README.md
+packages/DynamicData.9.4.1/._README.md
+packages/Splat.15.4.1/LICENSE/._LICENSE
+packages/Splat.15.5.1/LICENSE/._LICENSE
+packages/DynamicData.9.4.1/LICENSE/._LICENSE
+packages/System.Buffers.4.6.1/._PACKAGE.md
+PWin11Updater/._MainWindow.xaml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._Icon.png
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._Icon.png
+PWin11 Tweaker's/._MainWindow.xaml
+PWin11 Tweaker's/Page/._HomePage.xaml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/net462/.__._
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/net8.0/.__._
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/net462/.__._
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/net8.0/.__._
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._PACKAGE.md
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._PACKAGE.md
+packages/Splat.15.4.1/._.signature.p7s
+packages/Splat.15.5.1/._.signature.p7s
+packages/Splat.15.4.1/lib/net8.0/._Splat.dll
+packages/Splat.15.4.1/lib/net8.0/._Splat.xml
+packages/Splat.15.4.1/lib/net9.0/._Splat.dll
+packages/Splat.15.4.1/lib/net9.0/._Splat.xml
+packages/Splat.15.5.1/lib/net8.0/._Splat.dll
+packages/Splat.15.5.1/lib/net8.0/._Splat.xml
+packages/Splat.15.5.1/lib/net9.0/._Splat.dll
+packages/Splat.15.5.1/lib/net9.0/._Splat.xml
+PWin11 Tweaker's/Script/._TweakStatus.cs
+packages/System.Threading.Tasks.Extensions.4.6.3/._PACKAGE.md
+PWin11Updater/._MainWindow.xaml.cs
+PWin11Updater/Properties/._Resources.resx
+packages/Splat.15.4.1/._lib
+packages/Splat.15.5.1/._lib
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._LICENSE.TXT
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._LICENSE.TXT
+PWin11 Tweaker's/Page/._SystemPage.xaml
+PWin11 Tweaker's/._MainWindow.xaml.cs
+packages/System.Runtime.CompilerServices.Unsafe.6.1.2/._PACKAGE.md
+packages/System.ComponentModel.Annotations.5.0.0/._LICENSE.TXT
+PWin11Updater/Properties/._AssemblyInfo.cs
+packages/Splat.15.4.1/lib/netstandard2.0/._Splat.dll
+packages/Splat.15.4.1/lib/netstandard2.0/._Splat.xml
+packages/Splat.15.5.1/lib/netstandard2.0/._Splat.dll
+packages/Splat.15.5.1/lib/netstandard2.0/._Splat.xml
+PWin11 Tweaker's/Assets/ProcMon/App/._Readme.txt
+PWin11 Tweaker's/Page/._HomePage.xaml.cs
+PWin11 Tweaker's/Page/._PrivacyPage.xaml
+PWin11Updater/._PWin11Updater.csproj
+PWin11 Tweaker's/Assets/ProcMon/App/AppInfo/._EULA.txt
+readme/._support.md
+PWin11 Tweaker's/Page/._ExplorerPage.xaml
+PWin11 Tweaker's/._Package.appxmanifest
+PWin11 Tweaker's/Strings/en-US/._Resources.resw
+PWin11 Tweaker's/Strings/fr-FR/._Resources.resw
+PWin11 Tweaker's/Strings/ru_RU/._Resources.resw
+PWin11Updater/Properties/._Settings.settings
+PWin11 Tweaker's/Settings/._SettingsPage.xaml
+PWin11 Tweaker's/Windowww/._RebootWindow.xaml
+PWin11 Tweaker's/Windowww/._SplashScreen.xaml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._.signature.p7s
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._.signature.p7s
+packages/Splat.15.4.1/._Splat.15.4.1.nupkg
+packages/Splat.15.5.1/._Splat.15.5.1.nupkg
+PWin11 Tweaker's/Page/._InterfacePage.xaml
+PWin11 Tweaker's/Page/._SystemPage.xaml.cs
+PWin11 Tweaker's/Assets/ProcMon/App/ProcessMonitor/._Eula.txt
+readme/._desktop.ini
+PWin11 Tweaker's/Page/._PrivacyPage.xaml.cs
+PWin11 Tweaker's/Assets/ProcMon/Other/Source/._Readme.txt
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._lib
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._lib
+PWin11 Tweaker's/Assets/ProcMon/App/ProcessMonitor-Legacy/._Eula.txt
+packages/System.IO.4.3.0/ref/netcore50/._System.IO.xml
+PWin11 Tweaker's/._PWin11 Tweaker's.csproj
+PWin11 Tweaker's/Page/._ExplorerPage.xaml.cs
+PWin11 Tweaker's/Page/._PerformancePage.xaml
+PWin11Updater/._desktop.ini
+readme/._supportENG.md
+readme/._supportRUS.md
+PWin11Updater/Properties/._Settings.Designer.cs
+packages/System.IO.4.3.0/ref/netstandard1.0/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/._System.IO.xml
+packages/Splat.15.4.1/._logo.png
+packages/Splat.15.5.1/._logo.png
+PWin11 Tweaker's/Settings/._SettingsPage.xaml.cs
+PWin11 Tweaker's/Windowww/._RebootWindow.xaml.cs
+PWin11 Tweaker's/Windowww/._SplashScreen.xaml.cs
+packages/Splat.15.4.1/lib/._net8.0
+packages/Splat.15.4.1/lib/._net9.0
+packages/Splat.15.5.1/lib/._net8.0
+packages/Splat.15.5.1/lib/._net9.0
+PWin11 Tweaker's/._desktop.ini
+PWin11 Tweaker's/Page/._InterfacePage.xaml.cs
+PWin11 Tweaker's/TempCleaner/._TempCleanerPage.xaml
+packages/System.IO.4.3.0/._ThirdPartyNotices.txt
+PWin11Updater/Properties/._Resources.Designer.cs
+packages/DynamicData.9.4.1/lib/net462/._DynamicData.xml
+packages/DynamicData.9.4.1/lib/net6.0/._DynamicData.xml
+packages/DynamicData.9.4.1/lib/net7.0/._DynamicData.xml
+packages/DynamicData.9.4.1/lib/net8.0/._DynamicData.xml
+packages/DynamicData.9.4.1/lib/net9.0/._DynamicData.xml
+packages/System.Linq.4.3.0/._ThirdPartyNotices.txt
+packages/System.IO.4.3.0/ref/netcore50/de/._System.IO.xml
+packages/System.IO.4.3.0/ref/netcore50/es/._System.IO.xml
+packages/System.IO.4.3.0/ref/netcore50/fr/._System.IO.xml
+packages/System.IO.4.3.0/ref/netcore50/it/._System.IO.xml
+packages/System.IO.4.3.0/ref/netcore50/ja/._System.IO.xml
+packages/System.IO.4.3.0/ref/netcore50/ko/._System.IO.xml
+packages/System.IO.4.3.0/ref/netcore50/ru/._System.IO.xml
+PWin11 Tweaker's/._app.manifest
+packages/System.Linq.4.3.0/ref/netcore50/._System.Linq.xml
+PWin11 Tweaker's/Script/._LocalizationManager.cs
+packages/System.Runtime.4.3.1/._ThirdPartyNotices.txt
+PWin11 Tweaker's/Assets/ProcMon/App/AppInfo/Launcher/._Custom.nsh
+packages/System.Net.Http.4.3.4/._ThirdPartyNotices.txt
+packages/System.IO.4.3.0/ref/netcore50/zh-hans/._System.IO.xml
+packages/System.IO.4.3.0/ref/netcore50/zh-hant/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/de/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/es/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/fr/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/it/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/ja/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/ko/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/ru/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/de/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/es/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/fr/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/it/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/ja/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/ko/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/ru/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/de/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/es/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/fr/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/it/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/ja/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/ko/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/ru/._System.IO.xml
+PWin11 Tweaker's/Page/._PerformancePage.xaml.cs
+packages/DynamicData.9.4.1/lib/netstandard2.0/._DynamicData.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/._System.Linq.xml
+packages/System.IO.Compression.4.3.0/._ThirdPartyNotices.txt
+packages/System.Reactive.6.0.1/._readme.md
+packages/System.IO.4.3.0/ref/netstandard1.0/zh-hans/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.0/zh-hant/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/zh-hans/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.3/zh-hant/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/zh-hans/._System.IO.xml
+packages/System.IO.4.3.0/ref/netstandard1.5/zh-hant/._System.IO.xml
+PWin11 Tweaker's/TempCleaner/._TempCleanerPage.xaml.cs
+packages/System.Linq.4.3.0/ref/netcore50/de/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netcore50/es/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netcore50/fr/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netcore50/it/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netcore50/ja/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netcore50/ko/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netcore50/ru/._System.Linq.xml
+PWin11Updater/._packages.config
+PWin11 Tweaker's/._PWin11 Tweaker's.csproj.user
+packages/System.IO.Compression.ZipFile.4.3.0/._ThirdPartyNotices.txt
+packages/System.Buffers.4.6.1/lib/net462/._System.Buffers.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/._net462
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/._net462
+packages/System.Linq.4.3.0/ref/netcore50/zh-hans/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netcore50/zh-hant/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/de/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/es/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/fr/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/it/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/ja/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/ko/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/ru/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/de/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/es/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/fr/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/it/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/ja/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/ko/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/ru/._System.Linq.xml
+PWin11 Tweaker's/Properties/PublishProfiles/._FolderProfile.pubxml
+packages/System.Security.Cryptography.Encoding.4.3.0/._ThirdPartyNotices.txt
+packages/System.Runtime.4.3.1/ref/netcore50/._System.Runtime.xml
+packages/System.Security.Cryptography.Algorithms.4.3.1/._ThirdPartyNotices.txt
+packages/System.Security.Cryptography.Primitives.4.3.0/._ThirdPartyNotices.txt
+packages/System.Linq.4.3.0/ref/netstandard1.0/zh-hans/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.0/zh-hant/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/zh-hans/._System.Linq.xml
+packages/System.Linq.4.3.0/ref/netstandard1.6/zh-hant/._System.Linq.xml
+packages/System.Reactive.6.0.1/lib/net472/._System.Reactive.xml
+packages/System.Reactive.6.0.1/lib/net6.0/._System.Reactive.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._THIRD-PARTY-NOTICES.TXT
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._THIRD-PARTY-NOTICES.TXT
+packages/System.Buffers.4.6.1/lib/netstandard2.0/._System.Buffers.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/._System.Runtime.xml
+PWin11 Tweaker's/Properties/PublishProfiles/._FolderProfile1.pubxml
+packages/System.Security.Cryptography.X509Certificates.4.3.2/._ThirdPartyNotices.txt
+packages/System.ComponentModel.Annotations.5.0.0/._THIRD-PARTY-NOTICES.TXT
+PWin11 Tweaker's/._PWin11 Tweaker's — копия.csproj
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/._net461
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/._net462
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/._net8.0
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/._net461
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/._net462
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/._net8.0
+packages/System.Reactive.6.0.1/lib/uap10.0.18362/._System.Reactive.xml
+packages/System.Reactive.6.0.1/lib/netstandard2.0/._System.Reactive.xml
+packages/System.Runtime.4.3.1/ref/netcore50/de/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netcore50/es/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netcore50/fr/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netcore50/it/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netcore50/ja/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netcore50/ko/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netcore50/ru/._System.Runtime.xml
+packages/System.ComponentModel.Annotations.5.0.0/._version.txt
+PWin11 Tweaker's/Assets/ProcMon/Other/Source/._LauncherLicense.txt
+packages/System.Runtime.4.3.1/ref/netcore50/zh-hans/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netcore50/zh-hant/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/de/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/es/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/fr/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/it/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/ja/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/ko/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/ru/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/de/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/es/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/fr/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/it/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/ja/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/ko/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/ru/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/de/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/es/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/fr/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/it/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/ja/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/ko/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/ru/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/de/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/es/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/fr/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/it/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/ja/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/ko/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/ru/._System.Runtime.xml
+packages/._Microsoft.Bcl.AsyncInterfaces.9.0.7
+packages/._Microsoft.Bcl.AsyncInterfaces.9.0.8
+packages/System.Reactive.6.0.1/lib/net6.0-windows10.0.19041/._System.Reactive.xml
+PWin11 Tweaker's/Update/._versionLocal.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/zh-hans/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.0/zh-hant/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/zh-hans/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.2/zh-hant/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/zh-hans/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.3/zh-hant/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/zh-hans/._System.Runtime.xml
+packages/System.Runtime.4.3.1/ref/netstandard1.5/zh-hant/._System.Runtime.xml
+PWin11 Tweaker's/._PWin11 Tweaker's.csproj.Backup.tmp
+packages/Splat.15.4.1/lib/._netstandard2.0
+packages/Splat.15.5.1/lib/._netstandard2.0
+PWin11 Tweaker's/Properties/PublishProfiles/._FolderProfile.pubxml.user
+PWin11 Tweaker's/Assets/._versionServer.xml
+packages/System.Buffers.4.6.1/buildTransitive/net461/._System.Buffers.targets
+PWin11 Tweaker's/Properties/PublishProfiles/._FolderProfile1.pubxml.user
+PWin11 Tweaker's/Assets/icons_nav2/._link icons.url
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._buildTransitive
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._buildTransitive
+PWin11Updater/.vs/._PWin11Updater.csproj.dtbcache.json
+PWin11 Tweaker's/Properties/PublishProfiles/._win-x64.pubxml
+PWin11 Tweaker's/Properties/PublishProfiles/._win-x86.pubxml
+PWin11 Tweaker's/Properties/._launchSettings.json
+packages/System.IO.Compression.4.3.0/ref/netcore50/._System.IO.Compression.xml
+PWin11 Tweaker's/Assets/ProcMon/App/AppInfo/._appinfo.ini
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/._netstandard2.0
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/._netstandard2.1
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/._netstandard2.0
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/._netstandard2.1
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/._System.IO.Compression.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/._netcoreapp2.0
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/._netcoreapp2.0
+PWin11 Tweaker's/Properties/PublishProfiles/._win-arm64.pubxml
+PWin11 Tweaker's/Assets/ProcMon/Other/Source/._ProcessMonitorPortable.ini
+PWin11 Tweaker's/Assets/ProcMon/App/AppInfo/._installer.ini
+packages/System.IO.Compression.4.3.0/ref/netcore50/de/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/es/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/fr/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/it/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/ja/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/ko/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/ru/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/zh-hans/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netcore50/zh-hant/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/de/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/es/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/fr/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/it/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/ja/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/ko/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/ru/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/de/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/es/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/fr/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/it/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/ja/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/ko/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/ru/._System.IO.Compression.xml
+PWin11 Tweaker's/Assets/ProcMon/Data/PortableApps.comInstaller/._license.ini
+PWin11 Tweaker's/BundleArtifacts/._PWin11 Tweaker's_x64.appinstaller.xml
+PWin11 Tweaker's/BundleArtifacts/._PWin11 Tweaker's_x86.appinstaller.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/zh-hans/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.1/zh-hant/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/zh-hans/._System.IO.Compression.xml
+packages/System.IO.Compression.4.3.0/ref/netstandard1.3/zh-hant/._System.IO.Compression.xml
+PWin11 Tweaker's/Properties/PublishProfiles/._win-x64.pubxml.user
+PWin11 Tweaker's/Assets/ProcMon/App/AppInfo/Launcher/._ProcessMonitorPortable.ini
+packages/System.IO.4.3.0/._dotnet_library_license.txt
+packages/System.Linq.4.3.0/._dotnet_library_license.txt
+packages/System.Runtime.4.3.1/._dotnet_library_license.txt
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/net462/_._
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/net8.0/_._
+packages/System.Net.Http.4.3.4/._dotnet_library_license.txt
+packages/System.IO.Compression.4.3.0/._dotnet_library_license.txt
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/net462/._Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/net462/._Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/net462/._Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/net462/._Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._Microsoft.Bcl.AsyncInterfaces.9.0.7.nupkg
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._Microsoft.Bcl.AsyncInterfaces.9.0.8.nupkg
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/netstandard2.0/._Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/netstandard2.0/._Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/netstandard2.1/._Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/lib/netstandard2.1/._Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.0/._Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.0/._Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.1/._Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.1/._Microsoft.Bcl.AsyncInterfaces.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/._dotnet_library_license.txt
+PWin11 Tweaker's/Assets/ProcMon/Data/settings/._ProcessMonitorPortableSettings.ini
+packages/System.Security.Cryptography.Encoding.4.3.0/._dotnet_library_license.txt
+packages/System.Security.Cryptography.Algorithms.4.3.1/._dotnet_library_license.txt
+packages/System.Security.Cryptography.Primitives.4.3.0/._dotnet_library_license.txt
+PWin11 Tweaker's/Assets/ProcMon/Other/Source/._PortableApps.comInstallerCustom.nsh
+PWin11 Tweaker's/Assets/ProcMon/App/AppInfo/._pac_installer_log.ini
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/._useSharedDesignerContext.txt
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/._useSharedDesignerContext.txt
+packages/System.Security.Cryptography.X509Certificates.4.3.2/._dotnet_library_license.txt
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/de/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/es/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/fr/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/it/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/ja/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/ko/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/ru/._System.IO.Compression.ZipFile.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/net461/._System.ComponentModel.Annotations.xml
+packages/System.Threading.Tasks.Extensions.4.6.3/lib/net462/._System.Threading.Tasks.Extensions.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/._System.ComponentModel.Annotations.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/zh-hans/._System.IO.Compression.ZipFile.xml
+packages/System.IO.Compression.ZipFile.4.3.0/ref/netstandard1.3/zh-hant/._System.IO.Compression.ZipFile.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/net461/._Microsoft.Bcl.AsyncInterfaces.targets
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/net461/._Microsoft.Bcl.AsyncInterfaces.targets
+packages/System.ComponentModel.Annotations.5.0.0/lib/netstandard2.1/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard2.0/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard2.1/._System.ComponentModel.Annotations.xml
+packages/System.Threading.Tasks.Extensions.4.6.3/lib/netstandard2.0/._System.Threading.Tasks.Extensions.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.7/buildTransitive/netcoreapp2.0/._Microsoft.Bcl.AsyncInterfaces.targets
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/netcoreapp2.0/._Microsoft.Bcl.AsyncInterfaces.targets
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/de/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/es/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/fr/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/it/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/ja/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/ko/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/ru/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/zh-hans/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netcore50/zh-hant/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/de/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/es/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/fr/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/it/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/ja/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/ko/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/ru/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/de/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/es/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/fr/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/it/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/ja/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/ko/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/ru/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/de/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/es/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/fr/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/it/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/ja/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/ko/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/ru/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/zh-hans/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.1/zh-hant/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/zh-hans/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.3/zh-hant/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/zh-hans/._System.ComponentModel.Annotations.xml
+packages/System.ComponentModel.Annotations.5.0.0/ref/netstandard1.4/zh-hant/._System.ComponentModel.Annotations.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/._System.Security.Cryptography.Encoding.xml
+packages/System.Threading.Tasks.Extensions.4.6.3/buildTransitive/net461/._System.Threading.Tasks.Extensions.targets
+packages/System.Runtime.CompilerServices.Unsafe.6.1.2/lib/net462/._System.Runtime.CompilerServices.Unsafe.xml
+packages/System.Runtime.CompilerServices.Unsafe.6.1.2/lib/net6.0/._System.Runtime.CompilerServices.Unsafe.xml
+packages/System.Runtime.CompilerServices.Unsafe.6.1.2/lib/netstandard2.0/._System.Runtime.CompilerServices.Unsafe.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/de/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/es/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/fr/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/it/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/ja/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/ko/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/ru/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/zh-hans/._System.Security.Cryptography.Encoding.xml
+packages/System.Security.Cryptography.Encoding.4.3.0/ref/netstandard1.3/zh-hant/._System.Security.Cryptography.Encoding.xml
+packages/System.Runtime.CompilerServices.Unsafe.6.1.2/buildTransitive/net461/._System.Runtime.CompilerServices.Unsafe.targets
+packages/System.Runtime.CompilerServices.Unsafe.6.1.2/buildTransitive/netcoreapp2.0/._System.Runtime.CompilerServices.Unsafe.targets
+packages/Splat.15.5.1/.signature.p7s
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/.signature.p7s
+packages/Splat.15.5.1/logo.png
+packages/Splat.15.5.1/README.md
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/Icon.png
+packages/Splat.15.5.1/lib/net8.0/Splat.dll
+packages/Splat.15.5.1/lib/net8.0/Splat.xml
+packages/Splat.15.5.1/lib/net9.0/Splat.dll
+packages/Splat.15.5.1/lib/net9.0/Splat.xml
+packages/Splat.15.5.1/lib/netstandard2.0/Splat.dll
+packages/Splat.15.5.1/lib/netstandard2.0/Splat.xml
+packages/Splat.15.5.1/Splat.15.5.1.nupkg
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/PACKAGE.md
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/LICENSE.TXT
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/THIRD-PARTY-NOTICES.TXT
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/net462/Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/net462/Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/Microsoft.Bcl.AsyncInterfaces.9.0.8.nupkg
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/useSharedDesignerContext.txt
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/net461/Microsoft.Bcl.AsyncInterfaces.targets
+packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/netcoreapp2.0/Microsoft.Bcl.AsyncInterfaces.targets
+packages/Splat.15.5.1/LICENSE/LICENSE
