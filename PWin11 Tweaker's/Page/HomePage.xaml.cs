@@ -19,7 +19,6 @@ namespace PWin11_Tweaker_s
         {
             if (WelcomeText != null && WelcomeTransform != null)
             {
-                // Анимация для заголовка
                 Storyboard welcomeStoryboard = new Storyboard();
                 DoubleAnimation welcomeAnimation = new DoubleAnimation
                 {
