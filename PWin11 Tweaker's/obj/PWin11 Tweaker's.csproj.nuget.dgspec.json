@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {}
+    "Y:\\project\\Windows Tweaker\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {}
   },
   "projects": {
-    "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {
+    "Y:\\project\\Windows Tweaker\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {
       "version": "1.0.14",
       "restore": {
-        "projectUniqueName": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
+        "projectUniqueName": "Y:\\project\\Windows Tweaker\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
         "projectName": "PWin11 Tweaker's",
-        "projectPath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
+        "projectPath": "Y:\\project\\Windows Tweaker\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
         "packagesPath": "C:\\Users\\ph1ncyn\\.nuget\\packages\\",
-        "outputPath": "D:\\.project-new-git\\PWin11-Tweaker\\PWin11 Tweaker's\\obj\\",
+        "outputPath": "Y:\\project\\Windows Tweaker\\PWin11-Tweaker\\PWin11 Tweaker's\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\ph1ncyn\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -68,32 +68,32 @@
             },
             "Microsoft.Bcl.AsyncInterfaces": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.7, )",
+              "version": "[9.0.8, )",
               "autoReferenced": true
             },
             "Microsoft.NETCore.Platforms": {
@@ -114,7 +114,7 @@
             },
             "Microsoft.Web.WebView2": {
               "target": "Package",
-              "version": "[1.0.3351.48, )"
+              "version": "[1.0.3405.78, )"
             },
             "Microsoft.Win32": {
               "target": "Package",
@@ -126,11 +126,11 @@
             },
             "Microsoft.Win32.SystemEvents": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Windows.CsWin32": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -152,7 +152,7 @@
             },
             "System.CodeDom": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Collections": {
               "target": "Package",
@@ -168,7 +168,7 @@
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Diagnostics.Debug": {
               "target": "Package",
@@ -176,7 +176,7 @@
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Diagnostics.Tracing": {
               "target": "Package",
@@ -184,11 +184,11 @@
             },
             "System.DirectoryServices": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Drawing.Common": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Dynamic.Runtime": {
               "target": "Package",
@@ -220,7 +220,7 @@
             },
             "System.Management": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Management.Automation": {
               "target": "Package",
@@ -248,7 +248,7 @@
             },
             "System.Security.Permissions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Security.Principal": {
               "target": "Package",
@@ -256,7 +256,7 @@
             },
             "System.ServiceProcess.ServiceController": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "System.Threading": {
               "target": "Package",
@@ -268,7 +268,7 @@
             },
             "System.Windows.Extensions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.8, )"
             },
             "WinUI3Localizer": {
               "target": "Package",
@@ -305,31 +305,31 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
-              "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
-              "version": "[9.0.7, 9.0.7]"
+              "name": "Microsoft.NETCore.App.Crossgen2.win-arm64",
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -337,15 +337,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[9.0.7, 9.0.7]"
+              "version": "[9.0.8, 9.0.8]"
             }
           ],
           "frameworkReferences": {
@@ -356,7 +356,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
