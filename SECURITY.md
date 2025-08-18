@@ -18,4 +18,4 @@ Versions with a check mark mean that the version is updated and stable.
 
 ## I work for quality
 
-Support for each version is 2 weeks.
+Each version is supported for 2 weeks or more, and can take up to a year.
