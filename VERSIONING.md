@@ -60,7 +60,7 @@ Commit messages and tags should have a clear and understandable format.
 | **HookUp**       | Adding new API endpoints, webhooks, or extension points.                                            |
 | **NugetUp**      | Adding or updating dependencies (NuGet packages).                                                   |
 | **TuneUp**       | Improving configuration, application settings, or environment files.                                |
-| **Redesing**     | Change interface or change logo                                                                     |
+| **Redesign**     | Change interface or change logo                                                                     |
 
 ---
 
@@ -146,7 +146,7 @@ Russia Language
 | **HookUp**       | Добавление новых API endpoints, webhooks или точек расширения.             |
 | **NugetUp**      | Добавление или обновление зависимостей (NuGet пакетов).                    |
 | **TuneUp**       | Улучшение конфигурации, настроек приложения или файлов окружения.          |
-| **Redesing**     | Обновление интерфейса или логотипа                                         |
+| **Redesign**     | Обновление интерфейса или логотипа                                         |
 
 ---
 
