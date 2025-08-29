@@ -31,13 +31,13 @@ namespace PWin11_Tweaker_s
             catch (Exception ex)
             {
                 System.IO.File.WriteAllText("app_init_error.log",
-                    $"Ошибка в App: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                    $"Ошибка в App: {ex.Message} StackTrace: {ex.StackTrace}");
                 throw;
             }
         }
         private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine($"Асинхронная ошибка: {e.Exception.Message}\nСтек: {e.Exception.StackTrace}");
+            System.Diagnostics.Debug.WriteLine($"Асинхронная ошибка: {e.Exception.Message} Стек: {e.Exception.StackTrace}");
             e.SetObserved();
         }
 

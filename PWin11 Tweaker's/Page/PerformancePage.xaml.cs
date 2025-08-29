@@ -31,7 +31,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"PerformancePage: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"PerformancePage: Ошибка при инициализации: {ex.Message} StackTrace: {ex.StackTrace}");
                 throw;
             }
         }
@@ -112,7 +112,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
             }
         }
 
@@ -131,43 +131,43 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
-                string regContent = "Windows Registry Editor Version 5.00\n\n";
-                string batContent = "@echo off\n";
+                string regContent = "Windows Registry Editor Version 5.00";
+                string batContent = "@echo off";
 
                 // Отключение индексации поиска
                 bool disableIndexing = DisableSearchIndexingToggle.IsChecked ?? false;
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "\n" +
-                              $"\"AllowIndexingEncryptedStores\"=dword:0000000{(disableIndexing ? 0 : 1)}\n\n";
-                regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]" + "\n" +
-                              $"\"Start\"=dword:0000000{(disableIndexing ? 4 : 2)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "" +
+                              $"\"AllowIndexingEncryptedStores\"=dword:0000000{(disableIndexing ? 0 : 1)}";
+                regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]" + "" +
+                              $"\"Start\"=dword:0000000{(disableIndexing ? 4 : 2)}";
                 if (disableIndexing)
-                    batContent += "sc stop WSearch >nul 2>&1\n";
+                    batContent += "sc stop WSearch >nul 2>&1";
 
                 // Визуальные эффекты
                 bool disableEffects = DisableVisualEffectsToggle.IsChecked ?? false;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]" + "\n" +
-                              $"\"VisualFXSetting\"=dword:0000000{(disableEffects ? 2 : 1)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]" + "" +
+                              $"\"VisualFXSetting\"=dword:0000000{(disableEffects ? 2 : 1)}";
                 if (disableEffects)
                 {
-                    regContent += @"[HKEY_CURRENT_USER\Control Panel\Desktop]" + "\n" +
-                                  "\"UserPreferencesMask\"=hex:90,12,03,80,10,00,00,00\n\n";
+                    regContent += @"[HKEY_CURRENT_USER\Control Panel\Desktop]" + "" +
+                                  "\"UserPreferencesMask\"=hex:90,12,03,80,10,00,00,00";
                 }
                 TweakStatus.IsVisualEffectsDisabled = disableEffects;
 
                 // Windows Search
                 bool disableSearch = DisableWindowsSearchToggle.IsChecked ?? false;
-                regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]" + "\n" +
-                              $"\"Start\"=dword:0000000{(disableSearch ? 4 : 3)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]" + "" +
+                              $"\"Start\"=dword:0000000{(disableSearch ? 4 : 3)}";
                 if (disableSearch)
-                    batContent += "sc stop WSearch >nul 2>&1\n";
+                    batContent += "sc stop WSearch >nul 2>&1";
                 TweakStatus.IsWindowsSearchDisabled = disableSearch;
 
                 // SysMain
                 bool disableSysMain = DisableSysMainToggle.IsChecked ?? false;
-                regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]" + "\n" +
-                              $"\"Start\"=dword:0000000{(disableSysMain ? 4 : 3)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]" + "" +
+                              $"\"Start\"=dword:0000000{(disableSysMain ? 4 : 3)}";
                 if (disableSysMain)
-                    batContent += "sc stop SysMain >nul 2>&1\n";
+                    batContent += "sc stop SysMain >nul 2>&1";
                 TweakStatus.IsSysMainDisabled = disableSysMain;
 
                 // План электропитания
@@ -178,7 +178,7 @@ namespace PWin11_Tweaker_s
                     "PowerSaver" => "a1841308-3541-4fab-bc81-f71556f20b4a",
                     _ => "381b4222-f694-41f0-9685-ff5bb260df2e"
                 } : "381b4222-f694-41f0-9685-ff5bb260df2e";
-                batContent += $"powercfg /setactive {powerPlanGuid} >nul 2>&1\n";
+                batContent += $"powercfg /setactive {powerPlanGuid} >nul 2>&1";
                 TweakStatus.CurrentPowerPlan = PowerPlanCombo.SelectedItem is ComboBoxItem selectedItem && selectedItem.Tag is string selectedTag ? selectedTag : "Balanced";
 
                 // Сохранение и применение
@@ -190,9 +190,9 @@ namespace PWin11_Tweaker_s
                 File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
 
                 string tempBatPath = Path.Combine(Path.GetTempPath(), "PerformanceTweaks.bat");
-                batContent += $"reg import \"{tempRegPath}\" >nul 2>&1\n" +
-                              "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)\n" +
-                              $"del \"{tempRegPath}\" >nul 2>&1\n" +
+                batContent += $"reg import \"{tempRegPath}\" >nul 2>&1" +
+                              "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)" +
+                              $"del \"{tempRegPath}\" >nul 2>&1" +
                               "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
 
@@ -242,7 +242,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 var dialog = new ContentDialog
                 {
                     Title = resourceLoader.GetString("Dialog_Error_Title"),
