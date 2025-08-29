@@ -73,7 +73,7 @@ namespace PWin11_Tweaker_s
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine($"MainWindow: Error navigating to HomePage: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                        Debug.WriteLine($"MainWindow: Error navigating to HomePage: {ex.Message} StackTrace: {ex.StackTrace}");
                         ContentFrame.Content = new TextBlock
                         {
                             Text = $"Navigation Error: {ex.Message}",
@@ -88,7 +88,7 @@ namespace PWin11_Tweaker_s
                 if (appWindow != null)
                 {
                     appWindow.Title = "PWin11";
-                    appWindow.SetIcon("Assets/icon5.ico");
+                    appWindow.SetIcon("Assets/new_logo/mini_logo.ico");
                     Debug.WriteLine("MainWindow: AppWindow title and icon set.");
                 }
                 else
@@ -98,7 +98,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"MainWindow: Initialization error: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"MainWindow: Initialization error: {ex.Message} StackTrace: {ex.StackTrace}");
             }
         }
 
@@ -224,7 +224,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"NavView_ItemInvoked: Navigation error: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"NavView_ItemInvoked: Navigation error: {ex.Message} StackTrace: {ex.StackTrace}");
                 ContentFrame.Content = new TextBlock
                 {
                     Text = $"Navigation Error: {ex.Message}",

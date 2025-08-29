@@ -26,7 +26,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"SystemPage: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"SystemPage: Ошибка при инициализации: {ex.Message} StackTrace: {ex.StackTrace}");
                 ShowError($"Ошибка инициализации: {ex.Message}");
             }
             //Инициализируем наши ресурсы для локализации
@@ -95,7 +95,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 ShowError($"Ошибка загрузки настроек: {ex.Message}");
             }
         }
@@ -261,7 +261,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 StatusText.Text = $"Ошибка: {ex.Message}";
             }
             finally

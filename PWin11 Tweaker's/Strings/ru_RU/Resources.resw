@@ -217,7 +217,7 @@
     <value>Успех</value>
   </data>
   <data name="Dialog_Success_Content" xml:space="preserve">
-    <value>Настройки успешно применены! Проводник перезапущен.\nДля применения уменьшения кнопок управления окном и стиля StartAllBack может потребоваться перезапуск системы.</value>
+    <value>Настройки успешно применены! Проводник перезапущен. Для применения уменьшения кнопок управления окном и стиля StartAllBack может потребоваться перезапуск системы.</value>
   </data>
   <data name="Dialog_FailedApplySettings_Content" xml:space="preserve">
     <value>Не удалось применить настройки. Проверьте лог:</value>

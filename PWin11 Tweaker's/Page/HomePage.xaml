@@ -13,7 +13,7 @@
         <!-- Основной контейнер -->
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="700" Margin="20">
             <!-- Логотип сверху -->
-            <Image Source="/Assets/icon5.png" Width="100" Height="100" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+            <Image Source="/Assets/new_logo/logo.png" Width="100" Height="100" Margin="0,0,0,20" HorizontalAlignment="Center"/>
 
             <!-- Текст Welcome с анимированным градиентом -->
             <TextBlock x:Uid="Welcome_HomePage"

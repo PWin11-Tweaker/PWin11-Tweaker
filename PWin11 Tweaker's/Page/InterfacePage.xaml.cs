@@ -74,22 +74,22 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
-                string regContent = "Windows Registry Editor Version 5.00\n\n";
+                string regContent = "Windows Registry Editor Version 5.00";
 
                 // Выравнивание панели задач
                 int alignment = TaskbarAlignmentCombo.SelectedItem is ComboBoxItem item ? int.Parse(item.Tag.ToString()) : 1;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]" + "\n" +
-                              $"\"TaskbarAl\"=dword:0000000{alignment}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]" + "" +
+                              $"\"TaskbarAl\"=dword:0000000{alignment}";
 
                 // Прозрачность панели задач
                 bool transparency = TaskbarTransparencyToggle.IsChecked ?? false;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]" + "\n" +
-                              $"\"EnableTransparency\"=dword:0000000{(transparency ? 1 : 0)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]" + "" +
+                              $"\"EnableTransparency\"=dword:0000000{(transparency ? 1 : 0)}";
 
                 // Скрытие кнопки поиска
                 bool hideSearch = HideSearchButtonToggle.IsChecked ?? false;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]" + "\n" +
-                              $"\"SearchboxTaskbarMode\"=dword:0000000{(hideSearch ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]" + "" +
+                              $"\"SearchboxTaskbarMode\"=dword:0000000{(hideSearch ? 0 : 1)}";
 
                 // Сохранение и применение изменений
                 StatusText.Text = resourceLoader.GetString("Apply_Change");
@@ -100,11 +100,11 @@ namespace PWin11_Tweaker_s
                 File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
 
                 string tempBatPath = Path.Combine(Path.GetTempPath(), "InterfaceTweaks.bat");
-                string batContent = $"@echo off\nreg import \"{tempRegPath}\" >nul 2>&1\n" +
-                                   "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)\n" +
-                                   $"del \"{tempRegPath}\" >nul 2>&1\n" +
-                                   "taskkill /f /im explorer.exe >nul 2>&1\n" +
-                                   "start explorer.exe\n" +
+                string batContent = $"@echo off reg import \"{tempRegPath}\" >nul 2>&1" +
+                                   "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)" +
+                                   $"del \"{tempRegPath}\" >nul 2>&1" +
+                                   "taskkill /f /im explorer.exe >nul 2>&1" +
+                                   "start explorer.exe" +
                                    "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
 

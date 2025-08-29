@@ -35,7 +35,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при инициализации: {ex.Message} StackTrace: {ex.StackTrace}");
                 _currentLanguage = "ru-RU";
                 _isInitialized = true;
             }
@@ -73,7 +73,7 @@ namespace PWin11_Tweaker_s
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при смене языка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                    System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при смене языка: {ex.Message} StackTrace: {ex.StackTrace}");
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при получении ресурса {resourceKey}: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при получении ресурса {resourceKey}: {ex.Message} StackTrace: {ex.StackTrace}");
                 return resourceKey;
             }
         }

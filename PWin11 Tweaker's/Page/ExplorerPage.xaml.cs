@@ -36,7 +36,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"ExplorerPage: Ошибка при инициализации: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"ExplorerPage: Ошибка при инициализации: {ex.Message} StackTrace: {ex.StackTrace}");
                 throw;
             }
         }
@@ -127,7 +127,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"FindStartAllBackPath: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"FindStartAllBackPath: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 string localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 return Path.Combine(localAppDataPath, @"StartAllBack\StartAllBackCfg.exe");
             }
@@ -209,7 +209,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"InstallStartAllBackButton_Click: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"InstallStartAllBackButton_Click: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 ContentDialog errorDialog = new()
                 {
                     Title = resourceLoader.GetString("Dialog_Error_Title"),
@@ -240,19 +240,19 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
-                string regContent = "Windows Registry Editor Version 5.00\n\n";
+                string regContent = "Windows Registry Editor Version 5.00";
 
                 // Отключение папки "Главное"
                 bool disableHomeFolder = DisableHomeFolder.IsChecked ?? false;
                 if (disableHomeFolder)
                 {
-                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]\n" +
-                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000\n\n";
+                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]" +
+                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000";
                 }
                 else
                 {
                     // Восстановление по умолчанию (удаление ключа для включения папки)
-                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]\n\n";
+                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]";
                 }
                 TweakStatus.IsHomeFolderDisabled = disableHomeFolder;
 
@@ -260,38 +260,38 @@ namespace PWin11_Tweaker_s
                 bool disableGalleryFolder = DisableGalleryFolder.IsChecked ?? false;
                 if (disableGalleryFolder)
                 {
-                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]\n" +
-                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000\n\n";
+                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]" +
+                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000";
                 }
                 else
                 {
                     // Восстановление по умолчанию (удаление ключа для включения папки)
-                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]\n\n";
+                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]";
                 }
                 TweakStatus.IsGalleryFolderDisabled = disableGalleryFolder;
 
                 // Включить показ скрытых файлов 
                 bool showHiddenFiles = ShowHiddenFiles.IsChecked ?? false;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]\n" +
-                              $"\"Hidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n" +
-                              $"\"ShowSuperHidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}\n\n";
+                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]" +
+                              $"\"Hidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}" +
+                              $"\"ShowSuperHidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}";
                 TweakStatus.IsShowHiddenFilesEnabled = showHiddenFiles;
 
                 bool useSmallCaptions = UseSmallCaptions.IsChecked ?? false;
                 string captionHeightValue = useSmallCaptions ? "-180" : "-330";
-                regContent += $"[HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics]\n" +
-                              $"\"CaptionHeight\"=\"{captionHeightValue}\"\n\n";
+                regContent += $"[HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics]" +
+                              $"\"CaptionHeight\"=\"{captionHeightValue}\"";
                 TweakStatus.IsSmallCaptionsEnabled = useSmallCaptions;
 
                 bool applyClassicContextMenu = ClassicContextMenuToggle.IsChecked ?? false;
                 if (applyClassicContextMenu)
                 {
-                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\\InprocServer32]\n" +
-                          $"@=\"\"\n\n";
+                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\\InprocServer32]" +
+                          $"@=\"\"";
                 }
                 else
                 {
-                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}]\n\n";
+                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}]";
                 }
                 TweakStatus.IsClassicContextMenuEnabled = applyClassicContextMenu;
 
@@ -304,16 +304,16 @@ namespace PWin11_Tweaker_s
 
                 string tempBatPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerApply.bat");
                 string tempLogPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerLog.txt");
-                string batContent = "@echo off\n" +
-                                   $"echo Начало применения настроек > \"{tempLogPath}\"\n" +
-                                   $"echo Выполняется: reg import \"{tempRegPath}\" >> \"{tempLogPath}\"\n" +
-                                   $"reg import \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1\n" +
-                                   "if %ERRORLEVEL% NEQ 0 (\n" +
-                                   $"    echo Не удалось применить .reg файл, код ошибки: %ERRORLEVEL% >> \"{tempLogPath}\"\n" +
-                                   "    exit /b %ERRORLEVEL%\n" +
-                                   ")\n" +
-                                   $"echo .reg файл успешно применён >> \"{tempLogPath}\"\n" +
-                                   $"del \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1\n" +
+                string batContent = "@echo off" +
+                                   $"echo Начало применения настроек > \"{tempLogPath}\"" +
+                                   $"echo Выполняется: reg import \"{tempRegPath}\" >> \"{tempLogPath}\"" +
+                                   $"reg import \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1" +
+                                   "if %ERRORLEVEL% NEQ 0 (" +
+                                   $"    echo Не удалось применить .reg файл, код ошибки: %ERRORLEVEL% >> \"{tempLogPath}\"" +
+                                   "    exit /b %ERRORLEVEL%" +
+                                   ")" +
+                                   $"echo .reg файл успешно применён >> \"{tempLogPath}\"" +
+                                   $"del \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1" +
                                    "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Создан .bat файл: {tempBatPath}");
@@ -358,7 +358,7 @@ namespace PWin11_Tweaker_s
                         try
                         {
                             string logContent = File.ReadAllText(tempLogPath);
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Лог выполнения:\n{logContent}");
+                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Лог выполнения: {logContent}");
                         }
                         catch (IOException ioEx)
                         {
@@ -451,7 +451,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 ContentDialog errorDialog = new()
                 {
                     Title = resourceLoader.GetString("Dialog_Error_Title"),
@@ -501,7 +501,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"OpenOldNewExplorerButton_Click: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"OpenOldNewExplorerButton_Click: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 ContentDialog errorDialog = new()
                 {
                     Title = resourceLoader.GetString("Dialog_Error_Title"),
@@ -620,7 +620,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"DownloadAndInstallStartAllBack: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"DownloadAndInstallStartAllBack: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 installationSuccessful = false;
                 throw;
             }
@@ -817,7 +817,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"UninstallStartAllBack: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"UninstallStartAllBack: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 uninstallSuccessful = false;
                 throw;
             }
@@ -891,7 +891,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"FindUninstallString: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"FindUninstallString: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 return null;
             }
         }
@@ -936,7 +936,7 @@ namespace PWin11_Tweaker_s
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
                 throw;
             }
         }

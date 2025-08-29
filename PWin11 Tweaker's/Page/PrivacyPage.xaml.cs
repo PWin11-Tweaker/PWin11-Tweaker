@@ -129,90 +129,90 @@ namespace PWin11_Tweaker_s
                 ProgressBar.Value = 0;
                 await Task.Delay(100);
 
-                string regContent = "Windows Registry Editor Version 5.00\n\n";
-                string batContent = "@echo off\n";
+                string regContent = "Windows Registry Editor Version 5.00";
+                string batContent = "@echo off";
 
                 // Телеметрия
                 bool disableTelemetry = DisableTelemetryToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Телеметрия - Устанавливаем AllowTelemetry = {(disableTelemetry ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]" + "\n" +
-                              $"\"AllowTelemetry\"=dword:0000000{(disableTelemetry ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]" + "" +
+                              $"\"AllowTelemetry\"=dword:0000000{(disableTelemetry ? 0 : 1)}";
                 if (disableTelemetry)
                 {
                     Debug.WriteLine("ApplyButton_Click: Отключаем службу DiagTrack.");
-                    regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]" + "\n" +
-                                  "\"Start\"=dword:00000004\n\n";
-                    batContent += "sc stop DiagTrack >nul 2>&1\n";
+                    regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]" + "" +
+                                  "\"Start\"=dword:00000004";
+                    batContent += "sc stop DiagTrack >nul 2>&1";
                 }
 
                 // Рекламный ID
                 bool disableAdId = DisableAdvertisingIdToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Рекламный ID - Устанавливаем Enabled = {(disableAdId ? 0 : 1)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]" + "\n" +
-                              $"\"Enabled\"=dword:0000000{(disableAdId ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]" + "" +
+                              $"\"Enabled\"=dword:0000000{(disableAdId ? 0 : 1)}";
 
                 // Местоположение
                 bool disableLocation = DisableLocationToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Местоположение - Устанавливаем DisableLocation = {(disableLocation ? 1 : 0)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]" + "\n" +
-                              $"\"DisableLocation\"=dword:0000000{(disableLocation ? 1 : 0)}\n" +
-                              $"\"DisableLocationForAllUsers\"=dword:0000000{(disableLocation ? 1 : 0)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]" + "" +
+                              $"\"DisableLocation\"=dword:0000000{(disableLocation ? 1 : 0)}" +
+                              $"\"DisableLocationForAllUsers\"=dword:0000000{(disableLocation ? 1 : 0)}";
                 if (disableLocation)
                 {
-                    batContent += "sc stop lfsvc >nul 2>&1\n"; // Остановка службы геолокации
+                    batContent += "sc stop lfsvc >nul 2>&1"; // Остановка службы геолокации
                 }
 
                 // Cortana
                 bool disableCortana = DisableCortanaToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Cortana - Устанавливаем AllowCortana = {(disableCortana ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "\n" +
-                              $"\"AllowCortana\"=dword:0000000{(disableCortana ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "" +
+                              $"\"AllowCortana\"=dword:0000000{(disableCortana ? 0 : 1)}";
                 if (disableCortana)
                 {
-                    batContent += "sc stop Cortana >nul 2>&1\n"; // Остановка службы Cortana
+                    batContent += "sc stop Cortana >nul 2>&1"; // Остановка службы Cortana
                 }
 
                 // Фоновые приложения
                 bool disableBackgroundApps = DisableBackgroundAppsToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Фоновые приложения - Устанавливаем GlobalUserDisabled = {(disableBackgroundApps ? 1 : 0)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]" + "\n" +
-                              $"\"GlobalUserDisabled\"=dword:0000000{(disableBackgroundApps ? 1 : 0)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]" + "" +
+                              $"\"GlobalUserDisabled\"=dword:0000000{(disableBackgroundApps ? 1 : 0)}";
 
                 // Облачный контент
                 bool disableCloudContent = DisableCloudContentToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Облачный контент - Устанавливаем DisableCloudOptimizedContent = {(disableCloudContent ? 1 : 0)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost]" + "\n" +
-                              $"\"DisableCloudOptimizedContent\"=dword:0000000{(disableCloudContent ? 1 : 0)}\n" +
-                              @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]" + "\n" +
-                              $"\"SystemPaneSuggestionsEnabled\"=dword:0000000{(disableCloudContent ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost]" + "" +
+                              $"\"DisableCloudOptimizedContent\"=dword:0000000{(disableCloudContent ? 1 : 0)}" +
+                              @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]" + "" +
+                              $"\"SystemPaneSuggestionsEnabled\"=dword:0000000{(disableCloudContent ? 0 : 1)}";
 
                 // Find My Device
                 bool disableFindMyDevice = DisableFindMyDeviceToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Find My Device - Устанавливаем AllowFindMyDevice = {(disableFindMyDevice ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FindMyDevice]" + "\n" +
-                              $"\"AllowFindMyDevice\"=dword:0000000{(disableFindMyDevice ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FindMyDevice]" + "" +
+                              $"\"AllowFindMyDevice\"=dword:0000000{(disableFindMyDevice ? 0 : 1)}";
                 if (disableFindMyDevice)
                 {
-                    batContent += "sc stop OneSyncSvc >nul 2>&1\n"; // Остановка службы синхронизации
+                    batContent += "sc stop OneSyncSvc >nul 2>&1"; // Остановка службы синхронизации
                 }
 
                 // Windows Insider Program телеметрия
                 bool disableInsiderTelemetry = DisableInsiderTelemetryToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Windows Insider Telemetry - Устанавливаем AllowBuildPreview = {(disableInsiderTelemetry ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]" + "\n" +
-                              $"\"AllowBuildPreview\"=dword:0000000{(disableInsiderTelemetry ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]" + "" +
+                              $"\"AllowBuildPreview\"=dword:0000000{(disableInsiderTelemetry ? 0 : 1)}";
 
                 // Сбор данных Microsoft Edge
                 bool disableEdgeDiagnostics = DisableEdgeDiagnosticsToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Microsoft Edge Diagnostics - Устанавливаем DiagnosticData = {(disableEdgeDiagnostics ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]" + "\n" +
-                              $"\"DiagnosticData\"=dword:0000000{(disableEdgeDiagnostics ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]" + "" +
+                              $"\"DiagnosticData\"=dword:0000000{(disableEdgeDiagnostics ? 0 : 1)}";
 
                 // Suggested Content
                 bool disableSuggestedContent = DisableSuggestedContentToggle.IsChecked ?? false;
                 Debug.WriteLine($"ApplyButton_Click: Suggested Content - Устанавливаем SubscribedContent-338393Enabled = {(disableSuggestedContent ? 0 : 1)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]" + "\n" +
-                              $"\"SubscribedContent-338393Enabled\"=dword:0000000{(disableSuggestedContent ? 0 : 1)}\n\n";
+                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]" + "" +
+                              $"\"SubscribedContent-338393Enabled\"=dword:0000000{(disableSuggestedContent ? 0 : 1)}";
 
                 // Применение изменений
                 StatusText.Text = resourceLoader.GetString("Apply_Change");
@@ -225,11 +225,11 @@ namespace PWin11_Tweaker_s
                 Debug.WriteLine($"ApplyButton_Click: Создан REG-файл: {tempRegPath}");
 
                 string tempBatPath = Path.Combine(Path.GetTempPath(), "PrivacyTweaks.bat");
-                batContent += $"reg import \"{tempRegPath}\" >nul 2>&1\n" +
-                              "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)\n" +
-                              $"del \"{tempRegPath}\" >nul 2>&1\n" +
-                              "taskkill /f /im explorer.exe >nul 2>&1\n" +
-                              "start explorer.exe\n" +
+                batContent += $"reg import \"{tempRegPath}\" >nul 2>&1" +
+                              "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)" +
+                              $"del \"{tempRegPath}\" >nul 2>&1" +
+                              "taskkill /f /im explorer.exe >nul 2>&1" +
+                              "start explorer.exe" +
                               "exit /b 0";
                 File.WriteAllText(tempBatPath, batContent);
                 Debug.WriteLine($"ApplyButton_Click: Создан BAT-файл: {tempBatPath}");

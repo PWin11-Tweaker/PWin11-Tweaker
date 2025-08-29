@@ -42,7 +42,7 @@ namespace PWin11_Tweaker_s.TempCleaner
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Failed to initialize TempCleanerPage: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Failed to initialize TempCleanerPage: {ex.Message} StackTrace: {ex.StackTrace}");
                 throw;
             }
         }
@@ -80,7 +80,7 @@ namespace PWin11_Tweaker_s.TempCleaner
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error loading sizes: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Error loading sizes: {ex.Message} StackTrace: {ex.StackTrace}");
                 await ShowErrorAsync($"Ошибка при подсчете размеров: {ex.Message}");
             }
         }
@@ -95,7 +95,7 @@ namespace PWin11_Tweaker_s.TempCleaner
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error in CheckBox_Changed: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Error in CheckBox_Changed: {ex.Message} StackTrace: {ex.StackTrace}");
             }
         }
 
@@ -172,7 +172,7 @@ namespace PWin11_Tweaker_s.TempCleaner
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error during cleaning: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Error during cleaning: {ex.Message} StackTrace: {ex.StackTrace}");
                 await ShowErrorAsync($"Ошибка при очистке: {ex.Message}");
             }
             finally
