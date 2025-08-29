@@ -1,25 +1,33 @@
 <div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/new%20era%20logo%20PWin11%20Tweaker.png?raw=true" alt="Logo" width="80" height="80">
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/PWin11%20Tweaker's/Assets/icon5.png?raw=true" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">PWin11 Tweaker</h3>
 <p align="center">
 Tweaker for OS: Windows 11
-<br/>   
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/progressbar6.png?raw=true" width="500"/>
 <br/>
-<a>   65% / 100%   </a>
+<string>Language: Eng, Rus, Frn</string>  
 <br/>
 <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Explore the docs »</strong></a>
 <br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
 <br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Latest Release</a>
-</p>
+<br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md on Russian</a>
-</p>
+<br/>
+   <br/>
+<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Wiki</a>
+<br/>
+   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Download!</a>
+<br/>
+   <br/>
+<a href="https://sourceforge.net/projects/pwin11-tweaker/files/latest/download"><img alt="Download PWin11-Tweaker" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
 </div>
 
 ## Getting Started
@@ -35,7 +43,7 @@ Tweaker for OS: Windows 11
 4. Explore: Navigate through the menu to access optimization, cleanup, and customization options.
 ## About The Project
 
-![Tweaker](https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/PWin11_Tweaker's_oCT4F3NQYJ.png?raw=true)
+![Tweaker](https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/screenPWin11.png?raw=true)
 
 PWin11 Tweaker is a lightweight, open-source utility that allows you to tweak various aspects of Windows 11 without delving into complex system settings or third-party software. With a focus on performance optimization, system cleanup, privacy protection, and interface customization, this tool simplifies the process of tailoring your OS to your specific needs. The intuitive navigation and responsive design make it accessible to everyone, while advanced options cater to tech enthusiasts.
 
@@ -84,8 +92,9 @@ Distributed under the MIT License. See [MIT License](https://github.com/PWin11-T
 
 ## Contact
 
-In telegram channel: tg on Eng lang: @PWin11_news and on Rus lang: @pwin11_news_rus
 My official tg channel: @ph1ncyn
+
+My mail: phancyncloud@gmail.com
 
 ## Versions:
 
@@ -98,4 +107,7 @@ docs this means there were changes in the documentation or in the Readme files.
 fix means that there were updates without a version, but a quick fix for an error that was in the project, then it will be in the subrelease
 
 X.X.X.X-1-9 this means how many changes there were in the version
-
+<div align="center">
+<string>This project is not Russian, this project is global</string>
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/bg.png?raw=true" width="500"/>
+</div>
