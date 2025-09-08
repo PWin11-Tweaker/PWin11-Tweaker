@@ -98,15 +98,8 @@ My mail: phancyncloud@gmail.com
 
 ## Versions:
 
-If X.0-9.X.0-9 then these are subversions of the project
+<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/VERSIONING.md">Learn here!</a>
 
-This is already the main version: 1-9,X,1-9,X
-
-docs this means there were changes in the documentation or in the Readme files.
-
-fix means that there were updates without a version, but a quick fix for an error that was in the project, then it will be in the subrelease
-
-X.X.X.X-1-9 this means how many changes there were in the version
 <br/>
 <br/>
 <br/>
