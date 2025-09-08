@@ -18,7 +18,6 @@
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Последний релиз</a>
 <br/>
    <br/>
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md на Русском</a>
 <br/>
    <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Вики</a>
