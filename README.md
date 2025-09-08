@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
-<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/New%20Icon%20PWin11%20Tweaker-iOS-Default-1024x1024@1x.png?raw=true" alt="Logo" width="100" height="100">
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/New%20Icon%20PWin11%20Tweaker-iOS-Default-1024x1024@1x.png?raw=true" alt="Logo" width="125" height="125">
 </a>
 <h3 align="center">PWin11 Tweaker</h3>
 <p align="center">
@@ -107,7 +107,16 @@ docs this means there were changes in the documentation or in the Readme files.
 fix means that there were updates without a version, but a quick fix for an error that was in the project, then it will be in the subrelease
 
 X.X.X.X-1-9 this means how many changes there were in the version
+<br/>
+<br/>
+<br/>
+<strong>
+Comment: New releases will be released very rarely, because I am studying and gaining new knowledge, I hope you will understand and not be upset, and so you can always support me with a coin to make my life a little easier.
+</strong>
+<br/>
+<br/>
 <div align="center">
 <string>This project is not Russian, this project is global</string>
+   <br/>
 <img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/bg.png?raw=true" width="500"/>
 </div>
