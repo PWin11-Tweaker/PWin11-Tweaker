@@ -18,8 +18,6 @@
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Последний релиз</a>
 <br/>
    <br/>
-<br/>
-   <br/>
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Вики</a>
 <br/>
    <br/>
