@@ -24,6 +24,9 @@ Tweaker for OS: Windows 11
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Wiki</a>
 <br/>
    <br/>
+   <a href="https://deepwiki.com/PWin11-Tweaker/PWin11-Tweaker/2-application-architecture">DeepWIKI</a>
+      <br />
+      <br />
 <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Download!</a>
 <br/>
    <br/>
