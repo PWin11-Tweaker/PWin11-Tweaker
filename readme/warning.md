@@ -1,31 +1,69 @@
 # ------WARNING!-------
 LANG: ENG
-DATE:
+DATE: 09.11.2025 (MM.DD.YYYY)
 
+# ⚠️ Warning and Important Notices
+
+This file contains critical information regarding security, policy compliance, and potential risks associated with the use of this project.
+
+## 1. Policy Compliance and Licensing
+
+*   **License Agreement:** The use of this software is governed by the terms of the license agreement located in the [`LICENSE`](LICENSE) file. You are obligated to read and agree to these terms before using, copying, or modifying the project.
+*   **Privacy Policy:** If the project collects, processes, or stores any user data, please review our Privacy Policy (if applicable). Use of the project constitutes your agreement to the data collection and usage practices.
+
+## 2. Security Warnings
+
+*   **Not for Critical Systems:** This software is provided **"AS IS"** and is **NOT** intended for use in life-safety systems, critical infrastructure management, high-stakes financial operations, or any other situation where the failure of the software could lead to death, personal injury, severe physical or environmental damage.
+*   **Configuration Review:** Before deployment in a production environment, ensure all security settings (passwords, API keys, access tokens) are properly configured and that default values are not used.
+*   **Updates:** You are responsible for tracking and installing security updates for this software and all of its dependencies.
+
+## 3. Warranties and Disclaimer
+
+This project is developed and maintained on a voluntary basis. **We provide no express or implied warranties,** including, but not limited to, warranties of merchantability, fitness for a particular purpose, and non-infringement.
+
+**Developers and contributors shall not be held liable** for any direct, indirect, incidental, special, punitive, or consequential damages (including, but not limited to: data loss, lost profits, business interruption) arising from the use or inability to use this software, even if the possibility of such damages has been advised.
+
+## 4. For Developers and Contributors
+
+*   **Code Review:** Before making changes, ensure your code complies with the project's rules and standards.
+*   **Testing:** You are obligated to adequately test your changes before submitting a Pull Request.
+*   **Responsible Disclosure:** If you discover a security vulnerability, please report it responsibly by following our responsible disclosure policy (if one is defined).
+
+---
+
+**By using this project, you acknowledge that you have read and understood this warning and agree to the terms outlined above.**
 
 # ------ВНИМАНИЕ!------
 ЯЗЫК: РУС
-ДАТА НАПИСАНИЯ ПОСТА: 
+ДАТА НАПИСАНИЯ ПОСТА: 11.09.2025 (DD.MM.YYYY)
 
-### ДОКУМЕНТАЦИЯ 📄
-PWin11 Tweaker - Это opensource программа, предназначена для оптимизации и улучшение работы Windows 11, эта программа влезает в реестр Windows.
-Вы можете прочитать код, форкнуть этот проект и делать в своих рамках изменения в проекте.
-Есть Wiki и DeepWiki, который расширит ваши познания в этом проекте, алгоритмы и механики, которые есть в проекте.
-Я ph1ncyn, один разработчик, который развивает этот проект, but из-за этого обновления далеко не быстро выходят.
+# ⚠️ Предупреждение и важные уведомления
 
-### ПЕРЕД ИСПОЛЬЗОВАНИЕМ ПРОГРАММЫ 🖥️
-Установить: .NET 8-9.
-Установите пакет WinApp SDK, для запуска программы, это можно сделать в диалогов окне при запуске программы, если программа запускается и так, то ничего устанавливать не надо.
-Проверить установлена ли у вас Windows 11 24H2 или 25H2 DEV.(В последних релизах 1.14.1 поддерживается хорошо DEV версии).
-САМОЕ ГЛАВНОЕ: Запуск от имени администратора, при каждом запуске программы "PWin11 Tweaker".
-### МЫ НЕ НЕСЁМ ОТВЕТСТВЕННОСТЬ 🖲️
-Мы не несём ответственность за ошибки, которые появились не из-за нашей программы, проверяйте версию в Secure, актуальности версии и версия Windows 11.
-При нахождение ошибки, вы должны показать то что у вас актуальная Windows 11 и версия программы PWin11 Tweaker в свойствах Windows.
-При нахождения бага, вы должны оповестить нас в Issues, не распространяя никуда кроме личных источников разработчика PWin11 Tweaker.(Время исправления 1-2 дня, после моего ответа вам.)
-В определённых версиях программы PWin11 Tweaker, мы можем полностью отстранится от помощи и решение ваших проблем, но при нахождении бага, так же как и было написано сверху, спасибо за понимания, теперь при каждом новом релизе будет внизу писаться: "Attention", то что значит "Мы не берём ответственность за эту версию, чаще всего это Beta, Preview, Demo, Pre-Release".
+Этот файл содержит критически важную информацию о безопасности, соответствии политикам и потенциальных рисках, связанных с использованием данного проекта.
 
-### ВЕРСИИ 💾
-Release - Это версия которая проверена на работу и чтобы не было ошибок(Мы тут берём ответственность за ваш компьютер, мы поможем исправить ту или иную ошибку, если это и правда виновата наша программа.)
-Beta - Это версия, которая гарантирует не 100% рабочих механик, лучше дождаться релиза где не будет таких проблем, так же и preview версии, там гарантия рабочая часть механика может быть и 20%, вероятность ошибок очень вероятна.
+## 1. Соответствие политике и лицензирование
 
-### КОММЕНТАРИЙ 💡
+*   **Лицензионное соглашение:** Использование данного программного обеспечения регулируется условиями лицензионного соглашения, расположенного в файле [`LICENSE`](LICENSE). Вы обязаны ознакомиться и согласиться с этими условиями перед использованием, копированием или модификацией проекта.
+*   **Политика конфиденциальности:** Если проект собирает, обрабатывает или хранит какие-либо пользовательские данные, ознакомьтесь с нашей Политикой конфиденциальности (если применимо). Использование проекта означает ваше согласие с методами сбора и использования данных.
+
+## 2. Предупреждения о безопасности
+
+*   **Не для критических систем:** Данное программное обеспечение предоставляется **«КАК ЕСТЬ»** (AS IS) и **НЕ** должно использоваться в системах, связанных с безопасностью человека, управлением критической инфраструктурой, финансовыми операциями высокой важности или в любой другой ситуации, где отказ программного обеспечения может привести к смерти, травмам, серьезному физическому или экологическому ущербу.
+*   **Проверка конфигурации:** Перед развертыванием в production-среде убедитесь, что все настройки безопасности (пароли, ключи API, токены доступа) правильно сконфигурированы и не используются значения по умолчанию.
+*   **Обновления:** Вы несете ответственность за отслеживание и установку обновлений безопасности для данного программного обеспечения и всех его зависимостей.
+
+## 3. Гарантии и отказ от ответственности
+
+Данный проект разрабатывается и поддерживается на добровольной основе. **Мы не предоставляем никаких явных или подразумеваемых гарантий**, включая, но не ограничиваясь, гарантиями товарной пригодности, соответствия определенной цели и ненарушения прав.
+
+**Разработчики и контрибьюторы не несут ответственности** за любые прямые, косвенные, случайные, особые, штрафные или последующие убытки (включая, но не ограничиваясь: потерю данных, упущенную выгоду, прерывание бизнес-процессов), возникшие в результате использования или невозможности использования данного программного обеспечения, даже если о возможности таких убытков было заранее известно.
+
+## 4. Для разработчиков и контрибьюторов
+
+*   **Проверка кода:** Перед внесением изменений убедитесь, что ваш код соответствует правилам и стандартам проекта.
+*   **Тестирование:** Вы обязаны adequately протестировать свои изменения перед отправкой запроса на слияние (Pull Request).
+*   **Ответственное раскрытие:** Если вы обнаружили уязвимость в системе безопасности, пожалуйста, сообщите о ней ответственно, следуя нашей политике ответственного раскрытия (если таковая определена).
+
+---
+
+**Используя этот проект, вы подтверждаете, что прочитали и поняли данное предупреждение и соглашаетесь с условиями, изложенными выше.**
