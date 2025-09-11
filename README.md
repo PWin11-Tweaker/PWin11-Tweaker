@@ -35,7 +35,7 @@ Tweaker for OS: Windows 11
 
 ## Getting Started
 
-0. Click on Star and Follow Organization
+0. Click on Star and Check <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/warning.md">warning.md</a>
 
 1. Download: Clone the repository or download the latest release from the GitHub page.
 
