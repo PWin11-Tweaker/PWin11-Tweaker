@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Xml;
 
 namespace PWin11Updater
@@ -27,6 +28,13 @@ namespace PWin11Updater
             InitializeComponent();
             LoadLocalVersion();
             OpenProgramButton.IsEnabled = true; // Изначально кнопка активна
+
+            // Для програчности
+            this.AllowsTransparency = true;
+            this.WindowStyle = WindowStyle.None;
+
+            // Или полупрозрачный цвет
+            this.Background = new SolidColorBrush(Color.FromArgb(128, 255, 0, 0));
         }
 
         private void LoadLocalVersion()

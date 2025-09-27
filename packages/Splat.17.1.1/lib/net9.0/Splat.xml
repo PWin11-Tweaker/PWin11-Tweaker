@@ -1,0 +1,658 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Splat</name>
+    </assembly>
+    <members>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingManager">
+            <summary>
+            Default implementation of the Feature Usage Tracking Manager.
+            </summary>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingManager"/> class.
+            </summary>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession">
+            <summary>
+            Default Feature Usage Tracking Session. Used for output when a dev chooses not to override.
+            </summary>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession"/> class.
+            </summary>
+            <param name="featureName">The name of the feature.</param>
+        </member>
+        <member name="P:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession.ParentReference">
+            <inheritdoc />
+        </member>
+        <member name="P:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession.FeatureReference">
+            <inheritdoc />
+        </member>
+        <member name="P:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession.FeatureName">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession.SubFeature(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession.OnException(System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.DefaultFeatureUsageTrackingSession.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.EnableFeatureUsageTrackingExtensions">
+            <summary>
+            Extensions for the IEnableFeatureUsageTracking interface. This is a similar design to IEnableLogger, to allow
+            easy use and extension of classes such as ViewModels.
+            </summary>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.EnableFeatureUsageTrackingExtensions.FeatureUsageTrackingSession(Splat.ApplicationPerformanceMonitoring.IEnableFeatureUsageTracking,System.String)">
+            <summary>
+            Gets a Feature Usage Tracking Session.
+            </summary>
+            <param name="instance">instance of class that uses IEnableFeatureUsageTracking.</param>
+            <param name="featureName">Name of the feature.</param>
+            <returns>Feature Usage Tracking Session.</returns>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.EnableFeatureUsageTrackingExtensions.WithFeatureUsageTrackingSession(Splat.ApplicationPerformanceMonitoring.IEnableFeatureUsageTracking,System.String,System.Action{Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession})">
+            <summary>
+            Helper for wrapping an action with a Feature Usage Tracking Session.
+            </summary>
+            <param name="instance">instance of class that uses IEnableFeatureUsageTracking.</param>
+            <param name="featureName">Name of the feature.</param>
+            <param name="action">Action to carry out.</param>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.EnableFeatureUsageTrackingExtensions.WithSubFeatureUsageTrackingSession(Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession,System.String,System.Action{Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession})">
+            <summary>
+            Helper for wrapping an action with a sub-feature Usage Tracking Session.
+            </summary>
+            <param name="instance">instance of class that uses IEnableFeatureUsageTracking.</param>
+            <param name="featureName">Name of the feature.</param>
+            <param name="action">Action to carry out.</param>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.FuncFeatureUsageTrackingManager">
+            <summary>
+            Func based Feature Usage Tracking Manager.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:Splat.ApplicationPerformanceMonitoring.FuncFeatureUsageTrackingManager"/> class.
+            </remarks>
+            <param name="featureUsageTrackingSessionFunc">
+            Factory function for a Feature Usage Tracking Session.
+            </param>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.FuncFeatureUsageTrackingManager.#ctor(System.Func{System.String,Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession})">
+            <summary>
+            Func based Feature Usage Tracking Manager.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:Splat.ApplicationPerformanceMonitoring.FuncFeatureUsageTrackingManager"/> class.
+            </remarks>
+            <param name="featureUsageTrackingSessionFunc">
+            Factory function for a Feature Usage Tracking Session.
+            </param>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.FuncFeatureUsageTrackingManager.GetFeatureUsageTrackingSession(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.IEnableFeatureUsageTracking">
+            <summary>
+            Interface for exposing Feature Usage Tracking as an extension to a class.
+            </summary>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingManager">
+            <summary>
+            A manager which will generate a <see cref="T:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession"/> for the specified type.
+            </summary>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingManager.GetFeatureUsageTrackingSession(System.String)">
+            <summary>
+            Generate a <see cref="T:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession"/> for the specified type.
+            </summary>
+            <param name="featureName">The name of the feature.</param>
+            <returns>The <see cref="T:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession"/>.</returns>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession">
+            <summary>
+            Base interface for a feature usage tracking session.
+            </summary>
+        </member>
+        <member name="P:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession.FeatureName">
+            <summary>
+            Gets the name of the Feature being tracked.
+            </summary>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession.SubFeature(System.String)">
+            <summary>
+            Starts a sub-feature usage tracking session on the current session.
+            </summary>
+            <param name="description">Description of the sub-feature.</param>
+            <returns>The sub-feature usage tracking session.</returns>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession.OnException(System.Exception)">
+            <summary>
+            Notify the APM toolset an exception has occurred in the current tracking session.
+            </summary>
+            <param name="exception">The exception that occurred.</param>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession`1">
+            <summary>
+            Generic interface for a Feature Usage Tracking Session.
+            </summary>
+            <typeparam name="TReferenceType">The Type for the Unique Tracking References.</typeparam>
+        </member>
+        <member name="P:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession`1.FeatureReference">
+            <summary>
+            Gets the current Feature Usage Unique Reference.
+            </summary>
+        </member>
+        <member name="P:Splat.ApplicationPerformanceMonitoring.IFeatureUsageTrackingSession`1.ParentReference">
+            <summary>
+            Gets the unique reference for the Parent Tracking Session, if any.
+            </summary>
+        </member>
+        <member name="T:Splat.ApplicationPerformanceMonitoring.IViewTracking">
+            <summary>
+            Base interface for tracking view usage.
+            </summary>
+        </member>
+        <member name="M:Splat.ApplicationPerformanceMonitoring.IViewTracking.OnViewNavigation(System.String)">
+            <summary>
+            Track a view navigation using just a name.
+            </summary>
+            <param name="name">Name of the view.</param>
+        </member>
+        <member name="M:Splat.AssemblyFinder.AttemptToLoadType``1(System.String)">
+            <summary>
+            Attempt to find the type based on the specified string.
+            </summary>
+            <typeparam name="T">The type to cast the value to if we find it.</typeparam>
+            <param name="fullTypeName">The name of the full type.</param>
+            <returns>The created object or the default value.</returns>
+        </member>
+        <member name="T:Splat.PointMathExtensions">
+            <summary>
+            Extension methods which extend the point mathematics.
+            </summary>
+        </member>
+        <member name="M:Splat.PointMathExtensions.Floor(System.Drawing.Point)">
+            <summary>
+            Floor the specified point (i.e. round it to integer values).
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <returns>The point that has been floored.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.WithinEpsilonOf(System.Drawing.PointF,System.Drawing.PointF,System.Single)">
+            <summary>
+            Determines whether two points are within 'epsilon' of each other.
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <param name="other">The point to compare against.</param>
+            <param name="epsilon">The tolerated epsilon value.</param>
+            <returns>If the value is equal based on the epsilon.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.DotProduct(System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>
+            Calculates the Dot product of two points.
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <param name="other">The point to perform the dot product against.</param>
+            <returns>The calculated dot product.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.ScaledBy(System.Drawing.PointF,System.Single)">
+            <summary>
+            Scales a PointF by a scalar factor.
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <param name="factor">The amount to scale by.</param>
+            <returns>The scaled point.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.Length(System.Drawing.PointF)">
+            <summary>
+            Calculates the magnitude of a point from (0,0).
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <returns>The length of the point.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.Normalize(System.Drawing.PointF)">
+            <summary>
+            Normalize the specified PointF (i.e. makes its magnitude = 1.0f).
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <returns>The normalized point.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.AngleInDegrees(System.Drawing.PointF)">
+            <summary>
+            Calculates the angle in degrees of a PointF.
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <returns>The angle that has been generated.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.ProjectAlong(System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>
+            Projects a PointF along a specified direction.
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <param name="direction">The point containing the direction.</param>
+            <returns>The projected point.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.ProjectAlongAngle(System.Drawing.PointF,System.Single)">
+            <summary>
+            Projects a PointF along a specified angle.
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <param name="angleInDegrees">The angle in degrees to perform the projection against.</param>
+            <returns>The point that has been projected.</returns>
+        </member>
+        <member name="M:Splat.PointMathExtensions.DistanceTo(System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>
+            Calculates the distance between two points.
+            </summary>
+            <param name="value">The point value to use for the calculation.</param>
+            <param name="other">The other point to calculate distance to.</param>
+            <returns>The distance to the other point.</returns>
+        </member>
+        <member name="T:Splat.RectangleMathExtensions">
+            <summary>
+            Extension methods to help with operations associated with the <see cref="T:System.Drawing.RectangleF"/> struct.
+            </summary>
+        </member>
+        <member name="M:Splat.RectangleMathExtensions.Center(System.Drawing.RectangleF)">
+            <summary>
+            Determine the center of a Rectangle.
+            </summary>
+            <param name="value">The rectangle to perform the calculation against.</param>
+            <returns>The point of the center of the rectangle.</returns>
+        </member>
+        <member name="M:Splat.RectangleMathExtensions.Divide(System.Drawing.RectangleF,System.Single,Splat.RectEdge)">
+            <summary>
+            Divide the specified Rectangle into two component rectangles.
+            </summary>
+            <param name="value">The rectangle to perform the calculation against.</param>
+            <param name="amount">Amount to move away from the given edge.</param>
+            <param name="fromEdge">The edge to create the slice from.</param>
+            <returns>The set of rectangles that are generated.</returns>
+        </member>
+        <member name="M:Splat.RectangleMathExtensions.DivideWithPadding(System.Drawing.RectangleF,System.Single,System.Single,Splat.RectEdge)">
+            <summary>
+            Divide the specified Rectangle into two component rectangles, adding
+            a padding between them.
+            </summary>
+            <param name="value">The rectangle to perform the calculation against.</param>
+            <param name="sliceAmount">Amount to move away from the given edge.</param>
+            <param name="padding">The amount of padding that is in neither rectangle.</param>
+            <param name="fromEdge">The edge to create the slice from.</param>
+            <returns>The set of rectangles that are generated.</returns>
+        </member>
+        <member name="M:Splat.RectangleMathExtensions.InvertWithin(System.Drawing.RectangleF,System.Drawing.RectangleF)">
+            <summary>
+            <para>Vertically inverts the coordinates of the rectangle within containingRect.</para>
+            <para>
+            This can effectively be used to change the coordinate system of a rectangle.
+            For example, if `rect` is defined for a coordinate system starting at the
+            top-left, the result will be a rectangle relative to the bottom-left.
+            </para>
+            </summary>
+            <param name="value">The rectangle to perform the calculation against.</param>
+            <param name="containingRect">The containing rectangle.</param>
+            <returns>The inverted rectangle.</returns>
+        </member>
+        <member name="M:Splat.RectangleMathExtensions.Copy(System.Drawing.RectangleF,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+            <summary>
+            <para>Creates a new RectangleF as a Copy of an existing one.</para>
+            <para>
+            This is useful when you have a rectangle that is almost what you
+            want, but you just want to change a couple properties.
+            </para>
+            </summary>
+            <param name="value">The rectangle to perform the calculation against.</param>
+            <param name="x">Optional new x coordinate of the rectangle to use.</param>
+            <param name="y">Optional new y coordinate of the rectangle to use.</param>
+            <param name="width">Optional new width of the rectangle to use.</param>
+            <param name="height">Optional new height of the rectangle to use.</param>
+            <param name="top">Optional new top of the rectangle to use.</param>
+            <param name="bottom">Optional new bottom of the rectangle to use.</param>
+            <returns>The copied rectangle.</returns>
+        </member>
+        <member name="T:Splat.RectEdge">
+            <summary>
+            Specifies which edge of a rectangle to use.
+            </summary>
+        </member>
+        <member name="F:Splat.RectEdge.Left">
+            <summary>
+            The left of the rectangle.
+            </summary>
+        </member>
+        <member name="F:Splat.RectEdge.Top">
+            <summary>
+            The top of the rectangle.
+            </summary>
+        </member>
+        <member name="F:Splat.RectEdge.Right">
+            <summary>
+            The right of the rectangle.
+            </summary>
+        </member>
+        <member name="F:Splat.RectEdge.Bottom">
+            <summary>
+            The bottom of the rectangle.
+            </summary>
+        </member>
+        <member name="T:Splat.SizeMathExtensions">
+            <summary>
+            Extension methods to assist with the <see cref="T:System.Drawing.SizeF"/> struct.
+            </summary>
+        </member>
+        <member name="M:Splat.SizeMathExtensions.WithinEpsilonOf(System.Drawing.SizeF,System.Drawing.SizeF,System.Single)">
+            <summary>
+            Determines whether two sizes are within epsilon of each other.
+            </summary>
+            <param name="value">The size we are doing the operation against.</param>
+            <param name="other">The size to compare for equality.</param>
+            <param name="epsilon">The tolerated epsilon value.</param>
+            <returns>If the value is equal based on the epsilon.</returns>
+        </member>
+        <member name="M:Splat.SizeMathExtensions.ScaledBy(System.Drawing.SizeF,System.Single)">
+            <summary>
+            Scales a size by a scalar value.
+            </summary>
+            <param name="value">The size we are doing the operation against.</param>
+            <param name="factor">The amount to scale by.</param>
+            <returns>The scaled size.</returns>
+        </member>
+        <member name="T:Splat.DefaultModeDetector">
+            <summary>
+            Provides a mechanism to detect if the current execution context is a unit test using
+            various heuristics such as environment signals, process names, and legacy assembly scans.
+            </summary>
+            <remarks>
+            Implements the <see cref="T:Splat.IModeDetector"/> interface to define mode detection functionality.
+            Implements the <see cref="T:Splat.IEnableLogger"/> interface to enable logging capabilities.
+            </remarks>
+        </member>
+        <member name="F:Splat.DefaultModeDetector._testAssemblyMarkers">
+            <summary>
+            A static array containing known markers of test assemblies.
+            These markers are utilized as part of the detection logic to determine
+            if the current process is running in a unit test environment. Each marker
+            represents a known identifier or namespace commonly used in unit testing frameworks.
+            </summary>
+        </member>
+        <member name="F:Splat.DefaultModeDetector._knownTestHostProcesses">
+            <summary>
+            A static array containing the names of known test host processes.
+            These process names are used to detect whether the current application
+            is being executed in a unit testing environment. Each entry indicates
+            a common test host or console runner associated with various testing frameworks.
+            </summary>
+        </member>
+        <member name="F:Splat.DefaultModeDetector._exactEnvVars">
+            <summary>
+            A static array containing exact environment variable names commonly used to identify
+            test runners. Each variable in this list is checked to directly determine
+            whether the application is running in a unit test environment.
+            </summary>
+        </member>
+        <member name="F:Splat.DefaultModeDetector._envPrefixes">
+            <summary>
+            A static array containing prefixes for environment variable names that are indicative of test runners.
+            These prefixes are used to detect if the current process is executing in a unit test environment by checking
+            whether any environment variables start with these prefixes.
+            </summary>
+        </member>
+        <member name="M:Splat.DefaultModeDetector.InUnitTestRunner">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.DefaultModeDetector.IsExplicitTestEnvironment">
+            <summary>
+            Determines if the current environment explicitly indicates a test environment based on specific environment variables.
+            Explicit env var that users can set in their test setup for deterministic behavior.
+            </summary>
+            <returns>
+            <c>true</c> if the environment explicitly signals a test environment; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Splat.DefaultModeDetector.HasTestRunnerEnvironmentSignals">
+            <summary>
+            Determines if current environment has test runner signals present.
+            Common signals emitted by popular test runners or their hosts.
+            </summary>
+            <returns>
+            A boolean value indicating whether test runner environment signals are detected.
+            </returns>
+        </member>
+        <member name="M:Splat.DefaultModeDetector.IsKnownTestHostProcess">
+            <summary>
+            Determines whether the current process is a known test host process by examining the process name
+            and other runtime-specific signals.
+            Last-resort heuristic: detect known test hosts by process name.
+            </summary>
+            <returns>
+            True if the process is identified as a known test host; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Splat.DefaultModeDetector.LegacyAssemblyScan(System.String[])">
+            <summary>
+            Legacy assembly-name scan fallback (avoids LINQ to reduce allocations).
+            Checks if any of the loaded assemblies in the current application domain
+            match the specified assembly markers, using case-insensitive comparison.
+            Typically used as a fallback mechanism for detecting test environments.
+            </summary>
+            <param name="assemblyMarkers">
+            An array of string markers representing partial or full names of assemblies
+            to be matched against the loaded assemblies in the application domain.
+            </param>
+            <returns>
+            A boolean value indicating whether at least one of the loaded assemblies
+            matches an assembly marker. Returns <c>true</c> if a match is found; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Splat.IModeDetector">
+            <summary>
+            Detects if unit tests or design mode are currently running for the current application or library.
+            </summary>
+        </member>
+        <member name="M:Splat.IModeDetector.InUnitTestRunner">
+            <summary>
+            Gets a value indicating whether the current library or application is running through a unit test.
+            </summary>
+            <returns>If we are currently running in a unit test.</returns>
+        </member>
+        <member name="T:Splat.ModeDetection.Mode">
+            <summary>
+            The default implementation of the <see cref="F:Splat.ModeDetection.Mode.Run"/> and <see cref="F:Splat.ModeDetection.Mode.Test"/> mode.
+            </summary>
+        </member>
+        <member name="F:Splat.ModeDetection.Mode.Run">
+            <summary>
+            The default implementation of the run mode.
+            </summary>
+        </member>
+        <member name="F:Splat.ModeDetection.Mode.Test">
+            <summary>
+            The default implementation of the test mode.
+            </summary>
+        </member>
+        <member name="M:Splat.ModeDetection.Mode.InUnitTestRunner">
+            <inheritdoc/>
+        </member>
+        <member name="T:Splat.ModeDetector">
+            <summary>
+            A helper class which detects if we are currently running via a unit test or design mode.
+            </summary>
+        </member>
+        <member name="M:Splat.ModeDetector.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Splat.ModeDetector"/> class.
+            </summary>
+        </member>
+        <member name="P:Splat.ModeDetector.Current">
+            <summary>
+            Gets or sets the current mode detector set.
+            </summary>
+        </member>
+        <member name="M:Splat.ModeDetector.OverrideModeDetector(Splat.IModeDetector)">
+            <summary>
+            Overrides the mode detector with one of your own provided ones.
+            </summary>
+            <param name="modeDetector">The mode detector to use.</param>
+        </member>
+        <member name="M:Splat.ModeDetector.InUnitTestRunner">
+            <summary>
+            Gets a value indicating whether we are currently running from a unit test.
+            </summary>
+            <returns>If we are currently running from a unit test.</returns>
+        </member>
+        <member name="T:Splat.FuncDependencyResolver">
+            <summary>
+            A simple dependency resolver which takes Funcs for all its actions.
+            GetService is always implemented via GetServices().LastOrDefault().
+            This container is not thread safe.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:Splat.FuncDependencyResolver"/> class.
+            </remarks>
+            <param name="getAllServices">A func which will return all the services contained for the specified service type and contract.</param>
+            <param name="register">A func which will be called when a service type and contract are registered.</param>
+            <param name="unregisterCurrent">A func which will unregister the current registered element for a service type and contract.</param>
+            <param name="unregisterAll">A func which will unregister all the registered elements for a service type and contract.</param>
+            <param name="toDispose">A optional disposable which is called when this resolver is disposed.</param>
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.#ctor(System.Func{System.Type,System.String,System.Collections.Generic.IEnumerable{System.Object}},System.Action{System.Func{System.Object},System.Type,System.String},System.Action{System.Type,System.String},System.Action{System.Type,System.String},System.IDisposable)">
+            <summary>
+            A simple dependency resolver which takes Funcs for all its actions.
+            GetService is always implemented via GetServices().LastOrDefault().
+            This container is not thread safe.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:Splat.FuncDependencyResolver"/> class.
+            </remarks>
+            <param name="getAllServices">A func which will return all the services contained for the specified service type and contract.</param>
+            <param name="register">A func which will be called when a service type and contract are registered.</param>
+            <param name="unregisterCurrent">A func which will unregister the current registered element for a service type and contract.</param>
+            <param name="unregisterAll">A func which will unregister all the registered elements for a service type and contract.</param>
+            <param name="toDispose">A optional disposable which is called when this resolver is disposed.</param>
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.GetService(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.GetServices(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.HasRegistration(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.Register(System.Func{System.Object},System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.UnregisterCurrent(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.UnregisterAll(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.ServiceRegistrationCallback(System.Type,System.String,System.Action{System.IDisposable})">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.FuncDependencyResolver.Dispose(System.Boolean)">
+            <summary>
+            Disposes of all managed memory from this class.
+            </summary>
+            <param name="isDisposing">If we are currently disposing managed resources.</param>
+        </member>
+        <member name="T:Splat.Locator">
+            <summary>
+            A Locator which will host the container for dependency injection based operations.
+            This is now a wrapper around <see cref="T:Splat.AppLocator"/> which is the actual implementation.
+            The static constructor also ensures that Splat registrations are done which is the key addition compared with AppLocator.
+            </summary>
+        </member>
+        <member name="P:Splat.Locator.Current">
+            <summary>
+            Gets the read only dependency resolver. This class is used throughout
+            libraries for many internal operations as well as for general use
+            by applications. If this isn't assigned on startup, a default, highly
+            capable implementation will be used, and it is advised for most people
+            to simply use the default implementation.
+            </summary>
+            <value>The dependency resolver.</value>
+        </member>
+        <member name="P:Splat.Locator.CurrentMutable">
+            <summary>
+            Gets the mutable dependency resolver.
+            The default resolver is also a mutable resolver, so this will be non-null.
+            Use this to register new types on startup if you are using the default resolver.
+            </summary>
+        </member>
+        <member name="M:Splat.Locator.SetLocator(Splat.IDependencyResolver)">
+            <summary>
+            Allows setting the dependency resolver.
+            </summary>
+            <param name="dependencyResolver">The dependency resolver to set.</param>
+        </member>
+        <member name="M:Splat.Locator.GetLocator">
+            <summary>
+            Gets the full locator.
+            Note you should use <see cref="P:Splat.Locator.Current"/> or <see cref="P:Splat.Locator.CurrentMutable"/> in most situations.
+            </summary>
+            <returns>The locator.</returns>
+        </member>
+        <member name="M:Splat.Locator.RegisterResolverCallbackChanged(System.Action)">
+            <summary>
+            This method allows libraries to register themselves to be set up
+            whenever the dependency resolver changes. Applications should avoid
+            this method, it is usually used for libraries that depend on service
+            location.
+            </summary>
+            <param name="callback">A callback that is invoked when the
+            resolver is changed. This callback is also invoked immediately,
+            to configure the current resolver.</param>
+            <returns>When disposed, removes the callback. You probably can
+            ignore this.</returns>
+        </member>
+        <member name="M:Splat.Locator.SuppressResolverCallbackChangedNotifications">
+            <summary>
+            This method will prevent resolver changed notifications from happening until
+            the returned <see cref="T:System.IDisposable"/> is disposed.
+            </summary>
+            <returns>A disposable which when disposed will indicate the change
+            notification is no longer needed.</returns>
+        </member>
+        <member name="M:Splat.Locator.AreResolverCallbackChangedNotificationsEnabled">
+            <summary>
+            Indicates if the we are notifying external classes of updates to the resolver being changed.
+            </summary>
+            <returns>A value indicating whether the notifications are happening.</returns>
+        </member>
+        <member name="T:Splat.ServiceLocationInitialization">
+            <summary>
+            Initialization logic for Splat interacting with Dependency Resolvers.
+            </summary>
+        </member>
+        <member name="M:Splat.ServiceLocationInitialization.InitializeSplat(Splat.IMutableDependencyResolver)">
+            <summary>
+            Registers all the default registrations that are needed by the Splat module.
+            </summary>
+            <param name="resolver">The resolver to register the needed service types against.</param>
+        </member>
+        <member name="T:Splat.TargetFrameworkExtensions">
+            <summary>
+            Extension methods that help to get the target framework for an assembly.
+            </summary>
+        </member>
+        <member name="M:Splat.TargetFrameworkExtensions.GetTargetFrameworkName(System.Reflection.Assembly)">
+            <summary>
+            Gets the target framework for an assembly.
+            </summary>
+            <param name="assembly">The assembly to get the target framework for.</param>
+            <returns>The target framework or null if not known.</returns>
+        </member>
+    </members>
+</doc>

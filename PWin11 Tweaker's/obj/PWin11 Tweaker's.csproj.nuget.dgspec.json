@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\ph1ncyn\\Desktop\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {
-      "version": "1.0.14.8",
+      "version": "1.0.15.8",
       "restore": {
         "projectUniqueName": "C:\\Users\\ph1ncyn\\Desktop\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
         "projectName": "PWin11 Tweaker's",
@@ -68,27 +68,27 @@
             },
             "Microsoft.Bcl.AsyncInterfaces": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
@@ -114,7 +114,7 @@
             },
             "Microsoft.Web.WebView2": {
               "target": "Package",
-              "version": "[1.0.3351.48, )"
+              "version": "[1.0.3485.44, )"
             },
             "Microsoft.Win32": {
               "target": "Package",
@@ -126,33 +126,33 @@
             },
             "Microsoft.Win32.SystemEvents": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "Microsoft.Windows.CsWin32": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[0.3.183, )"
+              "version": "[0.3.205, )"
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
-              "version": "[10.0.26100.4188, )"
+              "version": "[10.0.26100.6584, )"
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
-              "version": "[1.7.250606001, )"
+              "version": "[1.8.250916003, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[13.0.4, )"
             },
             "System.CodeDom": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Collections": {
               "target": "Package",
@@ -168,7 +168,7 @@
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Diagnostics.Debug": {
               "target": "Package",
@@ -176,7 +176,7 @@
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Diagnostics.Tracing": {
               "target": "Package",
@@ -184,11 +184,11 @@
             },
             "System.DirectoryServices": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Drawing.Common": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Dynamic.Runtime": {
               "target": "Package",
@@ -220,11 +220,11 @@
             },
             "System.Management": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Management.Automation": {
               "target": "Package",
-              "version": "[7.5.2, )"
+              "version": "[7.5.3, )"
             },
             "System.Net.Http": {
               "target": "Package",
@@ -248,7 +248,7 @@
             },
             "System.Security.Permissions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Security.Principal": {
               "target": "Package",
@@ -256,7 +256,7 @@
             },
             "System.ServiceProcess.ServiceController": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "System.Threading": {
               "target": "Package",
@@ -268,11 +268,15 @@
             },
             "System.Windows.Extensions": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.9, )"
             },
             "WinUI3Localizer": {
               "target": "Package",
               "version": "[2.3.0, )"
+            },
+            "python": {
+              "target": "Package",
+              "version": "[3.13.7, )"
             },
             "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": {
               "target": "Package",
