@@ -1,0 +1,700 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Splat.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Splat.ActionDisposable">
+            <summary>
+            A disposable which will call the specified action.
+            </summary>
+        </member>
+        <member name="M:Splat.ActionDisposable.#ctor(System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.ActionDisposable"/> class.
+            </summary>
+            <param name="block">The action to execute when disposed.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="block"/> is null.</exception>
+        </member>
+        <member name="P:Splat.ActionDisposable.Empty">
+            <summary>
+            Gets an action disposable which does nothing.
+            </summary>
+        </member>
+        <member name="M:Splat.ActionDisposable.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Splat.BooleanDisposable">
+            <summary>
+            Represents a disposable resource that can be checked for disposal status.
+            Based on the System.Reactive.Disposable class.
+            </summary>
+        </member>
+        <member name="M:Splat.BooleanDisposable.#ctor">
+            <summary>
+            Represents a disposable resource that can be checked for disposal status.
+            Based on the System.Reactive.Disposable class.
+            </summary>
+        </member>
+        <member name="P:Splat.BooleanDisposable.IsDisposed">
+            <summary>
+            Gets a value indicating whether the object is disposed.
+            </summary>
+        </member>
+        <member name="M:Splat.BooleanDisposable.Dispose">
+            <summary>
+            Sets the status to disposed, which can be observed through the <see cref="P:Splat.BooleanDisposable.IsDisposed"/> property.
+            </summary>
+        </member>
+        <member name="T:Splat.CompositeDisposable">
+            <summary>
+            Represents a group of disposable resources that are disposed together.
+            This is a simplified version based on System.Reactive's one.
+            </summary>
+        </member>
+        <member name="M:Splat.CompositeDisposable.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.CompositeDisposable"/> class with no disposables contained by it initially.
+            </summary>
+        </member>
+        <member name="M:Splat.CompositeDisposable.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.CompositeDisposable"/> class with the specified number of disposables.
+            </summary>
+            <param name="capacity">The number of disposables that the new CompositeDisposable can initially store.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="capacity"/> is less than zero.</exception>
+        </member>
+        <member name="M:Splat.CompositeDisposable.#ctor(System.IDisposable[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.CompositeDisposable"/> class from a group of disposables.
+            </summary>
+            <param name="disposables">Disposables that will be disposed together.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposables"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Any of the disposables in the <paramref name="disposables"/> collection is <c>null</c>.</exception>
+        </member>
+        <member name="M:Splat.CompositeDisposable.#ctor(System.Collections.Generic.IEnumerable{System.IDisposable})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.CompositeDisposable"/> class from a group of disposables.
+            </summary>
+            <param name="disposables">Disposables that will be disposed together.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="disposables"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Any of the disposables in the <paramref name="disposables"/> collection is <c>null</c>.</exception>
+        </member>
+        <member name="M:Splat.CompositeDisposable.Dispose">
+            <summary>
+            Disposes all disposables in the group and removes them from the group.
+            </summary>
+        </member>
+        <member name="M:Splat.CompositeDisposable.Init(System.Collections.Generic.IEnumerable{System.IDisposable})">
+            <summary>
+            Initialize the inner disposable list and count fields.
+            </summary>
+            <param name="disposables">The enumerable sequence of disposables.</param>
+        </member>
+        <member name="M:Splat.ExceptionMixins.ThrowArgumentNullExceptionIfNull``1(``0,System.String)">
+            <summary>
+            Throws an ArgumentNullException if the value is null.
+            </summary>
+            <typeparam name="T">The type of the value to check.</typeparam>
+            <param name="value">The value to check for null.</param>
+            <param name="name">The parameter name to include in the exception.</param>
+        </member>
+        <member name="M:Splat.ExceptionMixins.ThrowArgumentNullExceptionIfNull``1(``0,System.String,System.String)">
+            <summary>
+            Throws an ArgumentNullException if the value is null.
+            </summary>
+            <typeparam name="T">The type of the value to check.</typeparam>
+            <param name="value">The value to check for null.</param>
+            <param name="name">The parameter name to include in the exception.</param>
+            <param name="message">The message to include in the exception.</param>
+        </member>
+        <member name="T:Splat.Builder.IAppBuilder">
+            <summary>
+            Application builder interface for configuring dependency injection and services.
+            </summary>
+        </member>
+        <member name="M:Splat.Builder.IAppBuilder.Build">
+            <summary>
+            Builds this instance.
+            </summary>
+            <returns>An App Instance.</returns>
+        </member>
+        <member name="M:Splat.Builder.IAppBuilder.UseCurrentSplatLocator">
+            <summary>
+            Uses the current splat locator.
+            </summary>
+            <returns>The builder instance for chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.IAppBuilder.UsingModule``1(``0)">
+            <summary>
+            Uses the module.
+            </summary>
+            <typeparam name="T">The Splat Module Type.</typeparam>
+            <param name="registrationModule">The registration module.</param>
+            <returns>The builder instance for chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.IAppBuilder.WithCoreServices">
+            <summary>
+            Configures the core services.
+            </summary>
+            <returns>The builder instance for chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.IAppBuilder.WithCustomRegistration(System.Action{Splat.IMutableDependencyResolver})">
+            <summary>
+            Configures with custom registration.
+            </summary>
+            <param name="configureAction">The configure action.</param>
+            <returns>The builder instance for chaining.</returns>
+        </member>
+        <member name="T:Splat.Builder.IAppInstance">
+            <summary>
+            Application instance interface providing access to dependency injection services.
+            </summary>
+        </member>
+        <member name="P:Splat.Builder.IAppInstance.Current">
+            <summary>
+            Gets the current services.
+            </summary>
+            <value>
+            The services.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.IAppInstance.CurrentMutable">
+            <summary>
+            Gets the mutable service registrar.
+            </summary>
+            <value>
+            The current mutable.
+            </value>
+        </member>
+        <member name="T:Splat.Builder.IModule">
+            <summary>
+            Defines a contract for ReactiveUI modules that can configure dependency injection.
+            This provides an AOT-compatible way to register services.
+            </summary>
+        </member>
+        <member name="M:Splat.Builder.IModule.Configure(Splat.IMutableDependencyResolver)">
+            <summary>
+            Configures the dependency resolver with the module's services.
+            </summary>
+            <param name="resolver">The dependency resolver to configure.</param>
+        </member>
+        <member name="T:Splat.AppLocator">
+            <summary>
+            A Locator which will host the container for dependency injection based operations.
+            </summary>
+        </member>
+        <member name="P:Splat.AppLocator.Current">
+            <summary>
+            Gets the read only dependency resolver. This class is used throughout
+            libraries for many internal operations as well as for general use
+            by applications. If this isn't assigned on startup, a default, highly
+            capable implementation will be used, and it is advised for most people
+            to simply use the default implementation.
+            </summary>
+            <value>The dependency resolver.</value>
+        </member>
+        <member name="P:Splat.AppLocator.CurrentMutable">
+            <summary>
+            Gets the mutable dependency resolver.
+            The default resolver is also a mutable resolver, so this will be non-null.
+            Use this to register new types on startup if you are using the default resolver.
+            </summary>
+        </member>
+        <member name="P:Splat.AppLocator.InternalLocator">
+            <summary>
+            Gets or sets the current locator instance.
+            Used mostly for testing purposes.
+            </summary>
+        </member>
+        <member name="M:Splat.AppLocator.SetLocator(Splat.IDependencyResolver)">
+            <summary>
+            Allows setting the dependency resolver.
+            </summary>
+            <param name="dependencyResolver">The dependency resolver to set.</param>
+        </member>
+        <member name="M:Splat.AppLocator.GetLocator">
+            <summary>
+            Gets the full locator.
+            Note you should use <see cref="P:Splat.AppLocator.Current"/> or <see cref="P:Splat.AppLocator.CurrentMutable"/> in most situations.
+            </summary>
+            <returns>The locator.</returns>
+        </member>
+        <member name="M:Splat.AppLocator.RegisterResolverCallbackChanged(System.Action)">
+            <summary>
+            This method allows libraries to register themselves to be set up
+            whenever the dependency resolver changes. Applications should avoid
+            this method, it is usually used for libraries that depend on service
+            location.
+            </summary>
+            <param name="callback">A callback that is invoked when the
+            resolver is changed. This callback is also invoked immediately,
+            to configure the current resolver.</param>
+            <returns>When disposed, removes the callback. You probably can
+            ignore this.</returns>
+        </member>
+        <member name="M:Splat.AppLocator.SuppressResolverCallbackChangedNotifications">
+            <summary>
+            This method will prevent resolver changed notifications from happening until
+            the returned <see cref="T:System.IDisposable"/> is disposed.
+            </summary>
+            <returns>A disposable which when disposed will indicate the change
+            notification is no longer needed.</returns>
+        </member>
+        <member name="M:Splat.AppLocator.AreResolverCallbackChangedNotificationsEnabled">
+            <summary>
+            Indicates if the we are notifying external classes of updates to the resolver being changed.
+            </summary>
+            <returns>A value indicating whether the notifications are happening.</returns>
+        </member>
+        <member name="T:Splat.DependencyResolverMixins">
+            <summary>
+            A set of extension methods that assist with the <see cref="T:Splat.IDependencyResolver"/> and <see cref="T:Splat.IMutableDependencyResolver"/> interfaces.
+            </summary>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.GetService``1(Splat.IReadonlyDependencyResolver,System.String)">
+            <summary>
+            Gets an instance of the given <typeparamref name="T"/>. Must return <c>null</c>
+            if the service is not available (must not throw).
+            </summary>
+            <typeparam name="T">The type for the object we want to retrieve.</typeparam>
+            <param name="resolver">The resolver we are getting the service from.</param>
+            <param name="contract">An optional value which will retrieve only a object registered with the same contract.</param>
+            <returns>The requested object, if found; <c>null</c> otherwise.</returns>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.GetServices``1(Splat.IReadonlyDependencyResolver,System.String)">
+            <summary>
+            Gets all instances of the given <typeparamref name="T"/>. Must return an empty
+            collection if the service is not available (must not return <c>null</c> or throw).
+            </summary>
+            <typeparam name="T">The type for the object we want to retrieve.</typeparam>
+            <param name="resolver">The resolver we are getting the service from.</param>
+            <param name="contract">An optional value which will retrieve only a object registered with the same contract.</param>
+            <returns>A sequence of instances of the requested <typeparamref name="T"/>. The sequence
+            should be empty (not <c>null</c>) if no objects of the given type are available.</returns>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.ServiceRegistrationCallback(Splat.IMutableDependencyResolver,System.Type,System.Action{System.IDisposable})">
+            <summary>
+            Registers a new callback that occurs when a new service with the specified type is registered.
+            </summary>
+            <param name="resolver">The resolver we want to register the callback with.</param>
+            <param name="serviceType">The service type we are wanting to observe.</param>
+            <param name="callback">The callback which should be called.</param>
+            <returns>A disposable which will stop notifications to the callback.</returns>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.WithResolver(Splat.IDependencyResolver,System.Boolean)">
+            <summary>
+            Override the default Dependency Resolver until the object returned
+            is disposed.
+            </summary>
+            <param name="resolver">The test resolver to use.</param>
+            <param name="suppressResolverCallback">If we should suppress the resolver callback notify.</param>
+            <returns>A disposable which will reset the resolver back to the original.</returns>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.Register``1(Splat.IMutableDependencyResolver,System.Func{``0},System.String)">
+            <summary>
+            Registers a factory for the given <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="factory">A factory method for generating a object of the specified type.</param>
+            <param name="contract">A optional contract value which will indicates to only generate the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.Register``2(Splat.IMutableDependencyResolver,System.String)">
+            <summary>
+            Registers a factory for the given <typeparamref name="T" />.
+            </summary>
+            <typeparam name="TAs">The type to register as.</typeparam>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="contract">A optional contract value which will indicates to only generate the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.RegisterConstant(Splat.IMutableDependencyResolver,System.Object,System.Type,System.String)">
+            <summary>
+            Registers a constant value which will always return the specified object instance.
+            </summary>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="value">The specified instance to always return.</param>
+            <param name="serviceType">The type of service to register.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.RegisterConstant``1(Splat.IMutableDependencyResolver,``0,System.String)">
+            <summary>
+            Registers a constant value which will always return the specified object instance.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="value">The specified instance to always return.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.RegisterLazySingleton(Splat.IMutableDependencyResolver,System.Func{System.Object},System.Type,System.String)">
+            <summary>
+            Registers a lazy singleton value which will always return the specified object instance once created.
+            The value is only generated once someone requests the service from the resolver.
+            </summary>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="valueFactory">A factory method for generating a object of the specified type.</param>
+            <param name="serviceType">The type of service to register.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.RegisterLazySingleton``1(Splat.IMutableDependencyResolver,System.Func{``0},System.String)">
+            <summary>
+            Registers a lazy singleton value which will always return the specified object instance once created.
+            The value is only generated once someone requests the service from the resolver.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="valueFactory">A factory method for generating a object of the specified type.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.UnregisterCurrent``1(Splat.IMutableDependencyResolver,System.String)">
+            <summary>
+            Unregisters the current the value for the specified type and the optional contract.
+            </summary>
+            <typeparam name="T">The type of item to unregister.</typeparam>
+            <param name="resolver">The resolver to unregister the service with.</param>
+            <param name="contract">A optional contract which indicates to only removed the item registered with this contract.</param>
+        </member>
+        <member name="M:Splat.DependencyResolverMixins.UnregisterAll``1(Splat.IMutableDependencyResolver,System.String)">
+            <summary>
+            Unregisters the all the values for the specified type and the optional contract.
+            </summary>
+            <typeparam name="T">The type of items to unregister.</typeparam>
+            <param name="resolver">The resolver to unregister the services with.</param>
+            <param name="contract">A optional contract which indicates to only removed those items registered with this contract.</param>
+        </member>
+        <member name="T:Splat.IDependencyResolver">
+            <summary>
+            Represents a dependency resolver, a service to look up global class
+            instances or types.
+            </summary>
+        </member>
+        <member name="T:Splat.IMutableDependencyResolver">
+            <summary>
+            Represents a dependency resolver where types can be registered after setup.
+            </summary>
+        </member>
+        <member name="M:Splat.IMutableDependencyResolver.HasRegistration(System.Type,System.String)">
+            <summary>
+            Check to see if a resolver has a registration for a type.
+            </summary>
+            <param name="serviceType">The type to check for registration.</param>
+            <returns>Whether there is a registration for the type.</returns>
+            <param name="contract">An optional contract value which will indicates to only generate the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.IMutableDependencyResolver.Register(System.Func{System.Object},System.Type,System.String)">
+            <summary>
+            Register a function with the resolver which will generate an object
+            for the specified service type.
+            Optionally a contract can be registered which will indicate
+            that registration will only work with that contract.
+            Most implementations will use a stack based approach to allow for multiple items to be registered.
+            </summary>
+            <param name="factory">The factory function which generates our object.</param>
+            <param name="serviceType">The type which is used for the registration.</param>
+            <param name="contract">An optional contract value which will indicates to only generate the value if this contract is specified.</param>
+        </member>
+        <member name="M:Splat.IMutableDependencyResolver.UnregisterCurrent(System.Type,System.String)">
+            <summary>
+            Unregisters the current item based on the specified type and contract.
+            </summary>
+            <param name="serviceType">The service type to unregister.</param>
+            <param name="contract">The optional contract value, which will only remove the value associated with the contract.</param>
+        </member>
+        <member name="M:Splat.IMutableDependencyResolver.UnregisterAll(System.Type,System.String)">
+            <summary>
+            Unregisters all the values associated with the specified type and contract.
+            </summary>
+            <param name="serviceType">The service type to unregister.</param>
+            <param name="contract">The optional contract value, which will only remove the value associated with the contract.</param>
+        </member>
+        <member name="M:Splat.IMutableDependencyResolver.ServiceRegistrationCallback(System.Type,System.String,System.Action{System.IDisposable})">
+            <summary>
+            <para>
+            Register a callback to be called when a new service matching the type
+            and contract is registered.
+            </para>
+            <para>
+            When registered, the callback is also called for each currently matching
+            service.
+            </para>
+            </summary>
+            <returns>When disposed removes the callback.</returns>
+            <param name="serviceType">The type which is used for the registration.</param>
+            <param name="contract">An optional contract value which will indicates to only generate the value if this contract is specified.</param>
+            <param name="callback">The callback which will be called when the specified service type and contract are registered.</param>
+        </member>
+        <member name="P:Splat.InternalLocator.Current">
+            <summary>
+            Gets the read only dependency resolver. This class is used throughout
+            libraries for many internal operations as well as for general use
+            by applications. If this isn't assigned on startup, a default, highly
+            capable implementation will be used, and it is advised for most people
+            to simply use the default implementation.
+            </summary>
+            <value>The dependency resolver.</value>
+        </member>
+        <member name="P:Splat.InternalLocator.CurrentMutable">
+            <summary>
+            Gets the mutable dependency resolver.
+            The default resolver is also a mutable resolver, so this will be non-null.
+            Use this to register new types on startup if you are using the default resolver.
+            </summary>
+        </member>
+        <member name="M:Splat.InternalLocator.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="M:Splat.InternalLocator.SetLocator(Splat.IDependencyResolver)">
+            <summary>
+            Allows setting the dependency resolver.
+            </summary>
+            <param name="dependencyResolver">The dependency resolver to set.</param>
+        </member>
+        <member name="M:Splat.InternalLocator.RegisterResolverCallbackChanged(System.Action)">
+            <summary>
+            This method allows libraries to register themselves to be set up
+            whenever the dependency resolver changes. Applications should avoid
+            this method, it is usually used for libraries that depend on service
+            location.
+            </summary>
+            <param name="callback">A callback that is invoked when the
+            resolver is changed. This callback is also invoked immediately,
+            to configure the current resolver.</param>
+            <returns>When disposed, removes the callback. You probably can
+            ignore this.</returns>
+        </member>
+        <member name="M:Splat.InternalLocator.SuppressResolverCallbackChangedNotifications">
+            <summary>
+            This method will prevent resolver changed notifications from happening until
+            the returned <see cref="T:System.IDisposable"/> is disposed.
+            </summary>
+            <returns>A disposable which when disposed will indicate the change
+            notification is no longer needed.</returns>
+        </member>
+        <member name="M:Splat.InternalLocator.AreResolverCallbackChangedNotificationsEnabled">
+            <summary>
+            Indicates if the we are notifying external classes of updates to the resolver being changed.
+            </summary>
+            <returns>A value indicating whether the notifications are happening.</returns>
+        </member>
+        <member name="T:Splat.IReadonlyDependencyResolver">
+            <summary>
+            An interface for interacting with a dependency resolver in a read-only fashion.
+            </summary>
+        </member>
+        <member name="M:Splat.IReadonlyDependencyResolver.GetService(System.Type,System.String)">
+            <summary>
+            Gets an instance of the given <paramref name="serviceType"/>. Must return <c>null</c>
+            if the service is not available (must not throw).
+            </summary>
+            <param name="serviceType">The object type.</param>
+            <param name="contract">An optional value which will retrieve only a object registered with the same contract.</param>
+            <returns>The requested object, if found; <c>null</c> otherwise.</returns>
+        </member>
+        <member name="M:Splat.IReadonlyDependencyResolver.GetServices(System.Type,System.String)">
+            <summary>
+            Gets all instances of the given <paramref name="serviceType"/>. Must return an empty
+            collection if the service is not available (must not return <c>null</c> or throw).
+            </summary>
+            <param name="serviceType">The object type.</param>
+            <param name="contract">An optional value which will retrieve only objects registered with the same contract.</param>
+            <returns>A sequence of instances of the requested <paramref name="serviceType"/>. The sequence
+            should be empty (not <c>null</c>) if no objects of the given type are available.</returns>
+        </member>
+        <member name="T:Splat.ModernDependencyResolver">
+            <summary>
+            <para>
+            This class is a dependency resolver written for modern C# 5.0 times.
+            It implements all registrations via a Factory method. With the power
+            of Closures, you can actually implement most lifetime styles (i.e.
+            construct per call, lazy construct, singleton) using this.
+            </para>
+            <para>
+            Unless you have a very compelling reason not to, this is the only class
+            you need in order to do dependency resolution, don't bother with using
+            a full IoC container.
+            </para>
+            <para>This container is not thread safe.</para>
+            </summary>
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.ModernDependencyResolver"/> class.
+            </summary>
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.#ctor(System.Collections.Generic.Dictionary{System.ValueTuple{System.Type,System.String},System.Collections.Generic.List{System.Func{System.Object}}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.ModernDependencyResolver"/> class.
+            </summary>
+            <param name="registry">A registry of services.</param>
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.HasRegistration(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.Register(System.Func{System.Object},System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.GetService(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.GetServices(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.UnregisterCurrent(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.UnregisterAll(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.ServiceRegistrationCallback(System.Type,System.String,System.Action{System.IDisposable})">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.Duplicate">
+            <summary>
+            Generates a duplicate of the resolver with all the current registrations.
+            Useful if you want to generate temporary resolver using the <see cref="M:Splat.DependencyResolverMixins.WithResolver(Splat.IDependencyResolver,System.Boolean)"/> method.
+            </summary>
+            <returns>The newly generated <see cref="T:Splat.ModernDependencyResolver"/> class with the current registrations.</returns>
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Splat.ModernDependencyResolver.Dispose(System.Boolean)">
+            <summary>
+            Disposes of all managed memory from this class.
+            </summary>
+            <param name="isDisposing">If we are currently disposing managed resources.</param>
+        </member>
+        <member name="T:Splat.NullServiceType">
+            <summary>
+            Represents a placeholder service type for null service registrations.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:Splat.NullServiceType"/> class.
+            </remarks>
+            <param name="factory">The value factory.</param>
+        </member>
+        <member name="M:Splat.NullServiceType.#ctor(System.Func{System.Object})">
+            <summary>
+            Represents a placeholder service type for null service registrations.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:Splat.NullServiceType"/> class.
+            </remarks>
+            <param name="factory">The value factory.</param>
+        </member>
+        <member name="P:Splat.NullServiceType.Factory">
+            <summary>
+            Gets the Factory.
+            </summary>
+        </member>
+        <member name="T:Splat.ResolverMixins">
+            <summary>
+            Resolver Mixins.
+            </summary>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterAnd``1(Splat.IMutableDependencyResolver,System.String)">
+            <summary>
+            Registers a factory for the given <typeparamref name="T" />.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="contract">A optional contract value which will indicates to only generate the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterAnd``1(Splat.IMutableDependencyResolver,System.Func{``0},System.String)">
+            <summary>
+            Registers a factory for the given <typeparamref name="T" />.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="factory">A factory method for generating a object of the specified type.</param>
+            <param name="contract">A optional contract value which will indicates to only generate the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterAnd``2(Splat.IMutableDependencyResolver,System.String)">
+            <summary>
+            Registers a factory for the given <typeparamref name="T" />.
+            </summary>
+            <typeparam name="TAs">The type to register as.</typeparam>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="contract">A optional contract value which will indicates to only generate the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterAnd``2(Splat.IMutableDependencyResolver,System.Func{``1},System.String)">
+            <summary>
+            Registers a factory for the given <typeparamref name="T" />.
+            </summary>
+            <typeparam name="TAs">The type to register as.</typeparam>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="factory">A factory method for generating a object of the specified type.</param>
+            <param name="contract">A optional contract value which will indicates to only generate the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterConstantAnd(Splat.IMutableDependencyResolver,System.Object,System.Type,System.String)">
+            <summary>
+            Registers a constant value which will always return the specified object instance.
+            </summary>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="value">The specified instance to always return.</param>
+            <param name="serviceType">The type of service to register.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterConstantAnd``1(Splat.IMutableDependencyResolver,System.String)">
+            <summary>
+            Registers a constant value which will always return the specified object instance.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterConstantAnd``1(Splat.IMutableDependencyResolver,``0,System.String)">
+            <summary>
+            Registers a constant value which will always return the specified object instance.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="value">The specified instance to always return.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterLazySingletonAnd(Splat.IMutableDependencyResolver,System.Func{System.Object},System.Type,System.String)">
+            <summary>
+            Registers a lazy singleton value which will always return the specified object instance once created.
+            The value is only generated once someone requests the service from the resolver.
+            </summary>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="valueFactory">A factory method for generating a object of the specified type.</param>
+            <param name="serviceType">The type of service to register.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterLazySingletonAnd``1(Splat.IMutableDependencyResolver,System.String)">
+            <summary>
+            Registers a lazy singleton value which will always return the specified object instance once created.
+            The value is only generated once someone requests the service from the resolver.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+        <member name="M:Splat.ResolverMixins.RegisterLazySingletonAnd``1(Splat.IMutableDependencyResolver,System.Func{``0},System.String)">
+            <summary>
+            Registers a lazy singleton value which will always return the specified object instance once created.
+            The value is only generated once someone requests the service from the resolver.
+            </summary>
+            <typeparam name="T">The service type to register for.</typeparam>
+            <param name="resolver">The resolver to register the service type with.</param>
+            <param name="valueFactory">A factory method for generating a object of the specified type.</param>
+            <param name="contract">A optional contract value which will indicates to only return the value if this contract is specified.</param>
+            <returns>The resolver.</returns>
+        </member>
+    </members>
+</doc>

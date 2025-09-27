@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Splat.Builder</name>
+    </assembly>
+    <members>
+        <member name="T:Splat.Builder.AppBuilder">
+            <summary>
+            A builder class for configuring ReactiveUI without using reflection.
+            This provides an AOT-compatible alternative to the reflection-based InitializeReactiveUI method.
+            </summary>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.#ctor(Splat.IMutableDependencyResolver,Splat.IReadonlyDependencyResolver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Splat.Builder.AppBuilder" /> class.
+            </summary>
+            <param name="resolver">The dependency resolver to configure.</param>
+            <param name="current">The configured services.</param>
+            <exception cref="T:System.ArgumentNullException">resolver.</exception>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.HasBeenBuilt">
+            <summary>
+            Gets a value indicating whether this instance has been built.
+            </summary>
+            <value>
+              <c>true</c> if this instance has been built; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.UsingBuilder">
+            <summary>
+            Gets a value indicating whether the application builder is being used.
+            </summary>
+            <value>
+              <c>true</c> if using the application builder; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.Current">
+            <summary>
+            Gets the current services.
+            </summary>
+            <value>
+            The services.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.CurrentMutable">
+            <summary>
+            Gets the mutable service registrar.
+            </summary>
+            <value>
+            The current mutable.
+            </value>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.CreateSplatBuilder">
+            <summary>
+            Creates a Splat builder with the Splat Locator instance using the current mutable resolver.
+            </summary>
+            <returns>The builder instance for chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.ResetBuilderStateForTests">
+            <summary>
+            Resets the builder state for tests, ONLY if the builder is being used in a unit test environment.
+            </summary>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.UseCurrentSplatLocator">
+            <summary>
+            Direct the builder to use the current Splat Locator (Locator.CurrentMutable)
+            for subsequent registrations. This is useful when configuring an external
+            container (e.g., Autofac, DryIoc, Microsoft.Extensions.DependencyInjection)
+            as the Splat dependency resolver prior to applying ReactiveUI registrations.
+            </summary>
+            <returns>The builder instance for chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.UsingModule``1(``0)">
+            <summary>
+            Using the splat module.
+            </summary>
+            <typeparam name="T">The Splat Module Type.</typeparam>
+            <param name="registrationModule">The registration module to add.</param>
+            <returns>
+            The builder instance for method chaining.
+            </returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.WithCustomRegistration(System.Action{Splat.IMutableDependencyResolver})">
+            <summary>
+            Registers a custom registration action.
+            </summary>
+            <param name="configureAction">The configuration action to add.</param>
+            <returns>The builder instance for method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.WithCoreServices">
+            <summary>
+            Registers the core ReactiveUI services.
+            </summary>
+            <returns>The builder instance for method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.Build">
+            <summary>
+            Builds and applies all registrations to the dependency resolver.
+            </summary>
+            <returns>
+            An App Instance.
+            </returns>
+        </member>
+        <member name="T:Splat.Builder.SplatBuilderExtensions">
+            <summary>
+            Common extension helpers for registering Splat modules.
+            </summary>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.Apply(Splat.Builder.IModule)">
+            <summary>
+            Runs the provided configuration action immediately against the current Splat Locator.
+            </summary>
+            <param name="module">The module to configure.</param>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.CreateSplatBuilder(Splat.IMutableDependencyResolver)">
+            <summary>
+            Creates a Splat application builder using the specified dependency resolver.
+            </summary>
+            <param name="resolver">The mutable dependency resolver to use.</param>
+            <returns>The builder instance for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when resolver is null.</exception>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.CreateSplatBuilder(Splat.IMutableDependencyResolver,System.Action{Splat.IMutableDependencyResolver})">
+            <summary>
+            Creates a Splat application builder using the specified dependency resolver and applies a configuration action.
+            </summary>
+            <param name="resolver">The mutable dependency resolver to use.</param>
+            <param name="configureAction">The configuration action to apply.</param>
+            <returns>The builder instance for chaining.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when resolver is null.</exception>
+        </member>
+    </members>
+</doc>
