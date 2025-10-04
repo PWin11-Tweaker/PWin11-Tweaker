@@ -142,7 +142,7 @@ namespace PWin11_Tweaker_s
                 {
                     return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
                 }
-                return false; // Если ключа нет, папка считается включённой
+                return false;
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace PWin11_Tweaker_s
                 {
                     return (int?)key.GetValue("System.IsPinnedToNameSpaceTree", 1) == 0;
                 }
-                return false; // Если ключа нет, папка считается включённой
+                return false;
             }
             catch (Exception ex)
             {
@@ -169,7 +169,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Кнопка установки StartAllBack 
         private async void InstallStartAllBackButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -227,7 +226,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Кнопка Применения
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -251,7 +249,6 @@ namespace PWin11_Tweaker_s
                 }
                 else
                 {
-                    // Восстановление по умолчанию (удаление ключа для включения папки)
                     regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]";
                 }
                 TweakStatus.IsHomeFolderDisabled = disableHomeFolder;
@@ -265,7 +262,6 @@ namespace PWin11_Tweaker_s
                 }
                 else
                 {
-                    // Восстановление по умолчанию (удаление ключа для включения папки)
                     regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]";
                 }
                 TweakStatus.IsGalleryFolderDisabled = disableGalleryFolder;
@@ -469,7 +465,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Кнопка открытья для OldNewExplorer
         private async void OpenOldNewExplorerButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -513,7 +508,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Механика для Установки StartAllBack
         private async Task DownloadAndInstallStartAllBack()
         {
             bool installationSuccessful = false;
@@ -638,7 +632,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Механика для Удаления StartAllBack
         private async Task UninstallStartAllBack()
         {
             bool uninstallSuccessful = false;
@@ -896,7 +889,6 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        //Загрузка включённых параметров
         private void LoadCurrentSettings()
         {
             try
@@ -913,32 +905,18 @@ namespace PWin11_Tweaker_s
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: ClassicContextMenuToggle установлен в {TweakStatus.IsClassicContextMenuEnabled}");
 
                 StartAllBackExePath = FindStartAllBackPath();
-                isStartAllBackInstalled = File.Exists(StartAllBackExePath);
-                TweakStatus.IsStartAllBackInstalled = isStartAllBackInstalled;
+                isStartAllBackInstalled = TweakStatus.IsStartAllBackInstalled; // Используем проверенное значение
                 InstallStartAllBackButton.Content = isStartAllBackInstalled
                     ? resourceLoader.GetString("Content_Button_StartAllBack_Uninstall")
                     : resourceLoader.GetString("Content_Button_StartAllBack");
-                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: StartAllBack установлен: {isStartAllBackInstalled} (проверка через File.Exists)");
+                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: StartAllBack установлен: {isStartAllBackInstalled}");
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Путь к StartAllBack: {StartAllBackExePath}");
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Текст кнопки: {InstallStartAllBackButton.Content}");
 
-                System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Текущие настройки успешно загружены из TweakStatus.");
-
-                // Загрузка состояния для "Главное"
-                DisableHomeFolder.IsChecked = CheckHomeFolderDisabled();
-                TweakStatus.IsHomeFolderDisabled = DisableHomeFolder.IsChecked ?? false;
+                DisableHomeFolder.IsChecked = TweakStatus.IsHomeFolderDisabled;
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: DisableHomeFolder установлен в {TweakStatus.IsHomeFolderDisabled}");
 
-                // Загрузка состояния для "Галерея"
-                DisableGalleryFolder.IsChecked = CheckGalleryFolderDisabled();
-                TweakStatus.IsGalleryFolderDisabled = DisableGalleryFolder.IsChecked ?? false;
+                DisableGalleryFolder.IsChecked = TweakStatus.IsGalleryFolderDisabled;
                 System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: DisableGalleryFolder установлен в {TweakStatus.IsGalleryFolderDisabled}");
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"LoadCurrentSettings: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
-                throw;
-            }
-        }
-    }
-}
+
+                System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Т

@@ -32,9 +32,6 @@ namespace PWin11Updater
             // Для програчности
             this.AllowsTransparency = true;
             this.WindowStyle = WindowStyle.None;
-
-            // Или полупрозрачный цвет
-            this.Background = new SolidColorBrush(Color.FromArgb(128, 255, 0, 0));
         }
 
         private void LoadLocalVersion()
