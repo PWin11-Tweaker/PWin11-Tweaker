@@ -195,7 +195,8 @@ namespace PWin11_Tweaker_s
                     { "InterfacePage", typeof(InterfacePage) },
                     { "PerformancePage", typeof(PerformancePage) },
                     { "PrivacyPage", typeof(PrivacyPage) },
-                    { "TempCleanerPage", typeof(TempCleanerPage) }
+                    { "TempCleanerPage", typeof(TempCleanerPage) },
+                    { "eraPage", typeof(eraPage) }  // Добавлена навигация на eraPage
                 };
 
                 if (!pageMap.TryGetValue(tag, out Type? pageType) || pageType == null)

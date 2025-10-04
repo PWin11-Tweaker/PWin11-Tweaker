@@ -64,6 +64,13 @@
                         <ImageIcon Source="/Assets/icons_nav2/trash.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <!-- Новая кнопка для eraPage -->
+                <NavigationViewItem Content="eraAI" Tag="eraPage">
+                    <NavigationViewItem.Icon>
+                        <ImageIcon Source="/Assets/icons_nav2/eraai.png"/>
+                        <!-- Добавь иконку в Assets/icons_nav2/ -->
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItemSeparator/>
             </NavigationView.MenuItems>
             <Frame x:Name="ContentFrame" Margin="20">
