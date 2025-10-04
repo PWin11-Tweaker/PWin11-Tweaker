@@ -90,7 +90,7 @@ namespace PWin11_Tweaker_s
         private readonly string _historyPath;
         private ChatHistory _history = new ChatHistory();
         private ObservableCollection<Message> _currentMessages = new ObservableCollection<Message>();
-        private const string ModelName = "microsoft/phi-3-mini-4k-instruct";
+        private const string ModelName = "gemma2:2b";
         private const string OllamaBaseUrl = "http://localhost:11434";
 
         public eraPage()
