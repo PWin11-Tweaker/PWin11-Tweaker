@@ -1,369 +1,289 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using PWin11_Tweaker_s.Models;
+using PWin11_Tweaker_s.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Windows.UI;
+using OllamaMessage = OllamaSharp.Models.Chat.Message;
 
 namespace PWin11_Tweaker_s
 {
-    // Кастомные модели (локально в файле)
-    public class Message
-    {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-        public string Role { get; set; } = string.Empty;  // "user" или "assistant"
-        public string Content { get; set; } = string.Empty;
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-    }
-
-    public class ChatSession
-    {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-        public string Title { get; set; } = "Новый чат";
-        public List<Message> Messages { get; set; } = new List<Message>();
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-        public void GenerateTitle()
-        {
-            var firstUserMessage = Messages.FirstOrDefault(m => m.Role == "user");
-            if (firstUserMessage != null)
-            {
-                Title = firstUserMessage.Content.Length > 50
-                    ? firstUserMessage.Content.Substring(0, 50) + "..."
-                    : firstUserMessage.Content;
-            }
-        }
-    }
-
-    public class ChatHistory
-    {
-        public List<ChatSession> Sessions { get; set; } = new List<ChatSession>();
-        public string CurrentSessionId { get; set; } = string.Empty;
-    }
-
-    // Модели для Ollama API
-    public class OllamaChatRequest
-    {
-        public string model { get; set; } = string.Empty;
-        public List<OllamaMessage> messages { get; set; } = new List<OllamaMessage>();
-        public bool stream { get; set; } = false;
-        public OllamaOptions? options { get; set; }
-    }
-
-    public class OllamaMessage
-    {
-        public string role { get; set; } = string.Empty;
-        public string content { get; set; } = string.Empty;
-    }
-
-    public class OllamaOptions
-    {
-        public float temperature { get; set; } = 0.7f;
-        public float top_p { get; set; } = 0.9f;
-    }
-
-    public class OllamaChatResponse
-    {
-        public OllamaMessage message { get; set; } = new OllamaMessage();
-        public bool done { get; set; }
-    }
-
-    public class OllamaModelsResponse
-    {
-        public List<OllamaModel> models { get; set; } = new List<OllamaModel>();
-    }
-
-    public class OllamaModel
-    {
-        public string name { get; set; } = string.Empty;
-    }
-
     public sealed partial class eraPage : Page
     {
-        private readonly HttpClient _httpClient;
-        private readonly string _historyPath;
-        private ChatHistory _history = new ChatHistory();
-        private ObservableCollection<Message> _currentMessages = new ObservableCollection<Message>();
-        private const string ModelName = "gemma2:2b";
-        private const string OllamaBaseUrl = "http://localhost:11434";
+        private AIChatService _ai;
+        private ChatSession _currentSession;
+        private ObservableCollection<ChatSession> _sessions = new ObservableCollection<ChatSession>();
+
+        private readonly string _sessionFile = Path.Combine(AppContext.BaseDirectory, "chat_sessions.json");
+
+        private static readonly JsonSerializerOptions JsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
 
         public eraPage()
         {
             this.InitializeComponent();
-            _httpClient = new HttpClient();
-
-            // Путь к истории
-            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string appFolder = Path.Combine(appDataPath, "PWin11Tweaker");
-            Directory.CreateDirectory(appFolder);
-            _historyPath = Path.Combine(appFolder, "eraai_history.json");
-
-            LoadHistoryAndUI();
-            CheckOllamaAndModelAsync();  // Проверка при запуске
+            SessionsListView.ItemsSource = _sessions;
+            Loaded += eraPage_Loaded;
+            PromptTextBox.IsReadOnly = true;
         }
 
-        private async void CheckOllamaAndModelAsync()
+        private async void eraPage_Loaded(object sender, RoutedEventArgs e)
         {
-            bool serverReady = await IsOllamaReadyAsync();
-            bool modelReady = await IsModelReadyAsync();
-
-            SendButton.IsEnabled = serverReady && modelReady;
-            InstallOllamaButton.Visibility = (serverReady && modelReady) ? Visibility.Collapsed : Visibility.Visible;
-
-            if (serverReady && modelReady)
+            // Проверка Ollama
+            if (!OllamaManager.IsOllamaInstalled())
             {
-                StatusTextBlock.Text = "EraAI готов. Задавайте вопросы!";
+                StatusTextBlock.Text = "Ollama не установлена.";
+                InstallOllamaButton.Visibility = Visibility.Visible;
+                return;
             }
-            else if (serverReady)
+
+            StatusTextBlock.Text = "Проверка модели...";
+            if (!await OllamaManager.IsModelInstalledAsync())
             {
-                StatusTextBlock.Text = "Ollama запущен, но модель не найдена. Установите модель.";
-                InstallOllamaButton.Content = "Установить модель ИИ (~2.3 GB)";
+                StatusTextBlock.Text = "Модель не установлена, установка...";
+                await OllamaManager.PullModelAsync();
+                StatusTextBlock.Text = "Модель установлена.";
+            }
+
+            // Запуск Ollama serve если нужно и проверка API
+            StatusTextBlock.Text = "Запуск Ollama API...";
+            await OllamaManager.StartOllamaIfNeededAsync();
+            if (!await OllamaManager.IsApiReadyAsync())
+            {
+                StatusTextBlock.Text = "Ошибка: Ollama API недоступен. Проверьте установку.";
+                SendButton.IsEnabled = false;
+                return;
+            }
+
+            _ai = new AIChatService();
+            LoadSessions();
+            if (_sessions.Count > 0)
+            {
+                SessionsListView.SelectedIndex = 0;
+                _currentSession = _sessions[0];
+                ChatListView.ItemsSource = _currentSession.Messages;
             }
             else
             {
-                StatusTextBlock.Text = "Ollama не установлен. Установите для EraAI.";
-                InstallOllamaButton.Content = "Установить Ollama (~100 MB) + модель (~2.3 GB)";
+                NewSessionButton_Click(null, null);
             }
-        }
-
-        private async Task<bool> IsOllamaReadyAsync()
-        {
-            try
-            {
-                var response = await _httpClient.GetAsync($"{OllamaBaseUrl}/api/tags");
-                return response.IsSuccessStatusCode;
-            }
-            catch { return false; }
-        }
-
-        private async Task<bool> IsModelReadyAsync()
-        {
-            if (!await IsOllamaReadyAsync()) return false;
-
-            try
-            {
-                var response = await _httpClient.GetAsync($"{OllamaBaseUrl}/api/tags");
-                if (!response.IsSuccessStatusCode) return false;
-
-                string json = await response.Content.ReadAsStringAsync();
-                var modelsResponse = JsonSerializer.Deserialize<OllamaModelsResponse>(json);
-                return modelsResponse?.models?.Any(m => m.name == ModelName) ?? false;
-            }
-            catch { return false; }
-        }
-
-        private async void InstallOllamaButton_Click(object sender, RoutedEventArgs e)
-        {
-            InstallOllamaButton.IsEnabled = false;
-            StatusTextBlock.Text = "Установка Ollama...";
-
-            await InstallOllamaAsync();
-
-            // Перепроверка
-            await Task.Delay(2000);  // Ждём завершения
-            CheckOllamaAndModelAsync();
-        }
-
-        private async Task InstallOllamaAsync()
-        {
-            try
-            {
-                bool serverReady = await IsOllamaReadyAsync();
-                if (!serverReady)
-                {
-                    StatusTextBlock.Text = "Скачивание Ollama (~100 MB)...";
-                    string url = "https://ollama.com/download/OllamaSetup.exe";
-                    string tempPath = Path.Combine(Path.GetTempPath(), "OllamaSetup.exe");
-                    var bytes = await _httpClient.GetByteArrayAsync(url);
-                    await File.WriteAllBytesAsync(tempPath, bytes);
-
-                    var process = Process.Start(new ProcessStartInfo
-                    {
-                        FileName = tempPath,
-                        Arguments = "/S",
-                        UseShellExecute = true,
-                        Verb = "runas"
-                    });
-                    if (process != null) await process.WaitForExitAsync();
-
-                    // Запуск сервера
-                    Process.Start("ollama", "serve");
-                    await Task.Delay(5000);
-                }
-
-                bool modelReady = await IsModelReadyAsync();
-                if (!modelReady)
-                {
-                    StatusTextBlock.Text = "Скачивание модели (~2.3 GB)...";
-                    Process.Start("ollama", $"pull {ModelName}");
-                    await Task.Delay(30000);  // Ждём скачивания (можно мониторить API, но просто)
-                }
-
-                StatusTextBlock.Text = "Установка завершена! Перезагрузите страницу.";
-            }
-            catch (Exception ex)
-            {
-                StatusTextBlock.Text = $"Ошибка установки: {ex.Message}";
-            }
-            finally
-            {
-                InstallOllamaButton.IsEnabled = true;
-            }
-        }
-
-        // ... Остальные методы без изменений: LoadHistoryAndUI, UpdateSessionComboBox, LoadCurrentSession, SendButton_Click, GenerateResponseAsync (обновлён для stream=false), NewSessionButton_Click, SessionComboBox_SelectionChanged, SaveHistory ...
-
-        private void LoadHistoryAndUI()
-        {
-            if (File.Exists(_historyPath))
-            {
-                string json = File.ReadAllText(_historyPath);
-                _history = JsonSerializer.Deserialize<ChatHistory>(json) ?? new ChatHistory();
-            }
-
-            UpdateSessionComboBox();
-            LoadCurrentSession();
-        }
-
-        private void UpdateSessionComboBox()
-        {
-            SessionComboBox.Items.Clear();
-            foreach (var session in _history.Sessions)
-            {
-                SessionComboBox.Items.Add(new ComboBoxItem { Content = session.Title, Tag = session.Id });
-            }
-            if (!string.IsNullOrEmpty(_history.CurrentSessionId))
-            {
-                var currentItem = SessionComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault(i => (string)i.Tag == _history.CurrentSessionId);
-                if (currentItem != null) SessionComboBox.SelectedItem = currentItem;
-            }
-        }
-
-        private void LoadCurrentSession()
-        {
-            var currentSession = _history.Sessions.FirstOrDefault(s => s.Id == _history.CurrentSessionId);
-            if (currentSession != null)
-            {
-                _currentMessages.Clear();
-                foreach (var msg in currentSession.Messages)
-                {
-                    _currentMessages.Add(msg);
-                }
-                ChatListView.ItemsSource = _currentMessages;
-            }
+            StatusTextBlock.Text = "Готов к работе.";
+            SendButton.IsEnabled = true;
+            PromptTextBox.IsReadOnly = false;
+            PromptTextBox.Focus(FocusState.Programmatic);
         }
 
         private async void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            string prompt = PromptTextBox.Text.Trim();
-            if (string.IsNullOrEmpty(prompt)) return;
-
-            SendButton.IsEnabled = false;
-            StatusTextBlock.Text = "Генерация ответа...";
-
-            // Добавляем сообщение пользователя
-            var userMsg = new Message { Role = "user", Content = prompt };
-            _currentMessages.Add(userMsg);
-            PromptTextBox.Text = string.Empty;
-
-            // Генерация ответа
-            string response = await GenerateResponseAsync(prompt);
-            var aiMsg = new Message { Role = "assistant", Content = response };
-            _currentMessages.Add(aiMsg);
-
-            // Сохранение
-            SaveHistory();
-            ChatListView.ScrollIntoView(aiMsg);
-
-            SendButton.IsEnabled = true;
-            StatusTextBlock.Text = "Готово!";
+            await SendMessageAsync();
         }
 
-        private async Task<string> GenerateResponseAsync(string prompt)
+        private async void PromptTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            bool isReady = await IsOllamaReadyAsync() && await IsModelReadyAsync();
-            if (!isReady) return "EraAI недоступен. Установите Ollama и модель.";
+            if (e.Key == Windows.System.VirtualKey.Enter && SendButton.IsEnabled)
+            {
+                await SendMessageAsync();
+            }
+        }
+
+        private async Task SendMessageAsync()
+        {
+            var userText = PromptTextBox.Text.Trim();
+            if (string.IsNullOrEmpty(userText)) return;
+
+            if (_currentSession == null)
+            {
+                NewSessionButton_Click(null, null);
+            }
+
+            SendButton.IsEnabled = false;
+            PromptTextBox.IsReadOnly = true;
+
+            var userMessage = new Message { Role = "Пользователь", Content = userText, Timestamp = DateTime.Now };
+            _currentSession.Messages.Add(userMessage);
+            ScrollToBottom();
+            PromptTextBox.Text = "";
+            TypingIndicator.Visibility = Visibility.Visible;
+            StatusTextBlock.Text = "Генерация ответа...";
+
+            Message aiMessage = null;
 
             try
             {
-                // Контекст из текущей сессии (последние 5 сообщений)
-                string context = string.Join("\n", _currentMessages.TakeLast(5).Select(m => $"{m.Role}: {m.Content}"));
-                string systemPrompt = "Ты эксперт по Windows 11 твикам. Отвечай кратко, с C# кодом если нужно.";
-                string fullPrompt = $"{systemPrompt}\n\nКонтекст:\n{context}\n\nПользователь: {prompt}\nAI:";
+                // Формируем историю для Ollama (system + все user/ai сообщения)
+                var systemMessage = new OllamaMessage { Role = "system", Content = "Ты эксперт Windows 11. Отвечай кратко и по делу на русском языке." };
+                var ollamaHistory = new List<OllamaMessage> { systemMessage };
+                ollamaHistory.AddRange(_currentSession.Messages
+                    .Where(m => m.Role != "ИИ")
+                    .Select(m => new OllamaMessage
+                    {
+                        Role = m.Role == "Пользователь" ? "user" : "assistant",
+                        Content = m.Content
+                    }));
 
-                // JSON-запрос к /api/chat
-                var requestBody = new
+                // Добавляем пустое сообщение ИИ для стриминга
+                aiMessage = new Message { Role = "ИИ", Content = "", Timestamp = DateTime.Now };
+                _currentSession.Messages.Add(aiMessage);
+
+                await foreach (var delta in _ai.StreamAnswerAsync(ollamaHistory))
                 {
-                    model = ModelName,
-                    messages = new[] { new { role = "user", content = fullPrompt } },
-                    stream = false,
-                    options = new { temperature = 0.7f, top_p = 0.9f }
-                };
-
-                string jsonBody = JsonSerializer.Serialize(requestBody);
-                var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-                var httpRequest = new HttpRequestMessage(HttpMethod.Post, $"{OllamaBaseUrl}/api/chat") { Content = content };
-
-                var httpResponse = await _httpClient.SendAsync(httpRequest);
-                if (!httpResponse.IsSuccessStatusCode)
-                {
-                    return $"Ollama ошибка: {httpResponse.StatusCode}";
+                    if (!string.IsNullOrEmpty(delta))
+                    {
+                        aiMessage.Content += delta;
+                        ScrollToBottom();
+                    }
                 }
 
-                string responseJson = await httpResponse.Content.ReadAsStringAsync();
-                var ollamaResponse = JsonSerializer.Deserialize<OllamaChatResponse>(responseJson);
-
-                string response = ollamaResponse?.message?.content ?? "Нет ответа.";
-                return response;
+                if (string.IsNullOrEmpty(aiMessage.Content))
+                {
+                    aiMessage.Content = "[Ошибка: Пустой ответ от ИИ. Проверьте модель.]";
+                }
             }
             catch (Exception ex)
             {
-                return $"Ошибка: {ex.Message}";
+                StatusTextBlock.Text = $"Ошибка: {ex.Message}";
+                if (aiMessage != null)
+                {
+                    _currentSession.Messages.Remove(aiMessage);
+                }
+                aiMessage = new Message { Role = "ИИ", Content = "[Ошибка: " + ex.Message + "]", Timestamp = DateTime.Now };
+                _currentSession.Messages.Add(aiMessage);
             }
+            finally
+            {
+                TypingIndicator.Visibility = Visibility.Collapsed;
+                SaveSessions();
+                SendButton.IsEnabled = true;
+                PromptTextBox.IsReadOnly = false;
+                PromptTextBox.Focus(FocusState.Programmatic);
+                StatusTextBlock.Text = "Готов к работе.";
+            }
+        }
+
+        private void ScrollToBottom()
+        {
+            if (chatScrollViewer.ScrollableHeight > 0)
+            {
+                chatScrollViewer.ChangeView(null, chatScrollViewer.ScrollableHeight, null);
+            }
+        }
+
+        private void LoadSessions()
+        {
+            if (File.Exists(_sessionFile))
+            {
+                try
+                {
+                    var json = File.ReadAllText(_sessionFile);
+                    // Десериализуем в List<ChatSessionDto>
+                    var loadedDtos = JsonSerializer.Deserialize<List<ChatSessionDto>>(json, JsonOptions);
+                    if (loadedDtos != null)
+                    {
+                        foreach (var dto in loadedDtos)
+                        {
+                            var session = new ChatSession(dto); // Создаем ChatSession из DTO (с копированием сообщений)
+                            _sessions.Add(session);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Ошибка загрузки сессий: {ex.Message}");
+                }
+            }
+        }
+
+        private void SaveSessions()
+        {
+            try
+            {
+                // Сохраняем только первые 10 сессий
+                var dtosToSave = _sessions.Take(10).Select(s => s.ToDto()).ToList(); // Конвертируем в DTO с копированием
+
+                var json = JsonSerializer.Serialize(dtosToSave, JsonOptions);
+                File.WriteAllText(_sessionFile, json);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Ошибка сохранения сессий: {ex.Message}");
+            }
+        }
+
+        private async void InstallOllamaButton_Click(object sender, RoutedEventArgs e)
+        {
+            await OllamaManager.InstallOllamaAsync();
+            StatusTextBlock.Text = "Установщик запущен. После установки перезапустите программу.";
         }
 
         private void NewSessionButton_Click(object sender, RoutedEventArgs e)
         {
-            var newSession = new ChatSession();
-            _history.Sessions.Add(newSession);
-            _history.CurrentSessionId = newSession.Id;
-            _currentMessages.Clear();
-            UpdateSessionComboBox();
-            SaveHistory();
+            var newSession = new ChatSession { Title = $"Сессия {DateTime.Now:HH:mm:ss}" };
+            _sessions.Add(newSession);
+            SessionsListView.SelectedItem = newSession;
+            _currentSession = newSession;
+            ChatListView.ItemsSource = _currentSession.Messages;
+            StatusTextBlock.Text = "Новая сессия создана.";
         }
 
-        private void SessionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SessionsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (SessionComboBox.SelectedItem is ComboBoxItem selectedItem && selectedItem.Tag is string sessionId)
+            if (SessionsListView.SelectedItem is ChatSession session)
             {
-                _history.CurrentSessionId = sessionId;
-                LoadCurrentSession();
-                SaveHistory();
+                _currentSession = session;
+                ChatListView.ItemsSource = _currentSession.Messages;
+                ScrollToBottom();
             }
         }
+    }
 
-        private void SaveHistory()
+    public class RoleToBackgroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var currentSession = _history.Sessions.FirstOrDefault(s => s.Id == _history.CurrentSessionId);
-            if (currentSession != null)
+            if (value is string role)
             {
-                currentSession.Messages = _currentMessages.ToList();
-                currentSession.GenerateTitle();
+                return role == "Пользователь"
+                    ? new SolidColorBrush(Color.FromArgb(255, 0, 120, 215)) // Синий для пользователя
+                    : new SolidColorBrush(Color.FromArgb(255, 32, 149, 87)); // Зеленый для ИИ
             }
-            string json = JsonSerializer.Serialize(_history, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_historyPath, json);
+            return new SolidColorBrush(Colors.Transparent);
         }
 
-        // Пример навигации назад
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            if (this.Frame != null) this.Frame.GoBack();
+            throw new NotImplementedException();
+        }
+    }
+
+    public class DateTimeToTimeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is DateTime dt)
+            {
+                return dt.ToString("HH:mm");
+            }
+            return value?.ToString() ?? string.Empty;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
         }
     }
 }
