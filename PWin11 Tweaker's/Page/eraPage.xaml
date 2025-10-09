@@ -6,46 +6,82 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local1="using:PWin11_Tweaker_s.Models"
+    xmlns:local2="using:PWin11_Tweaker_s.Services"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
         <local:RoleToBackgroundConverter x:Key="RoleToBackgroundConverter"/>
         <local:DateTimeToTimeConverter x:Key="DateTimeToTimeConverter"/>
+        <Style x:Key="AccentButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource SystemAccentColor}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,5"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemAccentColor}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="60"/>
+            <!-- Новая панель для кнопок слева -->
+            <ColumnDefinition x:Name="SessionsColumn" Width="260"/>
             <ColumnDefinition Width="*"/>
+            <!-- Основная панель с сообщениями, уменьшена -->
         </Grid.ColumnDefinitions>
 
-        <!-- Левая панель: Сессии -->
+        <!-- Панель для кнопок слева -->
         <Border Grid.Column="0"
                 Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                CornerRadius="0,0,12,0"
+                Margin="0,10,0,10">
+            <StackPanel VerticalAlignment="Top" Margin="10,10,0,0">
+                <Button x:Name="ToggleSessionsButton"
+                       
+                        Click="ToggleSessionsButton_Click"
+                        Width="40"
+                        Height="40"
+                        Style="{StaticResource AccentButtonStyle}">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE700;" FontFamily="Segoe MDL2 Assets" FontSize="16"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Панель сессий -->
+        <Border x:Name="SessionsPanel"
+                Grid.Column="1"
+                Background="{ThemeResource SystemControlAcrylicElementBrush}"
                 CornerRadius="12"
-                Margin="10"
+                Margin="0,10,10,10"
                 Padding="10">
             <StackPanel Spacing="10">
-
-                <!-- Заголовок -->
-                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-                    <Image Source="ms-appx:///Assets/mini_eraAI.png"
-                           Width="40"
-                           Height="40"
-                           VerticalAlignment="Center"/>
-                    <TextBlock Text="EraAI"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"/>
-                </StackPanel>
-
                 <TextBlock Text="Сессии чата"
                            FontSize="16"
                            FontWeight="SemiBold"
-                           Margin="0,10,0,5"/>
+                           Margin="0,10,0,5"
+                           Foreground="{ThemeResource TextFillColorPrimary}"/>
 
-                <!-- Список сессий -->
                 <ListView x:Name="SessionsListView"
                           Height="400"
                           SelectionChanged="SessionsListView_SelectionChanged"
@@ -58,58 +94,150 @@
                                     Margin="0,2">
                                 <TextBlock Text="{x:Bind Title}"
                                            TextWrapping="Wrap"
-                                           FontSize="14"/>
+                                           FontSize="14"
+                                           Foreground="{ThemeResource TextFillColorPrimary}"/>
                             </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
                 <Button x:Name="NewSessionButton"
-                        Content="Новая сессия"
                         Click="NewSessionButton_Click"
                         HorizontalAlignment="Stretch"
-                        Margin="0,10,0,0"
-                        Style="{StaticResource AccentButtonStyle}"/>
-
+                        Style="{StaticResource AccentButtonStyle}">
+                    <FontIcon Glyph="&#xE109;" FontFamily="Segoe MDL2 Assets" FontSize="16"/>
+                </Button>
             </StackPanel>
         </Border>
 
-        <!-- Основная область -->
-        <Grid Grid.Column="1" Margin="10">
+        <Button x:Name="ShowSessionsOverlayButton"
+                
+                Click="ShowSessionsOverlay_Click"
+                Width="40"
+                Height="40"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,10,10,0"
+                Visibility="Collapsed"
+                Grid.Column="2"
+                Style="{StaticResource AccentButtonStyle}">
+            <Button.Content>
+                <FontIcon Glyph="&#xE712;" FontFamily="Segoe MDL2 Assets" FontSize="16"/>
+            </Button.Content>
+        </Button>
+
+        <Border x:Name="SessionsOverlay"
+                Background="#80000000"
+                Visibility="Collapsed"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="260"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="1"
+                        Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                        CornerRadius="12"
+                        Margin="10"
+                        Padding="10">
+                    <StackPanel Spacing="10">
+                        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                            <Image Source="ms-appx:///Assets/mini_eraAI.png"
+                                   Width="40" Height="40" VerticalAlignment="Center"/>
+                            <TextBlock Text="EraAI"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Foreground="{ThemeResource SystemAccentColor}"/>
+                            <Button Content="Закрыть"
+                                    Click="CloseSessionsOverlay_Click"
+                                    Width="80"
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource AccentButtonStyle}"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Сессии чата"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Margin="0,10,0,5"
+                                   Foreground="{ThemeResource TextFillColorPrimary}"/>
+
+                        <ListView x:Name="SessionsListViewOverlay"
+                                  Height="400"
+                                  SelectionChanged="SessionsListView_SelectionChanged"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="local1:ChatSession">
+                                    <Border Background="{ThemeResource ListViewItemBackground}"
+                                            CornerRadius="6"
+                                            Padding="8"
+                                            Margin="0,2">
+                                        <TextBlock Text="{x:Bind Title}"
+                                                   TextWrapping="Wrap"
+                                                   FontSize="14"
+                                                   Foreground="{ThemeResource TextFillColorPrimary}"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Button x:Name="NewSessionButtonOverlay"
+                                Click="NewSessionButton_Click"
+                                HorizontalAlignment="Stretch"
+                                Style="{StaticResource AccentButtonStyle}">
+                            <FontIcon Glyph="&#xE109;" FontFamily="Segoe MDL2 Assets" FontSize="16"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="2" Margin="20,10,10,10">
+            <!-- Смещение вправо и уменьшение ширины через Margin -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Верхняя панель -->
-            <Grid Grid.Row="0" Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+            <Border x:Name="InstallBanner"
+                    Grid.Row="0"
+                    Background="{ThemeResource SystemAccentColorLight2}"
+                    CornerRadius="8"
+                    Padding="15"
+                    Margin="0,0,0,10"
+                    Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="Установить Ollama и модель для ИИ"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="White"/>
+                    <TextBlock Text="Примерный вес: 2ГБ"
+                               FontSize="12"
+                               Foreground="White"/>
+                    <Button x:Name="InstallOllamaButton"
+                            Content="Скачать"
+                            Click="InstallOllamaButton_Click"
+                            Margin="10,0,0,0"
+                            Style="{StaticResource AccentButtonStyle}"/>
+                </StackPanel>
+            </Border>
 
-                <TextBlock Text="EraAI Чат"
-                           FontSize="22"
-                           FontWeight="Bold"
-                           VerticalAlignment="Center"/>
-
-                <Button x:Name="InstallOllamaButton"
-                        Content="Установить Ollama (~100 MB) + модель (~1.4 GB)"
-                        Click="InstallOllamaButton_Click"
-                        Grid.Column="1"
-                        Visibility="Collapsed"
-                        Style="{StaticResource AccentButtonStyle}"/>
-            </Grid>
-
-            <!-- Область чата -->
             <ScrollViewer x:Name="chatScrollViewer"
                           Grid.Row="1"
                           VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Disabled">
                 <StackPanel x:Name="ChatPanel" Spacing="10">
+                    <Image x:Name="ChatLogo"
+                           Source="ms-appx:///Assets/full_eraAI.png"
+                           Width="250"
+                           Height="161"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Visibility="Visible"/>
 
-                    <!-- Сообщения -->
                     <ListView x:Name="ChatListView"
                               ScrollViewer.VerticalScrollMode="Enabled"
                               IsItemClickEnabled="False"
@@ -125,15 +253,16 @@
                                             <TextBlock Text="{x:Bind Role}"
                                                        FontSize="12"
                                                        FontWeight="SemiBold"
-                                                       Foreground="Gray"
+                                                       Foreground="White"
                                                        Margin="0,0,0,5"/>
-                                            <TextBlock Text="{x:Bind Content}"
+                                            <TextBlock x:Name="MessageContent" Text="{x:Bind Content}"
                                                        TextWrapping="Wrap"
                                                        FontSize="14"
-                                                       Foreground="White"/>
+                                                       Foreground="White"
+                                                       MaxWidth="800"/>
                                             <TextBlock Text="{x:Bind Timestamp, Converter={StaticResource DateTimeToTimeConverter}}"
                                                        FontSize="10"
-                                                       Foreground="LightGray"
+                                                       Foreground="White"
                                                        HorizontalAlignment="Right"
                                                        Margin="0,5,0,0"/>
                                         </StackPanel>
@@ -142,43 +271,59 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
-                    <!-- Индикатор -->
-                    <TextBlock x:Name="TypingIndicator"
-                               Text="ИИ печатает..."
-                               Foreground="Gray"
-                               HorizontalAlignment="Center"
-                               Visibility="Collapsed"
-                               FontStyle="Italic"
-                               Margin="0,10,0,0"/>
                 </StackPanel>
             </ScrollViewer>
 
-            <!-- Поле ввода -->
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
+            <StackPanel x:Name="InputPanel"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Spacing="10"
+                        Margin="0,10,0,0">
                 <TextBox x:Name="PromptTextBox"
                          PlaceholderText="Введите ваш вопрос по Windows твикам..."
                          HorizontalAlignment="Stretch"
                          AcceptsReturn="True"
-                         KeyDown="PromptTextBox_KeyDown"/>
-
+                         KeyDown="PromptTextBox_KeyDown"
+                         CornerRadius="8"
+                         Padding="15"
+                         BorderBrush="{ThemeResource SystemAccentColor}"
+                         BorderThickness="1"
+                         Height="80"
+                         VerticalAlignment="Center"
+                         MinWidth="400"/>
                 <Button x:Name="SendButton"
                         Content="Отправить"
                         Click="SendButton_Click"
                         Width="120"
-                        Height="50"
+                        Height="80"
+                        VerticalAlignment="Center"
                         IsEnabled="False"
                         Style="{StaticResource AccentButtonStyle}"/>
             </StackPanel>
         </Grid>
 
-        <!-- Нижний статус -->
         <TextBlock x:Name="StatusTextBlock"
-                   Grid.ColumnSpan="2"
+                   Grid.Column="1"
                    Text="Готов к работе. Проверьте Ollama."
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
-                   Foreground="Gray"
-                   Margin="0,0,0,10"/>
+                   Foreground="{ThemeResource SystemAccentColor}"
+                   Margin="10,0,0,10"/>
+
+        <TextBlock x:Name="PoweredByText"
+                   Grid.Column="2"
+                   Text="Powered by: Ollama"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"
+                   Foreground="{ThemeResource TextFillColorSecondary}"
+                   Margin="0,0,10,10"/>
+
+        <TextBlock x:Name="TypingIndicator"
+                   Text="ИИ печатает..."
+                   Foreground="{ThemeResource SystemAccentColor}"
+                   HorizontalAlignment="Center"
+                   Visibility="Collapsed"
+                   FontStyle="Italic"
+                   Margin="0,10,0,0"/>
     </Grid>
 </Page>
