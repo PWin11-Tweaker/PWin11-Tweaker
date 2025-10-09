@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI;
+using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
@@ -24,6 +25,7 @@ namespace PWin11_Tweaker_s
         private AIChatService _ai;
         private ChatSession _currentSession;
         private ObservableCollection<ChatSession> _sessions = new ObservableCollection<ChatSession>();
+        private DispatcherTimer _autoCollapseTimer;
 
         private readonly string _sessionFile = Path.Combine(AppContext.BaseDirectory, "chat_sessions.json");
 
@@ -38,17 +40,22 @@ namespace PWin11_Tweaker_s
         {
             this.InitializeComponent();
             SessionsListView.ItemsSource = _sessions;
-            Loaded += eraPage_Loaded;
+            SessionsListViewOverlay.ItemsSource = _sessions;
+            Loaded += EraPage_Loaded;
             PromptTextBox.IsReadOnly = true;
+            ChatListView.ItemsSource = _currentSession?.Messages ?? new ObservableCollection<Message>();
+
+            _autoCollapseTimer = new DispatcherTimer();
+            _autoCollapseTimer.Interval = TimeSpan.FromSeconds(5);
+            _autoCollapseTimer.Tick += AutoCollapseTimer_Tick;
         }
 
-        private async void eraPage_Loaded(object sender, RoutedEventArgs e)
+        private async void EraPage_Loaded(object sender, RoutedEventArgs e)
         {
-            // Проверка Ollama
             if (!OllamaManager.IsOllamaInstalled())
             {
                 StatusTextBlock.Text = "Ollama не установлена.";
-                InstallOllamaButton.Visibility = Visibility.Visible;
+                InstallBanner.Visibility = Visibility.Visible;
                 return;
             }
 
@@ -60,7 +67,6 @@ namespace PWin11_Tweaker_s
                 StatusTextBlock.Text = "Модель установлена.";
             }
 
-            // Запуск Ollama serve если нужно и проверка API
             StatusTextBlock.Text = "Запуск Ollama API...";
             await OllamaManager.StartOllamaIfNeededAsync();
             if (!await OllamaManager.IsApiReadyAsync())
@@ -72,16 +78,14 @@ namespace PWin11_Tweaker_s
 
             _ai = new AIChatService();
             LoadSessions();
-            if (_sessions.Count > 0)
-            {
-                SessionsListView.SelectedIndex = 0;
-                _currentSession = _sessions[0];
-                ChatListView.ItemsSource = _currentSession.Messages;
-            }
-            else
-            {
-                NewSessionButton_Click(null, null);
-            }
+
+            // Создаём новую пустую сессию как текущую, сохраняя старые сессии
+            _currentSession = new ChatSession { Title = "Новый чат", Messages = new ObservableCollection<Message>() };
+            _sessions.Add(_currentSession);
+            SessionsListView.SelectedItem = _currentSession;
+            ChatListView.ItemsSource = _currentSession.Messages;
+            UpdateChatState();
+
             StatusTextBlock.Text = "Готов к работе.";
             SendButton.IsEnabled = true;
             PromptTextBox.IsReadOnly = false;
@@ -118,15 +122,17 @@ namespace PWin11_Tweaker_s
             _currentSession.Messages.Add(userMessage);
             ScrollToBottom();
             PromptTextBox.Text = "";
-            TypingIndicator.Visibility = Visibility.Visible;
             StatusTextBlock.Text = "Генерация ответа...";
 
             Message aiMessage = null;
 
             try
             {
-                // Формируем историю для Ollama (system + все user/ai сообщения)
-                var systemMessage = new OllamaMessage { Role = "system", Content = "Ты эксперт Windows 11. Отвечай кратко и по делу на русском языке." };
+                var systemMessage = new OllamaMessage
+                {
+                    Role = "system",
+                    Content = "Ты эксперт Windows 11. Отвечай кратко и по делу на русском языке, предоставляя точные инструкции или советы по настройке и оптимизации без форматирования или ссылок."
+                };
                 var ollamaHistory = new List<OllamaMessage> { systemMessage };
                 ollamaHistory.AddRange(_currentSession.Messages
                     .Where(m => m.Role != "ИИ")
@@ -136,7 +142,6 @@ namespace PWin11_Tweaker_s
                         Content = m.Content
                     }));
 
-                // Добавляем пустое сообщение ИИ для стриминга
                 aiMessage = new Message { Role = "ИИ", Content = "", Timestamp = DateTime.Now };
                 _currentSession.Messages.Add(aiMessage);
 
@@ -145,6 +150,7 @@ namespace PWin11_Tweaker_s
                     if (!string.IsNullOrEmpty(delta))
                     {
                         aiMessage.Content += delta;
+                        UpdateChatDisplay();
                         ScrollToBottom();
                     }
                 }
@@ -152,6 +158,7 @@ namespace PWin11_Tweaker_s
                 if (string.IsNullOrEmpty(aiMessage.Content))
                 {
                     aiMessage.Content = "[Ошибка: Пустой ответ от ИИ. Проверьте модель.]";
+                    UpdateChatDisplay();
                 }
             }
             catch (Exception ex)
@@ -163,16 +170,59 @@ namespace PWin11_Tweaker_s
                 }
                 aiMessage = new Message { Role = "ИИ", Content = "[Ошибка: " + ex.Message + "]", Timestamp = DateTime.Now };
                 _currentSession.Messages.Add(aiMessage);
+                UpdateChatDisplay();
             }
             finally
             {
-                TypingIndicator.Visibility = Visibility.Collapsed;
                 SaveSessions();
+                UpdateChatState();
                 SendButton.IsEnabled = true;
                 PromptTextBox.IsReadOnly = false;
                 PromptTextBox.Focus(FocusState.Programmatic);
                 StatusTextBlock.Text = "Готов к работе.";
             }
+        }
+
+        private void UpdateChatDisplay()
+        {
+            if (ChatListView.ItemsSource != null && _currentSession != null)
+            {
+                ChatListView.ItemsSource = null;
+                ChatListView.ItemsSource = _currentSession.Messages;
+                foreach (var item in ChatListView.Items)
+                {
+                    if (item is Message msg && ChatListView.ContainerFromItem(msg) is ListViewItem container)
+                    {
+                        var textBlock = FindVisualChild<TextBlock>(container, "MessageContent");
+                        if (textBlock != null)
+                        {
+                            textBlock.Text = msg.Content ?? "[Пустое сообщение]";
+                        }
+                    }
+                }
+                ScrollToBottom();
+            }
+        }
+
+        private T FindVisualChild<T>(DependencyObject parent, string name) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child != null)
+                {
+                    if (child is T typedChild && (string.IsNullOrEmpty(name) || (typedChild as FrameworkElement)?.Name == name))
+                    {
+                        return typedChild;
+                    }
+                    var childOfChild = FindVisualChild<T>(child, name);
+                    if (childOfChild != null)
+                    {
+                        return childOfChild;
+                    }
+                }
+            }
+            return null;
         }
 
         private void ScrollToBottom()
@@ -190,13 +240,12 @@ namespace PWin11_Tweaker_s
                 try
                 {
                     var json = File.ReadAllText(_sessionFile);
-                    // Десериализуем в List<ChatSessionDto>
                     var loadedDtos = JsonSerializer.Deserialize<List<ChatSessionDto>>(json, JsonOptions);
                     if (loadedDtos != null)
                     {
                         foreach (var dto in loadedDtos)
                         {
-                            var session = new ChatSession(dto); // Создаем ChatSession из DTO (с копированием сообщений)
+                            var session = new ChatSession(dto);
                             _sessions.Add(session);
                         }
                     }
@@ -212,9 +261,7 @@ namespace PWin11_Tweaker_s
         {
             try
             {
-                // Сохраняем только первые 10 сессий
-                var dtosToSave = _sessions.Take(10).Select(s => s.ToDto()).ToList(); // Конвертируем в DTO с копированием
-
+                var dtosToSave = _sessions.Take(10).Select(s => s.ToDto()).ToList();
                 var json = JsonSerializer.Serialize(dtosToSave, JsonOptions);
                 File.WriteAllText(_sessionFile, json);
             }
@@ -228,6 +275,7 @@ namespace PWin11_Tweaker_s
         {
             await OllamaManager.InstallOllamaAsync();
             StatusTextBlock.Text = "Установщик запущен. После установки перезапустите программу.";
+            InstallBanner.Visibility = Visibility.Collapsed;
         }
 
         private void NewSessionButton_Click(object sender, RoutedEventArgs e)
@@ -237,7 +285,8 @@ namespace PWin11_Tweaker_s
             SessionsListView.SelectedItem = newSession;
             _currentSession = newSession;
             ChatListView.ItemsSource = _currentSession.Messages;
-            StatusTextBlock.Text = "Новая сессия создана.";
+            UpdateChatState();
+            ResetAutoCollapseTimer();
         }
 
         private void SessionsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -246,8 +295,75 @@ namespace PWin11_Tweaker_s
             {
                 _currentSession = session;
                 ChatListView.ItemsSource = _currentSession.Messages;
-                ScrollToBottom();
+                UpdateChatState();
+                ResetAutoCollapseTimer();
             }
+        }
+
+        private void ShowSessionsOverlay_Click(object sender, RoutedEventArgs e)
+        {
+            SessionsOverlay.Visibility = Visibility.Visible;
+        }
+
+        private void CloseSessionsOverlay_Click(object sender, RoutedEventArgs e)
+        {
+            SessionsOverlay.Visibility = Visibility.Collapsed;
+        }
+
+        private void ToggleSessionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SessionsPanel.Visibility = SessionsPanel.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            SessionsColumn.Width = SessionsPanel.Visibility == Visibility.Visible ? new GridLength(260) : new GridLength(0);
+            if (SessionsPanel.Visibility == Visibility.Visible)
+            {
+                ResetAutoCollapseTimer();
+            }
+        }
+
+        private void UpdateChatState()
+        {
+            bool hasMessages = _currentSession?.Messages?.Any() ?? false;
+
+            if (!hasMessages)
+            {
+                SessionsPanel.Visibility = Visibility.Visible;
+                SessionsColumn.Width = new GridLength(260);
+                ChatLogo.Visibility = Visibility.Visible;
+                InputPanel.Margin = new Thickness(0, 0, 0, 0);
+                PromptTextBox.Height = 80;
+                StatusTextBlock.SetValue(Grid.ColumnProperty, 1);
+                ShowSessionsOverlayButton.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                SessionsPanel.Visibility = Visibility.Collapsed;
+                SessionsColumn.Width = new GridLength(0);
+                ChatLogo.Visibility = Visibility.Collapsed;
+                InputPanel.Margin = new Thickness(0, 10, 0, 0);
+                PromptTextBox.Height = 50;
+                StatusTextBlock.SetValue(Grid.ColumnProperty, 2);
+                ShowSessionsOverlayButton.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void AutoCollapseTimer_Tick(object sender, object e)
+        {
+            if (SessionsPanel.Visibility == Visibility.Visible && !_isInteractingWithPanel)
+            {
+                SessionsPanel.Visibility = Visibility.Collapsed;
+                SessionsColumn.Width = new GridLength(0);
+                _autoCollapseTimer.Stop();
+            }
+        }
+
+        private bool _isInteractingWithPanel = false;
+
+        private void ResetAutoCollapseTimer()
+        {
+            _isInteractingWithPanel = true;
+            _autoCollapseTimer.Stop();
+            _autoCollapseTimer.Start();
+            _isInteractingWithPanel = false;
         }
     }
 
@@ -258,8 +374,8 @@ namespace PWin11_Tweaker_s
             if (value is string role)
             {
                 return role == "Пользователь"
-                    ? new SolidColorBrush(Color.FromArgb(255, 0, 120, 215)) // Синий для пользователя
-                    : new SolidColorBrush(Color.FromArgb(255, 32, 149, 87)); // Зеленый для ИИ
+                    ? new SolidColorBrush(Color.FromArgb(255, 0, 120, 215))
+                    : new SolidColorBrush(Color.FromArgb(255, 32, 149, 87));
             }
             return new SolidColorBrush(Colors.Transparent);
         }
