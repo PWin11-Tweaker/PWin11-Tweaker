@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI;
-using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
@@ -42,17 +41,11 @@ namespace PWin11_Tweaker_s
         {
             this.InitializeComponent();
             SessionsListView.ItemsSource = _sessions;
-            SessionsListViewOverlay.ItemsSource = _sessions;
-            Loaded += EraPage_Loaded;
+            Loaded += eraPage_Loaded;
             PromptTextBox.IsReadOnly = true;
-            ChatListView.ItemsSource = _currentSession?.Messages ?? new ObservableCollection<Message>();
-
-            _autoCollapseTimer = new DispatcherTimer();
-            _autoCollapseTimer.Interval = TimeSpan.FromSeconds(5);
-            _autoCollapseTimer.Tick += AutoCollapseTimer_Tick;
         }
 
-        private async void EraPage_Loaded(object sender, RoutedEventArgs e)
+        private async void eraPage_Loaded(object sender, RoutedEventArgs e)
         {
             LoadSettings();
             LoadSessions();
@@ -186,6 +179,7 @@ namespace PWin11_Tweaker_s
             _currentSession.Messages.Add(userMessage);
             ScrollToBottom();
             PromptTextBox.Text = "";
+            TypingIndicator.Visibility = Visibility.Visible;
             StatusTextBlock.Text = "Генерация ответа...";
 
             Message aiMessage = null;
@@ -210,7 +204,6 @@ namespace PWin11_Tweaker_s
                     if (!string.IsNullOrEmpty(delta))
                     {
                         aiMessage.Content += delta;
-                        UpdateChatDisplay();
                         ScrollToBottom();
                     }
                 }
@@ -218,7 +211,6 @@ namespace PWin11_Tweaker_s
                 if (string.IsNullOrEmpty(aiMessage.Content))
                 {
                     aiMessage.Content = "[Ошибка: Пустой ответ от ИИ. Проверьте модель.]";
-                    UpdateChatDisplay();
                 }
             }
             catch (Exception ex)
@@ -230,59 +222,16 @@ namespace PWin11_Tweaker_s
                 }
                 aiMessage = new Message { Role = "ИИ", Content = "[Ошибка: " + ex.Message + "]", Timestamp = DateTime.Now };
                 _currentSession.Messages.Add(aiMessage);
-                UpdateChatDisplay();
             }
             finally
             {
+                TypingIndicator.Visibility = Visibility.Collapsed;
                 SaveSessions();
-                UpdateChatState();
                 SendButton.IsEnabled = true;
                 PromptTextBox.IsReadOnly = false;
                 PromptTextBox.Focus(FocusState.Programmatic);
                 StatusTextBlock.Text = "Готов к работе.";
             }
-        }
-
-        private void UpdateChatDisplay()
-        {
-            if (ChatListView.ItemsSource != null && _currentSession != null)
-            {
-                ChatListView.ItemsSource = null;
-                ChatListView.ItemsSource = _currentSession.Messages;
-                foreach (var item in ChatListView.Items)
-                {
-                    if (item is Message msg && ChatListView.ContainerFromItem(msg) is ListViewItem container)
-                    {
-                        var textBlock = FindVisualChild<TextBlock>(container, "MessageContent");
-                        if (textBlock != null)
-                        {
-                            textBlock.Text = msg.Content ?? "[Пустое сообщение]";
-                        }
-                    }
-                }
-                ScrollToBottom();
-            }
-        }
-
-        private T FindVisualChild<T>(DependencyObject parent, string name) where T : DependencyObject
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                var child = VisualTreeHelper.GetChild(parent, i);
-                if (child != null)
-                {
-                    if (child is T typedChild && (string.IsNullOrEmpty(name) || (typedChild as FrameworkElement)?.Name == name))
-                    {
-                        return typedChild;
-                    }
-                    var childOfChild = FindVisualChild<T>(child, name);
-                    if (childOfChild != null)
-                    {
-                        return childOfChild;
-                    }
-                }
-            }
-            return null;
         }
 
         private void ScrollToBottom()
@@ -369,8 +318,7 @@ namespace PWin11_Tweaker_s
             SessionsListView.SelectedItem = newSession;
             _currentSession = newSession;
             ChatListView.ItemsSource = _currentSession.Messages;
-            UpdateChatState();
-            ResetAutoCollapseTimer();
+            StatusTextBlock.Text = "Новая сессия создана.";
         }
 
         private void SessionsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -379,75 +327,8 @@ namespace PWin11_Tweaker_s
             {
                 _currentSession = session;
                 ChatListView.ItemsSource = _currentSession.Messages;
-                UpdateChatState();
-                ResetAutoCollapseTimer();
+                ScrollToBottom();
             }
-        }
-
-        private void ShowSessionsOverlay_Click(object sender, RoutedEventArgs e)
-        {
-            SessionsOverlay.Visibility = Visibility.Visible;
-        }
-
-        private void CloseSessionsOverlay_Click(object sender, RoutedEventArgs e)
-        {
-            SessionsOverlay.Visibility = Visibility.Collapsed;
-        }
-
-        private void ToggleSessionsButton_Click(object sender, RoutedEventArgs e)
-        {
-            SessionsPanel.Visibility = SessionsPanel.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            SessionsColumn.Width = SessionsPanel.Visibility == Visibility.Visible ? new GridLength(260) : new GridLength(0);
-            if (SessionsPanel.Visibility == Visibility.Visible)
-            {
-                ResetAutoCollapseTimer();
-            }
-        }
-
-        private void UpdateChatState()
-        {
-            bool hasMessages = _currentSession?.Messages?.Any() ?? false;
-
-            if (!hasMessages)
-            {
-                SessionsPanel.Visibility = Visibility.Visible;
-                SessionsColumn.Width = new GridLength(260);
-                ChatLogo.Visibility = Visibility.Visible;
-                InputPanel.Margin = new Thickness(0, 0, 0, 0);
-                PromptTextBox.Height = 80;
-                StatusTextBlock.SetValue(Grid.ColumnProperty, 1);
-                ShowSessionsOverlayButton.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                SessionsPanel.Visibility = Visibility.Collapsed;
-                SessionsColumn.Width = new GridLength(0);
-                ChatLogo.Visibility = Visibility.Collapsed;
-                InputPanel.Margin = new Thickness(0, 10, 0, 0);
-                PromptTextBox.Height = 50;
-                StatusTextBlock.SetValue(Grid.ColumnProperty, 2);
-                ShowSessionsOverlayButton.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void AutoCollapseTimer_Tick(object sender, object e)
-        {
-            if (SessionsPanel.Visibility == Visibility.Visible && !_isInteractingWithPanel)
-            {
-                SessionsPanel.Visibility = Visibility.Collapsed;
-                SessionsColumn.Width = new GridLength(0);
-                _autoCollapseTimer.Stop();
-            }
-        }
-
-        private bool _isInteractingWithPanel = false;
-
-        private void ResetAutoCollapseTimer()
-        {
-            _isInteractingWithPanel = true;
-            _autoCollapseTimer.Stop();
-            _autoCollapseTimer.Start();
-            _isInteractingWithPanel = false;
         }
     }
 
