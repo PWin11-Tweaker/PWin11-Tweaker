@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\ph1ncyn\\Desktop\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj": {
-      "version": "1.0.15.8",
+      "version": "2.0.1.2",
       "restore": {
         "projectUniqueName": "C:\\Users\\ph1ncyn\\Desktop\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
         "projectName": "PWin11 Tweaker's",
@@ -50,9 +50,17 @@
         "net9.0-windows10.0.22000": {
           "targetAlias": "net9.0-windows10.0.22000.0",
           "dependencies": {
+            "CommunityToolkit.WinUI": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "CommunityToolkit.WinUI.Extensions": {
               "target": "Package",
               "version": "[8.2.250402, )"
+            },
+            "CommunityToolkit.WinUI.UI": {
+              "target": "Package",
+              "version": "[7.1.2, )"
             },
             "CommunityToolkit.WinUI.UI.Controls.Core": {
               "target": "Package",
@@ -93,7 +101,7 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.8, )",
+              "version": "[9.0.9, )",
               "autoReferenced": true
             },
             "Microsoft.NETCore.Platforms": {
@@ -114,7 +122,7 @@
             },
             "Microsoft.Web.WebView2": {
               "target": "Package",
-              "version": "[1.0.3485.44, )"
+              "version": "[1.0.3537.50, )"
             },
             "Microsoft.Win32": {
               "target": "Package",
@@ -149,6 +157,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.4, )"
+            },
+            "OllamaSharp": {
+              "target": "Package",
+              "version": "[5.4.7, )"
             },
             "System.CodeDom": {
               "target": "Package",
@@ -274,10 +286,6 @@
               "target": "Package",
               "version": "[2.3.0, )"
             },
-            "python": {
-              "target": "Package",
-              "version": "[3.13.7, )"
-            },
             "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": {
               "target": "Package",
               "version": "[4.3.3, )"
@@ -309,31 +317,31 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.NETCore.App.Crossgen2.win-arm64",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -341,15 +349,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[9.0.8, 9.0.8]"
+              "version": "[9.0.9, 9.0.9]"
             }
           ],
           "frameworkReferences": {
@@ -360,7 +368,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
