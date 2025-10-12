@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Net.Http;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 
 namespace PWin11_Tweaker_s.Services
@@ -10,7 +12,7 @@ namespace PWin11_Tweaker_s.Services
     {
         private static readonly string _ollamaUrl = "https://ollama.ai/download/OllamaSetup.exe";
         private static readonly string _ollamaPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Ollama");
-        private static readonly string _modelName = "gemma2:2b";
+        private static int _currentPort = 11434; // Начальный порт
 
         public static bool IsOllamaInstalled()
         {
@@ -28,15 +30,15 @@ namespace PWin11_Tweaker_s.Services
             Process.Start(new ProcessStartInfo(installerPath) { UseShellExecute = true });
         }
 
-        public static async Task<bool> IsModelInstalledAsync()
+        public static async Task<bool> IsModelInstalledAsync(string modelName)
         {
             try
             {
                 using var http = new HttpClient();
-                var res = await http.GetAsync("http://localhost:11434/api/tags");
+                var res = await http.GetAsync($"http://localhost:{_currentPort}/api/tags");
                 if (!res.IsSuccessStatusCode) return false;
                 var text = await res.Content.ReadAsStringAsync();
-                return text.Contains(_modelName);
+                return text.Contains(modelName);
             }
             catch
             {
@@ -44,14 +46,14 @@ namespace PWin11_Tweaker_s.Services
             }
         }
 
-        public static async Task PullModelAsync()
+        public static async Task PullModelAsync(string modelName)
         {
             var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = "ollama",
-                    Arguments = $"pull {_modelName}",
+                    Arguments = $"pull {modelName}",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }
@@ -59,16 +61,18 @@ namespace PWin11_Tweaker_s.Services
             process.Start();
             await process.WaitForExitAsync();
         }
-        public static async Task StartOllamaIfNeededAsync()
+
+        public static async Task<int> StartOllamaIfNeededAsync() // Изменено на возврат int
         {
             if (Process.GetProcessesByName("ollama").Length == 0)
             {
+                _currentPort = FindFreePort();
                 var process = new Process
                 {
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = "ollama",
-                        Arguments = "serve",
+                        Arguments = $"serve --port {_currentPort}",
                         UseShellExecute = false,
                         CreateNoWindow = true,
                         RedirectStandardOutput = true,
@@ -76,11 +80,12 @@ namespace PWin11_Tweaker_s.Services
                     }
                 };
                 process.Start();
-                await Task.Delay(3000);
+                await Task.Delay(5000); // Дать время на запуск
             }
+            return _currentPort; // Возвращаем текущий порт
         }
 
-        public static async Task<bool> IsApiReadyAsync(int timeoutSeconds = 10)
+        public static async Task<bool> IsApiReadyAsync(int port, int timeoutSeconds = 10)
         {
             var startTime = DateTime.Now;
             while ((DateTime.Now - startTime).TotalSeconds < timeoutSeconds)
@@ -88,7 +93,7 @@ namespace PWin11_Tweaker_s.Services
                 try
                 {
                     using var http = new HttpClient();
-                    var res = await http.GetAsync("http://localhost:11434/api/tags");
+                    var res = await http.GetAsync($"http://localhost:{port}/api/tags");
                     if (res.IsSuccessStatusCode)
                         return true;
                 }
@@ -98,5 +103,31 @@ namespace PWin11_Tweaker_s.Services
             return false;
         }
 
+        private static int FindFreePort()
+        {
+            int startPort = 11434;
+            int endPort = 11500; // Диапазон портов для поиска
+            for (int port = startPort; port <= endPort; port++)
+            {
+                if (IsPortAvailable(port))
+                    return port;
+            }
+            throw new Exception("Нет доступных портов в диапазоне 11434-11500");
+        }
+
+        private static bool IsPortAvailable(int port)
+        {
+            try
+            {
+                using var tcpListener = new TcpListener(IPAddress.Loopback, port);
+                tcpListener.Start();
+                tcpListener.Stop();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

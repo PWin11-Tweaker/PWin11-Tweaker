@@ -6,7 +6,9 @@ using System.IO;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
-using System.Windows; // Для MessageBox, если потребуется
+using PWin11_Tweaker_s.Models;
+using PWin11_Tweaker_s.Services;
+using System.Windows; 
 using System.Xml;
 
 namespace PWin11_Tweaker_s

@@ -17,10 +17,8 @@ namespace PWin11_Tweaker_s.Models
         [JsonPropertyName("timestamp")]
         public DateTime Timestamp { get; set; } = DateTime.Now;
 
-        // Конструктор по умолчанию (для object initializer)
         public Message() { }
 
-        // Конструктор для копирования
         public Message(Message other)
         {
             Role = other.Role;
@@ -29,7 +27,6 @@ namespace PWin11_Tweaker_s.Models
         }
     }
 
-    // DTO для сериализации (только простые свойства)
     public class ChatSessionDto
     {
         [JsonPropertyName("title")]
@@ -47,17 +44,14 @@ namespace PWin11_Tweaker_s.Models
         [JsonIgnore]
         public ObservableCollection<Message> Messages { get; set; } = new ObservableCollection<Message>();
 
-        // Конструктор по умолчанию
         public ChatSession() { }
 
-        // Конструктор из DTO (для загрузки)
         public ChatSession(ChatSessionDto dto)
         {
             Title = dto.Title;
             Messages = new ObservableCollection<Message>(dto.Messages.Select(m => new Message(m)));
         }
 
-        // Метод для создания DTO (для сохранения)
         public ChatSessionDto ToDto()
         {
             return new ChatSessionDto
@@ -67,7 +61,6 @@ namespace PWin11_Tweaker_s.Models
             };
         }
 
-        // Метод для копирования сообщений (deep copy)
         public void CopyMessagesFrom(ChatSession other)
         {
             Messages.Clear();
@@ -77,10 +70,19 @@ namespace PWin11_Tweaker_s.Models
             }
         }
 
-        // Метод для добавления сообщения с копированием
         public void AddCopiedMessage(Message originalMessage)
         {
             Messages.Add(new Message(originalMessage));
         }
+    }
+
+    // Новый класс для настроек
+    public class AppSettings
+    {
+        [JsonPropertyName("selectedModel")]
+        public string SelectedModel { get; set; } = string.Empty;
+
+        [JsonPropertyName("port")]
+        public int Port { get; set; } = 11434;
     }
 }

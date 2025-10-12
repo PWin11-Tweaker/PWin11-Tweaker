@@ -11,12 +11,13 @@ namespace PWin11_Tweaker_s.Services
     {
         private readonly OllamaApiClient _ollama;
         private readonly string _model;
-        private readonly string Host = "http://localhost:11434";
+        private int _port;
 
-        public AIChatService(string model = "gemma2:2b")
+        public AIChatService(string model, int port)
         {
-            _model = model;
-            _ollama = new OllamaApiClient(Host);
+            _model = model ?? throw new ArgumentNullException(nameof(model));
+            _port = port;
+            _ollama = new OllamaApiClient($"http://localhost:{_port}");
         }
 
         public async Task<string> AskAsync(string userMessage)
@@ -49,7 +50,7 @@ namespace PWin11_Tweaker_s.Services
             {
                 if (chunk.Message?.Content != null && !string.IsNullOrEmpty(chunk.Message.Content))
                 {
-                    yield return chunk.Message.Content; // Возвращаем дельту для инкрементального обновления
+                    yield return chunk.Message.Content;
                 }
             }
         }
