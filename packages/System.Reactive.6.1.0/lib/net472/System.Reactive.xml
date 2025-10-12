@@ -2724,6 +2724,28 @@
             Disposes <paramref name="fieldRef" />. 
             </summary>
         </member>
+        <member name="T:System.Reactive.Disposables.Fluent.DisposableExtensions">
+            <summary>
+            Extension methods associated with the IDisposable interface.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Disposables.Fluent.DisposableExtensions.DisposeWith``1(``0,System.Reactive.Disposables.CompositeDisposable)">
+            <summary>
+            Ensures the provided disposable is disposed with the specified <see cref="T:System.Reactive.Disposables.CompositeDisposable"/>.
+            </summary>
+            <typeparam name="T">
+            The type of the disposable.
+            </typeparam>
+            <param name="item">
+            The disposable we are going to want to be disposed by the CompositeDisposable.
+            </param>
+            <param name="compositeDisposable">
+            The <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> to which <paramref name="item"/> will be added.
+            </param>
+            <returns>
+            The disposable.
+            </returns>
+        </member>
         <member name="T:System.Reactive.Disposables.ICancelable">
             <summary>
             Disposable resource with disposal state tracking.
@@ -10373,7 +10395,18 @@
                 .Subscribe(Console.WriteLine);
             </code>
             </example>
-            <exception cref="T:System.ArgumentException">If <typeparamref name="TSource"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.Observable.TakeUntil``1(System.IObservable{``0},System.Threading.CancellationToken)">
+            <summary>
+            Relays elements from the source observable sequence until the provided <paramref name="cancellationToken"/> is cancelled.
+            Completes immediately if the provided <paramref name="cancellationToken"/> is already cancelled upon subscription.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source and result sequences.</typeparam>
+            <param name="source">The source sequence to relay elements of.</param>
+            <param name="cancellationToken">The cancellation token to complete the target observable sequence on.</param>
+            <returns>The observable sequence with the source elements until the provided <paramref name="cancellationToken"/> is cancelled.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <code>null</code>.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Observable.Window``2(System.IObservable{``0},System.Func{System.IObservable{``1}})">
             <summary>
@@ -10924,6 +10957,17 @@
             <returns>An observable sequence of buffers.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count"/> or <paramref name="skip"/> is less than or equal to zero.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.Observable.ResetExceptionDispatchState``1(System.IObservable{``0})">
+            <summary>
+            Propagates all messages, but if <paramref name="source"/> produces an error, this updates the dispatch state
+            of the <see cref="T:System.Exception"/> to reflect the current execution context (by executing a
+            <see langword="throw" /> or equivalent operation) before passing the notification on.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <returns>The source sequence with the exception dispatch state modifying behavior applied.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Observable.Dematerialize``1(System.IObservable{System.Reactive.Notification{``0}})">
             <summary>
@@ -14286,6 +14330,18 @@
             <returns>An observable sequence of buffers.</returns>
             <exception cref="T:System.ArgumentNullException">
             <paramref name="source" /> or <paramref name="bufferOpenings" /> or <paramref name="bufferClosingSelector" /> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.Qbservable.ResetExceptionDispatchState``1(System.Reactive.Linq.IQbservable{``0})">
+            <summary>
+            Propagates all messages, but if <paramref name="source" /> produces an error, this updates the dispatch state
+            of the <see cref="T:System.Exception" /> to reflect the current execution context (by executing a
+            <see langword="throw" /> or equivalent operation) before passing the notification on.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <returns>The source sequence with the exception dispatch state modifying behavior applied.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="source" /> is null.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.Case``2(System.Reactive.Linq.IQbservableProvider,System.Linq.Expressions.Expression{System.Func{``0}},System.Collections.Generic.IDictionary{``0,System.IObservable{``1}})">
             <summary>
@@ -18908,10 +18964,10 @@
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.SelectMany``3(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.IObservable{``1}}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
             <summary>
-            Projects each element of an observable sequence to an observable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
+            Projects each element of an observable sequence to an enumerable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
             </summary>
             <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <typeparam name="TCollection">The type of the elements in the projected intermediate sequences.</typeparam>
+            <typeparam name="TCollection">The type of the elements in the projected intermediate enumerable sequences.</typeparam>
             <typeparam name="TResult">The type of the elements in the result sequence, obtained by using the selector to combine source sequence elements with their corresponding intermediate sequence elements.</typeparam>
             <param name="source">An observable sequence of elements to project.</param>
             <param name="collectionSelector">A transform function to apply to each element.</param>
@@ -18922,10 +18978,10 @@
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.SelectMany``3(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.IObservable{``1}}},System.Linq.Expressions.Expression{System.Func{``0,System.Int32,``1,System.Int32,``2}})">
             <summary>
-            Projects each element of an observable sequence to an observable sequence by incorporating the element's index, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
+            Projects each element of an observable sequence to an enumerable sequence by incorporating the element's index, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
             </summary>
             <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <typeparam name="TCollection">The type of the elements in the projected intermediate sequences.</typeparam>
+            <typeparam name="TCollection">The type of the elements in the projected intermediate enumerable sequences.</typeparam>
             <typeparam name="TResult">The type of the elements in the result sequence, obtained by using the selector to combine source sequence elements with their corresponding intermediate sequence elements.</typeparam>
             <param name="source">An observable sequence of elements to project.</param>
             <param name="collectionSelector">A transform function to apply to each element; the second parameter of the function represents the index of the source element.</param>
@@ -18936,10 +18992,10 @@
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.SelectMany``3(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.IEnumerable{``1}}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
             <summary>
-            Projects each element of an observable sequence to an enumerable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
+            Projects each element of an observable sequence to an observable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
             </summary>
             <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <typeparam name="TCollection">The type of the elements in the projected intermediate enumerable sequences.</typeparam>
+            <typeparam name="TCollection">The type of the elements in the projected intermediate sequences.</typeparam>
             <typeparam name="TResult">The type of the elements in the result sequence, obtained by using the selector to combine source sequence elements with their corresponding intermediate sequence elements.</typeparam>
             <param name="source">An observable sequence of elements to project.</param>
             <param name="collectionSelector">A transform function to apply to each element.</param>
@@ -20411,6 +20467,17 @@
             the source sequence. Upon completion of the source sequence, this buffer is produced on the result sequence.
             </remarks>
         </member>
+        <member name="M:System.Reactive.Linq.Qbservable.TakeUntil``1(System.Reactive.Linq.IQbservable{``0},System.Threading.CancellationToken)">
+            <summary>
+            Relays elements from the source observable sequence until the provided <paramref name="cancellationToken" /> is cancelled.
+            Completes immediately if the provided <paramref name="cancellationToken" /> is already cancelled upon subscription.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source and result sequences.</typeparam>
+            <param name="source">The source sequence to relay elements of.</param>
+            <param name="cancellationToken">The cancellation token to complete the target observable sequence on.</param>
+            <returns>The observable sequence with the source elements until the provided <paramref name="cancellationToken" /> is cancelled.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <code>null</code>.</exception>
+        </member>
         <member name="M:System.Reactive.Linq.Qbservable.TakeUntil``1(System.Reactive.Linq.IQbservable{``0},System.DateTimeOffset)">
             <summary>
             Takes elements for the specified duration until the specified end time.
@@ -20465,7 +20532,7 @@
                 .Subscribe(Console.WriteLine);
             </code>
             </example>
-            <exception cref="T:System.ArgumentException">If <typeparamref name="TSource"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.TakeWhile``1(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
             <summary>
@@ -23907,6 +23974,12 @@
             Connected with 0 subscribers, and waiting for the disconnect delay to elapse,
             or for new subscriptions come in before that delay completes.
             </summary>
+        </member>
+        <member name="T:System.Reactive.Linq.ObservableImpl.TakeUntilCancellationToken`1">
+            <summary>
+            Relays items to the downstream until the CancellationToken is cancelled.
+            </summary>
+            <typeparam name="TSource">The element type of the sequence</typeparam>
         </member>
         <member name="T:System.Reactive.Linq.ObservableImpl.TakeUntilPredicate`1">
             <summary>

@@ -1979,46 +1979,13 @@
         </member>
         <member name="T:System.Reactive.Concurrency.ThreadPoolScheduler">
             <summary>
-            Represents an object that schedules units of work on the Windows Runtime thread pool.
+            Represents an object that schedules units of work on the CLR thread pool.
             </summary>
-            <seealso cref="P:System.Reactive.Concurrency.ThreadPoolScheduler.Default">Singleton instance of this type exposed through this static property.</seealso>
-        </member>
-        <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.#ctor">
-            <summary>
-            Constructs a ThreadPoolScheduler that schedules units of work on the Windows ThreadPool.
-            </summary>
-        </member>
-        <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.#ctor(Windows.System.Threading.WorkItemPriority)">
-            <summary>
-            Constructs a ThreadPoolScheduler that schedules units of work on the Windows ThreadPool with the given priority.
-            </summary>
-            <param name="priority">Priority for scheduled units of work.</param>
-        </member>
-        <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.#ctor(Windows.System.Threading.WorkItemPriority,Windows.System.Threading.WorkItemOptions)">
-            <summary>
-            Constructs a ThreadPoolScheduler that schedules units of work on the Windows ThreadPool with the given priority.
-            </summary>
-            <param name="priority">Priority for scheduled units of work.</param>
-            <param name="options">Options that configure how work is scheduled.</param>
-        </member>
-        <member name="P:System.Reactive.Concurrency.ThreadPoolScheduler.Default">
-            <summary>
-            Gets the singleton instance of the Windows Runtime thread pool scheduler.
-            </summary>
+            <seealso cref="P:System.Reactive.Concurrency.ThreadPoolScheduler.Instance">Singleton instance of this type exposed through this static property.</seealso>
         </member>
         <member name="P:System.Reactive.Concurrency.ThreadPoolScheduler.Instance">
             <summary>
-            Gets the singleton instance of the Windows Runtime thread pool scheduler.
-            </summary>
-        </member>
-        <member name="P:System.Reactive.Concurrency.ThreadPoolScheduler.Priority">
-            <summary>
-            Gets the priority at which work is scheduled.
-            </summary>
-        </member>
-        <member name="P:System.Reactive.Concurrency.ThreadPoolScheduler.Options">
-            <summary>
-            Gets the options that configure how work is scheduled.
+            Gets the singleton instance of the CLR thread pool scheduler.
             </summary>
         </member>
         <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.Schedule``1(``0,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
@@ -2029,30 +1996,46 @@
             <param name="state">State passed to the action to be executed.</param>
             <param name="action">Action to be executed.</param>
             <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
         </member>
         <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.Schedule``1(``0,System.TimeSpan,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
             <summary>
-            Schedules an action to be executed after dueTime, using a Windows.System.Threading.ThreadPoolTimer object.
+            Schedules an action to be executed after dueTime, using a System.Threading.Timer object.
             </summary>
             <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
             <param name="state">State passed to the action to be executed.</param>
             <param name="action">Action to be executed.</param>
             <param name="dueTime">Relative time after which to execute the action.</param>
             <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.ScheduleLongRunning``1(``0,System.Action{``0,System.Reactive.Disposables.ICancelable})">
+            <summary>
+            Schedules a long-running task by creating a new thread. Cancellation happens through polling.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">State passed to the action to be executed.</param>
+            <param name="action">Action to be executed.</param>
+            <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.StartStopwatch">
+            <summary>
+            Starts a new stopwatch object.
+            </summary>
+            <returns>New stopwatch object; started at the time of the request.</returns>
         </member>
         <member name="M:System.Reactive.Concurrency.ThreadPoolScheduler.SchedulePeriodic``1(``0,System.TimeSpan,System.Func{``0,``0})">
             <summary>
-            Schedules a periodic piece of work, using a Windows.System.Threading.ThreadPoolTimer object.
+            Schedules a periodic piece of work, using a System.Threading.Timer object.
             </summary>
             <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
             <param name="state">Initial state passed to the action upon the first iteration.</param>
             <param name="period">Period for running the work periodically.</param>
             <param name="action">Action to be executed, potentially updating the state.</param>
             <returns>The disposable object used to cancel the scheduled recurring action (best effort).</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
-            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="period"/> is less than one millisecond.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="period"/> is less than zero.</exception>
         </member>
         <member name="T:System.Reactive.Concurrency.VirtualTimeSchedulerBase`2">
             <summary>
@@ -2357,6 +2340,135 @@
         <member name="M:System.Reactive.Concurrency.CoreDispatcherScheduler.SchedulePeriodic``1(``0,System.TimeSpan,System.Func{``0,``0})">
             <summary>
             Schedules a periodic piece of work on the dispatcher, using a <see cref="T:Windows.System.DispatcherQueueTimer"/> object.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">Initial state passed to the action upon the first iteration.</param>
+            <param name="period">Period for running the work periodically.</param>
+            <param name="action">Action to be executed, potentially updating the state.</param>
+            <returns>The disposable object used to cancel the scheduled recurring action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="period"/> is less than <see cref="F:System.TimeSpan.Zero"/>.</exception>
+        </member>
+        <member name="T:System.Reactive.Concurrency.ControlScheduler">
+            <summary>
+            Represents an object that schedules units of work on the message loop associated with a Windows Forms control.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            Constructs a ControlScheduler that schedules units of work on the message loop associated with the specified Windows Forms control.
+            </summary>
+            <param name="control">Windows Forms control to get the message loop from.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="control"/> is null.</exception>
+            <remarks>
+            This scheduler type is typically used indirectly through the <see cref="M:System.Reactive.Linq.ControlObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Forms.Control)"/> and <see cref="M:System.Reactive.Linq.ControlObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Forms.Control)"/> method overloads that take a Windows Forms control.
+            </remarks>
+        </member>
+        <member name="P:System.Reactive.Concurrency.ControlScheduler.Control">
+            <summary>
+            Gets the control associated with the ControlScheduler.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.Schedule``1(``0,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <summary>
+            Schedules an action to be executed on the message loop associated with the control.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">State passed to the action to be executed.</param>
+            <param name="action">Action to be executed.</param>
+            <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.Schedule``1(``0,System.TimeSpan,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <summary>
+            Schedules an action to be executed after dueTime on the message loop associated with the control, using a Windows Forms Timer object.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">State passed to the action to be executed.</param>
+            <param name="action">Action to be executed.</param>
+            <param name="dueTime">Relative time after which to execute the action.</param>
+            <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.ControlScheduler.SchedulePeriodic``1(``0,System.TimeSpan,System.Func{``0,``0})">
+            <summary>
+            Schedules a periodic piece of work on the message loop associated with the control, using a Windows Forms Timer object.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">Initial state passed to the action upon the first iteration.</param>
+            <param name="period">Period for running the work periodically.</param>
+            <param name="action">Action to be executed, potentially updating the state.</param>
+            <returns>The disposable object used to cancel the scheduled recurring action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="period"/> is less than one millisecond.</exception>
+        </member>
+        <member name="T:System.Reactive.Concurrency.DispatcherScheduler">
+            <summary>
+            Represents an object that schedules units of work on a <see cref="T:System.Windows.Threading.Dispatcher"/>.
+            </summary>
+            <remarks>
+            This scheduler type is typically used indirectly through the <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOnDispatcher``1(System.IObservable{``0})"/> and <see cref="M:System.Reactive.Linq.DispatcherObservable.SubscribeOnDispatcher``1(System.IObservable{``0})"/> methods that use the Dispatcher on the calling thread.
+            </remarks>
+        </member>
+        <member name="P:System.Reactive.Concurrency.DispatcherScheduler.Instance">
+            <summary>
+            Gets the scheduler that schedules work on the current <see cref="T:System.Windows.Threading.Dispatcher"/>.
+            </summary>
+        </member>
+        <member name="P:System.Reactive.Concurrency.DispatcherScheduler.Current">
+            <summary>
+            Gets the scheduler that schedules work on the <see cref="T:System.Windows.Threading.Dispatcher"/> for the current thread.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Concurrency.DispatcherScheduler.#ctor(System.Windows.Threading.Dispatcher)">
+            <summary>
+            Constructs a <see cref="T:System.Reactive.Concurrency.DispatcherScheduler"/> that schedules units of work on the given <see cref="T:System.Windows.Threading.Dispatcher"/>.
+            </summary>
+            <param name="dispatcher"><see cref="T:System.Reactive.Concurrency.DispatcherScheduler"/> to schedule work on.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="dispatcher"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.DispatcherScheduler.#ctor(System.Windows.Threading.Dispatcher,System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Constructs a <see cref="T:System.Reactive.Concurrency.DispatcherScheduler"/> that schedules units of work on the given <see cref="T:System.Windows.Threading.Dispatcher"/> at the given priority.
+            </summary>
+            <param name="dispatcher"><see cref="T:System.Reactive.Concurrency.DispatcherScheduler"/> to schedule work on.</param>
+            <param name="priority">Priority at which units of work are scheduled.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="dispatcher"/> is <c>null</c>.</exception>
+        </member>
+        <member name="P:System.Reactive.Concurrency.DispatcherScheduler.Dispatcher">
+            <summary>
+            Gets the <see cref="T:System.Windows.Threading.Dispatcher"/> associated with the <see cref="T:System.Reactive.Concurrency.DispatcherScheduler"/>.
+            </summary>
+        </member>
+        <member name="P:System.Reactive.Concurrency.DispatcherScheduler.Priority">
+            <summary>
+            Gets the priority at which work items will be dispatched.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Concurrency.DispatcherScheduler.Schedule``1(``0,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <summary>
+            Schedules an action to be executed on the dispatcher.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">State passed to the action to be executed.</param>
+            <param name="action">Action to be executed.</param>
+            <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.DispatcherScheduler.Schedule``1(``0,System.TimeSpan,System.Func{System.Reactive.Concurrency.IScheduler,``0,System.IDisposable})">
+            <summary>
+            Schedules an action to be executed after <paramref name="dueTime"/> on the dispatcher, using a <see cref="T:System.Windows.Threading.DispatcherTimer"/> object.
+            </summary>
+            <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
+            <param name="state">State passed to the action to be executed.</param>
+            <param name="action">Action to be executed.</param>
+            <param name="dueTime">Relative time after which to execute the action.</param>
+            <returns>The disposable object used to cancel the scheduled action (best effort).</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:System.Reactive.Concurrency.DispatcherScheduler.SchedulePeriodic``1(``0,System.TimeSpan,System.Func{``0,``0})">
+            <summary>
+            Schedules a periodic piece of work on the dispatcher, using a <see cref="T:System.Windows.Threading.DispatcherTimer"/> object.
             </summary>
             <typeparam name="TState">The type of the state passed to the scheduled action.</typeparam>
             <param name="state">Initial state passed to the action upon the first iteration.</param>
@@ -2682,6 +2794,28 @@
             <summary>
             Disposes <paramref name="fieldRef" />. 
             </summary>
+        </member>
+        <member name="T:System.Reactive.Disposables.Fluent.DisposableExtensions">
+            <summary>
+            Extension methods associated with the IDisposable interface.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Disposables.Fluent.DisposableExtensions.DisposeWith``1(``0,System.Reactive.Disposables.CompositeDisposable)">
+            <summary>
+            Ensures the provided disposable is disposed with the specified <see cref="T:System.Reactive.Disposables.CompositeDisposable"/>.
+            </summary>
+            <typeparam name="T">
+            The type of the disposable.
+            </typeparam>
+            <param name="item">
+            The disposable we are going to want to be disposed by the CompositeDisposable.
+            </param>
+            <param name="compositeDisposable">
+            The <see cref="T:System.Reactive.Disposables.CompositeDisposable"/> to which <paramref name="item"/> will be added.
+            </param>
+            <returns>
+            The disposable.
+            </returns>
         </member>
         <member name="T:System.Reactive.Disposables.ICancelable">
             <summary>
@@ -10332,7 +10466,18 @@
                 .Subscribe(Console.WriteLine);
             </code>
             </example>
-            <exception cref="T:System.ArgumentException">If <typeparamref name="TSource"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.Observable.TakeUntil``1(System.IObservable{``0},System.Threading.CancellationToken)">
+            <summary>
+            Relays elements from the source observable sequence until the provided <paramref name="cancellationToken"/> is cancelled.
+            Completes immediately if the provided <paramref name="cancellationToken"/> is already cancelled upon subscription.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source and result sequences.</typeparam>
+            <param name="source">The source sequence to relay elements of.</param>
+            <param name="cancellationToken">The cancellation token to complete the target observable sequence on.</param>
+            <returns>The observable sequence with the source elements until the provided <paramref name="cancellationToken"/> is cancelled.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <code>null</code>.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Observable.Window``2(System.IObservable{``0},System.Func{System.IObservable{``1}})">
             <summary>
@@ -10883,6 +11028,17 @@
             <returns>An observable sequence of buffers.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="count"/> or <paramref name="skip"/> is less than or equal to zero.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.Observable.ResetExceptionDispatchState``1(System.IObservable{``0})">
+            <summary>
+            Propagates all messages, but if <paramref name="source"/> produces an error, this updates the dispatch state
+            of the <see cref="T:System.Exception"/> to reflect the current execution context (by executing a
+            <see langword="throw" /> or equivalent operation) before passing the notification on.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <returns>The source sequence with the exception dispatch state modifying behavior applied.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Observable.Dematerialize``1(System.IObservable{System.Reactive.Notification{``0}})">
             <summary>
@@ -14245,6 +14401,18 @@
             <returns>An observable sequence of buffers.</returns>
             <exception cref="T:System.ArgumentNullException">
             <paramref name="source" /> or <paramref name="bufferOpenings" /> or <paramref name="bufferClosingSelector" /> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.Qbservable.ResetExceptionDispatchState``1(System.Reactive.Linq.IQbservable{``0})">
+            <summary>
+            Propagates all messages, but if <paramref name="source" /> produces an error, this updates the dispatch state
+            of the <see cref="T:System.Exception" /> to reflect the current execution context (by executing a
+            <see langword="throw" /> or equivalent operation) before passing the notification on.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <returns>The source sequence with the exception dispatch state modifying behavior applied.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="source" /> is null.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.Case``2(System.Reactive.Linq.IQbservableProvider,System.Linq.Expressions.Expression{System.Func{``0}},System.Collections.Generic.IDictionary{``0,System.IObservable{``1}})">
             <summary>
@@ -18867,10 +19035,10 @@
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.SelectMany``3(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.IObservable{``1}}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
             <summary>
-            Projects each element of an observable sequence to an observable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
+            Projects each element of an observable sequence to an enumerable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
             </summary>
             <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <typeparam name="TCollection">The type of the elements in the projected intermediate sequences.</typeparam>
+            <typeparam name="TCollection">The type of the elements in the projected intermediate enumerable sequences.</typeparam>
             <typeparam name="TResult">The type of the elements in the result sequence, obtained by using the selector to combine source sequence elements with their corresponding intermediate sequence elements.</typeparam>
             <param name="source">An observable sequence of elements to project.</param>
             <param name="collectionSelector">A transform function to apply to each element.</param>
@@ -18881,10 +19049,10 @@
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.SelectMany``3(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.IObservable{``1}}},System.Linq.Expressions.Expression{System.Func{``0,System.Int32,``1,System.Int32,``2}})">
             <summary>
-            Projects each element of an observable sequence to an observable sequence by incorporating the element's index, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
+            Projects each element of an observable sequence to an enumerable sequence by incorporating the element's index, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
             </summary>
             <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <typeparam name="TCollection">The type of the elements in the projected intermediate sequences.</typeparam>
+            <typeparam name="TCollection">The type of the elements in the projected intermediate enumerable sequences.</typeparam>
             <typeparam name="TResult">The type of the elements in the result sequence, obtained by using the selector to combine source sequence elements with their corresponding intermediate sequence elements.</typeparam>
             <param name="source">An observable sequence of elements to project.</param>
             <param name="collectionSelector">A transform function to apply to each element; the second parameter of the function represents the index of the source element.</param>
@@ -18895,10 +19063,10 @@
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.SelectMany``3(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.IEnumerable{``1}}},System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
             <summary>
-            Projects each element of an observable sequence to an enumerable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
+            Projects each element of an observable sequence to an observable sequence, invokes the result selector for the source element and each of the corresponding inner sequence's elements, and merges the results into one observable sequence.
             </summary>
             <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <typeparam name="TCollection">The type of the elements in the projected intermediate enumerable sequences.</typeparam>
+            <typeparam name="TCollection">The type of the elements in the projected intermediate sequences.</typeparam>
             <typeparam name="TResult">The type of the elements in the result sequence, obtained by using the selector to combine source sequence elements with their corresponding intermediate sequence elements.</typeparam>
             <param name="source">An observable sequence of elements to project.</param>
             <param name="collectionSelector">A transform function to apply to each element.</param>
@@ -20370,6 +20538,17 @@
             the source sequence. Upon completion of the source sequence, this buffer is produced on the result sequence.
             </remarks>
         </member>
+        <member name="M:System.Reactive.Linq.Qbservable.TakeUntil``1(System.Reactive.Linq.IQbservable{``0},System.Threading.CancellationToken)">
+            <summary>
+            Relays elements from the source observable sequence until the provided <paramref name="cancellationToken" /> is cancelled.
+            Completes immediately if the provided <paramref name="cancellationToken" /> is already cancelled upon subscription.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source and result sequences.</typeparam>
+            <param name="source">The source sequence to relay elements of.</param>
+            <param name="cancellationToken">The cancellation token to complete the target observable sequence on.</param>
+            <returns>The observable sequence with the source elements until the provided <paramref name="cancellationToken" /> is cancelled.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is <code>null</code>.</exception>
+        </member>
         <member name="M:System.Reactive.Linq.Qbservable.TakeUntil``1(System.Reactive.Linq.IQbservable{``0},System.DateTimeOffset)">
             <summary>
             Takes elements for the specified duration until the specified end time.
@@ -20424,7 +20603,7 @@
                 .Subscribe(Console.WriteLine);
             </code>
             </example>
-            <exception cref="T:System.ArgumentException">If <typeparamref name="TSource"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="stopPredicate"/> is <code>null</code>.</exception>
         </member>
         <member name="M:System.Reactive.Linq.Qbservable.TakeWhile``1(System.Reactive.Linq.IQbservable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
             <summary>
@@ -23867,6 +24046,12 @@
             or for new subscriptions come in before that delay completes.
             </summary>
         </member>
+        <member name="T:System.Reactive.Linq.ObservableImpl.TakeUntilCancellationToken`1">
+            <summary>
+            Relays items to the downstream until the CancellationToken is cancelled.
+            </summary>
+            <typeparam name="TSource">The element type of the sequence</typeparam>
+        </member>
         <member name="T:System.Reactive.Linq.ObservableImpl.TakeUntilPredicate`1">
             <summary>
             Relays items to the downstream until the predicate returns <code>true</code>.
@@ -24873,27 +25058,6 @@
             <returns>The source sequence whose observations happen on the specified dispatcher.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcher"/> is null.</exception>
         </member>
-        <member name="M:System.Reactive.Linq.CoreDispatcherObservable.ObserveOn``1(System.IObservable{``0},Windows.UI.Xaml.DependencyObject)">
-            <summary>
-            Wraps the source sequence in order to run its observer callbacks on the dispatcher associated with the specified object.
-            </summary>
-            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <param name="source">Source sequence.</param>
-            <param name="dependencyObject">Object to get the dispatcher from.</param>
-            <returns>The source sequence whose observations happen on the specified object's dispatcher.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dependencyObject"/> is null.</exception>
-        </member>
-        <member name="M:System.Reactive.Linq.CoreDispatcherObservable.ObserveOn``1(System.IObservable{``0},Windows.UI.Xaml.DependencyObject,Windows.UI.Core.CoreDispatcherPriority)">
-            <summary>
-            Wraps the source sequence in order to run its observer callbacks on the dispatcher associated with the specified object.
-            </summary>
-            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <param name="source">Source sequence.</param>
-            <param name="dependencyObject">Object to get the dispatcher from.</param>
-            <param name="priority">Priority to schedule work items at.</param>
-            <returns>The source sequence whose observations happen on the specified object's dispatcher.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dependencyObject"/> is null.</exception>
-        </member>
         <member name="M:System.Reactive.Linq.CoreDispatcherObservable.ObserveOnCoreDispatcher``1(System.IObservable{``0})">
             <summary>
             Wraps the source sequence in order to run its observer callbacks on the dispatcher associated with the current window.
@@ -24940,35 +25104,6 @@
             <remarks>
             Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the specified dispatcher.
             In order to invoke observer callbacks on the specified dispatcher, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.CoreDispatcherObservable.ObserveOn``1(System.IObservable{``0},Windows.UI.Core.CoreDispatcher,Windows.UI.Core.CoreDispatcherPriority)"/>.
-            </remarks>
-        </member>
-        <member name="M:System.Reactive.Linq.CoreDispatcherObservable.SubscribeOn``1(System.IObservable{``0},Windows.UI.Xaml.DependencyObject)">
-            <summary>
-            Wraps the source sequence in order to run its subscription and unsubscription logic on the dispatcher associated with the specified object.
-            </summary>
-            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <param name="source">Source sequence.</param>
-            <param name="dependencyObject">Object to get the dispatcher from.</param>
-            <returns>The source sequence whose subscriptions and unsubscriptions happen on the specified object's dispatcher.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dependencyObject"/> is null.</exception>
-            <remarks>
-            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the dispatcher associated with the specified object.
-            In order to invoke observer callbacks on the dispatcher associated with the specified object, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.CoreDispatcherObservable.ObserveOn``1(System.IObservable{``0},Windows.UI.Xaml.DependencyObject)"/>.
-            </remarks>
-        </member>
-        <member name="M:System.Reactive.Linq.CoreDispatcherObservable.SubscribeOn``1(System.IObservable{``0},Windows.UI.Xaml.DependencyObject,Windows.UI.Core.CoreDispatcherPriority)">
-            <summary>
-            Wraps the source sequence in order to run its subscription and unsubscription logic on the dispatcher associated with the specified object.
-            </summary>
-            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
-            <param name="source">Source sequence.</param>
-            <param name="dependencyObject">Object to get the dispatcher from.</param>
-            <param name="priority">Priority to schedule work items at.</param>
-            <returns>The source sequence whose subscriptions and unsubscriptions happen on the specified object's dispatcher.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dependencyObject"/> is null.</exception>
-            <remarks>
-            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the dispatcher associated with the specified object.
-            In order to invoke observer callbacks on the dispatcher associated with the specified object, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.CoreDispatcherObservable.ObserveOn``1(System.IObservable{``0},Windows.UI.Xaml.DependencyObject,Windows.UI.Core.CoreDispatcherPriority)"/>.
             </remarks>
         </member>
         <member name="M:System.Reactive.Linq.CoreDispatcherObservable.SubscribeOnCoreDispatcher``1(System.IObservable{``0})">
@@ -25092,6 +25227,210 @@
             <returns>An observable sequence whose elements are the result of obtaining an asynchronous operation for each element of the input sequence and then mapping the asynchronous operation's result and its corresponding source element to a result element.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="asyncOperationSelector"/> or <paramref name="resultSelector"/> is null.</exception>
             <remarks>This overload supports using LINQ query comprehension syntax in C# and Visual Basic to compose observable sequences and Windows Runtime asynchronous operations, without requiring manual conversion of the asynchronous operations to observable sequences using <see cref="M:System.Reactive.Windows.Foundation.AsyncInfoObservableExtensions.ToObservable``1(Windows.Foundation.IAsyncOperation{``0})"/>.</remarks>
+        </member>
+        <member name="T:System.Reactive.Linq.ControlObservable">
+            <summary>
+            Provides a set of static methods for subscribing to IObservables using Windows Forms controls.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Linq.ControlObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Forms.Control)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the Windows Forms message loop associated with the specified control.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="control">Windows Forms control whose associated message loop is used to perform subscription and unsubscription actions on.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the Windows Forms message loop associated with the specified control.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="control"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the specified control.
+            In order to invoke observer callbacks on the specified control, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.ControlObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Forms.Control)"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.ControlObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Forms.Control)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the Windows Forms message loop associated with the specified control.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="control">Windows Forms control whose associated message loop is used to notify observers on.</param>
+            <returns>The source sequence whose observations happen on the Windows Forms message loop associated with the specified control.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="control"/> is null.</exception>
+        </member>
+        <member name="T:System.Reactive.Linq.DispatcherObservable">
+            <summary>
+            Provides a set of extension methods for scheduling actions performed through observable sequences on UI dispatchers.
+            </summary>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.Dispatcher)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the specified dispatcher.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcher">Dispatcher whose associated message loop is used to notify observers on.</param>
+            <returns>The source sequence whose observations happen on the specified dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcher"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.Dispatcher,System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the specified dispatcher.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcher">Dispatcher whose associated message loop is used to notify observers on.</param>
+            <param name="priority">Priority to schedule work items at.</param>
+            <returns>The source sequence whose observations happen on the specified dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcher"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Reactive.Concurrency.DispatcherScheduler)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the specified dispatcher scheduler.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="scheduler">Dispatcher scheduler to notify observers on.</param>
+            <returns>The source sequence whose observations happen on the specified dispatcher scheduler.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="scheduler"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.DispatcherObject)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the dispatcher associated with the specified object.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcherObject">Object to get the dispatcher from.</param>
+            <returns>The source sequence whose observations happen on the specified object's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcherObject"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.DispatcherObject,System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the dispatcher associated with the specified object.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcherObject">Object to get the dispatcher from.</param>
+            <param name="priority">Priority to schedule work items at.</param>
+            <returns>The source sequence whose observations happen on the specified object's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcherObject"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.ObserveOnDispatcher``1(System.IObservable{``0})">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the dispatcher associated with the current thread.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <returns>The source sequence whose observations happen on the current thread's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.ObserveOnDispatcher``1(System.IObservable{``0},System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Wraps the source sequence in order to run its observer callbacks on the dispatcher associated with the current thread.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="priority">Priority to schedule work items at.</param>
+            <returns>The source sequence whose observations happen on the current thread's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Threading.Dispatcher)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the specified dispatcher.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcher">Dispatcher whose associated message loop is used to perform subscription and unsubscription actions on.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the specified dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcher"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the specified dispatcher.
+            In order to invoke observer callbacks on the specified dispatcher, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.Dispatcher)"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Threading.Dispatcher,System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the specified dispatcher.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcher">Dispatcher whose associated message loop is used to to perform subscription and unsubscription actions on.</param>
+            <param name="priority">Priority to schedule work items at.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the specified dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcher"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the specified dispatcher.
+            In order to invoke observer callbacks on the specified dispatcher, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.Dispatcher,System.Windows.Threading.DispatcherPriority)"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.SubscribeOn``1(System.IObservable{``0},System.Reactive.Concurrency.DispatcherScheduler)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the specified dispatcher scheduler.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="scheduler">Dispatcher scheduler to perform subscription and unsubscription actions on.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the specified dispatcher scheduler.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="scheduler"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the specified scheduler.
+            In order to invoke observer callbacks on the specified scheduler, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Reactive.Concurrency.DispatcherScheduler)"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Threading.DispatcherObject)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the dispatcher associated with the specified object.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcherObject">Object to get the dispatcher from.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the specified object's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcherObject"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the dispatcher associated with the specified object.
+            In order to invoke observer callbacks on the dispatcher associated with the specified object, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.DispatcherObject)"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.SubscribeOn``1(System.IObservable{``0},System.Windows.Threading.DispatcherObject,System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the dispatcher associated with the specified object.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="dispatcherObject">Object to get the dispatcher from.</param>
+            <param name="priority">Priority to schedule work items at.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the specified object's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> or <paramref name="dispatcherObject"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the dispatcher associated with the specified object.
+            In order to invoke observer callbacks on the dispatcher associated with the specified object, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOn``1(System.IObservable{``0},System.Windows.Threading.DispatcherObject,System.Windows.Threading.DispatcherPriority)"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.SubscribeOnDispatcher``1(System.IObservable{``0})">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the dispatcher associated with the current thread.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <returns>The source sequence whose subscriptions and unsubscriptions happen on the current thread's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the dispatcher associated with the current thread.
+            In order to invoke observer callbacks on the dispatcher associated with the current thread, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOnDispatcher``1(System.IObservable{``0})"/>.
+            </remarks>
+        </member>
+        <member name="M:System.Reactive.Linq.DispatcherObservable.SubscribeOnDispatcher``1(System.IObservable{``0},System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Wraps the source sequence in order to run its subscription and unsubscription logic on the dispatcher associated with the current thread.
+            </summary>
+            <typeparam name="TSource">The type of the elements in the source sequence.</typeparam>
+            <param name="source">Source sequence.</param>
+            <param name="priority">Priority to schedule work items at.</param>
+            <returns>The source sequence whose observations happen on the current thread's dispatcher.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="source"/> is null.</exception>
+            <remarks>
+            Only the side-effects of subscribing to the source sequence and disposing subscriptions to the source sequence are run on the dispatcher associated with the current thread.
+            In order to invoke observer callbacks on the dispatcher associated with the current thread, e.g. to render results in a control, use <see cref="M:System.Reactive.Linq.DispatcherObservable.ObserveOnDispatcher``1(System.IObservable{``0},System.Windows.Threading.DispatcherPriority)"/>.
+            </remarks>
         </member>
         <member name="M:System.Reactive.ReflectionUtils.IsWinRTEventRegistrationTokenType(System.Type)">
             <summary>
@@ -28510,115 +28849,6 @@
             <summary>
               Looks up a localized string similar to No current Window object found to obtain a CoreDispatcher from..
             </summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
-            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute">
-            <summary>Specifies that null is disallowed as an input even if the corresponding type allows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
-            <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
-            <summary>Specifies that an output will not be null even if the corresponding type allows it. Specifies that an input argument was not null when the call returns.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
-            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>, the parameter may be null even if the corresponding type disallows it.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
-            <summary>Initializes the attribute with the specified return value condition.</summary>
-            <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter may be null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
-            <summary>Gets the return value condition.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
-            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
-            <summary>Initializes the attribute with the specified return value condition.</summary>
-            <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
-            <summary>Gets the return value condition.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
-            <summary>Specifies that the output will be non-null if the named parameter is non-null.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
-            <summary>Initializes the attribute with the associated parameter name.</summary>
-            <param name="parameterName">
-            The associated parameter name.  The output will be non-null if the argument to the parameter specified is non-null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.ParameterName">
-            <summary>Gets the associated parameter name.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute">
-            <summary>Applied to a method that will never return under any circumstance.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
-            <summary>Specifies that the method will not return if the associated Boolean parameter is passed the specified value.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
-            <summary>Initializes the attribute with the specified parameter value.</summary>
-            <param name="parameterValue">
-            The condition parameter value. Code after the method will be considered unreachable by diagnostics if the argument to
-            the associated parameter matches this value.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
-            <summary>Gets the condition parameter value.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
-            <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)">
-            <summary>Initializes the attribute with a field or property member.</summary>
-            <param name="member">
-            The field or property member that is promised to be not-null.
-            </param>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])">
-            <summary>Initializes the attribute with the list of field and property members.</summary>
-            <param name="members">
-            The list of field and property members that are promised to be not-null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.Members">
-            <summary>Gets field or property member names.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
-            <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values when returning with the specified return value condition.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
-            <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
-            <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
-            </param>
-            <param name="member">
-            The field or property member that is promised to be not-null.
-            </param>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
-            <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
-            <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
-            </param>
-            <param name="members">
-            The list of field and property members that are promised to be not-null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
-            <summary>Gets the return value condition.</summary>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
-            <summary>Gets field or property member names.</summary>
         </member>
         <member name="T:System.ObservableExtensions">
             <summary>
