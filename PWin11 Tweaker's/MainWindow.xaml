@@ -67,7 +67,7 @@
 
                 <NavigationViewItem Content="eraAI" Tag="eraPage">
                     <NavigationViewItem.Icon>
-                        <ImageIcon Source="/Assets/mini_eraAI24px.png"/>
+                        <ImageIcon Source="/Assets/mini_eraAI2.png" Height="48" Width="48"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItemSeparator/>
