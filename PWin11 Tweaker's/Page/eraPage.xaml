@@ -28,21 +28,20 @@
                 Padding="10">
             <StackPanel Spacing="10">
                 <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-                    <Image Source="ms-appx:///Assets/mini_eraAI.png"
-                           Width="40"
-                           Height="40"
+                    <Image Source="ms-appx:///Assets/full_eraAI.png"
+                           Width="160"
+                           Height="103"
                            VerticalAlignment="Center"/>
-                    <TextBlock Text="EraAI"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"/>
                 </StackPanel>
-
+                <TextBlock Text="powered by: Ollama"
+                           FontSize="12"
+                           Foreground="Gray"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,10"/>
                 <TextBlock Text="Сессии чата"
                            FontSize="16"
                            FontWeight="SemiBold"
                            Margin="0,10,0,5"/>
-
                 <ListView x:Name="SessionsListView"
                           Height="400"
                           SelectionChanged="SessionsListView_SelectionChanged"
@@ -60,7 +59,6 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
                 <Button x:Name="NewSessionButton"
                         Content="Новая сессия"
                         Click="NewSessionButton_Click"
@@ -78,19 +76,19 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Верхняя панель -->
+            <!-- Верхняя панель со статусом -->
             <Grid Grid.Row="0" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-
-                <TextBlock Text="EraAI Чат"
+                <TextBlock x:Name="StatusTextBlock"
+                           Text="Готов к работе. Проверьте Ollama."
                            FontSize="22"
                            FontWeight="Bold"
-                           VerticalAlignment="Center"/>
-
+                           VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
                 <Button x:Name="ChangeModelButton"
                         Content="Сменить модель"
                         Click="ChangeModelButton_Click"
@@ -98,7 +96,6 @@
                         Margin="10,0,0,0"
                         Visibility="Collapsed"
                         Style="{StaticResource AccentButtonStyle}"/>
-
                 <Button x:Name="InstallOllamaButton"
                         Content="Установить Ollama (~100 MB)"
                         Click="InstallOllamaButton_Click"
@@ -146,7 +143,6 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
                     <TextBlock x:Name="TypingIndicator"
                                Text="ИИ печатает..."
                                Foreground="Gray"
@@ -184,7 +180,6 @@
             <Grid Grid.Row="2" Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" MinWidth="400"/>
-                    <!-- Широкое поле ввода с мин. шириной для легкой настройки -->
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="PromptTextBox"
@@ -202,14 +197,5 @@
                         Style="{StaticResource AccentButtonStyle}"/>
             </Grid>
         </Grid>
-
-        <!-- Нижний статус -->
-        <TextBlock x:Name="StatusTextBlock"
-                   Grid.ColumnSpan="2"
-                   Text="Готов к работе. Проверьте Ollama."
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Foreground="Gray"
-                   Margin="0,0,0,10"/>
     </Grid>
 </Page>
