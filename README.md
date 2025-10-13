@@ -8,27 +8,17 @@ Tweaker for OS: Windows 11
 <br/>
 <string>Language: Eng, Rus, Frn</string>  
 <br/>
-<br/>
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Explore the docs »</strong></a>
-<br/>
-   <br/>
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-<br/>
-   <br/>
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Latest Release</a>
-<br/>
-   <br/>
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md on Russian</a>
-<br/>
-   <br/>
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Wiki</a>
-<br/>
-   <br/>
-   <a href="https://deepwiki.com/PWin11-Tweaker/PWin11-Tweaker/2-application-architecture">DeepWIKI</a>
-      <br />
-      <br />
-<a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Download!</a>
-<br/>
+<div align="center">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+  <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/tree/main/readme"><strong>Explore the docs</strong></a>
+  <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+  <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Latest Release</a>
+  <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md on Russian</a>
+  <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Wiki</a>
+  <a href="https://deepwiki.com/PWin11-Tweaker/PWin11-Tweaker/2-application-architecture">DeepWIKI</a>
+  <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Download! »</a>
+</div>
+</div>
    <br/>
 <a href="https://sourceforge.net/projects/pwin11-tweaker/files/latest/download"><img alt="Download PWin11-Tweaker" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
 </div>
@@ -77,6 +67,8 @@ PWin11 Tweaker is a lightweight, open-source utility that allows you to tweak va
    • Operating System: Windows 11 (64-bit)
 
    • Framework: .NET 9.0 or later
+
+   • Ollama for Windows(for eraAI)
 
    • Permissions: Administrator rights recommended for some features
    
