@@ -25,7 +25,7 @@ namespace PWin11_Tweaker_s
         private ChatSession _currentSession;
         private ObservableCollection<ChatSession> _sessions = new ObservableCollection<ChatSession>();
         private AppSettings _appSettings = new AppSettings();
-        private int _currentPort;
+        private int _currentPort; // Добавляем поле для хранения текущего порта
 
         private readonly string _sessionFile = Path.Combine(AppContext.BaseDirectory, "chat_sessions.json");
         private readonly string _settingsFile = Path.Combine(AppContext.BaseDirectory, "app_settings.json");
@@ -50,6 +50,7 @@ namespace PWin11_Tweaker_s
             LoadSettings();
             LoadSessions();
 
+            // Проверка Ollama
             if (!OllamaManager.IsOllamaInstalled())
             {
                 StatusTextBlock.Text = "Ollama не установлена.";
@@ -58,8 +59,9 @@ namespace PWin11_Tweaker_s
                 return;
             }
 
+            // Запуск Ollama с динамическим портом
             StatusTextBlock.Text = "Запуск Ollama API...";
-            _currentPort = await OllamaManager.StartOllamaIfNeededAsync();
+            _currentPort = await OllamaManager.StartOllamaIfNeededAsync(); // Теперь возвращает int
             if (!await OllamaManager.IsApiReadyAsync(_currentPort))
             {
                 StatusTextBlock.Text = "Ошибка: Ollama API недоступен. Проверьте установку.";
@@ -68,6 +70,7 @@ namespace PWin11_Tweaker_s
                 return;
             }
 
+            // Проверка модели
             if (string.IsNullOrEmpty(_appSettings.SelectedModel) || !await OllamaManager.IsModelInstalledAsync(_appSettings.SelectedModel))
             {
                 StatusTextBlock.Text = "Модель не выбрана или не установлена.";
@@ -75,6 +78,7 @@ namespace PWin11_Tweaker_s
                 return;
             }
 
+            // Инициализация
             _ai = new AIChatService(_appSettings.SelectedModel, _currentPort);
             if (_sessions.Count > 0)
             {
@@ -94,6 +98,20 @@ namespace PWin11_Tweaker_s
             ShowInstallPanel(false);
         }
 
+        private void RefreshSession()
+        {
+            var oldSession = _currentSession;
+            var newSession = new ChatSession { Title = oldSession.Title };
+            newSession.CopyMessagesFrom(oldSession);
+            int index = _sessions.IndexOf(oldSession);
+            _sessions[index] = newSession;
+            _currentSession = newSession;
+            ChatListView.ItemsSource = _currentSession.Messages;
+            SessionsListView.SelectedItem = _currentSession;
+            SaveSessions();
+            ScrollToBottom();
+        }
+
         private void ShowInstallPanel(bool show)
         {
             InstallPanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
@@ -104,22 +122,8 @@ namespace PWin11_Tweaker_s
 
         private async void InstallOllamaButton_Click(object sender, RoutedEventArgs e)
         {
-            StatusTextBlock.Text = "Запуск установки Ollama (~100 MB)...";
-            InstallOllamaButton.IsEnabled = false;
-
-            try
-            {
-                await OllamaManager.InstallOllamaAsync();
-                StatusTextBlock.Text = "Установка Ollama запущена. Перезапустите программу после завершения.";
-            }
-            catch (Exception ex)
-            {
-                StatusTextBlock.Text = $"Ошибка установки Ollama: {ex.Message}";
-            }
-            finally
-            {
-                InstallOllamaButton.IsEnabled = true;
-            }
+            await OllamaManager.InstallOllamaAsync();
+            StatusTextBlock.Text = "Установщик запущен. После установки перезапустите программу.";
         }
 
         private async void InstallModelButton_Click(object sender, RoutedEventArgs e)
@@ -127,25 +131,18 @@ namespace PWin11_Tweaker_s
             var selected = ModelSelector.SelectedItem as string;
             if (string.IsNullOrEmpty(selected)) return;
 
-            var modelName = selected.Split(' ')[0];
-            StatusTextBlock.Text = $"Установка Ollama и модели {modelName}...";
+            var modelName = selected.Split(' ')[0]; // Извлекаем имя модели, напр. "gemma3:1b"
+            StatusTextBlock.Text = $"Установка модели {modelName}...";
             InstallModelButton.IsEnabled = false;
 
             try
             {
-                if (!OllamaManager.IsOllamaInstalled())
-                {
-                    await OllamaManager.InstallOllamaAsync();
-                    StatusTextBlock.Text = "Ожидание установки Ollama... Перезапустите программу.";
-                    return;
-                }
-
                 await OllamaManager.PullModelAsync(modelName);
                 _appSettings.SelectedModel = modelName;
                 SaveSettings();
-                StatusTextBlock.Text = "Ollama и модель установлены.";
+                StatusTextBlock.Text = "Модель установлена.";
                 ShowInstallPanel(false);
-                _ai = new AIChatService(_appSettings.SelectedModel, _currentPort);
+                _ai = new AIChatService(_appSettings.SelectedModel, _currentPort); // Передаем текущий порт
                 SendButton.IsEnabled = true;
                 PromptTextBox.IsReadOnly = false;
                 ChangeModelButton.Visibility = Visibility.Visible;
@@ -194,12 +191,7 @@ namespace PWin11_Tweaker_s
 
             var userMessage = new Message { Role = "Пользователь", Content = userText, Timestamp = DateTime.Now };
             _currentSession.Messages.Add(userMessage);
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-            {
-                ChatListView.ItemsSource = null;
-                ChatListView.ItemsSource = _currentSession.Messages;
-                ScrollToBottom();
-            });
+            ScrollToBottom();
             PromptTextBox.Text = "";
             TypingIndicator.Visibility = Visibility.Visible;
             StatusTextBlock.Text = "Генерация ответа...";
@@ -208,7 +200,7 @@ namespace PWin11_Tweaker_s
 
             try
             {
-                var systemMessage = new OllamaMessage { Role = "system", Content = "Ты эксперт Windows 11. Отвечай кратко и по делу на русском языке." };
+                var systemMessage = new OllamaMessage { Role = "system", Content = "Your name is eraAI, you are an experienced Windows 11 assistant, and you must respond in the language I am writing in" };
                 var ollamaHistory = new List<OllamaMessage> { systemMessage };
                 ollamaHistory.AddRange(_currentSession.Messages
                     .Where(m => m.Role != "ИИ")
@@ -225,20 +217,14 @@ namespace PWin11_Tweaker_s
                 {
                     if (!string.IsNullOrEmpty(delta))
                     {
-                        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                        {
-                            aiMessage.Content += delta;
-                            ChatListView.ItemsSource = null;
-                            ChatListView.ItemsSource = _currentSession.Messages;
-                            ScrollToBottom();
-                        });
+                        aiMessage.Content += delta;
+                        ScrollToBottom();
                     }
                 }
 
                 if (string.IsNullOrEmpty(aiMessage.Content))
                 {
                     aiMessage.Content = "[Ошибка: Пустой ответ от ИИ. Проверьте модель.]";
-                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, ScrollToBottom);
                 }
             }
             catch (Exception ex)
@@ -250,12 +236,6 @@ namespace PWin11_Tweaker_s
                 }
                 aiMessage = new Message { Role = "ИИ", Content = "[Ошибка: " + ex.Message + "]", Timestamp = DateTime.Now };
                 _currentSession.Messages.Add(aiMessage);
-                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                {
-                    ChatListView.ItemsSource = null;
-                    ChatListView.ItemsSource = _currentSession.Messages;
-                    ScrollToBottom();
-                });
             }
             finally
             {
@@ -265,6 +245,7 @@ namespace PWin11_Tweaker_s
                 PromptTextBox.IsReadOnly = false;
                 PromptTextBox.Focus(FocusState.Programmatic);
                 StatusTextBlock.Text = "Готов к работе.";
+                RefreshSession();
             }
         }
 
@@ -289,7 +270,7 @@ namespace PWin11_Tweaker_s
                         foreach (var dto in loadedDtos)
                         {
                             var session = new ChatSession(dto);
-                            _sessions.Add(session); // Загружаем все сессии
+                            _sessions.Add(session);
                         }
                     }
                 }
@@ -322,6 +303,7 @@ namespace PWin11_Tweaker_s
                 {
                     var json = File.ReadAllText(_settingsFile);
                     _appSettings = JsonSerializer.Deserialize<AppSettings>(json, JsonOptions) ?? new AppSettings();
+                    _currentPort = _appSettings.Port; // Загружаем сохраненный порт
                 }
                 catch (Exception ex)
                 {
@@ -334,6 +316,7 @@ namespace PWin11_Tweaker_s
         {
             try
             {
+                _appSettings.Port = _currentPort; // Сохраняем текущий порт
                 var json = JsonSerializer.Serialize(_appSettings, JsonOptions);
                 File.WriteAllText(_settingsFile, json);
             }
@@ -351,7 +334,6 @@ namespace PWin11_Tweaker_s
             _currentSession = newSession;
             ChatListView.ItemsSource = _currentSession.Messages;
             StatusTextBlock.Text = "Новая сессия создана.";
-            SaveSessions();
         }
 
         private void SessionsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -365,6 +347,9 @@ namespace PWin11_Tweaker_s
         }
     }
 
+    
+
+
     public class RoleToBackgroundConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
@@ -372,8 +357,8 @@ namespace PWin11_Tweaker_s
             if (value is string role)
             {
                 return role == "Пользователь"
-                    ? new SolidColorBrush(Color.FromArgb(255, 0, 120, 215))
-                    : new SolidColorBrush(Color.FromArgb(255, 32, 149, 87));
+                    ? new SolidColorBrush(Color.FromArgb(255, 43, 113, 243))
+                    : new SolidColorBrush(Color.FromArgb(255, 35, 57, 204));
             }
             return new SolidColorBrush(Colors.Transparent);
         }
