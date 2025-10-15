@@ -24,7 +24,7 @@ namespace PWin11_Tweaker_s.Services
         {
             var messages = new List<OllamaSharp.Models.Chat.Message>
             {
-                new OllamaSharp.Models.Chat.Message(ChatRole.System, "Ты эксперт Windows 11."),
+                new OllamaSharp.Models.Chat.Message(ChatRole.System, "Your name is eraAI, you are an experienced Windows 11 assistant, and you must respond in the language I am writing in"),
                 new OllamaSharp.Models.Chat.Message(ChatRole.User, userMessage)
             };
 
