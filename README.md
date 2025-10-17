@@ -34,6 +34,17 @@ Tweaker for OS: Windows 11
 3. Run as Administrator: For full functionality, right-click and select "Run as Administrator."
 
 4. Explore: Navigate through the menu to access optimization, cleanup, and customization options.
+
+## Minimum requirements for Ollama:
+
+RAM: 8 GB, but for medium-sized models, it is strongly recommended to use 16 GB or more.
+
+Memory capacity: at least 10-12 GB of free disk space for the program itself and the basic models, but more will be needed to store additional models.
+
+Central processing unit: 64-bit processor. It is recommended to use a modern multi-core processor.
+
+Graphics Processing Unit (GPU): Optional, but highly recommended for improved performance, especially for larger models.
+
 ## About The Project
 
 ![Tweaker](https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/screen201.png?raw=true)
