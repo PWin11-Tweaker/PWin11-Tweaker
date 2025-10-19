@@ -23,6 +23,8 @@ Tweaker for OS: Windows 11
 <a href="https://sourceforge.net/projects/pwin11-tweaker/files/latest/download"><img alt="Download PWin11-Tweaker" src="https://a.fsdn.com/con/app/sf-download-button" width=276 height=48 srcset="https://a.fsdn.com/con/app/sf-download-button?button_size=2x 2x"></a>
 </div>
 
+<img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/eraAI.gif?raw=true">
+
 ## Getting Started
 
 0. Click on Star and Check <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/warning.md">warning.md</a>
