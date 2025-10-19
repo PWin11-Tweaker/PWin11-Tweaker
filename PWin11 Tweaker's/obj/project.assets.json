@@ -383,7 +383,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.9": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -4831,7 +4831,7 @@
           "runtimes/win-arm64/native/microsoft.management.infrastructure.native.unmanaged.dll": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.9": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -7775,7 +7775,7 @@
           "runtimes/win-x64/native/microsoft.management.infrastructure.native.unmanaged.dll": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.9": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -10719,7 +10719,7 @@
           "runtimes/win-x86/native/microsoft.management.infrastructure.native.unmanaged.dll": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.9": {
+      "Microsoft.NET.ILLink.Tasks/9.0.10": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -13894,10 +13894,10 @@
         "runtimes/win-x86/native/microsoft.management.infrastructure.native.unmanaged.dll"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.9": {
-      "sha512": "cHi1os/s6aobEgNkbOh/jW+ru//rHuedvj4PmTh2mMY7et/mJjqphBeXeKCesDvMd0+E2JyX9EPZZC4VRKslXg==",
+    "Microsoft.NET.ILLink.Tasks/9.0.10": {
+      "sha512": "sseaSJcBxKEpkc59hnB00b3NmJdGvJLfj74HK+nucHxERxbZSUREuWKjC9ywc+HdzJvJyiP2eiyEOROaGSfcPw==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.9",
+      "path": "microsoft.net.illink.tasks/9.0.10",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -13911,7 +13911,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.9.nupkg.sha512",
+        "microsoft.net.illink.tasks.9.0.10.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -21712,7 +21712,7 @@
       "Microsoft.Extensions.Logging >= 9.0.9",
       "Microsoft.Extensions.Logging.Abstractions >= 9.0.9",
       "Microsoft.Extensions.Options >= 9.0.9",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.9",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.10",
       "Microsoft.NETCore.Platforms >= 7.0.4",
       "Microsoft.NETCore.Targets >= 5.0.0",
       "Microsoft.PowerShell.Native >= 7.4.0",
@@ -21765,23 +21765,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ph1ncyn\\.nuget\\packages\\": {},
+    "C:\\Users\\yttut\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "2.0.1.2",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ph1ncyn\\Desktop\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
+      "projectUniqueName": "C:\\Users\\yttut\\OneDrive\\Документы\\GitHub\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
       "projectName": "PWin11 Tweaker's",
-      "projectPath": "C:\\Users\\ph1ncyn\\Desktop\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
-      "packagesPath": "C:\\Users\\ph1ncyn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ph1ncyn\\Desktop\\PWin11-Tweaker\\PWin11 Tweaker's\\obj\\",
+      "projectPath": "C:\\Users\\yttut\\OneDrive\\Документы\\GitHub\\PWin11-Tweaker\\PWin11 Tweaker's\\PWin11 Tweaker's.csproj",
+      "packagesPath": "C:\\Users\\yttut\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yttut\\OneDrive\\Документы\\GitHub\\PWin11-Tweaker\\PWin11 Tweaker's\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ph1ncyn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\yttut\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -21865,7 +21865,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.9, )",
+            "version": "[9.0.10, )",
             "autoReferenced": true
           },
           "Microsoft.NETCore.Platforms": {
@@ -22081,31 +22081,31 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
-            "name": "Microsoft.NETCore.App.Crossgen2.win-arm64",
-            "version": "[9.0.9, 9.0.9]"
+            "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -22113,15 +22113,15 @@
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[9.0.9, 9.0.9]"
+            "version": "[9.0.10, 9.0.10]"
           }
         ],
         "frameworkReferences": {
@@ -22132,7 +22132,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

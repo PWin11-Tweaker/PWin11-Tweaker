@@ -688,4 +688,7 @@
   <data name="Error_ProcessMonitorNotFound_Message" xml:space="preserve">
     <value>Veuillez installer Process Monitor dans le dossier Assets\ProcMon</value>
   </data>
+  <data name="Delete_Ollama.Text" xml:space="preserve">
+    <value>Suppression de Ollama et modèles...</value>
+  </data>
 </root>

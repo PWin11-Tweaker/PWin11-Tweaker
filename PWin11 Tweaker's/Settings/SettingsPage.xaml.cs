@@ -10,6 +10,7 @@ using PWin11_Tweaker_s.Models;
 using PWin11_Tweaker_s.Services;
 using System.Windows; 
 using System.Xml;
+using Windows.UI.Popups;
 
 namespace PWin11_Tweaker_s
 {
@@ -18,7 +19,16 @@ namespace PWin11_Tweaker_s
         public SettingsPage()
         {
             this.InitializeComponent();
+            Loaded += SettingsPage_Loaded;
         }
+
+        private void SettingsPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            bool isOllamaInstalled = OllamaManager.IsOllamaInstalled();
+            UninstallOllamaButton.Visibility = isOllamaInstalled ? Visibility.Visible : Visibility.Collapsed;
+            Debug.WriteLine($"Ollama installed: {isOllamaInstalled}, Button Visibility: {UninstallOllamaButton.Visibility}");
+        }
+
 
         private void OpenUpdaterButton_Click(object sender, RoutedEventArgs e)
         {
@@ -60,5 +70,28 @@ namespace PWin11_Tweaker_s
                 }
             }
         }
+
+        private async void UninstallOllamaButton_Click(object sender, RoutedEventArgs e)
+        {
+            UninstallOllamaButton.IsEnabled = false;
+            UninstallOllamaStatusText.Visibility = Visibility.Visible;
+            UninstallOllamaStatusText.Text = "Удаление Ollama и моделей...";
+
+            try
+            {
+                await OllamaManager.UninstallOllamaAsync();
+                UninstallOllamaStatusText.Text = "Ollama и модели успешно удалены.";
+                UninstallOllamaButton.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception ex)
+            {
+                UninstallOllamaStatusText.Text = $"Ошибка: {ex.Message}";
+            }
+            finally
+            {
+                UninstallOllamaButton.IsEnabled = true;
+            }
+        }
+
     }
 }

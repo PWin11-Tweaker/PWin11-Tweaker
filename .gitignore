@@ -480,3 +480,8 @@ packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/useSharedDesignerContext.txt
 packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/net461/Microsoft.Bcl.AsyncInterfaces.targets
 packages/Microsoft.Bcl.AsyncInterfaces.9.0.8/buildTransitive/netcoreapp2.0/Microsoft.Bcl.AsyncInterfaces.targets
 packages/Splat.15.5.1/LICENSE/LICENSE
+.github/desktop.ini
+img/desktop.ini
+packages/desktop.ini
+PWin11Updater/desktop.ini
+readme/desktop.ini

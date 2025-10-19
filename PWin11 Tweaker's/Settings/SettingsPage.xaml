@@ -22,7 +22,8 @@
 
         <StackPanel Grid.Column="1" 
                     VerticalAlignment="Top"
-                    Margin="0,0,0,0">
+                    Margin="0,0,0,0"
+                    Spacing="10">
 
             <TextBlock x:Uid="pwin11" 
                        FontSize="24" 
@@ -31,8 +32,7 @@
             <TextBlock x:Uid="AboutText_Settings" 
                        TextWrapping="Wrap" 
                        FontSize="16" 
-                       Margin="0,0,0,20">
-            </TextBlock>
+                       Margin="0,0,0,20"/>
 
             <Button x:Name="OpenUpdaterButton" 
                     Click="OpenUpdaterButton_Click" 
@@ -42,6 +42,24 @@
                     <TextBlock Text="Open Updater" FontSize="14"/>
                 </StackPanel>
             </Button>
+
+            <Button x:Name="UninstallOllamaButton" 
+                    Click="UninstallOllamaButton_Click"
+                    Margin="0,10,0,0"
+                    Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE74D;" Margin="0,0,5,0"/>
+                    <TextBlock Text="Удалить Ollama и модели" FontSize="14"/>
+                </StackPanel>
+            </Button>
+
+            <TextBlock x:Name="UninstallOllamaStatusText"
+                       Text="Delete Ollama"
+                       FontSize="14"
+                       Foreground="Gray"
+                       HorizontalAlignment="Left"
+                       Visibility="Collapsed"
+                       Margin="0,5,0,0"/>
         </StackPanel>
     </Grid>
 </Page>

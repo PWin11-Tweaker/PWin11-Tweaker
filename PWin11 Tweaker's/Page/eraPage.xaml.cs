@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
@@ -9,6 +10,7 @@ using PWin11_Tweaker_s.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -25,7 +27,7 @@ namespace PWin11_Tweaker_s
         private ChatSession _currentSession;
         private ObservableCollection<ChatSession> _sessions = new ObservableCollection<ChatSession>();
         private AppSettings _appSettings = new AppSettings();
-        private int _currentPort; // Добавляем поле для хранения текущего порта
+        private int _currentPort;
 
         private readonly string _sessionFile = Path.Combine(AppContext.BaseDirectory, "chat_sessions.json");
         private readonly string _settingsFile = Path.Combine(AppContext.BaseDirectory, "app_settings.json");
@@ -54,8 +56,7 @@ namespace PWin11_Tweaker_s
             if (!OllamaManager.IsOllamaInstalled())
             {
                 StatusTextBlock.Text = "Ollama не установлена.";
-                InstallOllamaButton.Visibility = Visibility.Visible;
-                ShowInstallPanel(true);
+                ShowInstallPanel(true, true); // Показать панель установки Ollama
                 return;
             }
 
@@ -65,21 +66,29 @@ namespace PWin11_Tweaker_s
             if (!await OllamaManager.IsApiReadyAsync(_currentPort))
             {
                 StatusTextBlock.Text = "Ошибка: Ollama API недоступен. Проверьте установку.";
-                SendButton.IsEnabled = false;
-                ShowInstallPanel(true);
+                ShowInstallPanel(true, true); // Показать панель установки Ollama
                 return;
             }
 
             // Проверка модели
             if (string.IsNullOrEmpty(_appSettings.SelectedModel) || !await OllamaManager.IsModelInstalledAsync(_appSettings.SelectedModel))
             {
-                StatusTextBlock.Text = "Модель не выбрана или не установлена.";
-                ShowInstallPanel(true);
+                StatusTextBlock.Text = "Модель не выбрана или не установлена. Выберите модель.";
+                ShowInstallPanel(true, false); // Показать панель выбора модели
                 return;
             }
 
             // Инициализация
-            _ai = new AIChatService(_appSettings.SelectedModel, _currentPort);
+            try
+            {
+                _ai = new AIChatService(_appSettings.SelectedModel, _currentPort);
+            }
+            catch (Exception ex)
+            {
+                StatusTextBlock.Text = $"Ошибка инициализации AI: {ex.Message}";
+                return;
+            }
+
             if (_sessions.Count > 0)
             {
                 SessionsListView.SelectedIndex = 0;
@@ -100,6 +109,7 @@ namespace PWin11_Tweaker_s
 
         private void RefreshSession()
         {
+            if (_currentSession == null) return;
             var oldSession = _currentSession;
             var newSession = new ChatSession { Title = oldSession.Title };
             newSession.CopyMessagesFrom(oldSession);
@@ -112,18 +122,200 @@ namespace PWin11_Tweaker_s
             ScrollToBottom();
         }
 
-        private void ShowInstallPanel(bool show)
+        private void ShowInstallPanel(bool show, bool isOllamaMissing = false)
         {
             InstallPanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
             chatScrollViewer.Visibility = show ? Visibility.Collapsed : Visibility.Visible;
             SendButton.IsEnabled = !show;
             PromptTextBox.IsReadOnly = show;
+
+            if (show)
+            {
+                if (isOllamaMissing)
+                {
+                    InstallTitleTextBlock.Text = "Скачай Ollama для начала работы с ИИ";
+                    InstallOllamaPanelButton.Visibility = Visibility.Visible;
+                    InstallRussianOllamaPanelButton.Visibility = Visibility.Visible;
+                    InstallOllamaStatusText.Visibility = Visibility.Visible;
+                    InstallProgressBar.Visibility = Visibility.Visible;
+                    LaunchOllamaButton.Visibility = Visibility.Collapsed;
+                    ModelSelector.Visibility = Visibility.Collapsed;
+                    InstallModelButton.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    InstallTitleTextBlock.Text = "Выберите модель ИИ для установки";
+                    InstallOllamaPanelButton.Visibility = Visibility.Collapsed;
+                    InstallRussianOllamaPanelButton.Visibility = Visibility.Collapsed;
+                    InstallOllamaStatusText.Visibility = Visibility.Collapsed;
+                    InstallProgressBar.Visibility = Visibility.Collapsed;
+                    LaunchOllamaButton.Visibility = Visibility.Collapsed;
+                    ModelSelector.Visibility = Visibility.Visible;
+                    InstallModelButton.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private async void InstallOllamaPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            InstallOllamaPanelButton.IsEnabled = false;
+            InstallRussianOllamaPanelButton.IsEnabled = false;
+            InstallOllamaStatusText.Visibility = Visibility.Visible;
+            InstallProgressBar.Visibility = Visibility.Visible;
+            InstallOllamaStatusText.Text = "Скачивание быстрой версии с GitHub (~1 GB)...";
+            InstallProgressBar.Value = 0;
+
+            var progress = new Progress<(double percent, string status)>(data =>
+            {
+                System.Diagnostics.Debug.WriteLine($"Progress: {data.percent}% - {data.status}");
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() =>
+                    {
+                        InstallProgressBar.Value = data.percent;
+                        InstallOllamaStatusText.Text = data.status;
+                    });
+                }
+                else
+                {
+                    InstallProgressBar.Value = data.percent;
+                    InstallOllamaStatusText.Text = data.status;
+                }
+            });
+
+            try
+            {
+                await OllamaManager.InstallOllamaAsync(progress);
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() =>
+                    {
+                        InstallOllamaStatusText.Text = "Скачивание завершено. Запустите установщик вручную.";
+                        LaunchOllamaButton.Visibility = Visibility.Visible;
+                    });
+                }
+                else
+                {
+                    InstallOllamaStatusText.Text = "Скачивание завершено. Запустите установщик вручную.";
+                    LaunchOllamaButton.Visibility = Visibility.Visible;
+                }
+            }
+            catch (Exception ex)
+            {
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() => InstallOllamaStatusText.Text = $"Ошибка: {ex.Message}");
+                }
+                else
+                {
+                    InstallOllamaStatusText.Text = $"Ошибка: {ex.Message}";
+                }
+                System.Diagnostics.Debug.WriteLine($"Installation error: {ex.Message}");
+            }
+            finally
+            {
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() =>
+                    {
+                        InstallOllamaPanelButton.IsEnabled = true;
+                        InstallRussianOllamaPanelButton.IsEnabled = true;
+                    });
+                }
+                else
+                {
+                    InstallOllamaPanelButton.IsEnabled = true;
+                    InstallRussianOllamaPanelButton.IsEnabled = true;
+                }
+            }
+        }
+
+        private async void InstallRussianOllamaPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            InstallOllamaPanelButton.IsEnabled = false;
+            InstallRussianOllamaPanelButton.IsEnabled = false;
+            InstallOllamaStatusText.Visibility = Visibility.Visible;
+            InstallProgressBar.Visibility = Visibility.Visible;
+            InstallOllamaStatusText.Text = "Скачивание версии для России с pwin11.ru (~1 GB)...";
+            InstallProgressBar.Value = 0;
+
+            var progress = new Progress<(double percent, string status)>(data =>
+            {
+                System.Diagnostics.Debug.WriteLine($"Progress (Russian): {data.percent}% - {data.status}");
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() =>
+                    {
+                        InstallProgressBar.Value = data.percent;
+                        InstallOllamaStatusText.Text = data.status;
+                    });
+                }
+                else
+                {
+                    InstallProgressBar.Value = data.percent;
+                    InstallOllamaStatusText.Text = data.status;
+                }
+            });
+
+            try
+            {
+                await OllamaManager.InstallRussianOllamaAsync(progress);
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() =>
+                    {
+                        InstallOllamaStatusText.Text = "Скачивание завершено. Запустите установщик вручную.";
+                        LaunchOllamaButton.Visibility = Visibility.Visible;
+                    });
+                }
+                else
+                {
+                    InstallOllamaStatusText.Text = "Скачивание завершено. Запустите установщик вручную.";
+                    LaunchOllamaButton.Visibility = Visibility.Visible;
+                }
+            }
+            catch (Exception ex)
+            {
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() => InstallOllamaStatusText.Text = $"Ошибка: {ex.Message}");
+                }
+                else
+                {
+                    InstallOllamaStatusText.Text = $"Ошибка: {ex.Message}";
+                }
+                System.Diagnostics.Debug.WriteLine($"Installation error (Russian): {ex.Message}");
+            }
+            finally
+            {
+                var dispatcher = DispatcherQueue.GetForCurrentThread();
+                if (dispatcher != null)
+                {
+                    dispatcher.TryEnqueue(() =>
+                    {
+                        InstallOllamaPanelButton.IsEnabled = true;
+                        InstallRussianOllamaPanelButton.IsEnabled = true;
+                    });
+                }
+                else
+                {
+                    InstallOllamaPanelButton.IsEnabled = true;
+                    InstallRussianOllamaPanelButton.IsEnabled = true;
+                }
+            }
         }
 
         private async void InstallOllamaButton_Click(object sender, RoutedEventArgs e)
         {
             await OllamaManager.InstallOllamaAsync();
-            StatusTextBlock.Text = "Установщик запущен. После установки перезапустите программу.";
+            StatusTextBlock.Text = "Скачивание завершено. Запустите установщик вручную.";
         }
 
         private async void InstallModelButton_Click(object sender, RoutedEventArgs e)
@@ -159,8 +351,33 @@ namespace PWin11_Tweaker_s
 
         private void ChangeModelButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowInstallPanel(true);
+            ShowInstallPanel(true, false);
             StatusTextBlock.Text = "Выберите новую модель для смены.";
+        }
+
+        private void LaunchOllamaButton_Click(object sender, RoutedEventArgs e)
+        {
+            var installerPath = Path.Combine(AppContext.BaseDirectory, "OllamaSetup.exe");
+            if (File.Exists(installerPath))
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = installerPath,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    InstallOllamaStatusText.Text = $"Ошибка запуска: {ex.Message}";
+                    System.Diagnostics.Debug.WriteLine($"Launch error: {ex.Message}");
+                }
+            }
+            else
+            {
+                InstallOllamaStatusText.Text = "Файл установщика не найден.";
+            }
         }
 
         private async void SendButton_Click(object sender, RoutedEventArgs e)
@@ -346,9 +563,6 @@ namespace PWin11_Tweaker_s
             }
         }
     }
-
-    
-
 
     public class RoleToBackgroundConverter : IValueConverter
     {
