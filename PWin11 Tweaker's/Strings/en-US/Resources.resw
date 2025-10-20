@@ -522,10 +522,6 @@
     <value>Send Bugs</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
-  <data name="StatisticsLabel.Text" xml:space="preserve">
-    <value>Statistics:</value>
-    <comment>TempCleanerPage.xaml</comment>
-  </data>
   <data name="OpenOldNewExplorer.Content" xml:space="preserve">
     <value>Open OldNewExplorer</value>
   </data>
@@ -690,5 +686,9 @@
   </data>
   <data name="Delete_Ollama.Text" xml:space="preserve">
     <value>Removing Ollama and models...</value>
+  </data>
+  <data name="StatisticsLabel" xml:space="preserve">
+    <value>Statistics:</value>
+    <comment>TempCleanerPage.xaml</comment>
   </data>
 </root>

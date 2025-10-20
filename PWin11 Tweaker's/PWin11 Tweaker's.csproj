@@ -46,7 +46,6 @@
     <None Remove="RebootWindow.xaml" />
     <None Remove="SplashScreen.xaml" />
     <None Remove="SystemPage.xaml" />
-    <None Remove="TempCleaner\TempCleanerPage.xaml" />
     <None Remove="Update\versionLocal.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -143,11 +142,6 @@
     <Content Include="Update\versionLocal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="TempCleaner\TempCleanerPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Window\DebugWindow.xaml">
