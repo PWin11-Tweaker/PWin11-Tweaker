@@ -663,4 +663,124 @@
   <data name="StatisticsLabel" xml:space="preserve">
     <value>Статистика:</value>
   </data>
+  <data name="Status_OllamaNotInstalled" xml:space="preserve">
+    <value>Ollama не установлена.</value>
+  </data>
+  <data name="Status_StartingOllama" xml:space="preserve">
+    <value>Запуск Ollama API...</value>
+  </data>
+  <data name="Status_OllamaApiError" xml:space="preserve">
+    <value>Ошибка: Ollama API недоступен. Проверьте установку.</value>
+  </data>
+  <data name="Status_ModelNotSelected" xml:space="preserve">
+    <value>Модель не выбрана или не установлена. Выберите модель.</value>
+  </data>
+  <data name="Status_AIInitError" xml:space="preserve">
+    <value>Ошибка инициализации AI: {0}</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Готов к работе.</value>
+  </data>
+  <data name="InstallTitle_OllamaMissing" xml:space="preserve">
+    <value>Скачай Ollama для начала работы с ИИ</value>
+  </data>
+  <data name="Button_InstallOllama" xml:space="preserve">
+    <value>Установить Ollama</value>
+  </data>
+  <data name="Button_InstallRussianOllama" xml:space="preserve">
+    <value>Установить российскую версию</value>
+  </data>
+  <data name="InstallTitle_SelectModel" xml:space="preserve">
+    <value>Выберите модель ИИ для установки</value>
+  </data>
+  <data name="Button_InstallModel" xml:space="preserve">
+    <value>Установить модель</value>
+  </data>
+  <data name="Status_DownloadingOllama" xml:space="preserve">
+    <value>Скачивание быстрой версии с GitHub (~1 GB)...</value>
+  </data>
+  <data name="Status_DownloadingRussianOllama" xml:space="preserve">
+    <value>Скачивание версии для России с pwin11.ru (~1 GB)...</value>
+  </data>
+  <data name="Status_DownloadComplete" xml:space="preserve">
+    <value>Скачивание завершено. Запустите установщик вручную.</value>
+  </data>
+  <data name="Status_InstallError" xml:space="preserve">
+    <value>Ошибка: {0}</value>
+  </data>
+  <data name="Status_InstallingModel" xml:space="preserve">
+    <value>Установка модели {0}...</value>
+  </data>
+  <data name="Status_ModelInstalled" xml:space="preserve">
+    <value>Модель установлена.</value>
+  </data>
+  <data name="Status_ModelInstallError" xml:space="preserve">
+    <value>Ошибка установки: {0}</value>
+  </data>
+  <data name="Status_ChangeModel" xml:space="preserve">
+    <value>Выберите новую модель для смены.</value>
+  </data>
+  <data name="Status_LaunchError" xml:space="preserve">
+    <value>Ошибка запуска: {0}</value>
+  </data>
+  <data name="Status_InstallerNotFound" xml:space="preserve">
+    <value>Файл установщика не найден.</value>
+  </data>
+  <data name="Status_GeneratingResponse" xml:space="preserve">
+    <value>Генерация ответа...</value>
+  </data>
+  <data name="Status_EmptyResponseError" xml:space="preserve">
+    <value>[Ошибка: Пустой ответ от ИИ. Проверьте модель.]</value>
+  </data>
+  <data name="Status_SendError" xml:space="preserve">
+    <value>Ошибка: {0}</value>
+  </data>
+  <data name="Status_SendErrorMessage" xml:space="preserve">
+    <value>[Ошибка: {0}]</value>
+  </data>
+  <data name="Session_NewTitle" xml:space="preserve">
+    <value>Сессия {0}</value>
+  </data>
+  <data name="Status_NewSessionCreated" xml:space="preserve">
+    <value>Новая сессия создана.</value>
+  </data>
+  <data name="Text_PoweredBy.Text" xml:space="preserve">
+    <value>powered by: Ollama</value>
+  </data>
+  <data name="Text_ChatSessions.Text" xml:space="preserve">
+    <value>Сессии чата</value>
+  </data>
+  <data name="Text_EraAIChat.Text" xml:space="preserve">
+    <value>eraAI Чат</value>
+  </data>
+  <data name="Text_TypingIndicator.Text" xml:space="preserve">
+    <value>ИИ печатает...</value>
+  </data>
+  <data name="Text_InstallTitle.Text" xml:space="preserve">
+    <value>Скачай Ollama для начала работы</value>
+  </data>
+  <data name="Text_InstallOllamaButton.Text" xml:space="preserve">
+    <value>Скачать Ollama</value>
+  </data>
+  <data name="Text_InstallRussianOllamaButton.Text" xml:space="preserve">
+    <value>Скачать Ollama (версия для России)</value>
+  </data>
+  <data name="Text_LaunchOllamaButton.Text" xml:space="preserve">
+    <value>Запустить установщик</value>
+  </data>
+  <data name="Text_InstallStatus.Text" xml:space="preserve">
+    <value>Скачивание быстрой версии с GitHub (~1 GB)...</value>
+  </data>
+  <data name="Text_SelectModelTitle.Text" xml:space="preserve">
+    <value>Выберите модель ИИ для установки</value>
+  </data>
+  <data name="TextBox_Prompt.PlaceholderText" xml:space="preserve">
+    <value>Введите ваш вопрос по Windows твикам...</value>
+  </data>
+  <data name="Text_Status.Text" xml:space="preserve">
+    <value>Готов к работе. Проверьте Ollama.</value>
+  </data>
+  <data name="Button_ChangeModel.Content" xml:space="preserve">
+    <value>&lt;value /&gt;</value>
+  </data>
 </root>

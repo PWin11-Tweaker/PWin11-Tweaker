@@ -360,9 +360,6 @@
   <data name="DisableBackgroundApps.Content" xml:space="preserve">
     <value>Disable background apps</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value>Prohibits applications from running in the background</value>
-  </data>
   <data name="DisableCloudContent.Content" xml:space="preserve">
     <value>Disable sending data to the cloud (OneDrive, Suggestions)</value>
   </data>
@@ -497,10 +494,6 @@
   <data name="TotalSizeText.Text" xml:space="preserve">
     <value>Total: {0}</value>
     <comment>TempCleanerPage.xaml</comment>
-  </data>
-  <data name="StatusText.Text" xml:space="preserve">
-    <value>Process...</value>
-    <comment>TempCleanerPage.xaml - Initial empty status</comment>
   </data>
   <data name="StatusText_Cleaning.Text" xml:space="preserve">
     <value>Cleaning in progress...</value>
@@ -687,8 +680,135 @@
   <data name="Delete_Ollama.Text" xml:space="preserve">
     <value>Removing Ollama and models...</value>
   </data>
+  <data name="StatusText.Text" xml:space="preserve">
+    <value>Process...</value>
+    <comment>TempCleanerPage.xaml - Initial empty status</comment>
+  </data>
   <data name="StatisticsLabel" xml:space="preserve">
     <value>Statistics:</value>
     <comment>TempCleanerPage.xaml</comment>
+  </data>
+  <data name="Status_OllamaNotInstalled" xml:space="preserve">
+    <value>Ollama is not installed.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Prohibits applications from running in the background</value>
+  </data>
+  <data name="Status_StartingOllama" xml:space="preserve">
+    <value>Starting Ollama API...</value>
+  </data>
+  <data name="Status_OllamaApiError" xml:space="preserve">
+    <value>Error: Ollama API is unavailable. Check the installation.</value>
+  </data>
+  <data name="Status_ModelNotSelected" xml:space="preserve">
+    <value>Model not selected or not installed. Select a model.</value>
+  </data>
+  <data name="Status_AIInitError" xml:space="preserve">
+    <value>AI initialization error: {0}</value>
+  </data>
+  <data name="Status_Ready" xml:space="preserve">
+    <value>Ready to work.</value>
+  </data>
+  <data name="InstallTitle_OllamaMissing" xml:space="preserve">
+    <value>Download Ollama to start using AI</value>
+  </data>
+  <data name="Button_InstallOllama" xml:space="preserve">
+    <value>Install Ollama</value>
+  </data>
+  <data name="Button_InstallRussianOllama" xml:space="preserve">
+    <value>Install Russian version</value>
+  </data>
+  <data name="InstallTitle_SelectModel" xml:space="preserve">
+    <value>Select an AI model to install</value>
+  </data>
+  <data name="Button_InstallModel" xml:space="preserve">
+    <value>Install model</value>
+  </data>
+  <data name="Status_DownloadingOllama" xml:space="preserve">
+    <value>Downloading fast version from GitHub (~1 GB)...</value>
+  </data>
+  <data name="Status_DownloadingRussianOllama" xml:space="preserve">
+    <value>Downloading Russian version from pwin11.ru (~1 GB)...</value>
+  </data>
+  <data name="Status_DownloadComplete" xml:space="preserve">
+    <value>Download complete. Launch the installer manually.</value>
+  </data>
+  <data name="Status_InstallError" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="Status_InstallingModel" xml:space="preserve">
+    <value>Installing model {0}...</value>
+  </data>
+  <data name="Status_ModelInstalled" xml:space="preserve">
+    <value>Model installed.</value>
+  </data>
+  <data name="Status_ModelInstallError" xml:space="preserve">
+    <value>Installation error: {0}</value>
+  </data>
+  <data name="Status_ChangeModel" xml:space="preserve">
+    <value>Select a new model to switch.</value>
+  </data>
+  <data name="Status_LaunchError" xml:space="preserve">
+    <value>Launch error: {0}</value>
+  </data>
+  <data name="Status_InstallerNotFound" xml:space="preserve">
+    <value>Installer file not found.</value>
+  </data>
+  <data name="Status_GeneratingResponse" xml:space="preserve">
+    <value>Generating response...</value>
+  </data>
+  <data name="Status_EmptyResponseError" xml:space="preserve">
+    <value>[Error: Empty response from AI. Check the model.]</value>
+  </data>
+  <data name="Status_SendError" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="Status_SendErrorMessage" xml:space="preserve">
+    <value>[Error: {0}]</value>
+  </data>
+  <data name="Session_NewTitle" xml:space="preserve">
+    <value>Session {0}</value>
+  </data>
+  <data name="Status_NewSessionCreated" xml:space="preserve">
+    <value>New session created.</value>
+  </data>
+  <data name="Text_PoweredBy.Text" xml:space="preserve">
+    <value>powered by: Ollama</value>
+  </data>
+  <data name="Text_ChatSessions.Text" xml:space="preserve">
+    <value>Chat Sessions</value>
+  </data>
+  <data name="Text_EraAIChat.Text" xml:space="preserve">
+    <value>eraAI Chat</value>
+  </data>
+  <data name="Text_TypingIndicator.Text" xml:space="preserve">
+    <value>AI is typing...</value>
+  </data>
+  <data name="Text_InstallTitle.Text" xml:space="preserve">
+    <value>Download Ollama to start using AI</value>
+  </data>
+  <data name="Text_InstallOllamaButton.Text" xml:space="preserve">
+    <value>Download Ollama</value>
+  </data>
+  <data name="Text_InstallRussianOllamaButton.Text" xml:space="preserve">
+    <value>Download Ollama (Russian version)</value>
+  </data>
+  <data name="Text_LaunchOllamaButton.Text" xml:space="preserve">
+    <value>Launch Installer</value>
+  </data>
+  <data name="Text_InstallStatus.Text" xml:space="preserve">
+    <value>Downloading fast version from GitHub (~1 GB)...</value>
+  </data>
+  <data name="Text_SelectModelTitle.Text" xml:space="preserve">
+    <value>Select an AI model to install</value>
+  </data>
+  <data name="TextBox_Prompt.PlaceholderText" xml:space="preserve">
+    <value>Enter your Windows tweak question...</value>
+  </data>
+  <data name="Text_Status.Text" xml:space="preserve">
+    <value>Ready to work. Check Ollama.</value>
+  </data>
+  <data name="Button_ChangeModel.Content" xml:space="preserve">
+    <value>&lt;value /&gt;</value>
   </data>
 </root>
