@@ -5,7 +5,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
-using PWin11_Tweaker_s.TempCleaner;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -195,8 +194,7 @@ namespace PWin11_Tweaker_s
                     { "InterfacePage", typeof(InterfacePage) },
                     { "PerformancePage", typeof(PerformancePage) },
                     { "PrivacyPage", typeof(PrivacyPage) },
-                    { "TempCleanerPage", typeof(TempCleanerPage) },
-                    { "eraPage", typeof(eraPage) }  // Добавлена навигация на eraPage
+                    { "eraPage", typeof(eraPage) } 
                 };
 
                 if (!pageMap.TryGetValue(tag, out Type? pageType) || pageType == null)

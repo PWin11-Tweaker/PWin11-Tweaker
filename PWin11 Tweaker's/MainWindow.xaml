@@ -59,11 +59,6 @@
                         <ImageIcon Source="/Assets/icons_nav2/privacy.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="TempCleaner" Tag="TempCleanerPage">
-                    <NavigationViewItem.Icon>
-                        <ImageIcon Source="/Assets/icons_nav2/trash.png"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
 
                 <NavigationViewItem Content="eraAI" Tag="eraPage">
                     <NavigationViewItem.Icon>

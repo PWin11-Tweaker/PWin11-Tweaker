@@ -507,10 +507,6 @@
     <value>Оповестить о баге</value>
     <comment>TempCleanerPage.xaml</comment>
   </data>
-  <data name="StatisticsLabel.Text" xml:space="preserve">
-    <value>Статистика:</value>
-    <comment>TempCleanerPage.xaml</comment>
-  </data>
   <data name="OpenOldNewExplorer.Content" xml:space="preserve">
     <value>Открыть OldNewExplorer</value>
   </data>
@@ -663,5 +659,8 @@
   </data>
   <data name="Delete_Ollama.Text" xml:space="preserve">
     <value>Удаление Ollama и моделей...</value>
+  </data>
+  <data name="StatisticsLabel" xml:space="preserve">
+    <value>Статистика:</value>
   </data>
 </root>
