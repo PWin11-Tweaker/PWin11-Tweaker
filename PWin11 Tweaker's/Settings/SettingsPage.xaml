@@ -49,12 +49,12 @@
                     Visibility="Collapsed">
                 <StackPanel Orientation="Horizontal" Spacing="5">
                     <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE74D;" Margin="0,0,5,0"/>
-                    <TextBlock Text="Удалить Ollama и модели" FontSize="14"/>
+                    <TextBlock Text="" FontSize="14"/>
                 </StackPanel>
             </Button>
 
             <TextBlock x:Name="UninstallOllamaStatusText"
-                       Text="Delete Ollama"
+                       x:Uid="status_delete_ollama"
                        FontSize="14"
                        Foreground="Gray"
                        HorizontalAlignment="Left"
