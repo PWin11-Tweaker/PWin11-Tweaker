@@ -783,4 +783,19 @@
   <data name="Button_ChangeModel.Content" xml:space="preserve">
     <value>&lt;value /&gt;</value>
   </data>
+  <data name="status_delete_ollama.Text" xml:space="preserve">
+    <value>Удалить Ollama</value>
+  </data>
+  <data name="btn_delete_ollama.Text" xml:space="preserve">
+    <value>Удалить Ollama и модели</value>
+  </data>
+  <data name="UninstallingOllama" xml:space="preserve">
+    <value>Удаление Ollama и моделей...</value>
+  </data>
+  <data name="OllamaUninstalledSuccessfully" xml:space="preserve">
+    <value>Ollama и модели успешно удалены.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка 404</value>
+  </data>
 </root>
