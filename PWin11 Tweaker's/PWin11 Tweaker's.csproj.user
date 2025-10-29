@@ -16,6 +16,11 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <Content Update="Strings\ru_RU\Resources.resw">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>

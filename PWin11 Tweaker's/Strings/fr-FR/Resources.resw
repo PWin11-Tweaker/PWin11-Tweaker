@@ -687,7 +687,7 @@
   <data name="StatisticsLabel" xml:space="preserve">
     <value>Statistiques :</value>
   </data>
-  <data name="Status_OllamaNotInstalled" xml:space="preserve">
+  <data name="OllamaNotInstalled" xml:space="preserve">
     <value>Ollama n'est pas installé.</value>
   </data>
   <data name="String1" xml:space="preserve">
@@ -824,5 +824,131 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error 404</value>
+  </data>
+  <data name="RunningOllamaAPI" xml:space="preserve">
+    <value>Run Ollama API</value>
+  </data>
+  <data name="OllamaApiUnavailable" xml:space="preserve">
+    <value>Error: The Ollama API is unavailable. Check the installation.</value>
+  </data>
+  <data name="ModelNotSelectedOrInstalled" xml:space="preserve">
+    <value>The model is not selected or installed. Select a model.</value>
+  </data>
+  <data name="AIInitializationError" xml:space="preserve">
+    <value>AI initialization error</value>
+  </data>
+  <data name="ReadyToWork" xml:space="preserve">
+    <value>Ready to work.</value>
+  </data>
+  <data name="DownloadOllamaPrompt" xml:space="preserve">
+    <value>Download Ollama to get started with AI</value>
+  </data>
+  <data name="SelectModelPrompt" xml:space="preserve">
+    <value>Select the AI model to install</value>
+  </data>
+  <data name="DownloadingOllamaGitHub" xml:space="preserve">
+    <value>Download the fast version from GitHub (~1 GB)...</value>
+  </data>
+  <data name="DownloadingOllamaRussian" xml:space="preserve">
+    <value>Downloading the Russian version from pwin11.ru (~1 GB)...</value>
+  </data>
+  <data name="DownloadCompleted" xml:space="preserve">
+    <value>The download is completed. Run the installer manually.</value>
+  </data>
+  <data name="InstallingModel" xml:space="preserve">
+    <value>Installing the model {0}...</value>
+  </data>
+  <data name="ModelInstalled" xml:space="preserve">
+    <value>The model is installed.</value>
+  </data>
+  <data name="InstallationError" xml:space="preserve">
+    <value>Installation error</value>
+  </data>
+  <data name="SelectNewModel" xml:space="preserve">
+    <value>Select a new model to change.</value>
+  </data>
+  <data name="LaunchError" xml:space="preserve">
+    <value>Launch error</value>
+  </data>
+  <data name="InstallerNotFound" xml:space="preserve">
+    <value>The installer file was not found.</value>
+  </data>
+  <data name="SystemPrompt" xml:space="preserve">
+    <value>Your name is eraAI, you are an experienced Windows 11 assistant, and you must respond in the language I am writing in. Don't write on markdown, write as plain text.</value>
+  </data>
+  <data name="EmptyAIResponse" xml:space="preserve">
+    <value>[Error: An empty response from the AI. Check the model.]</value>
+  </data>
+  <data name="AIResponseError" xml:space="preserve">
+    <value>[Error</value>
+  </data>
+  <data name="Session" xml:space="preserve">
+    <value>Session</value>
+  </data>
+  <data name="NewSessionCreated" xml:space="preserve">
+    <value>A new session has been created.</value>
+  </data>
+  <data name="PoweredByOllama" xml:space="preserve">
+    <value>powered by: Ollama</value>
+  </data>
+  <data name="ChatSessions" xml:space="preserve">
+    <value>Chat Sessions</value>
+  </data>
+  <data name="NewSessionButton.Content" xml:space="preserve">
+    <value>New Session</value>
+  </data>
+  <data name="StatusTextBlock.Text" xml:space="preserve">
+    <value>Ready to go. Check out Ollama.</value>
+  </data>
+  <data name="EraAIChatTitle.Text" xml:space="preserve">
+    <value>eraAI Chat</value>
+  </data>
+  <data name="ChangeModelButton.Content" xml:space="preserve">
+    <value>Change Model</value>
+  </data>
+  <data name="InstallOllamaButton.Content" xml:space="preserve">
+    <value>Install Ollama</value>
+  </data>
+  <data name="TypingIndicator.Text" xml:space="preserve">
+    <value>The AI is typing...</value>
+  </data>
+  <data name="InstallTitleTextBlock.Text" xml:space="preserve">
+    <value>Download Ollama to get started</value>
+  </data>
+  <data name="InstallOllamaPanelButton.Content" xml:space="preserve">
+    <value>Download Ollama (servers for other countries)</value>
+  </data>
+  <data name="InstallOllamaPanelButtonText.Text" xml:space="preserve">
+    <value>Download Ollama (servers for other countries)</value>
+  </data>
+  <data name="InstallRussianOllamaPanelButton.Content" xml:space="preserve">
+    <value>Download Ollama (servers from Russia)</value>
+  </data>
+  <data name="InstallRussianOllamaPanelButtonText.Text" xml:space="preserve">
+    <value>Download Ollama (servers from Russia)</value>
+  </data>
+  <data name="LaunchOllamaButton.Content" xml:space="preserve">
+    <value>Run the installer</value>
+  </data>
+  <data name="LaunchOllamaButtonText.Text" xml:space="preserve">
+    <value>Run the installer</value>
+  </data>
+  <data name="InstallOllamaStatusText.Text" xml:space="preserve">
+    <value>Download the fast version from GitHub (~1 GB)...</value>
+  </data>
+  <data name="ModelGemma3" xml:space="preserve">
+    <value>gemma3:1b (~1.4 GB)</value>
+  </data>
+  <data name="ModelPhi3" xml:space="preserve">
+    <value>phi3 (~2.3 GB)</value>
+  </data>
+  <data name="InstallModelButton.Content" xml:space="preserve">
+    <value>Install Model</value>
+  </data>
+  <data name="PromptTextBox.PlaceholderText" xml:space="preserve">
+    <value>Enter your question about Windows tweaks...</value>
+  </data>
+  <data name="SendButton.Content" xml:space="preserve">
+    <value>Send</value>
   </data>
 </root>

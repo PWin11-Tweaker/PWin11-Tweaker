@@ -663,7 +663,7 @@
   <data name="StatisticsLabel" xml:space="preserve">
     <value>Статистика:</value>
   </data>
-  <data name="Status_OllamaNotInstalled" xml:space="preserve">
+  <data name="OllamaNotInstalled" xml:space="preserve">
     <value>Ollama не установлена.</value>
   </data>
   <data name="Status_StartingOllama" xml:space="preserve">
@@ -797,5 +797,128 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>Ошибка 404</value>
+  </data>
+  <data name="RunningOllamaAPI" xml:space="preserve">
+    <value>Запуск Ollama API</value>
+  </data>
+  <data name="OllamaApiUnavailable" xml:space="preserve">
+    <value>Ошибка: API Ollama недоступен. Проверьте установку.</value>
+  </data>
+  <data name="ModelNotSelectedOrInstalled" xml:space="preserve">
+    <value>Модель не выбрана или не установлена. Выберите модель.</value>
+  </data>
+  <data name="AIInitializationError" xml:space="preserve">
+    <value>Ошибка инициализации AI</value>
+  </data>
+  <data name="ReadyToWork" xml:space="preserve">
+    <value>Готово к работе.</value>
+  </data>
+  <data name="DownloadOllamaPrompt" xml:space="preserve">
+    <value>Загрузите Ollama, чтобы начать работу с AI</value>
+  </data>
+  <data name="SelectModelPrompt" xml:space="preserve">
+    <value>Выберите модель AI для установки</value>
+  </data>
+  <data name="DownloadingOllamaGitHub" xml:space="preserve">
+    <value>Загрузка быстрой версии с GitHub (~1 ГБ)...</value>
+  </data>
+  <data name="DownloadingOllamaRussian" xml:space="preserve">
+    <value>Загрузка русской версии с pwin11.ru (~1 ГБ)...</value>
+  </data>
+  <data name="DownloadCompleted" xml:space="preserve">
+    <value>Загрузка завершена. Запустите установщик вручную.</value>
+  </data>
+  <data name="InstallingModel" xml:space="preserve">
+    <value>Установка модели {0}...</value>
+  </data>
+  <data name="ModelInstalled" xml:space="preserve">
+    <value>Модель установлена.</value>
+  </data>
+  <data name="InstallationError" xml:space="preserve">
+    <value>Ошибка установки</value>
+  </data>
+  <data name="SelectNewModel" xml:space="preserve">
+    <value>Выберите новую модель для изменения.</value>
+  </data>
+  <data name="LaunchError" xml:space="preserve">
+    <value>Ошибка запуска</value>
+  </data>
+  <data name="InstallerNotFound" xml:space="preserve">
+    <value>Файл установщика не найден.</value>
+  </data>
+  <data name="SystemPrompt" xml:space="preserve">
+    <value>Ваше имя eraAI, вы опытный помощник по Windows 11, и вы должны отвечать на языке, на котором я пишу. Не используйте markdown, пишите простым текстом.</value>
+  </data>
+  <data name="EmptyAIResponse" xml:space="preserve">
+    <value>[Ошибка: Пустой ответ от AI. Проверьте модель.]</value>
+  </data>
+  <data name="AIResponseError" xml:space="preserve">
+    <value>[Ошибка</value>
+  </data>
+  <data name="Session" xml:space="preserve">
+    <value>Сессия</value>
+  </data>
+  <data name="NewSessionCreated" xml:space="preserve">
+    <value>Новая сессия создана.</value>
+  </data>
+  <data name="PoweredByOllama" xml:space="preserve">
+    <value>powered by: Ollama</value>
+  </data>
+  <data name="ChatSessions" xml:space="preserve">
+    <value>Чат-сессии</value>
+  </data>
+  <data name="NewSessionButton.Content" xml:space="preserve">
+    <value>Новая сессия</value>
+  </data>
+  <data name="StatusTextBlock.Text" xml:space="preserve">
+    <value>Готово к работе. Проверьте Ollama.</value>
+  </data>
+  <data name="EraAIChatTitle.Text" xml:space="preserve">
+    <value>Чат eraAI</value>
+  </data>
+  <data name="ChangeModelButton.Content" xml:space="preserve">
+    <value>Сменить модель</value>
+  </data>
+  <data name="InstallOllamaButton.Content" xml:space="preserve">
+    <value>Установить Ollama</value>
+  </data>
+  <data name="TypingIndicator.Text" xml:space="preserve">
+    <value>AI печатает...</value>
+  </data>
+  <data name="InstallTitleTextBlock.Text" xml:space="preserve">
+    <value>Загрузите Ollama, чтобы начать</value>
+  </data>
+  <data name="InstallOllamaPanelButton.Content" xml:space="preserve">
+    <value>Загрузить Ollama (серверы для других стран)</value>
+  </data>
+  <data name="InstallOllamaPanelButtonText.Text" xml:space="preserve">
+    <value>Загрузить Ollama (серверы для других стран)</value>
+  </data>
+  <data name="InstallRussianOllamaPanelButton.Content" xml:space="preserve">
+    <value>Загрузить Ollama (серверы из России)</value>
+  </data>
+  <data name="InstallRussianOllamaPanelButtonText.Text" xml:space="preserve">
+    <value>Загрузить Ollama (серверы из России)</value>
+  </data>
+  <data name="LaunchOllamaButton.Content" xml:space="preserve">
+    <value>Запустить установщик</value>
+  </data>
+  <data name="InstallOllamaStatusText.Text" xml:space="preserve">
+    <value>Загрузка быстрой версии с GitHub (~1 ГБ)...</value>
+  </data>
+  <data name="ModelGemma3" xml:space="preserve">
+    <value>gemma3:1b (~1.4 GB)</value>
+  </data>
+  <data name="ModelPhi3" xml:space="preserve">
+    <value>phi3 (~2.3 GB)</value>
+  </data>
+  <data name="InstallModelButton.Content" xml:space="preserve">
+    <value>Установить модель</value>
+  </data>
+  <data name="PromptTextBox.PlaceholderText" xml:space="preserve">
+    <value>Введите ваш вопрос о настройках Windows...</value>
+  </data>
+  <data name="SendButton.Content" xml:space="preserve">
+    <value>Отправить</value>
   </data>
 </root>
