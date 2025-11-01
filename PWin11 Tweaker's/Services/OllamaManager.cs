@@ -69,7 +69,7 @@ namespace PWin11_Tweaker_s.Services
                             long downloaded = totalRead / (1024 * 1024); // MB
                             long remaining = (totalBytes - totalRead) / (1024 * 1024); // MB
 
-                            string status = $"Скачано: {downloaded} MB, Осталось: {remaining} MB, Скорость: {speed:F2} MB/s";
+                            string status = $"Downloaded: {downloaded} MB, Left: {remaining} MB, Speed: {speed:F2} MB/s";
                             progress.Report((percent, status));
 
                             lastReported = totalRead;
@@ -81,7 +81,7 @@ namespace PWin11_Tweaker_s.Services
 
                 if (totalBytes > 0 && progress != null)
                 {
-                    progress.Report((100, $"Скачано: {totalRead / (1024 * 1024)} MB, Осталось: 0 MB, Скорость: 0 MB/s"));
+                    progress.Report((100, $"Downloaded: {totalRead / (1024 * 1024)} MB, Left: 0 MB, Speed: 0 MB/s"));
                 }
 
                 var fileInfo = new FileInfo(installerPath);
@@ -140,7 +140,7 @@ namespace PWin11_Tweaker_s.Services
                             long downloaded = totalRead / (1024 * 1024); // MB
                             long remaining = (totalBytes - totalRead) / (1024 * 1024); // MB
 
-                            string status = $"Скачано: {downloaded} MB, Осталось: {remaining} MB, Скорость: {speed:F2} MB/s";
+                            string status = $"Downloaded: {downloaded} MB, Left: {remaining} MB, Speed: {speed:F2} MB/s";
                             progress.Report((percent, status));
 
                             lastReported = totalRead;
@@ -152,7 +152,7 @@ namespace PWin11_Tweaker_s.Services
 
                 if (totalBytes > 0 && progress != null)
                 {
-                    progress.Report((100, $"Скачано: {totalRead / (1024 * 1024)} MB, Осталось: 0 MB, Скорость: 0 MB/s"));
+                    progress.Report((100, $"Downloaded: {totalRead / (1024 * 1024)} MB, Left: 0 MB, Speed: 0 MB/s"));
                 }
 
                 var fileInfo = new FileInfo(installerPath);
