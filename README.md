@@ -1,4 +1,4 @@
-<div align="center">
+8<div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
 <img src="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/img/New%20Icon%20PWin11%20Tweaker-iOS-Default-1024x1024@1x.png?raw=true" alt="Logo" width="125" height="125">
 </a>
@@ -99,8 +99,6 @@ Distributed under the MIT License. See [MIT License](https://github.com/PWin11-T
 
 
 ## Contact
-
-My official tg channel: @ph1ncyn
 
 My mail: phancyncloud@gmail.com
 
