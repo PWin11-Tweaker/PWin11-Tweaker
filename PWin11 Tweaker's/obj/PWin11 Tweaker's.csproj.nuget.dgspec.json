@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net9.0-windows10.0.22000": {
@@ -76,32 +76,32 @@
             },
             "Microsoft.Bcl.AsyncInterfaces": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.Extensions.Options": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.9, )",
+              "version": "[9.0.11, )",
               "autoReferenced": true
             },
             "Microsoft.NETCore.Platforms": {
@@ -122,7 +122,7 @@
             },
             "Microsoft.Web.WebView2": {
               "target": "Package",
-              "version": "[1.0.3537.50, )"
+              "version": "[1.0.3650.58, )"
             },
             "Microsoft.Win32": {
               "target": "Package",
@@ -134,25 +134,25 @@
             },
             "Microsoft.Win32.SystemEvents": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.Windows.CsWin32": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[0.3.217, )"
+              "version": "[0.3.259, )"
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
-              "version": "[10.0.26100.6584, )"
+              "version": "[10.0.26100.7175, )"
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
-              "version": "[1.8.251003001, )"
+              "version": "[1.8.251106002, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -160,11 +160,11 @@
             },
             "OllamaSharp": {
               "target": "Package",
-              "version": "[5.4.7, )"
+              "version": "[5.4.12, )"
             },
             "System.CodeDom": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Collections": {
               "target": "Package",
@@ -180,7 +180,7 @@
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Diagnostics.Debug": {
               "target": "Package",
@@ -188,7 +188,7 @@
             },
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Diagnostics.Tracing": {
               "target": "Package",
@@ -196,11 +196,11 @@
             },
             "System.DirectoryServices": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Drawing.Common": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Dynamic.Runtime": {
               "target": "Package",
@@ -232,11 +232,11 @@
             },
             "System.Management": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Management.Automation": {
               "target": "Package",
-              "version": "[7.5.3, )"
+              "version": "[7.5.4, )"
             },
             "System.Net.Http": {
               "target": "Package",
@@ -260,7 +260,7 @@
             },
             "System.Security.Permissions": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Security.Principal": {
               "target": "Package",
@@ -268,7 +268,7 @@
             },
             "System.ServiceProcess.ServiceController": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "System.Threading": {
               "target": "Package",
@@ -280,7 +280,7 @@
             },
             "System.Windows.Extensions": {
               "target": "Package",
-              "version": "[9.0.10, )"
+              "version": "[10.0.0, )"
             },
             "WinUI3Localizer": {
               "target": "Package",
@@ -317,31 +317,31 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Crossgen2.win-arm64",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -349,15 +349,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[9.0.9, 9.0.9]"
+              "version": "[9.0.11, 9.0.11]"
             }
           ],
           "frameworkReferences": {
@@ -368,7 +368,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
