@@ -29,7 +29,7 @@
     <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.win32metadata\68.0.4-preview\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Metadata.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.win32metadata\68.0.4-preview\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Metadata.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windows.wdk.win32metadata\0.13.25-experimental\buildTransitive\netstandard1.0\Microsoft.Windows.WDK.Win32Metadata.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.wdk.win32metadata\0.13.25-experimental\buildTransitive\netstandard1.0\Microsoft.Windows.WDK.Win32Metadata.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.win32docs\0.1.42-alpha\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Docs.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.win32docs\0.1.42-alpha\buildTransitive\netstandard1.0\Microsoft.Windows.SDK.Win32Docs.props')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.259\build\netstandard1.0\Microsoft.Windows.CsWin32.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.259\build\netstandard1.0\Microsoft.Windows.CsWin32.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.264\build\netstandard1.0\Microsoft.Windows.CsWin32.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.cswin32\0.3.264\build\netstandard1.0\Microsoft.Windows.CsWin32.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.11\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\9.0.11\build\Microsoft.NET.ILLink.Tasks.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
@@ -37,7 +37,7 @@
     <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.web.webview2\1.0.3650.58</PkgMicrosoft_Web_WebView2>
     <PkgMicrosoft_WindowsAppSDK_WinUI Condition=" '$(PkgMicrosoft_WindowsAppSDK_WinUI)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.windowsappsdk.winui\1.8.251105000</PkgMicrosoft_WindowsAppSDK_WinUI>
     <PkgMicrosoft_WindowsAppSDK_Runtime Condition=" '$(PkgMicrosoft_WindowsAppSDK_Runtime)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.251106002</PkgMicrosoft_WindowsAppSDK_Runtime>
-    <PkgMicrosoft_Windows_CsWin32 Condition=" '$(PkgMicrosoft_Windows_CsWin32)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.windows.cswin32\0.3.259</PkgMicrosoft_Windows_CsWin32>
+    <PkgMicrosoft_Windows_CsWin32 Condition=" '$(PkgMicrosoft_Windows_CsWin32)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.windows.cswin32\0.3.264</PkgMicrosoft_Windows_CsWin32>
     <PkgMicrosoft_NET_ILLink_Tasks Condition=" '$(PkgMicrosoft_NET_ILLink_Tasks)' == '' ">C:\Users\ph1ncyn\.nuget\packages\microsoft.net.illink.tasks\9.0.11</PkgMicrosoft_NET_ILLink_Tasks>
     <PkgCommunityToolkit_WinUI_UI_Controls_Primitives Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Primitives)' == '' ">C:\Users\ph1ncyn\.nuget\packages\communitytoolkit.winui.ui.controls.primitives\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Primitives>
     <PkgCommunityToolkit_WinUI_UI_Controls_Core Condition=" '$(PkgCommunityToolkit_WinUI_UI_Controls_Core)' == '' ">C:\Users\ph1ncyn\.nuget\packages\communitytoolkit.winui.ui.controls.core\7.1.2</PkgCommunityToolkit_WinUI_UI_Controls_Core>
