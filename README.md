@@ -14,7 +14,7 @@ Tweaker for OS: Windows 11
   <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
   <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest">Latest Release</a>
   <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/blob/main/readme/ReadmeRus.md">Readme.md on Russian</a>
-  <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/wiki">Wiki</a>
+  <a href="https://dev.to/ph2ncyn">dev.to</a>
   <a href="https://deepwiki.com/PWin11-Tweaker/PWin11-Tweaker/2-application-architecture">DeepWIKI</a>
   <a href="https://github.com/PWin11-Tweaker/PWin11-Tweaker/releases/latest/download/release.zip">Download! »</a>
 </div>
