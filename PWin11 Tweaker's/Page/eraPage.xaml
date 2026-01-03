@@ -116,11 +116,12 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="eraAI Chat"
+                <!-- "<TextBlock Text="eraAI Chat"
                            FontSize="22"
                            FontWeight="Bold"
                            VerticalAlignment="Center"/>
-
+                -->
+                
                 <Button x:Name="ChangeModelButton"
                         Click="ChangeModelButton_Click"
                         Grid.Column="1"

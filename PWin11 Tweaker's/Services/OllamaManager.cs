@@ -14,8 +14,8 @@ namespace PWin11_Tweaker_s.Services
 {
     public static class OllamaManager
     {
-        private static readonly string _ollamaUrl = "https://github.com/ollama/ollama/releases/download/v0.12.6/OllamaSetup.exe";
-        private static readonly string _russianOllamaUrl = "https://pwin11.ru/ollama_list/0_12_6/OllamaSetup.exe";
+        private static readonly string _ollamaUrl = "https://github.com/ollama/ollama/releases/download/v0.13.5/OllamaSetup.exe";
+        private static readonly string _russianOllamaUrl = "https://pwin11.ru/ollama_list/0_13_5/OllamaSetup.exe"; 
         private static readonly string _ollamaPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "Ollama");
         private static readonly string _programFilesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Ollama");
         private static int _currentPort = 11434;
@@ -28,7 +28,7 @@ namespace PWin11_Tweaker_s.Services
             return isInstalled;
         }
 
-        public static async Task InstallOllamaAsync(IProgress<(double percent, string status)> progress = null)
+        public static async Task<string> InstallOllamaAsync(IProgress<(double percent, string status)> progress = null)
         {
             var installerPath = Path.Combine(AppContext.BaseDirectory, "OllamaSetup.exe");
             if (File.Exists(installerPath))
@@ -37,7 +37,6 @@ namespace PWin11_Tweaker_s.Services
             }
             using var client = new HttpClient();
             client.Timeout = TimeSpan.FromSeconds(120);
-            var startTime = DateTime.Now;
             long totalRead = 0;
 
             try
@@ -48,7 +47,7 @@ namespace PWin11_Tweaker_s.Services
                 var totalBytes = response.Content.Headers.ContentLength ?? -1;
                 using var contentStream = await response.Content.ReadAsStreamAsync();
                 using var fileStream = new FileStream(installerPath, FileMode.Create, FileAccess.Write, FileShare.None);
-                var buffer = new byte[4096];
+                var buffer = new byte[64 * 1024];
                 long lastReported = 0;
                 DateTime lastTime = DateTime.Now;
 
@@ -87,19 +86,58 @@ namespace PWin11_Tweaker_s.Services
                 var fileInfo = new FileInfo(installerPath);
                 if (fileInfo.Length < 900 * 1024 * 1024)
                 {
-                    throw new Exception("Файл установки повреждён или слишком мал (ожидалось ~1 GB).");
+                    throw new Exception("Installer file is corrupted or too small (expected ~1 GB).");
                 }
 
                 Debug.WriteLine($"Installer downloaded at: {installerPath}");
+
+                // Launch installer in background (non-blocking) using UseShellExecute so installer UI can run elevated if needed
+                try
+                {
+                    var startInfo = new ProcessStartInfo
+                    {
+                        FileName = installerPath,
+                        Arguments = "/SILENT",
+                        UseShellExecute = true,
+                        CreateNoWindow = true,
+                        Verb = "runas"
+                    };
+                    var proc = Process.Start(startInfo);
+                    progress?.Report((100, "InstallerLaunched"));
+
+                    if (proc != null)
+                    {
+                        // Wait for installer to finish in background and notify progress
+                        _ = Task.Run(async () =>
+                        {
+                            try
+                            {
+                                await proc.WaitForExitAsync();
+                                progress?.Report((100, "InstallerFinished"));
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine($"Error waiting for installer exit: {ex.Message}");
+                            }
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Failed to launch installer: {ex.Message}");
+                    // still return installer path so UI can offer to launch manually
+                }
+
+                return installerPath;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Ошибка загрузки Ollama: {ex.Message}");
-                throw new Exception($"Не удалось скачать установщик: {ex.Message}");
+                Debug.WriteLine($"Error downloading Ollama: {ex.Message}");
+                throw new Exception($"Failed to download installer: {ex.Message}");
             }
         }
 
-        public static async Task InstallRussianOllamaAsync(IProgress<(double percent, string status)> progress = null)
+        public static async Task<string> InstallRussianOllamaAsync(IProgress<(double percent, string status)> progress = null)
         {
             var installerPath = Path.Combine(AppContext.BaseDirectory, "OllamaSetup.exe");
             if (File.Exists(installerPath))
@@ -108,7 +146,6 @@ namespace PWin11_Tweaker_s.Services
             }
             using var client = new HttpClient();
             client.Timeout = TimeSpan.FromSeconds(120);
-            var startTime = DateTime.Now;
             long totalRead = 0;
 
             try
@@ -119,7 +156,7 @@ namespace PWin11_Tweaker_s.Services
                 var totalBytes = response.Content.Headers.ContentLength ?? -1;
                 using var contentStream = await response.Content.ReadAsStreamAsync();
                 using var fileStream = new FileStream(installerPath, FileMode.Create, FileAccess.Write, FileShare.None);
-                var buffer = new byte[4096];
+                var buffer = new byte[64 * 1024];
                 long lastReported = 0;
                 DateTime lastTime = DateTime.Now;
 
@@ -132,7 +169,7 @@ namespace PWin11_Tweaker_s.Services
                     if (totalBytes > 0 && progress != null)
                     {
                         double percent = (double)totalRead / totalBytes * 100;
-                        if (totalRead - lastReported >= 1024 * 1024 || percent >= 100) // Update every 1MB or at 100%
+                        if (totalRead - lastReported >= 1024 * 1024 || percent >= 100)
                         {
                             var currentTime = DateTime.Now;
                             var timeElapsed = (currentTime - lastTime).TotalSeconds;
@@ -146,7 +183,7 @@ namespace PWin11_Tweaker_s.Services
                             lastReported = totalRead;
                             lastTime = currentTime;
                         }
-                        await Task.Yield(); // Yield to allow UI updates
+                        await Task.Yield();
                     }
                 }
 
@@ -158,15 +195,35 @@ namespace PWin11_Tweaker_s.Services
                 var fileInfo = new FileInfo(installerPath);
                 if (fileInfo.Length < 900 * 1024 * 1024)
                 {
-                    throw new Exception("Файл установки повреждён или слишком мал (ожидалось ~1 GB).");
+                    throw new Exception("Installer file is corrupted or too small (expected ~1 GB).");
                 }
 
                 Debug.WriteLine($"Installer downloaded at: {installerPath}");
+
+                try
+                {
+                    var startInfo = new ProcessStartInfo
+                    {
+                        FileName = installerPath,
+                        Arguments = "/S",
+                        UseShellExecute = true,
+                        CreateNoWindow = true,
+                        Verb = "runas"
+                    };
+                    Process.Start(startInfo);
+                    progress?.Report((100, "Installer launched"));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Failed to launch installer (Russian): {ex.Message}");
+                }
+
+                return installerPath;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Ошибка загрузки Ollama (Russian): {ex.Message}");
-                throw new Exception($"Не удалось скачать установщик (Russian): {ex.Message}");
+                Debug.WriteLine($"Error downloading Ollama (Russian): {ex.Message}");
+                throw new Exception($"Failed to download installer (Russian): {ex.Message}");
             }
         }
 
@@ -237,7 +294,7 @@ namespace PWin11_Tweaker_s.Services
                         if (!exited || process.ExitCode != 0)
                         {
                             Debug.WriteLine($"Uninstaller failed or timed out with exit code {process.ExitCode}");
-                            throw new Exception("Ошибка выполнения uninstaller.");
+                            throw new Exception("Uninstaller failed.");
                         }
                         Debug.WriteLine("Uninstallation via unins000.exe completed.");
                     }
@@ -247,13 +304,12 @@ namespace PWin11_Tweaker_s.Services
                     Debug.WriteLine($"Uninstaller not found at: {uninstallPath}");
                 }
 
-                // Шаг 3: Всё готово!
                 Debug.WriteLine("Ollama uninstallation completed successfully.");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Uninstallation failed: {ex.Message}\nStackTrace: {ex.StackTrace}");
-                throw new Exception($"Не удалось удалить Ollama: {ex.Message}");
+                throw new Exception($"Failed to uninstall Ollama: {ex.Message}");
             }
         }
 
@@ -282,7 +338,7 @@ namespace PWin11_Tweaker_s.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Ошибка получения списка моделей: {ex.Message}");
+                Debug.WriteLine($"Error getting model list: {ex.Message}");
                 return Array.Empty<string>();
             }
         }
@@ -297,11 +353,11 @@ namespace PWin11_Tweaker_s.Services
                 var content = new StringContent(JsonSerializer.Serialize(requestBody), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.DeleteAsync($"http://localhost:{_currentPort}/api/delete?model={modelName}");
                 response.EnsureSuccessStatusCode();
-                Debug.WriteLine($"Модель {modelName} удалена.");
+                Debug.WriteLine($"Removed model {modelName}.");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Ошибка удаления модели {modelName}: {ex.Message}");
+                Debug.WriteLine($"Error removing model {modelName}: {ex.Message}");
                 throw;
             }
         }
@@ -396,14 +452,14 @@ namespace PWin11_Tweaker_s.Services
                 if (IsPortAvailable(port))
                     return port;
             }
-            throw new Exception("Нет доступных портов в диапазоне 11434-11500");
+            throw new Exception("No available ports in range 11434-11500");
         }
 
         private static bool IsPortAvailable(int port)
         {
             try
             {
-                using var tcpListener = new TcpListener(IPAddress.Loopback, port);
+                using var tcpListener = new TcpListener(System.Net.IPAddress.Loopback, port);
                 tcpListener.Start();
                 tcpListener.Stop();
                 return true;

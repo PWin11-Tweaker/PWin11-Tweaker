@@ -5,15 +5,18 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Windows.ApplicationModel.Resources;
 using PWin11_Tweaker_s.Script;
+using PWin11_Tweaker_s.Helpers;
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class PrivacyPage : Microsoft.UI.Xaml.Controls.Page
     {
         private readonly ResourceLoader resourceLoader;
+        private CancellationTokenSource? _cts;
 
         public PrivacyPage()
         {
@@ -29,82 +32,72 @@ namespace PWin11_Tweaker_s
             {
                 Debug.WriteLine("LoadCurrentSettings: Загрузка текущих настроек начата.");
 
-                // Телеметрия (Исправлено)
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\DataCollection", false))
                 {
-                    int? telemetry = key?.GetValue("AllowTelemetry") as int? ?? 3; // 3 - значение по умолчанию, если ключа нет
+                    int? telemetry = key?.GetValue("AllowTelemetry") as int? ?? 3;
                     DisableTelemetryToggle.IsChecked = telemetry == 0;
                     Debug.WriteLine($"LoadCurrentSettings: Телеметрия - AllowTelemetry = {telemetry}, Toggle = {DisableTelemetryToggle.IsChecked}");
                 }
 
-                // Рекламный ID (Работает)
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo"))
                 {
-                    int? adId = key?.GetValue("Enabled") as int? ?? 1; // 1 - значение по умолчанию, если ключа нет
+                    int? adId = key?.GetValue("Enabled") as int? ?? 1;
                     DisableAdvertisingIdToggle.IsChecked = adId == 0;
                     Debug.WriteLine($"LoadCurrentSettings: Рекламный ID - Enabled = {adId}, Toggle = {DisableAdvertisingIdToggle.IsChecked}");
                 }
 
-                // Местоположение (Исправлено)
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", false))
                 {
-                    int? location = key?.GetValue("DisableLocation") as int? ?? 0; // 0 - значение по умолчанию, если ключа нет
+                    int? location = key?.GetValue("DisableLocation") as int? ?? 0;
                     DisableLocationToggle.IsChecked = location == 1;
                     Debug.WriteLine($"LoadCurrentSettings: Местоположение - DisableLocation = {location}, Toggle = {DisableLocationToggle.IsChecked}");
                 }
 
-                // Cortana (Исправлено)
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\Windows Search", false))
                 {
-                    int? cortana = key?.GetValue("AllowCortana") as int? ?? 1; // 1 - значение по умолчанию, если ключа нет
+                    int? cortana = key?.GetValue("AllowCortana") as int? ?? 1;
                     DisableCortanaToggle.IsChecked = cortana == 0;
                     Debug.WriteLine($"LoadCurrentSettings: Cortana - AllowCortana = {cortana}, Toggle = {DisableCortanaToggle.IsChecked}");
                 }
 
-                // Фоновые приложения (Работает)
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications"))
                 {
-                    int? backgroundApps = key?.GetValue("GlobalUserDisabled") as int? ?? 0; // 0 - значение по умолчанию, если ключа нет
+                    int? backgroundApps = key?.GetValue("GlobalUserDisabled") as int? ?? 0;
                     DisableBackgroundAppsToggle.IsChecked = backgroundApps == 1;
                     Debug.WriteLine($"LoadCurrentSettings: Фоновые приложения - GlobalUserDisabled = {backgroundApps}, Toggle = {DisableBackgroundAppsToggle.IsChecked}");
                 }
 
-                // Облачный контент (Работает)
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost"))
                 {
-                    int? cloudContent = key?.GetValue("DisableCloudOptimizedContent") as int? ?? 0; // 0 - значение по умолчанию, если ключа нет
+                    int? cloudContent = key?.GetValue("DisableCloudOptimizedContent") as int? ?? 0;
                     DisableCloudContentToggle.IsChecked = cloudContent == 1;
                     Debug.WriteLine($"LoadCurrentSettings: Облачный контент - DisableCloudOptimizedContent = {cloudContent}, Toggle = {DisableCloudContentToggle.IsChecked}");
                 }
 
-                // Find My Device (Исправлено)
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\FindMyDevice", false))
                 {
-                    int? findMyDevice = key?.GetValue("AllowFindMyDevice") as int? ?? 1; // 1 - значение по умолчанию, если ключа нет
+                    int? findMyDevice = key?.GetValue("AllowFindMyDevice") as int? ?? 1;
                     DisableFindMyDeviceToggle.IsChecked = findMyDevice == 0;
                     Debug.WriteLine($"LoadCurrentSettings: Find My Device - AllowFindMyDevice = {findMyDevice}, Toggle = {DisableFindMyDeviceToggle.IsChecked}");
                 }
 
-                // Windows Insider Program телеметрия (Исправлено)
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds", false))
                 {
-                    int? insiderTelemetry = key?.GetValue("AllowBuildPreview") as int? ?? 1; // 1 - значение по умолчанию, если ключа нет
+                    int? insiderTelemetry = key?.GetValue("AllowBuildPreview") as int? ?? 1;
                     DisableInsiderTelemetryToggle.IsChecked = insiderTelemetry == 0;
                     Debug.WriteLine($"LoadCurrentSettings: Windows Insider Telemetry - AllowBuildPreview = {insiderTelemetry}, Toggle = {DisableInsiderTelemetryToggle.IsChecked}");
                 }
 
-                // Сбор данных Microsoft Edge (Исправлено)
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Edge", false))
                 {
-                    int? edgeDiagnostics = key?.GetValue("DiagnosticData") as int? ?? 1; // 1 - значение по умолчанию, если ключа нет
+                    int? edgeDiagnostics = key?.GetValue("DiagnosticData") as int? ?? 1;
                     DisableEdgeDiagnosticsToggle.IsChecked = edgeDiagnostics == 0;
                     Debug.WriteLine($"LoadCurrentSettings: Microsoft Edge Diagnostics - DiagnosticData = {edgeDiagnostics}, Toggle = {DisableEdgeDiagnosticsToggle.IsChecked}");
                 }
 
-                // Suggested Content (Работает)
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"))
                 {
-                    int? suggestedContent = key?.GetValue("SubscribedContent-338393Enabled") as int? ?? 1; // 1 - значение по умолчанию, если ключа нет
+                    int? suggestedContent = key?.GetValue("SubscribedContent-338393Enabled") as int? ?? 1;
                     DisableSuggestedContentToggle.IsChecked = suggestedContent == 0;
                     Debug.WriteLine($"LoadCurrentSettings: Suggested Content - SubscribedContent-338393Enabled = {suggestedContent}, Toggle = {DisableSuggestedContentToggle.IsChecked}");
                 }
@@ -119,6 +112,10 @@ namespace PWin11_Tweaker_s
 
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
+            var ct = _cts.Token;
+
             try
             {
                 Debug.WriteLine("ApplyButton_Click: Начало применения настроек.");
@@ -127,136 +124,92 @@ namespace PWin11_Tweaker_s
                 ResetButton.IsEnabled = false;
                 StatusText.Text = resourceLoader.GetString("Preparation");
                 ProgressBar.Value = 0;
-                await Task.Delay(100);
+                await Task.Delay(100, ct);
 
-                string regContent = "Windows Registry Editor Version 5.00";
-                string batContent = "@echo off";
+                var tasks = new System.Collections.Generic.List<Task>();
 
-                // Телеметрия
                 bool disableTelemetry = DisableTelemetryToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Телеметрия - Устанавливаем AllowTelemetry = {(disableTelemetry ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]" + "" +
-                              $"\"AllowTelemetry\"=dword:0000000{(disableTelemetry ? 0 : 1)}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\Policies\Microsoft\Windows\DataCollection", "AllowTelemetry", disableTelemetry ? 0 : 1, RegistryValueKind.DWord, ct));
                 if (disableTelemetry)
                 {
-                    Debug.WriteLine("ApplyButton_Click: Отключаем службу DiagTrack.");
-                    regContent += @"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]" + "" +
-                                  "\"Start\"=dword:00000004";
-                    batContent += "sc stop DiagTrack >nul 2>&1";
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                        @"SYSTEM\CurrentControlSet\Services\DiagTrack", "Start", 4, RegistryValueKind.DWord, ct));
                 }
 
-                // Рекламный ID
                 bool disableAdId = DisableAdvertisingIdToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Рекламный ID - Устанавливаем Enabled = {(disableAdId ? 0 : 1)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]" + "" +
-                              $"\"Enabled\"=dword:0000000{(disableAdId ? 0 : 1)}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo", "Enabled", disableAdId ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Местоположение
                 bool disableLocation = DisableLocationToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Местоположение - Устанавливаем DisableLocation = {(disableLocation ? 1 : 0)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]" + "" +
-                              $"\"DisableLocation\"=dword:0000000{(disableLocation ? 1 : 0)}" +
-                              $"\"DisableLocationForAllUsers\"=dword:0000000{(disableLocation ? 1 : 0)}";
-                if (disableLocation)
-                {
-                    batContent += "sc stop lfsvc >nul 2>&1"; // Остановка службы геолокации
-                }
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocation", disableLocation ? 1 : 0, RegistryValueKind.DWord, ct));
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors", "DisableLocationForAllUsers", disableLocation ? 1 : 0, RegistryValueKind.DWord, ct));
 
-                // Cortana
                 bool disableCortana = DisableCortanaToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Cortana - Устанавливаем AllowCortana = {(disableCortana ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]" + "" +
-                              $"\"AllowCortana\"=dword:0000000{(disableCortana ? 0 : 1)}";
-                if (disableCortana)
-                {
-                    batContent += "sc stop Cortana >nul 2>&1"; // Остановка службы Cortana
-                }
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\Policies\Microsoft\Windows\Windows Search", "AllowCortana", disableCortana ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Фоновые приложения
                 bool disableBackgroundApps = DisableBackgroundAppsToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Фоновые приложения - Устанавливаем GlobalUserDisabled = {(disableBackgroundApps ? 1 : 0)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]" + "" +
-                              $"\"GlobalUserDisabled\"=dword:0000000{(disableBackgroundApps ? 1 : 0)}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications", "GlobalUserDisabled", disableBackgroundApps ? 1 : 0, RegistryValueKind.DWord, ct));
 
-                // Облачный контент
                 bool disableCloudContent = DisableCloudContentToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Облачный контент - Устанавливаем DisableCloudOptimizedContent = {(disableCloudContent ? 1 : 0)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost]" + "" +
-                              $"\"DisableCloudOptimizedContent\"=dword:0000000{(disableCloudContent ? 1 : 0)}" +
-                              @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]" + "" +
-                              $"\"SystemPaneSuggestionsEnabled\"=dword:0000000{(disableCloudContent ? 0 : 1)}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\CloudExperienceHost", "DisableCloudOptimizedContent", disableCloudContent ? 1 : 0, RegistryValueKind.DWord, ct));
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SystemPaneSuggestionsEnabled", disableCloudContent ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Find My Device
                 bool disableFindMyDevice = DisableFindMyDeviceToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Find My Device - Устанавливаем AllowFindMyDevice = {(disableFindMyDevice ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FindMyDevice]" + "" +
-                              $"\"AllowFindMyDevice\"=dword:0000000{(disableFindMyDevice ? 0 : 1)}";
-                if (disableFindMyDevice)
-                {
-                    batContent += "sc stop OneSyncSvc >nul 2>&1"; // Остановка службы синхронизации
-                }
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\Policies\Microsoft\FindMyDevice", "AllowFindMyDevice", disableFindMyDevice ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Windows Insider Program телеметрия
                 bool disableInsiderTelemetry = DisableInsiderTelemetryToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Windows Insider Telemetry - Устанавливаем AllowBuildPreview = {(disableInsiderTelemetry ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]" + "" +
-                              $"\"AllowBuildPreview\"=dword:0000000{(disableInsiderTelemetry ? 0 : 1)}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds", "AllowBuildPreview", disableInsiderTelemetry ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Сбор данных Microsoft Edge
                 bool disableEdgeDiagnostics = DisableEdgeDiagnosticsToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Microsoft Edge Diagnostics - Устанавливаем DiagnosticData = {(disableEdgeDiagnostics ? 0 : 1)}");
-                regContent += @"[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]" + "" +
-                              $"\"DiagnosticData\"=dword:0000000{(disableEdgeDiagnostics ? 0 : 1)}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\Policies\Microsoft\Edge", "DiagnosticData", disableEdgeDiagnostics ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Suggested Content
                 bool disableSuggestedContent = DisableSuggestedContentToggle.IsChecked ?? false;
-                Debug.WriteLine($"ApplyButton_Click: Suggested Content - Устанавливаем SubscribedContent-338393Enabled = {(disableSuggestedContent ? 0 : 1)}");
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]" + "" +
-                              $"\"SubscribedContent-338393Enabled\"=dword:0000000{(disableSuggestedContent ? 0 : 1)}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager", "SubscribedContent-338393Enabled", disableSuggestedContent ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Применение изменений
                 StatusText.Text = resourceLoader.GetString("Apply_Change");
                 ProgressBar.Value = 50;
-                Debug.WriteLine("ApplyButton_Click: Создание временных файлов для применения изменений.");
-                await Task.Delay(100);
+                await Task.Delay(100, ct);
 
-                string tempRegPath = Path.Combine(Path.GetTempPath(), "PrivacyTweaks.reg");
-                File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
-                Debug.WriteLine($"ApplyButton_Click: Создан REG-файл: {tempRegPath}");
+                await Task.WhenAll(tasks).ConfigureAwait(false);
 
-                string tempBatPath = Path.Combine(Path.GetTempPath(), "PrivacyTweaks.bat");
-                batContent += $"reg import \"{tempRegPath}\" >nul 2>&1" +
-                              "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)" +
-                              $"del \"{tempRegPath}\" >nul 2>&1" +
-                              "taskkill /f /im explorer.exe >nul 2>&1" +
-                              "start explorer.exe" +
-                              "exit /b 0";
-                File.WriteAllText(tempBatPath, batContent);
-                Debug.WriteLine($"ApplyButton_Click: Создан BAT-файл: {tempBatPath}");
-
-                StatusText.Text = resourceLoader.GetString("Apply_Change");
-                ProgressBar.Value = 75;
-                Debug.WriteLine("ApplyButton_Click: Запуск команды для применения изменений.");
-                await Task.Delay(100);
-
-                ProcessStartInfo processInfo = new ProcessStartInfo
+                // Применяем некоторые остановки служб, если нужно
+                try
                 {
-                    FileName = "cmd.exe",
-                    Arguments = $"/C \"{tempBatPath}\"",
-                    UseShellExecute = true,
-                    CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                };
-
-                using (Process process = Process.Start(processInfo))
-                {
-                    process.WaitForExit(5000);
-                    if (process.ExitCode != 0)
+                    if (disableTelemetry)
                     {
-                        Debug.WriteLine($"ApplyButton_Click: Ошибка применения настроек, код: {process.ExitCode}");
-                        throw new Exception($"Ошибка применения настроек, код: {process.ExitCode}");
+                        var psi = new ProcessStartInfo { FileName = "sc", Arguments = "stop DiagTrack", UseShellExecute = true, CreateNoWindow = true };
+                        await AsyncHelpers.RunProcessAsync(psi, 5000, ct).ConfigureAwait(false);
                     }
-                    Debug.WriteLine($"ApplyButton_Click: Команда выполнена успешно, код выхода: {process.ExitCode}");
+                    if (disableLocation)
+                    {
+                        var psi = new ProcessStartInfo { FileName = "sc", Arguments = "stop lfsvc", UseShellExecute = true, CreateNoWindow = true };
+                        await AsyncHelpers.RunProcessAsync(psi, 5000, ct).ConfigureAwait(false);
+                    }
+                    if (disableCortana)
+                    {
+                        var psi = new ProcessStartInfo { FileName = "sc", Arguments = "stop Cortana", UseShellExecute = true, CreateNoWindow = true };
+                        await AsyncHelpers.RunProcessAsync(psi, 5000, ct).ConfigureAwait(false);
+                    }
+                    if (disableFindMyDevice)
+                    {
+                        var psi = new ProcessStartInfo { FileName = "sc", Arguments = "stop OneSyncSvc", UseShellExecute = true, CreateNoWindow = true };
+                        await AsyncHelpers.RunProcessAsync(psi, 5000, ct).ConfigureAwait(false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"ApplyButton_Click: Ошибка при остановке служб: {ex.Message}");
                 }
 
                 // Сохранение состояния твиков в TweakStatus
@@ -270,13 +223,11 @@ namespace PWin11_Tweaker_s
                 TweakStatus.IsInsiderTelemetryDisabled = disableInsiderTelemetry;
                 TweakStatus.IsEdgeDiagnosticsDisabled = disableEdgeDiagnostics;
                 TweakStatus.IsSuggestedContentDisabled = disableSuggestedContent;
-                TweakStatus.SaveSettings(); // Сохраняем изменения
-                Debug.WriteLine("ApplyButton_Click: Состояние твиков сохранено в TweakStatus.");
+                TweakStatus.SaveSettings();
 
                 StatusText.Text = resourceLoader.GetString("Success");
                 ProgressBar.Value = 100;
-                Debug.WriteLine("ApplyButton_Click: Настройки успешно применены.");
-                await Task.Delay(500);
+                await Task.Delay(500, ct);
 
                 var dialog = new ContentDialog
                 {
@@ -286,7 +237,11 @@ namespace PWin11_Tweaker_s
                     XamlRoot = this.XamlRoot
                 };
                 await dialog.ShowAsync();
-                Debug.WriteLine("ApplyButton_Click: Отображено сообщение об успешном применении.");
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.WriteLine("ApplyButton_Click: Операция отменена пользователем.");
+                StatusText.Text = resourceLoader.GetString("Dialog_Error_Title");
             }
             catch (Exception ex)
             {
@@ -294,19 +249,17 @@ namespace PWin11_Tweaker_s
                 var dialog = new ContentDialog
                 {
                     Title = resourceLoader.GetString("Dialog_Error_Title"),
-                    Content = $"{ex.Message}",
+                    Content = ex.Message,
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };
                 await dialog.ShowAsync();
-                Debug.WriteLine("ApplyButton_Click: Отображено сообщение об ошибке.");
             }
             finally
             {
                 ProgressPanel.Visibility = Visibility.Collapsed;
                 ApplyButton.IsEnabled = true;
                 ResetButton.IsEnabled = true;
-                Debug.WriteLine("ApplyButton_Click: Завершение обработки, восстановление состояния UI.");
             }
         }
 
@@ -334,6 +287,19 @@ namespace PWin11_Tweaker_s
             DisableSuggestedContentToggle.IsChecked = false;
             Debug.WriteLine("ResetButton_Click: Suggested Content - Сброшено (unchecked).");
             Debug.WriteLine("ResetButton_Click: Сброс настроек завершен.");
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _cts?.Cancel();
+                Debug.WriteLine("CancelButton_Click: Операция отменена пользователем (PrivacyPage).");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"CancelButton_Click: Ошибка при попытке отмены: {ex.Message}");
+            }
         }
     }
 }

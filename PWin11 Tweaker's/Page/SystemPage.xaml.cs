@@ -5,6 +5,9 @@ using System;
 using System.Diagnostics;
 using PWin11_Tweaker_s.Script;
 using Microsoft.Windows.ApplicationModel.Resources; // Для работы локализации
+using PWin11_Tweaker_s.Helpers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace PWin11_Tweaker_s
 {
@@ -12,6 +15,7 @@ namespace PWin11_Tweaker_s
     {
         //Для локализации
         private readonly ResourceLoader resourceLoader;
+        private CancellationTokenSource? _cts;
 
         public SystemPage()
         {
@@ -39,7 +43,6 @@ namespace PWin11_Tweaker_s
             {
                 System.Diagnostics.Debug.WriteLine("LoadCurrentSettings: Начало загрузки настроек...");
 
-                // Проверяем, что элементы управления инициализированы
                 if (DisableServicesCheckBox == null || DisableUACCheckBox == null ||
                     DisableClipboardCheckBox == null || SpeedUpWindowsCheckBox == null)
                 {
@@ -47,7 +50,6 @@ namespace PWin11_Tweaker_s
                     return;
                 }
 
-                // Отключение ненужных служб (проверяем одну из служб, например WSearch)
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\WSearch"))
                 {
                     if (key != null)
@@ -58,7 +60,6 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                // UAC
                 using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"))
                 {
                     if (key != null)
@@ -69,7 +70,6 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                // История буфера обмена
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Clipboard"))
                 {
                     if (key != null)
@@ -80,7 +80,6 @@ namespace PWin11_Tweaker_s
                     }
                 }
 
-                // Ускорение Windows (проверяем StartupDelayInMSec)
                 using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize"))
                 {
                     if (key != null)
@@ -100,178 +99,141 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
+            var ct = _cts.Token;
+
+            var dispatcher = this.DispatcherQueue;
+            long lastUiUpdate = 0;
+            void UpdateUI(Action a)
+            {
+                var now = Environment.TickCount;
+                if (now - lastUiUpdate > 100)
+                {
+                    lastUiUpdate = now;
+                    AsyncHelpers.RunOnUI(dispatcher, a);
+                }
+            }
+
             try
             {
-                // Отключаем кнопки на время применения изменений
-                ApplyButton.IsEnabled = false;
-                DisableServicesCheckBox.IsEnabled = false;
-                DisableUACCheckBox.IsEnabled = false;
-                DisableClipboardCheckBox.IsEnabled = false;
-                SpeedUpWindowsCheckBox.IsEnabled = false;
+                UpdateUI(() =>
+                {
+                    ApplyButton.IsEnabled = false;
+                    DisableServicesCheckBox.IsEnabled = false;
+                    DisableUACCheckBox.IsEnabled = false;
+                    DisableClipboardCheckBox.IsEnabled = false;
+                    SpeedUpWindowsCheckBox.IsEnabled = false;
 
-                // Показываем статус
-                StatusText.Text = resourceLoader.GetString("Preparation");
-                StatusText.Visibility = Visibility.Visible;
+                    StatusText.Text = resourceLoader.GetString("Preparation");
+                    StatusText.Visibility = Visibility.Visible;
+                });
 
-                // Отключение ненужных служб
+                await Task.Delay(100, ct);
+
                 bool disableServices = DisableServicesCheckBox.IsChecked ?? false;
+                bool disableUAC = DisableUACCheckBox.IsChecked ?? false;
+                bool disableClipboard = DisableClipboardCheckBox.IsChecked ?? false;
+                bool speedUpWindows = SpeedUpWindowsCheckBox.IsChecked ?? false;
+
+                var tasks = new System.Collections.Generic.List<Task>();
+
                 if (disableServices)
                 {
                     string[] services = { "WSearch", "Fax", "Spooler", "RemoteRegistry", "WaaSMedicSvc" };
                     foreach (var service in services)
                     {
-                        try
-                        {
-                            // Устанавливаем значение в реестре (4 = отключено)
-                            Registry.SetValue(
-                                $@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\{service}",
-                                "Start",
-                                4,
-                                RegistryValueKind.DWord
-                            );
-                        }
-                        catch (Exception ex)
-                        {
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при отключении службы {service}: {ex.Message}");
-                        }
+                        tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                            $"SYSTEM\\CurrentControlSet\\Services\\{service}", "Start", 4, RegistryValueKind.DWord, ct));
                     }
-                    TweakStatus.IsServicesDisabled = true;
                 }
                 else
                 {
-                    // Включаем службы обратно (2 = автоматический запуск)
                     string[] services = { "WSearch", "Fax", "Spooler", "RemoteRegistry", "WaaSMedicSvc" };
                     foreach (var service in services)
                     {
-                        try
-                        {
-                            Registry.SetValue(
-                                $@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\{service}",
-                                "Start",
-                                2,
-                                RegistryValueKind.DWord
-                            );
-                        }
-                        catch (Exception ex)
-                        {
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при включении службы {service}: {ex.Message}");
-                        }
+                        tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                            $"SYSTEM\\CurrentControlSet\\Services\\{service}", "Start", 2, RegistryValueKind.DWord, ct));
                     }
-                    TweakStatus.IsServicesDisabled = false;
                 }
 
-                // Отключение UAC
-                bool disableUAC = DisableUACCheckBox.IsChecked ?? false;
-                try
-                {
-                    Registry.SetValue(
-                        @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System",
-                        "EnableLUA",
-                        disableUAC ? 0 : 1,
-                        RegistryValueKind.DWord
-                    );
-                    TweakStatus.IsUACDisabled = disableUAC;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при изменении UAC: {ex.Message}");
-                }
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.LocalMachine,
+                    @"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "EnableLUA", disableUAC ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Отключение истории буфера обмена
-                bool disableClipboard = DisableClipboardCheckBox.IsChecked ?? false;
-                try
-                {
-                    Registry.SetValue(
-                        @"HKEY_CURRENT_USER\Software\Microsoft\Clipboard",
-                        "EnableClipboardHistory",
-                        disableClipboard ? 0 : 1,
-                        RegistryValueKind.DWord
-                    );
-                    TweakStatus.IsClipboardHistoryDisabled = disableClipboard;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при изменении истории буфера обмена: {ex.Message}");
-                }
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\\Microsoft\\Clipboard", "EnableClipboardHistory", disableClipboard ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                // Ускорение Windows
-                bool speedUpWindows = SpeedUpWindowsCheckBox.IsChecked ?? false;
                 if (speedUpWindows)
                 {
-                    try
-                    {
-                        Registry.SetValue(
-                            @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects",
-                            "VisualFXSetting",
-                            2,
-                            RegistryValueKind.DWord
-                        );
-                        Registry.SetValue(
-                            @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize",
-                            "StartupDelayInMSec",
-                            0,
-                            RegistryValueKind.DWord
-                        );
-                        TweakStatus.IsWindowsSpeedUpApplied = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при ускорении Windows: {ex.Message}");
-                    }
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                        @"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects", "VisualFXSetting", 2, RegistryValueKind.DWord, ct));
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                        @"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Serialize", "StartupDelayInMSec", 0, RegistryValueKind.DWord, ct));
                 }
                 else
                 {
-                    try
-                    {
-                        Registry.SetValue(
-                            @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects",
-                            "VisualFXSetting",
-                            1,
-                            RegistryValueKind.DWord
-                        );
-                        Registry.SetValue(
-                            @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize",
-                            "StartupDelayInMSec",
-                            200,
-                            RegistryValueKind.DWord
-                        );
-                        TweakStatus.IsWindowsSpeedUpApplied = false;
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при возврате настроек производительности: {ex.Message}");
-                    }
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                        @"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects", "VisualFXSetting", 1, RegistryValueKind.DWord, ct));
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                        @"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Serialize", "StartupDelayInMSec", 200, RegistryValueKind.DWord, ct));
                 }
+
+                UpdateUI(() => StatusText.Text = resourceLoader.GetString("Apply_Change"));
+
+                await Task.WhenAll(tasks).ConfigureAwait(false);
 
                 // Перезапускаем проводник для применения некоторых изменений
                 try
                 {
-                    Process.Start("taskkill", "/f /im explorer.exe").WaitForExit();
-                    Process.Start("explorer.exe");
+                    await AsyncHelpers.RestartExplorerAsync(5000, ct).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при перезапуске проводника: {ex.Message}");
+                    Debug.WriteLine($"ApplyButton_Click: Ошибка при перезапуске проводника: {ex.Message}");
                 }
 
-                // Показываем статус "Готово!"
-                StatusText.Text = resourceLoader.GetString("Success");
+                // Сохраняем состояния
+                TweakStatus.IsServicesDisabled = disableServices;
+                TweakStatus.IsUACDisabled = disableUAC;
+                TweakStatus.IsClipboardHistoryDisabled = disableClipboard;
+                TweakStatus.IsWindowsSpeedUpApplied = speedUpWindows;
+
+                UpdateUI(() => StatusText.Text = resourceLoader.GetString("Success"));
+            }
+            catch (OperationCanceledException)
+            {
+                UpdateUI(() => StatusText.Text = resourceLoader.GetString("Dialog_Error_Title"));
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
-                StatusText.Text = $"Ошибка: {ex.Message}";
+                UpdateUI(() => StatusText.Text = $"Ошибка: {ex.Message}");
             }
             finally
             {
-                // Включаем кнопки обратно
-                ApplyButton.IsEnabled = true;
-                DisableServicesCheckBox.IsEnabled = true;
-                DisableUACCheckBox.IsEnabled = true;
-                DisableClipboardCheckBox.IsEnabled = true;
-                SpeedUpWindowsCheckBox.IsEnabled = true;
+                UpdateUI(() =>
+                {
+                    ApplyButton.IsEnabled = true;
+                    DisableServicesCheckBox.IsEnabled = true;
+                    DisableUACCheckBox.IsEnabled = true;
+                    DisableClipboardCheckBox.IsEnabled = true;
+                    SpeedUpWindowsCheckBox.IsEnabled = true;
+                });
+            }
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _cts?.Cancel();
+                Debug.WriteLine("CancelButton_Click: Операция отменена пользователем (SystemPage).");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"CancelButton_Click: Ошибка при попытке отмены: {ex.Message}");
             }
         }
 

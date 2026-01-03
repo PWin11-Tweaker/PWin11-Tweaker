@@ -6,9 +6,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using PWin11_Tweaker_s.Script;
 using Microsoft.Windows.ApplicationModel.Resources; // Для работы локализации
+using PWin11_Tweaker_s.Helpers;
 
 namespace PWin11_Tweaker_s
 {
@@ -16,6 +18,7 @@ namespace PWin11_Tweaker_s
     {
         //Для локализации
         private readonly ResourceLoader resourceLoader;
+        private CancellationTokenSource? _cts;
 
         public InterfacePage()
         {
@@ -66,99 +69,118 @@ namespace PWin11_Tweaker_s
 
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
+            var ct = _cts.Token;
+
+            var dispatcher = this.DispatcherQueue;
+            long lastUiUpdate = 0;
+            void UpdateUI(Action a)
+            {
+                var now = Environment.TickCount;
+                if (now - lastUiUpdate > 100)
+                {
+                    lastUiUpdate = now;
+                    AsyncHelpers.RunOnUI(dispatcher, a);
+                }
+            }
+
             try
             {
-                ProgressPanel.Visibility = Visibility.Visible;
-                ApplyButton.IsEnabled = false;
-                StatusText.Text = resourceLoader.GetString("Preparation");
-                ProgressBar.Value = 0;
-                await Task.Delay(100);
+                UpdateUI(() =>
+                {
+                    ProgressPanel.Visibility = Visibility.Visible;
+                    ApplyButton.IsEnabled = false;
+                    StatusText.Text = resourceLoader.GetString("Preparation");
+                    ProgressBar.Value = 0;
+                });
 
-                string regContent = "Windows Registry Editor Version 5.00";
+                await Task.Delay(100, ct);
 
-                // Выравнивание панели задач
+                // Gather desired settings
                 int alignment = TaskbarAlignmentCombo.SelectedItem is ComboBoxItem item ? int.Parse(item.Tag.ToString()) : 1;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]" + "" +
-                              $"\"TaskbarAl\"=dword:0000000{alignment}";
-
-                // Прозрачность панели задач
                 bool transparency = TaskbarTransparencyToggle.IsChecked ?? false;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]" + "" +
-                              $"\"EnableTransparency\"=dword:0000000{(transparency ? 1 : 0)}";
-
-                // Скрытие кнопки поиска
                 bool hideSearch = HideSearchButtonToggle.IsChecked ?? false;
-                regContent += @"[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]" + "" +
-                              $"\"SearchboxTaskbarMode\"=dword:0000000{(hideSearch ? 0 : 1)}";
 
-                // Сохранение и применение изменений
-                StatusText.Text = resourceLoader.GetString("Apply_Change");
-                ProgressBar.Value = 50;
-                await Task.Delay(100);
+                var tasks = new System.Collections.Generic.List<Task>();
 
-                string tempRegPath = Path.Combine(Path.GetTempPath(), "InterfaceTweaks.reg");
-                File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarAl", alignment, RegistryValueKind.DWord, ct));
 
-                string tempBatPath = Path.Combine(Path.GetTempPath(), "InterfaceTweaks.bat");
-                string batContent = $"@echo off reg import \"{tempRegPath}\" >nul 2>&1" +
-                                   "if %ERRORLEVEL% NEQ 0 (exit /b %ERRORLEVEL%)" +
-                                   $"del \"{tempRegPath}\" >nul 2>&1" +
-                                   "taskkill /f /im explorer.exe >nul 2>&1" +
-                                   "start explorer.exe" +
-                                   "exit /b 0";
-                File.WriteAllText(tempBatPath, batContent);
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "EnableTransparency", transparency ? 1 : 0, RegistryValueKind.DWord, ct));
 
-                StatusText.Text = resourceLoader.GetString("Apply_Change");
-                ProgressBar.Value = 75;
-                await Task.Delay(100);
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\Search", "SearchboxTaskbarMode", hideSearch ? 0 : 1, RegistryValueKind.DWord, ct));
 
-                ProcessStartInfo processInfo = new ProcessStartInfo
+                UpdateUI(() => ProgressBar.Value = 30);
+
+                await Task.WhenAll(tasks).ConfigureAwait(false);
+
+                UpdateUI(() => ProgressBar.Value = 60);
+
+                // Restart explorer to apply
+                await AsyncHelpers.RestartExplorerAsync(5000, ct).ConfigureAwait(false);
+
+                UpdateUI(() =>
                 {
-                    FileName = "cmd.exe",
-                    Arguments = $"/C \"{tempBatPath}\"",
-                    UseShellExecute = true,
-                    CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                };
+                    ProgressBar.Value = 100;
+                    StatusText.Text = resourceLoader.GetString("Success");
+                });
 
-                using (Process process = Process.Start(processInfo))
+                await Task.Delay(500, ct);
+
+                UpdateUI(async () =>
                 {
-                    process.WaitForExit(5000);
-                    if (process.ExitCode != 0)
+                    var dialog = new ContentDialog
                     {
-                        throw new Exception($"Ошибка применения настроек, код: {process.ExitCode}");
-                    }
-                }
-
-                StatusText.Text = resourceLoader.GetString("Success");
-                ProgressBar.Value = 100;
-                await Task.Delay(500);
-
-                var dialog = new ContentDialog
-                {
-                    Title = resourceLoader.GetString("Success"),
-                    Content = resourceLoader.GetString("Success_Title_Interface"),
-                    CloseButtonText = "OK",
-                    XamlRoot = this.XamlRoot
-                };
-                await dialog.ShowAsync();
+                        Title = resourceLoader.GetString("Success"),
+                        Content = resourceLoader.GetString("Success_Title_Interface"),
+                        CloseButtonText = "OK",
+                        XamlRoot = this.XamlRoot
+                    };
+                    await dialog.ShowAsync();
+                });
+            }
+            catch (OperationCanceledException)
+            {
+                AsyncHelpers.RunOnUI(this.DispatcherQueue, () => StatusText.Text = resourceLoader.GetString("Dialog_Error_Title"));
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
-                var dialog = new ContentDialog
+                AsyncHelpers.RunOnUI(this.DispatcherQueue, () =>
                 {
-                    Title = resourceLoader.GetString("Dialog_Error_Title"),
-                    Content = $"{ex.Message}",
-                    CloseButtonText = "OK",
-                    XamlRoot = this.XamlRoot
-                };
-                await dialog.ShowAsync();
+                    var dialog = new ContentDialog
+                    {
+                        Title = resourceLoader.GetString("Dialog_Error_Title"),
+                        Content = ex.Message,
+                        CloseButtonText = "OK",
+                        XamlRoot = this.XamlRoot
+                    };
+                    _ = dialog.ShowAsync();
+                });
             }
             finally
             {
-                ProgressPanel.Visibility = Visibility.Collapsed;
-                ApplyButton.IsEnabled = true;
+                AsyncHelpers.RunOnUI(this.DispatcherQueue, () =>
+                {
+                    ProgressPanel.Visibility = Visibility.Collapsed;
+                    ApplyButton.IsEnabled = true;
+                });
+            }
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _cts?.Cancel();
+                Debug.WriteLine("CancelButton_Click: Операция отменена пользователем (InterfacePage).");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"CancelButton_Click: Ошибка при попытке отмены: {ex.Message}");
             }
         }
     }

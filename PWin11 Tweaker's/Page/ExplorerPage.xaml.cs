@@ -6,9 +6,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using PWin11_Tweaker_s.Script;
 using Microsoft.Windows.ApplicationModel.Resources;
+using PWin11_Tweaker_s.Helpers;
 
 namespace PWin11_Tweaker_s
 {
@@ -18,6 +20,7 @@ namespace PWin11_Tweaker_s
         private string StartAllBackExePath = string.Empty;
         private bool isStartAllBackInstalled;
         private readonly ResourceLoader resourceLoader;
+        private CancellationTokenSource? _cts;
 
         public ExplorerPage()
         {
@@ -230,6 +233,22 @@ namespace PWin11_Tweaker_s
         //Кнопка Применения
         private async void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
+            var ct = _cts.Token;
+
+            var dispatcher = this.DispatcherQueue;
+            long lastUiUpdate = 0;
+            void UpdateUI(Action a)
+            {
+                var now = Environment.TickCount;
+                if (now - lastUiUpdate > 100)
+                {
+                    lastUiUpdate = now;
+                    AsyncHelpers.RunOnUI(dispatcher, a);
+                }
+            }
+
             try
             {
                 System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Начало применения настроек...");
@@ -238,234 +257,111 @@ namespace PWin11_Tweaker_s
                 InstallStartAllBackButton.IsEnabled = false;
                 StatusText.Text = resourceLoader.GetString("StatusText_Preparing");
                 ProgressBar.Value = 0;
-                await Task.Delay(100);
+                await Task.Delay(100, ct);
 
-                string regContent = "Windows Registry Editor Version 5.00";
+                var tasks = new System.Collections.Generic.List<Task>();
 
-                // Отключение папки "Главное"
                 bool disableHomeFolder = DisableHomeFolder.IsChecked ?? false;
                 if (disableHomeFolder)
                 {
-                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]" +
-                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000";
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                        @"Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}", "System.IsPinnedToNameSpaceTree", 0, RegistryValueKind.DWord, ct));
                 }
                 else
                 {
-                    // Восстановление по умолчанию (удаление ключа для включения папки)
-                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{f874310e-b6b7-47dc-bc84-b9e6b38f5903}}]";
+                    tasks.Add(AsyncHelpers.DeleteRegistryKeyAsync(RegistryHive.CurrentUser,
+                        @"Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}", ct));
                 }
                 TweakStatus.IsHomeFolderDisabled = disableHomeFolder;
 
-                // Отключение папки "Галерея"
                 bool disableGalleryFolder = DisableGalleryFolder.IsChecked ?? false;
                 if (disableGalleryFolder)
                 {
-                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]" +
-                                  "\"System.IsPinnedToNameSpaceTree\"=dword:00000000";
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                        @"Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}", "System.IsPinnedToNameSpaceTree", 0, RegistryValueKind.DWord, ct));
                 }
                 else
                 {
-                    // Восстановление по умолчанию (удаление ключа для включения папки)
-                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}}]";
+                    tasks.Add(AsyncHelpers.DeleteRegistryKeyAsync(RegistryHive.CurrentUser,
+                        @"Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}", ct));
                 }
                 TweakStatus.IsGalleryFolderDisabled = disableGalleryFolder;
 
-                // Включить показ скрытых файлов 
                 bool showHiddenFiles = ShowHiddenFiles.IsChecked ?? false;
-                regContent += $"[HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced]" +
-                              $"\"Hidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}" +
-                              $"\"ShowSuperHidden\"=dword:{(showHiddenFiles ? "00000001" : "00000000")}";
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Hidden", showHiddenFiles ? 1 : 0, RegistryValueKind.DWord, ct));
+                tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                    @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowSuperHidden", showHiddenFiles ? 1 : 0, RegistryValueKind.DWord, ct));
                 TweakStatus.IsShowHiddenFilesEnabled = showHiddenFiles;
 
                 bool useSmallCaptions = UseSmallCaptions.IsChecked ?? false;
                 string captionHeightValue = useSmallCaptions ? "-180" : "-330";
-                regContent += $"[HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics]" +
-                              $"\"CaptionHeight\"=\"{captionHeightValue}\"";
+                tasks.Add(Task.Run(() =>
+                {
+                    ct.ThrowIfCancellationRequested();
+                    using var baseKey = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default);
+                    using var key = baseKey.CreateSubKey(@"Control Panel\Desktop\WindowMetrics");
+                    key?.SetValue("CaptionHeight", captionHeightValue, RegistryValueKind.String);
+                }, ct));
                 TweakStatus.IsSmallCaptionsEnabled = useSmallCaptions;
 
                 bool applyClassicContextMenu = ClassicContextMenuToggle.IsChecked ?? false;
                 if (applyClassicContextMenu)
                 {
-                    regContent += $"[HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}\\InprocServer32]" +
-                          $"@=\"\"";
+                    tasks.Add(AsyncHelpers.SetRegistryValueAsync(RegistryHive.CurrentUser,
+                        @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32", "", "", RegistryValueKind.String, ct));
                 }
                 else
                 {
-                    regContent += $"[-HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}}]";
+                    tasks.Add(AsyncHelpers.DeleteRegistryKeyAsync(RegistryHive.CurrentUser,
+                        @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}", ct));
                 }
                 TweakStatus.IsClassicContextMenuEnabled = applyClassicContextMenu;
 
-                StatusText.Text = resourceLoader.GetString("StatusText_SavingRegistryChanges");
-                ProgressBar.Value = 90;
-                await Task.Delay(100);
-                string tempRegPath = Path.Combine(Path.GetTempPath(), "PWin11Tweaker.reg");
-                File.WriteAllText(tempRegPath, regContent, Encoding.Unicode);
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Создан .reg файл: {tempRegPath}");
+                UpdateUI(() => StatusText.Text = resourceLoader.GetString("StatusText_SavingRegistryChanges"));
+                UpdateUI(() => ProgressBar.Value = 50);
+                await Task.Delay(100, ct);
 
-                string tempBatPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerApply.bat");
-                string tempLogPath = Path.Combine(Path.GetTempPath(), "PWin11TweakerLog.txt");
-                string batContent = "@echo off" +
-                                   $"echo Начало применения настроек > \"{tempLogPath}\"" +
-                                   $"echo Выполняется: reg import \"{tempRegPath}\" >> \"{tempLogPath}\"" +
-                                   $"reg import \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1" +
-                                   "if %ERRORLEVEL% NEQ 0 (" +
-                                   $"    echo Не удалось применить .reg файл, код ошибки: %ERRORLEVEL% >> \"{tempLogPath}\"" +
-                                   "    exit /b %ERRORLEVEL%" +
-                                   ")" +
-                                   $"echo .reg файл успешно применён >> \"{tempLogPath}\"" +
-                                   $"del \"{tempRegPath}\" >> \"{tempLogPath}\" 2>&1" +
-                                   "exit /b 0";
-                File.WriteAllText(tempBatPath, batContent);
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Создан .bat файл: {tempBatPath}");
+                await Task.WhenAll(tasks).ConfigureAwait(false);
 
-                StatusText.Text = resourceLoader.GetString("StatusText_ApplyingRegistryChanges");
-                ProgressBar.Value = 95;
-                await Task.Delay(100);
-                ProcessStartInfo batProcess = new ProcessStartInfo
-                {
-                    FileName = "cmd.exe",
-                    Arguments = $"/C \"{tempBatPath}\"",
-                    UseShellExecute = true,
-                    CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                };
+                UpdateUI(() => ProgressBar.Value = 90);
+                await Task.Delay(100, ct);
 
-                bool success = false;
-                using (Process? process = Process.Start(batProcess))
-                {
-                    if (process != null)
-                    {
-                        process.WaitForExit(5000);
-                        if (process.ExitCode == 0)
-                        {
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Настройки успешно применены!");
-                            success = true;
-                        }
-                        else
-                        {
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Произошла ошибка при выполнении .bat, код: {process.ExitCode}. Проверь лог: {tempLogPath}");
-                            success = false;
-                        }
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Не удалось запустить процесс .bat.");
-                        success = false;
-                    }
-
-                    if (File.Exists(tempLogPath))
-                    {
-                        try
-                        {
-                            string logContent = File.ReadAllText(tempLogPath);
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Лог выполнения: {logContent}");
-                        }
-                        catch (IOException ioEx)
-                        {
-                            System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Не удалось прочитать лог: {ioEx.Message}. Продолжаем...");
-                        }
-                    }
-                }
-
+                // Restart explorer
                 try
                 {
-                    if (File.Exists(tempRegPath)) File.Delete(tempRegPath);
-                    if (File.Exists(tempBatPath)) File.Delete(tempBatPath);
-                    if (File.Exists(tempLogPath)) File.Delete(tempLogPath);
+                    await AsyncHelpers.RestartExplorerAsync(5000, ct).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при удалении временных файлов: {ex.Message}");
+                    Debug.WriteLine($"ApplyButton_Click: Ошибка при перезапуске проводника: {ex.Message}");
                 }
 
-                if (success)
-                {
-                    try
-                    {
-                        StatusText.Text = resourceLoader.GetString("StatusText_RestartingExplorer");
-                        ProgressBar.Value = 100;
-                        await Task.Delay(100);
-                        System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Перезапускаем Проводник...");
-                        ProcessStartInfo taskKillInfo = new()
-                        {
-                            FileName = "taskkill",
-                            Arguments = "/f /im explorer.exe",
-                            UseShellExecute = true,
-                            CreateNoWindow = true,
-                            WindowStyle = ProcessWindowStyle.Hidden
-                        };
-                        Process? taskKillProcess = Process.Start(taskKillInfo);
-                        if (taskKillProcess != null)
-                        {
-                            taskKillProcess.WaitForExit(2000);
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Процесс explorer.exe успешно завершён.");
-                        }
-                        else
-                        {
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Ошибка: Не удалось запустить taskkill для завершения explorer.exe.");
-                        }
+                // Сохранение состояния
+                TweakStatus.IsHomeFolderDisabled = disableHomeFolder;
+                TweakStatus.IsGalleryFolderDisabled = disableGalleryFolder;
 
-                        ProcessStartInfo explorerInfo = new()
-                        {
-                            FileName = "explorer.exe",
-                            UseShellExecute = true,
-                            CreateNoWindow = true,
-                            WindowStyle = ProcessWindowStyle.Hidden
-                        };
-                        Process? explorerProcess = Process.Start(explorerInfo);
-                        if (explorerProcess != null)
-                        {
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Проводник успешно запущен заново.");
-                        }
-                        else
-                        {
-                            System.Diagnostics.Debug.WriteLine("ApplyButton_Click: Ошибка: Не удалось запустить explorer.exe.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Ошибка при перезапуске Проводника: {ex.Message}");
-                    }
-
-                    ContentDialog successDialog = new()
-                    {
-                        Title = resourceLoader.GetString("Dialog_Success_Title"),
-                        Content = resourceLoader.GetString("Dialog_Success_Content"),
-                        CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
-                        XamlRoot = this.XamlRoot
-                    };
-                    await successDialog.ShowAsync();
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Не удалось применить настройки. Проверьте лог: {tempLogPath}");
-                    ContentDialog errorDialog = new()
-                    {
-                        Title = resourceLoader.GetString("Dialog_Error_Title"),
-                        Content = $"{resourceLoader.GetString("Dialog_FailedApplySettings_Content")} {tempLogPath}",
-                        CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
-                        XamlRoot = this.XamlRoot
-                    };
-                    await errorDialog.ShowAsync();
-                }
+                UpdateUI(() => StatusText.Text = resourceLoader.GetString("Success"));
+                UpdateUI(() => ProgressBar.Value = 100);
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.WriteLine("ApplyButton_Click: Операция отменена пользователем.");
+                UpdateUI(() => StatusText.Text = resourceLoader.GetString("Dialog_Error_Title"));
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"ApplyButton_Click: Общая ошибка: {ex.Message} StackTrace: {ex.StackTrace}");
-                ContentDialog errorDialog = new()
-                {
-                    Title = resourceLoader.GetString("Dialog_Error_Title"),
-                    Content = $"{resourceLoader.GetString("Dialog_Error_Content")}: {ex.Message}",
-                    CloseButtonText = resourceLoader.GetString("Dialog_CloseButton"),
-                    XamlRoot = this.XamlRoot
-                };
-                await errorDialog.ShowAsync();
+                Debug.WriteLine($"ApplyButton_Click: Ошибка: {ex.Message}");
+                UpdateUI(() => StatusText.Text = $"Ошибка: {ex.Message}");
             }
             finally
             {
-                ProgressPanel.Visibility = Visibility.Collapsed;
-                ApplyButton.IsEnabled = true;
-                InstallStartAllBackButton.IsEnabled = true;
+                UpdateUI(() =>
+                {
+                    ProgressPanel.Visibility = Visibility.Collapsed;
+                    ApplyButton.IsEnabled = true;
+                    InstallStartAllBackButton.IsEnabled = true;
+                });
             }
         }
 

@@ -18,6 +18,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Windows.UI;
 using OllamaMessage = OllamaSharp.Models.Chat.Message;
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace PWin11_Tweaker_s
 {
@@ -38,6 +39,8 @@ namespace PWin11_Tweaker_s
             WriteIndented = true,
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
+
+        private readonly ResourceLoader resourceLoader = new ResourceLoader();
 
         public eraPage()
         {
@@ -162,12 +165,12 @@ namespace PWin11_Tweaker_s
             InstallRussianOllamaPanelButton.IsEnabled = false;
             InstallOllamaStatusText.Visibility = Visibility.Visible;
             InstallProgressBar.Visibility = Visibility.Visible;
-            InstallOllamaStatusText.Text = "Download the fast version from GitHub (~1 GB)...";
+            InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadingOllama");
             InstallProgressBar.Value = 0;
 
             var progress = new Progress<(double percent, string status)>(data =>
             {
-                System.Diagnostics.Debug.WriteLine($"Progress: {data.percent}% - {data.status}");
+                Debug.WriteLine($"Progress: {data.percent}% - {data.status}");
                 var dispatcher = DispatcherQueue.GetForCurrentThread();
                 if (dispatcher != null)
                 {
@@ -186,34 +189,62 @@ namespace PWin11_Tweaker_s
 
             try
             {
-                await OllamaManager.InstallOllamaAsync(progress);
+                var installerPath = await OllamaManager.InstallOllamaAsync(progress);
+
                 var dispatcher = DispatcherQueue.GetForCurrentThread();
                 if (dispatcher != null)
                 {
                     dispatcher.TryEnqueue(() =>
                     {
-                        InstallOllamaStatusText.Text = "The download is completed. Run the installer manually.";
+                        InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadComplete");
                         LaunchOllamaButton.Visibility = Visibility.Visible;
                     });
                 }
                 else
                 {
-                    InstallOllamaStatusText.Text = "The download is completed. Run the installer manually.";
+                    InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadComplete");
                     LaunchOllamaButton.Visibility = Visibility.Visible;
                 }
+
+                // When installer finishes, refresh UI: check installed state and update panel
+                // The InstallOllamaAsync reports "InstallerFinished" via progress; watch for that is already handled in progress updates above
+                // Here just schedule a delayed check to update UI state
+                _ = Task.Run(async () =>
+                {
+                    await Task.Delay(2000);
+                    var dispatcher2 = DispatcherQueue.GetForCurrentThread();
+                    bool installed = OllamaManager.IsOllamaInstalled();
+                    if (dispatcher2 != null)
+                    {
+                        dispatcher2.TryEnqueue(() =>
+                        {
+                            if (installed)
+                            {
+                                InstallOllamaStatusText.Text = resourceLoader.GetString("Status_ModelInstalled");
+                                ShowInstallPanel(false);
+                                StatusTextBlock.Text = resourceLoader.GetString("Status_Ready");
+                            }
+                            else
+                            {
+                                // leave message that installer launched
+                                InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadComplete");
+                            }
+                        });
+                    }
+                });
             }
             catch (Exception ex)
             {
                 var dispatcher = DispatcherQueue.GetForCurrentThread();
                 if (dispatcher != null)
                 {
-                    dispatcher.TryEnqueue(() => InstallOllamaStatusText.Text = $"Error: {ex.Message}");
+                    dispatcher.TryEnqueue(() => InstallOllamaStatusText.Text = string.Format(resourceLoader.GetString("Status_InstallError"), ex.Message));
                 }
                 else
                 {
-                    InstallOllamaStatusText.Text = $"Error: {ex.Message}";
+                    InstallOllamaStatusText.Text = string.Format(resourceLoader.GetString("Status_InstallError"), ex.Message);
                 }
-                System.Diagnostics.Debug.WriteLine($"Installation error: {ex.Message}");
+                Debug.WriteLine($"Installation error: {ex.Message}");
             }
             finally
             {
@@ -240,12 +271,12 @@ namespace PWin11_Tweaker_s
             InstallRussianOllamaPanelButton.IsEnabled = false;
             InstallOllamaStatusText.Visibility = Visibility.Visible;
             InstallProgressBar.Visibility = Visibility.Visible;
-            InstallOllamaStatusText.Text = "Downloading the Russian version from pwin11.ru (~1 GB)...";
+            InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadingRussianOllama");
             InstallProgressBar.Value = 0;
 
             var progress = new Progress<(double percent, string status)>(data =>
             {
-                System.Diagnostics.Debug.WriteLine($"Progress (Russian): {data.percent}% - {data.status}");
+                Debug.WriteLine($"Progress (Russian): {data.percent}% - {data.status}");
                 var dispatcher = DispatcherQueue.GetForCurrentThread();
                 if (dispatcher != null)
                 {
@@ -264,34 +295,58 @@ namespace PWin11_Tweaker_s
 
             try
             {
-                await OllamaManager.InstallRussianOllamaAsync(progress);
+                var installerPath = await OllamaManager.InstallRussianOllamaAsync(progress);
+
                 var dispatcher = DispatcherQueue.GetForCurrentThread();
                 if (dispatcher != null)
                 {
                     dispatcher.TryEnqueue(() =>
                     {
-                        InstallOllamaStatusText.Text = "The download is completed. Run the installer manually.";
+                        InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadComplete");
                         LaunchOllamaButton.Visibility = Visibility.Visible;
                     });
                 }
                 else
                 {
-                    InstallOllamaStatusText.Text = "The download is completed. Run the installer manually.";
+                    InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadComplete");
                     LaunchOllamaButton.Visibility = Visibility.Visible;
                 }
+
+                _ = Task.Run(async () =>
+                {
+                    await Task.Delay(2000);
+                    var dispatcher2 = DispatcherQueue.GetForCurrentThread();
+                    bool installed = OllamaManager.IsOllamaInstalled();
+                    if (dispatcher2 != null)
+                    {
+                        dispatcher2.TryEnqueue(() =>
+                        {
+                            if (installed)
+                            {
+                                InstallOllamaStatusText.Text = resourceLoader.GetString("Status_ModelInstalled");
+                                ShowInstallPanel(false);
+                                StatusTextBlock.Text = resourceLoader.GetString("Status_Ready");
+                            }
+                            else
+                            {
+                                InstallOllamaStatusText.Text = resourceLoader.GetString("Status_DownloadComplete");
+                            }
+                        });
+                    }
+                });
             }
             catch (Exception ex)
             {
                 var dispatcher = DispatcherQueue.GetForCurrentThread();
                 if (dispatcher != null)
                 {
-                    dispatcher.TryEnqueue(() => InstallOllamaStatusText.Text = $"Ошибка: {ex.Message}");
+                    dispatcher.TryEnqueue(() => InstallOllamaStatusText.Text = string.Format(resourceLoader.GetString("Status_InstallError"), ex.Message));
                 }
                 else
                 {
-                    InstallOllamaStatusText.Text = $"Ошибка: {ex.Message}";
+                    InstallOllamaStatusText.Text = string.Format(resourceLoader.GetString("Status_InstallError"), ex.Message);
                 }
-                System.Diagnostics.Debug.WriteLine($"Installation error (Russian): {ex.Message}");
+                Debug.WriteLine($"Installation error (Russian): {ex.Message}");
             }
             finally
             {
