@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
@@ -8,14 +9,22 @@ using System.Reflection;
 using System.Threading.Tasks;
 using PWin11_Tweaker_s.Models;
 using PWin11_Tweaker_s.Services;
-using System.Windows; 
+using System.Windows;
 using System.Xml;
-using Windows.UI.Popups;
+using WinUI3Localizer;
 
 namespace PWin11_Tweaker_s
 {
     public sealed partial class SettingsPage : Page
     {
+        // Keys must match the literal folder names under "Strings\".
+        private static readonly Dictionary<string, string> LanguageDisplayNames = new()
+        {
+            ["en-US"] = "English",
+            ["ru_RU"] = "Русский",
+            ["fr-FR"] = "Français",
+        };
+
         public SettingsPage()
         {
             this.InitializeComponent();
@@ -27,8 +36,48 @@ namespace PWin11_Tweaker_s
             bool isOllamaInstalled = OllamaManager.IsOllamaInstalled();
             UninstallOllamaButton.Visibility = isOllamaInstalled ? Visibility.Visible : Visibility.Collapsed;
             Debug.WriteLine($"Ollama installed: {isOllamaInstalled}, Button Visibility: {UninstallOllamaButton.Visibility}");
+
+            UpdateLanguageButtonText();
         }
 
+        private void UpdateLanguageButtonText()
+        {
+            string currentLanguage = Localizer.Get().GetCurrentLanguage();
+            LanguageButtonText.Text = LanguageDisplayNames.TryGetValue(currentLanguage, out string displayName)
+                ? displayName
+                : currentLanguage;
+        }
+
+        private async void LanguageMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not MenuFlyoutItem item || item.Tag is not string langTag)
+            {
+                return;
+            }
+
+            if (Localizer.Get().GetCurrentLanguage() == langTag)
+            {
+                return;
+            }
+
+            try
+            {
+                // Re-localizes every live element bound with l:Uids.Uid immediately,
+                // no app restart needed.
+                await Localizer.Get().SetLanguage(langTag);
+
+                // Persist the choice so it's restored as the default on next launch.
+                LocalizationManager.CurrentLanguage = langTag;
+
+                Debug.WriteLine($"SettingsPage: Language changed to {langTag}.");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SettingsPage: Error changing language: {ex.Message}");
+            }
+
+            UpdateLanguageButtonText();
+        }
 
         private void OpenUpdaterButton_Click(object sender, RoutedEventArgs e)
         {

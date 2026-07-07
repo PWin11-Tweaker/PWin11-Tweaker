@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Splat.Builder</name>
+    </assembly>
+    <members>
+        <member name="T:Splat.Internal.ArgumentGuard">
+            <summary>
+            Argument guards that have no single BCL throw-helper equivalent (a conditional <see cref="T:System.ArgumentException"/>
+            and a null check carrying a custom message). Unlike <c>ArgumentExceptionHelper</c>/<c>ArgumentOutOfRangeExceptionHelper</c>
+            these are not aliased to the BCL; they are compiled into each assembly on every target framework.
+            </summary>
+        </member>
+        <member name="M:Splat.Internal.ArgumentGuard.ThrowIf(System.Boolean,System.String,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentException"/> when <paramref name="condition"/> is <see langword="true"/>.</summary>
+            <param name="condition">The condition to evaluate.</param>
+            <param name="message">The message to include in the exception.</param>
+            <param name="paramName">The name of the offending parameter.</param>
+        </member>
+        <member name="M:Splat.Internal.ArgumentGuard.ThrowIfNullWithMessage(System.Object,System.String,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentNullException"/> with <paramref name="message"/> when <paramref name="argument"/> is <see langword="null"/>.</summary>
+            <param name="argument">The argument to validate as non-null.</param>
+            <param name="message">The message to include in the exception.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="T:Splat.Builder.AppBuilder">
+            <summary>
+            Provides a builder for configuring and constructing application dependency resolution and service registration using
+            Splat patterns.
+            </summary>
+            <remarks>The AppBuilder class enables fluent configuration of dependency resolvers, service modules, and
+            custom registrations for applications using Splat. It supports chaining of registration methods and
+            ensures that core services are registered before building the application instance. AppBuilder is typically used
+            during application startup to configure dependency injection and service location. Thread safety is not guaranteed;
+            configuration should be completed before the application is accessed from multiple threads.</remarks>
+        </member>
+        <member name="F:Splat.Builder.AppBuilder._registrations">
+            <summary>The registration actions applied to the resolver when the application is built.</summary>
+        </member>
+        <member name="F:Splat.Builder.AppBuilder._resolverProvider">
+            <summary>Factory that provides the mutable dependency resolver used for registrations.</summary>
+        </member>
+        <member name="F:Splat.Builder.AppBuilder._serviceProvider">
+            <summary>Factory that provides the read-only dependency resolver used for resolution.</summary>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.#ctor(Splat.IMutableDependencyResolver)">
+            <summary>Initializes a new instance of the <see cref="T:Splat.Builder.AppBuilder"/> class with the specified dependency resolver.</summary>
+            <param name="resolver">The dependency resolver to use for registering and resolving services. Cannot be null.</param>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.#ctor(Splat.IMutableDependencyResolver,Splat.IReadonlyDependencyResolver)">
+            <summary>Initializes a new instance of the <see cref="T:Splat.Builder.AppBuilder"/> class with the specified dependency resolver and current resolver.</summary>
+            <param name="resolver">The dependency resolver to use for registering and resolving services. Cannot be null.</param>
+            <param name="current">A read-only dependency resolver to use as the current resolver. If null, only the mutable resolver is
+            used.</param>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.HasBeenBuilt">
+            <summary>Gets a value indicating whether this instance has been built.</summary>
+            <value>
+              <c>true</c> if this instance has been built; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.UsingBuilder">
+            <summary>Gets a value indicating whether the application builder is being used.</summary>
+            <value>
+              <c>true</c> if using the application builder; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.Current">
+            <summary>Gets the current dependency resolver in use by the application.</summary>
+            <remarks>The dependency resolver is responsible for providing service instances throughout the
+            application's lifetime. If no resolver has been set, this property may return null.</remarks>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.CurrentMutable">
+            <summary>Gets the current mutable dependency resolver used for registering and resolving services at runtime.</summary>
+            <remarks>Use this property to add or override service registrations dynamically. Changes made to the
+            resolver affect dependency resolution for subsequent requests.</remarks>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.CreateSplatBuilder">
+            <summary>Creates a new instance of the application builder using the current mutable and immutable service locators.</summary>
+            <remarks>Use this method to configure dependency injection and service registration for the
+            application using the Splat framework. The returned builder is preconfigured with the application's current
+            service locators.</remarks>
+            <returns>An <see cref="T:Splat.Builder.AppBuilder"/> initialized with the current service locator configuration.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.ResetBuilderStateForTests">
+            <summary>Resets the internal builder state to its initial values for use in unit tests.</summary>
+            <remarks>This method is intended for test scenarios only. It should not be used in production code, as
+            it may affect the global state shared by other components.</remarks>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.UseCurrentSplatLocator">
+            <summary>
+            Configures the application to use the current Splat service locator (AppLocator.CurrentMutable) for dependency resolution.
+            </summary>
+            <remarks>This method sets the resolver and service provider delegates to use the current Splat <see
+            cref="T:Splat.AppLocator"/>. Use this method when you want the application to resolve dependencies using the global
+            Splat locator, which may be shared across different parts of the application.
+            This is useful when configuring an external container (e.g., Autofac, DryIoc, Microsoft.Extensions.DependencyInjection)
+            as the Splat dependency resolver prior to applying Splat registrations.</remarks>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance. This enables method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.UsingModule``1(``0)">
+            <summary>Registers a module for application configuration using the specified module instance.</summary>
+            <typeparam name="T">The type of the module to register. Must implement the <see cref="T:Splat.Builder.IModule"/> interface.</typeparam>
+            <param name="registrationModule">The module instance to register. Cannot be null.</param>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance to allow method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.WithCustomRegistration(System.Action{Splat.IMutableDependencyResolver})">
+            <summary>Adds a custom dependency registration action to the application builder.</summary>
+            <remarks>Use this method to register additional services or override default registrations in the
+            application's dependency resolver before the application is built.</remarks>
+            <param name="configureAction">An action that receives an <see cref="T:Splat.IMutableDependencyResolver"/> and performs custom service registrations.
+            Cannot be null.</param>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance, enabling method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.WithCoreServices">
+            <summary>Adds the core framework services to the application builder.</summary>
+            <remarks>This method is typically called during application startup to ensure that essential services
+            required by the framework are available. It can be used in a fluent configuration chain.</remarks>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance with core services registered.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.Build">
+            <summary>Finalizes the configuration and builds the application instance, making it ready for use.</summary>
+            <remarks>Subsequent calls to this method after the initial build have no effect and return the same
+            instance. After building, further modifications to the builder's configuration are not applied.</remarks>
+            <returns>The current application instance with all configured services and registrations applied.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.GetState">
+            <summary>Retrieves the current build and builder usage state for test isolation. Used by test scopes.</summary>
+            <returns>A tuple containing two Boolean values: <see langword="true"/> if the object has been built; otherwise, <see
+            langword="false"/>. The second value is <see langword="true"/> if the builder is currently being used;
+            otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.RestoreState(System.Boolean,System.Boolean)">
+            <summary>Restores the internal build state from the specified tuple. Use for test isolation. Used by test scopes.</summary>
+            <param name="hasBeenBuilt">The value to set for the <see cref="P:Splat.Builder.AppBuilder.HasBeenBuilt"/> property.</param>
+            <param name="usingBuilder">The value to set for the <see cref="P:Splat.Builder.AppBuilder.UsingBuilder"/> property.</param>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.ResetState">
+            <summary>Resets the state to default for test isolation. Used by test scopes.</summary>
+            <remarks>This method is intended for internal use to reinitialize static state. It should not be
+            called from external code.</remarks>
+        </member>
+        <member name="T:Splat.Builder.SplatBuilderExtensions">
+            <summary>Common extension helpers for registering Splat modules.</summary>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.Apply(Splat.Builder.IModule)">
+            <inheritdoc cref="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$F28177BB26DAA4737EE2883CDA8E197E.Apply"/>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.CreateSplatBuilder(Splat.IMutableDependencyResolver)">
+            <inheritdoc cref="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder"/>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.CreateSplatBuilder(Splat.IMutableDependencyResolver,System.Action{Splat.IMutableDependencyResolver})">
+            <inheritdoc cref="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder(System.Action{Splat.IMutableDependencyResolver})"/>
+        </member>
+        <member name="T:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$F28177BB26DAA4737EE2883CDA8E197E.&lt;M&gt;$BF72A5E6EC10E25ACDC2FEBB2D911264">
+            <summary>Common extension helpers for configuring Splat modules.</summary>
+            <param name="module">The module to configure. Cannot be null.</param>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$F28177BB26DAA4737EE2883CDA8E197E.Apply">
+            <summary>
+            Runs the provided configuration action immediately and configures the specified module using the current mutable application locator.
+            </summary>
+        </member>
+        <member name="T:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.&lt;M&gt;$9E38AAA772C1868071C880A4C8E85C6D">
+            <summary>Common extension helpers for creating Splat application builders.</summary>
+            <param name="resolver">The dependency resolver to use for resolving services and dependencies. Cannot be null.</param>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder">
+            <summary>Creates a new application builder that uses the specified dependency resolver.</summary>
+            <returns>An <see cref="T:Splat.Builder.IAppBuilder"/> instance configured with the specified dependency resolver.</returns>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder(System.Action{Splat.IMutableDependencyResolver})">
+            <summary>Creates a new application builder using the specified dependency resolver and applies custom configuration.</summary>
+            <param name="configureAction">An action that configures additional registrations on the dependency resolver. Can be null if no custom
+            configuration is required.</param>
+            <returns>An <see cref="T:Splat.Builder.IAppBuilder"/> instance configured with the specified resolver and custom registrations.</returns>
+        </member>
+    </members>
+</doc>

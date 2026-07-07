@@ -7,7 +7,13 @@ namespace PWin11_Tweaker_s
     public static class LocalizationManager
     {
         private const string LanguageSettingKey = "AppLanguage";
-        private static string _currentLanguage = "ru-RU";
+        private const string DefaultLanguage = "ru_RU";
+
+        // Must match the literal folder names under "Strings\" exactly, since
+        // WinUI3Localizer keys its language dictionaries by folder name.
+        private static readonly string[] SupportedLanguages = { "en-US", "ru_RU", "fr-FR" };
+
+        private static string _currentLanguage = DefaultLanguage;
         private static bool _isInitialized = false;
 
         public static event EventHandler LanguageChanged;
@@ -27,7 +33,9 @@ namespace PWin11_Tweaker_s
                 string savedLanguage = ApplicationData.Current.LocalSettings.Values[LanguageSettingKey] as string;
                 System.Diagnostics.Debug.WriteLine($"LocalizationManager: Сохранённый язык: {savedLanguage ?? "не установлен"}");
 
-                _currentLanguage = savedLanguage ?? "ru-RU";
+                _currentLanguage = Array.IndexOf(SupportedLanguages, savedLanguage) >= 0
+                    ? savedLanguage
+                    : DefaultLanguage;
                 System.Diagnostics.Debug.WriteLine($"LocalizationManager: Установлен язык: {_currentLanguage}");
 
                 _isInitialized = true;
@@ -36,7 +44,7 @@ namespace PWin11_Tweaker_s
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"LocalizationManager: Ошибка при инициализации: {ex.Message} StackTrace: {ex.StackTrace}");
-                _currentLanguage = "ru-RU";
+                _currentLanguage = DefaultLanguage;
                 _isInitialized = true;
             }
         }

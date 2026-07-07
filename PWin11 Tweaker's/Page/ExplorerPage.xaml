@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PWin11_Tweaker_s"
+    xmlns:l="using:WinUI3Localizer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -10,51 +11,51 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20" Spacing="15">
-            <TextBlock x:Uid="Text_Settings" FontSize="24" FontWeight="SemiBold"/>
+            <TextBlock l:Uids.Uid="Text_Settings" FontSize="24" FontWeight="SemiBold"/>
 
             <!-- Показ скрытых файлов -->
-            <CheckBox x:Name="ShowHiddenFiles" x:Uid="ShowHiddenFiles">
+            <CheckBox x:Name="ShowHiddenFiles" l:Uids.Uid="ShowHiddenFiles">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="Coment_ShowHiddenFiles"/>
+                    <ToolTip l:Uids.Uid="Coment_ShowHiddenFiles"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Уменьшение кнопок -->
-            <CheckBox x:Name="UseSmallCaptions" x:Uid="UseSmallCaptions">
+            <CheckBox x:Name="UseSmallCaptions" l:Uids.Uid="UseSmallCaptions">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="Coment_UseSmallCaptions"/>
+                    <ToolTip l:Uids.Uid="Coment_UseSmallCaptions"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Классическое контекстное меню -->
-            <CheckBox x:Name="ClassicContextMenuToggle" x:Uid="ClassicContextMenu">
+            <CheckBox x:Name="ClassicContextMenuToggle" l:Uids.Uid="ClassicContextMenu">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="Coment_ClassicContextMenu"/>
+                    <ToolTip l:Uids.Uid="Coment_ClassicContextMenu"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение папки "Главное" -->
-            <CheckBox x:Name="DisableHomeFolder" x:Uid="DisableHomeFolder">
+            <CheckBox x:Name="DisableHomeFolder" l:Uids.Uid="DisableHomeFolder">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="Coment_DisableHomeFolder"/>
+                    <ToolTip l:Uids.Uid="Coment_DisableHomeFolder"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение папки "Галерея" -->
-            <CheckBox x:Name="DisableGalleryFolder" x:Uid="DisableGalleryFolder">
+            <CheckBox x:Name="DisableGalleryFolder" l:Uids.Uid="DisableGalleryFolder">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="Coment_DisableGalleryFolder"/>
+                    <ToolTip l:Uids.Uid="Coment_DisableGalleryFolder"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Установка/удаление StartAllBack -->
-            <Button x:Name="InstallStartAllBackButton" x:Uid="Content_Button_StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+            <Button x:Name="InstallStartAllBackButton" l:Uids.Uid="Content_Button_StartAllBack" Click="InstallStartAllBackButton_Click" Style="{StaticResource AccentButtonStyle}"/>
 
             <!-- Кнопка открытия OldNewExplorer -->
-            <Button x:Name="OpenOldNewExplorerButton" x:Uid="OpenOldNewExplorer" Click="OpenOldNewExplorerButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
+            <Button x:Name="OpenOldNewExplorerButton" l:Uids.Uid="OpenOldNewExplorer" Click="OpenOldNewExplorerButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
 
             <!-- Кнопка применения -->
-            <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
+            <Button x:Name="ApplyButton" l:Uids.Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}" Margin="0,10,0,0"/>
 
             <!-- Прогресс и статус -->
             <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">

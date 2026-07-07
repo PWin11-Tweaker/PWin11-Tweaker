@@ -2,32 +2,33 @@
     x:Class="PWin11_Tweaker_s.InterfacePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:l="using:WinUI3Localizer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="Transparent">
 
     <StackPanel Margin="20" Spacing="10">
-        <TextBlock x:Uid="SettingsInterface" FontSize="24" FontWeight="SemiBold"/>
+        <TextBlock l:Uids.Uid="SettingsInterface" FontSize="24" FontWeight="SemiBold"/>
 
         <!-- Выравнивание панели задач -->
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock x:Uid="TaskbarAlignment" VerticalAlignment="Center"/>
+            <TextBlock l:Uids.Uid="TaskbarAlignment" VerticalAlignment="Center"/>
             <ComboBox x:Name="TaskbarAlignmentCombo" SelectionChanged="TaskbarAlignmentCombo_SelectionChanged">
-                <ComboBoxItem x:Uid="Center" Tag="1"/>
-                <ComboBoxItem x:Uid="LeftTaskBar" Tag="0"/>
+                <ComboBoxItem l:Uids.Uid="Center" Tag="1"/>
+                <ComboBoxItem l:Uids.Uid="LeftTaskBar" Tag="0"/>
             </ComboBox>
         </StackPanel>
 
         <!-- Прозрачность панели задач -->
-        <CheckBox x:Name="TaskbarTransparencyToggle" x:Uid="TaskbarTransparency"/>
+        <CheckBox x:Name="TaskbarTransparencyToggle" l:Uids.Uid="TaskbarTransparency"/>
 
         <!-- Скрытие кнопки поиска -->
-        <CheckBox x:Name="HideSearchButtonToggle" x:Uid="HideSearchButton"/>
+        <CheckBox x:Name="HideSearchButtonToggle" l:Uids.Uid="HideSearchButton"/>
 
         <!-- Кнопки применения и отмены -->
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Margin="0,10,0,0"/>
+            <Button x:Name="ApplyButton" l:Uids.Uid="Apply" Click="ApplyButton_Click" Margin="0,10,0,0"/>
             <Button x:Name="CancelButton" Content="Отменить" Click="CancelButton_Click" Margin="0,10,0,0"/>
         </StackPanel>
     

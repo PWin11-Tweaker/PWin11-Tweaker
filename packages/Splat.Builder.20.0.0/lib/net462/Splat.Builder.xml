@@ -1,0 +1,412 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Splat.Builder</name>
+    </assembly>
+    <members>
+        <member name="T:Splat.Internal.ArgumentExceptionHelper">
+            <summary>
+            Polyfill for the <see cref="T:System.ArgumentNullException"/>/<see cref="T:System.ArgumentException"/> throw helpers on target
+            frameworks (net462-net481) that predate them. On net8.0 and later this type is not compiled; consuming projects
+            alias the <c>ArgumentExceptionHelper</c> identifier directly to <see cref="T:System.ArgumentNullException"/> so the call
+            sites bind to the BCL methods (<c>ThrowIfNullOrWhiteSpace</c> resolving via the <see cref="T:System.ArgumentException"/> base).
+            </summary>
+        </member>
+        <member name="M:Splat.Internal.ArgumentExceptionHelper.ThrowIfNull(System.Object,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is <see langword="null"/>.</summary>
+            <param name="argument">The reference type argument to validate as non-null.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="M:Splat.Internal.ArgumentExceptionHelper.ThrowIfNullOrWhiteSpace(System.String,System.String)">
+            <summary>Throws if <paramref name="argument"/> is <see langword="null"/>, empty, or all white-space.</summary>
+            <param name="argument">The string argument to validate.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="T:Splat.Internal.ArgumentOutOfRangeExceptionHelper">
+            <summary>
+            Polyfill for the <see cref="T:System.ArgumentOutOfRangeException"/> throw helpers on target frameworks (net462-net481)
+            that predate them. On net8.0 and later this type is not compiled; consuming projects alias the
+            <c>ArgumentOutOfRangeExceptionHelper</c> identifier directly to <see cref="T:System.ArgumentOutOfRangeException"/>.
+            </summary>
+        </member>
+        <member name="M:Splat.Internal.ArgumentOutOfRangeExceptionHelper.ThrowIfNegative(System.Int32,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The value to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Splat.Internal.ArgumentOutOfRangeExceptionHelper.ThrowIfLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal to <paramref name="other"/>.</summary>
+            <typeparam name="T">The type of the values to compare.</typeparam>
+            <param name="value">The value to validate.</param>
+            <param name="other">The value to compare against.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="T:Splat.Internal.ObjectDisposedExceptionHelper">
+            <summary>
+            Polyfill for the <see cref="T:System.ObjectDisposedException"/> throw helper on target frameworks (net462-net481)
+            that predate it. On net8.0 and later this type is not compiled; consuming projects alias the
+            <c>ObjectDisposedExceptionHelper</c> identifier directly to <see cref="T:System.ObjectDisposedException"/>.
+            </summary>
+        </member>
+        <member name="M:Splat.Internal.ObjectDisposedExceptionHelper.ThrowIf(System.Boolean,System.Object)">
+            <summary>Throws an <see cref="T:System.ObjectDisposedException"/> if <paramref name="condition"/> is <see langword="true"/>.</summary>
+            <param name="condition">The condition to evaluate.</param>
+            <param name="instance">The object whose type name is included in the exception message.</param>
+        </member>
+        <member name="M:Splat.Internal.ObjectDisposedExceptionHelper.ThrowIf(System.Boolean,System.Type)">
+            <summary>Throws an <see cref="T:System.ObjectDisposedException"/> if <paramref name="condition"/> is <see langword="true"/>.</summary>
+            <param name="condition">The condition to evaluate.</param>
+            <param name="type">The type whose name is included in the exception message.</param>
+        </member>
+        <member name="T:Splat.Internal.ArgumentGuard">
+            <summary>
+            Argument guards that have no single BCL throw-helper equivalent (a conditional <see cref="T:System.ArgumentException"/>
+            and a null check carrying a custom message). Unlike <c>ArgumentExceptionHelper</c>/<c>ArgumentOutOfRangeExceptionHelper</c>
+            these are not aliased to the BCL; they are compiled into each assembly on every target framework.
+            </summary>
+        </member>
+        <member name="M:Splat.Internal.ArgumentGuard.ThrowIf(System.Boolean,System.String,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentException"/> when <paramref name="condition"/> is <see langword="true"/>.</summary>
+            <param name="condition">The condition to evaluate.</param>
+            <param name="message">The message to include in the exception.</param>
+            <param name="paramName">The name of the offending parameter.</param>
+        </member>
+        <member name="M:Splat.Internal.ArgumentGuard.ThrowIfNullWithMessage(System.Object,System.String,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentNullException"/> with <paramref name="message"/> when <paramref name="argument"/> is <see langword="null"/>.</summary>
+            <param name="argument">The argument to validate as non-null.</param>
+            <param name="message">The message to include in the exception.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="T:Splat.Builder.AppBuilder">
+            <summary>
+            Provides a builder for configuring and constructing application dependency resolution and service registration using
+            Splat patterns.
+            </summary>
+            <remarks>The AppBuilder class enables fluent configuration of dependency resolvers, service modules, and
+            custom registrations for applications using Splat. It supports chaining of registration methods and
+            ensures that core services are registered before building the application instance. AppBuilder is typically used
+            during application startup to configure dependency injection and service location. Thread safety is not guaranteed;
+            configuration should be completed before the application is accessed from multiple threads.</remarks>
+        </member>
+        <member name="F:Splat.Builder.AppBuilder._registrations">
+            <summary>The registration actions applied to the resolver when the application is built.</summary>
+        </member>
+        <member name="F:Splat.Builder.AppBuilder._resolverProvider">
+            <summary>Factory that provides the mutable dependency resolver used for registrations.</summary>
+        </member>
+        <member name="F:Splat.Builder.AppBuilder._serviceProvider">
+            <summary>Factory that provides the read-only dependency resolver used for resolution.</summary>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.#ctor(Splat.IMutableDependencyResolver)">
+            <summary>Initializes a new instance of the <see cref="T:Splat.Builder.AppBuilder"/> class with the specified dependency resolver.</summary>
+            <param name="resolver">The dependency resolver to use for registering and resolving services. Cannot be null.</param>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.#ctor(Splat.IMutableDependencyResolver,Splat.IReadonlyDependencyResolver)">
+            <summary>Initializes a new instance of the <see cref="T:Splat.Builder.AppBuilder"/> class with the specified dependency resolver and current resolver.</summary>
+            <param name="resolver">The dependency resolver to use for registering and resolving services. Cannot be null.</param>
+            <param name="current">A read-only dependency resolver to use as the current resolver. If null, only the mutable resolver is
+            used.</param>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.HasBeenBuilt">
+            <summary>Gets a value indicating whether this instance has been built.</summary>
+            <value>
+              <c>true</c> if this instance has been built; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.UsingBuilder">
+            <summary>Gets a value indicating whether the application builder is being used.</summary>
+            <value>
+              <c>true</c> if using the application builder; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.Current">
+            <summary>Gets the current dependency resolver in use by the application.</summary>
+            <remarks>The dependency resolver is responsible for providing service instances throughout the
+            application's lifetime. If no resolver has been set, this property may return null.</remarks>
+        </member>
+        <member name="P:Splat.Builder.AppBuilder.CurrentMutable">
+            <summary>Gets the current mutable dependency resolver used for registering and resolving services at runtime.</summary>
+            <remarks>Use this property to add or override service registrations dynamically. Changes made to the
+            resolver affect dependency resolution for subsequent requests.</remarks>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.CreateSplatBuilder">
+            <summary>Creates a new instance of the application builder using the current mutable and immutable service locators.</summary>
+            <remarks>Use this method to configure dependency injection and service registration for the
+            application using the Splat framework. The returned builder is preconfigured with the application's current
+            service locators.</remarks>
+            <returns>An <see cref="T:Splat.Builder.AppBuilder"/> initialized with the current service locator configuration.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.ResetBuilderStateForTests">
+            <summary>Resets the internal builder state to its initial values for use in unit tests.</summary>
+            <remarks>This method is intended for test scenarios only. It should not be used in production code, as
+            it may affect the global state shared by other components.</remarks>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.UseCurrentSplatLocator">
+            <summary>
+            Configures the application to use the current Splat service locator (AppLocator.CurrentMutable) for dependency resolution.
+            </summary>
+            <remarks>This method sets the resolver and service provider delegates to use the current Splat <see
+            cref="T:Splat.AppLocator"/>. Use this method when you want the application to resolve dependencies using the global
+            Splat locator, which may be shared across different parts of the application.
+            This is useful when configuring an external container (e.g., Autofac, DryIoc, Microsoft.Extensions.DependencyInjection)
+            as the Splat dependency resolver prior to applying Splat registrations.</remarks>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance. This enables method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.UsingModule``1(``0)">
+            <summary>Registers a module for application configuration using the specified module instance.</summary>
+            <typeparam name="T">The type of the module to register. Must implement the <see cref="T:Splat.Builder.IModule"/> interface.</typeparam>
+            <param name="registrationModule">The module instance to register. Cannot be null.</param>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance to allow method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.WithCustomRegistration(System.Action{Splat.IMutableDependencyResolver})">
+            <summary>Adds a custom dependency registration action to the application builder.</summary>
+            <remarks>Use this method to register additional services or override default registrations in the
+            application's dependency resolver before the application is built.</remarks>
+            <param name="configureAction">An action that receives an <see cref="T:Splat.IMutableDependencyResolver"/> and performs custom service registrations.
+            Cannot be null.</param>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance, enabling method chaining.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.WithCoreServices">
+            <summary>Adds the core framework services to the application builder.</summary>
+            <remarks>This method is typically called during application startup to ensure that essential services
+            required by the framework are available. It can be used in a fluent configuration chain.</remarks>
+            <returns>The current <see cref="T:Splat.Builder.IAppBuilder"/> instance with core services registered.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.Build">
+            <summary>Finalizes the configuration and builds the application instance, making it ready for use.</summary>
+            <remarks>Subsequent calls to this method after the initial build have no effect and return the same
+            instance. After building, further modifications to the builder's configuration are not applied.</remarks>
+            <returns>The current application instance with all configured services and registrations applied.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.GetState">
+            <summary>Retrieves the current build and builder usage state for test isolation. Used by test scopes.</summary>
+            <returns>A tuple containing two Boolean values: <see langword="true"/> if the object has been built; otherwise, <see
+            langword="false"/>. The second value is <see langword="true"/> if the builder is currently being used;
+            otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.RestoreState(System.Boolean,System.Boolean)">
+            <summary>Restores the internal build state from the specified tuple. Use for test isolation. Used by test scopes.</summary>
+            <param name="hasBeenBuilt">The value to set for the <see cref="P:Splat.Builder.AppBuilder.HasBeenBuilt"/> property.</param>
+            <param name="usingBuilder">The value to set for the <see cref="P:Splat.Builder.AppBuilder.UsingBuilder"/> property.</param>
+        </member>
+        <member name="M:Splat.Builder.AppBuilder.ResetState">
+            <summary>Resets the state to default for test isolation. Used by test scopes.</summary>
+            <remarks>This method is intended for internal use to reinitialize static state. It should not be
+            called from external code.</remarks>
+        </member>
+        <member name="T:Splat.Builder.SplatBuilderExtensions">
+            <summary>Common extension helpers for registering Splat modules.</summary>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.Apply(Splat.Builder.IModule)">
+            <inheritdoc cref="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$F28177BB26DAA4737EE2883CDA8E197E.Apply"/>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.CreateSplatBuilder(Splat.IMutableDependencyResolver)">
+            <inheritdoc cref="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder"/>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.CreateSplatBuilder(Splat.IMutableDependencyResolver,System.Action{Splat.IMutableDependencyResolver})">
+            <inheritdoc cref="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder(System.Action{Splat.IMutableDependencyResolver})"/>
+        </member>
+        <member name="T:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$F28177BB26DAA4737EE2883CDA8E197E.&lt;M&gt;$BF72A5E6EC10E25ACDC2FEBB2D911264">
+            <summary>Common extension helpers for configuring Splat modules.</summary>
+            <param name="module">The module to configure. Cannot be null.</param>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$F28177BB26DAA4737EE2883CDA8E197E.Apply">
+            <summary>
+            Runs the provided configuration action immediately and configures the specified module using the current mutable application locator.
+            </summary>
+        </member>
+        <member name="T:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.&lt;M&gt;$9E38AAA772C1868071C880A4C8E85C6D">
+            <summary>Common extension helpers for creating Splat application builders.</summary>
+            <param name="resolver">The dependency resolver to use for resolving services and dependencies. Cannot be null.</param>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder">
+            <summary>Creates a new application builder that uses the specified dependency resolver.</summary>
+            <returns>An <see cref="T:Splat.Builder.IAppBuilder"/> instance configured with the specified dependency resolver.</returns>
+        </member>
+        <member name="M:Splat.Builder.SplatBuilderExtensions.&lt;G&gt;$47E2A1FAB6515F8D7D168570E40E57A7.CreateSplatBuilder(System.Action{Splat.IMutableDependencyResolver})">
+            <summary>Creates a new application builder using the specified dependency resolver and applies custom configuration.</summary>
+            <param name="configureAction">An action that configures additional registrations on the dependency resolver. Can be null if no custom
+            configuration is required.</param>
+            <returns>An <see cref="T:Splat.Builder.IAppBuilder"/> instance configured with the specified resolver and custom registrations.</returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
+            <summary>
+            Indicates that a parameter captures the expression passed for another parameter as a string.
+            Modification of Using SimonCropp's polyfill's library.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute"/> class.</summary>
+            <param name="parameterName">The name of the parameter whose expression should be captured as a string.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.ParameterName">
+            <summary>Gets the name of the parameter whose expression should be captured as a string.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+            Reserved to be used by the compiler for tracking metadata. This class should not be used by developers in source code.
+            Modification of Using SimonCropp's polyfill's library.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
+            <summary>Specifies that the method will not return if the associated <see cref="T:System.Boolean"/> parameter is passed the specified value.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute"/> class with the specified parameter value.</summary>
+            <param name="parameterValue">
+            The condition parameter value. Code after the method is considered unreachable
+            by diagnostics if the argument to the associated parameter matches this value.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
+            <summary>
+            Gets a value indicating whether code after the method is considered unreachable
+            by diagnostics if the argument to the associated parameter matches this value.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute">
+            <summary>Indicates that certain members on a specified <see cref="T:System.Type"/> are accessed dynamically, for example through <see cref="N:System.Reflection"/>.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.#ctor(System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes)">
+            <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute"/> class with the specified member types.</summary>
+            <param name="memberTypes">The types of members dynamically accessed.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute.MemberTypes">
+            <summary>Gets the <see cref="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes"/> which specifies the type of members dynamically accessed.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes">
+             <summary>
+             Specifies the types of members that are dynamically accessed.
+            
+             This enumeration has a <see cref="T:System.FlagsAttribute"/> attribute that allows a
+             bitwise combination of its member values.
+             </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.None">
+            <summary>Specifies no members.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicParameterlessConstructor">
+            <summary>Specifies the default, parameterless public constructor.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructors">
+            <summary>Specifies all public constructors.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicConstructors">
+            <summary>Specifies all non-public constructors.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicMethods">
+            <summary>Specifies all public methods.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicMethods">
+            <summary>Specifies all non-public methods.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicFields">
+            <summary>Specifies all public fields.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicFields">
+            <summary>Specifies all non-public fields.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicNestedTypes">
+            <summary>Specifies all public nested types.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicNestedTypes">
+            <summary>Specifies all non-public nested types.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicProperties">
+            <summary>Specifies all public properties.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicProperties">
+            <summary>Specifies all non-public properties.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicEvents">
+            <summary>Specifies all public events.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicEvents">
+            <summary>Specifies all non-public events.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.Interfaces">
+            <summary>Specifies all interfaces implemented by the type.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All">
+            <summary>Specifies all members.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
+            <summary>
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>,
+            the parameter may be <see langword="null"/> even if the corresponding type disallows it.
+            Modification of Using SimonCropp's polyfill's library.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute"/> class.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value,
+            the associated parameter may be <see langword="null"/>.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
+            <summary>
+            Gets a value indicating whether the return condition has been satisfied.
+            If the method returns this value, the associated parameter may be <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
+            <summary>
+              Specifies that an output is not <see langword="null"/> even if the
+              corresponding type allows it.
+              Modification of Using SimonCropp's polyfill's library.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute">
+            <summary>
+            Indicates that the specified method requires dynamic access to code that is not referenced
+            statically, for example through <see cref="N:System.Reflection"/>.
+            </summary>
+            <remarks>
+            Link: https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.requiresunreferencedcodeattribute.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute"/> class with the specified message.</summary>
+            <param name="message">A message that contains information about the usage of unreferenced code.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.Message">
+            <summary>Gets a message that contains information about the usage of unreferenced code.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute.Url">
+            <summary>
+            Gets or sets an optional URL that contains more information about the method,
+            why it requires unreferenced code, and what options a consumer has to deal with it.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute">
+            <summary>Suppresses reporting of a specific rule violation, allowing multiple suppressions on a single code artifact.</summary>
+            <remarks>
+            Link: https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.unconditionalsuppressmessageattribute.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.#ctor(System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute"/> class, specifying the category of the tool and the identifier for an analysis rule.</summary>
+            <param name="category">The category identifying the classification of the attribute.</param>
+            <param name="checkId">The identifier of the analysis tool rule to be suppressed.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Category">
+            <summary>Gets the category identifying the classification of the attribute.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.CheckId">
+            <summary>Gets the identifier of the analysis tool rule to be suppressed.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Scope">
+            <summary>Gets or sets the scope of the code that is relevant for the attribute.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Target">
+            <summary>Gets or sets a fully qualified path that represents the target of the attribute.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.MessageId">
+            <summary>Gets or sets an optional argument expanding on exclusion criteria.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute.Justification">
+            <summary>Gets or sets the justification for suppressing the code analysis message.</summary>
+        </member>
+    </members>
+</doc>

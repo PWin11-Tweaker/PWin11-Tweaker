@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PWin11_Tweaker_s"
+    xmlns:l="using:WinUI3Localizer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -10,66 +11,66 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20" Spacing="15">
-            <TextBlock x:Uid="SettingsPrivacy" FontSize="24" FontWeight="SemiBold"/>
+            <TextBlock l:Uids.Uid="SettingsPrivacy" FontSize="24" FontWeight="SemiBold"/>
 
             <!-- Отключение телеметрии -->
-            <CheckBox x:Name="DisableTelemetryToggle" x:Uid="DisableTelemetry">
+            <CheckBox x:Name="DisableTelemetryToggle" l:Uids.Uid="DisableTelemetry">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisSendDiagDatatoMicrosoft" />
+                    <ToolTip l:Uids.Uid="DisSendDiagDatatoMicrosoft" />
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение рекламного ID -->
-            <CheckBox x:Name="DisableAdvertisingIdToggle" x:Uid="DisableAdvertisingId">
+            <CheckBox x:Name="DisableAdvertisingIdToggle" l:Uids.Uid="DisableAdvertisingId">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableAdvertisingComment"/>
+                    <ToolTip l:Uids.Uid="DisableAdvertisingComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение отслеживания местоположения -->
-            <CheckBox x:Name="DisableLocationToggle" x:Uid="DisableLocation">
+            <CheckBox x:Name="DisableLocationToggle" l:Uids.Uid="DisableLocation">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableLocationComment"/>
+                    <ToolTip l:Uids.Uid="DisableLocationComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение Cortana -->
-            <CheckBox x:Name="DisableCortanaToggle" x:Uid="DisableCortana">
+            <CheckBox x:Name="DisableCortanaToggle" l:Uids.Uid="DisableCortana">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableCortanaComment"/>
+                    <ToolTip l:Uids.Uid="DisableCortanaComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение фоновых приложений -->
-            <CheckBox x:Name="DisableBackgroundAppsToggle" x:Uid="DisableBackgroundApps">
+            <CheckBox x:Name="DisableBackgroundAppsToggle" l:Uids.Uid="DisableBackgroundApps">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableBackgroundAppsComment"/>
+                    <ToolTip l:Uids.Uid="DisableBackgroundAppsComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
             <!-- Отключение отправки данных в облако -->
-            <CheckBox x:Name="DisableCloudContentToggle" x:Uid="DisableCloudContent">
+            <CheckBox x:Name="DisableCloudContentToggle" l:Uids.Uid="DisableCloudContent">
                 <ToolTipService.ToolTip>
-                    <ToolTip x:Uid="DisableCloudContentComment"/>
+                    <ToolTip l:Uids.Uid="DisableCloudContentComment"/>
                 </ToolTipService.ToolTip>
             </CheckBox>
 
 
-            <CheckBox x:Name="DisableFindMyDeviceToggle" x:Uid="DisableFindMyDevice" Margin="0,10,0,0"/>
-            <CheckBox x:Name="DisableInsiderTelemetryToggle" x:Uid="DisableInsiderTelemetry" Margin="0,10,0,0"/>
-            <CheckBox x:Name="DisableEdgeDiagnosticsToggle" x:Uid="DisableEdgeDiagnostics" Margin="0,10,0,0"/>
-            <CheckBox x:Name="DisableSuggestedContentToggle" x:Uid="DisableSuggestedContent" Margin="0,10,0,0"/>
+            <CheckBox x:Name="DisableFindMyDeviceToggle" l:Uids.Uid="DisableFindMyDevice" Margin="0,10,0,0"/>
+            <CheckBox x:Name="DisableInsiderTelemetryToggle" l:Uids.Uid="DisableInsiderTelemetry" Margin="0,10,0,0"/>
+            <CheckBox x:Name="DisableEdgeDiagnosticsToggle" l:Uids.Uid="DisableEdgeDiagnostics" Margin="0,10,0,0"/>
+            <CheckBox x:Name="DisableSuggestedContentToggle" l:Uids.Uid="DisableSuggestedContent" Margin="0,10,0,0"/>
 
             <!-- Кнопки -->
             <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
-                <Button x:Name="ApplyButton" x:Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}"/>
+                <Button x:Name="ApplyButton" l:Uids.Uid="Apply" Click="ApplyButton_Click" Style="{StaticResource AccentButtonStyle}"/>
                 <Button x:Name="CancelButton" Content="Отменить" Click="CancelButton_Click"/>
-                <Button x:Name="ResetButton" x:Uid="Restore" Click="ResetButton_Click"/>
+                <Button x:Name="ResetButton" l:Uids.Uid="Restore" Click="ResetButton_Click"/>
             </StackPanel>
 
             <!-- Прогресс и статус -->
             <StackPanel x:Name="ProgressPanel" Visibility="Collapsed" Spacing="5">
-                <TextBlock x:Name="StatusText" x:Uid="Status"/>
+                <TextBlock x:Name="StatusText" l:Uids.Uid="Status"/>
                 <ProgressBar x:Name="ProgressBar" IsIndeterminate="False" Minimum="0" Maximum="100" Value="0" 
                              Foreground="{ThemeResource SystemAccentColor}" Background="{ThemeResource SubtleFillColorSecondary}"/>
             </StackPanel>

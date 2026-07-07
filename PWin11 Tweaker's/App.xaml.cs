@@ -35,17 +35,22 @@ namespace PWin11_Tweaker_s
                 throw;
             }
         }
+
         private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine($"Асинхронная ошибка: {e.Exception.Message} Стек: {e.Exception.StackTrace}");
             e.SetObserved();
         }
 
-        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
             try
             {
                 System.Diagnostics.Debug.WriteLine("App.OnLaunched: Запуск приложения.");
+
+                // Собираем WinUI3Localizer ДО показа первого окна, чтобы все
+                // элементы с l:Uids.Uid сразу получили нужный (сохранённый) язык.
+                await InitializeLocalizer();
 
                 Window splashScreen = new SplashScreen();
                 splashScreen.Activate();
@@ -56,19 +61,27 @@ namespace PWin11_Tweaker_s
             }
         }
 
-        private async Task InitializeLocalizer()
+        private static async Task InitializeLocalizer()
         {
-            // Initialize a "Strings" folder in the executables folder.
-            string stringsFolderPath = Path.Combine(AppContext.BaseDirectory, "Strings");
-            StorageFolder stringsFolder = await StorageFolder.GetFolderFromPathAsync(stringsFolderPath);
+            if (LocalizerBuilder.IsLocalizerAlreadyBuilt)
+            {
+                return;
+            }
 
-            ILocalizer localizer = await new LocalizerBuilder()
+            // "Strings" folder next to the executable (unpackaged app).
+            string stringsFolderPath = Path.Combine(AppContext.BaseDirectory, "Strings");
+
+            await new LocalizerBuilder()
                 .AddStringResourcesFolderForLanguageDictionaries(stringsFolderPath)
                 .SetOptions(options =>
                 {
-                    options.DefaultLanguage = "en-US";
+                    // Ранее выбранный пользователем язык (или язык по умолчанию),
+                    // сохранённый в LocalSettings через LocalizationManager.
+                    options.DefaultLanguage = LocalizationManager.CurrentLanguage;
                 })
                 .Build();
+
+            System.Diagnostics.Debug.WriteLine($"App: WinUI3Localizer собран, язык: {LocalizationManager.CurrentLanguage}");
         }
 
         private static async Task CreateStringResourceFileIfNotExists(StorageFolder stringsFolder, string language, string resourceFileName)

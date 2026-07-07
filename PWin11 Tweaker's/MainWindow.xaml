@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PWin11_Tweaker_s"
+    xmlns:l="using:WinUI3Localizer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:animations="using:Microsoft.UI.Xaml.Media.Animation"
@@ -29,32 +30,32 @@
                         ItemInvoked="NavView_ItemInvoked"
                         Grid.Row="1">
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Uid="Home" Tag="HomePage">
+                <NavigationViewItem l:Uids.Uid="Home" Tag="HomePage">
                     <NavigationViewItem.Icon>
                         <ImageIcon Source="/Assets/icons_nav2/home.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Explorer" Tag="ExplorerPage">
+                <NavigationViewItem l:Uids.Uid="Explorer" Tag="ExplorerPage">
                     <NavigationViewItem.Icon>
                         <ImageIcon Source="/Assets/icons_nav2/explorer.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="System" Tag="SystemPage">
+                <NavigationViewItem l:Uids.Uid="System" Tag="SystemPage">
                     <NavigationViewItem.Icon>
                         <ImageIcon Source="/Assets/icons_nav2/system.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Interface" Tag="InterfacePage">
+                <NavigationViewItem l:Uids.Uid="Interface" Tag="InterfacePage">
                     <NavigationViewItem.Icon>
                         <ImageIcon Source="/Assets/icons_nav2/interface.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Performance" Tag="PerformancePage">
+                <NavigationViewItem l:Uids.Uid="Performance" Tag="PerformancePage">
                     <NavigationViewItem.Icon>
                         <ImageIcon Source="/Assets/icons_nav2/performans.png"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Privacy" Tag="PrivacyPage">
+                <NavigationViewItem l:Uids.Uid="Privacy" Tag="PrivacyPage">
                     <NavigationViewItem.Icon>
                         <ImageIcon Source="/Assets/icons_nav2/privacy.png"/>
                     </NavigationViewItem.Icon>
@@ -81,7 +82,7 @@
         </NavigationView>
 
         <TextBlock x:Name="AdminWarningText" 
-                   x:Uid="AdminWarning" 
+                   l:Uids.Uid="AdminWarning" 
                    Foreground="WhiteSmoke" 
                    FontSize="14" 
                    TextWrapping="Wrap" 
@@ -92,7 +93,7 @@
                    Grid.Row="2"/>
 
         <TextBlock x:Name="UpdateWarningText" 
-                   x:Uid="UpdateWarning" 
+                   l:Uids.Uid="UpdateWarning" 
                    Text="Обнови Windows" 
                    Foreground="Red" 
                    FontSize="14" 
