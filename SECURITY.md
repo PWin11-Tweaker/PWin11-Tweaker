@@ -7,8 +7,9 @@ Versions with a check mark mean that the version is updated and stable.
 | Version | Status          | OS | Date |
 | ------- | ------------------ |----|-----|
 | app ver. | ico | ver. Win | MM.YY |
-| 1.15.x   | ⚒️ | 25H2 | xx.26 > 10.25 |
-| 1.14.1 |  ✔️ |  DEV 25H2 + 24H2 | 08.25 |
+| 3.x.x   | ⚒️ | 26H2 + 27H2 | 11.27 > xx.26 |
+| 2.x.x |  ✔️ |  25H2 + 24H2 | 08.25 |
+| 1.14.1 |  ❌ |  DEV 25H2 + 24H2 | 08.25 |
 | 1.14.0   | :x: | DEV 25H2 + 24H2 | 07.25 |
 | 1.13.0   | :x: | 24H2 | 06.25 |
 | 1.12.x   | :x: | 24H2 | 05.25 |
