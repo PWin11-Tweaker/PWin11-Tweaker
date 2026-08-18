@@ -81,7 +81,8 @@ PWin11 Tweaker is a lightweight, open-source utility that allows you to tweak va
 
    • Framework: .NET 9.0 or later
 
-   • Ollama for Windows(for eraAI)
+   • Ollama for Windows(for LLM)
+  eraAI coming soon 2027.12 
 
    • Permissions: Administrator rights recommended for some features
    
